@@ -1,32 +1,6 @@
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 const SUGGESTIONS = ['Canvas', 'Notion', 'Google Calendar', 'Asana', 'Microsoft To Do']
-
-const WHAT_HAPPENS_LINES = [
-  { text: '20 agents sweep 31,668 reviews', dot: '#3B82F6' },
-  { text: '3 AI architectures debate', dot: '#A1A1AA' },
-  { text: 'You get the verdict', dot: '#22C55E' },
-] as const
-
-const whatHappensContainerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 1,
-      staggerChildren: 0.2,
-    },
-  },
-}
-
-const whatHappensLineVariants = {
-  hidden: { opacity: 0, y: 8 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  },
-}
 
 interface LandingProps {
   onSelectProduct: (product: string, sessionId: string) => void
@@ -234,52 +208,17 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         </div>
       </div>
 
-      {/* What happens — staggered fade + lift after load */}
-      <motion.div
-        style={{
-          marginTop: 48,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: 6,
-        }}
-        initial="hidden"
-        animate="visible"
-        variants={whatHappensContainerVariants}
-      >
-        {WHAT_HAPPENS_LINES.map((line) => (
-          <motion.div
-            key={line.text}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-            }}
-            variants={whatHappensLineVariants}
-          >
-            <span
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: '50%',
-                background: line.dot,
-                flexShrink: 0,
-              }}
-              aria-hidden
-            />
-            <span
-              style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 12,
-                fontWeight: 400,
-                color: '#3F3F46',
-              }}
-            >
-              {line.text}
-            </span>
-          </motion.div>
-        ))}
-      </motion.div>
+      <p style={{
+        marginTop: 64,
+        textAlign: 'center',
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 13,
+        fontWeight: 500,
+        letterSpacing: '0.02em',
+        color: '#52525B',
+      }}>
+        $200K in consulting. 4 minutes. Real evidence.
+      </p>
 
       {/* Fine print — breathing pulse on the numbers */}
       <p style={{
