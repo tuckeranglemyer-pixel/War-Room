@@ -122,10 +122,12 @@ class DebateSession:
         session_id: str,
         product_description: str,
         loop: asyncio.AbstractEventLoop,
+        upload_session_id: str = "",
     ) -> None:
         self.session_id = session_id
         self.product_description = product_description
         self.loop = loop
+        self.upload_session_id = upload_session_id  # ingest session from /api/ingest/video
         # Queue is the bridge between the background thread and the WebSocket coroutine.
         # None is the sentinel value that signals end-of-stream.
         self.queue: asyncio.Queue[dict | None] = asyncio.Queue()
@@ -195,6 +197,7 @@ app.add_middleware(
 
 class AnalyzeRequest(BaseModel):
     product_description: str
+    session_id: str = ""  # upload session_id from POST /api/ingest/video; empty string = no upload
 
 
 class AnalyzeResponse(BaseModel):
@@ -221,7 +224,12 @@ async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
     """
     session_id = str(uuid.uuid4())
     loop = asyncio.get_running_loop()
-    session = DebateSession(session_id, request.product_description, loop)
+    session = DebateSession(
+        session_id,
+        request.product_description,
+        loop,
+        upload_session_id=request.session_id,
+    )
     SESSIONS[session_id] = session
 
     # Fire-and-forget: the background thread enqueues messages as rounds complete.
@@ -283,9 +291,14 @@ def _run_debate(session: DebateSession) -> None:
         session: Active debate session with product text and event loop reference.
     """
     try:
+        session_context: dict[str, Any] | None = None
+        if session.upload_session_id:
+            session_context = {"session_id": session.upload_session_id}
+
         crew = build_crew(
             session.product_description,
             task_callback=session.build_task_callback(),
+            session_context=session_context,
         )
         result = crew.kickoff()
 

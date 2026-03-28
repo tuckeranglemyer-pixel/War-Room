@@ -123,6 +123,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   async function runSubmit() {
     setSubmitting(true)
     setError('')
+    let uploadSessionId = ''
     try {
       if (videoFile) {
         setSubmitStatus('uploading')
@@ -141,15 +142,19 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         })
         clearTimeout(extractTimer)
         if (!ingestRes.ok) throw new Error(`Ingest error ${ingestRes.status}`)
-        const { frames_analyzed = 0 } = await ingestRes.json()
-        setFramesAnalyzed(frames_analyzed)
+        const ingestData = await ingestRes.json()
+        setFramesAnalyzed(ingestData.key_frames_analyzed ?? ingestData.frames_extracted ?? 0)
+        uploadSessionId = ingestData.session_id ?? ''
       }
 
       setSubmitStatus('analyzing')
       const analyzeRes = await fetch('http://localhost:8000/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product_description: productName }),
+        body: JSON.stringify({
+          product_description: productName,
+          session_id: uploadSessionId,
+        }),
       })
       if (!analyzeRes.ok) throw new Error(`Analyze error ${analyzeRes.status}`)
       const { session_id } = await analyzeRes.json()

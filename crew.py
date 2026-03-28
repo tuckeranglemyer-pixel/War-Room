@@ -13,6 +13,7 @@ from config import LOCAL_BASE_URL, LOCAL_MODEL, MAX_SCOUTS, MAX_WORKERS
 from meta_prompt import generate_personas
 from swarm import deploy_swarm
 from tools import (
+    create_session_user_upload_tool,
     fetch_context_for_product,
     search_pm_knowledge,
     search_user_context,
@@ -26,9 +27,6 @@ local_llm = LLM(model=LOCAL_MODEL, base_url=LOCAL_BASE_URL)
 first_timer_llm = local_llm
 daily_driver_llm = local_llm
 buyer_llm = local_llm
-
-# Tools exposed to all debate agents (RAG + user evidence).
-ALL_TOOLS = [search_pm_knowledge, search_user_uploads, search_user_context]
 
 
 def build_crew(
@@ -65,6 +63,17 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
     else:
         context_block = ""
 
+    # --- Step 0b: Build session-scoped tools ---
+    # If a specific upload session_id is available, use a closure-based tool that
+    # filters ChromaDB to ONLY that session's frames, preventing cross-session bleed.
+    # Falls back to the generic source-only filter when no session is active.
+    _upload_session_id = (session_context or {}).get("session_id", "")
+    if _upload_session_id:
+        _upload_tool = create_session_user_upload_tool(_upload_session_id)
+    else:
+        _upload_tool = search_user_uploads
+    agent_tools = [search_pm_knowledge, _upload_tool, search_user_context]
+
     # --- Step 1: Generate personas via meta-prompt ---
     personas = generate_personas(product_description, local_llm)
 
@@ -95,7 +104,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
         + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=first_timer_llm,
-        tools=ALL_TOOLS,
+        tools=agent_tools,
         max_iter=10,
         verbose=True,
     )
@@ -108,7 +117,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
         + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=daily_driver_llm,
-        tools=ALL_TOOLS,
+        tools=agent_tools,
         max_iter=10,
         verbose=True,
     )
@@ -121,7 +130,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
         + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=buyer_llm,
-        tools=ALL_TOOLS,
+        tools=agent_tools,
         max_iter=10,
         verbose=True,
     )
