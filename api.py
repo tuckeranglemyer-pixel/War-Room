@@ -31,7 +31,6 @@ from pydantic import BaseModel
 
 from config import API_HOST, API_PORT
 from crew import build_crew
-from tools import _chroma_client
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -41,6 +40,9 @@ from tools import _chroma_client
 ROUND_ROLES = ["first_timer", "daily_driver", "first_timer", "buyer"]
 
 SESSIONS: dict[str, DebateSession] = {}
+# In-memory store for video evidence produced by /api/ingest/video.
+# Keyed by the upload session_id; consumed by /analyze via _run_debate.
+VIDEO_EVIDENCE: dict[str, dict] = {}
 _executor = ThreadPoolExecutor(max_workers=4)
 
 # ---------------------------------------------------------------------------
@@ -49,8 +51,6 @@ _executor = ThreadPoolExecutor(max_workers=4)
 
 _openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
 
-# Lazy reference — resolved at first use so a missing collection doesn't crash import.
-_pm_tools_collection = None
 
 VIDEO_FRAME_PROMPT = """You are a UX researcher watching a user navigate a product for the first time. This is frame {frame_number} of {total_frames} in their session.
 
@@ -294,6 +294,9 @@ def _run_debate(session: DebateSession) -> None:
         session_context: dict[str, Any] | None = None
         if session.upload_session_id:
             session_context = {"session_id": session.upload_session_id}
+            video_evidence = VIDEO_EVIDENCE.get(session.upload_session_id)
+            if video_evidence:
+                session_context["video_evidence"] = video_evidence
 
         crew = build_crew(
             session.product_description,
@@ -582,24 +585,6 @@ def generate_journey_summary(
     return response.choices[0].message.content or ""
 
 
-def _get_pm_tools_collection() -> Any:
-    """Return the ``pm_tools`` collection, caching it on first successful open.
-
-    Returns:
-        A ChromaDB ``Collection`` instance.
-
-    Raises:
-        RuntimeError: If the collection cannot be opened.
-    """
-    global _pm_tools_collection
-    if _pm_tools_collection is None:
-        try:
-            _pm_tools_collection = _chroma_client.get_collection("pm_tools")
-        except Exception as exc:
-            raise RuntimeError(f"Could not open pm_tools ChromaDB collection: {exc}") from exc
-    return _pm_tools_collection
-
-
 # ---------------------------------------------------------------------------
 # Video ingestion — endpoint
 # ---------------------------------------------------------------------------
@@ -671,35 +656,20 @@ async def ingest_video(
         journey_report = generate_journey_summary(
             product_name, all_descriptions, session_context
         )
-        journey_chunk = {
-            "text": f"[Journey Summary: {product_name} — Session {session_id}]\n\n{journey_report}",
-            "metadata": {
-                "app": product_name.lower().split()[0],
-                "source": "user_upload",
-                "type": "journey_summary",
-                "session_id": session_id,
-                "total_frames": frames_extracted,
-            },
+
+        # Store evidence in-memory so /analyze can inject it into agent prompts.
+        frame_analyses = [chunk["text"] for chunk in frame_chunks]
+        VIDEO_EVIDENCE[session_id] = {
+            "journey_summary": journey_report,
+            "frame_analyses": frame_analyses,
         }
-
-        all_chunks = frame_chunks + [journey_chunk]
-
-        # Embed everything into ChromaDB.
-        collection = _get_pm_tools_collection()
-        for idx, chunk in enumerate(all_chunks):
-            doc_id = f"video_{session_id}_chunk_{idx:04d}"
-            collection.add(
-                documents=[chunk["text"]],
-                metadatas=[chunk["metadata"]],
-                ids=[doc_id],
-            )
 
         return {
             "session_id": session_id,
             "frames_extracted": frames_extracted,
             "key_frames_analyzed": frames_extracted,
-            "chunks_added": len(all_chunks),
-            "total_collection": collection.count(),
+            "journey_summary": journey_report,
+            "frame_analyses": frame_analyses,
         }
 
     finally:

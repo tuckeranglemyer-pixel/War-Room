@@ -13,11 +13,8 @@ from config import LOCAL_BASE_URL, LOCAL_MODEL, MAX_SCOUTS, MAX_WORKERS
 from meta_prompt import generate_personas
 from swarm import deploy_swarm
 from tools import (
-    create_session_user_upload_tool,
     fetch_context_for_product,
     search_pm_knowledge,
-    search_user_context,
-    search_user_uploads,
 )
 
 # --- LLM configuration (see config.py; swap models on DGX via env or config) ---
@@ -48,31 +45,29 @@ def build_crew(
     """
 
     # --- Step 0: Build session context block (injected into every task) ---
+    context_block = ""
     if session_context:
-        context_block = f"""
-USER EVALUATION CONTEXT:
-- Team size: {session_context.get('team_size', 'Unknown')}
-- Current tools: {session_context.get('current_tools', 'Unknown')}
-- Budget: {session_context.get('budget', 'Unknown')}
-- Main problem: {session_context.get('main_problem', 'Unknown')}
-- Use case: {session_context.get('use_case', 'Unknown')}
-- User uploaded evidence: {session_context.get('upload_count', 0)} screenshots/video frames
+        video_evidence = session_context.get("video_evidence")
+        if video_evidence:
+            journey_summary = video_evidence.get("journey_summary", "")
+            frame_analyses = video_evidence.get("frame_analyses", [])
+            frame_snippets = "\n\n".join(
+                f"[Frame {i + 1}]\n{text[:600]}"
+                for i, text in enumerate(frame_analyses[:10])
+            )
+            context_block = f"""VIDEO EVIDENCE FROM USER'S PRODUCT WALKTHROUGH:
 
-CRITICAL: The user has uploaded direct evidence of this product. You MUST use the "Search User Uploads" tool at least once per round to reference their screenshots and video frames. This is primary evidence — prioritize it over general reviews when they conflict.
+JOURNEY SUMMARY:
+{journey_summary[:3000]}
+
+KEY FRAME ANALYSES (up to 10 frames):
+{frame_snippets}
+
+CRITICAL: The above is PRIMARY evidence from the actual user's live walkthrough of this product. Reference specific frames and the journey summary in your analysis. This evidence takes priority over general reviews when they conflict.
+
 """
-    else:
-        context_block = ""
 
-    # --- Step 0b: Build session-scoped tools ---
-    # If a specific upload session_id is available, use a closure-based tool that
-    # filters ChromaDB to ONLY that session's frames, preventing cross-session bleed.
-    # Falls back to the generic source-only filter when no session is active.
-    _upload_session_id = (session_context or {}).get("session_id", "")
-    if _upload_session_id:
-        _upload_tool = create_session_user_upload_tool(_upload_session_id)
-    else:
-        _upload_tool = search_user_uploads
-    agent_tools = [search_pm_knowledge, _upload_tool, search_user_context]
+    agent_tools = [search_pm_knowledge]
 
     # --- Step 1: Generate personas via meta-prompt ---
     personas = generate_personas(product_description, local_llm)
@@ -101,8 +96,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         goal=personas[0]["goal"],
         backstory=personas[0]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust App Store reviews and Reddit first impressions — the voice of normal users. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
-        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
         llm=first_timer_llm,
         tools=agent_tools,
         max_iter=10,
@@ -114,8 +108,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         goal=personas[1]["goal"],
         backstory=personas[1]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust long-form G2 reviews and Hacker News technical discussions — the voice of power users. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
-        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
         llm=daily_driver_llm,
         tools=agent_tools,
         max_iter=10,
@@ -127,8 +120,7 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
         goal=personas[2]["goal"],
         backstory=personas[2]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust pricing comparisons, feature matrices, and business user reviews — the voice of decision-makers. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
-        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
         llm=buyer_llm,
         tools=agent_tools,
         max_iter=10,
