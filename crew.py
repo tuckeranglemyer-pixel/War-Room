@@ -1,5 +1,10 @@
 from crewai import Agent, Task, Crew, Process, LLM
-from tools import search_pm_knowledge, fetch_context_for_product
+from tools import (
+    search_pm_knowledge,
+    fetch_context_for_product,
+    search_user_uploads,
+    search_user_context,
+)
 from meta_prompt import generate_personas
 from swarm import deploy_swarm
 
@@ -15,11 +20,39 @@ first_timer_llm = local_llm
 daily_driver_llm = local_llm
 buyer_llm = local_llm
 
-ALL_TOOLS = [search_pm_knowledge]
+ALL_TOOLS = [search_pm_knowledge, search_user_uploads, search_user_context]
 
 
-def build_crew(product_description: str, task_callback=None) -> Crew:
-    """Build the War Room crew with dynamically generated personas."""
+def build_crew(
+    product_description: str,
+    task_callback=None,
+    session_context: dict = None,
+) -> Crew:
+    """Build the War Room crew with dynamically generated personas.
+
+    Args:
+        product_description: Product name + description to evaluate.
+        task_callback: Optional CrewAI callback fired after each task completes.
+        session_context: Optional dict with user-provided evaluation context
+            (team_size, current_tools, budget, main_problem, use_case, upload_count).
+            When present, agents are directed to prioritize user-uploaded evidence.
+    """
+
+    # --- Step 0: Build session context block (injected into every task) ---
+    if session_context:
+        context_block = f"""
+USER EVALUATION CONTEXT:
+- Team size: {session_context.get('team_size', 'Unknown')}
+- Current tools: {session_context.get('current_tools', 'Unknown')}
+- Budget: {session_context.get('budget', 'Unknown')}
+- Main problem: {session_context.get('main_problem', 'Unknown')}
+- Use case: {session_context.get('use_case', 'Unknown')}
+- User uploaded evidence: {session_context.get('upload_count', 0)} screenshots/video frames
+
+CRITICAL: The user has uploaded direct evidence of this product. You MUST use the "Search User Uploads" tool at least once per round to reference their screenshots and video frames. This is primary evidence — prioritize it over general reviews when they conflict.
+"""
+    else:
+        context_block = ""
 
     # --- Step 1: Generate personas via meta-prompt ---
     personas = generate_personas(product_description, local_llm)
@@ -44,7 +77,8 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
         goal=personas[0]["goal"],
         backstory=personas[0]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust App Store reviews and Reddit first impressions — the voice of normal users. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
+        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=first_timer_llm,
         tools=ALL_TOOLS,
         max_iter=10,
@@ -56,7 +90,8 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
         goal=personas[1]["goal"],
         backstory=personas[1]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust long-form G2 reviews and Hacker News technical discussions — the voice of power users. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
+        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=daily_driver_llm,
         tools=ALL_TOOLS,
         max_iter=10,
@@ -68,7 +103,8 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
         goal=personas[2]["goal"],
         backstory=personas[2]["backstory"]
         + "\n\nEVIDENCE PREFERENCE: You trust pricing comparisons, feature matrices, and business user reviews — the voice of decision-makers. When searching the knowledge base, prioritize these sources."
-        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly.",
+        + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument. Never argue from general knowledge alone — always search first. Every claim you make must be backed by evidence from the knowledge base. If you cannot find evidence for a claim, say so explicitly."
+        + "\n\nUSER EVIDENCE RULE: You MUST use the 'Search User Uploads' tool at least once per round to check for user-provided screenshots and video evidence. You MUST use the 'Search User Context' tool in Round 1 to understand who you are evaluating this product for.",
         llm=buyer_llm,
         tools=ALL_TOOLS,
         max_iter=10,
@@ -79,7 +115,7 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
 
     # ROUND 1 — First-Timer analyzes
     round1 = Task(
-        description=f"""IMPORTANT: Use the search_pm_knowledge tool for EVERY point you make. Search before you argue. Cite real user reviews, not general knowledge.
+        description=f"""{context_block}IMPORTANT: Use the search_pm_knowledge tool for EVERY point you make. Search before you argue. Cite real user reviews, not general knowledge.
 
 You are testing this productivity app: {product_description}
 
@@ -112,7 +148,7 @@ Do not write a balanced review. You are a real user with limited patience.""",
 
     # ROUND 2 — Daily Driver challenges
     round2 = Task(
-        description=f"""You are a daily power user of this productivity app: {product_description}
+        description=f"""{context_block}You are a daily power user of this productivity app: {product_description}
 
 You have used this product for months. You know its shortcuts, hidden features, and breaking points. You have just read an analysis from a first-time user.
 
@@ -138,7 +174,7 @@ ONLY cite evidence from the knowledge base provided below — do not invent user
 
     # ROUND 3 — First-Timer fires back
     round3 = Task(
-        description=f"""You are the same first-time user from Round 1. You have just read a challenge from a power user who disagrees with parts of your analysis.
+        description=f"""{context_block}You are the same first-time user from Round 1. You have just read a challenge from a power user who disagrees with parts of your analysis.
 
 YOUR ASSIGNMENT:
 
@@ -161,7 +197,7 @@ ONLY cite evidence from the knowledge base provided below — do not invent user
 
     # ROUND 4 — Buyer delivers final verdict
     round4 = Task(
-        description=f"""You are evaluating this productivity app for team-wide adoption: {product_description}
+        description=f"""{context_block}You are evaluating this productivity app for team-wide adoption: {product_description}
 
 You have read the FULL debate. Now make the business decision.
 
