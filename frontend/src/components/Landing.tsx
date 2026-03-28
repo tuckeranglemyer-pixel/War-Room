@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { motion } from 'framer-motion'
+import { fade, fadeScale, fadeUp, spring } from '../animations'
 
 const SUGGESTIONS = ['Canvas', 'Notion', 'Google Calendar', 'Asana', 'Microsoft To Do']
 
@@ -9,10 +11,13 @@ interface LandingProps {
 export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [focused, setFocused] = useState(false)
+  const [exiting, setExiting] = useState(false)
+  const pendingRef = useRef<string | null>(null)
 
   function submit(product: string) {
-    if (!product.trim()) return
-    onSelectProduct(product.trim())
+    if (!product.trim() || exiting) return
+    pendingRef.current = product.trim()
+    setExiting(true)
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -22,16 +27,26 @@ export default function Landing({ onSelectProduct }: LandingProps) {
   const hasText = input.trim().length > 0
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-      padding: '0 24px',
-      marginTop: '-5vh',
-    }}>
+    <motion.div
+      animate={exiting ? { opacity: 0, y: -8 } : { opacity: 1, y: 0 }}
+      transition={exiting ? { duration: 0.2 } : undefined}
+      onAnimationComplete={() => {
+        if (exiting && pendingRef.current) {
+          onSelectProduct(pendingRef.current)
+          pendingRef.current = null
+        }
+      }}
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        padding: '0 24px',
+        marginTop: '-5vh',
+      }}
+    >
       <style>{`
         @keyframes borderRotate {
           0%   { --angle: 0deg; }
@@ -64,55 +79,71 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         }
       `}</style>
 
-      {/* Brand mark */}
-      <p style={{
-        fontFamily: "'Inter', sans-serif",
-        fontSize: 16,
-        fontWeight: 600,
-        letterSpacing: '0.25em',
-        textTransform: 'uppercase',
-        color: '#52525B',
-        marginBottom: 12,
-      }}>
+      <motion.p
+        initial={fadeUp.initial}
+        animate={fadeUp.animate}
+        transition={{ ...spring.gentle, delay: 0 }}
+        style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 16,
+          fontWeight: 600,
+          letterSpacing: '0.25em',
+          textTransform: 'uppercase',
+          color: '#52525B',
+          marginBottom: 12,
+        }}
+      >
         WAR ROOM
-      </p>
+      </motion.p>
 
-      {/* Tagline */}
-      <p style={{
-        fontFamily: "'Inter', sans-serif",
-        fontSize: 14,
-        fontWeight: 400,
-        color: '#3F3F46',
-        marginBottom: 40,
-      }}>
+      <motion.p
+        initial={fadeUp.initial}
+        animate={fadeUp.animate}
+        transition={{ ...spring.gentle, delay: 0.1 }}
+        style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 14,
+          fontWeight: 400,
+          color: '#3F3F46',
+          marginBottom: 40,
+        }}
+      >
         Multi-model adversarial QA for software products
-      </p>
+      </motion.p>
 
-      {/* Input with animated gradient border */}
       <div style={{ width: '100%', maxWidth: 560 }}>
-        <div className={`input-border-wrap${focused ? ' active' : ''}`}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            placeholder="Enter a product to analyze..."
-            autoFocus
-            style={{
-              background: '#12141A',
-              border: 'none',
-              padding: '24px 28px',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 20,
-              fontWeight: 400,
-              color: '#E4E4E7',
-              caretColor: '#3B82F6',
-              outline: 'none',
-            }}
-          />
-        </div>
+        <motion.div
+          initial={fadeScale.initial}
+          animate={{
+            ...fadeScale.animate,
+            scale: focused ? 1.005 : 1,
+          }}
+          transition={focused ? spring.default : { ...spring.gentle, delay: 0.2 }}
+        >
+          <div className={`input-border-wrap${focused ? ' active' : ''}`}>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              placeholder="Enter a product to analyze..."
+              autoFocus
+              style={{
+                background: '#12141A',
+                border: 'none',
+                padding: '24px 28px',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 20,
+                fontWeight: 400,
+                color: '#E4E4E7',
+                caretColor: '#3B82F6',
+                outline: 'none',
+              }}
+            />
+          </div>
+        </motion.div>
         <div style={{
           display: 'flex',
           justifyContent: 'flex-end',
@@ -141,8 +172,12 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         </div>
       </div>
 
-      {/* Quiet suggestions — tightened to input */}
-      <div style={{ marginTop: 20, textAlign: 'center' }}>
+      <motion.div
+        initial={fadeUp.initial}
+        animate={fadeUp.animate}
+        transition={{ ...spring.gentle, delay: 0.4 }}
+        style={{ marginTop: 20, textAlign: 'center' }}
+      >
         <p style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 12,
@@ -161,46 +196,58 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           {SUGGESTIONS.map((s, i) => (
             <span key={s}>
               {i > 0 && <span style={{ margin: '0 6px', color: '#3F3F46' }}> · </span>}
-              <span
+              <motion.span
                 onClick={() => submit(s)}
+                whileHover={{ y: -1 }}
+                transition={spring.snappy}
                 style={{
                   cursor: 'pointer',
+                  display: 'inline-block',
                   transition: 'color 150ms ease',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = '#E4E4E7' }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = '#71717A' }}
               >
                 {s}
-              </span>
+              </motion.span>
             </span>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <p style={{
-        marginTop: 64,
-        textAlign: 'center',
-        fontFamily: "'Inter', sans-serif",
-        fontSize: 13,
-        fontWeight: 500,
-        letterSpacing: '0.02em',
-        color: '#52525B',
-      }}>
+      <motion.p
+        initial={fadeUp.initial}
+        animate={fadeUp.animate}
+        transition={{ ...spring.gentle, delay: 0.5 }}
+        style={{
+          marginTop: 64,
+          textAlign: 'center',
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 13,
+          fontWeight: 500,
+          letterSpacing: '0.02em',
+          color: '#52525B',
+        }}
+      >
         $200K in consulting. 4 minutes. Real evidence.
-      </p>
+      </motion.p>
 
-      {/* Fine print — breathing pulse on the numbers */}
-      <p style={{
-        position: 'absolute',
-        bottom: 32,
-        fontFamily: "'JetBrains Mono', monospace",
-        fontSize: 10,
-        color: '#3F3F46',
-        textAlign: 'center',
-        animation: 'finePrintPulse 4s ease-in-out infinite',
-      }}>
+      <motion.p
+        initial={fade.initial}
+        animate={fade.animate}
+        transition={{ ...spring.gentle, delay: 0.6 }}
+        style={{
+          position: 'absolute',
+          bottom: 32,
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 10,
+          color: '#3F3F46',
+          textAlign: 'center',
+          animation: 'finePrintPulse 4s ease-in-out infinite',
+        }}
+      >
         31,668 user reviews · 20 scout agents · 3 AI architectures
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   )
 }

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { fade, fadeScale, fadeUp, spring } from '../animations'
 
 interface VerdictCardProps {
   product: string
@@ -27,9 +29,9 @@ function verdictStyle(verdict: Verdict) {
   }
 }
 
-// Animated circular score display that counts up to the final 1–100 verdict score.
 function ScoreRing({ score }: { score: number }) {
   const [animatedScore, setAnimatedScore] = useState(0)
+  const [scoreDone, setScoreDone] = useState(false)
   const radius = 56
   const stroke = 4
   const circumference = 2 * Math.PI * radius
@@ -43,7 +45,9 @@ function ScoreRing({ score }: { score: number }) {
       const elapsed = now - start
       const progress = Math.min(elapsed / duration, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
-      setAnimatedScore(Math.round(score * eased))
+      const next = Math.round(score * eased)
+      setAnimatedScore(next)
+      if (progress >= 1) setScoreDone(true)
       if (progress < 1) requestAnimationFrame(tick)
     }
     requestAnimationFrame(tick)
@@ -74,16 +78,24 @@ function ScoreRing({ score }: { score: number }) {
         />
       </svg>
       <div style={{ position: 'absolute', textAlign: 'center' }}>
-        <span style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 48,
-          fontWeight: 600,
-          color: '#E4E4E7',
-          lineHeight: 1,
-          display: 'block',
-        }}>
+        <motion.span
+          animate={
+            scoreDone
+              ? { scale: [1, 1.05, 1] }
+              : { scale: 1 }
+          }
+          transition={spring.snappy}
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 48,
+            fontWeight: 600,
+            color: '#E4E4E7',
+            lineHeight: 1,
+            display: 'block',
+          }}
+        >
           {animatedScore}
-        </span>
+        </motion.span>
         <span style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 14,
@@ -104,7 +116,6 @@ function normalizeVerdict(raw: string): Verdict {
   return 'NO'
 }
 
-// Final scored verdict with priority fixes and navigation back to a new run.
 export default function VerdictCard({ product, score, decision, fixes, onBack }: VerdictCardProps) {
   const verdict = normalizeVerdict(decision)
   const vs = verdictStyle(verdict)
@@ -117,6 +128,10 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
       }))
     : [{ priority: '01', desc: 'See full report for recommended fixes.', impact: '' }]
 
+  const badgeDelay = 1.2
+  const fixesStart = badgeDelay + 0.2
+  const buttonsDelay = fixesStart + fixItems.length * 0.1 + 0.4
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -126,7 +141,6 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
       justifyContent: 'center',
       padding: '64px 24px',
     }}>
-      {/* Main card */}
       <div style={{
         maxWidth: 480,
         width: '100%',
@@ -136,7 +150,6 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
         padding: '48px 40px',
         textAlign: 'center',
       }}>
-        {/* Product name */}
         <p style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 11,
@@ -147,13 +160,16 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
           {product}
         </p>
 
-        {/* Score ring */}
         <div style={{ marginTop: 24 }}>
           <ScoreRing score={score} />
         </div>
 
-        {/* Verdict badge */}
-        <div style={{ marginTop: 24 }}>
+        <motion.div
+          initial={fadeScale.initial}
+          animate={fadeScale.animate}
+          transition={{ ...spring.snappy, delay: badgeDelay }}
+          style={{ marginTop: 24 }}
+        >
           <span style={{
             display: 'inline-block',
             background: vs.bg,
@@ -169,12 +185,10 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
           }}>
             {verdict}
           </span>
-        </div>
+        </motion.div>
 
-        {/* Divider */}
         <div style={{ height: 1, background: '#1E2028', margin: '32px 0' }} />
 
-        {/* Fixes */}
         <div style={{ textAlign: 'left' }}>
           <p style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -187,8 +201,14 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
             PRIORITY FIXES
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {fixItems.map((fix) => (
-              <div key={fix.priority} style={{ display: 'flex', gap: 12 }}>
+            {fixItems.map((fix, i) => (
+              <motion.div
+                key={fix.priority}
+                initial={fadeUp.initial}
+                animate={fadeUp.animate}
+                transition={{ ...spring.gentle, delay: fixesStart + i * 0.1 }}
+                style={{ display: 'flex', gap: 12 }}
+              >
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 11,
@@ -217,15 +237,13 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
                     {fix.impact}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Divider */}
         <div style={{ height: 1, background: '#1E2028', margin: '32px 0' }} />
 
-        {/* Footer */}
         <p style={{
           fontFamily: "'JetBrains Mono', monospace",
           fontSize: 9,
@@ -236,8 +254,12 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
           ADVERSARIALLY TESTED BY 3 AI ARCHITECTURES
         </p>
 
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32 }}>
+        <motion.div
+          initial={fade.initial}
+          animate={fade.animate}
+          transition={{ ...spring.gentle, delay: buttonsDelay }}
+          style={{ display: 'flex', gap: 12, justifyContent: 'center', marginTop: 32 }}
+        >
           <button
             onClick={onBack}
             style={{
@@ -281,11 +303,13 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
           >
             Share Report
           </button>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Back link outside card */}
-      <span
+      <motion.span
+        initial={fade.initial}
+        animate={fade.animate}
+        transition={{ ...spring.gentle, delay: buttonsDelay + 0.05 }}
         onClick={onBack}
         style={{
           fontFamily: "'Inter', sans-serif",
@@ -299,7 +323,7 @@ export default function VerdictCard({ product, score, decision, fixes, onBack }:
         onMouseLeave={(e) => { e.currentTarget.style.color = '#3F3F46' }}
       >
         Back to War Room
-      </span>
+      </motion.span>
     </div>
   )
 }

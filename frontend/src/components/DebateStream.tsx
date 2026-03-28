@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import type { VerdictData } from '../App'
+import { fadeUp, spring } from '../animations'
 
 interface DebateStreamProps {
   product: string
@@ -15,10 +17,6 @@ interface RoundMessage {
   model: string
   content: string
 }
-
-// ---------------------------------------------------------------------------
-// Constants
-// ---------------------------------------------------------------------------
 
 const SCOUT_RESULTS = [
   { topic: 'Onboarding friction', count: 14 },
@@ -96,9 +94,15 @@ const DEMO_VERDICT: VerdictData = {
   ],
 }
 
-// ---------------------------------------------------------------------------
-// Sub-components
-// ---------------------------------------------------------------------------
+const headerChild = {
+  hidden: { opacity: 0, y: 6 },
+  show: { opacity: 1, y: 0, transition: spring.gentle },
+}
+
+const staggerShow = (stagger: number) => ({
+  hidden: {},
+  show: { transition: { staggerChildren: stagger } },
+})
 
 function RoundProgress({ completed, active, total }: { completed: number; active: number; total: number }) {
   return (
@@ -106,6 +110,7 @@ function RoundProgress({ completed, active, total }: { completed: number; active
       {Array.from({ length: total }).map((_, i) => {
         const isFilled = i < completed
         const isActive = i === active - 1 && !isFilled
+        const showBlue = isFilled || isActive
         return (
           <div
             key={i}
@@ -113,11 +118,30 @@ function RoundProgress({ completed, active, total }: { completed: number; active
               flex: 1,
               height: 4,
               borderRadius: 2,
-              background: isFilled || isActive ? '#3B82F6' : '#1E2028',
-              animation: isActive ? 'progressPulse 2s ease-in-out infinite' : undefined,
-              transition: 'background 300ms ease',
+              background: '#1E2028',
+              overflow: 'hidden',
             }}
-          />
+          >
+            <motion.div
+              style={{
+                height: 4,
+                borderRadius: 2,
+                background: '#3B82F6',
+                transformOrigin: 'left center',
+              }}
+              initial={{ scaleX: 0 }}
+              animate={{
+                scaleX: showBlue ? 1 : 0,
+                opacity: isActive ? [1, 0.55, 1] : 1,
+              }}
+              transition={{
+                scaleX: spring.snappy,
+                opacity: isActive
+                  ? { repeat: Infinity, duration: 2, times: [0, 0.5, 1] }
+                  : { duration: 0.15 },
+              }}
+            />
+          </div>
         )
       })}
     </div>
@@ -155,17 +179,20 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
       }
     }, 300)
     return () => clearInterval(interval)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [product])
 
   return (
-    <div style={{
-      background: '#12141A',
-      border: `1px solid ${flash ? '#3B82F6' : '#1E2028'}`,
-      borderRadius: 8,
-      padding: 20,
-      transition: 'border-color 300ms ease',
-    }}>
+    <motion.div
+      initial={fadeUp.initial}
+      animate={fadeUp.animate}
+      transition={spring.gentle}
+      style={{
+        background: '#12141A',
+        border: `1px solid ${flash ? '#3B82F6' : '#1E2028'}`,
+        borderRadius: 8,
+        padding: 20,
+      }}
+    >
       <p style={{
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: 11,
@@ -185,19 +212,30 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
       }}>
         {scoutsDeployed} / 20 scouts deployed
       </p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <motion.div
+        variants={staggerShow(0.05)}
+        initial="hidden"
+        animate="show"
+        style={{ display: 'flex', flexDirection: 'column', gap: 4 }}
+      >
         {results.filter(Boolean).map((r, i) => (
-          <p key={i} style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            color: '#71717A',
-            animation: 'fadeIn 200ms ease',
-          }}>
+          <motion.p
+            key={`${r.topic}-${i}`}
+            variants={{
+              hidden: { opacity: 0, y: 8 },
+              show: { opacity: 1, y: 0, transition: spring.gentle },
+            }}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 11,
+              color: '#71717A',
+            }}
+          >
             ✓ {r.topic} — {r.count} reviews found
-          </p>
+          </motion.p>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -213,7 +251,7 @@ function AgentInitSequence({ onComplete }: { onComplete: () => void }) {
     const timers: ReturnType<typeof setTimeout>[] = []
 
     for (let i = 0; i < 3; i++) {
-      const base = i * 800
+      const base = i * 600
       timers.push(setTimeout(() => setVisibleCards(v => Math.max(v, i + 1)), base))
       timers.push(setTimeout(() => {
         setStatuses(prev => { const n = [...prev]; n[i] = 'initializing'; return n })
@@ -237,18 +275,21 @@ function AgentInitSequence({ onComplete }: { onComplete: () => void }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
       {INIT_AGENTS.map((agent, i) => (
         visibleCards > i && (
-          <div key={i} style={{
-            background: '#12141A',
-            border: '1px solid #1E2028',
-            borderRadius: 8,
-            padding: 20,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            opacity: 0,
-            transform: 'translateY(12px)',
-            animation: 'agentCardIn 400ms ease-out forwards',
-          }}>
+          <motion.div
+            key={i}
+            initial={fadeUp.initial}
+            animate={fadeUp.animate}
+            transition={spring.gentle}
+            style={{
+              background: '#12141A',
+              border: '1px solid #1E2028',
+              borderRadius: 8,
+              padding: 20,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 16,
+            }}
+          >
             <div style={{
               width: 8,
               height: 8,
@@ -276,44 +317,58 @@ function AgentInitSequence({ onComplete }: { onComplete: () => void }) {
                 {agent.model}
               </span>
             </div>
-            <span style={{
-              marginLeft: 'auto',
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 10,
-              color: statuses[i] === 'ready' ? '#22C55E' : statuses[i] === 'loading context' ? '#71717A' : '#3F3F46',
-              animation: statuses[i] === 'ready' ? 'readyFlash 300ms ease' : undefined,
-              transition: 'color 200ms ease',
-              flexShrink: 0,
-            }}>
-              {statuses[i]}
+            <span style={{ marginLeft: 'auto', flexShrink: 0, minHeight: 14, display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+              <AnimatePresence mode="wait">
+                {statuses[i] ? (
+                  <motion.span
+                    key={statuses[i]}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={spring.gentle}
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 10,
+                      color: statuses[i] === 'ready' ? '#22C55E' : statuses[i] === 'loading context' ? '#71717A' : '#3F3F46',
+                      animation: statuses[i] === 'ready' ? 'readyFlash 300ms ease' : undefined,
+                    }}
+                  >
+                    {statuses[i]}
+                  </motion.span>
+                ) : null}
+              </AnimatePresence>
             </span>
-          </div>
+          </motion.div>
         )
       ))}
 
       {showLine && (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
-          <div style={{
-            height: 1,
-            background: '#3B82F6',
-            animation: 'lineExpand 300ms ease-out forwards',
-          }} />
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: '60%' }}
+            transition={spring.snappy}
+            style={{ height: 1, background: '#3B82F6' }}
+          />
         </div>
       )}
 
       {showCommencing && (
-        <p style={{
-          textAlign: 'center',
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 11,
-          color: '#3B82F6',
-          letterSpacing: '0.1em',
-          opacity: 0,
-          animation: 'fadeInOnly 200ms ease forwards',
-          marginTop: 8,
-        }}>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={spring.gentle}
+          style={{
+            textAlign: 'center',
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11,
+            color: '#3B82F6',
+            letterSpacing: '0.1em',
+            marginTop: 8,
+          }}
+        >
           Commencing adversarial debate...
-        </p>
+        </motion.p>
       )}
     </div>
   )
@@ -354,79 +409,125 @@ function RoundCard({ msg, typewriter, onTypingComplete }: {
   const hasDisagree = /\bDISAGREE\b/.test(displayedText)
 
   return (
-    <div style={{
-      background: '#12141A',
-      border: '1px solid #1E2028',
-      borderRadius: 8,
-      padding: 24,
-      animation: 'fadeIn 300ms ease',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{
-          width: 8, height: 8, borderRadius: '50%',
-          background: dot, flexShrink: 0,
-        }} />
-        <span style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 14, fontWeight: 600, color: '#E4E4E7',
-        }}>
-          {msg.agent_name}
-        </span>
-        <span style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 10, color: '#71717A',
-          background: '#0A0B0F',
-          border: '1px solid #1E2028',
-          borderRadius: 4, padding: '2px 8px', flexShrink: 0,
-        }}>
-          {msg.model}
-        </span>
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
-          {hasAgree && (
-            <span style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 10, fontWeight: 600,
-              color: '#22C55E',
-              background: 'rgba(34,197,94,0.1)',
-              borderRadius: 4, padding: '2px 8px',
-            }}>AGREE</span>
-          )}
-          {hasDisagree && (
-            <span style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 10, fontWeight: 600,
-              color: '#EF4444',
-              background: 'rgba(239,68,68,0.1)',
-              borderRadius: 4, padding: '2px 8px',
-            }}>DISAGREE</span>
-          )}
-          <span style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 10, color: '#3F3F46',
-          }}>
-            ROUND {msg.round}
-          </span>
-        </div>
-      </div>
-
-      <p style={{
-        fontFamily: "'JetBrains Mono', monospace",
-        fontSize: 13, color: '#A1A1AA',
-        lineHeight: 1.8, marginTop: 16,
-        whiteSpace: 'pre-wrap',
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: 'auto', opacity: 1 }}
+      transition={spring.default}
+      style={{ overflow: 'hidden', borderRadius: 8 }}
+    >
+      <div style={{
+        background: '#12141A',
+        border: '1px solid #1E2028',
+        borderRadius: 8,
+        padding: 24,
       }}>
-        {displayedText}
-        {typewriter && !isDone && (
-          <span style={{ animation: 'progressPulse 1s ease-in-out infinite' }}>{'\u258C'}</span>
-        )}
-      </p>
-    </div>
+        <motion.div
+          variants={staggerShow(0.03)}
+          initial="hidden"
+          animate="show"
+          style={{ display: 'flex', alignItems: 'center', gap: 12 }}
+        >
+          <motion.div
+            variants={headerChild}
+            style={{
+              width: 8, height: 8, borderRadius: '50%',
+              background: dot, flexShrink: 0,
+            }}
+          />
+          <motion.span
+            variants={headerChild}
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 14, fontWeight: 600, color: '#E4E4E7',
+            }}
+          >
+            {msg.agent_name}
+          </motion.span>
+          <motion.span
+            variants={headerChild}
+            style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10, color: '#71717A',
+              background: '#0A0B0F',
+              border: '1px solid #1E2028',
+              borderRadius: 4, padding: '2px 8px', flexShrink: 0,
+            }}
+          >
+            {msg.model}
+          </motion.span>
+          <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+            <AnimatePresence>
+              {hasAgree && (
+                <motion.span
+                  key="agree"
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={spring.snappy}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 10, fontWeight: 600,
+                    color: '#22C55E',
+                    background: 'rgba(34,197,94,0.1)',
+                    borderRadius: 4, padding: '2px 8px',
+                  }}
+                >
+                  AGREE
+                </motion.span>
+              )}
+            </AnimatePresence>
+            <AnimatePresence>
+              {hasDisagree && (
+                <motion.span
+                  key="disagree"
+                  initial={{ opacity: 0, scale: 0.92 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={spring.snappy}
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 10, fontWeight: 600,
+                    color: '#EF4444',
+                    background: 'rgba(239,68,68,0.1)',
+                    borderRadius: 4, padding: '2px 8px',
+                  }}
+                >
+                  DISAGREE
+                </motion.span>
+              )}
+            </AnimatePresence>
+            <motion.span
+              variants={headerChild}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10, color: '#3F3F46',
+              }}
+            >
+              ROUND {msg.round}
+            </motion.span>
+          </div>
+        </motion.div>
+
+        <p style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 13, color: '#A1A1AA',
+          lineHeight: 1.8, marginTop: 16,
+          whiteSpace: 'pre-wrap',
+        }}>
+          {displayedText}
+          {typewriter && !isDone && (
+            <motion.span
+              animate={{ opacity: [1, 0.45, 1] }}
+              transition={{ repeat: Infinity, duration: 1, times: [0, 0.5, 1] }}
+            >
+              {'\u258C'}
+            </motion.span>
+          )}
+        </p>
+      </div>
+    </motion.div>
   )
 }
-
-// ---------------------------------------------------------------------------
-// Main component
-// ---------------------------------------------------------------------------
 
 export default function DebateStream({ product, sessionId, onBack, onVerdict }: DebateStreamProps) {
   const [swarmDone, setSwarmDone] = useState(false)
@@ -452,7 +553,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   const handleInitComplete = useCallback(() => setInitDone(true), [])
   const handleTypingComplete = useCallback(() => setCompletedRounds(prev => prev + 1), [])
 
-  // WebSocket connection + demo fallback timer — fires when swarm finishes
   useEffect(() => {
     if (!swarmDone) return
 
@@ -506,7 +606,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     }
   }, [swarmDone, sessionId])
 
-  // Demo round delivery — staggered 4s apart
   useEffect(() => {
     if (!demoMode || !initDone) return
 
@@ -521,7 +620,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     return () => timers.forEach(clearTimeout)
   }, [demoMode, initDone])
 
-  // Auto-scroll when new rounds appear
   useEffect(() => {
     if (rounds.length > 0) {
       setTimeout(() => {
@@ -530,7 +628,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     }
   }, [rounds.length])
 
-  // Transition to VerdictCard after all demo rounds finish typing
   useEffect(() => {
     if (demoMode && completedRounds >= 4) {
       const timer = setTimeout(() => {
@@ -540,7 +637,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     }
   }, [demoMode, completedRounds])
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => { wsRef.current?.close() }
   }, [])
@@ -548,22 +644,6 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   return (
     <div style={{ minHeight: '100vh', background: '#0A0B0F' }}>
       <style>{`
-        @keyframes progressPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInOnly {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes agentCardIn {
-          from { opacity: 0; transform: translateY(12px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
         @keyframes dotPulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.3; }
@@ -573,14 +653,9 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
           50% { opacity: 1; filter: brightness(1.5); }
           100% { opacity: 1; filter: brightness(1); }
         }
-        @keyframes lineExpand {
-          from { width: 0; }
-          to { width: 60%; }
-        }
       `}</style>
 
       <div style={{ maxWidth: 880, margin: '0 auto', padding: '32px 24px 64px' }}>
-        {/* Top bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span
@@ -614,19 +689,16 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
 
         <RoundProgress completed={completedRounds} active={currentRound} total={4} />
 
-        {/* Swarm card */}
         <div style={{ marginTop: 24 }}>
           <SwarmCard product={product} onComplete={handleSwarmComplete} />
         </div>
 
-        {/* Agent initialization sequence */}
         {swarmDone && (
           <div style={{ marginTop: 12 }}>
             <AgentInitSequence onComplete={handleInitComplete} />
           </div>
         )}
 
-        {/* WS error — suppressed during demo mode */}
         {wsError && !demoMode && initDone && (
           <p style={{
             fontFamily: "'JetBrains Mono', monospace",
@@ -637,12 +709,11 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
           </p>
         )}
 
-        {/* Debate round cards */}
         {initDone && rounds.length > 0 && (
           <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 12 }}>
             {rounds.map((msg, i) => (
               <RoundCard
-                key={i}
+                key={`${msg.round}-${i}`}
                 msg={msg}
                 typewriter={demoMode}
                 onTypingComplete={demoMode ? handleTypingComplete : undefined}
