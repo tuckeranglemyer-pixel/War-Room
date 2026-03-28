@@ -9,10 +9,19 @@ import './index.css'
 
 type View = 'landing' | 'context' | 'debate' | 'verdict'
 
+export interface RoundData {
+  round: number
+  agent_name: string
+  agent_role: string
+  content: string
+}
+
 export interface VerdictData {
   score: number
   decision: string
   top_3_fixes: string[]
+  rounds: RoundData[]
+  full_report: string
 }
 
 export default function App() {
@@ -106,6 +115,8 @@ export default function App() {
               score={verdictData?.score ?? 0}
               decision={verdictData?.decision ?? 'UNKNOWN'}
               fixes={verdictData?.top_3_fixes ?? []}
+              rounds={verdictData?.rounds ?? []}
+              full_report={verdictData?.full_report ?? ''}
               onBack={handleBack}
             />
           </motion.div>

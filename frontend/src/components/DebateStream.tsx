@@ -92,6 +92,8 @@ const DEMO_VERDICT: VerdictData = {
     'Fix mobile editing crashes \u2014 340 of 500 recent Play Store reviews. ~20% retention impact.',
     'Add progressive onboarding for new users \u2014 current approach loses 60%+ of first-time users. ~15% retention impact.',
   ],
+  rounds: DEMO_ROUNDS,
+  full_report: DEMO_ROUNDS[3]?.content ?? '',
 }
 
 const headerChild = {
@@ -568,6 +570,8 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
           score: msg.score,
           decision: msg.decision,
           top_3_fixes: msg.top_3_fixes,
+          rounds: roundsRef.current,
+          full_report: msg.full_report ?? '',
         })
         ws.close()
         return
