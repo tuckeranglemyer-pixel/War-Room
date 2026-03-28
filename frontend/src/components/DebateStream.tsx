@@ -74,13 +74,19 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
   const [results, setResults] = useState<typeof SCOUT_RESULTS>([])
   const [flash, setFlash] = useState(false)
   const completedRef = useRef(false)
+  // Keep onComplete stable across renders so the effect doesn't re-fire mid-animation
+  const onCompleteRef = useRef(onComplete)
+  useEffect(() => { onCompleteRef.current = onComplete }, [onComplete])
 
   useEffect(() => {
     let i = 0
     const interval = setInterval(() => {
       if (i < SCOUT_RESULTS.length) {
-        setScoutsDeployed(i + 1)
-        setResults((prev) => [...prev, SCOUT_RESULTS[i]])
+        const entry = SCOUT_RESULTS[i]
+        if (entry) {
+          setScoutsDeployed(i + 1)
+          setResults((prev) => [...prev, entry])
+        }
         i++
       } else {
         clearInterval(interval)
@@ -89,13 +95,14 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
           setFlash(false)
           if (!completedRef.current) {
             completedRef.current = true
-            onComplete()
+            onCompleteRef.current()
           }
         }, 500)
       }
     }, 300)
     return () => clearInterval(interval)
-  }, [product, onComplete])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product])
 
   return (
     <div style={{
@@ -125,7 +132,7 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
         {scoutsDeployed} / 20 scouts deployed
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-        {results.map((r, i) => (
+        {results.filter(Boolean).map((r, i) => (
           <p key={i} style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11,
