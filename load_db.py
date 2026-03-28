@@ -13,7 +13,7 @@ BATCH_SIZE = 500
 
 def load_chunks() -> list[dict]:
     print(f"Loading chunks from {CHUNKS_PATH}...")
-    with open(CHUNKS_PATH) as f:
+    with open(CHUNKS_PATH, encoding="utf-8") as f:
         data = json.load(f)
     chunks = data["chunks"]
     print(f"  → {len(chunks):,} chunks found")
