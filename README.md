@@ -58,6 +58,10 @@ uvicorn api:app --host 0.0.0.0 --port 8000
 cd frontend && npm install && npm run dev
 ```
 
+### Frontend production (GitHub)
+
+Pushes to `main` that change `frontend/` trigger [`.github/workflows/deploy-frontend.yml`](.github/workflows/deploy-frontend.yml), which runs `npx vercel --prod` on Vercel. Configure repository secrets `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` (Vercel project **Settings → General**).
+
 ## Data
 
 | Source | Documents |
