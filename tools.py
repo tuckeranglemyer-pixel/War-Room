@@ -12,6 +12,74 @@ except Exception:
     pass  # Collection not yet loaded; search_pm_knowledge will return a clear error message
 
 
+def fetch_context_for_product(product_name: str, n_results: int = 8) -> str:
+    """Pre-fetch real user evidence from ChromaDB for a product and return it as
+    formatted context to inject directly into agent task descriptions.
+
+    This guarantees real evidence is available even when the local LLM does not
+    reliably execute the ReAct tool-calling loop.
+    """
+    if _pm_tools_collection is None:
+        return "[ChromaDB not ready — no pre-seeded context available]"
+
+    app_key = product_name.lower().split()[0]  # "notion" from "Notion — ..."
+    queries = [
+        f"{product_name} onboarding confusing difficult first time user",
+        f"{product_name} problems bugs performance slow",
+        f"{product_name} love best feature positive review",
+        f"{product_name} team collaboration enterprise pricing",
+    ]
+
+    seen_ids: set[str] = set()
+    chunks: list[str] = []
+
+    for query in queries:
+        try:
+            results = _pm_tools_collection.query(
+                query_texts=[query],
+                n_results=n_results,
+                where={"app": app_key},
+            )
+            for doc, meta in zip(results["documents"][0], results["metadatas"][0]):
+                doc_id = meta.get("url", doc[:40])
+                if doc_id in seen_ids:
+                    continue
+                seen_ids.add(doc_id)
+
+                source = meta.get("source", "unknown")
+                source_type = meta.get("type", "")
+                subreddit = meta.get("subreddit", "")
+                url = meta.get("url") or meta.get("hn_url", "")
+                rating = meta.get("rating", "")
+
+                label = source
+                if subreddit:
+                    label = f"r/{subreddit}"
+                elif source == "hackernews":
+                    label = "Hacker News"
+                elif source == "google_play":
+                    label = "Google Play"
+
+                header = f"[{label} {source_type}]"
+                if rating:
+                    header += f" ★{rating}"
+                if url:
+                    header += f" {url}"
+
+                chunks.append(f"{header}\n{doc[:400]}")
+        except Exception as exc:
+            chunks.append(f"[Query error: {exc}]")
+
+    if not chunks:
+        return f"[No evidence found for '{product_name}' in knowledge base]"
+
+    return (
+        f"\n\n--- REAL USER EVIDENCE FROM KNOWLEDGE BASE ({len(chunks)} sources) ---\n\n"
+        + "\n\n".join(chunks)
+        + "\n\n--- END OF KNOWLEDGE BASE EVIDENCE ---\n"
+    )
+
+
 def _query_collection(query: str, n_results: int = 5, where: Optional[dict] = None) -> str:
     """Run a ChromaDB query and return consistently formatted results.
 
