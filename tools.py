@@ -98,38 +98,7 @@ def search_screenshots(query: str) -> str:
 
 @tool("Search PM Knowledge Base")
 def search_pm_knowledge(query: str) -> str:
-    """Search 31,668 chunks of real user data across 20 project management tools.
+    """Search all 31,668 chunks of real user data across 20 project management tools with no source filter.
     Sources include Reddit posts/comments, Hacker News threads, Google Play reviews,
-    and app metadata. Use this to ground arguments in real user evidence."""
-    try:
-        results = _pm_tools_collection.query(query_texts=[query], n_results=5)
-        documents = results["documents"][0]
-        metadatas = results["metadatas"][0]
-
-        if not documents:
-            return f"No results found for: {query}"
-
-        formatted_chunks = []
-        for doc, meta in zip(documents, metadatas):
-            app = meta.get("app", "unknown")
-            source = meta.get("source", "unknown")
-            source_type = meta.get("type", "")
-            subreddit = meta.get("subreddit", "")
-            url = meta.get("url") or meta.get("hn_url", "")
-
-            source_label = source
-            if subreddit:
-                source_label = f"reddit/r/{subreddit}"
-            elif source == "hackernews":
-                source_label = "Hacker News"
-
-            header = f"[{app.upper()} | {source_label} {source_type}]"
-            if url:
-                header += f" {url}"
-
-            formatted_chunks.append(f"{header}\n{doc}")
-
-        return "\n\n---\n\n".join(formatted_chunks)
-
-    except Exception as exc:
-        return f"[ChromaDB error] {exc}"
+    and app metadata. Use this when you want the highest-relevance results regardless of source."""
+    return _query_collection(query)
