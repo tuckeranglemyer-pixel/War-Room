@@ -1,41 +1,52 @@
-from crewai import Agent, Task, Crew, Process, LLM
-from tools import (
-    search_pm_knowledge,
-    fetch_context_for_product,
-    search_user_uploads,
-    search_user_context,
-)
+"""
+CrewAI orchestration for The War Room: dynamic personas, reconnaissance swarm,
+and a sequential four-round debate with context chaining across three agents.
+"""
+
+from __future__ import annotations
+
+from typing import Any, Callable, Optional
+
+from crewai import Agent, Crew, LLM, Process, Task
+
+from config import LOCAL_BASE_URL, LOCAL_MODEL, MAX_SCOUTS, MAX_WORKERS
 from meta_prompt import generate_personas
 from swarm import deploy_swarm
+from tools import (
+    fetch_context_for_product,
+    search_pm_knowledge,
+    search_user_context,
+    search_user_uploads,
+)
 
-# --- LLM Configuration ---
-# Local development: all agents use mistral:7b via Ollama
-# DGX production: swap these to different models on different ports
-#   first_timer_llm = LLM(model="ollama/llama3.3:70b", base_url="http://localhost:11434")
-#   daily_driver_llm = LLM(model="ollama/qwen3:32b", base_url="http://localhost:11434")
-#   buyer_llm = LLM(model="ollama/mistral-small:24b", base_url="http://localhost:11434")
-
-local_llm = LLM(model="ollama/mistral:7b", base_url="http://localhost:11434")
+# --- LLM configuration (see config.py; swap models on DGX via env or config) ---
+# DGX production example (commented in config.py):
+#   first_timer_llm = LLM(model=FIRST_TIMER_MODEL, base_url=LOCAL_BASE_URL)
+local_llm = LLM(model=LOCAL_MODEL, base_url=LOCAL_BASE_URL)
 first_timer_llm = local_llm
 daily_driver_llm = local_llm
 buyer_llm = local_llm
 
+# Tools exposed to all debate agents (RAG + user evidence).
 ALL_TOOLS = [search_pm_knowledge, search_user_uploads, search_user_context]
 
 
 def build_crew(
     product_description: str,
-    task_callback=None,
-    session_context: dict = None,
+    task_callback: Optional[Callable[..., None]] = None,
+    session_context: Optional[dict[str, Any]] = None,
 ) -> Crew:
-    """Build the War Room crew with dynamically generated personas.
+    """Assemble the War Room crew with generated personas, swarm briefing, and four tasks.
 
     Args:
-        product_description: Product name + description to evaluate.
-        task_callback: Optional CrewAI callback fired after each task completes.
-        session_context: Optional dict with user-provided evaluation context
-            (team_size, current_tools, budget, main_problem, use_case, upload_count).
-            When present, agents are directed to prioritize user-uploaded evidence.
+        product_description: Product name and description to evaluate.
+        task_callback: Optional CrewAI callback invoked after each task completes.
+        session_context: Optional user evaluation context (team size, tools, budget,
+            main problem, use case, upload count). When set, agents prioritize
+            user-uploaded evidence.
+
+    Returns:
+        A configured sequential ``Crew`` ready to ``kickoff()``.
     """
 
     # --- Step 0: Build session context block (injected into every task) ---
@@ -58,7 +69,11 @@ CRITICAL: The user has uploaded direct evidence of this product. You MUST use th
     personas = generate_personas(product_description, local_llm)
 
     # --- Step 1.5: Deploy reconnaissance swarm ---
-    swarm_result = deploy_swarm(product_description, max_scouts=20, max_workers=10)
+    swarm_result = deploy_swarm(
+        product_description,
+        max_scouts=MAX_SCOUTS,
+        max_workers=MAX_WORKERS,
+    )
     swarm_briefing = swarm_result["briefing"]
     swarm_stats = swarm_result["stats"]
 

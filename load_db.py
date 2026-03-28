@@ -1,27 +1,53 @@
-"""One-time script to populate ChromaDB pm_tools collection from all_chunks.json."""
+"""
+One-time ChromaDB ingestion: load `all_chunks.json` into the ``pm_tools`` collection.
+
+Run after preprocessing produces `chroma_db/data/_processed/all_chunks.json`.
+"""
+
+from __future__ import annotations
+
 import json
 import time
 from pathlib import Path
 
 import chromadb
 
+from config import CHROMA_DB_PATH, COLLECTION_NAME
+
+# Source JSON produced by the offline chunking pipeline.
 CHUNKS_PATH = Path("chroma_db/data/_processed/all_chunks.json")
-CHROMA_PATH = "./chroma_db"
-COLLECTION_NAME = "pm_tools"
+
+# Batch size for ``collection.add`` to balance memory and API round-trips.
 BATCH_SIZE = 500
 
 
 def load_chunks() -> list[dict]:
+    """Load chunk records from the processed JSON file.
+
+    Returns:
+        The ``chunks`` list from the JSON document.
+
+    Raises:
+        FileNotFoundError: If ``CHUNKS_PATH`` does not exist.
+        KeyError: If the JSON document lacks a ``chunks`` key.
+    """
     print(f"Loading chunks from {CHUNKS_PATH}...")
-    with open(CHUNKS_PATH) as f:
-        data = json.load(f)
+    with open(CHUNKS_PATH) as handle:
+        data = json.load(handle)
     chunks = data["chunks"]
     print(f"  → {len(chunks):,} chunks found")
     return chunks
 
 
 def sanitize_metadata(meta: dict) -> dict:
-    """ChromaDB requires metadata values to be str, int, float, or bool — not None."""
+    """Normalize metadata values to ChromaDB-allowed scalars.
+
+    Args:
+        meta: Raw metadata dict possibly containing ``None`` or nested values.
+
+    Returns:
+        A flat dict with only str, int, float, or bool values.
+    """
     return {
         k: (v if isinstance(v, (str, int, float, bool)) else str(v) if v is not None else "")
         for k, v in meta.items()
@@ -29,8 +55,16 @@ def sanitize_metadata(meta: dict) -> dict:
 
 
 def deduplicate(chunks: list[dict]) -> list[dict]:
+    """Drop duplicate chunk IDs, keeping first occurrence.
+
+    Args:
+        chunks: Full chunk list from ``load_chunks``.
+
+    Returns:
+        Deduplicated chunks in original order for unseen IDs.
+    """
     seen: set[str] = set()
-    unique = []
+    unique: list[dict] = []
     for chunk in chunks:
         if chunk["id"] not in seen:
             seen.add(chunk["id"])
@@ -42,7 +76,12 @@ def deduplicate(chunks: list[dict]) -> list[dict]:
 
 
 def build_collection(chunks: list[dict]) -> None:
-    client = chromadb.PersistentClient(path=CHROMA_PATH)
+    """Recreate ``COLLECTION_NAME`` and bulk-insert all chunk documents.
+
+    Args:
+        chunks: Unique chunk dicts with ``id``, ``text``, and ``metadata`` keys.
+    """
+    client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
 
     # Drop and recreate to ensure clean state
     try:
@@ -81,6 +120,6 @@ def build_collection(chunks: list[dict]) -> None:
 
 
 if __name__ == "__main__":
-    chunks = load_chunks()
-    chunks = deduplicate(chunks)
-    build_collection(chunks)
+    loaded = load_chunks()
+    loaded = deduplicate(loaded)
+    build_collection(loaded)

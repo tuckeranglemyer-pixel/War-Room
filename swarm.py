@@ -1,15 +1,20 @@
 """
-Swarm Reconnaissance — Parallel evidence gathering before the 3-agent debate.
-Spawns multiple 'scout' queries across the RAG knowledge base, each targeting
-a different product facet. Compiles results into a structured evidence briefing
-that feeds into Round 1 context.
+Swarm reconnaissance — parallel evidence gathering before the three-agent debate.
+
+Spawns multiple scout queries against the RAG knowledge base, each targeting a
+different product facet, and compiles results into a briefing for Round 1.
 """
+
+from __future__ import annotations
 
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Any
+
+from config import MAX_SCOUTS, MAX_WORKERS
 from tools import search_pm_knowledge
 
-# Each scout targets a different product dimension
+# Each scout targets a different product dimension (filled with ``{product}``).
 SCOUT_QUERIES = [
     "{product} onboarding first impression new user experience",
     "{product} pricing cost team enterprise plan",
@@ -34,8 +39,15 @@ SCOUT_QUERIES = [
 ]
 
 
-def run_scout(query: str) -> dict:
-    """Single scout agent — searches the knowledge base for one facet."""
+def run_scout(query: str) -> dict[str, Any]:
+    """Execute a single scout query against the PM knowledge base.
+
+    Args:
+        query: Pre-formatted search string for one product facet.
+
+    Returns:
+        A dict with ``query``, ``evidence``, ``elapsed`` seconds, and ``status``.
+    """
     start = time.time()
     try:
         result = search_pm_knowledge(query)
@@ -43,28 +55,31 @@ def run_scout(query: str) -> dict:
             "query": query,
             "evidence": result,
             "elapsed": round(time.time() - start, 2),
-            "status": "success"
+            "status": "success",
         }
-    except Exception as e:
+    except Exception as exc:
         return {
             "query": query,
-            "evidence": f"[Scout failed: {e}]",
+            "evidence": f"[Scout failed: {exc}]",
             "elapsed": round(time.time() - start, 2),
-            "status": "error"
+            "status": "error",
         }
 
 
-def deploy_swarm(product_name: str, max_scouts: int = 20, max_workers: int = 10) -> dict:
-    """
-    Deploy a reconnaissance swarm of parallel search agents.
+def deploy_swarm(
+    product_name: str,
+    max_scouts: int = MAX_SCOUTS,
+    max_workers: int = MAX_WORKERS,
+) -> dict[str, Any]:
+    """Deploy parallel scout agents to gather evidence before the debate.
 
     Args:
-        product_name: The product being analyzed
-        max_scouts: Number of scout queries to run (default 20)
-        max_workers: Parallel thread count (default 10)
+        product_name: Product label inserted into each scout query template.
+        max_scouts: Number of scout queries to run (capped by ``SCOUT_QUERIES`` length).
+        max_workers: Thread pool size for concurrent scouts.
 
     Returns:
-        Structured evidence briefing with all scout results compiled
+        A dict with ``briefing`` (compiled markdown) and ``stats`` (timing and counts).
     """
     print(f"\n🐝 DEPLOYING SWARM — {max_scouts} scouts searching 31,668 chunks...")
     print(f"   Target: {product_name}")
@@ -73,7 +88,7 @@ def deploy_swarm(product_name: str, max_scouts: int = 20, max_workers: int = 10)
     # Generate product-specific queries
     queries = [q.format(product=product_name) for q in SCOUT_QUERIES[:max_scouts]]
 
-    results = []
+    results: list[dict[str, Any]] = []
     start = time.time()
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -115,8 +130,8 @@ app metadata databases. This briefing feeds into the adversarial debate.
             "scouts_deployed": max_scouts,
             "scouts_successful": successful,
             "total_time": total_time,
-            "product": product_name
-        }
+            "product": product_name,
+        },
     }
 
 
