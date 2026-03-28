@@ -1,19 +1,69 @@
 from crewai.tools import tool
 import chromadb
+from typing import Optional
 
 # Shared ChromaDB client — initialized once at module load to avoid re-opening on every tool call
 _chroma_client = chromadb.PersistentClient(path="./chroma_db")
 _pm_tools_collection = _chroma_client.get_collection("pm_tools")
 
-# These are stubs. Griffin will connect them to ChromaDB collections.
-# Collection names to confirm with Griffin:
-# "app_reviews", "reddit_posts", "g2_reviews", "hn_comments", "competitor_metadata", "ui_screenshots"
+
+def _query_collection(query: str, n_results: int = 5, where: Optional[dict] = None) -> str:
+    """Run a ChromaDB query and return consistently formatted results.
+
+    Each chunk is rendered as:
+        [APP | source_label type] rating=N url
+        chunk text
+    Chunks are separated by '---'.
+    """
+    try:
+        kwargs: dict = {"query_texts": [query], "n_results": n_results}
+        if where:
+            kwargs["where"] = where
+
+        results = _pm_tools_collection.query(**kwargs)
+        documents = results["documents"][0]
+        metadatas = results["metadatas"][0]
+
+        if not documents:
+            return f"No results found for: {query}"
+
+        formatted_chunks = []
+        for doc, meta in zip(documents, metadatas):
+            app = meta.get("app", "unknown")
+            source = meta.get("source", "unknown")
+            source_type = meta.get("type", "")
+            subreddit = meta.get("subreddit", "")
+            url = meta.get("url") or meta.get("hn_url", "")
+            rating = meta.get("rating", "")
+
+            source_label = source
+            if subreddit:
+                source_label = f"reddit/r/{subreddit}"
+            elif source == "hackernews":
+                source_label = "Hacker News"
+            elif source == "google_play":
+                source_label = "Google Play"
+            elif source == "metadata":
+                source_label = "App Metadata"
+
+            header = f"[{app.upper()} | {source_label} {source_type}]"
+            if rating:
+                header += f" rating={rating}"
+            if url:
+                header += f" {url}"
+
+            formatted_chunks.append(f"{header}\n{doc}")
+
+        return "\n\n---\n\n".join(formatted_chunks)
+
+    except Exception as exc:
+        return f"[ChromaDB error] {exc}"
 
 
 @tool("Search App Reviews")
 def search_app_reviews(query: str) -> str:
-    """Search App Store and Play Store reviews for productivity apps. Returns real user reviews with sentiment scores."""
-    return f"[RAG not connected yet] No results for: {query}"
+    """Search Google Play reviews for productivity apps. Returns real user reviews with star ratings (2,608 reviews)."""
+    return _query_collection(query, where={"source": "google_play"})
 
 
 @tool("Search Reddit")
