@@ -80,8 +80,8 @@ def search_g2_reviews(query: str) -> str:
 
 @tool("Search HN Comments")
 def search_hn_comments(query: str) -> str:
-    """Search Hacker News discussions about productivity tools."""
-    return f"[RAG not connected yet] No results for: {query}"
+    """Search Hacker News stories and comments about productivity tools (6,348 entries with source URLs)."""
+    return _query_collection(query, where={"source": "hackernews"})
 
 
 @tool("Search Competitor Data")
