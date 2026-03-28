@@ -68,8 +68,8 @@ def search_app_reviews(query: str) -> str:
 
 @tool("Search Reddit")
 def search_reddit(query: str) -> str:
-    """Search Reddit posts and comments from r/productivity, r/notion, r/projectmanagement and related subreddits."""
-    return f"[RAG not connected yet] No results for: {query}"
+    """Search Reddit posts and comments from r/productivity, r/notion, r/projectmanagement and related subreddits (22,692 posts/comments)."""
+    return _query_collection(query, where={"source": "reddit"})
 
 
 @tool("Search G2 Reviews")
