@@ -128,7 +128,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
       if (videoFile) {
         setSubmitStatus('uploading')
         const formData = new FormData()
-        formData.append('video', videoFile)
+        formData.append('file', videoFile)
         formData.append('product_name', productName)
         formData.append('product_description', answers.productDescription)
         formData.append('target_user', answers.targetUser)
