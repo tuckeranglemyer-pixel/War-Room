@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 
 interface VerdictCardProps {
   product: string
+  score: number
+  decision: string
+  fixes: string[]
   onBack: () => void
 }
 
@@ -93,28 +96,24 @@ function ScoreRing({ score }: { score: number }) {
   )
 }
 
-const SCORE = 68
-const VERDICT: Verdict = 'YES WITH CONDITIONS'
-const FIXES = [
-  {
-    priority: '01',
-    desc: 'Redesign first-run onboarding — current flow assumes prior knowledge of databases and loses 73% of new users in the first session.',
-    impact: '~25% retention impact',
-  },
-  {
-    priority: '02',
-    desc: 'Rebuild mobile editing experience — 340 of last 500 Play Store reviews cite crashes during document editing.',
-    impact: '~20% retention impact',
-  },
-  {
-    priority: '03',
-    desc: 'Rework notification system — users across all review platforms report alert fatigue leading to missed deadlines.',
-    impact: '~12% satisfaction impact',
-  },
-]
+function normalizeVerdict(raw: string): Verdict {
+  const upper = raw.toUpperCase()
+  if (upper.includes('YES WITH CONDITIONS')) return 'YES WITH CONDITIONS'
+  if (upper.includes('YES')) return 'YES'
+  return 'NO'
+}
 
-export default function VerdictCard({ product, onBack }: VerdictCardProps) {
-  const vs = verdictStyle(VERDICT)
+export default function VerdictCard({ product, score, decision, fixes, onBack }: VerdictCardProps) {
+  const verdict = normalizeVerdict(decision)
+  const vs = verdictStyle(verdict)
+
+  const fixItems = fixes.length > 0
+    ? fixes.slice(0, 3).map((desc, i) => ({
+        priority: String(i + 1).padStart(2, '0'),
+        desc,
+        impact: '',
+      }))
+    : [{ priority: '01', desc: 'See full report for recommended fixes.', impact: '' }]
 
   return (
     <div style={{
@@ -148,7 +147,7 @@ export default function VerdictCard({ product, onBack }: VerdictCardProps) {
 
         {/* Score ring */}
         <div style={{ marginTop: 24 }}>
-          <ScoreRing score={SCORE} />
+          <ScoreRing score={score} />
         </div>
 
         {/* Verdict badge */}
@@ -166,7 +165,7 @@ export default function VerdictCard({ product, onBack }: VerdictCardProps) {
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
           }}>
-            {VERDICT}
+            {verdict}
           </span>
         </div>
 
@@ -186,7 +185,7 @@ export default function VerdictCard({ product, onBack }: VerdictCardProps) {
             PRIORITY FIXES
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {FIXES.map((fix) => (
+            {fixItems.map((fix) => (
               <div key={fix.priority} style={{ display: 'flex', gap: 12 }}>
                 <span style={{
                   fontFamily: "'JetBrains Mono', monospace",

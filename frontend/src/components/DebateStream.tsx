@@ -1,10 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
+import type { VerdictData } from '../App'
 
 interface DebateStreamProps {
   product: string
+  sessionId: string
   onBack: () => void
+  onVerdict: (data: VerdictData) => void
 }
 
+// Simulated scout topics shown during the server-side swarm wait
 const SCOUT_RESULTS = [
   { topic: 'Onboarding friction', count: 14 },
   { topic: 'Pricing complaints', count: 8 },
@@ -28,30 +32,23 @@ const SCOUT_RESULTS = [
   { topic: 'Version history gaps', count: 5 },
 ]
 
-const SAMPLE_DEBATE = [
-  {
-    agent: 'Sprint-Obsessed PM Who Churned From ' ,
-    dot: '#3B82F6',
-    model: 'Llama 70B',
-    round: 'ROUND 1',
-    text: `The onboarding experience is fundamentally broken for anyone who doesn't already live in a project management tool. I signed up expecting a simple task tracker and was immediately dropped into a blank page with a "/" command prompt. No tutorial, no templates surfaced, no progressive disclosure. 73% of App Store reviews from the last 6 months mention confusion in the first session.`,
-    badges: [] as { text: string; type: 'agree' | 'disagree' }[],
-    severity: 8,
-    sources: ['App Store', 'r/productivity', 'G2 Review'],
-  },
-  {
-    agent: 'Power User Who Ships With It Daily',
-    dot: '#E4E4E7',
-    model: 'Qwen 32B',
-    round: 'ROUND 1',
-    text: `I need to push back on the offline mode complaint. G2 data shows only 12% of power users cite offline capability as a blocker, and the progressive web app caches recently-viewed pages adequately. The real issue is the mobile app — 340 of the last 500 Play Store reviews mention crashes during editing. That's where engineering hours should go.`,
-    badges: [
-      { text: 'DISAGREE', type: 'disagree' as const },
-    ],
-    severity: 6,
-    sources: ['G2 Review', 'Play Store', 'r/Notion'],
-  },
-]
+const ROLE_DOT: Record<string, string> = {
+  first_timer: '#3B82F6',
+  daily_driver: '#E4E4E7',
+  buyer: '#F59E0B',
+}
+
+interface RoundMessage {
+  round: number
+  agent_name: string
+  agent_role: string
+  model: string
+  content: string
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
 
 function RoundProgress({ current, total }: { current: number; total: number }) {
   return (
@@ -129,16 +126,12 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
       </p>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
         {results.map((r, i) => (
-          <p
-            key={i}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 11,
-              color: '#71717A',
-              opacity: 1,
-              animation: 'fadeIn 200ms ease',
-            }}
-          >
+          <p key={i} style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11,
+            color: '#71717A',
+            animation: 'fadeIn 200ms ease',
+          }}>
             ✓ {r.topic} — {r.count} reviews found
           </p>
         ))}
@@ -147,12 +140,12 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
   )
 }
 
-function DebateCard({ card }: { card: typeof SAMPLE_DEBATE[0] }) {
-  function severityColor(s: number): string {
-    if (s < 4) return '#22C55E'
-    if (s <= 7) return '#F59E0B'
-    return '#EF4444'
-  }
+function DebateCard({ msg }: { msg: RoundMessage }) {
+  const dot = ROLE_DOT[msg.agent_role] ?? '#71717A'
+
+  // Detect inline AGREE / DISAGREE markers in the raw content
+  const hasAgree = /\bAGREE\b/i.test(msg.content)
+  const hasDisagree = /\bDISAGREE\b/i.test(msg.content)
 
   return (
     <div style={{
@@ -160,119 +153,127 @@ function DebateCard({ card }: { card: typeof SAMPLE_DEBATE[0] }) {
       border: '1px solid #1E2028',
       borderRadius: 8,
       padding: 24,
+      animation: 'fadeIn 300ms ease',
     }}>
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 12,
-      }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <div style={{
-          width: 8,
-          height: 8,
-          borderRadius: '50%',
-          background: card.dot,
-          flexShrink: 0,
+          width: 8, height: 8, borderRadius: '50%',
+          background: dot, flexShrink: 0,
         }} />
         <span style={{
           fontFamily: "'Inter', sans-serif",
-          fontSize: 14,
-          fontWeight: 600,
-          color: '#E4E4E7',
+          fontSize: 14, fontWeight: 600, color: '#E4E4E7',
         }}>
-          {card.agent}
+          {msg.agent_name}
         </span>
         <span style={{
           fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 10,
-          color: '#71717A',
+          fontSize: 10, color: '#71717A',
           background: '#0A0B0F',
           border: '1px solid #1E2028',
-          borderRadius: 4,
-          padding: '2px 8px',
-          flexShrink: 0,
+          borderRadius: 4, padding: '2px 8px', flexShrink: 0,
         }}>
-          {card.model}
+          {msg.model}
         </span>
-        <span style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 10,
-          color: '#3F3F46',
-          marginLeft: 'auto',
-          flexShrink: 0,
-        }}>
-          {card.round}
-        </span>
+        <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+          {hasAgree && (
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10, fontWeight: 600,
+              color: '#22C55E',
+              background: 'rgba(34,197,94,0.1)',
+              borderRadius: 4, padding: '2px 8px',
+            }}>AGREE</span>
+          )}
+          {hasDisagree && (
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 10, fontWeight: 600,
+              color: '#EF4444',
+              background: 'rgba(239,68,68,0.1)',
+              borderRadius: 4, padding: '2px 8px',
+            }}>DISAGREE</span>
+          )}
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 10, color: '#3F3F46',
+          }}>
+            ROUND {msg.round}
+          </span>
+        </div>
       </div>
 
       {/* Body */}
-      <div style={{ marginTop: 16 }}>
-        <p style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 13,
-          color: '#A1A1AA',
-          lineHeight: 1.8,
-        }}>
-          {card.badges.map((b, i) => (
-            <span key={i} style={{
-              display: 'inline-block',
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 10,
-              fontWeight: 600,
-              color: b.type === 'agree' ? '#22C55E' : '#EF4444',
-              background: b.type === 'agree' ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)',
-              borderRadius: 4,
-              padding: '2px 8px',
-              marginRight: 8,
-              verticalAlign: 'middle',
-            }}>
-              {b.text}
-            </span>
-          ))}
-          {card.text}
-        </p>
-
-        {/* Severity */}
-        <p style={{
-          fontFamily: "'JetBrains Mono', monospace",
-          fontSize: 11,
-          color: severityColor(card.severity),
-          marginTop: 12,
-        }}>
-          SEVERITY: {card.severity}/10
-        </p>
-
-        {/* Sources */}
-        {card.sources.length > 0 && (
-          <div style={{ display: 'flex', gap: 6, marginTop: 12 }}>
-            {card.sources.map((s) => (
-              <span key={s} style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 9,
-                color: '#3F3F46',
-                background: '#0A0B0F',
-                border: '1px solid #1E2028',
-                borderRadius: 100,
-                padding: '2px 8px',
-              }}>
-                {s}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
+      <p style={{
+        fontFamily: "'JetBrains Mono', monospace",
+        fontSize: 13, color: '#A1A1AA',
+        lineHeight: 1.8, marginTop: 16,
+        whiteSpace: 'pre-wrap',
+      }}>
+        {msg.content}
+      </p>
     </div>
   )
 }
 
-export default function DebateStream({ product, onBack }: DebateStreamProps) {
-  const [swarmDone, setSwarmDone] = useState(false)
+// ---------------------------------------------------------------------------
+// Main component
+// ---------------------------------------------------------------------------
 
-  // Prepend product name to first agent's persona
-  const debateCards = SAMPLE_DEBATE.map((card, i) => ({
-    ...card,
-    agent: i === 0 ? card.agent + product : card.agent,
-  }))
+export default function DebateStream({ product, sessionId, onBack, onVerdict }: DebateStreamProps) {
+  const [swarmDone, setSwarmDone] = useState(false)
+  const [rounds, setRounds] = useState<RoundMessage[]>([])
+  const [currentRound, setCurrentRound] = useState(0)
+  const [wsError, setWsError] = useState('')
+  const wsRef = useRef<WebSocket | null>(null)
+
+  // Open WebSocket once the swarm animation completes
+  const connectWS = useCallback(() => {
+    // TODO: Wire to WebSocket for live streaming
+    const ws = new WebSocket(`ws://localhost:8000/ws/${sessionId}`)
+    wsRef.current = ws
+
+    ws.onmessage = (event) => {
+      const msg = JSON.parse(event.data)
+
+      if (msg.type === 'verdict') {
+        onVerdict({
+          score: msg.score,
+          decision: msg.decision,
+          top_3_fixes: msg.top_3_fixes,
+        })
+        ws.close()
+        return
+      }
+
+      if (msg.type === 'error') {
+        setWsError(msg.message ?? 'Unknown error from server')
+        return
+      }
+
+      // Round message (no `type` field)
+      setRounds((prev) => [...prev, msg as RoundMessage])
+      setCurrentRound(msg.round)
+    }
+
+    ws.onerror = () => setWsError('WebSocket connection failed')
+
+    return () => ws.close()
+  }, [sessionId, onVerdict])
+
+  useEffect(() => {
+    if (swarmDone) {
+      return connectWS()
+    }
+  }, [swarmDone, connectWS])
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => { wsRef.current?.close() }
+  }, [])
+
+  const handleSwarmComplete = useCallback(() => setSwarmDone(true), [])
 
   return (
     <div style={{ minHeight: '100vh', background: '#0A0B0F' }}>
@@ -282,35 +283,22 @@ export default function DebateStream({ product, onBack }: DebateStreamProps) {
           50% { opacity: 0.5; }
         }
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(4px); }
+          from { opacity: 0; transform: translateY(6px); }
           to { opacity: 1; transform: translateY(0); }
         }
       `}</style>
 
-      <div style={{
-        maxWidth: 880,
-        margin: '0 auto',
-        padding: '32px 24px 64px',
-      }}>
+      <div style={{ maxWidth: 880, margin: '0 auto', padding: '32px 24px 64px' }}>
         {/* Top bar */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <span
               onClick={onBack}
               style={{
-                width: 32,
-                height: 32,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                color: '#71717A',
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 18,
+                width: 32, height: 32,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', color: '#71717A',
+                fontFamily: "'Inter', sans-serif", fontSize: 18,
                 transition: 'color 150ms ease',
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#E4E4E7' }}
@@ -320,37 +308,56 @@ export default function DebateStream({ product, onBack }: DebateStreamProps) {
             </span>
             <span style={{
               fontFamily: "'Inter', sans-serif",
-              fontSize: 16,
-              fontWeight: 600,
-              color: '#E4E4E7',
+              fontSize: 16, fontWeight: 600, color: '#E4E4E7',
             }}>
               {product}
             </span>
           </div>
           <span style={{
             fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            color: '#71717A',
+            fontSize: 11, color: '#71717A',
           }}>
-            ROUND 1 OF 4
+            ROUND {currentRound || 1} OF 4
           </span>
         </div>
 
-        <RoundProgress current={0} total={4} />
+        <RoundProgress current={Math.max(currentRound - 1, 0)} total={4} />
 
         {/* Swarm card */}
         <div style={{ marginTop: 24 }}>
-          <SwarmCard product={product} onComplete={() => setSwarmDone(true)} />
+          <SwarmCard product={product} onComplete={handleSwarmComplete} />
         </div>
 
-        {/* Debate cards — appear after swarm completes */}
-        {/* TODO: Wire to WebSocket for live streaming */}
-        {swarmDone && (
+        {/* WebSocket error */}
+        {wsError && (
+          <p style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, color: '#EF4444',
+            marginTop: 16,
+          }}>
+            Error: {wsError}
+          </p>
+        )}
+
+        {/* Live debate cards from WebSocket */}
+        {rounds.length > 0 && (
           <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {debateCards.map((card, i) => (
-              <DebateCard key={i} card={card} />
+            {rounds.map((msg, i) => (
+              <DebateCard key={i} msg={msg} />
             ))}
           </div>
+        )}
+
+        {/* Waiting indicator after swarm, before first round arrives */}
+        {swarmDone && rounds.length === 0 && !wsError && (
+          <p style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 11, color: '#3F3F46',
+            marginTop: 24,
+            animation: 'progressPulse 2s ease-in-out infinite',
+          }}>
+            Waiting for agents...
+          </p>
         )}
       </div>
     </div>

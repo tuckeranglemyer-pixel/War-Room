@@ -3,16 +3,35 @@ import { useState } from 'react'
 const SUGGESTIONS = ['Canvas', 'Notion', 'Google Calendar', 'Asana', 'Microsoft To Do']
 
 interface LandingProps {
-  onSelectProduct: (product: string) => void
+  onSelectProduct: (product: string, sessionId: string) => void
 }
 
 export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  async function submit(product: string) {
+    if (!product.trim() || loading) return
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch('http://localhost:8000/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_description: product.trim() }),
+      })
+      if (!res.ok) throw new Error(`Server error ${res.status}`)
+      const { session_id } = await res.json()
+      onSelectProduct(product.trim(), session_id)
+    } catch (err) {
+      setError('Could not reach the backend. Is the API running?')
+      setLoading(false)
+    }
+  }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter' && input.trim()) {
-      onSelectProduct(input.trim())
-    }
+    if (e.key === 'Enter') submit(input)
   }
 
   const hasText = input.trim().length > 0
@@ -73,7 +92,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           minHeight: 28,
         }}>
           <button
-            onClick={() => { if (hasText) onSelectProduct(input.trim()) }}
+            onClick={() => submit(input)}
             style={{
               background: 'transparent',
               border: 'none',
@@ -81,18 +100,32 @@ export default function Landing({ onSelectProduct }: LandingProps) {
               fontSize: 13,
               fontWeight: 500,
               color: '#3B82F6',
-              cursor: hasText ? 'pointer' : 'default',
+              cursor: hasText && !loading ? 'pointer' : 'default',
               padding: '4px 0',
               opacity: hasText ? 1 : 0,
               transition: 'opacity 200ms ease, color 150ms ease',
             }}
-            onMouseEnter={(e) => { if (hasText) e.currentTarget.style.color = '#5B9CF7' }}
+            onMouseEnter={(e) => { if (hasText && !loading) e.currentTarget.style.color = '#5B9CF7' }}
             onMouseLeave={(e) => { e.currentTarget.style.color = '#3B82F6' }}
           >
-            Analyze
+            {loading ? 'Starting...' : 'Analyze'}
           </button>
         </div>
       </div>
+
+      {/* Error state */}
+      {error && (
+        <p style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 11,
+          color: '#EF4444',
+          marginTop: 12,
+          textAlign: 'center',
+          maxWidth: 560,
+        }}>
+          {error}
+        </p>
+      )}
 
       {/* Quiet suggestions */}
       <div style={{ marginTop: 32, textAlign: 'center' }}>
@@ -115,7 +148,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
             <span key={s}>
               {i > 0 && <span style={{ margin: '0 6px', color: '#3F3F46' }}> · </span>}
               <span
-                onClick={() => onSelectProduct(s)}
+                onClick={() => !loading && submit(s)}
                 style={{
                   cursor: 'pointer',
                   transition: 'color 150ms ease',
