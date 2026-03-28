@@ -52,59 +52,60 @@ _executor = ThreadPoolExecutor(max_workers=4)
 _openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
 
 
-VIDEO_FRAME_PROMPT = """You are a UX researcher watching a user navigate a product for the first time. This is frame {frame_number} of {total_frames} in their session.
+VIDEO_FRAME_PROMPT = """You are a product analyst watching a founder demo their product. This is frame {frame_number} of {total_frames} in their walkthrough.
 
 PRODUCT BEING EVALUATED: {product_name}
 
-USER PROFILE:
-- Team size: {team_size}
-- Current tools: {current_tools}
-- Budget: {budget}
-- Main problem they're trying to solve: {main_problem}
-- What they want to use this product for: {use_case}
+PRODUCT CONTEXT:
+- What it does: {product_description}
+- Target user: {target_user}
+- Competes with: {competitors}
+- Key differentiator: {differentiator}
+- Stage: {product_stage}
 
 PREVIOUS SCREENS IN THIS SESSION:
 {previous_screens_summary}
 
 ANALYZE THIS FRAME:
 
-1. SCREEN IDENTIFICATION: What exact screen/view/modal is the user on?
-2. USER JOURNEY MOMENT: What step are they at? (onboarding? exploring? configuring? stuck?)
-3. WHAT JUST CHANGED: Compared to previous screens, what action did the user take to get here?
-4. FRICTION POINTS: What on this screen would confuse THIS specific user (given their profile)?
-5. COMPARED TO THEIR CURRENT TOOLS: How does this screen compare to doing the same thing in {current_tools}?
+1. SCREEN IDENTIFICATION: What exact screen/view/modal is shown?
+2. PRODUCT JOURNEY MOMENT: What step are they demonstrating? (onboarding? core feature? edge case? stuck?)
+3. WHAT JUST CHANGED: Compared to previous screens, what action was taken to get here?
+4. FRICTION POINTS: What on this screen might confuse or frustrate the target user ({target_user})?
+5. COMPARED TO COMPETITORS: How does this screen compare to doing the same thing in {competitors}?
 6. EVIDENCE FOR DEBATE:
    - First-Timer perspective: Would a new user find this screen intuitive? Rate 1-10.
-   - Daily Driver perspective: Would this screen hold up after months of daily use? Rate 1-10.
-   - Buyer perspective: Does this screen suggest the product can scale to a {team_size}-person team? Rate 1-10.
+   - Daily Driver perspective: Would this screen hold up for power users of {competitors}? Rate 1-10.
+   - Buyer perspective: Does this screen validate the differentiator claim "{differentiator}"? Rate 1-10.
 
 Write 2-3 paragraphs of detailed analysis. Be specific about exact UI elements."""
 
-JOURNEY_SUMMARY_PROMPT = """You analyzed {total_frames} frames from a user walking through {product_name} for the first time.
+JOURNEY_SUMMARY_PROMPT = """You analyzed {total_frames} frames from a founder walking through {product_name}.
 
-USER PROFILE:
-- Team: {team_size} people, currently using {current_tools}
-- Budget: {budget}
-- Problem: {main_problem}
-- Use case: {use_case}
+PRODUCT CONTEXT:
+- What it does: {product_description}
+- Target user: {target_user}
+- Competes with: {competitors}
+- Key differentiator: {differentiator}
+- Stage: {product_stage}
 
 FRAME-BY-FRAME ANALYSIS:
 {all_frame_descriptions}
 
 Now synthesize a JOURNEY REPORT:
 
-1. ONBOARDING FLOW: Rate the overall first-time experience 1-10. Where did the user get stuck? Where did it flow well?
+1. PRODUCT EXPERIENCE: Rate the overall UX quality 1-10. Where does the product shine? Where does it struggle?
 
-2. KEY FRICTION MOMENTS: The 3 worst moments in the journey, ranked by severity. For each:
+2. KEY FRICTION MOMENTS: The 3 worst moments in the walkthrough, ranked by severity. For each:
    - Which frame(s)
    - What went wrong
-   - How {current_tools} handles this better or worse
+   - How {competitors} handles this better or worse
 
-3. KEY STRENGTH MOMENTS: The 3 best moments where the product impressed.
+3. KEY STRENGTH MOMENTS: The 3 best moments where the product impressed or validated its differentiator.
 
-4. MIGRATION ASSESSMENT: Based on this walkthrough, how painful would it be for a {team_size}-person team to migrate from {current_tools} to {product_name}? Rate 1-10.
+4. COMPETITIVE POSITIONING: Based on this walkthrough, how well does {product_name} differentiate from {competitors} for {target_user}? Rate 1-10.
 
-5. VERDICT PREVIEW: Based ONLY on what you saw in the video (not general knowledge), would you recommend this product for this user's specific situation? YES/NO/CONDITIONAL — and why.
+5. VERDICT PREVIEW: Based ONLY on what you saw in the video (not general knowledge), does this product deliver on its differentiator claim "{differentiator}"? YES/NO/CONDITIONAL — and why.
 
 This journey report will be used as primary evidence in an adversarial product debate. Be specific and cite frame numbers."""
 
@@ -123,11 +124,19 @@ class DebateSession:
         product_description: str,
         loop: asyncio.AbstractEventLoop,
         upload_session_id: str = "",
+        target_user: str = "",
+        competitors: str = "",
+        differentiator: str = "",
+        product_stage: str = "",
     ) -> None:
         self.session_id = session_id
         self.product_description = product_description
         self.loop = loop
         self.upload_session_id = upload_session_id  # ingest session from /api/ingest/video
+        self.target_user = target_user
+        self.competitors = competitors
+        self.differentiator = differentiator
+        self.product_stage = product_stage
         # Queue is the bridge between the background thread and the WebSocket coroutine.
         # None is the sentinel value that signals end-of-stream.
         self.queue: asyncio.Queue[dict | None] = asyncio.Queue()
@@ -198,6 +207,10 @@ app.add_middleware(
 class AnalyzeRequest(BaseModel):
     product_description: str
     session_id: str = ""  # upload session_id from POST /api/ingest/video; empty string = no upload
+    target_user: str = ""
+    competitors: str = ""
+    differentiator: str = ""
+    product_stage: str = ""
 
 
 class AnalyzeResponse(BaseModel):
@@ -229,6 +242,10 @@ async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
         request.product_description,
         loop,
         upload_session_id=request.session_id,
+        target_user=request.target_user,
+        competitors=request.competitors,
+        differentiator=request.differentiator,
+        product_stage=request.product_stage,
     )
     SESSIONS[session_id] = session
 
@@ -291,12 +308,28 @@ def _run_debate(session: DebateSession) -> None:
         session: Active debate session with product text and event loop reference.
     """
     try:
+        # Build session_context whenever there is founder context or a video upload.
+        has_context = any([
+            session.upload_session_id,
+            session.target_user,
+            session.competitors,
+            session.differentiator,
+            session.product_stage,
+        ])
         session_context: dict[str, Any] | None = None
-        if session.upload_session_id:
-            session_context = {"session_id": session.upload_session_id}
-            video_evidence = VIDEO_EVIDENCE.get(session.upload_session_id)
-            if video_evidence:
-                session_context["video_evidence"] = video_evidence
+        if has_context:
+            session_context = {
+                "product_name": session.product_description,
+                "target_user": session.target_user,
+                "competitors": session.competitors,
+                "differentiator": session.differentiator,
+                "product_stage": session.product_stage,
+            }
+            if session.upload_session_id:
+                session_context["session_id"] = session.upload_session_id
+                video_evidence = VIDEO_EVIDENCE.get(session.upload_session_id)
+                if video_evidence:
+                    session_context["video_evidence"] = video_evidence
 
         crew = build_crew(
             session.product_description,
@@ -516,11 +549,11 @@ def process_video_frames(
             frame_number=i + 1,
             total_frames=len(frames),
             product_name=product_name,
-            team_size=session_context.get("team_size", "Unknown"),
-            current_tools=session_context.get("current_tools", "Unknown"),
-            budget=session_context.get("budget", "Unknown"),
-            main_problem=session_context.get("main_problem", "Unknown"),
-            use_case=session_context.get("use_case", "Unknown"),
+            product_description=session_context.get("product_description", "Unknown"),
+            target_user=session_context.get("target_user", "Unknown"),
+            competitors=session_context.get("competitors", "Unknown"),
+            differentiator=session_context.get("differentiator", "Unknown"),
+            product_stage=session_context.get("product_stage", "Unknown"),
             previous_screens_summary=previous_summary,
         )
 
@@ -569,11 +602,11 @@ def generate_journey_summary(
     prompt = JOURNEY_SUMMARY_PROMPT.format(
         total_frames=len(all_descriptions),
         product_name=product_name,
-        team_size=session_context.get("team_size", "Unknown"),
-        current_tools=session_context.get("current_tools", "Unknown"),
-        budget=session_context.get("budget", "Unknown"),
-        main_problem=session_context.get("main_problem", "Unknown"),
-        use_case=session_context.get("use_case", "Unknown"),
+        product_description=session_context.get("product_description", "Unknown"),
+        target_user=session_context.get("target_user", "Unknown"),
+        competitors=session_context.get("competitors", "Unknown"),
+        differentiator=session_context.get("differentiator", "Unknown"),
+        product_stage=session_context.get("product_stage", "Unknown"),
         all_frame_descriptions=numbered,
     )
 
@@ -594,34 +627,34 @@ def generate_journey_summary(
 async def ingest_video(
     product_name: str = Form(...),
     file: UploadFile = File(...),
-    team_size: str = Form(""),
-    current_tools: str = Form(""),
-    budget: str = Form(""),
-    main_problem: str = Form(""),
-    use_case: str = Form(""),
+    product_description: str = Form(""),
+    target_user: str = Form(""),
+    competitors: str = Form(""),
+    differentiator: str = Form(""),
+    product_stage: str = Form(""),
 ) -> dict[str, Any]:
-    """Ingest a walkthrough video: frames, vision captions, journey summary, ChromaDB upsert.
+    """Ingest a walkthrough video: frame extraction, GPT-4o vision analysis, journey synthesis.
 
     Args:
-        product_name: Product being evaluated.
+        product_name: Product name from the landing page.
         file: Uploaded video file.
-        team_size: Optional user context field.
-        current_tools: Optional user context field.
-        budget: Optional user context field.
-        main_problem: Optional user context field.
-        use_case: Optional user context field.
+        product_description: What the product does (from wizard step 1).
+        target_user: Who the product is for.
+        competitors: Products it competes with.
+        differentiator: Key competitive advantage.
+        product_stage: Current stage of development.
 
     Returns:
-        Session metadata, frame counts, chunk counts, or an error description.
+        Session metadata, frame counts, and analyzed content.
     """
     session_id = str(uuid.uuid4())
     session_context = {
         "session_id": session_id,
-        "team_size": team_size or "Unknown",
-        "current_tools": current_tools or "Unknown",
-        "budget": budget or "Unknown",
-        "main_problem": main_problem or "Unknown",
-        "use_case": use_case or "Unknown",
+        "product_description": product_description or "Unknown",
+        "target_user": target_user or "Unknown",
+        "competitors": competitors or "Unknown",
+        "differentiator": differentiator or "Unknown",
+        "product_stage": product_stage or "Unknown",
     }
 
     tmp_dir = tempfile.mkdtemp(prefix="warroom_video_")

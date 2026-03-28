@@ -47,6 +47,21 @@ def build_crew(
     # --- Step 0: Build session context block (injected into every task) ---
     context_block = ""
     if session_context:
+        product_name = session_context.get("product_name", product_description)
+        target_user = session_context.get("target_user") or "Not specified"
+        competitors = session_context.get("competitors") or "Not specified"
+        differentiator = session_context.get("differentiator") or "Not specified"
+        product_stage = session_context.get("product_stage") or "Not specified"
+
+        product_section = f"""PRODUCT BEING EVALUATED:
+- Product: {product_name}
+- What it does: {product_description}
+- Target user: {target_user}
+- Competes with: {competitors}
+- Key differentiator: {differentiator}
+- Stage: {product_stage}
+
+"""
         video_evidence = session_context.get("video_evidence")
         if video_evidence:
             journey_summary = video_evidence.get("journey_summary", "")
@@ -55,7 +70,7 @@ def build_crew(
                 f"[Frame {i + 1}]\n{text[:600]}"
                 for i, text in enumerate(frame_analyses[:10])
             )
-            context_block = f"""VIDEO EVIDENCE FROM USER'S PRODUCT WALKTHROUGH:
+            video_section = f"""VIDEO EVIDENCE FROM FOUNDER'S PRODUCT WALKTHROUGH:
 
 JOURNEY SUMMARY:
 {journey_summary[:3000]}
@@ -63,9 +78,12 @@ JOURNEY SUMMARY:
 KEY FRAME ANALYSES (up to 10 frames):
 {frame_snippets}
 
-CRITICAL: The above is PRIMARY evidence from the actual user's live walkthrough of this product. Reference specific frames and the journey summary in your analysis. This evidence takes priority over general reviews when they conflict.
+CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough. Reference specific frames and the journey summary in your analysis. This evidence takes priority over general reviews when they conflict.
 
 """
+            context_block = product_section + video_section
+        else:
+            context_block = product_section
 
     agent_tools = [search_pm_knowledge]
 

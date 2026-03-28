@@ -10,38 +10,38 @@ const TOTAL_STEPS = 6
 
 const TEXT_STEPS = [
   {
-    field: 'teamSize' as const,
-    question: 'How big is your team?',
-    placeholder: 'e.g. 5 people',
+    field: 'productDescription' as const,
+    question: 'What does your product do?',
+    placeholder: 'e.g. Project management for remote engineering teams',
   },
   {
-    field: 'currentTools' as const,
-    question: 'What tools are you currently using?',
-    placeholder: 'e.g. Jira, Slack, Notion',
+    field: 'targetUser' as const,
+    question: 'Who is your target user?',
+    placeholder: 'e.g. Engineering managers at 10-50 person startups',
   },
   {
-    field: 'budget' as const,
-    question: "What's your budget?",
-    placeholder: 'e.g. $20/user/month',
+    field: 'competitors' as const,
+    question: 'What category does it compete in?',
+    placeholder: 'e.g. Jira, Linear, Asana, Monday',
   },
   {
-    field: 'mainProblem' as const,
-    question: "What's the #1 problem you're trying to solve?",
-    placeholder: 'e.g. Too many tools, nothing talks to each other',
+    field: 'differentiator' as const,
+    question: "What's your key differentiator?",
+    placeholder: 'e.g. AI-powered sprint planning that actually works',
   },
   {
-    field: 'useCase' as const,
-    question: 'What will you use this for?',
-    placeholder: 'e.g. Sprint planning, daily standups',
+    field: 'productStage' as const,
+    question: 'What stage is the product?',
+    placeholder: 'e.g. Beta with 50 users, launching in 3 months',
   },
 ]
 
 type Answers = {
-  teamSize: string
-  currentTools: string
-  budget: string
-  mainProblem: string
-  useCase: string
+  productDescription: string
+  targetUser: string
+  competitors: string
+  differentiator: string
+  productStage: string
 }
 
 type SubmitStatus = 'uploading' | 'extracting' | 'analyzing'
@@ -53,11 +53,11 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   const [videoFile, setVideoFile] = useState<File | null>(null)
   const [dragOver, setDragOver] = useState(false)
   const [answers, setAnswers] = useState<Answers>({
-    teamSize: '',
-    currentTools: '',
-    budget: '',
-    mainProblem: '',
-    useCase: '',
+    productDescription: '',
+    targetUser: '',
+    competitors: '',
+    differentiator: '',
+    productStage: '',
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('uploading')
@@ -129,11 +129,12 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         setSubmitStatus('uploading')
         const formData = new FormData()
         formData.append('video', videoFile)
-        formData.append('team_size', answers.teamSize)
-        formData.append('current_tools', answers.currentTools)
-        formData.append('budget', answers.budget)
-        formData.append('main_problem', answers.mainProblem)
-        formData.append('use_case', answers.useCase)
+        formData.append('product_name', productName)
+        formData.append('product_description', answers.productDescription)
+        formData.append('target_user', answers.targetUser)
+        formData.append('competitors', answers.competitors)
+        formData.append('differentiator', answers.differentiator)
+        formData.append('product_stage', answers.productStage)
 
         const extractTimer = setTimeout(() => setSubmitStatus('extracting'), 2000)
         const ingestRes = await fetch('http://localhost:8000/api/ingest/video', {
@@ -154,6 +155,10 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         body: JSON.stringify({
           product_description: productName,
           session_id: uploadSessionId,
+          target_user: answers.targetUser,
+          competitors: answers.competitors,
+          differentiator: answers.differentiator,
+          product_stage: answers.productStage,
         }),
       })
       if (!analyzeRes.ok) throw new Error(`Analyze error ${analyzeRes.status}`)
@@ -307,7 +312,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
           lineHeight: 1.4,
         }}>
           {isVideoStep
-            ? `Upload a walkthrough video of ${productName}`
+            ? 'Upload a walkthrough of your product'
             : currentTextStep!.question}
         </p>
 
