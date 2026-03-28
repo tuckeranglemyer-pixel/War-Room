@@ -50,6 +50,7 @@ interface RoundMessage {
 // Sub-components
 // ---------------------------------------------------------------------------
 
+// Thin progress bar showing which debate round is active (0-based fill).
 function RoundProgress({ current, total }: { current: number; total: number }) {
   return (
     <div style={{ display: 'flex', gap: 4, marginTop: 16 }}>
@@ -69,6 +70,7 @@ function RoundProgress({ current, total }: { current: number; total: number }) {
   )
 }
 
+// Animated UI stand-in for the server-side reconnaissance swarm completing before WS connect.
 function SwarmCard({ product, onComplete }: { product: string; onComplete: () => void }) {
   const [scoutsDeployed, setScoutsDeployed] = useState(0)
   const [results, setResults] = useState<typeof SCOUT_RESULTS>([])
@@ -147,6 +149,7 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
   )
 }
 
+// Single round transcript card with role color and AGREE/DISAGREE badges when present.
 function DebateCard({ msg }: { msg: RoundMessage }) {
   const dot = ROLE_DOT[msg.agent_role] ?? '#71717A'
 
@@ -228,6 +231,7 @@ function DebateCard({ msg }: { msg: RoundMessage }) {
 // Main component
 // ---------------------------------------------------------------------------
 
+// Live debate view: swarm animation, then WebSocket rounds and verdict handoff.
 export default function DebateStream({ product, sessionId, onBack, onVerdict }: DebateStreamProps) {
   const [swarmDone, setSwarmDone] = useState(false)
   const [rounds, setRounds] = useState<RoundMessage[]>([])

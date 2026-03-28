@@ -6,6 +6,7 @@ interface LandingProps {
   onSelectProduct: (product: string, sessionId: string) => void
 }
 
+// Product entry: calls POST /analyze and passes the session to the parent for streaming.
 export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)

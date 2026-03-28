@@ -27,6 +27,7 @@ function verdictStyle(verdict: Verdict) {
   }
 }
 
+// Animated circular score display that counts up to the final 1–100 verdict score.
 function ScoreRing({ score }: { score: number }) {
   const [animatedScore, setAnimatedScore] = useState(0)
   const radius = 56
@@ -103,6 +104,7 @@ function normalizeVerdict(raw: string): Verdict {
   return 'NO'
 }
 
+// Final scored verdict with priority fixes and navigation back to a new run.
 export default function VerdictCard({ product, score, decision, fixes, onBack }: VerdictCardProps) {
   const verdict = normalizeVerdict(decision)
   const vs = verdictStyle(verdict)
