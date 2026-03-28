@@ -1,6 +1,7 @@
 from crewai import Agent, Task, Crew, Process, LLM
 from tools import search_pm_knowledge, fetch_context_for_product
 from meta_prompt import generate_personas
+from swarm import deploy_swarm
 
 # --- LLM Configuration ---
 # Local development: all agents use mistral:7b via Ollama
@@ -22,6 +23,11 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
 
     # --- Step 1: Generate personas via meta-prompt ---
     personas = generate_personas(product_description, local_llm)
+
+    # --- Step 1.5: Deploy reconnaissance swarm ---
+    swarm_result = deploy_swarm(product_description, max_scouts=20, max_workers=10)
+    swarm_briefing = swarm_result["briefing"]
+    swarm_stats = swarm_result["stats"]
 
     # --- Step 1b: Pre-fetch real evidence from ChromaDB ---
     # Small local models (7B/8B) don't reliably execute the ReAct tool-calling loop,
@@ -73,24 +79,33 @@ def build_crew(product_description: str, task_callback=None) -> Crew:
 
     # ROUND 1 — First-Timer analyzes
     round1 = Task(
-        description=f"""You are testing this productivity app: {product_description}
+        description=f"""IMPORTANT: Use the search_pm_knowledge tool for EVERY point you make. Search before you argue. Cite real user reviews, not general knowledge.
+
+You are testing this productivity app: {product_description}
+
+INTELLIGENCE BRIEFING: Before this debate began, {swarm_stats['scouts_deployed']} reconnaissance agents swept the knowledge base in {swarm_stats['total_time']} seconds and gathered evidence across 20 product dimensions. Here is the compiled intelligence:
+
+{swarm_briefing[:3000]}
+
+Use this briefing as your starting evidence, then search for additional details with the search_pm_knowledge tool to deepen your analysis.
 
 You are a first-time user. You have never opened this product before. You will give this product exactly one honest session before deciding whether to continue or go back to what you know.
 
+YOUR KNOWLEDGE BASE: You have access to real user data including App Store reviews, Play Store reviews, Reddit discussions, and first-impression reports. Each review has pre-processed feature-level sentiment scores. When searching reviews, pay attention to sentiment patterns — a feature with 200 reviews but 85% negative sentiment is a bigger problem than a feature with 20 reviews and 50% negative sentiment. Search this data. Do not speculate when real evidence exists.
+
 YOUR ASSIGNMENT:
 
-1. ONBOARDING AUDIT: Describe your first 2 minutes with this product step by step. Where did you get confused? Where did the product fail to explain itself? Cite real evidence from the knowledge base below.
+1. ONBOARDING AUDIT: Describe your first 2 minutes with this product step by step. Where did you get confused? Where did the product fail to explain itself? Search the knowledge base for App Store and Reddit reviews that describe the same onboarding friction.
 
 2. FIND 3 CRITICAL PROBLEMS: For EACH problem provide:
    - THE MOMENT: The exact interaction where this fails
-   - THE EVIDENCE: Quote or cite at least one real user review from the knowledge base below
+   - THE EVIDENCE: Quote or cite at least one real user review or Reddit post from the knowledge base
    - SEVERITY: Rate 1-10 where 10 means "I am closing this tab and never coming back"
    - THE ALTERNATIVE: Name the specific competitor that handles this better and how
 
-3. ONE GENUINE STRENGTH: What does this product do better than the competition? Cite evidence from below.
+3. ONE GENUINE STRENGTH: What does this product do better than the competition? Cite evidence. Then explain whether this strength is enough to overcome the problems.
 
-Do not write a balanced review. You are a real user with limited patience. ONLY cite evidence from the knowledge base provided below — do not invent usernames or URLs.
-{real_evidence}""",
+Do not write a balanced review. You are a real user with limited patience.""",
         expected_output="Onboarding audit describing first 2 minutes step by step. Then 3 critical problems, each with: the exact failing interaction, a cited real user review or Reddit post, a severity rating 1-10, and a named competitor that handles it better. Then 1 acknowledged strength with evidence. Format as clearly labeled numbered sections.",
         agent=first_timer,
     )
