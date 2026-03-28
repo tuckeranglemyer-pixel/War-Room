@@ -1,23 +1,45 @@
-from crewai.tools import tool
-import chromadb
+"""
+ChromaDB-backed RAG tools for The War Room.
+
+Provides CrewAI ``@tool`` search functions and ``fetch_context_for_product`` for
+injecting retrieved evidence directly into task prompts when tool loops are weak.
+"""
+
+from __future__ import annotations
+
 from typing import Optional
 
+import chromadb
+from crewai.tools import tool
+
+from config import CHROMA_DB_PATH, COLLECTION_NAME, RAG_RESULTS_PER_QUERY
+
 # Shared ChromaDB client — initialized once at module load to avoid re-opening on every tool call.
-# Collection access is deferred to call time so a missing collection doesn't crash on import.
-_chroma_client = chromadb.PersistentClient(path="./chroma_db")
+# Collection access is deferred to call time so a missing collection does not crash on import.
+_chroma_client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
 _pm_tools_collection = None
 try:
-    _pm_tools_collection = _chroma_client.get_collection("pm_tools")
+    _pm_tools_collection = _chroma_client.get_collection(COLLECTION_NAME)
 except Exception:
-    pass  # Collection not yet loaded; search_pm_knowledge will return a clear error message
+    pass  # Collection not yet loaded; search tools return a clear error message
 
 
-def fetch_context_for_product(product_name: str, n_results: int = 8) -> str:
-    """Pre-fetch real user evidence from ChromaDB for a product and return it as
-    formatted context to inject directly into agent task descriptions.
+def fetch_context_for_product(
+    product_name: str,
+    n_results: int = RAG_RESULTS_PER_QUERY,
+) -> str:
+    """Pre-fetch real user evidence from ChromaDB and format it for task injection.
 
-    This guarantees real evidence is available even when the local LLM does not
-    reliably execute the ReAct tool-calling loop.
+    Guarantees real evidence is available even when the local LLM does not reliably
+    execute the ReAct tool-calling loop.
+
+    Args:
+        product_name: Product name and description; first token seeds the ``app`` filter.
+        n_results: Maximum chunks to retrieve per internal query.
+
+    Returns:
+        A formatted evidence block, or a short placeholder if ChromaDB is unavailable
+        or no documents match.
     """
     if _pm_tools_collection is None:
         return "[ChromaDB not ready — no pre-seeded context available]"
@@ -80,13 +102,20 @@ def fetch_context_for_product(product_name: str, n_results: int = 8) -> str:
     )
 
 
-def _query_collection(query: str, n_results: int = 5, where: Optional[dict] = None) -> str:
+def _query_collection(
+    query: str,
+    n_results: int = RAG_RESULTS_PER_QUERY,
+    where: Optional[dict] = None,
+) -> str:
     """Run a ChromaDB query and return consistently formatted results.
 
-    Each chunk is rendered as:
-        [APP | source_label type] rating=N url
-        chunk text
-    Chunks are separated by '---'.
+    Args:
+        query: Natural-language query text.
+        n_results: Maximum documents to return.
+        where: Optional ChromaDB metadata filter.
+
+    Returns:
+        Joined formatted chunks, or a human-readable error string.
     """
     try:
         kwargs: dict = {"query_texts": [query], "n_results": n_results}
@@ -135,58 +164,124 @@ def _query_collection(query: str, n_results: int = 5, where: Optional[dict] = No
 
 @tool("Search App Reviews")
 def search_app_reviews(query: str) -> str:
-    """Search Google Play reviews for productivity apps. Returns real user reviews with star ratings (2,608 reviews)."""
+    """Search Google Play reviews (subset of the corpus).
+
+    Args:
+        query: Search string for reviews.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
     return _query_collection(query, where={"source": "google_play"})
 
 
 @tool("Search Reddit")
 def search_reddit(query: str) -> str:
-    """Search Reddit posts and comments from r/productivity, r/notion, r/projectmanagement and related subreddits (22,692 posts/comments)."""
+    """Search Reddit posts and comments (productivity-related subreddits).
+
+    Args:
+        query: Search string for Reddit content.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
     return _query_collection(query, where={"source": "reddit"})
 
 
 @tool("Search G2 Reviews")
 def search_g2_reviews(query: str) -> str:
-    """Search G2 verified business user reviews for productivity apps."""
+    """Search G2-style business reviews (stub until wired to a G2 collection).
+
+    Args:
+        query: Search string.
+
+    Returns:
+        Placeholder message until the G2 pipeline is connected.
+    """
     return f"[RAG not connected yet] No results for: {query}"
 
 
 @tool("Search HN Comments")
 def search_hn_comments(query: str) -> str:
-    """Search Hacker News stories and comments about productivity tools (6,348 entries with source URLs)."""
+    """Search Hacker News stories and comments.
+
+    Args:
+        query: Search string for HN content.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
     return _query_collection(query, where={"source": "hackernews"})
 
 
 @tool("Search Competitor Data")
 def search_competitor_data(query: str) -> str:
-    """Search app metadata and overviews including pricing, features, and category information for 20 productivity apps."""
+    """Search app metadata (pricing, features, categories).
+
+    Args:
+        query: Search string for metadata chunks.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
     return _query_collection(query, where={"source": "metadata"})
 
 
 @tool("Search Screenshots")
 def search_screenshots(query: str) -> str:
-    """Search UI screenshot descriptions and visual comparisons of competitor productivity apps."""
+    """Search UI screenshot descriptions (stub until wired).
+
+    Args:
+        query: Search string.
+
+    Returns:
+        Placeholder message until screenshot embeddings are connected.
+    """
     return f"[RAG not connected yet] No results for: {query}"
 
 
 @tool("Search PM Knowledge Base")
 def search_pm_knowledge(query: str) -> str:
-    """Search all 31,668 chunks of real user data across 20 project management tools with no source filter.
-    Sources include Reddit posts/comments, Hacker News threads, Google Play reviews,
-    and app metadata. Use this when you want the highest-relevance results regardless of source."""
+    """Search the full pm_tools corpus without a source filter.
+
+    Args:
+        query: Natural-language query across all ingested sources.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
     return _query_collection(query)
 
 
 @tool("Search User Uploads")
 def search_user_uploads(query: str) -> str:
-    """Search screenshots, video frames, and context uploaded by the user for THIS specific evaluation
-    session. This is direct evidence from the product being evaluated RIGHT NOW. Always check this
-    before relying on general reviews."""
-    return _query_collection(query, n_results=5, where={"source": "user_upload"})
+    """Search user-uploaded screenshots and video frames for this session.
+
+    Args:
+        query: Search string for user-provided visual evidence.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
+    return _query_collection(
+        query,
+        n_results=RAG_RESULTS_PER_QUERY,
+        where={"source": "user_upload"},
+    )
 
 
 @tool("Search User Context")
 def search_user_context(query: str) -> str:
-    """Search the onboarding context provided by the user — their team size, current tools, budget,
-    pain points, and use case. Use this to tailor your analysis to their specific situation."""
-    return _query_collection(query, n_results=3, where={"source": "user_context"})
+    """Search structured onboarding context supplied by the user.
+
+    Args:
+        query: Search string for user context chunks.
+
+    Returns:
+        Formatted snippets or an error string.
+    """
+    return _query_collection(
+        query,
+        n_results=3,
+        where={"source": "user_context"},
+    )

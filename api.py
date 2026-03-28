@@ -1,10 +1,13 @@
 """
 War Room — FastAPI server with WebSocket streaming.
 
-Flow:
-  POST /analyze       → starts a debate session in a background thread, returns session_id
-  WS   /ws/{id}       → streams one JSON message per round as it completes, then a verdict
+Endpoints:
+    POST /analyze — start a debate in a background thread; returns ``session_id``.
+    WS /ws/{session_id} — stream one JSON message per completed round, then verdict or error.
+    POST /api/ingest/video — optional walkthrough ingestion into ChromaDB (requires ffmpeg, OpenAI).
 """
+
+from __future__ import annotations
 
 import asyncio
 import base64
@@ -18,7 +21,7 @@ import uuid
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Any
+from typing import Any, AsyncIterator, Callable
 
 import uvicorn
 from fastapi import FastAPI, File, Form, UploadFile, WebSocket, WebSocketDisconnect
@@ -26,6 +29,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pydantic import BaseModel
 
+from config import API_HOST, API_PORT
 from crew import build_crew
 from tools import _chroma_client
 
@@ -33,10 +37,10 @@ from tools import _chroma_client
 # Constants
 # ---------------------------------------------------------------------------
 
-# Maps sequential round index (0-3) to the canonical agent_role slug
+# Maps sequential round index (0-3) to the canonical agent_role slug.
 ROUND_ROLES = ["first_timer", "daily_driver", "first_timer", "buyer"]
 
-SESSIONS: dict[str, "DebateSession"] = {}
+SESSIONS: dict[str, DebateSession] = {}
 _executor = ThreadPoolExecutor(max_workers=4)
 
 # ---------------------------------------------------------------------------
@@ -111,7 +115,7 @@ This journey report will be used as primary evidence in an adversarial product d
 
 
 class DebateSession:
-    """Holds the async queue and loop reference for one debate run."""
+    """Bridge between CrewAI task callbacks and WebSocket delivery for one debate run."""
 
     def __init__(
         self,
@@ -127,8 +131,12 @@ class DebateSession:
         self.queue: asyncio.Queue[dict | None] = asyncio.Queue()
         self._round_index = 0
 
-    def build_task_callback(self):
-        """Return a CrewAI task_callback that enqueues round output for WebSocket delivery."""
+    def build_task_callback(self) -> Callable[[Any], None]:
+        """Return a CrewAI ``task_callback`` that enqueues round output for WebSocket delivery.
+
+        Returns:
+            A callable suitable for ``Crew(..., task_callback=...)``.
+        """
 
         def callback(task_output: Any) -> None:
             round_num = self._round_index + 1
@@ -158,7 +166,15 @@ class DebateSession:
 
 
 @asynccontextmanager
-async def lifespan(app: FastAPI):
+async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Shut down the thread pool when the app stops.
+
+    Args:
+        app: FastAPI application instance.
+
+    Yields:
+        Control back to FastAPI after startup.
+    """
     yield
     _executor.shutdown(wait=False)
 
@@ -192,11 +208,16 @@ class AnalyzeResponse(BaseModel):
 
 @app.post("/analyze", response_model=AnalyzeResponse)
 async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
-    """
-    Start a War Room debate for the given product and return a session_id.
+    """Start a War Room debate for the given product and return a ``session_id``.
 
-    The client should immediately open WS /ws/{session_id} to receive
-    streaming output as each of the 4 rounds completes.
+    The client should open ``WS /ws/{session_id}`` to receive streaming output
+    as each of the four rounds completes.
+
+    Args:
+        request: Payload with ``product_description``.
+
+    Returns:
+        ``AnalyzeResponse`` containing the new session UUID.
     """
     session_id = str(uuid.uuid4())
     loop = asyncio.get_running_loop()
@@ -212,11 +233,17 @@ async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
 
 @app.websocket("/ws/{session_id}")
 async def websocket_debate(websocket: WebSocket, session_id: str) -> None:
-    """
-    Stream debate rounds to the client.
+    """Stream debate rounds to the client over WebSocket.
 
-    Emits one JSON object per round (rounds 1-4), then a final verdict object.
+    Emits one JSON object per round (rounds 1–4), then a final verdict object.
     Closes after the verdict or on error.
+
+    Args:
+        websocket: Accepted WebSocket connection.
+        session_id: UUID returned from ``POST /analyze``.
+
+    Returns:
+        None (connection closed in ``finally``).
     """
     await websocket.accept()
 
@@ -247,11 +274,13 @@ async def websocket_debate(websocket: WebSocket, session_id: str) -> None:
 
 
 def _run_debate(session: DebateSession) -> None:
-    """
-    Execute the full 4-round crew synchronously inside a thread-pool worker.
+    """Execute the full four-round crew in a thread-pool worker.
 
-    CrewAI calls task_callback after each sequential task, which enqueues
-    the round result onto session.queue for the WebSocket to forward.
+    CrewAI invokes ``task_callback`` after each sequential task, which enqueues
+    the round result onto ``session.queue`` for the WebSocket to forward.
+
+    Args:
+        session: Active debate session with product text and event loop reference.
     """
     try:
         crew = build_crew(
@@ -280,11 +309,14 @@ def _run_debate(session: DebateSession) -> None:
 # ---------------------------------------------------------------------------
 
 
-def _parse_verdict(raw: str) -> dict:
-    """
-    Best-effort extraction of structured fields from Round 4's raw text output.
+def _parse_verdict(raw: str) -> dict[str, Any]:
+    """Best-effort extraction of score, decision, and fixes from Round 4 text.
 
-    Falls back gracefully when the LLM doesn't follow the expected format.
+    Args:
+        raw: Final crew output as a string.
+
+    Returns:
+        Dict with ``score``, ``decision``, ``top_3_fixes``, and ``full_report`` keys.
     """
     # Score: integer 1-100 followed by "/100" or "out of 100" or "score"
     score_match = re.search(
@@ -333,7 +365,11 @@ def _parse_verdict(raw: str) -> dict:
 
 @app.on_event("startup")
 def check_ffmpeg() -> None:
-    """Warn at startup if ffmpeg is missing — video ingestion requires it."""
+    """Log whether ffmpeg is available (required for video frame extraction).
+
+    Returns:
+        None
+    """
     try:
         subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
         print("ffmpeg found — video ingestion ready.")
@@ -350,10 +386,15 @@ def check_ffmpeg() -> None:
 
 
 def extract_key_frames(video_path: str, output_dir: str, threshold: float = 0.3) -> list[Path]:
-    """Extract frames at scene changes so we capture transitions, modals, and new views.
+    """Extract frames at scene changes (with fps fallback) for vision analysis.
 
-    Falls back to 0.5 fps sampling when scene detection yields fewer than 5 frames.
-    Caps output at 30 frames to control downstream API costs.
+    Args:
+        video_path: Path to the uploaded video file.
+        output_dir: Directory to write ``frame_*.jpg`` files.
+        threshold: Scene-change sensitivity for ffmpeg ``select`` filter.
+
+    Returns:
+        Sorted list of frame paths (capped at 30 for cost control).
     """
     frame_pattern = os.path.join(output_dir, "frame_%04d.jpg")
 
@@ -393,7 +434,15 @@ def extract_key_frames(video_path: str, output_dir: str, threshold: float = 0.3)
 
 
 def call_gpt4o_vision(frame_path: Path, prompt: str) -> str:
-    """Send a single frame to GPT-4o Vision and return the text description."""
+    """Send a single frame to GPT-4o Vision and return the assistant text.
+
+    Args:
+        frame_path: JPEG path on disk.
+        prompt: Full user prompt including product and session context.
+
+    Returns:
+        Model response text (may be empty if the API returns no content).
+    """
     with open(frame_path, "rb") as fh:
         image_b64 = base64.b64encode(fh.read()).decode("utf-8")
 
@@ -422,13 +471,17 @@ def call_gpt4o_vision(frame_path: Path, prompt: str) -> str:
 def process_video_frames(
     frames: list[Path],
     product_name: str,
-    session_context: dict,
-) -> tuple[list[dict], list[str]]:
-    """Analyze frames sequentially so each prompt includes a running narrative of prior screens.
+    session_context: dict[str, Any],
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """Analyze frames sequentially with rolling context for each vision call.
+
+    Args:
+        frames: Key frame image paths from ``extract_key_frames``.
+        product_name: Product under evaluation.
+        session_context: User profile fields and ``session_id`` for metadata.
 
     Returns:
-        chunks: list of dicts ready for ChromaDB insertion (text + metadata).
-        all_descriptions: raw description strings, used later for the journey summary.
+        Tuple of (Chroma-ready chunk dicts, raw per-frame descriptions).
     """
     previous_screens: list[str] = []
     chunks: list[dict] = []
@@ -481,9 +534,18 @@ def process_video_frames(
 def generate_journey_summary(
     product_name: str,
     all_descriptions: list[str],
-    session_context: dict,
+    session_context: dict[str, Any],
 ) -> str:
-    """Synthesize the full session into a single journey report via a text-only GPT-4o call."""
+    """Synthesize frame analyses into one journey report (text-only GPT-4o).
+
+    Args:
+        product_name: Product under evaluation.
+        all_descriptions: Per-frame vision outputs in order.
+        session_context: User profile fields for the prompt.
+
+    Returns:
+        Journey report string for ChromaDB and the debate.
+    """
     numbered = "\n\n".join(
         f"Frame {i + 1}:\n{desc}" for i, desc in enumerate(all_descriptions)
     )
@@ -507,8 +569,15 @@ def generate_journey_summary(
     return response.choices[0].message.content or ""
 
 
-def _get_pm_tools_collection():
-    """Return the pm_tools ChromaDB collection, initializing the module-level cache on first call."""
+def _get_pm_tools_collection() -> Any:
+    """Return the ``pm_tools`` collection, caching it on first successful open.
+
+    Returns:
+        A ChromaDB ``Collection`` instance.
+
+    Raises:
+        RuntimeError: If the collection cannot be opened.
+    """
     global _pm_tools_collection
     if _pm_tools_collection is None:
         try:
@@ -532,12 +601,20 @@ async def ingest_video(
     budget: str = Form(""),
     main_problem: str = Form(""),
     use_case: str = Form(""),
-) -> dict:
-    """Accept a product walkthrough video, extract key frames via scene-change detection,
-    analyze each frame with GPT-4o Vision in narrative sequence, generate a journey summary,
-    and embed all evidence into the pm_tools ChromaDB collection.
+) -> dict[str, Any]:
+    """Ingest a walkthrough video: frames, vision captions, journey summary, ChromaDB upsert.
 
-    Returns session metadata and counts for the frontend to display.
+    Args:
+        product_name: Product being evaluated.
+        file: Uploaded video file.
+        team_size: Optional user context field.
+        current_tools: Optional user context field.
+        budget: Optional user context field.
+        main_problem: Optional user context field.
+        use_case: Optional user context field.
+
+    Returns:
+        Session metadata, frame counts, chunk counts, or an error description.
     """
     session_id = str(uuid.uuid4())
     session_context = {
@@ -621,4 +698,4 @@ async def ingest_video(
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("api:app", host=API_HOST, port=API_PORT, reload=True)
