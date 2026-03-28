@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 interface ContextFormProps {
   productName: string
@@ -6,87 +6,146 @@ interface ContextFormProps {
   onBack: () => void
 }
 
-type ProgressStep = '' | 'uploading' | 'extracting' | 'analyzing' | 'done' | 'skipping'
+const TOTAL_STEPS = 6
+
+const TEXT_STEPS = [
+  {
+    field: 'teamSize' as const,
+    question: 'How big is your team?',
+    placeholder: 'e.g. 5 people',
+  },
+  {
+    field: 'currentTools' as const,
+    question: 'What tools are you currently using?',
+    placeholder: 'e.g. Jira, Slack, Notion',
+  },
+  {
+    field: 'budget' as const,
+    question: "What's your budget?",
+    placeholder: 'e.g. $20/user/month',
+  },
+  {
+    field: 'mainProblem' as const,
+    question: "What's the #1 problem you're trying to solve?",
+    placeholder: 'e.g. Too many tools, nothing talks to each other',
+  },
+  {
+    field: 'useCase' as const,
+    question: 'What will you use this for?',
+    placeholder: 'e.g. Sprint planning, daily standups',
+  },
+]
+
+type Answers = {
+  teamSize: string
+  currentTools: string
+  budget: string
+  mainProblem: string
+  useCase: string
+}
+
+type SubmitStatus = 'uploading' | 'extracting' | 'analyzing'
 
 export default function ContextForm({ productName, onComplete, onBack }: ContextFormProps) {
+  const [step, setStep] = useState(0)
+  const [visible, setVisible] = useState(true)
+  const [inputFocused, setInputFocused] = useState(false)
   const [videoFile, setVideoFile] = useState<File | null>(null)
   const [dragOver, setDragOver] = useState(false)
-  const [teamSize, setTeamSize] = useState('')
-  const [currentTools, setCurrentTools] = useState('')
-  const [budget, setBudget] = useState('')
-  const [mainProblem, setMainProblem] = useState('')
-  const [useCase, setUseCase] = useState('')
-  const [progress, setProgress] = useState<ProgressStep>('')
+  const [answers, setAnswers] = useState<Answers>({
+    teamSize: '',
+    currentTools: '',
+    budget: '',
+    mainProblem: '',
+    useCase: '',
+  })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('uploading')
   const [framesAnalyzed, setFramesAnalyzed] = useState(0)
   const [error, setError] = useState('')
+
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const textInputRef = useRef<HTMLInputElement>(null)
 
-  const busy = progress !== ''
+  const isVideoStep = step === 0
+  const isLastStep = step === TOTAL_STEPS - 1
+  const currentTextStep = isVideoStep ? null : TEXT_STEPS[step - 1]
 
-  const progressLabel =
-    progress === 'done'
-      ? `Done! ${framesAnalyzed} frames analyzed`
-      : progress === 'uploading'
-      ? 'Uploading video...'
-      : progress === 'extracting'
-      ? 'Extracting frames...'
-      : progress === 'analyzing'
-      ? 'Analyzing with GPT-4o...'
-      : progress === 'skipping'
-      ? 'Starting analysis...'
-      : ''
+  // Auto-focus the text input after each step transition completes
+  useEffect(() => {
+    if (visible && step > 0 && !submitting) {
+      const t = setTimeout(() => textInputRef.current?.focus(), 160)
+      return () => clearTimeout(t)
+    }
+  }, [step, visible, submitting])
 
-  function handleDragOver(e: React.DragEvent) {
-    e.preventDefault()
-    setDragOver(true)
+  function transition(nextStep: number) {
+    setVisible(false)
+    setTimeout(() => {
+      setStep(nextStep)
+      setVisible(true)
+    }, 150)
   }
 
-  function handleDragLeave(e: React.DragEvent) {
-    e.preventDefault()
-    setDragOver(false)
+  function advance() {
+    if (step < TOTAL_STEPS - 1) {
+      transition(step + 1)
+    } else {
+      runSubmit()
+    }
   }
 
-  function handleDrop(e: React.DragEvent) {
-    e.preventDefault()
-    setDragOver(false)
-    const file = e.dataTransfer.files[0]
-    if (file && file.type.startsWith('video/')) setVideoFile(file)
+  function goBack() {
+    if (step === 0) {
+      onBack()
+    } else {
+      transition(step - 1)
+    }
   }
 
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0]
-    if (file) setVideoFile(file)
+  function skipStep() {
+    if (isVideoStep) {
+      setVideoFile(null)
+      transition(1)
+    } else {
+      advance()
+    }
   }
 
-  async function handleStart() {
-    if (busy) return
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter') advance()
+  }
+
+  function setAnswer(field: keyof Answers, value: string) {
+    setAnswers(prev => ({ ...prev, [field]: value }))
+  }
+
+  async function runSubmit() {
+    setSubmitting(true)
     setError('')
-
     try {
       if (videoFile) {
-        setProgress('uploading')
+        setSubmitStatus('uploading')
         const formData = new FormData()
         formData.append('video', videoFile)
-        formData.append('team_size', teamSize)
-        formData.append('current_tools', currentTools)
-        formData.append('budget', budget)
-        formData.append('main_problem', mainProblem)
-        formData.append('use_case', useCase)
+        formData.append('team_size', answers.teamSize)
+        formData.append('current_tools', answers.currentTools)
+        formData.append('budget', answers.budget)
+        formData.append('main_problem', answers.mainProblem)
+        formData.append('use_case', answers.useCase)
 
-        const extractTimer = setTimeout(() => setProgress('extracting'), 2000)
-
+        const extractTimer = setTimeout(() => setSubmitStatus('extracting'), 2000)
         const ingestRes = await fetch('http://localhost:8000/api/ingest/video', {
           method: 'POST',
           body: formData,
         })
         clearTimeout(extractTimer)
-
         if (!ingestRes.ok) throw new Error(`Ingest error ${ingestRes.status}`)
-        const ingestData = await ingestRes.json()
-        setFramesAnalyzed(ingestData.frames_analyzed ?? 0)
+        const { frames_analyzed = 0 } = await ingestRes.json()
+        setFramesAnalyzed(frames_analyzed)
       }
 
-      setProgress('analyzing')
+      setSubmitStatus('analyzing')
       const analyzeRes = await fetch('http://localhost:8000/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -95,291 +154,308 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
       if (!analyzeRes.ok) throw new Error(`Analyze error ${analyzeRes.status}`)
       const { session_id } = await analyzeRes.json()
 
-      setProgress('done')
-      setTimeout(() => onComplete(session_id), 800)
+      setTimeout(() => onComplete(session_id), 400)
     } catch {
       setError('Could not reach the backend. Is the API running?')
-      setProgress('')
+      setSubmitting(false)
     }
   }
 
-  async function handleSkip() {
-    if (busy) return
-    setError('')
-    setProgress('skipping')
-    try {
-      const res = await fetch('http://localhost:8000/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product_description: productName }),
-      })
-      if (!res.ok) throw new Error(`Server error ${res.status}`)
-      const { session_id } = await res.json()
-      onComplete(session_id)
-    } catch {
-      setError('Could not reach the backend. Is the API running?')
-      setProgress('')
-    }
+  const submitLabel =
+    submitStatus === 'uploading'
+      ? 'Uploading video...'
+      : submitStatus === 'extracting'
+      ? `Analyzing video... ${framesAnalyzed} frames processed`
+      : 'Starting War Room...'
+
+  // ── Submitting screen ──────────────────────────────────────────────────
+  if (submitting) {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0 24px',
+        marginTop: '-5vh',
+      }}>
+        {error ? (
+          <div style={{ textAlign: 'center' }}>
+            <p style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 12,
+              color: '#EF4444',
+              marginBottom: 20,
+            }}>
+              {error}
+            </p>
+            <button
+              onClick={() => { setSubmitting(false); setError('') }}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 13,
+                color: '#52525B',
+                cursor: 'pointer',
+                transition: 'color 150ms ease',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = '#E4E4E7' }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = '#52525B' }}
+            >
+              ← Try again
+            </button>
+          </div>
+        ) : (
+          <p style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 14,
+            color: '#3B82F6',
+            letterSpacing: '0.02em',
+          }}>
+            {submitLabel}
+          </p>
+        )}
+      </div>
+    )
   }
 
-  const fields = [
-    { key: 'teamSize', value: teamSize, setter: setTeamSize, placeholder: 'e.g. 5' },
-    { key: 'currentTools', value: currentTools, setter: setCurrentTools, placeholder: 'e.g. Jira, Slack' },
-    { key: 'budget', value: budget, setter: setBudget, placeholder: 'e.g. $20/user/month' },
-    { key: 'mainProblem', value: mainProblem, setter: setMainProblem, placeholder: 'e.g. Too many tools, nothing talks to each other' },
-    { key: 'useCase', value: useCase, setter: setUseCase, placeholder: 'e.g. Sprint planning, task tracking' },
-  ] as const
-
+  // ── Wizard screen ──────────────────────────────────────────────────────
   return (
     <div style={{
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '48px 24px 60px',
+      justifyContent: 'center',
+      padding: '0 24px',
     }}>
       <style>{`
-        .ctx-input {
+        @keyframes ctxBorderRotate {
+          0%   { --ctx-angle: 0deg; }
+          100% { --ctx-angle: 360deg; }
+        }
+        @property --ctx-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+        .ctx-input-wrap {
+          position: relative;
+          border-radius: 9px;
+          padding: 1px;
+          background: #1E2028;
+          transition: background 300ms ease;
+        }
+        .ctx-input-wrap.focused {
+          background: conic-gradient(from var(--ctx-angle), #1E2028 0%, #3B82F6 25%, #1E2028 50%, #3B82F6 75%, #1E2028 100%);
+          animation: ctxBorderRotate 8s linear infinite;
+        }
+        .ctx-input-wrap > input {
+          display: block;
           width: 100%;
-          background: #12141A;
-          border: 1px solid #1E2028;
-          border-radius: 6px;
-          padding: 12px 16px;
-          font-family: 'Inter', sans-serif;
-          font-size: 14px;
-          color: #E4E4E7;
-          box-sizing: border-box;
-          transition: border-color 150ms ease;
-          outline: none;
+          border-radius: 8px;
         }
-        .ctx-input:focus {
-          border-color: #3B82F6;
-        }
-        .ctx-input::placeholder {
-          color: #3F3F46;
-        }
-        .ctx-input:disabled {
-          opacity: 0.5;
-          cursor: default;
-        }
-        .ctx-upload {
+        .ctx-upload-zone {
           transition: border-color 200ms ease, background 200ms ease;
+          cursor: pointer;
         }
-        .ctx-back-btn:hover {
-          color: #71717A !important;
+        .ctx-upload-zone:hover {
+          border-color: #3B82F6 !important;
+          background: #161820 !important;
         }
-        .ctx-skip-btn:hover {
-          color: #71717A !important;
+        .ctx-nav-btn {
+          background: transparent;
+          border: none;
+          font-family: 'Inter', sans-serif;
+          font-size: 13px;
+          cursor: pointer;
+          padding: 0;
+          transition: color 150ms ease;
         }
-        .ctx-start-btn:hover:not(:disabled) {
+        .ctx-nav-btn:hover {
+          color: #E4E4E7 !important;
+        }
+        .ctx-next-btn {
+          transition: background 150ms ease;
+        }
+        .ctx-next-btn:hover {
           background: #5B9CF7 !important;
         }
       `}</style>
 
-      <div style={{ width: '100%', maxWidth: 560 }}>
-        {/* Back */}
-        <button
-          className="ctx-back-btn"
-          onClick={onBack}
-          disabled={busy}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 13,
-            color: '#52525B',
-            cursor: busy ? 'default' : 'pointer',
-            padding: 0,
-            marginBottom: 40,
-            display: 'block',
-          }}
-        >
-          ← Back
-        </button>
+      <div style={{
+        width: '100%',
+        maxWidth: 560,
+        opacity: visible ? 1 : 0,
+        transition: 'opacity 150ms ease',
+        marginTop: '-5vh',
+      }}>
+        {/* Question */}
+        <p style={{
+          fontFamily: "'Inter', sans-serif",
+          fontSize: 20,
+          fontWeight: 400,
+          color: '#E4E4E7',
+          marginBottom: 24,
+          lineHeight: 1.4,
+        }}>
+          {isVideoStep
+            ? `Upload a walkthrough video of ${productName}`
+            : currentTextStep!.question}
+        </p>
 
-        {/* Product name header */}
-        <div style={{ marginBottom: 32 }}>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 11,
-            fontWeight: 500,
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: '#3B82F6',
-            marginBottom: 8,
-          }}>
-            Analyzing
-          </p>
-          <p style={{
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 22,
-            fontWeight: 600,
-            color: '#E4E4E7',
-          }}>
-            {productName}
-          </p>
-        </div>
+        {/* Input area */}
+        {isVideoStep ? (
+          <div
+            className="ctx-upload-zone"
+            onDragOver={(e) => { e.preventDefault(); setDragOver(true) }}
+            onDragLeave={(e) => { e.preventDefault(); setDragOver(false) }}
+            onDrop={(e) => {
+              e.preventDefault()
+              setDragOver(false)
+              const f = e.dataTransfer.files[0]
+              if (f?.type.startsWith('video/')) setVideoFile(f)
+            }}
+            onClick={() => fileInputRef.current?.click()}
+            style={{
+              background: dragOver ? '#161820' : '#12141A',
+              border: `2px dashed ${dragOver ? '#3B82F6' : '#1E2028'}`,
+              borderRadius: 8,
+              padding: '32px 24px',
+              textAlign: 'center',
+            }}
+          >
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="video/mp4,video/webm,video/quicktime"
+              style={{ display: 'none' }}
+              onChange={(e) => { const f = e.target.files?.[0]; if (f) setVideoFile(f) }}
+            />
+            {videoFile ? (
+              <>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: '#E4E4E7',
+                  marginBottom: 4,
+                }}>
+                  {videoFile.name}
+                </p>
+                <p style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: 11,
+                  color: '#52525B',
+                }}>
+                  {(videoFile.size / (1024 * 1024)).toFixed(1)} MB · click to change
+                </p>
+              </>
+            ) : (
+              <>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: '#52525B',
+                  marginBottom: 4,
+                }}>
+                  Drop a screen recording here
+                </p>
+                <p style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 12,
+                  color: '#3F3F46',
+                }}>
+                  or click to browse · MP4, WebM, MOV
+                </p>
+              </>
+            )}
+          </div>
+        ) : (
+          <div className={`ctx-input-wrap${inputFocused ? ' focused' : ''}`}>
+            <input
+              ref={textInputRef}
+              type="text"
+              value={answers[currentTextStep!.field]}
+              onChange={(e) => setAnswer(currentTextStep!.field, e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setInputFocused(true)}
+              onBlur={() => setInputFocused(false)}
+              placeholder={currentTextStep!.placeholder}
+              style={{
+                background: '#12141A',
+                border: 'none',
+                padding: '24px 28px',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 20,
+                fontWeight: 400,
+                color: '#E4E4E7',
+                caretColor: '#3B82F6',
+                outline: 'none',
+              }}
+            />
+          </div>
+        )}
 
-        {/* Video upload */}
-        <div
-          className="ctx-upload"
-          onDragOver={handleDragOver}
-          onDragLeave={handleDragLeave}
-          onDrop={handleDrop}
-          onClick={() => !busy && fileInputRef.current?.click()}
-          style={{
-            background: dragOver ? '#161820' : '#12141A',
-            border: `2px dashed ${dragOver ? '#3B82F6' : '#1E2028'}`,
-            borderRadius: 8,
-            padding: '28px 24px',
-            textAlign: 'center',
-            cursor: busy ? 'default' : 'pointer',
-            marginBottom: 20,
-          }}
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="video/mp4,video/webm,video/quicktime"
-            style={{ display: 'none' }}
-            onChange={handleFileChange}
-            disabled={busy}
-          />
-          {videoFile ? (
-            <div>
-              <p style={{
+        {/* Navigation row */}
+        <div style={{
+          marginTop: 16,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+          {/* Back */}
+          <button
+            className="ctx-nav-btn"
+            onClick={goBack}
+            style={{ color: '#52525B' }}
+          >
+            ← Back
+          </button>
+
+          {/* Step counter */}
+          <span style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 12,
+            color: '#3F3F46',
+            userSelect: 'none',
+          }}>
+            {step + 1} of {TOTAL_STEPS}
+          </span>
+
+          {/* Skip + Next / Start */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <button
+              className="ctx-nav-btn"
+              onClick={skipStep}
+              style={{ color: '#52525B' }}
+            >
+              {isVideoStep ? 'Skip — no video' : 'Skip'}
+            </button>
+
+            <button
+              className="ctx-next-btn"
+              onClick={advance}
+              style={{
+                background: '#3B82F6',
+                border: 'none',
+                borderRadius: 6,
+                padding: '10px 20px',
                 fontFamily: "'Inter', sans-serif",
                 fontSize: 13,
                 fontWeight: 500,
-                color: '#E4E4E7',
-                marginBottom: 4,
-              }}>
-                {videoFile.name}
-              </p>
-              <p style={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: 11,
-                color: '#52525B',
-              }}>
-                {(videoFile.size / (1024 * 1024)).toFixed(1)} MB · click to change
-              </p>
-            </div>
-          ) : (
-            <div>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 14,
-                fontWeight: 500,
-                color: '#52525B',
-                marginBottom: 4,
-              }}>
-                Drop a screen recording here
-              </p>
-              <p style={{
-                fontFamily: "'Inter', sans-serif",
-                fontSize: 12,
-                color: '#3F3F46',
-              }}>
-                or click to browse · MP4, WebM, MOV
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Context fields */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28 }}>
-          {fields.map(({ key, value, setter, placeholder }) => (
-            <input
-              key={key}
-              className="ctx-input"
-              type="text"
-              value={value}
-              onChange={(e) => setter(e.target.value)}
-              placeholder={placeholder}
-              disabled={busy}
-            />
-          ))}
-        </div>
-
-        {/* Error */}
-        {error && (
-          <p style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 11,
-            color: '#EF4444',
-            marginBottom: 16,
-            textAlign: 'center',
-          }}>
-            {error}
-          </p>
-        )}
-
-        {/* Progress */}
-        {progressLabel && (
-          <p style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 12,
-            color: progress === 'done' ? '#22C55E' : '#3B82F6',
-            marginBottom: 16,
-            textAlign: 'center',
-          }}>
-            {progressLabel}
-          </p>
-        )}
-
-        {/* Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <button
-            className="ctx-skip-btn"
-            onClick={handleSkip}
-            disabled={busy}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 13,
-              color: '#52525B',
-              cursor: busy ? 'default' : 'pointer',
-              padding: 0,
-              textDecoration: 'underline',
-              textDecorationColor: '#3F3F46',
-            }}
-          >
-            Skip — text only
-          </button>
-
-          <button
-            className="ctx-start-btn"
-            onClick={handleStart}
-            disabled={busy}
-            style={{
-              background: busy ? '#1A1C24' : '#3B82F6',
-              border: '1px solid',
-              borderColor: busy ? '#1E2028' : 'transparent',
-              borderRadius: 6,
-              padding: '12px 28px',
-              fontFamily: "'Inter', sans-serif",
-              fontSize: 14,
-              fontWeight: 500,
-              color: busy ? '#3F3F46' : '#fff',
-              cursor: busy ? 'default' : 'pointer',
-              transition: 'background 150ms ease',
-            }}
-          >
-            Start Analysis
-          </button>
+                color: '#fff',
+                cursor: 'pointer',
+              }}
+            >
+              {isLastStep ? 'Start War Room' : 'Next →'}
+            </button>
+          </div>
         </div>
       </div>
-
-      <p style={{
-        marginTop: 64,
-        fontFamily: "'JetBrains Mono', monospace",
-        fontSize: 10,
-        color: '#3F3F46',
-        textAlign: 'center',
-      }}>
-        Video is processed locally · frames are never stored
-      </p>
     </div>
   )
 }
