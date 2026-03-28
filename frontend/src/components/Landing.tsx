@@ -10,6 +10,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [focused, setFocused] = useState(false)
 
   async function submit(product: string) {
     if (!product.trim() || loading) return
@@ -24,7 +25,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
       if (!res.ok) throw new Error(`Server error ${res.status}`)
       const { session_id } = await res.json()
       onSelectProduct(product.trim(), session_id)
-    } catch (err) {
+    } catch {
       setError('Could not reach the backend. Is the API running?')
       setLoading(false)
     }
@@ -45,46 +46,89 @@ export default function Landing({ onSelectProduct }: LandingProps) {
       justifyContent: 'center',
       position: 'relative',
       padding: '0 24px',
+      marginTop: '-5vh',
     }}>
+      <style>{`
+        @keyframes borderRotate {
+          0%   { --angle: 0deg; }
+          100% { --angle: 360deg; }
+        }
+        @keyframes finePrintPulse {
+          0%, 100% { opacity: 0.15; }
+          50%      { opacity: 0.3; }
+        }
+        @property --angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+        .input-border-wrap {
+          position: relative;
+          border-radius: 9px;
+          padding: 1px;
+          background: #1E2028;
+          transition: background 300ms ease;
+        }
+        .input-border-wrap.active {
+          background: conic-gradient(from var(--angle), #1E2028 0%, #3B82F6 25%, #1E2028 50%, #3B82F6 75%, #1E2028 100%);
+          animation: borderRotate 8s linear infinite;
+        }
+        .input-border-wrap > input {
+          display: block;
+          width: 100%;
+          border-radius: 8px;
+        }
+      `}</style>
+
       {/* Brand mark */}
       <p style={{
         fontFamily: "'Inter', sans-serif",
-        fontSize: 13,
+        fontSize: 16,
         fontWeight: 600,
-        letterSpacing: '0.15em',
+        letterSpacing: '0.25em',
         textTransform: 'uppercase',
-        color: '#3F3F46',
-        marginBottom: 48,
+        color: '#52525B',
+        marginBottom: 12,
       }}>
         WAR ROOM
       </p>
 
-      {/* The input — the entire interaction */}
+      {/* Tagline */}
+      <p style={{
+        fontFamily: "'Inter', sans-serif",
+        fontSize: 14,
+        fontWeight: 400,
+        color: '#3F3F46',
+        marginBottom: 40,
+      }}>
+        Multi-model adversarial QA for software products
+      </p>
+
+      {/* Input with animated gradient border */}
       <div style={{ width: '100%', maxWidth: 560 }}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Enter a product to analyze..."
-          autoFocus
-          style={{
-            width: '100%',
-            background: '#12141A',
-            border: '1px solid #1E2028',
-            borderRadius: 8,
-            padding: '20px 24px',
-            fontFamily: "'Inter', sans-serif",
-            fontSize: 18,
-            fontWeight: 400,
-            color: '#E4E4E7',
-            caretColor: '#3B82F6',
-            outline: 'none',
-            transition: 'border-color 150ms ease',
-          }}
-          onFocus={(e) => { e.currentTarget.style.borderColor = '#2A2D38' }}
-          onBlur={(e) => { e.currentTarget.style.borderColor = '#1E2028' }}
-        />
+        <div className={`input-border-wrap${focused ? ' active' : ''}`}>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            placeholder="Enter a product to analyze..."
+            autoFocus
+            style={{
+              background: '#12141A',
+              border: 'none',
+              padding: '24px 28px',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: 20,
+              fontWeight: 400,
+              color: '#E4E4E7',
+              caretColor: '#3B82F6',
+              outline: 'none',
+            }}
+          />
+        </div>
         <div style={{
           display: 'flex',
           justifyContent: 'flex-end',
@@ -127,8 +171,8 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         </p>
       )}
 
-      {/* Quiet suggestions */}
-      <div style={{ marginTop: 32, textAlign: 'center' }}>
+      {/* Quiet suggestions — tightened to input */}
+      <div style={{ marginTop: 20, textAlign: 'center' }}>
         <p style={{
           fontFamily: "'Inter', sans-serif",
           fontSize: 12,
@@ -163,7 +207,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         </div>
       </div>
 
-      {/* Fine print */}
+      {/* Fine print — breathing pulse on the numbers */}
       <p style={{
         position: 'absolute',
         bottom: 32,
@@ -171,6 +215,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
         fontSize: 10,
         color: '#3F3F46',
         textAlign: 'center',
+        animation: 'finePrintPulse 4s ease-in-out infinite',
       }}>
         31,668 user reviews · 20 scout agents · 3 AI architectures
       </p>
