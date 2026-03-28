@@ -1,0 +1,85 @@
+WAR ROOM — CURSOR RULES
+These rules apply to all work in this repository.
+
+PROJECT CONTEXT
+This is "The War Room" — a multi-model adversarial debate system for QA testing productivity apps.
+Built at the 2026 yconic New England Inter-Collegiate AI Hackathon by Tucker Anglemyer & Griffin Kovach.
+Stack: CrewAI, ChromaDB, FastAPI, React, NVIDIA DGX Spark.
+
+GIT COMMIT RULES — CRITICAL (repo is graded by AI every 15 minutes)
+
+Commit Message Format
+Always use Conventional Commits format:
+  feat: <description>      — New feature or capability
+  fix: <description>       — Bug fix
+  refactor: <description>  — Code restructuring without behavior change
+  docs: <description>      — Documentation updates
+  chore: <description>     — Tooling, config, dependencies
+  test: <description>      — Adding or updating tests
+  style: <description>     — Formatting, no logic change
+  perf: <description>      — Performance improvement
+
+Commit Message Quality
+- Messages MUST be specific and descriptive. Never use generic messages like "update files" or "fix stuff"
+- Reference the component being changed: "feat(crew): add context chaining for 4-round debate"
+- If multiple things changed, break into multiple commits
+- Good: "feat(meta-prompt): add dynamic persona generation with JSON parsing and static fallback"
+- Good: "fix(crew): resolve context propagation between Round 2 and Round 3 tasks"
+- Good: "feat(tools): wire search_app_reviews to ChromaDB app_reviews collection"
+- Good: "docs(readme): add architecture diagram and debate structure explanation"
+- Good: "refactor(crew): extract LLM config to environment variables for DGX swap"
+- Good: "perf(meta-prompt): reduce token usage by tightening persona generation prompt"
+- Bad: "update crew.py"
+- Bad: "fix bug"
+- Bad: "changes"
+
+Commit Frequency
+- Commit after every meaningful change — small, frequent commits show professional workflow
+- Never bundle unrelated changes in one commit
+- A working feature = immediate commit + push
+
+Auto-Push Workflow
+Whenever I ask you to "push", "git push", "gp", "push it", "send it", "ship it", or any variation:
+1. Run git add .
+2. Generate a high-quality conventional commit message based on what actually changed (check git diff --cached)
+3. Run git commit -m "<your generated message>"
+4. Run git push
+5. Confirm with the commit message used
+
+If nothing changed, say "Nothing to push — working tree is clean."
+
+CODE QUALITY RULES
+
+Python
+- Use type hints on all function signatures
+- Add docstrings to all public functions
+- Keep functions under 50 lines — extract helpers
+- Use descriptive variable names, never single letters except loop counters
+- Handle errors gracefully with try/except and meaningful error messages
+- Follow PEP 8 formatting
+
+File Organization
+- One concern per file: crew.py for orchestration, tools.py for RAG tools, meta_prompt.py for persona generation
+- Keep imports organized: stdlib, third-party, local
+- Configuration values (model names, URLs, collection names) at the top of files as constants
+
+Documentation
+- README.md must always reflect current state of the project
+- Update README when adding features, changing architecture, or adding setup steps
+- Include code comments explaining WHY, not WHAT (the code shows what)
+
+ARCHITECTURE REFERENCE
+- meta_prompt.py — Generates 3 dynamic adversarial personas via LLM before crew runs
+- crew.py — CrewAI sequential crew: 4 rounds, 3 agents, context chaining
+- tools.py — 6 RAG tool stubs for ChromaDB (Griffin connects these)
+- requirements.txt — Python dependencies
+- Future: api.py — FastAPI + WebSocket for streaming debate to frontend
+- Future: frontend/ — React + Tailwind debate visualization
+
+DGX SWAP NOTES
+When switching from local dev to DGX Spark:
+- Replace local_llm in crew.py with 3 separate LLM instances pointing at different models
+  - Llama 3.3-70B → First-Timer (port 8001 if using vLLM)
+  - Qwen3-32B → Daily Driver (port 8002 if using vLLM)
+  - Mistral-Small-24B → Buyer (port 8003 if using vLLM)
+- Or use Ollama with model names: ollama/llama3.3:70b, ollama/qwen3:32b, ollama/mistral-small:24b
