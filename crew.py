@@ -6,6 +6,7 @@ from tools import (
     search_hn_comments,
     search_competitor_data,
     search_screenshots,
+    search_pm_knowledge,
 )
 from meta_prompt import generate_personas
 
@@ -22,6 +23,7 @@ daily_driver_llm = local_llm
 buyer_llm = local_llm
 
 ALL_TOOLS = [
+    search_pm_knowledge,
     search_app_reviews,
     search_reddit,
     search_g2_reviews,
