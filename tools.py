@@ -2,9 +2,14 @@ from crewai.tools import tool
 import chromadb
 from typing import Optional
 
-# Shared ChromaDB client — initialized once at module load to avoid re-opening on every tool call
+# Shared ChromaDB client — initialized once at module load to avoid re-opening on every tool call.
+# Collection access is deferred to call time so a missing collection doesn't crash on import.
 _chroma_client = chromadb.PersistentClient(path="./chroma_db")
-_pm_tools_collection = _chroma_client.get_collection("pm_tools")
+_pm_tools_collection = None
+try:
+    _pm_tools_collection = _chroma_client.get_collection("pm_tools")
+except Exception:
+    pass  # Collection not yet loaded; search_pm_knowledge will return a clear error message
 
 
 def _query_collection(query: str, n_results: int = 5, where: Optional[dict] = None) -> str:
