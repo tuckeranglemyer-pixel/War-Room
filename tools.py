@@ -175,3 +175,18 @@ def search_pm_knowledge(query: str) -> str:
     Sources include Reddit posts/comments, Hacker News threads, Google Play reviews,
     and app metadata. Use this when you want the highest-relevance results regardless of source."""
     return _query_collection(query)
+
+
+@tool("Search User Uploads")
+def search_user_uploads(query: str) -> str:
+    """Search screenshots, video frames, and context uploaded by the user for THIS specific evaluation
+    session. This is direct evidence from the product being evaluated RIGHT NOW. Always check this
+    before relying on general reviews."""
+    return _query_collection(query, n_results=5, where={"source": "user_upload"})
+
+
+@tool("Search User Context")
+def search_user_context(query: str) -> str:
+    """Search the onboarding context provided by the user — their team size, current tools, budget,
+    pain points, and use case. Use this to tailor your analysis to their specific situation."""
+    return _query_collection(query, n_results=3, where={"source": "user_context"})
