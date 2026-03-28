@@ -135,6 +135,7 @@ The 31,668 chunks are a proof of concept. The architecture supports millions.
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | **Orchestration** | CrewAI | Multi-agent sequential debate with context chaining |
+| **Swarm** | Python ThreadPoolExecutor | 20 parallel scouts pre-gather evidence before debate |
 | **Models** | Llama 3.3 70B, Qwen 3 32B, Mistral Small 24B | Three architectures, three perspectives |
 | **Serving** | vLLM on NVIDIA DGX Spark | Local high-throughput inference |
 | **RAG** | ChromaDB + all-MiniLM-L6-v2 | 31,668-chunk evidence retrieval |
@@ -183,6 +184,7 @@ python crew.py
 ```
 War-Room/
 ├── crew.py            # 4-round adversarial debate pipeline + agent definitions
+├── swarm.py           # Reconnaissance swarm — 20 parallel scouts pre-gather evidence
 ├── meta_prompt.py     # Dynamic persona generation via meta-prompting
 ├── tools.py           # ChromaDB RAG tools — 7 specialized search functions
 ├── requirements.txt   # Dependencies
