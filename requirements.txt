@@ -1,2 +1,5 @@
 crewai
 chromadb
+fastapi
+uvicorn
+websockets

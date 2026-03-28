@@ -33,7 +33,7 @@ ALL_TOOLS = [
 ]
 
 
-def build_crew(product_description: str) -> Crew:
+def build_crew(product_description: str, task_callback=None) -> Crew:
     """Build the War Room crew with dynamically generated personas."""
 
     # --- Step 1: Generate personas via meta-prompt ---
@@ -186,6 +186,7 @@ You are spending real budget. Make the decision. Own it.""",
         tasks=[round1, round2, round3, round4],
         process=Process.sequential,
         verbose=True,
+        task_callback=task_callback,
     )
 
     return crew
