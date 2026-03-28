@@ -86,8 +86,8 @@ def search_hn_comments(query: str) -> str:
 
 @tool("Search Competitor Data")
 def search_competitor_data(query: str) -> str:
-    """Search metadata, pricing, features, and competitive comparisons for productivity apps."""
-    return f"[RAG not connected yet] No results for: {query}"
+    """Search app metadata and overviews including pricing, features, and category information for 20 productivity apps."""
+    return _query_collection(query, where={"source": "metadata"})
 
 
 @tool("Search Screenshots")
