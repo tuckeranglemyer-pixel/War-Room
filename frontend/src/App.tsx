@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import Landing from './components/Landing'
+import ContextForm from './components/ContextForm'
 import DebateStream from './components/DebateStream'
 import VerdictCard from './components/VerdictCard'
 import './index.css'
 
-type View = 'landing' | 'debate' | 'verdict'
+type View = 'landing' | 'context' | 'debate' | 'verdict'
 
 export interface VerdictData {
   score: number
@@ -18,10 +19,14 @@ export default function App() {
   const [sessionId, setSessionId] = useState('')
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
 
-  function handleSelectProduct(name: string, sid: string) {
+  function handleSelectProduct(name: string) {
     setProduct(name)
-    setSessionId(sid)
     setVerdictData(null)
+    setView('context')
+  }
+
+  function handleContextComplete(sid: string) {
+    setSessionId(sid)
     setView('debate')
   }
 
@@ -41,6 +46,13 @@ export default function App() {
     <div style={{ minHeight: '100vh', background: '#0A0B0F' }}>
       {view === 'landing' && (
         <Landing onSelectProduct={handleSelectProduct} />
+      )}
+      {view === 'context' && (
+        <ContextForm
+          productName={product}
+          onComplete={handleContextComplete}
+          onBack={handleBack}
+        />
       )}
       {view === 'debate' && (
         <DebateStream
