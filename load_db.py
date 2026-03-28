@@ -32,7 +32,7 @@ def load_chunks() -> list[dict]:
         KeyError: If the JSON document lacks a ``chunks`` key.
     """
     print(f"Loading chunks from {CHUNKS_PATH}...")
-    with open(CHUNKS_PATH) as handle:
+    with open(CHUNKS_PATH, encoding="utf-8") as handle:
         data = json.load(handle)
     chunks = data["chunks"]
     print(f"  → {len(chunks):,} chunks found")
