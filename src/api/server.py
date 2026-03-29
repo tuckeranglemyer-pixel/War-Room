@@ -46,6 +46,7 @@ from src.inference.model_config import (
     FALLBACK_MODEL,
     FIRST_TIMER_MODEL,
 )
+import src.config as _cfg
 from src.orchestration.adaptive_runner import AdaptiveRunner
 from src.orchestration.adversarial_debate_engine import build_crew
 from src.orchestration.response_synthesizer import parse_verdict
@@ -622,6 +623,36 @@ async def get_report(session_id: str) -> JSONResponse:
         raise HTTPException(status_code=404, detail="Report not found. Run analysis first.")
     with open(report_path) as f:
         return JSONResponse(content=json.load(f))
+
+
+# ---------------------------------------------------------------------------
+# Execution mode toggle
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/config/mode", tags=["meta"])
+async def get_execution_mode() -> dict[str, str]:
+    """Return the current execution mode ('dgx' or 'cloud')."""
+    return {"mode": _cfg.EXECUTION_MODE}
+
+
+@app.post("/api/config/mode/{mode}", tags=["meta"])
+async def set_execution_mode(mode: str) -> dict[str, str]:
+    """Switch execution mode at runtime without restarting the server.
+
+    Args:
+        mode: 'dgx' for local Ollama on DGX Spark, 'cloud' for OpenAI GPT-4o.
+
+    Raises:
+        400: Invalid mode value.
+    """
+    if mode not in ("dgx", "cloud"):
+        raise HTTPException(status_code=400, detail="Mode must be 'dgx' or 'cloud'")
+    _cfg.EXECUTION_MODE = mode
+    _cfg.THERMAL_GOVERNOR_ENABLED = mode == "dgx"
+    _cfg.COOLING_ENABLED = mode == "dgx"
+    label = "DGX Spark — Local Ollama" if mode == "dgx" else "Cloud API — OpenAI GPT-4o"
+    return {"mode": mode, "message": f"Switched to {label}"}
 
 
 # ---------------------------------------------------------------------------

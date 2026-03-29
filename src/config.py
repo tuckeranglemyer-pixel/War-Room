@@ -1,10 +1,11 @@
 """
 Configuration for the War Room parallel analysis pipeline.
 
-Update VLLM_ENDPOINTS if model ports change on the DGX Spark.
-These are separate from the Ollama-based dev settings in
-``src/inference/model_config.py``; both configs coexist so the legacy
-debate engine and the new parallel pipeline can run side by side.
+Supports two execution modes:
+  dgx   — Local Ollama on DGX Spark (default: qwen3:32b). Sequential with thermal management.
+  cloud — OpenAI API (gpt-4o). Parallel execution, no thermal constraints.
+
+Toggle via WAR_ROOM_MODE env var, or at runtime via POST /api/config/mode/{mode}.
 """
 
 from __future__ import annotations
@@ -15,8 +16,66 @@ from src.inference.model_config import _get_str, _get_int  # noqa: PLC2701
 
 
 # ---------------------------------------------------------------------------
-# vLLM endpoints — three specialist roles mapped to distinct model defaults
-# Adaptive fallback routes all through FALLBACK_MODEL when DGX thermal constraints require it
+# Execution mode
+# ---------------------------------------------------------------------------
+
+# "dgx" for local Ollama on DGX Spark, "cloud" for OpenAI API
+EXECUTION_MODE: str = os.environ.get("WAR_ROOM_MODE", "cloud")
+
+# ---------------------------------------------------------------------------
+# Per-mode endpoint configs
+# ---------------------------------------------------------------------------
+
+DGX_CONFIG: dict[str, dict[str, str]] = {
+    "strategist": {
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": os.environ.get("WAR_ROOM_MODEL", "qwen3:32b"),
+    },
+    "ux_analyst": {
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": os.environ.get("WAR_ROOM_MODEL", "qwen3:32b"),
+    },
+    "market_researcher": {
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": os.environ.get("WAR_ROOM_MODEL", "qwen3:32b"),
+    },
+}
+
+CLOUD_CONFIG: dict[str, dict[str, str]] = {
+    "strategist": {
+        "url": "https://api.openai.com/v1/chat/completions",
+        "model": "gpt-4o",
+    },
+    "ux_analyst": {
+        "url": "https://api.openai.com/v1/chat/completions",
+        "model": "gpt-4o",
+    },
+    "market_researcher": {
+        "url": "https://api.openai.com/v1/chat/completions",
+        "model": "gpt-4o",
+    },
+}
+
+
+def get_endpoints() -> dict[str, dict[str, str]]:
+    """Return the active endpoint config for the current execution mode."""
+    if EXECUTION_MODE == "dgx":
+        return DGX_CONFIG
+    return CLOUD_CONFIG
+
+
+# ---------------------------------------------------------------------------
+# Hardware governor flags — only meaningful in DGX mode
+# ---------------------------------------------------------------------------
+
+# Thermal governor and cooling pauses are only active in DGX mode.
+# These are updated together with EXECUTION_MODE by the /api/config/mode endpoint.
+THERMAL_GOVERNOR_ENABLED: bool = EXECUTION_MODE == "dgx"
+COOLING_ENABLED: bool = EXECUTION_MODE == "dgx"
+
+# ---------------------------------------------------------------------------
+# Legacy vLLM endpoints — kept for backward compatibility with other modules
+# that import VLLM_ENDPOINTS directly.
 # ---------------------------------------------------------------------------
 
 VLLM_ENDPOINTS = {
@@ -34,7 +93,6 @@ VLLM_ENDPOINTS = {
     },
 }
 
-# Challenge pass reuses the Strategist endpoint
 CHALLENGE_ENDPOINT = VLLM_ENDPOINTS["strategist"]
 
 # Frame extraction settings

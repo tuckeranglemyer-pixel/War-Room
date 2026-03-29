@@ -1,31 +1,34 @@
 """
 Adaptive Runner — Hardware-aware execution engine for the War Room analysis pipeline.
 
-Implements three execution tiers that automatically select based on real-time GPU telemetry:
+Supports two execution modes controlled by src.config.EXECUTION_MODE:
 
-  Tier 2 (Sequential): 1 model at a time via Ollama with cooling pauses.
-                        Uses qwen3:32b. Default for healthy DGX Spark.
-  Tier 3 (Micro):       Ultra-conservative — halved context, llama3.1:8b, 60s cooling.
-                        Used when GPU temp >= 65°C or RAM >= 60%.
+  cloud (default): Calls OpenAI GPT-4o. First three analysts run in PARALLEL via
+                   asyncio.gather — no GPU constraints, no thermal pauses.
 
-Tier 1 (Full parallel vLLM) is architecturally documented in ARCHITECTURE.md but
-is not implemented here because simultaneous 3-model loading is the root cause of
-the DGX Spark power-loss crashes. Sequential execution prevents cumulative VRAM
-pressure from triggering the thermal shutdown circuit.
+  dgx:             Runs local Ollama on the DGX Spark. Three execution tiers
+                   selected based on real-time GPU telemetry:
 
-Key safety properties:
+    Tier 2 (Sequential): 1 model at a time via Ollama with cooling pauses.
+                          Uses qwen3:32b. Default for healthy DGX Spark.
+    Tier 3 (Micro):       Ultra-conservative — halved context, llama3.1:8b, 60s cooling.
+                          Used when GPU temp >= 65°C or RAM >= 60%.
+
+Key safety properties (DGX mode only):
   - All models are unloaded before starting (ollama_stop_all)
   - GPU temp is checked before every round; execution blocks until THERMAL_RESUME_C
   - Context is trimmed to MAX_CONTEXT_CHARS before any inference call
-  - Deliverable is persisted to disk before returning so a crash mid-delivery
-    does not lose the result
-  - Execution metadata (tier, model, timing, GPU temps) is embedded in every
-    deliverable.json for post-mortem analysis
+
+Universal:
+  - Deliverable is persisted to disk before returning
+  - Execution metadata (mode, model, timing, GPU temps) embedded in deliverable.json
 
 Env vars:
+  WAR_ROOM_MODE            — "cloud" (default) or "dgx"
+  OPENAI_API_KEY           — Required in cloud mode
   OLLAMA_URL               — Ollama completions endpoint (default: localhost:11434/v1/...)
-  WAR_ROOM_MODEL           — Tier 2 model tag (default: qwen3:32b)
-  WAR_ROOM_FALLBACK_MODEL  — Tier 3 model tag (default: llama3.1:8b)
+  WAR_ROOM_MODEL           — DGX Tier 2 model tag (default: qwen3:32b)
+  WAR_ROOM_FALLBACK_MODEL  — DGX Tier 3 model tag (default: llama3.1:8b)
   THERMAL_CEILING          — Block inference above this °C (default: 70)
   THERMAL_RESUME           — Resume inference below this °C (default: 55)
   COOLDOWN_SECONDS         — Inter-round pause in seconds (default: 30)
@@ -331,19 +334,28 @@ class AdaptiveRunner:
         logger.warning("Trimming context %d → %d chars for thermal safety", len(text), max_chars)
         return text[:max_chars] + "\n\n[Context trimmed for thermal safety]"
 
-    async def _call_ollama(
+    async def _call_model(
         self,
-        model: str,
+        session: "aiohttp.ClientSession",
+        endpoint: dict[str, str],
         system_prompt: str,
         user_prompt: str,
         max_tokens: int = 4096,
     ) -> dict[str, Any]:
-        """Send a single chat completion to Ollama and parse the JSON response.
+        """Send a single chat completion to the configured endpoint and parse JSON.
 
+        Works with both Ollama (DGX mode) and OpenAI (cloud mode).
         Returns a dict — either the parsed JSON or {"error": "..."} on failure.
         """
-        payload = {
-            "model": model,
+        import src.config as _cfg  # imported here so runtime mode changes are reflected
+
+        headers: dict[str, str] = {"Content-Type": "application/json"}
+        if _cfg.EXECUTION_MODE == "cloud":
+            api_key = os.environ.get("OPENAI_API_KEY", "")
+            headers["Authorization"] = f"Bearer {api_key}"
+
+        payload: dict[str, Any] = {
+            "model": endpoint["model"],
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
@@ -352,16 +364,24 @@ class AdaptiveRunner:
             "temperature": 0.3,
         }
 
+        # OpenAI uses response_format; Ollama uses format
+        if _cfg.EXECUTION_MODE == "cloud":
+            payload["response_format"] = {"type": "json_object"}
+        else:
+            payload["format"] = "json"
+
         content: str = ""
         try:
             timeout = aiohttp.ClientTimeout(total=300)
-            async with aiohttp.ClientSession() as session:
-                async with session.post(OLLAMA_URL, json=payload, timeout=timeout) as resp:
-                    if resp.status != 200:
-                        error_text = await resp.text()
-                        return {"error": f"Ollama returned HTTP {resp.status}: {error_text[:200]}"}
-                    data = await resp.json()
-                    content = data["choices"][0]["message"]["content"]
+            async with session.post(
+                endpoint["url"], json=payload, headers=headers, timeout=timeout
+            ) as resp:
+                if resp.status != 200:
+                    error_text = await resp.text()
+                    source = "OpenAI" if _cfg.EXECUTION_MODE == "cloud" else "Ollama"
+                    return {"error": f"{source} returned HTTP {resp.status}: {error_text[:200]}"}
+                data = await resp.json()
+                content = data["choices"][0]["message"]["content"]
 
             # Strip any markdown fences the model may wrap around the JSON
             content = content.strip()
@@ -380,9 +400,9 @@ class AdaptiveRunner:
                 "raw_preview": content[:500],
             }
         except asyncio.TimeoutError:
-            return {"error": "Ollama timed out after 300s"}
+            return {"error": "Request timed out after 300s"}
         except Exception as exc:
-            return {"error": f"Ollama call failed: {exc}"}
+            return {"error": f"Model call failed: {exc}"}
 
     async def run_analysis(
         self,
@@ -427,6 +447,8 @@ class AdaptiveRunner:
         Returns:
             Deliverable dict including verdicts from all four analysts plus metadata.
         """
+        import src.config as _cfg
+
         from src.prompts.market_researcher import (
             MARKET_RESEARCHER_SYSTEM_PROMPT,
             build_market_researcher_prompt,
@@ -438,21 +460,36 @@ class AdaptiveRunner:
         from src.prompts.strategist import STRATEGIST_SYSTEM_PROMPT, build_strategist_prompt
         from src.prompts.ux_analyst import UX_ANALYST_SYSTEM_PROMPT, build_ux_analyst_prompt
 
-        tier = self._select_tier()
-        self.tier_used = tier
-        model = PREFERRED_MODEL if tier == 2 else FALLBACK_MODEL
-        max_ctx = MAX_CONTEXT_CHARS if tier == 2 else MAX_CONTEXT_CHARS // 2
-        cooldown = COOLDOWN_SECONDS if tier == 2 else COOLDOWN_SECONDS * 2
+        execution_mode = _cfg.EXECUTION_MODE
+        endpoints = _cfg.get_endpoints()
 
-        logger.info("=" * 60)
-        logger.info("ADAPTIVE RUNNER — Tier %d", tier)
-        logger.info("Model: %s | Max context: %d chars | Cooldown: %ds", model, max_ctx, cooldown)
-        logger.info("=" * 60)
+        # ── Mode-specific setup ───────────────────────────────────────────────
+        if execution_mode == "cloud":
+            model = endpoints["strategist"]["model"]
+            tier: Optional[int] = None
+            max_ctx = MAX_CONTEXT_CHARS
+            cooldown = 1  # minimal pause only
 
-        # Unload everything before starting to reclaim VRAM
-        self.monitor.unload_all_models()
-        await asyncio.sleep(5)
-        self.monitor.wait_for_cool()
+            logger.info("=" * 60)
+            logger.info("ADAPTIVE RUNNER — CLOUD MODE")
+            logger.info("Model: %s | Parallel execution | No thermal constraints", model)
+            logger.info("=" * 60)
+        else:
+            tier = self._select_tier()
+            self.tier_used = tier
+            model = PREFERRED_MODEL if tier == 2 else FALLBACK_MODEL
+            max_ctx = MAX_CONTEXT_CHARS if tier == 2 else MAX_CONTEXT_CHARS // 2
+            cooldown = COOLDOWN_SECONDS if tier == 2 else COOLDOWN_SECONDS * 2
+
+            logger.info("=" * 60)
+            logger.info("ADAPTIVE RUNNER — DGX MODE — Tier %d", tier)
+            logger.info("Model: %s | Max context: %d chars | Cooldown: %ds", model, max_ctx, cooldown)
+            logger.info("=" * 60)
+
+            # Unload everything before starting to reclaim VRAM
+            self.monitor.unload_all_models()
+            await asyncio.sleep(5)
+            self.monitor.wait_for_cool()
 
         # Trim all evidence blocks to prevent KV cache pressure
         comparison_cards_json = self._trim_context(comparison_cards_json, max_ctx)
@@ -463,102 +500,154 @@ class AdaptiveRunner:
 
         results: dict[str, Any] = {}
 
-        # --- Round definitions ---
-        rounds = [
-            (
-                "strategist",
-                "Strategist",
-                STRATEGIST_SYSTEM_PROMPT,
-                lambda: build_strategist_prompt(
-                    product_name, product_description, target_user, differentiator,
-                    product_stage, competitors, comparison_cards_json, agent_brief,
-                    curated_evidence_json, n_screenshots, n_apps, n_reviews,
-                ),
-            ),
-            (
-                "ux_analyst",
-                "UX Analyst",
-                UX_ANALYST_SYSTEM_PROMPT,
-                lambda: build_ux_analyst_prompt(
-                    product_name, product_description, target_user, differentiator,
-                    product_stage, frame_analyses_json, screenshot_matches_json,
-                    comparison_cards_json,
-                ),
-            ),
-            (
-                "market_researcher",
-                "Market Researcher",
-                MARKET_RESEARCHER_SYSTEM_PROMPT,
-                lambda: build_market_researcher_prompt(
-                    product_name, product_description, target_user, differentiator,
-                    product_stage, competitors, curated_evidence_json,
-                    comparison_cards_json, agent_brief,
-                ),
-            ),
-        ]
+        # ── Build all prompts up front ────────────────────────────────────────
+        strategist_prompt = build_strategist_prompt(
+            product_name, product_description, target_user, differentiator,
+            product_stage, competitors, comparison_cards_json, agent_brief,
+            curated_evidence_json, n_screenshots, n_apps, n_reviews,
+        )
+        ux_prompt = build_ux_analyst_prompt(
+            product_name, product_description, target_user, differentiator,
+            product_stage, frame_analyses_json, screenshot_matches_json,
+            comparison_cards_json,
+        )
+        market_prompt = build_market_researcher_prompt(
+            product_name, product_description, target_user, differentiator,
+            product_stage, competitors, curated_evidence_json,
+            comparison_cards_json, agent_brief,
+        )
 
-        # --- Run first three analysts sequentially ---
-        for i, (key, label, sys_prompt, build_prompt) in enumerate(rounds):
-            logger.info("\n[ROUND %d/4] %s", i + 1, label)
-            self.monitor.wait_for_cool()
+        # ── Run first three analysts ──────────────────────────────────────────
+        async with aiohttp.ClientSession() as http_session:
 
-            health_before = self.monitor.full_health_check()
-            logger.info(
-                "  Pre-inference: GPU %s°C | RAM %s%%",
-                health_before["gpu_temp"],
-                health_before["ram"]["percent"],
-            )
+            if execution_mode == "cloud":
+                # PARALLEL — no GPU constraints in cloud mode
+                logger.info("\n[ROUNDS 1-3] Running analysts in parallel (cloud mode)")
+                pipeline_start = time.time()
 
-            start = time.time()
-            result = await self._call_ollama(model, sys_prompt, build_prompt())
-            elapsed = time.time() - start
+                strategist_out, ux_out, market_out = await asyncio.gather(
+                    self._call_model(
+                        http_session, endpoints["strategist"],
+                        STRATEGIST_SYSTEM_PROMPT, strategist_prompt,
+                    ),
+                    self._call_model(
+                        http_session, endpoints["ux_analyst"],
+                        UX_ANALYST_SYSTEM_PROMPT, ux_prompt,
+                    ),
+                    self._call_model(
+                        http_session, endpoints["market_researcher"],
+                        MARKET_RESEARCHER_SYSTEM_PROMPT, market_prompt,
+                    ),
+                )
 
-            if "error" not in result:
-                if key == "strategist":
-                    result = normalize_strategist(result)
-                elif key == "ux_analyst":
-                    result = normalize_ux_analyst(result)
-                elif key == "market_researcher":
-                    result = normalize_market_researcher(result)
+                parallel_elapsed = round(time.time() - pipeline_start, 1)
+                logger.info("  Parallel analysts complete in %.1fs", parallel_elapsed)
 
-            status = "OK" if "error" not in result else f"FAILED: {result['error'][:80]}"
-            logger.info("  %s: %s (%.1fs)", label, status, elapsed)
+                for key, label, raw in [
+                    ("strategist", "Strategist", strategist_out),
+                    ("ux_analyst", "UX Analyst", ux_out),
+                    ("market_researcher", "Market Researcher", market_out),
+                ]:
+                    if "error" not in raw:
+                        if key == "strategist":
+                            raw = normalize_strategist(raw)
+                        elif key == "ux_analyst":
+                            raw = normalize_ux_analyst(raw)
+                        elif key == "market_researcher":
+                            raw = normalize_market_researcher(raw)
+                    status = "OK" if "error" not in raw else f"FAILED: {raw['error'][:80]}"
+                    logger.info("  %s: %s", label, status)
+                    results[key] = raw
+                    self.execution_log.append({
+                        "round": label,
+                        "mode": "cloud",
+                        "model": model,
+                        "elapsed_seconds": parallel_elapsed,
+                        "status": status,
+                    })
 
-            results[key] = result
-            self.execution_log.append({
-                "round": label,
-                "model": model,
-                "tier": tier,
-                "elapsed_seconds": round(elapsed, 1),
-                "status": status,
-                "gpu_temp_before": health_before["gpu_temp"],
-            })
-
-            if i < len(rounds) - 1:
-                logger.info("  Cooling pause: %ds", cooldown)
                 await asyncio.sleep(cooldown)
 
-        # --- Round 4: Partner Review ---
-        logger.info("\n[ROUND 4/4] Partner Review")
-        self.monitor.wait_for_cool()
+            else:
+                # SEQUENTIAL with thermal management — DGX mode
+                analyst_rounds = [
+                    ("strategist", "Strategist", STRATEGIST_SYSTEM_PROMPT,
+                     strategist_prompt, "strategist"),
+                    ("ux_analyst", "UX Analyst", UX_ANALYST_SYSTEM_PROMPT,
+                     ux_prompt, "ux_analyst"),
+                    ("market_researcher", "Market Researcher", MARKET_RESEARCHER_SYSTEM_PROMPT,
+                     market_prompt, "market_researcher"),
+                ]
 
-        partner_prompt = build_partner_review_prompt(
-            product_name,
-            product_description,
-            target_user,
-            differentiator,
-            product_stage,
-            json.dumps(results.get("strategist", {}), indent=2),
-            json.dumps(results.get("ux_analyst", {}), indent=2),
-            json.dumps(results.get("market_researcher", {}), indent=2),
-        )
-        challenge_out = await self._call_ollama(
-            model, PARTNER_REVIEW_SYSTEM_PROMPT, partner_prompt, max_tokens=2048
-        )
-        if "error" not in challenge_out:
-            challenge_out = normalize_challenge(challenge_out)
-        partner_status = "OK" if "error" not in challenge_out else "FAILED"
-        logger.info("  Partner Review: %s", partner_status)
+                for i, (key, label, sys_prompt, user_prompt_str, ep_key) in enumerate(analyst_rounds):
+                    logger.info("\n[ROUND %d/4] %s", i + 1, label)
+                    self.monitor.wait_for_cool()
+
+                    health_before = self.monitor.full_health_check()
+                    logger.info(
+                        "  Pre-inference: GPU %s°C | RAM %s%%",
+                        health_before["gpu_temp"],
+                        health_before["ram"]["percent"],
+                    )
+
+                    start = time.time()
+                    result = await self._call_model(
+                        http_session, endpoints[ep_key], sys_prompt, user_prompt_str,
+                    )
+                    elapsed = time.time() - start
+
+                    if "error" not in result:
+                        if key == "strategist":
+                            result = normalize_strategist(result)
+                        elif key == "ux_analyst":
+                            result = normalize_ux_analyst(result)
+                        elif key == "market_researcher":
+                            result = normalize_market_researcher(result)
+
+                    status = "OK" if "error" not in result else f"FAILED: {result['error'][:80]}"
+                    logger.info("  %s: %s (%.1fs)", label, status, elapsed)
+
+                    results[key] = result
+                    self.execution_log.append({
+                        "round": label,
+                        "mode": "dgx",
+                        "model": model,
+                        "tier": tier,
+                        "elapsed_seconds": round(elapsed, 1),
+                        "status": status,
+                        "gpu_temp_before": health_before["gpu_temp"],
+                    })
+
+                    if i < len(analyst_rounds) - 1:
+                        logger.info("  Cooling pause: %ds", cooldown)
+                        await asyncio.sleep(cooldown)
+
+            # --- Round 4: Partner Review ---
+            logger.info("\n[ROUND 4/4] Partner Review")
+
+            if execution_mode == "dgx":
+                self.monitor.wait_for_cool()
+
+            partner_prompt = build_partner_review_prompt(
+                product_name,
+                product_description,
+                target_user,
+                differentiator,
+                product_stage,
+                json.dumps(results.get("strategist", {}), indent=2),
+                json.dumps(results.get("ux_analyst", {}), indent=2),
+                json.dumps(results.get("market_researcher", {}), indent=2),
+            )
+
+            partner_endpoint = endpoints.get("strategist", endpoints[next(iter(endpoints))])
+            challenge_out = await self._call_model(
+                http_session, partner_endpoint,
+                PARTNER_REVIEW_SYSTEM_PROMPT, partner_prompt, max_tokens=2048,
+            )
+            if "error" not in challenge_out:
+                challenge_out = normalize_challenge(challenge_out)
+            partner_status = "OK" if "error" not in challenge_out else "FAILED"
+            logger.info("  Partner Review: %s", partner_status)
 
         # --- Normalise schema before assembly ---
         # Clamp final_score to 0-10 range (prompt asks for 0-10, but guard against
@@ -632,20 +721,26 @@ class AdaptiveRunner:
                 logger.warning("Could not inject comparison cards: %s", _inject_exc)
 
         # --- Assemble deliverable ---
+        exec_meta: dict[str, Any] = {
+            "mode": execution_mode,
+            "model": model,
+            "max_context_chars": max_ctx,
+            "execution_log": self.execution_log,
+        }
+        if execution_mode == "dgx":
+            exec_meta.update({
+                "tier": tier,
+                "thermal_ceiling_c": THERMAL_CEILING,
+                "thermal_resume_c": THERMAL_RESUME,
+                "cooldown_seconds": cooldown,
+            })
+
         deliverable: dict[str, Any] = {
             "product_name": product_name,
             "product_description": product_description,
             "target_user": target_user,
             "analysis_timestamp": datetime.now(timezone.utc).isoformat(),
-            "execution_metadata": {
-                "tier": tier,
-                "model": model,
-                "thermal_ceiling_c": THERMAL_CEILING,
-                "thermal_resume_c": THERMAL_RESUME,
-                "cooldown_seconds": cooldown,
-                "max_context_chars": max_ctx,
-                "execution_log": self.execution_log,
-            },
+            "execution_metadata": exec_meta,
             "verdict": {
                 "headline": challenge_out.get("headline", "Analysis complete"),
                 "score": score_float,
