@@ -682,6 +682,7 @@ async def run_analysis(session_id: str, background_tasks: BackgroundTasks) -> JS
             ),
         )
 
+    ANALYSIS_STATUS[session_id] = "pending"
     background_tasks.add_task(_run_analysis_bg, session_id, evidence)
 
     return JSONResponse(

@@ -237,6 +237,8 @@ export interface AnalysisPipelineProps {
   /** Current execution mode — controls which model names are shown on specialist cards. */
   execMode?: 'cloud' | 'dgx'
   onBack: () => void
+  /** Called with the session ID when the pipeline completes — navigate to report view. */
+  onReportReady?: (sessionId: string) => void
 }
 
 /**
@@ -256,6 +258,7 @@ export default function AnalysisPipeline({
   error = '',
   execMode = 'cloud',
   onBack,
+  onReportReady,
 }: AnalysisPipelineProps) {
   const SPECIALISTS = execMode === 'dgx' ? DGX_SPECIALISTS : CLOUD_SPECIALISTS
   // 0=frames 1=vision 2=matching 3=evidence 4=specialists 5=assembly
@@ -456,10 +459,16 @@ export default function AnalysisPipeline({
     const t1 = setTimeout(() => setShowDeliverable(true), 1800)
     const t2 = setTimeout(() => {
       const sid = sessionIdRef.current
-      if (sid) window.location.href = `/report/${sid}`
+      if (sid) {
+        if (onReportReady) {
+          onReportReady(sid)
+        } else {
+          window.location.href = `/report/${sid}`
+        }
+      }
     }, 3200)
     return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [stageIndex])
+  }, [stageIndex, onReportReady])
 
   const TOTAL_STAGES = 6
   const displayStage = Math.min(stageIndex + 1, TOTAL_STAGES)

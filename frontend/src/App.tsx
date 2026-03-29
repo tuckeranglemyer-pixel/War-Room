@@ -4,12 +4,13 @@ import Landing from './components/Landing'
 import ContextForm from './components/ContextForm'
 import DebateStream from './components/DebateStream'
 import VerdictCard from './components/VerdictCard'
+import Report from './components/Report'
 import { fadeScale, spring } from './animations'
 import './index.css'
 
-const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
+import { API_BASE } from './config'
 
-type View = 'landing' | 'context' | 'starting' | 'debate' | 'verdict'
+type View = 'landing' | 'context' | 'starting' | 'debate' | 'verdict' | 'report'
 
 export interface RoundData {
   round: number
@@ -38,6 +39,7 @@ export default function App() {
   const [product, setProduct] = useState('')
   const [sessionId, setSessionId] = useState('')
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
+  const [reportSessionId, setReportSessionId] = useState<string | null>(null)
 
   /**
    * Freeform input path: advance to the context wizard to collect product
@@ -89,7 +91,13 @@ export default function App() {
 
   function handleViewReport() {
     const id = sessionId || 'demo'
-    window.location.href = `/report/${id}`
+    setReportSessionId(id)
+    setView('report')
+  }
+
+  function handleReportReady(sid: string) {
+    setReportSessionId(sid)
+    setView('report')
   }
 
   /**
@@ -109,6 +117,7 @@ export default function App() {
     setProduct('')
     setSessionId('')
     setVerdictData(null)
+    setReportSessionId(null)
   }
 
   return (
@@ -142,6 +151,7 @@ export default function App() {
               productName={product}
               onComplete={handleContextComplete}
               onBack={handleBack}
+              onReportReady={handleReportReady}
             />
           </motion.div>
         )}
@@ -231,6 +241,18 @@ export default function App() {
                 View Full Report
               </button>
             </div>
+          </motion.div>
+        )}
+        {view === 'report' && reportSessionId && (
+          <motion.div
+            key="report"
+            initial={fadeScale.initial}
+            animate={fadeScale.animate}
+            exit={fadeScale.exit}
+            transition={spring.gentle}
+            style={{ minHeight: '100vh' }}
+          >
+            <Report sessionId={reportSessionId} />
           </motion.div>
         )}
       </AnimatePresence>

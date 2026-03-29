@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './Report.css'
-
-const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
+import { API_BASE } from '../config'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types

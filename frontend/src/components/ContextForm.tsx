@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import AnalysisPipeline from './AnalysisPipeline'
-
-const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
+import { API_BASE } from '../config'
 
 type ExecutionMode = 'dgx' | 'cloud'
 
@@ -9,6 +8,7 @@ interface ContextFormProps {
   productName: string
   onComplete: (sessionId: string) => void
   onBack: () => void
+  onReportReady?: (sessionId: string) => void
 }
 
 const TOTAL_STEPS = 6
@@ -65,7 +65,7 @@ type SubmitStatus = 'uploading' | 'analyzing'
  * @param onComplete - Callback receiving the WebSocket session ID on successful submission.
  * @param onBack - Callback to return to the previous view (landing or prior step).
  */
-export default function ContextForm({ productName, onComplete, onBack }: ContextFormProps) {
+export default function ContextForm({ productName, onComplete, onBack, onReportReady }: ContextFormProps) {
   const [step, setStep] = useState(0)
   const [visible, setVisible] = useState(true)
   const [inputFocused, setInputFocused] = useState(false)
@@ -265,6 +265,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
           error={error}
           execMode={execMode}
           onBack={() => { setSubmitting(false); setError('') }}
+          onReportReady={onReportReady}
         />
       )
     }
