@@ -19,14 +19,17 @@ except ImportError:  # pragma: no cover
 
 
 def _repo_root() -> Path:
+    """Return the repository root (two levels above this file)."""
     return Path(__file__).resolve().parents[2]
 
 
 def _load_env() -> None:
+    """Load .env from the repository root if present."""
     load_dotenv(_repo_root() / ".env")
 
 
 def _get_str(key: str, default: str) -> str:
+    """Return a non-empty env var string, or default if unset or blank."""
     raw = os.environ.get(key)
     if raw is None or not str(raw).strip():
         return default
@@ -34,6 +37,7 @@ def _get_str(key: str, default: str) -> str:
 
 
 def _get_int(key: str, default: int) -> int:
+    """Return an env var parsed as int, or default if unset, blank, or non-numeric."""
     raw = os.environ.get(key)
     if raw is None or not str(raw).strip():
         return default
