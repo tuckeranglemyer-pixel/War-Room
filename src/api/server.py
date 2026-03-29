@@ -438,9 +438,9 @@ def extract_key_frames(video_path: str, output_dir: str, threshold: float = 0.3)
         subprocess.run(cmd_fallback, capture_output=True, text=True)
         frames = sorted(Path(output_dir).glob("frame_*.jpg"))
 
-    if len(frames) > 30:
-        step = len(frames) // 30
-        frames = frames[::step][:30]
+    if len(frames) > 10:
+        step = len(frames) // 10
+        frames = frames[::step][:10]
 
     return frames
 
