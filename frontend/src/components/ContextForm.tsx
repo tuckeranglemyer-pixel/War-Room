@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'http://localhost:8000'
+
 interface ContextFormProps {
   productName: string
   onComplete: (sessionId: string) => void
@@ -157,18 +159,17 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   }
 
   /**
-   * Submit the collected context to the backend and start the debate session.
+   * Submit the collected context to the backend.
    *
-   * If a video file is present, uploads it to POST /api/ingest/video first and
-   * waits for frame analysis. Then calls POST /analyze with all context fields,
-   * retrieves the WebSocket session ID, and calls ``onComplete``.
+   * Video path: POST /api/ingest/video → POST /api/analyze/{session_id} → /report/{session_id}
+   * No-video path: POST /analyze (legacy debate stream) → onComplete(session_id)
    */
   async function runSubmit() {
     setSubmitting(true)
     setError('')
-    let uploadSessionId = ''
     try {
       if (videoFile) {
+        // ── Video path ────────────────────────────────────────────────────
         setSubmitStatus('uploading')
         const formData = new FormData()
         formData.append('file', videoFile)
@@ -180,7 +181,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         formData.append('product_stage', answers.productStage)
 
         const extractTimer = setTimeout(() => setSubmitStatus('extracting'), 2000)
-        const ingestRes = await fetch('http://localhost:8000/api/ingest/video', {
+        const ingestRes = await fetch(`${API_BASE}/api/ingest/video`, {
           method: 'POST',
           body: formData,
         })
@@ -188,17 +189,26 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         if (!ingestRes.ok) throw new Error(`Ingest error ${ingestRes.status}`)
         const ingestData = await ingestRes.json()
         setFramesAnalyzed(ingestData.key_frames_analyzed ?? ingestData.frames_extracted ?? 0)
-        uploadSessionId = ingestData.session_id ?? ''
+        const sessionId = ingestData.session_id ?? ''
+
+        setSubmitStatus('analyzing')
+        const analysisRes = await fetch(`${API_BASE}/api/analyze/${sessionId}`, {
+          method: 'POST',
+        })
+        if (!analysisRes.ok) throw new Error(`Analysis error ${analysisRes.status}`)
+
+        setTimeout(() => { window.location.href = `/report/${sessionId}` }, 400)
+        return
       }
 
+      // ── No-video path: legacy debate stream ───────────────────────────
       setSubmitStatus('analyzing')
-      const analyzeRes = await fetch('http://localhost:8000/analyze', {
+      const analyzeRes = await fetch(`${API_BASE}/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           product_name: productName,
           product_description: answers.productDescription,
-          session_id: uploadSessionId,
           target_user: answers.targetUser,
           competitors: answers.competitors,
           differentiator: answers.differentiator,
@@ -219,7 +229,9 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     submitStatus === 'uploading'
       ? 'Uploading video...'
       : submitStatus === 'extracting'
-      ? `Analyzing video... ${framesAnalyzed} frames processed`
+      ? `Analyzing frames... ${framesAnalyzed > 0 ? `${framesAnalyzed} extracted` : 'processing'}`
+      : videoFile
+      ? 'Running analysis — this may take a few minutes...'
       : 'Starting War Room...'
 
   // ── Submitting screen ──────────────────────────────────────────────────

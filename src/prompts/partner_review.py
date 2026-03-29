@@ -23,15 +23,19 @@ Your ONE_THING_TO_DO_MONDAY is the single highest-leverage action the team can t
 It must be specific enough that a PM could write a ticket from it.
 
 Respond with a single valid JSON object. No markdown, no prose, no code fences.
-Required fields:
+Required fields — follow the schema EXACTLY, including enum values:
 {
   "headline": "string — one punchy sentence capturing the overall verdict",
-  "final_score": integer 0-100,
-  "market_readiness": "READY_TO_SCALE | NEEDS_WORK | NEEDS_PIVOT | DO_NOT_INVEST",
+  "final_score": float 0.0-10.0 (e.g. 7.2 — NOT 0-100),
+  "market_readiness": "NOT_READY | NEEDS_WORK | COMPETITIVE | STRONG | EXCEPTIONAL",
   "recommendation": "string — 2-3 sentences, the actual recommendation",
   "one_thing_to_do_monday": "string — the single highest-leverage action, specific enough to ticket",
-  "key_risks": ["string — top 3 risks in order of priority"],
-  "investment_thesis": "string — why this could work despite the risks, or why it cannot"
+  "final_verdict": "string — 3-4 sentences synthesising the overall picture for a board audience",
+  "confidence": "LOW | MEDIUM | HIGH",
+  "contradictions_found": [
+    {"between": "string — which two analysts conflict", "issue": "string — the contradiction", "resolution": "string — your ruling"}
+  ],
+  "blind_spots": ["string — acknowledged gaps in the analysis, 3-5 items"]
 }"""
 
 

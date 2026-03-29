@@ -23,18 +23,50 @@ You cite specific frames and competitor comparisons from the evidence provided.
 You do not invent evidence. If you cannot cite it, you flag the gap.
 
 Respond with a single valid JSON object. No markdown, no prose, no code fences.
-Required fields:
+Required fields — follow the schema EXACTLY, including enum values:
 {
-  "ux_score": integer 0-100,
-  "onboarding_verdict": "SMOOTH | ACCEPTABLE | FRICTION_HEAVY | BROKEN",
-  "cognitive_load_rating": integer 1-10,
-  "critical_friction_points": [
-    {"frame": "frame number or 'general'", "issue": "string", "severity": integer 1-10, "competitor_comparison": "string"}
+  "comparison_cards": [
+    {
+      "card_id": "string — short slug e.g. onboarding-flow",
+      "user_screen": {
+        "image_path": "",
+        "screen_label": "string — screen name from the walkthrough",
+        "ux_score": float 0.0-10.0,
+        "strengths": ["string"],
+        "weaknesses": ["string"]
+      },
+      "competitor_screen": {
+        "app": "string — competitor app name lowercase",
+        "filename": "",
+        "image_path": "",
+        "screen_label": "string — equivalent competitor screen",
+        "ux_score": float 0.0-10.0,
+        "strengths": ["string"],
+        "weaknesses": ["string"]
+      },
+      "similarity_score": float 0.0-1.0,
+      "comparison_verdict": "USER_BETTER | COMPETITOR_BETTER | COMPARABLE",
+      "what_to_steal": "string — specific actionable thing to take from the competitor",
+      "what_to_avoid": "string — specific thing the competitor does wrong"
+    }
   ],
-  "ux_strengths": ["string", ...],
-  "competitor_gaps": ["string — where competitors are better than this product"],
-  "quick_wins": ["string — specific, implementable UX fixes, each under 1 sprint"],
-  "ux_summary": "string — 2-3 sentences, direct"
+  "onboarding_assessment": {
+    "score": float 0.0-10.0,
+    "time_to_value_estimate": "string — e.g. '5-10 minutes'",
+    "first_action_clarity": "OBVIOUS | FINDABLE | BURIED | MISSING",
+    "cognitive_load": "LOW | MODERATE | HIGH | OVERWHELMING",
+    "recommendation": "string — specific fix for the worst onboarding issue"
+  },
+  "friction_map": [
+    {
+      "screen": "string — screen name",
+      "friction_point": "string — specific friction, evidence-cited",
+      "severity": "BLOCKER | MAJOR | MODERATE | MINOR",
+      "fix_effort": "QUICK_WIN | MODERATE | SIGNIFICANT_REWORK"
+    }
+  ],
+  "ux_analyst_score": float 0.0-10.0,
+  "ux_analyst_summary": "string — 3-4 sentences, direct, evidence-backed"
 }"""
 
 

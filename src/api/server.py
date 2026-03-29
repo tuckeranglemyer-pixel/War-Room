@@ -426,6 +426,14 @@ async def ingest_video(
             print(f"   WARNING: Screenshot matching failed: {exc}")
 
         VIDEO_EVIDENCE[session_id] = {
+            # Product context stored here so the analysis endpoint can read it
+            # even when synthesize_evidence doesn't echo these fields back.
+            "product_name": product_name,
+            "product_description": product_description,
+            "target_user": target_user,
+            "competitors": competitors,
+            "differentiator": differentiator,
+            "product_stage": product_stage,
             "frames_dir": str(frames_dir),
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
@@ -554,16 +562,22 @@ async def run_analysis(session_id: str) -> dict[str, Any]:
     synthesis = evidence.get("synthesis", {})
     comparison_cards = evidence.get("comparison_cards", [])
 
+    # Synthesis may not echo all product-context fields back (depends on
+    # synthesize_evidence implementation). Fall back to the values stored
+    # directly in VIDEO_EVIDENCE during ingest.
+    def _field(key: str, default: str = "") -> str:
+        return synthesis.get(key) or evidence.get(key, default)
+
     runner = AdaptiveRunner()
     try:
         deliverable = await runner.run_analysis(
             session_id=session_id,
-            product_name=synthesis.get("product_name", "Unknown Product"),
-            product_description=synthesis.get("product_description", ""),
-            target_user=synthesis.get("target_user", ""),
-            differentiator=synthesis.get("differentiator", ""),
-            product_stage=synthesis.get("product_stage", ""),
-            competitors=synthesis.get("competitors", ""),
+            product_name=_field("product_name", "Unknown Product"),
+            product_description=_field("product_description"),
+            target_user=_field("target_user"),
+            differentiator=_field("differentiator"),
+            product_stage=_field("product_stage"),
+            competitors=_field("competitors"),
             comparison_cards_json=json.dumps(comparison_cards),
             agent_brief=synthesis.get("agent_brief", ""),
             curated_evidence_json=json.dumps(

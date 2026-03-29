@@ -76,6 +76,100 @@ _KNOWN_MODELS = [
 
 
 # ---------------------------------------------------------------------------
+# Output normalizers — map model field names to frontend schema
+# ---------------------------------------------------------------------------
+
+
+def normalize_strategist(output: dict[str, Any]) -> dict[str, Any]:
+    """Remap alternate field names the model may use to the canonical schema."""
+    mapping = {
+        "market_position": "competitive_positioning",
+        "key_risks": "top_risks",
+        "key_strengths": "top_strengths",
+        "competitive_gaps": "top_opportunities",
+        "strategic_summary": "strategist_summary",
+        "market_readiness_score": "strategist_score",
+        "top_3_priorities": "priorities",
+    }
+    for old, new in mapping.items():
+        if old in output and new not in output:
+            output[new] = output.pop(old)
+    if (
+        "strategist_score" in output
+        and isinstance(output["strategist_score"], (int, float))
+        and output["strategist_score"] > 10
+    ):
+        output["strategist_score"] = round(output["strategist_score"] / 10, 1)
+    return output
+
+
+def normalize_ux_analyst(output: dict[str, Any]) -> dict[str, Any]:
+    """Remap alternate field names and coerce severity strings."""
+    mapping = {
+        "ux_score": "ux_analyst_score",
+        "critical_friction_points": "friction_map",
+        "quick_wins": "quick_wins",
+        "ux_summary": "ux_analyst_summary",
+    }
+    for old, new in mapping.items():
+        if old in output and new not in output:
+            output[new] = output.pop(old)
+    if (
+        "ux_analyst_score" in output
+        and isinstance(output["ux_analyst_score"], (int, float))
+        and output["ux_analyst_score"] > 10
+    ):
+        output["ux_analyst_score"] = round(output["ux_analyst_score"] / 10, 1)
+    if "friction_map" in output and isinstance(output["friction_map"], list):
+        _sevmap = {
+            1: "MINOR", 2: "MINOR", 3: "MINOR",
+            4: "MODERATE", 5: "MODERATE",
+            6: "MAJOR", 7: "MAJOR",
+            8: "BLOCKER", 9: "BLOCKER", 10: "BLOCKER",
+        }
+        for item in output["friction_map"]:
+            if "issue" in item and "friction_point" not in item:
+                item["friction_point"] = item.pop("issue")
+            if "frame" in item and "screen" not in item:
+                item["screen"] = f"Frame {item.pop('frame')}"
+            if "severity" in item and isinstance(item["severity"], (int, float)):
+                item["severity"] = _sevmap.get(int(item["severity"]), "MODERATE")
+    return output
+
+
+def normalize_market_researcher(output: dict[str, Any]) -> dict[str, Any]:
+    """Remap alternate field names to the canonical market researcher schema."""
+    mapping = {
+        "user_sentiment_summary": "market_researcher_summary",
+        "competitive_threats": "sentiment_by_competitor",
+        "top_unmet_needs": "unmet_needs",
+        "market_summary": "market_researcher_summary",
+        "pricing_signal": "pricing_insight",
+    }
+    for old, new in mapping.items():
+        if old in output and new not in output:
+            output[new] = output.pop(old)
+    if (
+        "market_researcher_score" in output
+        and isinstance(output["market_researcher_score"], (int, float))
+        and output["market_researcher_score"] > 10
+    ):
+        output["market_researcher_score"] = round(output["market_researcher_score"] / 10, 1)
+    return output
+
+
+def normalize_challenge(output: dict[str, Any]) -> dict[str, Any]:
+    """Clamp final_score to 0–10 in case the model returned a 0–100 value."""
+    if (
+        "final_score" in output
+        and isinstance(output["final_score"], (int, float))
+        and output["final_score"] > 10
+    ):
+        output["final_score"] = round(output["final_score"] / 10, 1)
+    return output
+
+
+# ---------------------------------------------------------------------------
 # Hardware monitor
 # ---------------------------------------------------------------------------
 
@@ -419,6 +513,14 @@ class AdaptiveRunner:
             result = await self._call_ollama(model, sys_prompt, build_prompt())
             elapsed = time.time() - start
 
+            if "error" not in result:
+                if key == "strategist":
+                    result = normalize_strategist(result)
+                elif key == "ux_analyst":
+                    result = normalize_ux_analyst(result)
+                elif key == "market_researcher":
+                    result = normalize_market_researcher(result)
+
             status = "OK" if "error" not in result else f"FAILED: {result['error'][:80]}"
             logger.info("  %s: %s (%.1fs)", label, status, elapsed)
 
@@ -453,8 +555,81 @@ class AdaptiveRunner:
         challenge_out = await self._call_ollama(
             model, PARTNER_REVIEW_SYSTEM_PROMPT, partner_prompt, max_tokens=2048
         )
+        if "error" not in challenge_out:
+            challenge_out = normalize_challenge(challenge_out)
         partner_status = "OK" if "error" not in challenge_out else "FAILED"
         logger.info("  Partner Review: %s", partner_status)
+
+        # --- Normalise schema before assembly ---
+        # Clamp final_score to 0-10 range (prompt asks for 0-10, but guard against
+        # models that return 0-100 despite instructions).
+        raw_score = challenge_out.get("final_score", 0)
+        try:
+            score_float = float(raw_score)
+        except (TypeError, ValueError):
+            score_float = 0.0
+        if score_float > 10:
+            score_float = round(score_float / 10, 1)
+
+        # Map market_readiness to the enum Report.tsx expects.
+        _READINESS_MAP: dict[str, str] = {
+            "READY_TO_SCALE": "STRONG",
+            "NEEDS_PIVOT": "NOT_READY",
+            "DO_NOT_INVEST": "NOT_READY",
+            "NOT_READY": "NOT_READY",
+            "NEEDS_WORK": "NEEDS_WORK",
+            "COMPETITIVE": "COMPETITIVE",
+            "STRONG": "STRONG",
+            "EXCEPTIONAL": "EXCEPTIONAL",
+        }
+        raw_readiness = challenge_out.get("market_readiness", "NEEDS_WORK")
+        market_readiness = _READINESS_MAP.get(str(raw_readiness).upper(), "NEEDS_WORK")
+
+        # Inject video evidence comparison cards into ux_analyst_section.
+        # The UX analyst LLM produces text-based cards; these are kept, but if
+        # the video evidence synthesis generated richer cards we prepend them
+        # (mapped from synthesis format to Report.tsx ComparisonCard format).
+        ux_section: dict[str, Any] = dict(results.get("ux_analyst", {}))
+        if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
+            try:
+                evidence_cards: list[dict[str, Any]] = json.loads(comparison_cards_json)
+                mapped: list[dict[str, Any]] = []
+                for i, card in enumerate(evidence_cards[:6]):
+                    user_side = card.get("user_side", card.get("user_screen", {}))
+                    comp_side = card.get("competitor_side", card.get("competitor_screen", {}))
+                    if not user_side or not comp_side:
+                        continue
+                    mapped.append({
+                        "card_id": card.get("card_id", f"card-{i}"),
+                        "user_screen": {
+                            "frame_number": user_side.get("frame_number"),
+                            "image_path": user_side.get("image_path", ""),
+                            "image_url": user_side.get("image_url", ""),
+                            "screen_label": user_side.get("screen_label", f"Frame {i + 1}"),
+                            "ux_score": float(user_side.get("ux_score", 5)),
+                            "strengths": user_side.get("strengths", []),
+                            "weaknesses": user_side.get("weaknesses", []),
+                        },
+                        "competitor_screen": {
+                            "app": comp_side.get("app", "competitor"),
+                            "filename": comp_side.get("filename", ""),
+                            "image_path": comp_side.get("image_path", ""),
+                            "image_url": comp_side.get("image_url", ""),
+                            "screen_label": comp_side.get("screen_label", "Competitor screen"),
+                            "ux_score": float(comp_side.get("ux_score", 5)),
+                            "strengths": comp_side.get("strengths", []),
+                            "weaknesses": comp_side.get("weaknesses", []),
+                        },
+                        "similarity_score": float(card.get("similarity_score", 0.5)),
+                        "comparison_verdict": card.get("comparison_verdict", "COMPARABLE"),
+                        "what_to_steal": card.get("what_to_steal", ""),
+                        "what_to_avoid": card.get("what_to_avoid", ""),
+                    })
+                if mapped:
+                    # Prefer evidence-backed cards over LLM-generated placeholders
+                    ux_section["comparison_cards"] = mapped + ux_section.get("comparison_cards", [])[len(mapped):]
+            except Exception as _inject_exc:
+                logger.warning("Could not inject comparison cards: %s", _inject_exc)
 
         # --- Assemble deliverable ---
         deliverable: dict[str, Any] = {
@@ -473,16 +648,32 @@ class AdaptiveRunner:
             },
             "verdict": {
                 "headline": challenge_out.get("headline", "Analysis complete"),
-                "score": challenge_out.get("final_score", 0),
-                "recommendation": challenge_out.get("recommendation", ""),
-                "market_readiness": challenge_out.get("market_readiness", "NEEDS_WORK"),
+                "score": score_float,
+                "recommendation": challenge_out.get(
+                    "one_thing_to_do_monday",
+                    challenge_out.get("recommendation", ""),
+                ),
+                "market_readiness": market_readiness,
                 "one_thing_to_do_monday": challenge_out.get("one_thing_to_do_monday", ""),
             },
             "strategist_section": results.get("strategist", {}),
-            "ux_analyst_section": results.get("ux_analyst", {}),
+            "ux_analyst_section": ux_section,
             "market_researcher_section": results.get("market_researcher", {}),
             "challenge_layer": challenge_out,
         }
+
+        # Preserve pipeline comparison_cards (with image_path fields) as a top-level key.
+        # The models receive them as context text; the PIPELINE version is authoritative
+        # for image_path fields used by frontend side-by-side rendering.
+        # Note: comparison_cards_json may have been context-trimmed (invalid JSON); the
+        # except branch produces an empty list rather than crashing the save.
+        try:
+            if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
+                deliverable["comparison_cards"] = json.loads(comparison_cards_json)
+            else:
+                deliverable["comparison_cards"] = []
+        except Exception:
+            deliverable["comparison_cards"] = []
 
         # Persist to disk before returning so a crash mid-delivery doesn't lose the result
         session_dir = Path("sessions") / session_id

@@ -671,7 +671,7 @@ function Collapsible({ title, children }: { title: string; children: React.React
 // ─────────────────────────────────────────────────────────────────────────────
 
 function HeroSection({ data }: { data: ReportData }) {
-  const mr = MARKET_READINESS_STYLE[data.verdict.market_readiness]
+  const mr = MARKET_READINESS_STYLE[data.verdict.market_readiness] ?? MARKET_READINESS_STYLE['NEEDS_WORK']
 
   return (
     <div
@@ -965,7 +965,7 @@ function ComparisonCardItem({ card }: { card: ComparisonCard }) {
 }
 
 function ComparisonCardsSection({ data }: { data: ReportData }) {
-  const cards = data.ux_analyst_section.comparison_cards
+  const cards = data.ux_analyst_section.comparison_cards ?? []
   if (!cards.length) return null
 
   return (
@@ -987,21 +987,26 @@ function ComparisonCardsSection({ data }: { data: ReportData }) {
         flexWrap: 'wrap',
         alignItems: 'center',
       }}>
+        {data.ux_analyst_section.onboarding_assessment && (
         <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
             Onboarding Score
           </span>
-          <ScoreRing score={data.ux_analyst_section.onboarding_assessment.score} size="small" />
+          <ScoreRing score={data.ux_analyst_section.onboarding_assessment.score ?? 5} size="small" />
         </div>
+        )}
+        {data.ux_analyst_section.onboarding_assessment?.time_to_value_estimate && (
         <div>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Time to Value · </span>
           <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-primary)' }}>
             {data.ux_analyst_section.onboarding_assessment.time_to_value_estimate}
           </span>
         </div>
+        )}
+        {data.ux_analyst_section.onboarding_assessment?.first_action_clarity && (
         <div style={{ display: 'flex', gap: 8 }}>
           {(['OBVIOUS','FINDABLE','BURIED','MISSING'] as FirstActionClarity[]).map(v => {
-            const active = v === data.ux_analyst_section.onboarding_assessment.first_action_clarity
+            const active = v === data.ux_analyst_section.onboarding_assessment!.first_action_clarity
             return (
               <span key={v} style={{
                 fontFamily: 'var(--font-mono)',
@@ -1019,6 +1024,7 @@ function ComparisonCardsSection({ data }: { data: ReportData }) {
             )
           })}
         </div>
+        )}
       </div>
 
       <div className="comparison-scroll">
@@ -1036,6 +1042,8 @@ function ComparisonCardsSection({ data }: { data: ReportData }) {
 
 function RisksOpportunitiesSection({ data }: { data: ReportData }) {
   const s = data.strategist_section
+  const topRisks = s.top_risks ?? []
+  const topOpportunities = s.top_opportunities ?? []
   return (
     <SectionWrap>
       <SectionTitle label="Strategic Landscape" subtitle={s.competitive_positioning} />
@@ -1046,7 +1054,7 @@ function RisksOpportunitiesSection({ data }: { data: ReportData }) {
             Top Risks
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {s.top_risks.map((risk, i) => {
+            {topRisks.map((risk, i) => {
               const st = SEVERITY_STYLE[risk.severity]
               return (
                 <div key={i} style={{
@@ -1080,7 +1088,7 @@ function RisksOpportunitiesSection({ data }: { data: ReportData }) {
             Top Opportunities
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-            {s.top_opportunities.map((opp, i) => {
+            {topOpportunities.map((opp, i) => {
               const it = IMPACT_STYLE[opp.impact]
               return (
                 <div key={i} style={{
@@ -1128,7 +1136,12 @@ function RisksOpportunitiesSection({ data }: { data: ReportData }) {
 
 function MarketIntelligenceSection({ data }: { data: ReportData }) {
   const mr = data.market_researcher_section
-  const overallSt = SENTIMENT_STYLE[mr.sentiment_analysis.overall_sentiment] ?? SENTIMENT_STYLE['NEUTRAL']
+  const sentimentData = mr.sentiment_analysis ?? { overall_sentiment: 'NEUTRAL', sentiment_by_competitor: [] }
+  const overallSt = SENTIMENT_STYLE[sentimentData.overall_sentiment] ?? SENTIMENT_STYLE['NEUTRAL']
+  const killerQuotes = mr.killer_quotes ?? []
+  const sentimentByComp = sentimentData.sentiment_by_competitor ?? []
+  const pricingPos = mr.pricing_positioning ?? { competitor_range: 'N/A', sweet_spot: 'N/A', pricing_insight: '' }
+  const adoptionSignals = mr.adoption_signals ?? { easy_wins: [], dealbreakers: [] }
 
   return (
     <SectionWrap>
@@ -1140,7 +1153,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
           Killer Quotes
         </p>
         <div className="killer-quotes-grid">
-          {mr.killer_quotes.map((q, i) => {
+          {killerQuotes.map((q, i) => {
             const src = SOURCE_STYLE[q.source] ?? SOURCE_STYLE['reddit']
             return (
               <div key={i} style={{
@@ -1191,7 +1204,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)' }}>Overall:</span>
             <Badge
-              label={mr.sentiment_analysis.overall_sentiment.replace('_', ' ')}
+              label={(sentimentData.overall_sentiment ?? 'NEUTRAL').replace('_', ' ')}
               color={overallSt.color}
               bg={`${overallSt.color}18`}
               border={`${overallSt.color}40`}
@@ -1199,7 +1212,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {mr.sentiment_analysis.sentiment_by_competitor.map((item, i) => {
+          {sentimentByComp.map((item, i) => {
             const st = SENTIMENT_STYLE[item.sentiment.toUpperCase()] ?? SENTIMENT_STYLE['NEUTRAL']
             return (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '80px 1fr 48px', gap: 16, alignItems: 'center' }}>
@@ -1225,10 +1238,10 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
             Competitor Range
           </p>
           <p style={{ fontFamily: 'var(--font-display)', fontSize: 20, color: 'var(--text-primary)', margin: '0 0 8px' }}>
-            {mr.pricing_positioning.competitor_range}
+            {pricingPos.competitor_range}
           </p>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--accent-green)', margin: 0 }}>
-            Sweet spot: {mr.pricing_positioning.sweet_spot}
+            Sweet spot: {pricingPos.sweet_spot}
           </p>
         </div>
         <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 2, padding: '18px 20px' }}>
@@ -1236,7 +1249,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
             Pricing Insight
           </p>
           <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.65, margin: 0 }}>
-            {mr.pricing_positioning.pricing_insight}
+            {pricingPos.pricing_insight}
           </p>
         </div>
       </div>
@@ -1247,7 +1260,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent-green)', margin: '0 0 12px' }}>
             Easy Wins
           </p>
-          {mr.adoption_signals.easy_wins.map((w, i) => (
+          {(adoptionSignals.easy_wins ?? []).map((w, i) => (
             <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 8, alignItems: 'flex-start' }}>
               <span style={{ color: 'var(--accent-green)', fontSize: 11, flexShrink: 0, marginTop: 2 }}>✓</span>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{w}</span>
@@ -1258,7 +1271,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--accent-red)', margin: '0 0 12px' }}>
             Dealbreakers
           </p>
-          {mr.adoption_signals.dealbreakers.map((d, i) => (
+          {(adoptionSignals.dealbreakers ?? []).map((d, i) => (
             <div key={i} style={{ display: 'flex', gap: 10, marginBottom: 8, alignItems: 'flex-start' }}>
               <span style={{ color: 'var(--accent-red)', fontSize: 11, flexShrink: 0, marginTop: 2 }}>✗</span>
               <span style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.5 }}>{d}</span>
@@ -1275,7 +1288,9 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function FrictionMapSection({ data }: { data: ReportData }) {
-  const sorted = [...data.ux_analyst_section.friction_map].sort(
+  const frictionMap = data.ux_analyst_section.friction_map ?? []
+  if (!frictionMap.length) return null
+  const sorted = [...frictionMap].sort(
     (a, b) => FRICTION_SEVERITY_ORDER[a.severity] - FRICTION_SEVERITY_ORDER[b.severity],
   )
 
@@ -1334,7 +1349,7 @@ function FrictionMapSection({ data }: { data: ReportData }) {
 
 function PartnerVerdictSection({ data }: { data: ReportData }) {
   const cl = data.challenge_layer
-  const confSt = CONFIDENCE_STYLE[cl.confidence]
+  const confSt = CONFIDENCE_STYLE[cl.confidence] ?? CONFIDENCE_STYLE['MEDIUM']
 
   return (
     <SectionWrap>
@@ -1397,13 +1412,13 @@ function PartnerVerdictSection({ data }: { data: ReportData }) {
       </div>
 
       {/* Contradictions */}
-      {cl.contradictions_found.length > 0 && (
+      {(cl.contradictions_found ?? []).length > 0 && (
         <div style={{ marginBottom: 24 }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 12 }}>
             Contradictions Found
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {cl.contradictions_found.map((c, i) => (
+            {(cl.contradictions_found ?? []).map((c, i) => (
               <Collapsible key={i} title={c.between}>
                 <div style={{ paddingTop: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div>
@@ -1430,13 +1445,13 @@ function PartnerVerdictSection({ data }: { data: ReportData }) {
       )}
 
       {/* Blind spots */}
-      {cl.blind_spots.length > 0 && (
+      {(cl.blind_spots ?? []).length > 0 && (
         <div>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 12 }}>
             Known Blind Spots
           </p>
           <div style={{ background: 'var(--bg-secondary)', border: '1px solid var(--border)', borderRadius: 2, padding: '16px 20px' }}>
-            {cl.blind_spots.map((bs, i) => (
+            {(cl.blind_spots ?? []).map((bs, i) => (
               <div key={i} style={{ display: 'flex', gap: 12, marginBottom: i < cl.blind_spots.length - 1 ? 10 : 0, alignItems: 'flex-start' }}>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)', flexShrink: 0, marginTop: 2 }}>
                   {String(i + 1).padStart(2, '0')}
