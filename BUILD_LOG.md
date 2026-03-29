@@ -87,8 +87,10 @@ This turned a hardware limitation into an architectural feature — the adaptive
 - Railway backend fully live at war-room-production.up.railway.app
 - Dockerfile with ffmpeg baked into build image — instant server startup
 - CORS resolved for Vercel → Railway cross-origin requests
-- 3 REAL users ran full video QA pipeline on their own hackathon products
-- All 3 received actionable findings and implemented them
+- **5 real analyses completed** across 4 user sessions + 1 DGX Spark demo run
+- Products analyzed: AI Calendar (6.5/10), Notion (7.0/10), Clerion (7.5/10), Memoria (6.0/10), TaskFlow (65/100)
+- 4 cloud analyses via gpt-4o, 1 DGX Spark analysis via qwen3:32b (Tier 2, 30s cooling)
+- All 5 produced full structured JSON deliverables with 3-specialist verdicts
 - Posted on Hacker News, Discord, Reddit for distribution
 - Vercel Analytics tracking: 10+ page views, 3 demo clicks
 - Mission accomplished: real people, real products, real actionable output
