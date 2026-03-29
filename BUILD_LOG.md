@@ -41,13 +41,22 @@
 - Frontend deployed to Vercel: https://frontend-untracked.vercel.app/
 - API exposed via ngrok: https://paplike-hillary-beauteously.ngrok-free.dev/docs
 
-### Hour 20-24 — Polish & Traction
+### Hour 20-22 — Polish & Traction
 - README comprehensive rewrite with accurate project structure
 - Test suite: 45+ tests across 5 files
 - Live API demo: video ingestion tested end-to-end (10 frames, full journey report)
 - Rate limiter added to server.py
 - Root wrapper files for master plan alignment
 - Multi-model config restored with adaptive fallback framing
+
+### Hour 22-24 — Final Sprint
+- Shipped `AnalysisPipeline.tsx`: 6-stage animated progress view for video analysis (frame extraction → vision analysis → competitor matching → evidence curation → specialist deployment → report assembly)
+- Wired SSE streaming from backend to frontend via `EventSource` — live analyst-by-analyst status, not a loading spinner
+- Added dual inference toggle (Cloud API / DGX Spark) visible in UI — users choose inference path before starting
+- Featured product fast-path: click any of 20 curated products → debate starts in <5 seconds, no context wizard required
+- Budget guard circuit breaker: auto-demo after 100 daily analyses to protect API spend
+- Per-IP rate limiting: 3 analyses/hour enforced at server layer
+- Live deployment confirmed: Vercel frontend + ngrok API both operational on Demo Day
 
 ## DGX Spark Engineering Story
 The most significant engineering challenge was the DGX Spark's thermal instability. After 7+ full power-loss shutdowns during sustained LLM inference, we built a production-grade hardware-adaptive execution system that:
