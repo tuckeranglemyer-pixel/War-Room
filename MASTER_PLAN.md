@@ -140,5 +140,29 @@ FastAPI server with:
 | RAG returns irrelevant results | Low | 31,668 chunks with metadata filtering by source type | ✅ Mitigated |
 | Swarm returns empty | Low | Debate runs identically without swarm — graceful degradation | ✅ Mitigated |
 
+## Responsible AI & Ethics
+- **No hallucinated evidence:** Every claim in the debate must be backed by cited evidence from the RAG knowledge base. Agents are prompted with "ONLY cite evidence from the knowledge base — do not invent usernames or URLs"
+- **Transparent disagreement:** AGREE/DISAGREE labels make model reasoning visible and auditable. Users see exactly where models diverge and why
+- **No vendor manipulation:** The system evaluates products adversarially — it cannot be paid to produce favorable results. The buyer persona is structurally incentivized to find flaws
+- **Data provenance:** All 31,668 review chunks are sourced from public platforms (Reddit, HN, Google Play) with URLs preserved. No scraped private data
+- **Model transparency:** Each agent's underlying model architecture is displayed in the UI. Users know which AI produced which argument
+- **Bias mitigation through adversarial structure:** Single-model analysis inherits that model's training biases. Multi-model debate forces models to challenge each other's assumptions, surfacing blind spots that any individual model would miss
+
+## Traction Strategy
+- **Hackathon floor (Saturday):** Offer every competing team a free War Room analysis of their product. Each run = a tracked user. Target: 15+ teams
+- **Social distribution (Saturday night):** Deploy frontend to Vercel. Run War Room on Canvas (every college student's most-hated app). Screenshot the sharpest finding. Post to Instagram story with link. Target: 200+ link clicks from PC student network
+- **Group chat seeding:** Drop the Vercel link in 5+ group chats with the hook: "We built something that tells you everything wrong with [Notion/Canvas/Asana] in 4 minutes"
+- **Reddit distribution:** Post to r/productivity, r/notion, r/SaaS with genuine value — "We analyzed Notion with 3 AI models debating 31,668 real reviews. Here's what they found"
+- **Metrics to show judges:** Total sessions run, unique users, most-analyzed product, average session duration, screenshots of social engagement
+- **Retention hook:** "The first time you use it, you learn what's wrong with the app you use today. You come back when you're evaluating a NEW tool — you run it through the War Room before you commit"
+
+## Technical Performance Metrics
+- **RAG retrieval:** Cosine similarity search returns top-5 results per query in <50ms on ChromaDB with 31,668 chunks
+- **Swarm execution:** 20 parallel scouts complete in 6-12 seconds (ThreadPoolExecutor with 10 workers)
+- **Debate generation:** Full 4-round debate completes in 8-15 minutes on DGX Spark with three 70B-class models, or 3-5 minutes per round on cloud inference
+- **Memory allocation on DGX:** Llama 3.3-70B (42GB) + Qwen3-32B (20GB) + Mistral-Small-24B (14GB) = 76GB of 128GB unified memory utilized
+- **Frontend streaming:** WebSocket delivers round output in <100ms from completion to browser render
+- **Pre-seeded context:** Each agent receives 10 RAG results (fetched at crew build time) injected directly into task descriptions — guarantees evidence usage regardless of model tool-calling reliability
+
 ## Differentiation Strategy
 Every other team at this hackathon will run one model with one prompt. The War Room deploys a reconnaissance swarm of 20+ scouts to pre-gather intelligence from 31,668 real user reviews, then runs three different AI architectures that genuinely disagree, challenge each other with cited evidence, and converge on a scored verdict with actionable fixes. The output is structured as sprint-ready tickets — not a chatbot response. The architecture is model-agnostic and vertical-agnostic: swap the RAG collection, and the same adversarial protocol analyzes healthcare, finance, legal, or defense decisions. We didn't build an app. We built the peer review layer for artificial intelligence.
