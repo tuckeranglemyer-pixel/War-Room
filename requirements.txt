@@ -22,7 +22,6 @@ psutil==7.0.0
 # Ingestion pipeline
 requests==2.32.3
 google-play-scraper==1.2.7
-app-store-scraper==0.3.5
 
 # Screenshot similarity matching (69-app competitor UI suite)
 sentence-transformers>=3.0.0
