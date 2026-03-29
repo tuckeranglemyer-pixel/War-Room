@@ -130,7 +130,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           marginBottom: 40,
         }}
       >
-        Multi-model adversarial QA for software products
+        What 31,668 real users think about your favorite app
       </motion.p>
 
       <div style={{ width: '100%', maxWidth: 560 }}>
@@ -210,37 +210,40 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           or try one of these
         </p>
         <div style={{
-          fontFamily: "'Inter', sans-serif",
-          fontSize: 12,
-          fontWeight: 400,
-          color: '#71717A',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: 12,
         }}>
-          {PRELOADED_PRODUCTS.map((s, i) => (
-            <span key={s}>
-              {i > 0 && <span style={{ margin: '0 6px', color: '#3F3F46' }}> · </span>}
-              <motion.span
-                role="button"
-                tabIndex={0}
-                onClick={() => submit(s)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    submit(s)
-                  }
-                }}
-                whileHover={{ y: -1 }}
-                transition={spring.snappy}
-                style={{
-                  cursor: 'pointer',
-                  display: 'inline-block',
-                  transition: 'color 150ms ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.color = '#E4E4E7' }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = '#71717A' }}
-              >
-                {s}
-              </motion.span>
-            </span>
+          {PRELOADED_PRODUCTS.map((s) => (
+            <motion.button
+              key={s}
+              onClick={() => submit(s)}
+              whileHover={{ y: -1 }}
+              transition={spring.snappy}
+              style={{
+                background: '#12141A',
+                border: '1px solid #1E2028',
+                borderRadius: 100,
+                padding: '8px 20px',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 14,
+                fontWeight: 400,
+                color: '#A1A1AA',
+                cursor: 'pointer',
+                transition: 'border-color 200ms ease, color 200ms ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#3B82F6'
+                e.currentTarget.style.color = '#E4E4E7'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#1E2028'
+                e.currentTarget.style.color = '#A1A1AA'
+              }}
+            >
+              {s}
+            </motion.button>
           ))}
         </div>
       </motion.div>
@@ -248,7 +251,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
       <motion.p
         initial={fadeUp.initial}
         animate={fadeUp.animate}
-        transition={{ ...spring.gentle, delay: 0.5 }}
+        transition={{ ...spring.gentle, delay: 0.6 }}
         style={{
           marginTop: 64,
           textAlign: 'center',
@@ -265,7 +268,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
       <motion.p
         initial={fade.initial}
         animate={fade.animate}
-        transition={{ ...spring.gentle, delay: 0.6 }}
+        transition={{ ...spring.gentle, delay: 0.8 }}
         style={{
           position: 'absolute',
           bottom: 32,
