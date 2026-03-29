@@ -101,11 +101,26 @@ const headerChild = {
   show: { opacity: 1, y: 0, transition: spring.gentle },
 }
 
+/**
+ * Build a Framer Motion variants object that staggers child animations.
+ * @param stagger - Delay in seconds between each child's entrance animation.
+ * @returns Variants object with ``hidden`` and ``show`` states for use on a parent motion element.
+ */
 const staggerShow = (stagger: number) => ({
   hidden: {},
   show: { transition: { staggerChildren: stagger } },
 })
 
+/**
+ * Horizontal segmented progress bar showing debate round completion status.
+ *
+ * Filled segments are animated with a spring scale; the currently active segment
+ * pulses to indicate ongoing work.
+ *
+ * @param completed - Number of fully completed rounds.
+ * @param active - The round currently in progress (1-based); used for pulse animation.
+ * @param total - Total number of rounds (4 for a full War Room debate).
+ */
 function RoundProgress({ completed, active, total }: { completed: number; active: number; total: number }) {
   return (
     <div style={{ display: 'flex', gap: 4, marginTop: 16 }}>
@@ -150,6 +165,16 @@ function RoundProgress({ completed, active, total }: { completed: number; active
   )
 }
 
+/**
+ * Animated reconnaissance phase card that simulates the 20-scout swarm deployment.
+ *
+ * Streams scout results onto the screen at 300 ms intervals, then flashes the
+ * border on completion and calls ``onComplete`` after a brief pause. This is a
+ * purely visual simulation; actual swarm results are computed on the backend.
+ *
+ * @param product - Product name displayed in the card header.
+ * @param onComplete - Callback invoked when all scout entries have been displayed.
+ */
 function SwarmCard({ product, onComplete }: { product: string; onComplete: () => void }) {
   const [scoutsDeployed, setScoutsDeployed] = useState(0)
   const [results, setResults] = useState<typeof SCOUT_RESULTS>([])
@@ -241,6 +266,16 @@ function SwarmCard({ product, onComplete }: { product: string; onComplete: () =>
   )
 }
 
+/**
+ * Sequential agent initialisation animation revealing each model card with status transitions.
+ *
+ * Shows three agent cards (First-Timer / Llama 70B, Daily Driver / Qwen 32B,
+ * Buyer / Mistral 24B) entering one at a time, each cycling through
+ * ``initializing`` → ``loading context`` → ``ready`` status labels. Concludes
+ * with a "Commencing adversarial debate…" confirmation line.
+ *
+ * @param onComplete - Callback invoked ~6 seconds after mount when the sequence finishes.
+ */
 function AgentInitSequence({ onComplete }: { onComplete: () => void }) {
   const [visibleCards, setVisibleCards] = useState(0)
   const [statuses, setStatuses] = useState<string[]>(['', '', ''])
@@ -376,6 +411,18 @@ function AgentInitSequence({ onComplete }: { onComplete: () => void }) {
   )
 }
 
+/**
+ * Individual debate round card with optional typewriter streaming animation.
+ *
+ * In live mode (``typewriter=false``) displays content immediately. In demo mode
+ * (``typewriter=true``) streams the content character-by-character at 15 ms per
+ * character with a blinking cursor, then calls ``onTypingComplete``. Surfaces
+ * AGREE/DISAGREE keyword badges in the header as the text appears.
+ *
+ * @param msg - Round message object with agent identity and content.
+ * @param typewriter - When true, animate content character-by-character (demo mode).
+ * @param onTypingComplete - Callback invoked when typewriter animation finishes.
+ */
 function RoundCard({ msg, typewriter, onTypingComplete }: {
   msg: RoundMessage
   typewriter?: boolean
@@ -531,6 +578,23 @@ function RoundCard({ msg, typewriter, onTypingComplete }: {
   )
 }
 
+/**
+ * Live debate stream view orchestrating the full War Room debate UX.
+ *
+ * Renders three sequential phases: (1) SwarmCard reconnaissance animation,
+ * (2) AgentInitSequence showing model initialisation, (3) RoundCard stream
+ * as each debate round completes. Connects to the FastAPI WebSocket endpoint
+ * at ``ws://localhost:8000/ws/{sessionId}`` after the swarm animation completes.
+ *
+ * Falls back to demo mode (pre-scripted DEMO_ROUNDS) if no WebSocket message
+ * arrives within 8 seconds, enabling offline demonstration. In demo mode each
+ * round is displayed with typewriter animation at 4-second intervals.
+ *
+ * @param product - Product name displayed in the header and passed to SwarmCard.
+ * @param sessionId - WebSocket session UUID returned by POST /analyze.
+ * @param onBack - Callback to navigate back to the landing view.
+ * @param onVerdict - Callback invoked with structured verdict data when Round 4 completes.
+ */
 export default function DebateStream({ product, sessionId, onBack, onVerdict }: DebateStreamProps) {
   const [swarmDone, setSwarmDone] = useState(false)
   const [initDone, setInitDone] = useState(false)

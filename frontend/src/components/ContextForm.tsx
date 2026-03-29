@@ -46,6 +46,20 @@ type Answers = {
 
 type SubmitStatus = 'uploading' | 'extracting' | 'analyzing'
 
+/**
+ * Multi-step context wizard collecting product metadata before launching a debate.
+ *
+ * Step 0: optional video walkthrough upload (drag-and-drop or file picker).
+ * Steps 1–5: text questions (description, target user, competitors, differentiator, stage).
+ * Final step: submits the video to POST /api/ingest/video (if provided), then
+ * calls POST /analyze and advances to the debate stream via ``onComplete``.
+ *
+ * All steps support keyboard Enter-to-advance and a Skip button for optional fields.
+ *
+ * @param productName - Product name from the landing view, injected into the analyze request.
+ * @param onComplete - Callback receiving the WebSocket session ID on successful submission.
+ * @param onBack - Callback to return to the previous view (landing or prior step).
+ */
 export default function ContextForm({ productName, onComplete, onBack }: ContextFormProps) {
   const [step, setStep] = useState(0)
   const [visible, setVisible] = useState(true)
@@ -79,6 +93,10 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }
   }, [step, visible, submitting])
 
+  /**
+   * Fade out, swap step index, and fade back in over 150 ms.
+   * @param nextStep - Target step index to transition to.
+   */
   function transition(nextStep: number) {
     setVisible(false)
     setTimeout(() => {
@@ -87,6 +105,9 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }, 150)
   }
 
+  /**
+   * Advance to the next step or trigger submission on the last step.
+   */
   function advance() {
     if (step < TOTAL_STEPS - 1) {
       transition(step + 1)
@@ -95,6 +116,9 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }
   }
 
+  /**
+   * Navigate to the previous step, or invoke ``onBack`` when on step 0.
+   */
   function goBack() {
     if (step === 0) {
       onBack()
@@ -103,6 +127,9 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }
   }
 
+  /**
+   * Skip the current step: clears the video file on step 0, otherwise advances.
+   */
   function skipStep() {
     if (isVideoStep) {
       setVideoFile(null)
@@ -112,14 +139,30 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }
   }
 
+  /**
+   * Advance the wizard when the user presses Enter in a text input.
+   * @param e - React keyboard event from the active input element.
+   */
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === 'Enter') advance()
   }
 
+  /**
+   * Update a single answer field in the answers state object.
+   * @param field - Key of the ``Answers`` type to update.
+   * @param value - New value for that field.
+   */
   function setAnswer(field: keyof Answers, value: string) {
     setAnswers(prev => ({ ...prev, [field]: value }))
   }
 
+  /**
+   * Submit the collected context to the backend and start the debate session.
+   *
+   * If a video file is present, uploads it to POST /api/ingest/video first and
+   * waits for frame analysis. Then calls POST /analyze with all context fields,
+   * retrieves the WebSocket session ID, and calls ``onComplete``.
+   */
   async function runSubmit() {
     setSubmitting(true)
     setError('')

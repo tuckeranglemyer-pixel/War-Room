@@ -8,18 +8,41 @@ interface LandingProps {
   onSelectProduct: (product: string) => void
 }
 
+/**
+ * Landing page component with the product search input and suggestion chips.
+ *
+ * Renders the War Room brand mark, a full-width text input with an animated
+ * conic-gradient border on focus, an inline "Analyze" button, and a row of
+ * quick-select product suggestions. On submission, plays a 200 ms exit animation
+ * before calling ``onSelectProduct`` to advance the view.
+ *
+ * @param onSelectProduct - Callback receiving the trimmed product name string
+ *   when the user submits via Enter, button click, or suggestion chip.
+ */
 export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [focused, setFocused] = useState(false)
   const [exiting, setExiting] = useState(false)
   const pendingRef = useRef<string | null>(null)
 
+  /**
+   * Initiate exit animation and schedule the ``onSelectProduct`` callback.
+   *
+   * Guards against double-submission via the ``exiting`` flag and ignores
+   * blank or whitespace-only input.
+   *
+   * @param product - The product name string to pass to the parent.
+   */
   function submit(product: string) {
     if (!product.trim() || exiting) return
     pendingRef.current = product.trim()
     setExiting(true)
   }
 
+  /**
+   * Submit the current input value when the user presses Enter.
+   * @param e - Keyboard event from the product input element.
+   */
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
     if (e.key === 'Enter') submit(input)
   }

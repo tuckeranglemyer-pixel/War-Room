@@ -12,12 +12,35 @@ import hashlib
 from datetime import datetime
 
 
-def make_id(text, prefix=""):
+def make_id(text: str, prefix: str = "") -> str:
+    """Generate a short deterministic ID from text via MD5 hash.
+
+    Args:
+        text: Source string to hash.
+        prefix: Optional prefix prepended with an underscore separator.
+
+    Returns:
+        A 10-character hex digest, optionally prefixed (e.g. ``"reddit_abc123def4"``).
+    """
     h = hashlib.md5(text.encode()).hexdigest()[:10]
     return f"{prefix}_{h}" if prefix else h
 
 
-def chunk_text(text, max_chars=1500, overlap=200):
+def chunk_text(text: str, max_chars: int = 1500, overlap: int = 200) -> list:
+    """Split long text into overlapping chunks suitable for vector embedding.
+
+    Splits on sentence boundaries (``". "``) when possible to preserve semantic
+    coherence. Returns a single-element list when ``text`` fits within ``max_chars``.
+
+    Args:
+        text: Raw text to split.
+        max_chars: Maximum character length per chunk.
+        overlap: Number of trailing characters from the previous chunk to prepend
+            to the next, providing context continuity across chunk boundaries.
+
+    Returns:
+        List of non-empty string chunks.
+    """
     if len(text) <= max_chars:
         return [text]
     chunks = []
@@ -33,7 +56,20 @@ def chunk_text(text, max_chars=1500, overlap=200):
     return chunks
 
 
-def process_reddit(app_key):
+def process_reddit(app_key: str) -> list:
+    """Convert scraped Reddit posts and comments for one app into RAG-ready chunks.
+
+    Reads ``data/{app_key}/reviews/reddit.json``, skips bodies shorter than 30 chars,
+    and splits long posts/comments via ``chunk_text``. Each chunk carries source
+    metadata (subreddit, score, URL).
+
+    Args:
+        app_key: Short app identifier matching the data directory (e.g. ``"notion"``).
+
+    Returns:
+        List of chunk dicts with ``id``, ``text``, and ``metadata`` keys.
+        Returns an empty list if the source file does not exist.
+    """
     chunks = []
     path = f"data/{app_key}/reviews/reddit.json"
     if not os.path.exists(path):
@@ -72,7 +108,19 @@ def process_reddit(app_key):
     return chunks
 
 
-def process_hackernews(app_key):
+def process_hackernews(app_key: str) -> list:
+    """Convert scraped Hacker News items for one app into RAG-ready chunks.
+
+    Strips HTML tags from comment text and labels each chunk as either
+    ``[HN Story]`` or ``[HN Comment]`` with story title context.
+
+    Args:
+        app_key: Short app identifier matching the data directory (e.g. ``"linear"``).
+
+    Returns:
+        List of chunk dicts with ``id``, ``text``, and ``metadata`` keys.
+        Returns an empty list if the source file does not exist.
+    """
     chunks = []
     path = f"data/{app_key}/reviews/hackernews.json"
     if not os.path.exists(path):
@@ -100,7 +148,19 @@ def process_hackernews(app_key):
     return chunks
 
 
-def process_appstores(app_key):
+def process_appstores(app_key: str) -> list:
+    """Convert Google Play and Apple App Store reviews for one app into RAG-ready chunks.
+
+    Each review is prefixed with its star rating for easy filtering during RAG retrieval.
+    Reviews shorter than 20 characters are skipped.
+
+    Args:
+        app_key: Short app identifier matching the data directory (e.g. ``"trello"``).
+
+    Returns:
+        List of chunk dicts with ``id``, ``text``, and ``metadata`` keys.
+        Returns an empty list if the source file does not exist.
+    """
     chunks = []
     path = f"data/{app_key}/reviews/appstores.json"
     if not os.path.exists(path):
@@ -137,7 +197,19 @@ def process_appstores(app_key):
     return chunks
 
 
-def process_g2(app_key):
+def process_g2(app_key: str) -> list:
+    """Convert G2 business reviews for one app into RAG-ready chunks.
+
+    Separates ``likes`` and ``dislikes`` fields into distinct chunks so retrieval
+    queries for positive vs. negative sentiment are more precise.
+
+    Args:
+        app_key: Short app identifier matching the data directory (e.g. ``"asana"``).
+
+    Returns:
+        List of chunk dicts with ``id``, ``text``, and ``metadata`` keys.
+        Returns an empty list if the source file does not exist.
+    """
     chunks = []
     path = f"data/{app_key}/reviews/g2.json"
     if not os.path.exists(path):
@@ -164,7 +236,20 @@ def process_g2(app_key):
     return chunks
 
 
-def process_metadata(app_key):
+def process_metadata(app_key: str) -> list:
+    """Build a single structured overview chunk from an app's metadata JSON file.
+
+    Concatenates category, use case, key features, pricing, target audience, and
+    competitors into a prose sentence suitable for embedding. Used by agents for
+    competitive-positioning queries.
+
+    Args:
+        app_key: Short app identifier matching the data directory (e.g. ``"jira"``).
+
+    Returns:
+        A one-element list containing the metadata chunk dict, or an empty list
+        if the source file does not exist.
+    """
     path = f"data/{app_key}/metadata.json"
     if not os.path.exists(path):
         return []

@@ -24,28 +24,50 @@ export interface VerdictData {
   full_report: string
 }
 
+/**
+ * Root application component managing top-level view state and navigation.
+ *
+ * Coordinates four views — landing → context → debate → verdict — and passes
+ * shared state (product name, session ID, verdict data) down to each view
+ * component. All view transitions are animated via Framer Motion AnimatePresence.
+ */
 export default function App() {
   const [view, setView] = useState<View>('landing')
   const [product, setProduct] = useState('')
   const [sessionId, setSessionId] = useState('')
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
 
+  /**
+   * Advance from the landing view to the context wizard for the chosen product.
+   * @param name - Product name string entered or selected by the user.
+   */
   function handleSelectProduct(name: string) {
     setProduct(name)
     setVerdictData(null)
     setView('context')
   }
 
+  /**
+   * Advance from the context wizard to the live debate stream.
+   * @param sid - WebSocket session ID returned by POST /analyze.
+   */
   function handleContextComplete(sid: string) {
     setSessionId(sid)
     setView('debate')
   }
 
+  /**
+   * Advance from the debate stream to the verdict summary view.
+   * @param data - Structured verdict payload received from the backend.
+   */
   function handleVerdict(data: VerdictData) {
     setVerdictData(data)
     setView('verdict')
   }
 
+  /**
+   * Reset all state and return to the landing view for a new analysis.
+   */
   function handleBack() {
     setView('landing')
     setProduct('')

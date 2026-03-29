@@ -321,12 +321,22 @@ def _run_crew(product: str, result_q: queue.Queue) -> None:
         result_q: Thread-safe queue consumed by ``drain_queue`` on the main thread.
     """
     try:
-        from crew import build_crew  # import here so Streamlit loads fast
+        from backend.debate_orchestrator import build_crew  # import here so Streamlit loads fast
 
         round_counter: list[int] = [0]
         round_start: list[float] = [time.time()]
 
         def on_task_done(task_output: Any) -> None:
+            """CrewAI task callback invoked after each sequential task completes.
+
+            Increments the round counter, computes elapsed time since the previous
+            round started, extracts the raw output text and agent role, then enqueues
+            a structured tuple for the Streamlit main thread to consume.
+
+            Args:
+                task_output: CrewAI ``TaskOutput`` object with ``raw`` text and
+                    ``agent`` name attributes.
+            """
             round_counter[0] += 1
             elapsed = time.time() - round_start[0]
             raw = getattr(task_output, "raw", str(task_output))
@@ -347,12 +357,30 @@ def _run_crew(product: str, result_q: queue.Queue) -> None:
 
 # ── Parsers ───────────────────────────────────────────────────────────────────
 def count_citations(text: str) -> int:
-    """Count [APP | source type] RAG citation headers in agent output."""
+    """Count ``[APP | source type]`` RAG citation headers in agent output.
+
+    Args:
+        text: Raw agent output string from a completed debate round.
+
+    Returns:
+        Number of citation headers matching the ``[APPNAME | source type]`` pattern.
+    """
     return len(re.findall(r"\[[A-Z][A-Z\s]+\| .+?\]", text))
 
 
 def parse_verdict(text: str) -> str:
-    """Extract buy/no-buy verdict from Buyer's Round 4 output."""
+    """Extract the buy/no-buy verdict string from the Buyer's Round 4 output.
+
+    Tries structured patterns (``BUY DECISION: …``) first, then falls back to
+    scanning for bare ``YES``, ``NO``, or ``YES WITH CONDITIONS`` keywords.
+
+    Args:
+        text: Full Round 4 output from the Buyer agent.
+
+    Returns:
+        One of ``"YES"``, ``"NO"``, ``"YES WITH CONDITIONS"``, or ``"—"`` if
+        no verdict is found.
+    """
     for pattern in [
         r"BUY DECISION\s*[:\-–]+\s*([^\n.]+)",
         r"DECISION\s*[:\-–]+\s*([^\n.]+)",
@@ -371,7 +399,17 @@ def parse_verdict(text: str) -> str:
 
 
 def parse_score(text: str) -> Optional[int]:
-    """Extract 1–100 numeric score from Buyer's output."""
+    """Extract the 1–100 numeric quality score from the Buyer's output.
+
+    Tries multiple pattern variants (``OVERALL SCORE: N``, ``N/100``,
+    ``SCORE: N``) and validates the result is in the 1–100 range.
+
+    Args:
+        text: Full Round 4 output from the Buyer agent.
+
+    Returns:
+        Integer score between 1 and 100, or ``None`` if no valid score is found.
+    """
     for pattern in [
         r"OVERALL SCORE\s*[:\-–]+\s*(\d+)",
         r"(\d+)\s*/\s*100",
@@ -386,7 +424,19 @@ def parse_score(text: str) -> Optional[int]:
 
 
 def parse_fixes(text: str) -> list[dict]:
-    """Extract top 3 priority fixes with estimated retention impact."""
+    """Extract the top 3 priority fixes from the Buyer's output.
+
+    Isolates the ``TOP 3 FIXES`` section, extracts numbered list items, and
+    parses any ``N%`` retention impact estimate from each item's text.
+
+    Args:
+        text: Full Round 4 output from the Buyer agent.
+
+    Returns:
+        List of up to 3 fix dicts with ``priority`` (``"P0"``–``"P2"``),
+        ``content`` (truncated at 480 chars), and ``impact`` (percentage or ``"—"``)
+        keys.
+    """
     fixes: list[dict] = []
 
     # Isolate the TOP 3 FIXES section if it exists
@@ -419,7 +469,15 @@ def parse_fixes(text: str) -> list[dict]:
 
 
 def parse_blind_spot(text: str) -> str:
-    """Extract the strategic blind spot from Buyer's output."""
+    """Extract the strategic blind spot paragraph from the Buyer's output.
+
+    Args:
+        text: Full Round 4 output from the Buyer agent.
+
+    Returns:
+        The blind spot text (truncated at 700 chars), or an empty string if the
+        ``BLIND SPOT`` section is not found.
+    """
     m = re.search(
         r"(?:THE\s+)?BLIND SPOT\s*[:\-–]*(.*?)(?:\n\s*[A-Z][A-Z ]{4,}\s*[:\-–]|\n\s*\d+\.|\Z)",
         text,
@@ -429,7 +487,15 @@ def parse_blind_spot(text: str) -> str:
 
 
 def parse_competitive_positioning(text: str) -> str:
-    """Extract competitive positioning paragraph from Buyer's output."""
+    """Extract the competitive positioning section from the Buyer's output.
+
+    Args:
+        text: Full Round 4 output from the Buyer agent.
+
+    Returns:
+        The positioning text (truncated at 900 chars), or an empty string if the
+        ``COMPETITIVE POSITIONING`` section is not found.
+    """
     m = re.search(
         r"COMPETITIVE POSITIONING\s*[:\-–]*(.*?)(?:\n\s*[A-Z][A-Z ]{4,}\s*[:\-–]|\Z)",
         text,
@@ -439,7 +505,20 @@ def parse_competitive_positioning(text: str) -> str:
 
 
 def parse_issues_with_severity(rounds: list[dict]) -> list[dict]:
-    """Scan all rounds for SEVERITY ratings and extract surrounding context."""
+    """Scan all debate rounds for SEVERITY ratings and extract surrounding context.
+
+    For each ``SEVERITY: N`` or ``SEV: N`` match, pulls up to 200 characters of
+    preceding text as context and deduplicates by the first 60 characters of the
+    snippet.
+
+    Args:
+        rounds: List of round dicts, each with an ``"output"`` key containing the
+            agent's raw text.
+
+    Returns:
+        List of issue dicts with ``text`` (context snippet) and ``severity``
+        (int 1–10) keys, sorted by severity descending.
+    """
     issues: list[dict] = []
     seen: set[str] = set()
     sev_re = re.compile(

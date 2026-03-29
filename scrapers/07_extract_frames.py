@@ -13,7 +13,17 @@ import json
 import glob
 
 
-def extract_scene_frames(video_path, output_dir, threshold=0.3):
+def extract_scene_frames(video_path: str, output_dir: str, threshold: float = 0.3) -> int:
+    """Extract frames at scene-change boundaries using ffmpeg's scene filter.
+
+    Args:
+        video_path: Absolute or relative path to the source video file.
+        output_dir: Directory where extracted ``frame_*.jpg`` files are written.
+        threshold: Scene-change sensitivity (0.0–1.0); lower values produce more frames.
+
+    Returns:
+        Number of frame images written to ``output_dir``.
+    """
     os.makedirs(output_dir, exist_ok=True)
     cmd = [
         "ffmpeg", "-i", video_path,
@@ -25,7 +35,19 @@ def extract_scene_frames(video_path, output_dir, threshold=0.3):
     return len(glob.glob(f"{output_dir}/frame_*.jpg"))
 
 
-def extract_uniform_frames(video_path, output_dir, interval=3):
+def extract_uniform_frames(video_path: str, output_dir: str, interval: int = 3) -> int:
+    """Extract one frame every ``interval`` seconds using ffmpeg's fps filter.
+
+    Used as a fallback when scene-change detection yields fewer than 5 frames.
+
+    Args:
+        video_path: Absolute or relative path to the source video file.
+        output_dir: Directory where extracted ``frame_*.jpg`` files are written.
+        interval: Seconds between sampled frames (default: one frame every 3 s).
+
+    Returns:
+        Number of frame images written to ``output_dir``.
+    """
     os.makedirs(output_dir, exist_ok=True)
     cmd = [
         "ffmpeg", "-i", video_path,
@@ -36,7 +58,15 @@ def extract_uniform_frames(video_path, output_dir, interval=3):
     return len(glob.glob(f"{output_dir}/frame_*.jpg"))
 
 
-def get_duration(video_path):
+def get_duration(video_path: str) -> float:
+    """Return the duration of a video file in seconds via ffprobe.
+
+    Args:
+        video_path: Absolute or relative path to the video file.
+
+    Returns:
+        Duration as a float (seconds), or 0.0 if ffprobe fails or returns no data.
+    """
     cmd = ["ffprobe", "-v", "quiet", "-print_format", "json", "-show_format", video_path]
     result = subprocess.run(cmd, capture_output=True, text=True)
     try:

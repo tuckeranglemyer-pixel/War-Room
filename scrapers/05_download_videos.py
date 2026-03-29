@@ -62,7 +62,19 @@ SEARCH_QUERIES = {
 }
 
 
-def download_video(app_key, url, index=0):
+def download_video(app_key: str, url: str, index: int = 0) -> None:
+    """Download a single YouTube product tour video via yt-dlp.
+
+    Saves the video as an MP4 at ``data/{app_key}/videos/{app_key}_tour_{index}.mp4``.
+    Prefers the best 1080p-or-lower MP4+M4A stream combination; falls back to best
+    available if that muxed format is unavailable.
+
+    Args:
+        app_key: Short app identifier used to name the output directory and file.
+        url: Full YouTube video URL to download.
+        index: Zero-based index appended to the output filename to avoid overwrites
+            when multiple videos are downloaded for the same app.
+    """
     output_dir = f"data/{app_key}/videos"
     os.makedirs(output_dir, exist_ok=True)
     output_template = f"{output_dir}/{app_key}_tour_{index}.%(ext)s"

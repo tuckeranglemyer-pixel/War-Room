@@ -27,8 +27,19 @@ APP_MAP = {
     "trello": "trello",
 }
 
-def get_app_name(filename):
-    """Extract app name from filename like 'asana5.png' -> 'asana'"""
+def get_app_name(filename: str) -> str | None:
+    """Derive the canonical app key from a screenshot filename.
+
+    Tries longest-prefix matches first (to correctly distinguish ``monday.com``
+    from ``monday``), then falls back to stripping trailing digits.
+
+    Args:
+        filename: Screenshot filename such as ``"asana5.png"`` or ``"monday.com3.jpg"``.
+
+    Returns:
+        The canonical app key string (e.g. ``"asana"``) if a match is found,
+        or ``None`` if no prefix in ``APP_MAP`` matches.
+    """
     name = os.path.splitext(filename)[0].lower()
     
     # Check exact matches first (for monday.com, todoistmobile)

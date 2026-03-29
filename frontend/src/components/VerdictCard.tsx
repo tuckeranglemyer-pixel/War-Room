@@ -24,12 +24,22 @@ type Verdict = 'YES' | 'NO' | 'YES WITH CONDITIONS'
 // Core helpers
 // ---------------------------------------------------------------------------
 
+/**
+ * Return the CSS colour for a numeric quality score.
+ * @param score - Integer 1–100.
+ * @returns Green for ≥ 70, amber for ≥ 40, red otherwise.
+ */
 function scoreColor(score: number): string {
   if (score >= 70) return '#22C55E'
   if (score >= 40) return '#F59E0B'
   return '#EF4444'
 }
 
+/**
+ * Normalise a raw decision string to one of the three canonical verdict values.
+ * @param raw - Raw decision string from the backend (may be mixed-case or verbose).
+ * @returns ``'YES'``, ``'NO'``, or ``'YES WITH CONDITIONS'``.
+ */
 function normalizeVerdict(raw: string): Verdict {
   const upper = raw.toUpperCase()
   if (upper.includes('YES WITH CONDITIONS')) return 'YES WITH CONDITIONS'
@@ -37,6 +47,11 @@ function normalizeVerdict(raw: string): Verdict {
   return 'NO'
 }
 
+/**
+ * Return background, text, and border colour tokens for a given verdict.
+ * @param verdict - Normalised verdict value.
+ * @returns Object with ``bg``, ``color``, and ``border`` CSS colour strings.
+ */
 function verdictStyle(verdict: Verdict) {
   switch (verdict) {
     case 'YES':
@@ -48,12 +63,29 @@ function verdictStyle(verdict: Verdict) {
   }
 }
 
+/**
+ * Extract the first complete sentence from the Buyer's full report for the hero summary.
+ *
+ * Strips boilerplate headers (BUY DECISION, OVERALL SCORE) before extraction
+ * and falls back to the first 140 characters if no sentence boundary is found.
+ *
+ * @param text - Full report string from the Buyer agent.
+ * @returns First sentence string (trimmed).
+ */
 function extractFirstSentence(text: string): string {
   const cleaned = text.replace(/^(BUY DECISION|OVERALL SCORE)[^\n]*\n*/gi, '').trim()
   const match = cleaned.match(/^[^.!?\n]+[.!?]/)
   return match ? match[0].trim() : cleaned.slice(0, 140).trim()
 }
 
+/**
+ * Split full report text into non-boilerplate paragraphs for the executive summary.
+ *
+ * Filters out short segments and known header lines (BUY DECISION, OVERALL SCORE).
+ *
+ * @param text - Full report string.
+ * @returns Array of paragraph strings longer than 40 characters.
+ */
 function extractParagraphs(text: string): string[] {
   return text
     .split(/\n\n+/)
@@ -61,6 +93,15 @@ function extractParagraphs(text: string): string[] {
     .filter(p => p.length > 40 && !/^(BUY DECISION|OVERALL SCORE)\s*:/i.test(p))
 }
 
+/**
+ * Extract the text content of a named section from the Buyer's report.
+ *
+ * Matches from the header label up to the next all-caps section header or end of string.
+ *
+ * @param text - Full report string.
+ * @param header - Section header keyword to search for (case-insensitive).
+ * @returns Trimmed section body, or an empty string if the header is not found.
+ */
 function extractSection(text: string, header: string): string {
   const re = new RegExp(
     `${header}[:\\s]*((?:.|\\n)*?)(?:\\n\\n[A-Z][A-Z\\s]{3,}:|$)`,
@@ -70,6 +111,15 @@ function extractSection(text: string, header: string): string {
   return match ? match[1].trim() : ''
 }
 
+/**
+ * Split a fix string into a short title and a longer description.
+ *
+ * Tries em-dash/en-dash splitting first, then colon splitting, then falls back
+ * to using the first five words as the title.
+ *
+ * @param fix - Raw fix string from the top-3-fixes list.
+ * @returns Object with ``title`` and ``description`` fields.
+ */
 function parseFixParts(fix: string): { title: string; description: string } {
   const emdash = fix.split(/\s+[—–]\s+/)
   if (emdash.length >= 2) {
@@ -82,6 +132,15 @@ function parseFixParts(fix: string): { title: string; description: string } {
   return { title: fix.split(' ').slice(0, 5).join(' '), description: fix }
 }
 
+/**
+ * Derive an impact tier from a fix string's percentage mention or its rank position.
+ *
+ * Parses ``~N%`` annotations; falls back to positional ranking (first = HIGH).
+ *
+ * @param fix - Raw fix string potentially containing a ``~N%`` retention impact.
+ * @param index - Zero-based position in the fixes list used as a positional fallback.
+ * @returns ``'HIGH'``, ``'MEDIUM'``, or ``'LOW'``.
+ */
 function parseImpact(fix: string, index: number): 'HIGH' | 'MEDIUM' | 'LOW' {
   const pct = fix.match(/~(\d+)%/)
   if (pct) {
@@ -93,6 +152,11 @@ function parseImpact(fix: string, index: number): 'HIGH' | 'MEDIUM' | 'LOW' {
   return index === 0 ? 'HIGH' : index === 1 ? 'MEDIUM' : 'LOW'
 }
 
+/**
+ * Return CSS colour tokens for a given impact tier badge.
+ * @param impact - Impact tier value.
+ * @returns Object with ``color``, ``bg``, and ``border`` CSS colour strings.
+ */
 function impactStyle(impact: 'HIGH' | 'MEDIUM' | 'LOW') {
   switch (impact) {
     case 'HIGH':   return { color: '#EF4444', bg: 'rgba(239,68,68,0.08)',   border: 'rgba(239,68,68,0.25)' }
@@ -158,6 +222,11 @@ const FEATURE_TOPICS: Array<{ name: string; keywords: string[] }> = [
 // Feature evidence — parsing
 // ---------------------------------------------------------------------------
 
+/**
+ * Classify a citation source string into a canonical ``SourceType``.
+ * @param text - Raw source label string (e.g. ``"r/Notion"``, ``"Google Play"``).
+ * @returns The matching ``SourceType`` enum value, or ``'unknown'``.
+ */
 function detectSourceType(text: string): SourceType {
   const lower = text.toLowerCase()
   if (/r\/\w+|reddit/i.test(lower)) return 'reddit'
@@ -168,11 +237,23 @@ function detectSourceType(text: string): SourceType {
   return 'unknown'
 }
 
+/**
+ * Count how many keywords from a feature topic appear in the given text.
+ * @param text - Text to score (agent output paragraph or citation context).
+ * @param keywords - Feature-topic keyword list to match against.
+ * @returns Integer keyword hit count.
+ */
 function scoreFeatureTopic(text: string, keywords: string[]): number {
   const lower = text.toLowerCase()
   return keywords.reduce((sum, kw) => sum + (lower.includes(kw) ? 1 : 0), 0)
 }
 
+/**
+ * Find the best-matching ``FEATURE_TOPICS`` entry for the given text.
+ * @param text - Text to classify (citation quote + context).
+ * @returns The topic object with the highest keyword overlap, defaulting to the
+ *   last topic (``'Core Features'``) when no keywords match.
+ */
 function matchFeatureTopic(text: string): { name: string; keywords: string[] } {
   let best = FEATURE_TOPICS[FEATURE_TOPICS.length - 1]
   let bestScore = 0
@@ -183,6 +264,17 @@ function matchFeatureTopic(text: string): { name: string; keywords: string[] } {
   return best
 }
 
+/**
+ * Parse inline user review citations from all debate round outputs.
+ *
+ * Applies three regex patterns: (A) quoted text followed by a parenthetical
+ * source, (B) statistical mentions ("N of M [Source] reviews mention…"), and
+ * (C) "As one user on [Source] put it: 'quote'" constructions. Deduplicates by
+ * the first 28 characters of each quote.
+ *
+ * @param rounds - All completed debate round objects with ``content`` text.
+ * @returns Deduplicated array of ``ReviewCitation`` objects.
+ */
 function extractCitations(rounds: Round[]): ReviewCitation[] {
   const citations: ReviewCitation[] = []
 
@@ -259,6 +351,16 @@ function extractCitations(rounds: Round[]): ReviewCitation[] {
   )
 }
 
+/**
+ * Find the paragraph in the debate rounds that best covers a feature topic's keywords.
+ *
+ * Scores every paragraph in every round by keyword hit count and returns the
+ * highest-scoring one (truncated to 260 chars with an ellipsis if needed).
+ *
+ * @param rounds - All completed debate round objects.
+ * @param keywords - Feature-topic keyword list used for scoring.
+ * @returns The best-matching paragraph string, or an empty string if none qualifies.
+ */
 function getBestAIAnalysis(rounds: Round[], keywords: string[]): string {
   let best = { text: '', score: 0 }
   for (const round of rounds) {
@@ -273,6 +375,16 @@ function getBestAIAnalysis(rounds: Round[], keywords: string[]): string {
     : best.text.trim()
 }
 
+/**
+ * Classify the aggregate sentiment of a set of text snippets.
+ *
+ * Counts positive and negative keyword matches; returns ``'negative'`` when
+ * negative count exceeds positive by more than 1, ``'positive'`` for the
+ * reverse, and ``'mixed'`` otherwise.
+ *
+ * @param texts - Array of text snippets to analyse (quotes and context strings).
+ * @returns ``'positive'``, ``'mixed'``, or ``'negative'``.
+ */
 function detectSentiment(texts: string[]): 'positive' | 'mixed' | 'negative' {
   const blob = texts.join(' ').toLowerCase()
   const neg = ['broke', 'crash', 'broken', 'slow', 'frustrat', 'hate', 'bad', 'terrible',
@@ -286,6 +398,17 @@ function detectSentiment(texts: string[]): 'positive' | 'mixed' | 'negative' {
   return 'mixed'
 }
 
+/**
+ * Build structured feature evidence cards from debate rounds and priority fixes.
+ *
+ * Groups extracted citations by feature topic, selects the best AI analysis
+ * paragraph per topic, computes sentiment, links to a related priority fix if
+ * one exists, and synthesises a one-paragraph summary. Returns at most 6 cards.
+ *
+ * @param rounds - All completed debate round objects.
+ * @param fixes - Priority fix strings from the Buyer's verdict.
+ * @returns Array of ``FeatureEvidence`` objects (empty if fewer than 2 citations found).
+ */
 function buildFeatureEvidence(rounds: Round[], fixes: string[]): FeatureEvidence[] {
   const allCitations = extractCitations(rounds)
   if (allCitations.length < 2) return []
@@ -331,6 +454,10 @@ function buildFeatureEvidence(rounds: Round[], fixes: string[]): FeatureEvidence
 // Sub-components
 // ---------------------------------------------------------------------------
 
+/**
+ * Uppercase blue section-label heading used between card sections.
+ * @param children - Label text string.
+ */
 function SectionLabel({ children }: { children: string }) {
   return (
     <p style={{
@@ -347,6 +474,11 @@ function SectionLabel({ children }: { children: string }) {
   )
 }
 
+/**
+ * Dark-themed container card with consistent border, radius, and padding.
+ * @param children - Card body content.
+ * @param style - Optional additional inline styles merged over the defaults.
+ */
 function Card({ children, style }: { children: ReactNode; style?: React.CSSProperties }) {
   return (
     <div style={{
@@ -361,10 +493,19 @@ function Card({ children, style }: { children: ReactNode; style?: React.CSSPrope
   )
 }
 
+/** Thin horizontal rule used to separate sections within a card. */
 function Divider() {
   return <div style={{ height: 1, background: '#1E2028', margin: '24px 0' }} />
 }
 
+/**
+ * Animated SVG ring that counts up to the given score over ~1.2 seconds.
+ *
+ * Uses a cubic ease-out via ``requestAnimationFrame`` and colours the arc
+ * according to ``scoreColor``. Renders the numeric score centred inside the ring.
+ *
+ * @param score - Integer 1–100 to display and animate to.
+ */
 function ScoreRing({ score }: { score: number }) {
   const [animated, setAnimated] = useState(0)
   const radius = 54
@@ -428,6 +569,15 @@ function ScoreRing({ score }: { score: number }) {
   )
 }
 
+/**
+ * Collapsible card displaying a single debate round with agent identity and content.
+ *
+ * Shows agent name, role badge, and round number in the header. In collapsed state
+ * displays a two-line preview; in expanded state renders all paragraphs.
+ *
+ * @param round - Round data object with ``agent_name``, ``agent_role``, ``round``,
+ *   and ``content`` fields.
+ */
 function RoundExpander({ round }: { round: Round }) {
   const [open, setOpen] = useState(false)
   const roleColor = ROLE_COLOR[round.agent_role] ?? '#71717A'
@@ -504,6 +654,10 @@ function RoundExpander({ round }: { round: Round }) {
 // Feature evidence sub-components
 // ---------------------------------------------------------------------------
 
+/**
+ * Coloured pill badge indicating the data source of a user review citation.
+ * @param type - Source type enum value determining label text and background colour.
+ */
 function SourceBadge({ type }: { type: SourceType }) {
   const { label, bg } = SOURCE_BADGES[type]
   return (
@@ -519,6 +673,10 @@ function SourceBadge({ type }: { type: SourceType }) {
   )
 }
 
+/**
+ * Coloured pill badge showing the aggregate sentiment for a feature area.
+ * @param sentiment - Sentiment classification: ``'positive'``, ``'mixed'``, or ``'negative'``.
+ */
 function SentimentTag({ sentiment }: { sentiment: 'positive' | 'mixed' | 'negative' }) {
   const map = {
     positive: { color: '#22C55E', bg: 'rgba(34,197,94,0.08)',  border: 'rgba(34,197,94,0.25)',  label: 'Mostly Positive' },
@@ -537,6 +695,15 @@ function SentimentTag({ sentiment }: { sentiment: 'positive' | 'mixed' | 'negati
   )
 }
 
+/**
+ * Two-column evidence card pairing AI analysis with real user review citations.
+ *
+ * Left column shows an italicised AI analysis quote and up to three observation
+ * bullets. Right column shows up to three source-attributed user review quotes
+ * and a sentiment tag. A full-width synthesis row appears at the bottom.
+ *
+ * @param evidence - Structured feature evidence object built by ``buildFeatureEvidence``.
+ */
 function FeatureEvidenceCard({ evidence }: { evidence: FeatureEvidence }) {
   // Build observation bullets from the AI analysis sentences (skip quoted passages)
   const bullets = evidence.aiAnalysis
@@ -695,6 +862,22 @@ function FeatureEvidenceCard({ evidence }: { evidence: FeatureEvidence }) {
 // Main component
 // ---------------------------------------------------------------------------
 
+/**
+ * Full-page verdict summary rendered after all four debate rounds complete.
+ *
+ * Sections (in order): hero score ring + verdict badge, executive summary
+ * paragraphs + metrics grid, feature-level evidence cards (when citations are
+ * found), priority fixes list, collapsible debate round transcripts, competitive
+ * positioning, and a back button. Fades in on mount.
+ *
+ * @param product - Product name displayed in the hero heading.
+ * @param score - Overall quality score (1–100) from the Buyer agent.
+ * @param decision - Raw buy decision string (normalised internally).
+ * @param fixes - Top-3 priority fix strings from the Buyer agent.
+ * @param rounds - All four completed debate round objects.
+ * @param full_report - Full Round 4 Buyer output used for section extraction.
+ * @param onBack - Callback invoked when the user clicks "Start New Analysis".
+ */
 export default function VerdictCard({
   product, score, decision, fixes, rounds, full_report, onBack,
 }: VerdictCardProps) {
