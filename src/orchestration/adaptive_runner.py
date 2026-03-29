@@ -194,7 +194,8 @@ class HardwareMonitor:
                 timeout=5,
             )
             return int(result.stdout.strip().split("\n")[0])
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error: {e}")
             return -1
 
     @staticmethod
@@ -210,7 +211,8 @@ class HardwareMonitor:
             )
             parts = [int(x.strip()) for x in result.stdout.strip().split(",")]
             return {"used_mib": parts[0], "total_mib": parts[1], "free_mib": parts[2]}
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error: {e}")
             return {"used_mib": -1, "total_mib": -1, "free_mib": -1}
 
     @staticmethod
@@ -224,7 +226,8 @@ class HardwareMonitor:
                 "total_gb": round(mem.total / 1e9, 1),
                 "percent": mem.percent,
             }
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error: {e}")
             return {"used_gb": -1, "total_gb": -1, "percent": -1}
 
     @staticmethod
@@ -234,7 +237,8 @@ class HardwareMonitor:
             result = subprocess.run(["ollama", "ps"], capture_output=True, text=True, timeout=5)
             lines = [ln for ln in result.stdout.strip().split("\n")[1:] if ln.strip()]
             return [ln.split()[0] for ln in lines if ln.split()]
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error: {e}")
             return []
 
     @staticmethod
@@ -243,8 +247,8 @@ class HardwareMonitor:
         for model in _KNOWN_MODELS:
             try:
                 subprocess.run(["ollama", "stop", model], capture_output=True, timeout=10)
-            except Exception:
-                pass
+            except Exception as e:
+                logger.error(f"Error: {e}")
 
     def full_health_check(self) -> dict[str, Any]:
         """Return a snapshot of all hardware metrics."""
@@ -775,7 +779,8 @@ class AdaptiveRunner:
                 deliverable["comparison_cards"] = json.loads(_original_comparison_cards_json)
             else:
                 deliverable["comparison_cards"] = []
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error: {e}")
             deliverable["comparison_cards"] = []
         # Persist to disk before returning so a crash mid-delivery doesn't lose the result
         session_dir = Path("sessions") / session_id
