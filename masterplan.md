@@ -12,13 +12,13 @@
 
 **System Architecture:** The platform utilizes an event-driven, layered orchestration architecture strictly decoupling persona generation, evidence retrieval, adversarial reasoning, and presentation rendering into independent, composable modules.
 
-**Orchestration Layer:** CrewAI manages a sequential four-round debate pipeline with full context chaining (R1→R2, R1+R2→R3, R1+R2+R3→R4). Each round is assigned to an independent LLM instance with isolated system prompts, enforcing genuine multi-model reasoning divergence. Agent configuration: `max_iter=10`, `verbose=True`, mandatory tool-use instructions embedded in both agent backstory and task description.
+**Orchestration Layer:** CrewAI manages a sequential four-round debate pipeline with full context chaining (R1→R2, R1+R2→R3, R1+R2+R3→R4). Four rounds map to three adversarial agent roles (First-Timer on rounds 1 and 3, Daily Driver on 2, Buyer on 4). **As implemented in `crew.py`:** two CrewAI `LLM` instances — `LOCAL_MODEL` for First-Timer, shared `DAILY_DRIVER_BUYER_MODEL` for Daily Driver and Buyer — each with isolated system prompts and personas. Agent configuration: `max_iter=10`, `verbose=True`, mandatory tool-use instructions embedded in both agent backstory and task description.
 
-**Data Model & Storage:** Evidence is stored in a ChromaDB persistent vector database containing 31,737 pre-embedded document chunks. Cosine similarity search with configurable `n_results` enables sub-50ms retrieval. Metadata schema enforces source-type filtering (`source: reddit | hackernews | google_play | metadata | screenshot`) with secondary fields for `app`, `subreddit`, `url`, and `rating`. A shared `_query_collection(query, n_results, where)` helper abstracts all retrieval operations, enforcing consistent formatting per source type.
+**Data Model & Storage:** Evidence is stored in a ChromaDB persistent vector database containing 31,668 pre-embedded document chunks. Cosine similarity search with configurable `n_results` enables sub-50ms retrieval. Metadata schema enforces source-type filtering (`source: reddit | hackernews | google_play | metadata | screenshot`) with secondary fields for `app`, `subreddit`, `url`, and `rating`. A shared `_query_collection(query, n_results, where)` helper abstracts all retrieval operations, enforcing consistent formatting per source type.
 
 **API & System Design:** FastAPI serves a REST endpoint (`POST /analyze`) returning a `session_id`, paired with a WebSocket endpoint (`WS /ws/{session_id}`) for real-time round-by-round streaming. Synchronous CrewAI execution is bridged to asynchronous WebSocket delivery via `asyncio.Queue` within a `ThreadPoolExecutor`, ensuring non-blocking concurrent session support. Automatic verdict parsing extracts score (regex 1-100), decision (YES/NO/CONDITIONS), and fixes from Round 4 raw text. Circuit-breaker pattern: if WebSocket disconnects, the frontend activates a hardcoded demo fallback, guaranteeing graceful degradation of the user experience.
 
-**Inference Layer (NVIDIA DGX Spark):** Three LLM architectures served simultaneously via Ollama on 128GB unified memory — Llama 3.3-70B (42GB, First-Timer agent), Qwen3-32B (20GB, Daily Driver agent), Mistral-Small-24B (14GB, Buyer agent). Total utilization: 76GB/128GB. Zero API dependencies. Zero data egress. Complete computational sovereignty.
+**Inference Layer:** Defaults in `config.py` use **Ollama** at `LOCAL_BASE_URL`: `LOCAL_MODEL` (e.g. `ollama/llama3.1:8b`) for First-Timer, and `DAILY_DRIVER_BUYER_MODEL` (e.g. `ollama/llama3.3:60b`) shared by Daily Driver and Buyer — **two** foundation-model backends in the shipped tree. **DGX / hackathon target:** assign three distinct open-weight models (e.g. Llama / Qwen / Mistral on vLLM or Ollama) by extending `config.py` and `crew.py`; `safe_crew.py` supports thermal-safe single-model rotation. Core debate inference is local open-weight; optional cloud APIs only for video/screenshot vision pipelines.
 
 ## 3. Innovation
 
@@ -26,8 +26,8 @@
 
 **Novel Architectural Shift:** The War Room introduces a novel recombination of three independent technologies — multi-model adversarial debate (Du et al., 2023), parallel reconnaissance swarm retrieval, and dynamic persona generation — into a first-principles orchestration protocol that bypasses the single-model constraint entirely. Instead of asking one AI for an opinion, the system:
 1. Auto-generates product-specific adversarial personas via meta-agent (not static templates — analyzing Notion produces fundamentally different archetypes than analyzing Asana)
-2. Deploys 20+ parallel scout agents that sweep 31,737 evidence chunks across 20 product dimensions in 6-12 seconds, pre-gathering intelligence before debate begins
-3. Routes each persona to a different LLM architecture (Llama/Qwen/Mistral) with different training data and different reasoning patterns, producing genuinely divergent analysis
+2. Deploys 20 parallel scout agents that sweep 31,668 evidence chunks across 20 product dimensions in 6-12 seconds, pre-gathering intelligence before debate begins
+3. **Shipped wiring:** separates First-Timer from Daily Driver+Buyer via two model IDs in `config.py`. **DGX extension:** route each persona to a different open-weight architecture (e.g. Llama/Qwen/Mistral) for maximum epistemic divergence
 4. Enforces structured disagreement via mandatory AGREE/DISAGREE labels, a stubbornness rule preventing premature concession, and a buyer settlement round that resolves disputes with business logic
 
 This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the "Agents That Hire Agents" paradigm: agents that generate other agents that deploy scout agents that feed expert agents. MIT research demonstrates multi-model debate achieves 91% factual accuracy versus 82% with same-model copies. Mitsubishi Electric independently validated this adversarial debate pattern for manufacturing QA in January 2026.
@@ -36,8 +36,8 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 **In-Scope MVP (24 hours):**
 1. Meta-agent persona generation with JSON parsing and static fallback
-2. 20-agent parallel reconnaissance swarm against ChromaDB (31,737 pre-embedded chunks)
-3. Four-round sequential CrewAI debate with context chaining across three LLM backends
+2. 20-agent parallel reconnaissance swarm against ChromaDB (31,668 pre-embedded chunks)
+3. Four-round sequential CrewAI debate with context chaining; **two** configured LLM backends by default (extendable to three on DGX)
 4. FastAPI REST + WebSocket streaming server with session management
 5. React + TypeScript frontend with landing page, live debate stream, and verdict card
 6. Demo fallback mode: hardcoded 4-round debate with typewriter animation if backend unavailable
@@ -45,7 +45,7 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 **Strictly Out-of-Scope:** Custom model training, mobile application, user authentication, payment processing, custom embedding models. All excluded to protect the 24-hour critical path.
 
-**Leveraged Assets:** Pre-trained open-weight models via Ollama (zero training cost). ChromaDB for managed vector storage (zero infrastructure). CrewAI for agent orchestration (off-the-shelf). Vite + React for rapid frontend prototyping. Framer-motion for production-quality animations. 31,737 pre-curated evidence chunks from public platforms (Reddit, HN, Google Play).
+**Leveraged Assets:** Pre-trained open-weight models via Ollama (zero training cost). ChromaDB for managed vector storage (zero infrastructure). CrewAI for agent orchestration (off-the-shelf). Vite + React for rapid frontend prototyping. Framer-motion for production-quality animations. 31,668 pre-curated evidence chunks from public platforms (Reddit, HN, Google Play).
 
 **Resource Alignment:** Two-person team with complementary non-overlapping domains — Tucker owns orchestration + frontend + API; Griffin owns RAG data + ChromaDB pipeline + tool functions. API contract (`POST /analyze`, `WS /ws/{session_id}`) established at Hour 0, unblocking fully parallel asynchronous development from Hour 1 forward.
 
@@ -53,9 +53,9 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 **Compute Scaling:** The application layer is entirely stateless. FastAPI serves concurrent sessions via isolated `ThreadPoolExecutor` workers, each maintaining independent `asyncio.Queue` bridges. This architecture allows horizontal scaling via container orchestration — adding capacity requires deploying additional stateless API instances behind a load balancer with zero shared state.
 
-**Data Scaling:** ChromaDB collections are modular and independently embeddable. Current deployment: 31,737 chunks across 20 productivity tools. Scaling to 500K+ chunks across 50 verticals requires only data ingestion — zero code changes to the debate engine. Each vertical (healthcare, legal, finance) is a self-contained collection that plugs into the identical orchestration protocol.
+**Data Scaling:** ChromaDB collections are modular and independently embeddable. Current deployment: 31,668 chunks across 20 productivity tools. Scaling to 500K+ chunks across 50 verticals requires only data ingestion — zero code changes to the debate engine. Each vertical (healthcare, legal, finance) is a self-contained collection that plugs into the identical orchestration protocol.
 
-**Inference Scaling:** The DGX Spark's 128GB unified memory currently serves three models simultaneously (76GB utilized). Vertical scaling: larger quantizations or additional models within remaining headroom. Horizontal scaling: vLLM multi-GPU serving with dedicated ports per model enables independent throughput scaling per agent architecture.
+**Inference Scaling:** **Default config:** two Ollama models. **DGX-class target:** three concurrent open-weight models when `crew.py` is wired with three `LLM` instances and memory permits (~76GB+ for a typical Llama/Qwen/Mistral stack, depending on quantization). Vertical scaling: larger quantizations or additional models within headroom. Horizontal scaling: vLLM multi-GPU serving with dedicated ports per model enables independent throughput scaling per agent role.
 
 **Network Resilience:** WebSocket streaming decouples frontend rendering from backend computation. If inference latency spikes, the frontend displays a progress animation (swarm counter, agent initialization sequence) that absorbs wait time without degrading perceived performance. If backend fails entirely, the demo fallback activates automatically — the system never presents a broken state to the user.
 
@@ -92,7 +92,7 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 |--------|-----------------|---------------|-------------|
 | Research cycle time | 2-6 weeks | 4 minutes | 2,500x reduction |
 | Cost per analysis | $5,000-$200,000 | $0 (local compute) | 100% cost elimination |
-| Evidence sources synthesized | 10-50 interviews | 31,737 real reviews | 633x data coverage |
+| Evidence sources synthesized | 10-50 interviews | 31,668 real reviews | 633x data coverage |
 | Analytical perspectives | 1 (single consultant/model) | 3 adversarial architectures | 3x perspective coverage |
 | Output actionability | PDF narrative report | Sprint-ready tickets with retention % | Immediate developer handoff |
 | Time-to-value | Days to weeks | Under 4 minutes | Same-session actionability |
@@ -116,7 +116,7 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 **Division of Labor:**
 - **Tucker Anglemyer** (Accounting & Finance, Providence College): Owns CrewAI orchestration, swarm engine, meta-agent, FastAPI/WebSocket API, React frontend, Vercel deployment, demo delivery. Prior: built Untracked (60K lines production code, solo, 2 months) — React/TypeScript, Python ML, Postgres/pgvector. PwC internship 2027.
-- **Griffin Kovach** (Founder, Clerion AI, Providence College): Owns RAG dataset curation (31,737 chunks across 20 apps), ChromaDB ingestion pipeline, tool function wiring with metadata filtering, data quality assurance. Prior: built Clerion's RAG system for Canvas LMS with domain-specific evidence retrieval.
+- **Griffin Kovach** (Founder, Clerion AI, Providence College): Owns RAG dataset curation (31,668 chunks across 20 apps), ChromaDB ingestion pipeline, tool function wiring with metadata filtering, data quality assurance. Prior: built Clerion's RAG system for Canvas LMS with domain-specific evidence retrieval.
 
 **Critical Path Milestones:**
 
@@ -124,7 +124,7 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 |-------|-----------|-------|------------|
 | 0-1 | GitHub repo, API contract (`POST /analyze`, `WS /ws/{session_id}`), README | Both | None — unblocks parallel development |
 | 1-4 | CrewAI 4-round debate passing end-to-end on local model | Tucker | API contract |
-| 1-4 | ChromaDB ingestion of 31,737 chunks with metadata filtering | Griffin | Raw data (pre-curated) |
+| 1-4 | ChromaDB ingestion of 31,668 chunks with metadata filtering | Griffin | Raw data (pre-curated) |
 | 4-8 | FastAPI + WebSocket streaming server, React frontend (3 views) | Tucker | Working crew.py |
 | 4-8 | Tool functions wired to ChromaDB, pre-seeded context injection | Griffin | Loaded ChromaDB |
 | 8-12 | End-to-end integration: frontend → API → swarm → debate → verdict | Both | Integration gate |
@@ -140,17 +140,17 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 | Venue WiFi blocking SSH to DGX (port 22 filtered) | Confirmed | High | Direct monitor access with keyboard/mouse. GitHub push/pull for code synchronization | All development completed and tested locally first; DGX window used exclusively for model swap and demo recording |
 | Small models (8B) bypassing CrewAI ReAct tool-calling loop | Confirmed | High | Pre-seeded context injection: `fetch_context_for_product()` retrieves 10 RAG results at crew build time and injects directly into task descriptions | Evidence is structurally guaranteed regardless of whether the LLM executes tool calls during inference |
 | Live demo failure during Sunday presentation | Medium | Critical | Hardcoded demo fallback with typewriter animation built into frontend — activates automatically if WebSocket disconnects within 8 seconds | Pre-recorded screen capture of best DGX demo run available as instant backup video |
-| RAG retrieval returning irrelevant evidence | Low | Medium | Metadata filtering by source type (`reddit`, `hackernews`, `google_play`). Cosine similarity thresholding on 31,737 chunks | Swarm runs 20 parallel queries across different dimensions — irrelevant results in one dimension are diluted by relevant results across 19 others |
+| RAG retrieval returning irrelevant evidence | Low | Medium | Metadata filtering by source type (`reddit`, `hackernews`, `google_play`). Cosine similarity thresholding on 31,668 chunks | Swarm runs 20 parallel queries across different dimensions — irrelevant results in one dimension are diluted by relevant results across 19 others |
 
 ## 12. Differentiation Strategy
 
-**Unique Value Proposition (UVP):** The War Room delivers adversarial, evidence-grounded product QA through multi-model debate — structurally incapable of producing single-perspective analysis. Three architectures from three different companies (Meta's Llama, Alibaba's Qwen, Mistral AI's Mistral) trained on different data in different contexts produce genuinely independent reasoning that challenges itself.
+**Unique Value Proposition (UVP):** The War Room delivers adversarial, evidence-grounded product QA through multi-agent debate — structurally resisting single-perspective collapse. **Shipped stack:** three personas with **two** distinct foundation-model backends (`crew.py` / `config.py`). **Optional DGX stack:** three distinct open-weight architectures for stronger cross-model disagreement. Evidence-grounded rounds with mandatory challenge structure produce contested, cited analysis rather than a polished monologue.
 
 **Defensible Moat:** The differentiation is structural, not cosmetic:
-1. **Data network effects:** As the RAG corpus grows (currently 31,737 chunks across 20 tools), the quality and specificity of debate findings compound. Each new product vertical added increases the system's analytical coverage, creating a widening knowledge advantage that generic single-model tools cannot replicate without equivalent domain-specific curation
+1. **Data network effects:** As the RAG corpus grows (currently 31,668 chunks across 20 tools), the quality and specificity of debate findings compound. Each new product vertical added increases the system's analytical coverage, creating a widening knowledge advantage that generic single-model tools cannot replicate without equivalent domain-specific curation
 2. **Protocol complexity as barrier to entry:** The three-layer orchestration (meta-agent → swarm → debate) with mandatory disagreement rules, stubbornness constraints, and buyer settlement logic represents significant architectural complexity. Replicating the protocol requires not just running multiple models, but engineering the adversarial interaction structure that produces genuinely divergent, evidence-cited findings
 3. **Vertical extensibility as platform moat:** Each new RAG collection (healthcare, legal, finance, security) transforms the same protocol into a new product category without additional engineering. The platform becomes more valuable with each vertical, while competitors must build separate solutions for each domain
-4. **Local compute sovereignty:** Running entirely on NVIDIA DGX Spark with zero API dependencies, zero data egress, and zero per-query costs creates a fundamentally different economic model. Enterprises with data sensitivity requirements (healthcare, defense, finance) cannot use cloud-based alternatives — the War Room's on-premise architecture is the only viable option for regulated industries
+4. **Local compute sovereignty:** Core debate runs on **local** Ollama/vLLM inference (no cloud LLM required for evaluation); DGX Spark is optional for concurrent frontier-weight serving. Zero per-query API cost when fully local. Enterprises with data sensitivity can keep product descriptions and retrieved evidence on-prem; optional GPT-4o remains isolated to video/screenshot ingestion when enabled
 
 ---
 

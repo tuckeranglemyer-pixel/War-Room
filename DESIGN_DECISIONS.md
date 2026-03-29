@@ -6,7 +6,7 @@ A living record of every non-obvious technical choice in this project, written h
 
 ### 1. Local Inference (DGX Spark + vLLM / Ollama) vs. Cloud API Calls
 
-**Choice:** Run all debate LLMs on a local NVIDIA DGX Spark via Ollama (configured in `config.py` with `LOCAL_BASE_URL = "http://localhost:11434"`), with GPT-4o reserved only for the video-analysis pipeline.
+**Choice:** Run debate LLMs on **local Ollama** by default (`LOCAL_BASE_URL = "http://localhost:11434"` in `config.py`): **`LOCAL_MODEL`** for First-Timer rounds and **`DAILY_DRIVER_BUYER_MODEL`** shared for Daily Driver + Buyer. Reserve **GPT-4o** for optional video / screenshot vision pipelines only.
 
 **Over:** Routing every inference call to OpenAI, Anthropic, or another managed cloud provider.
 
@@ -16,15 +16,15 @@ A living record of every non-obvious technical choice in this project, written h
 
 ---
 
-### 2. Three Specialized Debate Models (Llama 3.3-70B, Qwen3-32B, Mistral-Small-24B) vs. One Large Model or a Different Combination
+### 2. Two LLM backends vs. one vs. three (DGX target)
 
-**Choice:** Assign distinct LLM personalities to each agent role: Llama 3.3-70B for the First-Timer, Qwen3-32B for the Daily Driver, and Mistral-Small-24B for the Buyer (documented in `config.py` as the intended DGX configuration).
+**Choice (shipped `crew.py`):** **Two** CrewAI `LLM` instances — `first_timer_llm` uses `LOCAL_MODEL`; `daily_driver_llm` and `buyer_llm` share `daily_driver_buyer_llm` backed by `DAILY_DRIVER_BUYER_MODEL`. Same Ollama host, different model tags.
 
-**Over:** Running all agents from one shared model (the current code path in `crew.py` lines 20–26, where all three agents share `local_llm`), or using three instances of the same model with only prompt-level differentiation.
+**Over:** A single model for all agents (weaker persona separation), or — **stretch goal** — three distinct foundation models (e.g. Llama 3.3-70B + Qwen3-32B + Mistral-Small-24B on separate vLLM ports) for maximum architectural disagreement.
 
-**Why:** Different pre-training corpora and fine-tuning philosophies produce meaningfully different prior biases. Qwen's strong multilingual and enterprise-software training fits a power-user voice; Mistral's efficiency-focused training makes it a credible "cost-sensitive buyer" stand-in; Llama's broad instruction tuning works for naive first impressions. If agents share weights the "disagreement" in round 2 is purely prompt-driven and can collapse into superficial hedging rather than genuine tension.
+**Why:** Two backends already split “first impression” reasoning from “power user + buyer” reasoning while staying runnable on typical dev GPUs. Three separate weights (DGX + vLLM) is the upgrade path when memory and ops budget allow; commented stubs in `config.py` are not wired until `crew.py` assigns three `LLM` instances.
 
-**Tradeoff:** This is the single largest gap between intent and implementation. The repo's `crew.py` currently assigns all three agents the same `local_llm` object — the multi-model behavior only materializes when the DGX Spark is live and `config.py` is updated to separate the three endpoints. Any evaluation of "debate quality" on a dev machine with a single Ollama instance is not testing the actual architecture. We accepted this deferral to keep the code runnable on a single machine during development.
+**Tradeoff:** Daily Driver and Buyer share weights — their “voices” differ via prompts and roles, not via independent pretraining. Full three-model separation requires the optional `crew.py` extension documented in `README.md` §3b.
 
 ---
 
@@ -66,7 +66,7 @@ A living record of every non-obvious technical choice in this project, written h
 
 ### 6. Pre-Built RAG Dataset vs. Real-Time Web Retrieval
 
-**Choice:** A static ~31,737-chunk Chroma collection scraped offline from Reddit, Hacker News, Google Play, the App Store, G2 reviews, and product metadata — loaded once via `load_db.py` and queried at debate time.
+**Choice:** A static ~31,668-chunk Chroma collection scraped offline from Reddit, Hacker News, Google Play, the App Store, G2 reviews, and product metadata — loaded once via `load_db.py` and queried at debate time.
 
 **Over:** Live web search or crawling during inference (e.g., calling the Reddit or Google Play API in real time as each debate round runs).
 

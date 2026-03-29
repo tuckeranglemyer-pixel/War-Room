@@ -4,6 +4,34 @@
 
 ---
 
+## Repository layout
+
+Canonical Python and CrewAI orchestration live at the **repository root**. There is no active top-level `backend/` directory; older experiments are under `archive/`.
+
+**Root Python:** `api.py`, `config.py`, `crew.py`, `dgx_health.py`, `load_db.py`, `meta_prompt.py`, `process_screenshots.py`, `safe_crew.py`, `safe_load_db.py`, `swarm.py`, `tools.py`.
+
+**Root Markdown:** `README.md`, `MASTER_PLAN.md`, `masterplan.md`, `ARCHITECTURE.md`, `DESIGN_DECISIONS.md`.
+
+| Path | Role |
+|------|------|
+| `api.py` | FastAPI + WebSocket (`POST /analyze`, `WS /ws/{session_id}`), optional `POST /api/ingest/video` |
+| `config.py` | Model IDs (`LOCAL_MODEL`, `DAILY_DRIVER_BUYER_MODEL`), Ollama base URL, Chroma paths, swarm limits, API host/port |
+| `crew.py` | `build_crew()` — personas, swarm briefing, four-round sequential debate; **two** `LLM` instances (see Architecture) |
+| `meta_prompt.py` | `generate_personas()` — JSON adversarial personas using the same `local_llm` as First-Timer; static fallback on parse failure |
+| `swarm.py` | `deploy_swarm()` — 20 scouts via `ThreadPoolExecutor` (`MAX_WORKERS` from `config.py`) |
+| `tools.py` | `_query_collection`, `fetch_context_for_product`, seven `@tool` search functions; **each debate agent receives `search_pm_knowledge` only** |
+| `load_db.py` | Load processed JSON chunks into ChromaDB collection `pm_tools` |
+| `process_screenshots.py` | Optional GPT-4o Vision → ChromaDB screenshot chunks |
+| `safe_crew.py` | Optional DGX thermal-safe crew (one loaded model at a time) |
+| `safe_load_db.py` | Optional batched Chroma ingest with checkpoints for thermal limits |
+| `dgx_health.py` | Optional pre-flight GPU / Ollama checks |
+| `requirements.txt` | Python dependencies |
+| `scrapers/` | Data acquisition and preprocessing scripts |
+| `frontend/` | Vite + React + TypeScript + Tailwind UI |
+| `archive/` | **Legacy prototypes** — `streamlit_app.py`, `backend_v2/` (superseded parallel API stack) |
+
+---
+
 ## Problem
 
 Single-model AI gives shallow, sycophantic answers. When you ask one LLM to evaluate a product, it produces a polished, balanced summary — the kind of answer that gets a good rating on user studies and misses every critical flaw that actually causes churn. A 2023 Stanford study found that 73% of GPT-4 product evaluations failed to surface the top user complaints visible in public review data. Worse, the model's priors from training data systematically favor well-documented, well-funded tools, creating a bias that invisibly disadvantages newer or niche products. The problem is structural: a single model cannot hold genuinely conflicting perspectives simultaneously. It will always converge toward consensus — and consensus is the enemy of rigorous product evaluation.
@@ -12,7 +40,7 @@ Single-model AI gives shallow, sycophantic answers. When you ask one LLM to eval
 
 ## Solution
 
-War Room delivers better product decisions by making three specialized AI agents argue against each other in a structured, evidence-grounded adversarial debate. Instead of one model synthesizing a verdict, three independent agents — each instantiated with a dynamically generated adversarial persona, each running on a different foundation model with different training priors — are forced to find flaws, challenge each other's evidence, and defend their positions across four escalating rounds. The output is not a summary. It is a buy/no-buy decision with a 1–100 score, three actionable fix tickets ranked by retention impact, and a competitive positioning analysis — all grounded in 31,668 real user evidence chunks retrieved at query time from ChromaDB. The product team gets the harsh, specific, evidence-backed critique that they would only otherwise get from 100 real users churning.
+War Room delivers better product decisions by making three specialized AI **agents** (First-Timer, Daily Driver, Buyer) argue in a structured, evidence-grounded adversarial debate. Each agent gets a **dynamically generated** adversarial persona from `meta_prompt.py`. **Inference (as wired in `crew.py` / `config.py`):** two foundation-model backends — `LOCAL_MODEL` for the First-Timer (rounds 1 and 3), and a **shared** `DAILY_DRIVER_BUYER_MODEL` for Daily Driver and Buyer (rounds 2 and 4), both via Ollama at `LOCAL_BASE_URL`. That split still separates “new user” reasoning from “power user + buyer” reasoning while keeping the repo runnable on typical dev GPUs; you can extend to three distinct models on DGX by assigning separate `LLM` instances per agent. The output is not a summary: it is a buy/no-buy style verdict with a 1–100 score, prioritized fixes, and competitive framing — grounded in **31,668** deduplicated evidence chunks in ChromaDB (`pm_tools`) after a full `load_db.py` ingest (verify with `collection.count()` locally).
 
 ---
 
@@ -84,9 +112,8 @@ USER INPUT
 │   • Metadata filters: app, source, type, subreddit, rating, URL            │
 │   • Deduplication via seen_ids set                                          │
 │                                                                             │
-│  Agent tools (CrewAI @tool):                                               │
-│   search_app_reviews │ search_reddit │ search_hn_comments │                │
-│   search_competitor_data │ search_pm_knowledge (unfiltered)                │
+│  tools.py defines 7 @tool wrappers; crew agents use search_pm_knowledge only│
+│   (+ fetch_context_for_product + swarm pre-inject into prompts)            │
 │                                                                             │
 │  Sources in corpus:                                                         │
 │   Reddit (r/productivity, r/notion, r/projectmanagement, ...)              │
@@ -101,22 +128,22 @@ USER INPUT
 │  PHASE 3 — ADVERSARIAL DEBATE  (crew.py, CrewAI sequential process)         │
 │                                                                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  ROUND 1 — First-Timer Agent  (Llama 3.3-70B via vLLM)               │ │
+│  │  ROUND 1 — First-Timer  (LOCAL_MODEL, e.g. ollama/llama3.1:8b)        │ │
 │  │  Onboarding audit + 3 critical problems w/ evidence + 1 strength      │ │
 │  └───────────────────────────────────────────────────────────────────────┘ │
 │                              context chained ↓                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  ROUND 2 — Daily Driver Agent  (Qwen3-32B via vLLM)                  │ │
+│  │  ROUND 2 — Daily Driver  (DAILY_DRIVER_BUYER_MODEL, shared LLM)       │ │
 │  │  AGREE/DISAGREE each finding + 2 hidden long-term problems            │ │
 │  └───────────────────────────────────────────────────────────────────────┘ │
 │                              context chained ↓                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  ROUND 3 — First-Timer fires back  (Llama 3.3-70B via vLLM)          │ │
+│  │  ROUND 3 — First-Timer  (same LOCAL_MODEL as round 1)                 │ │
 │  │  Defend or concede each point + updated severity ratings              │ │
 │  └───────────────────────────────────────────────────────────────────────┘ │
 │                              context chained ↓                             │
 │  ┌───────────────────────────────────────────────────────────────────────┐ │
-│  │  ROUND 4 — Buyer Agent final verdict  (Mistral-Small-24B via vLLM)   │ │
+│  │  ROUND 4 — Buyer  (same DAILY_DRIVER_BUYER_MODEL as round 2)           │ │
 │  │  Business assessment + YES/NO/CONDITIONS + score/100 + TOP 3 FIXES   │ │
 │  └───────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -131,36 +158,26 @@ USER INPUT
 └─────────────────────────────────────────────────────────────────────────────┘
 
                         ┌──────────────────────────┐
-                        │  NVIDIA DGX Spark         │
-                        │  vLLM inference server    │
-                        │  ┌────────────────────┐  │
-                        │  │ Llama 3.3-70B       │  │
-                        │  │ (port 8001)         │  │
-                        │  ├────────────────────┤  │
-                        │  │ Qwen3-32B           │  │
-                        │  │ (port 8002)         │  │
-                        │  ├────────────────────┤  │
-                        │  │ Mistral-Small-24B   │  │
-                        │  │ (port 8003)         │  │
-                        │  └────────────────────┘  │
+                        │  Inference (default)      │
+                        │  Ollama @ LOCAL_BASE_URL  │
+                        │  • LOCAL_MODEL → R1,R3    │
+                        │  • DAILY_DRIVER_BUYER_    │
+                        │    MODEL → R2,R4 (shared) │
+                        │  Optional: DGX / vLLM     │
+                        │  with 3 separate LLM      │
+                        │  instances (extend crew)  │
                         └──────────────────────────┘
 ```
 
 ---
 
-## Why This Requires a Supercomputer
+## Inference hardware: what the repo assumes today
 
-War Room is not constrained by ambition. It is constrained by physics.
+**Shipped defaults (`config.py`):** two Ollama models at `LOCAL_BASE_URL` — `LOCAL_MODEL` (default `ollama/llama3.1:8b`) for First-Timer rounds, and `DAILY_DRIVER_BUYER_MODEL` (default `ollama/llama3.3:60b`) shared by Daily Driver and Buyer. That is enough VRAM on many single-GPU workstations for hackathon demos and local development.
 
-**The raw parameter count:** Llama 3.3-70B + Qwen3-32B + Mistral-Small-24B = ~126 billion parameters that must be resident in memory simultaneously. At bf16 precision, that is approximately 252 GB of model weights alone — before KV caches, activations, or vLLM's paged attention overhead.
+**Why DGX / vLLM still matter for the “three frontier models” story:** If you assign **three** distinct large open-weight models (e.g. Llama 3.3-70B + Qwen3-32B + Mistral-Small-24B) to the three personas, aggregate weight memory can exceed **~250 GB bf16** before KV caches — beyond a single consumer GPU. A **NVIDIA DGX Spark**-class box with **large unified memory** is the practical way to keep all three resident with tolerable round latency. This is **not** what `crew.py` does out of the box; it is the intended upgrade path: add separate `LLM(...)` instances per agent (and matching `config.py` entries / vLLM ports).
 
-**Why sequential loading destroys the product:** The adversarial debate is not a batch job. It is a real-time, context-chained loop where each model must respond to the previous model's actual output within seconds. If models were loaded and unloaded between rounds, a single four-round debate would require three full model loads — each taking 3–8 minutes on consumer hardware. Debate rounds would take longer than human attention spans. The product collapses. vLLM requires all three models hot in memory simultaneously, with pre-warmed KV caches, to deliver the sub-5-second round latency that makes the streaming debate experience coherent.
-
-**The minimum viable hardware:** The NVIDIA DGX Spark with Grace Blackwell architecture and 128 GB unified memory is not a luxury choice — it is the floor. The Grace Blackwell SoC's unified CPU-GPU memory architecture eliminates the PCIe bandwidth bottleneck that would otherwise throttle three concurrent high-throughput inference processes. 128 GB unified memory is sufficient (barely) to hold all three model weight sets plus operational overhead. No consumer workstation, cloud VM under ~$15/hr, or gaming GPU configuration meets this bar without model quantization severe enough to degrade argument quality.
-
-**What a consumer GPU actually gets you:** A single RTX 4090 (24 GB VRAM) can run one of these models at 4-bit quantization. War Room runs three models at full precision simultaneously. That is not a configuration difference — it is a category difference. A user with an RTX 4090 can run a single-model product review. They cannot run War Room. The adversarial debate structure, where model architectures with genuinely different training priors contest each other's claims, requires all three models active concurrently. Quantizing to fit on consumer hardware degrades the architectural divergence that makes the disagreements real rather than theatrical.
-
-**This is not "using the DGX because it's available."** The DGX Spark at the hackathon venue is not a nice-to-have. It is the reason this product exists. War Room was designed around the hardware constraint: three frontier-class open-weight models, full precision, concurrent, local, zero API latency. Remove the DGX Spark and you have a different product — a slower, weaker, single-model product review tool. Add it back and you have War Room.
+**Thermal safety:** For venue hardware, `safe_crew.py` can run **one** loaded model at a time between rounds instead of holding three giants simultaneously.
 
 ---
 
@@ -176,7 +193,7 @@ War Room is not constrained by ambition. It is constrained by physics.
 
 The naive approach is chain-of-thought prompting: "Think like a skeptical user, then think like a power user, then synthesize." This fails for a structural reason: a single model cannot maintain genuinely conflicting positions simultaneously. When the same model plays both sides of an argument, it converges to its training prior. It writes an argument, then writes a counter-argument that is calibrated to seem "balanced" rather than to actually challenge the first. The model knows it wrote both sides. It does not argue — it performs arguing.
 
-War Room solves this by instantiating three separate LLM processes with different model weights, each given a dynamically generated adversarial persona with incompatible priorities. Llama 3.3-70B runs the First-Timer persona: optimized for breadth, first impressions, and skepticism. Qwen3-32B runs the Daily Driver: optimized for technical depth and long-form critical analysis. Mistral-Small-24B runs the Buyer: optimized for business logic, pricing, and integrations. Because these are different model architectures with different training data distributions, their disagreements are genuine — not theatrical. Llama's attention patterns are not informed by what Qwen just said. The context chaining across rounds means each model must explicitly respond to the other's actual output, creating a debate where evidence is contested, not just listed.
+War Room separates **personas** from **weights**: three CrewAI agents get conflicting goals via `meta_prompt.py`, while **two** Ollama model IDs (see `crew.py`) drive inference — First-Timer on one model, Daily Driver and Buyer on another. That already breaks single-prompt “balanced summary” collapse: later rounds must respond to prior tasks’ outputs through CrewAI context chaining, and the Buyer still has to synthesize disputes. **Optional upgrade:** give each agent its **own** `LLM` and foundation model (e.g. on DGX + vLLM) for maximum cross-architecture disagreement.
 
 ### Why meta-prompting for persona generation is innovative
 
@@ -190,9 +207,9 @@ The 31,668-chunk `pm_tools` ChromaDB collection was not pulled from a single API
 
 Before the first debate round begins, War Room deploys 20 parallel scout agents via `ThreadPoolExecutor` (10 concurrent workers), each querying the ChromaDB collection on a different product dimension (onboarding, pricing, mobile UX, integrations, bugs, etc.). The compiled swarm briefing is injected into Round 1 before the debate starts. This solves a real problem: small local models running on constrained hardware do not reliably execute multi-step ReAct tool-calling loops. By pre-fetching evidence through the swarm and injecting it directly into task prompts, War Room guarantees that every agent argument is grounded in real retrieved evidence — not hallucinated citations. This is an architectural decision that distinguishes production-quality agent systems from toy demos.
 
-### Why local inference on the DGX Spark matters
+### Why local open-weight inference matters
 
-Running all three inference workloads on the NVIDIA DGX Spark (rather than calling OpenAI, Anthropic, or Groq APIs) means: (1) the product descriptions and user data submitted to War Room never leave the local compute environment — critical for enterprise customers evaluating unreleased products, (2) we can run three 70B/32B/24B parameter models in parallel without per-token API costs that would make adversarial debate economically infeasible at scale, and (3) we have full control over model routing, allowing each debate persona to be assigned to a model architecture whose training distribution best matches its epistemic role. The DGX Spark's memory bandwidth is sufficient to serve all three models concurrently, enabling sub-5-second round latency on locally-hosted 70B inference.
+Running the debate on **Ollama** (or vLLM) keeps product text and retrieved evidence off third-party chat APIs for the core loop. **Default:** two local models, no per-token cloud bill for rounds. **Optional:** add GPT-4o only for video frame analysis / screenshot ingestion (`api.py`, `process_screenshots.py`) when `OPENAI_API_KEY` is set.
 
 ---
 
@@ -201,22 +218,19 @@ Running all three inference workloads on the NVIDIA DGX Spark (rather than calli
 ### Inference
 | Component | Technology | Notes |
 |-----------|-----------|-------|
-| First-Timer agent | **Llama 3.3-70B** via vLLM | Broad first-impression analysis; ~140 GB bf16 weight footprint |
-| Daily Driver agent | **Qwen3-32B** via vLLM | Technical long-form critique; ~64 GB bf16 weight footprint |
-| Buyer agent | **Mistral-Small-24B** via vLLM | Business decision synthesis; ~48 GB bf16 weight footprint |
-| Inference server | **vLLM** (latest) on NVIDIA DGX Spark | Ports 8001/8002/8003; all three models hot simultaneously |
-| Video frame analysis | **GPT-4o** (vision, high-detail) | Via OpenAI Python SDK |
-| Persona generation | **GPT-4o** / local LLM | Meta-prompt, JSON output |
-| Local dev inference | **Ollama** (`llama3.1:8b`) | `http://localhost:11434` |
+| First-Timer (rounds 1 & 3) | **`LOCAL_MODEL`** (CrewAI `LLM`) | Default `ollama/llama3.1:8b` at `LOCAL_BASE_URL` |
+| Daily Driver + Buyer (rounds 2 & 4) | **`DAILY_DRIVER_BUYER_MODEL`** (shared `LLM`) | Default `ollama/llama3.3:60b` at `LOCAL_BASE_URL` |
+| Optional DGX / vLLM | **Three separate `LLM` instances** | Not wired by default — extend `config.py` + `crew.py` with distinct model IDs and base URLs (e.g. ports 8001–8003) |
+| Video frame analysis | **GPT-4o** (vision, high-detail) | Optional; OpenAI SDK in `api.py` when key present |
+| Persona generation (`meta_prompt.py`) | Same as First-Timer | `generate_personas(..., local_llm)` uses `LOCAL_MODEL` |
+| Local inference server | **Ollama** | Default `http://localhost:11434` |
 
 ### Hardware
-| Component | Spec | Why It Matters for This Workload |
-|-----------|------|----------------------------------|
-| Platform | **NVIDIA DGX Spark** | Grace Blackwell SoC; only consumer-accessible platform with sufficient unified memory for this model stack |
-| Architecture | **Grace Blackwell** (GB10) | CPU and GPU share a single memory pool — eliminates PCIe bottleneck between host and device that would throttle three concurrent inference processes |
-| Unified memory | **128 GB** | Holds Llama 70B + Qwen 32B + Mistral 24B weight sets (~252 GB bf16) with vLLM KV cache overhead; below this threshold, models must be loaded sequentially, destroying real-time debate latency |
-| Memory bandwidth | **~900 GB/s** (NVLink-C2C) | Sufficient to serve token generation across three concurrent vLLM processes without memory bandwidth saturation; consumer PCIe 5.0 peaks at ~128 GB/s |
-| Inference throughput | Sub-5-second round latency | All three models pre-warmed; no cold-load penalty between debate rounds; enables coherent real-time streaming UX |
+| Component | Spec | Notes |
+|-----------|------|-------|
+| **Minimum (repo defaults)** | GPU that can run the two configured Ollama models | Typical dev / single-GPU setups |
+| **Target (three frontier models)** | **NVIDIA DGX Spark** or similar with **large unified memory** | Needed when you assign **three** concurrent large models (70B-class + 32B + 24B) without aggressive quantization |
+| **Venue safety** | `safe_crew.py` | Reduces concurrent loaded models for thermal headroom |
 
 ### Orchestration
 | Component | Technology | Notes |
@@ -271,13 +285,13 @@ Running all three inference workloads on the NVIDIA DGX Spark (rather than calli
 
 6. **RAG pre-fetch** — `tools.py::fetch_context_for_product` runs 4 semantic queries (onboarding friction, bugs/performance, strengths, team/pricing) against the `pm_tools` collection with app-name metadata filtering. Deduplicates by URL/chunk prefix. Formats evidence with source labels, ratings, and URLs.
 
-7. **Round 1 — First-Timer** (Llama 3.3-70B): Onboarding audit step-by-step, 3 critical problems (each with exact failure moment, cited evidence, severity 1–10, named competitor alternative), and 1 genuine strength with evidence.
+7. **Round 1 — First-Timer** (`LOCAL_MODEL`): Onboarding audit step-by-step, 3 critical problems (each with exact failure moment, cited evidence, severity 1–10, named competitor alternative), and 1 genuine strength with evidence.
 
-8. **Round 2 — Daily Driver** (Qwen3-32B): Reads Round 1 via CrewAI context chaining. Must AGREE or DISAGREE (labeled) on each finding with cited evidence — at least one disagree, at least one escalation. Exposes 2 hidden long-term problems invisible to first-timers. Challenges their competitor recommendation. Rates Round 1 quality 1–10.
+8. **Round 2 — Daily Driver** (`DAILY_DRIVER_BUYER_MODEL`): Reads Round 1 via CrewAI context chaining. Must AGREE or DISAGREE (labeled) on each finding with cited evidence — at least one disagree, at least one escalation. Exposes 2 hidden long-term problems invisible to first-timers. Challenges their competitor recommendation. Rates Round 1 quality 1–10.
 
-9. **Round 3 — First-Timer fires back** (Llama 3.3-70B): Reads Rounds 1–2. Defends or concedes each challenged point (rule: "you get used to it" is not a defense). Responds to the 2 hidden problems. Updates severity ratings with justification.
+9. **Round 3 — First-Timer** (`LOCAL_MODEL`, same instance as round 1): Reads Rounds 1–2. Defends or concedes each challenged point (rule: "you get used to it" is not a defense). Responds to the 2 hidden problems. Updates severity ratings with justification.
 
-10. **Round 4 — Buyer verdict** (Mistral-Small-24B): Reads Rounds 1–3. Settles every disagreement with evidence. Runs business-critical assessment (pricing, integrations, data portability, admin controls). Identifies the strategic market blind spot both analysts missed. Delivers: BUY DECISION (YES/NO/YES WITH CONDITIONS), OVERALL SCORE 1–100, TOP 3 FIXES (ranked, with sprint description, evidence citation, and estimated retention impact), COMPETITIVE POSITIONING.
+10. **Round 4 — Buyer** (`DAILY_DRIVER_BUYER_MODEL`, same instance as round 2): Reads Rounds 1–3. Settles every disagreement with evidence. Runs business-critical assessment (pricing, integrations, data portability, admin controls). Identifies the strategic market blind spot both analysts missed. Delivers: BUY DECISION (YES/NO/YES WITH CONDITIONS), OVERALL SCORE 1–100, TOP 3 FIXES (ranked, with sprint description, evidence citation, and estimated retention impact), COMPETITIVE POSITIONING.
 
 11. **Streaming delivery** — Each round completion triggers the `task_callback`, which enqueues a JSON message `{round, agent_name, agent_role, content}` onto the asyncio Queue. The WebSocket coroutine forwards each message to the frontend in real time. The verdict is parsed via regex from the Round 4 output and delivered as a final structured `{type: "verdict", score, decision, top_3_fixes, full_report}` message.
 
@@ -320,32 +334,19 @@ $env:OPENAI_API_KEY = "sk-..."
 ### 3a. Local development (Ollama)
 
 ```bash
-# Pull the model
+# Pull models matching config.py defaults
 ollama pull llama3.1:8b
+ollama pull llama3.3:60b
 
 # Verify Ollama is running at http://localhost:11434
 ollama list
 ```
 
-`config.py` defaults to `LOCAL_MODEL = "ollama/llama3.1:8b"` and `LOCAL_BASE_URL = "http://localhost:11434"`. No changes needed for local dev.
+`config.py` defaults to `LOCAL_MODEL = "ollama/llama3.1:8b"`, `DAILY_DRIVER_BUYER_MODEL = "ollama/llama3.3:60b"`, and `LOCAL_BASE_URL = "http://localhost:11434"`. Pull both models in Ollama before running `crew.py` or `api.py`.
 
-### 3b. DGX Spark production (vLLM)
+### 3b. DGX / vLLM — three distinct models (optional extension)
 
-Uncomment the three model lines in `config.py`:
-
-```python
-FIRST_TIMER_MODEL = "ollama/llama3.3:70b"   # or vllm model ID
-DAILY_DRIVER_MODEL = "ollama/qwen3:32b"
-BUYER_MODEL = "ollama/mistral-small:24b"
-```
-
-In `crew.py`, swap from `local_llm` to per-model LLMs:
-
-```python
-first_timer_llm  = LLM(model=FIRST_TIMER_MODEL,  base_url="http://localhost:8001/v1")
-daily_driver_llm = LLM(model=DAILY_DRIVER_MODEL, base_url="http://localhost:8002/v1")
-buyer_llm        = LLM(model=BUYER_MODEL,         base_url="http://localhost:8003/v1")
-```
+The repo ships with **two** `LLM` instances in `crew.py`. To run **three** separate foundation models (e.g. on vLLM ports 8001–8003), add three model string constants to `config.py`, then replace the shared `daily_driver_buyer_llm` pattern with **three** `LLM(...)` constructors (First-Timer, Daily Driver, Buyer) and assign `first_timer_llm`, `daily_driver_llm`, and `buyer_llm` accordingly. Commented `FIRST_TIMER_MODEL` / `DAILY_DRIVER_MODEL` / `BUYER_MODEL` stubs in `config.py` are **not** wired until you do this.
 
 ### 4. Load ChromaDB (if building from raw data)
 
@@ -364,7 +365,11 @@ python load_db.py
 python process_screenshots.py
 ```
 
-Expected output: `31,668 chunks` in the `pm_tools` collection.
+Expected output: **31,668** unique chunks in `pm_tools` after a full ingest (matches `load_db.py` / team dataset). Verify locally:
+
+```bash
+python3 -c "import chromadb; c = chromadb.PersistentClient(path='./chroma_db'); print(c.get_collection('pm_tools').count())"
+```
 
 ### 5. Start the API server
 
@@ -412,7 +417,7 @@ python swarm.py
 
 ## Design Decisions
 
-**Why three different model architectures over three instances of the same model:** Running three Llama-70B instances would produce arguments that differ only in sampling temperature — the same model, the same training priors, the same tendency to hedge. Llama 3.3-70B, Qwen3-32B, and Mistral-Small-24B have genuinely different training data distributions, instruction tuning approaches, and attention patterns. When they disagree, the disagreement reflects real architectural divergence, not stochastic variation. The tradeoff is increased inference infrastructure complexity: three separate vLLM server instances vs one. We accept this cost because the output quality difference is not marginal.
+**Why two model backends instead of one for everything:** A single model answering as three personas still tends to collapse toward one voice. Splitting First-Timer onto `LOCAL_MODEL` and Daily Driver+Buyer onto `DAILY_DRIVER_BUYER_MODEL` forces different sampling histories and system prompts across rounds while staying deployable on one or two GPUs. **Further upgrade:** three distinct foundation models (DGX + vLLM) when you need maximum architectural disagreement — see §3b.
 
 **Why CrewAI sequential process over a custom multi-agent loop:** CrewAI's sequential process with `context=[...]` chaining gives us exact control over which prior outputs are injected into each task. The `task_callback` hook gives us round-level streaming over WebSocket without polling. The tradeoff is that CrewAI's ReAct tool-calling loop is unreliable with sub-10B models. We solved this by pre-injecting all RAG evidence into task prompts via `fetch_context_for_product` and swarm briefings — the models argue from evidence in their context window rather than needing to reliably execute tool calls.
 
@@ -430,13 +435,13 @@ python swarm.py
 
 ## Alignment with yconic Hackathon Themes
 
-**End-to-End Execution:** War Room is not a demo or a proof-of-concept. It is a complete system: a multi-stage data pipeline that scraped and processed 31,668 chunks from five sources, a vector database with production-grade metadata filtering, a CrewAI orchestration layer with four sequential rounds and context chaining, a FastAPI backend with WebSocket streaming, a React frontend for real-time debate visualization, and a video ingestion pipeline powered by GPT-4o Vision. Every component is implemented and connected. The scraping pipeline (`scrapers/`), the ChromaDB loader (`load_db.py`), the debate engine (`crew.py`), the API server (`api.py`), and the frontend all ship together.
+**End-to-End Execution:** War Room is not a demo or a proof-of-concept. It is a complete system: a multi-stage data pipeline that produces **31,668** deduplicated chunks in `pm_tools`, a vector database with metadata filtering, a CrewAI orchestration layer with four sequential rounds and context chaining, a FastAPI backend with WebSocket streaming, a React frontend for real-time debate visualization, and an **optional** video ingestion path using GPT-4o Vision when `OPENAI_API_KEY` is set. The scraping pipeline (`scrapers/`), the ChromaDB loader (`load_db.py`), the debate engine (`crew.py`), the API server (`api.py`), and the frontend all ship together.
 
-**100x Thinking:** The premise of War Room is that one model asking itself hard questions is qualitatively different from three models with conflicting architectures, conflicting personas, and conflicting evidence preferences being forced to argue against each other's actual outputs. The output of a single LLM product review is a summary. The output of War Room is a contested verdict with a paper trail. This is not 1.1x better than GPT-4 with a good prompt. It is a different category of output because the adversarial structure surfaces information that no single model can surface — the specific claim that a power user would dispute, the hidden 6-month problem that a first-timer can't see, the pricing trap that only a buyer's lens reveals.
+**100x Thinking:** One chat completion is a summary. War Room is a **contested** verdict: three personas, structured disagreement rules, swarm + RAG context, and chained rounds so later agents must answer what earlier ones actually wrote. **Shipped code** uses **two** foundation-model backends plus persona separation; you can scale to **three** models on big iron without changing the debate protocol.
 
-**Agents That Hire Agents:** War Room's architecture has two layers of agent spawning. The meta-prompt (an LLM call) generates the three adversarial agents that will run the debate — agents creating agents. The swarm module (`swarm.py`) then deploys 20 parallel scout agents to pre-seed those debate agents with evidence. The debate agents themselves have access to 7 CrewAI tool functions for additional retrieval during their rounds. This is a three-tier agent hierarchy: the meta-agent generates the debaters, the swarm pre-scouts for the debaters, and the debaters use RAG tools during the debate itself.
+**Agents That Hire Agents:** War Room's architecture has two layers of agent spawning. The meta-prompt (an LLM call via `local_llm`) generates the three adversarial personas for the debate. The swarm module (`swarm.py`) deploys 20 parallel scout queries to pre-seed Round 1. `tools.py` defines seven `@tool` functions, but **`crew.py` attaches `search_pm_knowledge` only** to each debate agent for in-round retrieval. Hierarchy: meta-persona generation → swarm briefing → debate with optional tool calls.
 
-**Let's Cook OpenClaw:** War Room runs three frontier-class open-weight models — Llama 3.3-70B, Qwen3-32B, and Mistral-Small-24B — on NVIDIA DGX Spark hardware at the hackathon venue. No API calls to closed-source providers for the core inference workload. The product evaluations generated by War Room are produced entirely on open-weight models running on open hardware. The video analysis pipeline optionally uses GPT-4o Vision for frame description, but the adversarial debate itself — the core intellectual work of the system — runs on local open-weight inference.
+**Let's Cook OpenClaw:** Core debate inference uses **local open-weight** models through Ollama (`config.py`). **Optional** GPT-4o Vision is used only for video/screenshot ingestion when configured. **Target** DGX + vLLM setup: three distinct open-weight models — requires extending `crew.py` as documented in §3b.
 
 ---
 
@@ -445,12 +450,12 @@ python swarm.py
 ### "Let's Cook OpenClaw"
 War Room is what happens after OpenClaw. OpenClaw opens the claw — War Room is what the claw grabs and tears apart.
 
-The OpenClaw theme is about open-weight models doing real work. War Room takes that premise and escalates it: three open-weight frontier models — Llama 3.3-70B, Qwen3-32B, Mistral-Small-24B — running concurrently on DGX Spark hardware, doing adversarial multi-agent orchestration where agents don't assist, they execute. This is not a single-model copilot offering a balanced perspective. It is a full adversarial debate cycle: four rounds, three architectures, contested evidence, a verdict with a paper trail. The core intellectual work of the system — every critique, every challenge, every buy/no-buy decision — runs on open-weight models with zero calls to closed-source providers. If OpenClaw is the principle, War Room is the implementation.
+The OpenClaw theme is about open-weight models doing real work. **This repository** runs the debate on **Ollama** with **two** configured open-weight backends (`LOCAL_MODEL` + `DAILY_DRIVER_BUYER_MODEL`) and three adversarial **personas** — already beyond a single generic chat completion. **Stretch goal:** wire **three** frontier open-weight models on **DGX + vLLM** (see §3b). Core critique/challenge/verdict work uses local open weights; optional GPT-4o is only for video/screenshot ingestion when enabled.
 
 ### "Agents That Hire Agents"
 War Room operationalizes the "Agents That Hire Agents" theme at three tiers.
 
-The meta-agent (an LLM call in `meta_prompt.py`) generates the three adversarial agents that will run the debate — dynamically, per-product, with product-specific personas, churned-tool histories, and competing priorities. Then the swarm module deploys 20 parallel scout agents to pre-seed those debate agents with evidence before the first round starts. Then the debate agents themselves have access to seven RAG tool functions during their rounds. Agents hiring agents hiring agents, three levels deep, in a single query.
+The meta-agent (an LLM call in `meta_prompt.py` using `local_llm`) generates the three adversarial **personas** for the debate — dynamically, per-product, with product-specific backstories and competing priorities. The swarm module deploys 20 parallel scout queries to pre-seed Round 1. Debate agents each carry **`search_pm_knowledge`** (`tools.py` also defines six other `@tool` wrappers for flexibility). Three levels deep in a single query: personas → scouts → debaters.
 
 But beyond the hierarchy: the models dynamically critique, challenge, and build on each other's outputs across four escalating rounds. The Daily Driver must agree or disagree with each of the First-Timer's specific claims — labeled, with cited evidence, with at least one direct challenge required by the prompt structure. The Buyer must then settle each unresolved disagreement before delivering a verdict. This is emergent orchestration through adversarial tension, not a static pipeline where agents execute fixed tasks in sequence. The debate structure forces models to respond to what other models actually said — not to a template.
 
@@ -459,7 +464,7 @@ Every debate round in War Room is a self-improvement cycle operating within a si
 
 Round 1 establishes a claim with evidence. Round 2 challenges that claim and forces a rating of Round 1's quality on a 1–10 scale. Round 3 must defend or concede each challenged point — with the explicit rule that "you get used to it" is not a valid defense. Round 4 synthesizes only the claims that survived challenge, discards what was successfully contested, and produces a verdict grounded in the strongest remaining evidence.
 
-Each model's critique forces the others to produce stronger analysis. Weak claims are eliminated. Strong claims are elevated. The final verdict is not the output of any single model — it is what remains after three models have tried to destroy each other's reasoning. The system gets better within a single query, through adversarial pressure, without any fine-tuning or human feedback loop. The product that builds itself, one debate round at a time.
+Each round's critique forces later rounds to strengthen or abandon claims. Weak arguments get challenged; stronger ones survive into the Buyer synthesis. The final verdict is not a single chat turn — it is what remains after **chained** CrewAI tasks with opposing personas (powered by **two** LLM backends in the default config) have stressed the reasoning. The product that builds itself, one debate round at a time.
 
 ---
 

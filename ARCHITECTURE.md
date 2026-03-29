@@ -1,8 +1,18 @@
 # War Room — System Architecture
 
+## Canonical wiring (read this first)
+
+The **default** implementation in repository root (`crew.py`, `config.py`) uses **two** Ollama-backed CrewAI `LLM` instances: **`LOCAL_MODEL`** for the First-Timer (rounds 1 and 3) and **`DAILY_DRIVER_BUYER_MODEL`** shared by the Daily Driver and Buyer (rounds 2 and 4). Debate agents receive **`search_pm_knowledge` only** from `tools.py` (seven `@tool` wrappers exist for other experiments).
+
+**Optional:** Assign **three** distinct foundation models (e.g. vLLM on ports 8001–8003) by extending `config.py` and `crew.py`; see `README.md` §3b.
+
+The diagram and narrative below describe the **three-model DGX / vLLM target** for capacity planning and hackathon storytelling. They are **not** a literal description of the default two-model Ollama configuration.
+
+---
+
 ## System Overview
 
-War Room is a multi-model adversarial debate system that forces three frontier LLMs to critique each other's reasoning before producing a synthesized verdict on any productivity software product. Rather than querying a single model for a balanced opinion, War Room deliberately assigns each model an irreconcilable user perspective — a first-time evaluator, a long-term power user, and a budget-holding buyer — then runs a four-round structured debate in which each model reads and directly attacks the previous model's output before committing to a revised position. The architecture imposes genuine intellectual tension: a model cannot see its own prior output without also seeing a direct challenge to it, forcing position updates grounded in cited evidence rather than hedged agreement. This pipeline is fundamentally impossible on consumer hardware. Running three frontier-scale models concurrently — Llama 3.3 70B, Qwen3 32B, and Mistral-Small 24B — requires hundreds of gigabytes of high-bandwidth, low-latency memory resident simultaneously, with all three models available for inference within the same debate-round window. A single RTX 4090 maxes out at 24 GB of VRAM, enough for one heavily quantized model with no context budget left for RAG injection. War Room requires the NVIDIA DGX Spark's 128 GB unified memory architecture, NVLink-C2C bandwidth, and Grace Blackwell tensor core throughput to operate at the latency budget the debate protocol demands.
+War Room is an adversarial debate system: three CrewAI **personas** (first-time evaluator, power user, buyer) argue over four chained rounds before a verdict. **Shipped code** uses **two** foundation-model backends plus conflicting personas and RAG/swarm context — not a single chat completion. **Target DGX deployment:** three **concurrent** frontier open-weight models (e.g. Llama 3.3 70B, Qwen3 32B, Mistral-Small 24B on separate vLLM processes) for stronger cross-model disagreement; that layout needs **large unified memory** (DGX Spark–class hardware) because aggregate bf16 weights plus KV cache can exceed **~250 GB**. A single RTX 4090 is enough for the **default two-model** Ollama setup, not for three full-precision 70B-class models at once.
 
 ---
 

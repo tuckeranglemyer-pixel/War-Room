@@ -269,7 +269,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           animation: 'finePrintPulse 4s ease-in-out infinite',
         }}
       >
-        31,668 user reviews · 20 scout agents · 3 AI architectures
+        31,668 evidence chunks · 20 scout agents · 3 debate personas · 2 LLM backends
       </motion.p>
     </motion.div>
   )
