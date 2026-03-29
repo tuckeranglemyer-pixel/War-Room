@@ -21,7 +21,9 @@ import os
 import re
 import shutil
 import subprocess
+import time
 import uuid
+from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -51,6 +53,18 @@ SESSIONS_DIR.mkdir(exist_ok=True)
 SESSIONS: dict[str, DebateSession] = {}
 VIDEO_EVIDENCE: dict[str, dict] = {}
 _executor = ThreadPoolExecutor(max_workers=4)
+
+_rate_limits: defaultdict[str, list[float]] = defaultdict(list)
+
+
+def check_rate_limit(ip: str, max_requests: int = 10, window: int = 60) -> bool:
+    """Simple in-memory rate limiter."""
+    now = time.time()
+    _rate_limits[ip] = [t for t in _rate_limits[ip] if now - t < window]
+    if len(_rate_limits[ip]) >= max_requests:
+        return False
+    _rate_limits[ip].append(now)
+    return True
 
 _openai_client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
 
@@ -267,20 +281,26 @@ async def health() -> dict[str, str]:
 
 
 @app.post("/analyze", response_model=AnalyzeResponse, tags=["debate"])
-async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
+async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeResponse:
     """Start a War Room debate for the given product and return a session_id."""
+    client_ip = http_request.client.host if http_request.client else "unknown"
+    if not check_rate_limit(client_ip):
+        raise HTTPException(
+            status_code=429,
+            detail="Too many analyze requests; try again in a minute.",
+        )
     session_id = str(uuid.uuid4())
     loop = asyncio.get_running_loop()
     session = DebateSession(
         session_id,
-        request.product_description,
+        body.product_description,
         loop,
-        product_name=request.product_name,
-        upload_session_id=request.session_id,
-        target_user=request.target_user,
-        competitors=request.competitors,
-        differentiator=request.differentiator,
-        product_stage=request.product_stage,
+        product_name=body.product_name,
+        upload_session_id=body.session_id,
+        target_user=body.target_user,
+        competitors=body.competitors,
+        differentiator=body.differentiator,
+        product_stage=body.product_stage,
     )
     SESSIONS[session_id] = session
     _ = loop.run_in_executor(_executor, _run_debate, session)
