@@ -241,7 +241,9 @@ async def run_parallel_analysis(
 
     try:
         if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
-            deliverable["comparison_cards"] = json.loads(comparison_cards_json)
+            deliverable["comparison_cards"] = json.loads(
+                strip_markdown_fences(comparison_cards_json)
+            )
         else:
             deliverable["comparison_cards"] = []
     except Exception:

@@ -16,6 +16,8 @@ from typing import Any
 
 from crewai import LLM
 
+from src.utils import strip_markdown_fences
+
 META_PROMPT = """You are an expert product researcher who has spent 15 years studying how people adopt, use, and abandon productivity software. You have analyzed user behavior across every major tool in the space — Notion, Asana, Monday.com, Linear, Todoist, ClickUp, Trello, Slack, Coda, Airtable, and dozens of others. You know exactly why people switch between these tools and what breaks their trust.
 
 A product team wants to run adversarial QA testing on this productivity app:
@@ -81,12 +83,7 @@ def generate_personas(product_description: str, llm: LLM) -> list[dict[str, Any]
             else response.content if hasattr(response, "content")
             else str(response)
         )
-        text = text.strip()
-        if text.startswith("```"):
-            text = text.split("\n", 1)[1]
-        if text.endswith("```"):
-            text = text.rsplit("```", 1)[0]
-        text = text.strip()
+        text = strip_markdown_fences(text)
         personas = json.loads(text)
         if isinstance(personas, list) and len(personas) == 3:
             return personas

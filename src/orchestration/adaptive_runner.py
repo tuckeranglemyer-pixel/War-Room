@@ -720,7 +720,9 @@ class AdaptiveRunner:
         ux_section: dict[str, Any] = dict(results.get("ux_analyst", {}))
         if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
             try:
-                evidence_cards: list[dict[str, Any]] = json.loads(comparison_cards_json)
+                evidence_cards: list[dict[str, Any]] = json.loads(
+                    strip_markdown_fences(comparison_cards_json)
+                )
                 mapped: list[dict[str, Any]] = []
                 for i, card in enumerate(evidence_cards[:6]):
                     user_side = card.get("user_side", card.get("user_screen", {}))
@@ -803,7 +805,9 @@ class AdaptiveRunner:
         # except branch produces an empty list rather than crashing the save.
         try:
             if _original_comparison_cards_json and _original_comparison_cards_json.strip() not in ("{}", "[]", ""):
-                deliverable["comparison_cards"] = json.loads(_original_comparison_cards_json)
+                deliverable["comparison_cards"] = json.loads(
+                    strip_markdown_fences(_original_comparison_cards_json)
+                )
             else:
                 deliverable["comparison_cards"] = []
         except Exception as e:
