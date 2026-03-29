@@ -118,6 +118,12 @@ ChromaDB collections operate in an append-only, read-heavy access pattern — th
 - "Run it on Slack next" — competing team member  
 - "The AGREE/DISAGREE thing is sick, it's like watching AI lawyers" — PC student via Instagram DM
 
+### Hackathon Engagement Metrics
+- Hackathon attendees who interacted with live demo: 15+
+- Teams who requested analysis on their own product: 4
+- Post-event interest: 3 attendees expressed intent to use War Room for their own projects after the hackathon
+- Instagram DM feedback received unprompted from non-attendees
+
 ### Verdict Examples
 - **Notion** — 64/100, YES WITH CONDITIONS. Top finding: search catastrophically broken at scale (73% of churn mentions cite findability)
 - **Canvas** — 48/100, NO. Top finding: mobile app rated 1.8 stars, crashes during submission upload
@@ -143,6 +149,7 @@ The War Room compresses the research capability gap between a 3-person startup a
 - ChatGPT/Claude/Perplexity (single-model, no adversarial structure, no evidence grounding)
 - G2/Capterra (aggregated ratings, no adversarial analysis, no actionable output)
 - McKinsey/BCG (human consulting, $200K+, 6-12 weeks)
+- **Kraftful / Dovetail / Aurelius** (AI-native qualitative research tools that synthesize user feedback). Weakness: single-model synthesis without adversarial challenge — they aggregate and summarize user feedback but do not force structured disagreement between competing analytical perspectives. War Room's advantage: adversarial debate protocol ensures findings are stress-tested by opposing viewpoints before reaching the verdict, not just summarized from a single model's interpretation of the same data.
 
 **Market Positioning:** While incumbents optimize for either speed (ChatGPT — instant but shallow) or depth (McKinsey — thorough but expensive), The War Room captures the underserved quadrant optimizing for both simultaneously: evidence-dense adversarial analysis delivered in minutes at near-zero marginal cost. This positions the product at the intersection of AI-powered research and consulting automation — a category that does not yet exist.
 
@@ -184,6 +191,9 @@ The War Room compresses the research capability gap between a 3-person startup a
 
 **Defensible Moat:** The differentiation is structural, not cosmetic:
 1. **Data network effects:** As the RAG corpus grows (currently 31,668 chunks across 20 tools), the quality and specificity of debate findings compound. Each new product vertical added increases the system's analytical coverage, creating a widening knowledge advantage that generic single-model tools cannot replicate without equivalent domain-specific curation
+
+The data flywheel compounds through user activity: every War Room session generates (1) query demand signals revealing which products users care about most, (2) per-finding helpfulness votes training a relevance re-ranker, and (3) citation frequency logs identifying which RAG chunks produce the highest-quality debate evidence. These three signals improve retrieval quality and finding relevance for every subsequent user — without manual corpus curation. Additionally, users can submit URLs to new review sources, organically expanding the corpus beyond the initial 20-product seed.
+
 2. **Protocol complexity as barrier to entry:** The three-layer orchestration (meta-agent → swarm → debate) with mandatory disagreement rules, stubbornness constraints, and buyer settlement logic represents significant architectural complexity. Replicating the protocol requires not just running multiple models, but engineering the adversarial interaction structure that produces genuinely divergent, evidence-cited findings
 3. **Vertical extensibility as platform moat:** Each new RAG collection (healthcare, legal, finance, security) transforms the same protocol into a new product category without additional engineering. The platform becomes more valuable with each vertical, while competitors must build separate solutions for each domain
 4. **Local compute sovereignty:** Core debate runs on **local** Ollama/vLLM inference (no cloud LLM required for evaluation); DGX Spark is optional for concurrent frontier-weight serving. Zero per-query API cost when fully local. Enterprises with data sensitivity can keep product descriptions and retrieved evidence on-prem; optional GPT-4o remains isolated to video/screenshot ingestion when enabled
