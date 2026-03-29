@@ -4,7 +4,7 @@
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![React](https://img.shields.io/badge/React-19-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
 [![CrewAI](https://img.shields.io/badge/CrewAI-orchestration-orange)](https://www.crewai.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
@@ -16,7 +16,7 @@ The War Room is a multi-agent AI platform that conducts adversarial product qual
 
 **Built with:**
 [![Python](https://img.shields.io/badge/python-3.11+-blue)](https://www.python.org/)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![CrewAI](https://img.shields.io/badge/CrewAI-multi--agent-orange)](https://www.crewai.com/)
 [![ChromaDB](https://img.shields.io/badge/ChromaDB-vector--store-green)](https://www.trychroma.com/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-websocket-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -34,7 +34,7 @@ The War Room is a multi-agent AI platform that conducts adversarial product qual
 | **31,668-chunk RAG corpus** | Pre-embedded user reviews, Reddit posts, HN comments, and app metadata across 20 PM tools |
 | **Reconnaissance swarm** | 20 parallel ChromaDB scouts query across product dimensions in 1–3 seconds |
 | **Live SSE streaming** | Real-time analysis progress via Server-Sent Events at `GET /api/stream/logs/{session_id}` |
-| **Dual inference** | Cloud API mode (GPT-4o, sub-60s) and DGX Spark mode (local open-weight, thermal-managed) |
+| **Dual inference** | WebSocket debate uses Ollama-backed CrewAI agents; video/adaptive pipeline uses OpenAI (cloud, default) or Ollama (`WAR_ROOM_MODE=dgx`) with thermal management |
 | **Featured product fast-path** | Click any of 20 curated products → debate starts in <5 seconds, no wizard |
 | **Two-tier evidence** | Full RAG for 20 curated products, general analysis for freeform entries |
 | **6-stage analysis pipeline** | Animated progress feed: frame extraction → vision analysis → competitor matching → evidence curation → specialist deployment → report assembly |
@@ -83,7 +83,7 @@ User Input (product name)
 └─────────────────┘
 ```
 
-> **Routing note:** Featured products (20 curated) bypass the context wizard and route directly to `POST /analyze` → WebSocket debate stream. Freeform products go through the full context form with optional video upload. Both paths converge on the same 4-round CrewAI pipeline.
+> **Routing note:** Featured products (20 curated) can start from `POST /analyze` → WebSocket stream of the **4-round CrewAI** debate (Ollama at `LOCAL_BASE_URL`). Optional context + **video upload** goes through `POST /api/ingest/video` → `POST /api/analyze/{session_id}`, which runs the **AdaptiveRunner** specialist pipeline (OpenAI when `WAR_ROOM_MODE` is `cloud`, Ollama when `dgx`) — not the CrewAI crew.
 
 ---
 
@@ -121,25 +121,30 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Cloud Mode (recommended for demos)
+### Cloud-backed video / adaptive pipeline (default for `AdaptiveRunner`)
 
 ```bash
-# Set your API key
-export ANTHROPIC_API_KEY=sk-...  # or OPENAI_API_KEY
+# Required for video frame analysis and for AdaptiveRunner when WAR_ROOM_MODE=cloud (default)
+export OPENAI_API_KEY=sk-...
 
-# Start server in cloud mode
+# Optional: explicitly set adaptive pipeline mode (defaults to cloud)
+export WAR_ROOM_MODE=cloud
+
 uvicorn src.api.server:app --host 0.0.0.0 --port 8000
 ```
+
+The **WebSocket debate** (`POST /analyze`) still calls Ollama via `LOCAL_BASE_URL` — keep Ollama running with the models referenced by `FIRST_TIMER_MODEL`, `DAILY_DRIVER_MODEL`, and `BUYER_MODEL` (see Environment Variables).
 
 ### DGX Spark Mode (on-prem, data sovereign)
 
 ```bash
+export WAR_ROOM_MODE=dgx
+
 # Run pre-flight check
 python -m src.orchestration.hardware_preflight
 
-# Start with adaptive thermal management
 uvicorn src.api.server:app --host 0.0.0.0 --port 8000
-# AdaptiveRunner auto-selects tier based on GPU telemetry
+# AdaptiveRunner uses Ollama and auto-selects tier based on GPU telemetry
 ```
 
 ### Frontend
@@ -164,12 +169,13 @@ wscat -c ws://localhost:8000/ws/{session_id}
 
 ### Environment Variables
 
-Set these in your shell or a `.env` file in the project root:
+Set these in your shell or a `.env` file in the project root (see `.env.example` for a template).
 
-Key variables (all optional — defaults target DGX Spark production):
+Key variables (all optional):
 
 | Variable | Default | Description |
 |----------|---------|-------------|
+| `WAR_ROOM_MODE` | `cloud` | Adaptive video pipeline: `cloud` (OpenAI GPT-4o) or `dgx` (local Ollama). Does not switch the CrewAI WebSocket debate, which always uses Ollama. |
 | `FIRST_TIMER_MODEL` | `ollama/llama3.3:70b` | First-Timer agent model (Llama) |
 | `DAILY_DRIVER_MODEL` | `ollama/qwen3:32b` | Daily Driver agent model (Qwen) |
 | `BUYER_MODEL` | `ollama/mistral-small:24b` | Buyer agent model (Mistral) |
@@ -398,11 +404,10 @@ All three modes produce a valid 4-round debate with full evidence grounding — 
 The War Room supports two inference paths, selectable per deployment:
 
 **Cloud API Mode (Live Demos & Traction)**
-For real-time live analysis during demos and public use, the pipeline routes through cloud LLM APIs (Anthropic/OpenAI). This enables:
-- Sub-60-second full 4-round debates on any product
-- Reliable live demos without thermal constraints
-- Real analysis output (JSON verdicts, evidence citations) for traction measurement
-- Tested end-to-end on competitor products during the hackathon
+For real-time live analysis during demos and public use, the adaptive video pipeline routes through the OpenAI API (`gpt-4o`). This enables:
+- Fast specialist + partner-review runs without local GPU thermal limits
+- Reliable live demos for the ingest → analysis flow
+- Structured JSON deliverables (verdict, sections, comparison cards when synthesis succeeds)
 
 **DGX Spark Mode (On-Prem & Data Sovereignty)**
 For enterprises requiring zero data leakage, the pipeline runs entirely on local open-weight models via Ollama/vLLM on DGX Spark's 128GB unified memory. This mode includes:
@@ -412,7 +417,7 @@ For enterprises requiring zero data leakage, the pipeline runs entirely on local
 - Model lifecycle management: unload/reload between rounds to prevent cumulative heat buildup
 - Pre-flight GO/NO-GO check before each analysis
 
-The DGX Spark adaptive runner is production-grade infrastructure that solves a real deployment problem — sustained LLM inference on unified-memory hardware with thermal constraints. Cloud mode doesn't need it; enterprise on-prem mode does. Both paths produce identical verdict JSON output.
+The DGX Spark adaptive runner is production-grade infrastructure that solves a real deployment problem — sustained LLM inference on unified-memory hardware with thermal constraints. Cloud mode doesn't need it; enterprise on-prem mode does. The WebSocket debate (`POST /analyze`) is a separate CrewAI flow and always uses Ollama at `LOCAL_BASE_URL`, regardless of `WAR_ROOM_MODE`.
 
 ---
 
@@ -445,6 +450,9 @@ Verifies GPU temperature, free VRAM, Ollama model availability, RAM headroom, an
 ```bash
 # Lightweight smoke tests (no CrewAI import required)
 pytest test_crew.py -v
+
+# Broader suite under tests/ (requires dependencies such as CrewAI and optional API keys)
+pytest tests/ -v
 ```
 
 ---
