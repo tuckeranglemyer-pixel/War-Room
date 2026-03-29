@@ -39,6 +39,7 @@ from src.api.video_processor import (
 )
 from src.inference.model_config import API_HOST, API_PORT
 from src.orchestration.adversarial_debate_engine import build_crew
+from src.orchestration.parallel_analysis import run_parallel_analysis
 from src.orchestration.response_synthesizer import parse_verdict
 
 # ---------------------------------------------------------------------------
@@ -150,6 +151,7 @@ app = FastAPI(
         {"name": "meta", "description": "Health and API discovery."},
         {"name": "debate", "description": "CrewAI debate pipeline and streaming."},
         {"name": "video", "description": "Video frame extraction and vision analysis."},
+        {"name": "analysis", "description": "Parallel 3-model analysis pipeline and report delivery."},
     ],
     docs_url="/docs",
     redoc_url="/redoc",
@@ -501,6 +503,70 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
         "dominant_themes": synthesis.get("dominant_themes", []),
         "summary": synthesis.get("agent_brief", ""),
     }
+
+
+# ---------------------------------------------------------------------------
+# Parallel analysis pipeline
+# ---------------------------------------------------------------------------
+
+
+@app.post("/api/analyze/{session_id}", tags=["analysis"])
+async def run_analysis(session_id: str) -> dict[str, Any]:
+    """Trigger the parallel analysis pipeline.
+
+    Called after video ingest and evidence curation are complete.
+    Runs three specialist models in parallel, then a challenge pass,
+    and writes the final deliverable JSON to the session directory.
+    """
+    evidence = VIDEO_EVIDENCE.get(session_id)
+    if not evidence:
+        raise HTTPException(
+            status_code=404,
+            detail="No video evidence found for this session. Run /api/ingest/video first.",
+        )
+
+    session = SESSIONS.get(session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="No session context found.")
+
+    comparison_cards_json = json.dumps(evidence.get("comparison_cards", []), indent=2)
+    agent_brief = evidence.get("synthesis", {}).get("agent_brief", "")
+    curated_evidence_json = json.dumps(evidence.get("curated_evidence", []), indent=2)
+    frame_analyses_json = json.dumps(evidence.get("frame_analyses", []), indent=2)
+    screenshot_matches_json = json.dumps(evidence.get("screenshot_matches", []), indent=2)
+
+    deliverable = await run_parallel_analysis(
+        session_id=session_id,
+        product_name=session.product_name or session.product_description,
+        product_description=session.product_description or "",
+        target_user=session.target_user,
+        differentiator=session.differentiator,
+        product_stage=session.product_stage,
+        competitors=session.competitors,
+        comparison_cards_json=comparison_cards_json,
+        agent_brief=agent_brief,
+        curated_evidence_json=curated_evidence_json,
+        frame_analyses_json=frame_analyses_json,
+        screenshot_matches_json=screenshot_matches_json,
+    )
+
+    return {
+        "session_id": session_id,
+        "status": "complete",
+        "score": deliverable.get("verdict", {}).get("score"),
+        "headline": deliverable.get("verdict", {}).get("headline"),
+        "report_url": f"/api/report/{session_id}",
+    }
+
+
+@app.get("/api/report/{session_id}", tags=["analysis"])
+async def get_report(session_id: str) -> dict[str, Any]:
+    """Serve the final deliverable JSON for the one-pager."""
+    report_path = Path(f"sessions/{session_id}/deliverable.json")
+    if not report_path.exists():
+        raise HTTPException(status_code=404, detail="Report not generated yet.")
+    with open(report_path) as f:
+        return json.load(f)
 
 
 # ---------------------------------------------------------------------------
