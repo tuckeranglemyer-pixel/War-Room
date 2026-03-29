@@ -1,3 +1,4 @@
+# CrewAI 4-round adversarial debate pipeline with context chaining
 """
 Adversarial debate engine — core four-round CrewAI orchestration.
 
