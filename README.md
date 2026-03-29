@@ -12,6 +12,8 @@ The War Room is a multi-agent AI platform that conducts adversarial product qual
 
 **Live Demo:** [Frontend](https://frontend-untracked.vercel.app/) · [API Docs](https://war-room-production.up.railway.app/docs) · [Health Check](https://war-room-production.up.railway.app/health)
 
+**Latest live analysis:** HealthAI — real-time health tracker analyzed end-to-end during hackathon demo day
+
 **Production Backend:** Railway (Dockerfile, ffmpeg, Python 3.12, ChromaDB 31,668 chunks)
 
 **Built with:**
