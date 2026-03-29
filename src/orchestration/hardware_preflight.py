@@ -34,12 +34,37 @@ from src.orchestration.adaptive_runner import (
 def preflight_check() -> dict[str, Any]:
     """Run all hardware checks and return a structured GO/NO-GO verdict.
 
+    Degrades gracefully when nvidia-smi or psutil are unavailable — returns
+    a CAUTION verdict with warnings instead of crashing the endpoint.
+
     Returns:
         Dict with keys: verdict, tier_recommendation, issues, warnings,
         recommendations, and health (raw telemetry snapshot).
     """
-    monitor = HardwareMonitor()
-    health = monitor.full_health_check()
+    try:
+        monitor = HardwareMonitor()
+        health = monitor.full_health_check()
+    except Exception as exc:
+        return {
+            "verdict": "CAUTION",
+            "tier_recommendation": 3,
+            "issues": [],
+            "warnings": [f"Hardware monitor unavailable: {exc}"],
+            "recommendations": [
+                "Install psutil and nvidia-smi for full hardware telemetry",
+                "Cloud mode does not require hardware monitoring",
+            ],
+            "health": {
+                "gpu_temp": -1,
+                "gpu_memory": {"used_mib": -1, "total_mib": -1, "free_mib": -1},
+                "ram": {"used_gb": -1, "total_gb": -1, "percent": -1},
+                "loaded_models": [],
+            },
+            "thermal_thresholds": {
+                "ceiling_c": THERMAL_CEILING,
+                "resume_c": THERMAL_RESUME,
+            },
+        }
 
     issues: list[str] = []
     warnings: list[str] = []

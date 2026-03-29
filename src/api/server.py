@@ -508,8 +508,8 @@ async def ingest_video(
     with open(video_path, "wb") as fh:
         shutil.copyfileobj(file.file, fh)
 
-    frames = extract_key_frames(video_path, str(frames_dir))
     try:
+        frames = extract_key_frames(video_path, str(frames_dir))
         frames_extracted = len(frames)
 
         if frames_extracted == 0:
@@ -795,6 +795,12 @@ async def get_report(session_id: str) -> JSONResponse:
                 return JSONResponse(
                     status_code=202,
                     content={"status": "analyzing", "session_id": session_id},
+                )
+            if status == "failed":
+                return JSONResponse(
+                    status_code=500,
+                    content={"status": "failed", "session_id": session_id,
+                             "detail": "Analysis failed. Check server logs or retry."},
                 )
             raise HTTPException(status_code=404, detail="Report not found. Run analysis first.")
         with open(report_path) as f:
