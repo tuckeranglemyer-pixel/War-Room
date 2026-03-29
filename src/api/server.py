@@ -389,8 +389,14 @@ async def websocket_debate(websocket: WebSocket, session_id: str) -> None:
 
 
 def _run_debate(session: DebateSession) -> None:
-    """Execute the full four-round crew in a thread-pool worker."""
-    try:
+    """Execute the full four-round crew in a thread-pool worker.
+
+    If the first attempt fails, retries once with ``evidence_tier='general'``
+    (skips ChromaDB pre-fetch) to reduce context window pressure.
+    """
+    effective_name = session.product_name or session.product_description
+
+    def _build_session_context() -> dict[str, Any] | None:
         has_context = any([
             session.upload_session_id,
             session.target_user,
@@ -398,33 +404,31 @@ def _run_debate(session: DebateSession) -> None:
             session.differentiator,
             session.product_stage,
         ])
-        session_context: dict[str, Any] | None = None
-        # product_name is the short landing-page name; product_description is the full
-        # description typed in the wizard. Fall back gracefully for older clients that
-        # don't send product_name.
-        effective_name = session.product_name or session.product_description
-        if has_context:
-            session_context = {
-                "product_name": effective_name,
-                "product_description": session.product_description,
-                "target_user": session.target_user,
-                "competitors": session.competitors,
-                "differentiator": session.differentiator,
-                "product_stage": session.product_stage,
-            }
-            if session.upload_session_id:
-                session_context["session_id"] = session.upload_session_id
-                video_evidence = VIDEO_EVIDENCE.get(session.upload_session_id)
-                if video_evidence:
-                    session_context["video_evidence"] = video_evidence
+        if not has_context:
+            return None
+        ctx: dict[str, Any] = {
+            "product_name": effective_name,
+            "product_description": session.product_description,
+            "target_user": session.target_user,
+            "competitors": session.competitors,
+            "differentiator": session.differentiator,
+            "product_stage": session.product_stage,
+        }
+        if session.upload_session_id:
+            ctx["session_id"] = session.upload_session_id
+            video_evidence = VIDEO_EVIDENCE.get(session.upload_session_id)
+            if video_evidence:
+                ctx["video_evidence"] = video_evidence
+        return ctx
 
-        asyncio.run_coroutine_threadsafe(
-            session.queue.put({"type": "log", "agent": "system", "message": f"Starting debate pipeline for {effective_name}..."}),
-            session.loop,
-        )
+    session_context = _build_session_context()
 
-        # Pass the short product name as first arg so RAG key extraction works correctly.
-        # The full description is available to build_crew via session_context.
+    asyncio.run_coroutine_threadsafe(
+        session.queue.put({"type": "log", "agent": "system", "message": f"Starting debate pipeline for {effective_name}..."}),
+        session.loop,
+    )
+
+    try:
         crew = build_crew(
             effective_name,
             task_callback=session.build_task_callback(),
@@ -437,11 +441,34 @@ def _run_debate(session: DebateSession) -> None:
             session.queue.put({"type": "verdict", **verdict}),
             session.loop,
         )
-    except Exception as exc:
+    except Exception as first_exc:
+        _log.warning(
+            "Debate failed (%s) — retrying with reduced context (general tier)",
+            first_exc,
+        )
         asyncio.run_coroutine_threadsafe(
-            session.queue.put({"type": "error", "message": str(exc)}),
+            session.queue.put({"type": "log", "agent": "system", "message": "Retrying with reduced context..."}),
             session.loop,
         )
+        try:
+            session._round_index = 0
+            crew = build_crew(
+                effective_name,
+                task_callback=session.build_task_callback(),
+                session_context=session_context,
+                evidence_tier="general",
+            )
+            result = crew.kickoff()
+            verdict = parse_verdict(str(result))
+            asyncio.run_coroutine_threadsafe(
+                session.queue.put({"type": "verdict", **verdict}),
+                session.loop,
+            )
+        except Exception as retry_exc:
+            asyncio.run_coroutine_threadsafe(
+                session.queue.put({"type": "error", "message": str(retry_exc)}),
+                session.loop,
+            )
     finally:
         asyncio.run_coroutine_threadsafe(session.queue.put(None), session.loop)
 

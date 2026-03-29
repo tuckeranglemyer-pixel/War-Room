@@ -341,7 +341,7 @@ class AdaptiveRunner:
         logger.warning("Trimming context %d → %d chars for thermal safety", len(text), max_chars)
         return text[:max_chars] + "\n\n[Context trimmed for thermal safety]"
 
-    async def _call_model(
+    async def _call_model_once(
         self,
         session: "aiohttp.ClientSession",
         endpoint: dict[str, str],
@@ -349,12 +349,8 @@ class AdaptiveRunner:
         user_prompt: str,
         max_tokens: int = 4096,
     ) -> dict[str, Any]:
-        """Send a single chat completion to the configured endpoint and parse JSON.
-
-        Works with both Ollama (DGX mode) and OpenAI (cloud mode).
-        Returns a dict — either the parsed JSON or {"error": "..."} on failure.
-        """
-        import src.config as _cfg  # imported here so runtime mode changes are reflected
+        """Send a single chat completion and parse JSON (no retry)."""
+        import src.config as _cfg
 
         headers: dict[str, str] = {"Content-Type": "application/json"}
         if _cfg.EXECUTION_MODE == "cloud":
@@ -371,7 +367,6 @@ class AdaptiveRunner:
             "temperature": 0.3,
         }
 
-        # OpenAI uses response_format; Ollama uses format
         if _cfg.EXECUTION_MODE == "cloud":
             payload["response_format"] = {"type": "json_object"}
         else:
@@ -401,6 +396,38 @@ class AdaptiveRunner:
             return {"error": "Request timed out after 300s"}
         except Exception as exc:
             return {"error": f"Model call failed: {exc}"}
+
+    async def _call_model(
+        self,
+        session: "aiohttp.ClientSession",
+        endpoint: dict[str, str],
+        system_prompt: str,
+        user_prompt: str,
+        max_tokens: int = 4096,
+    ) -> dict[str, Any]:
+        """Call the model with automatic retry on failure using a reduced context window.
+
+        First attempt uses the full prompt. If it fails, the user prompt is trimmed
+        to half its length and the call is retried once.
+        """
+        result = await self._call_model_once(
+            session, endpoint, system_prompt, user_prompt, max_tokens,
+        )
+        if "error" not in result:
+            return result
+
+        reduced_len = len(user_prompt) // 2
+        logger.warning(
+            "Round failed (%s) — retrying with reduced context (%d → %d chars)",
+            result["error"][:80], len(user_prompt), reduced_len,
+        )
+        trimmed_prompt = (
+            user_prompt[:reduced_len]
+            + "\n\n[Context reduced for retry — some evidence omitted]"
+        )
+        return await self._call_model_once(
+            session, endpoint, system_prompt, trimmed_prompt, max_tokens,
+        )
 
     async def run_analysis(
         self,
