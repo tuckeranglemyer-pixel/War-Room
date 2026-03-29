@@ -16,6 +16,7 @@ from pathlib import Path
 import aiohttp
 
 from src.config import CHALLENGE_ENDPOINT, VLLM_ENDPOINTS
+from src.utils import clamp_score, strip_markdown_fences
 from src.orchestration.adaptive_runner import (
     normalize_challenge,
     normalize_market_researcher,
@@ -68,16 +69,7 @@ async def call_vllm(
             data = await resp.json()
             content = data["choices"][0]["message"]["content"]
 
-            content = content.strip()
-            if content.startswith("```json"):
-                content = content[7:]
-            if content.startswith("```"):
-                content = content[3:]
-            if content.endswith("```"):
-                content = content[:-3]
-            content = content.strip()
-
-            return json.loads(content)
+            return json.loads(strip_markdown_fences(content))
 
     except json.JSONDecodeError as e:
         return {"error": f"JSON parse failed: {e}", "raw_content": content[:500]}
@@ -224,13 +216,7 @@ async def run_parallel_analysis(
     # ------------------------------------------------------------------
     print("\n[ASSEMBLY] Building final deliverable...")
 
-    raw_score = challenge_output.get("final_score", 0)
-    try:
-        score_float = float(raw_score)
-    except (TypeError, ValueError):
-        score_float = 0.0
-    if score_float > 10:
-        score_float = round(score_float / 10, 1)
+    score_float = clamp_score(challenge_output.get("final_score", 0))
 
     deliverable = {
         "product_name": product_name,

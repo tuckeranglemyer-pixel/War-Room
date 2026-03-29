@@ -17,7 +17,7 @@ error string instead.
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional
 
 import chromadb
 from crewai.tools import tool
@@ -113,7 +113,7 @@ def fetch_context_for_product(
 def _query_collection(
     query: str,
     n_results: int = RAG_RESULTS_PER_QUERY,
-    where: Optional[dict] = None,
+    where: Optional[dict[str, Any]] = None,
 ) -> str:
     """Run a ChromaDB query and return consistently formatted results.
 

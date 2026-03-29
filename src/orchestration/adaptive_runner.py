@@ -50,6 +50,8 @@ from typing import Any, Awaitable, Callable, Optional
 
 import aiohttp
 
+from src.utils import clamp_score, strip_markdown_fences
+
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
@@ -384,16 +386,7 @@ class AdaptiveRunner:
                 data = await resp.json()
                 content = data["choices"][0]["message"]["content"]
 
-            # Strip any markdown fences the model may wrap around the JSON
-            content = content.strip()
-            if content.startswith("```json"):
-                content = content[7:]
-            elif content.startswith("```"):
-                content = content[3:]
-            if content.endswith("```"):
-                content = content[:-3]
-
-            return json.loads(content.strip())
+            return json.loads(strip_markdown_fences(content))
 
         except json.JSONDecodeError as exc:
             return {
@@ -673,15 +666,7 @@ class AdaptiveRunner:
             await _log("partner", f"Partner review complete — {partner_status}")
 
         # --- Normalise schema before assembly ---
-        # Clamp final_score to 0-10 range (prompt asks for 0-10, but guard against
-        # models that return 0-100 despite instructions).
-        raw_score = challenge_out.get("final_score", 0)
-        try:
-            score_float = float(raw_score)
-        except (TypeError, ValueError):
-            score_float = 0.0
-        if score_float > 10:
-            score_float = round(score_float / 10, 1)
+        score_float = clamp_score(challenge_out.get("final_score", 0))
 
         # Map market_readiness to the enum Report.tsx expects.
         _READINESS_MAP: dict[str, str] = {
