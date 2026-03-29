@@ -570,6 +570,95 @@ async def get_report(session_id: str) -> dict[str, Any]:
 
 
 # ---------------------------------------------------------------------------
+# Hardware pre-flight check
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/preflight", tags=["meta"])
+async def run_preflight() -> dict[str, Any]:
+    """Hardware GO/NO-GO check — run before any analysis on the DGX Spark.
+
+    Reads GPU temperature, GPU memory, system RAM, and currently loaded Ollama
+    models. Returns a structured verdict with blocking issues, warnings, and
+    recommended remediation steps.
+
+    Use this before POST /api/analyze/{session_id} to verify the hardware is
+    in a safe state to run inference without triggering a thermal shutdown.
+    """
+    from src.orchestration.hardware_preflight import preflight_check  # noqa: PLC0415
+
+    return preflight_check()
+
+
+# ---------------------------------------------------------------------------
+# Adaptive analysis endpoint
+# ---------------------------------------------------------------------------
+
+
+@app.post("/api/analyze/{session_id}", tags=["debate"])
+async def run_adaptive_analysis(session_id: str) -> dict[str, Any]:
+    """Run the hardware-adaptive analysis pipeline for a completed video ingest session.
+
+    Looks up the video evidence stored by POST /api/ingest/video for the given
+    session_id, then runs the four-analyst adaptive pipeline (Strategist →
+    UX Analyst → Market Researcher → Partner Review) with automatic tier selection
+    based on real-time GPU temperature and RAM usage.
+
+    Execution tiers:
+      Tier 2 (Sequential): GPU < 65°C and RAM < 60% — uses qwen3:32b, 30s cooling
+      Tier 3 (Micro):      GPU >= 65°C or RAM >= 60% — uses llama3.1:8b, 60s cooling
+
+    All models are unloaded before starting. Context is trimmed automatically.
+    The deliverable is saved to sessions/{session_id}/deliverable.json before
+    returning — a crash mid-transfer will not lose the result.
+
+    Raises:
+        404: No video evidence found for this session_id.
+        500: Analysis pipeline encountered an unrecoverable error.
+    """
+    from src.orchestration.adaptive_runner import AdaptiveRunner  # noqa: PLC0415
+
+    evidence = VIDEO_EVIDENCE.get(session_id)
+    if not evidence:
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"No video evidence found for session {session_id}. "
+                "Run POST /api/ingest/video first."
+            ),
+        )
+
+    synthesis = evidence.get("synthesis", {})
+    comparison_cards = evidence.get("comparison_cards", [])
+
+    runner = AdaptiveRunner()
+    try:
+        deliverable = await runner.run_analysis(
+            session_id=session_id,
+            product_name=synthesis.get("product_name", "Unknown Product"),
+            product_description=synthesis.get("product_description", ""),
+            target_user=synthesis.get("target_user", ""),
+            differentiator=synthesis.get("differentiator", ""),
+            product_stage=synthesis.get("product_stage", ""),
+            competitors=synthesis.get("competitors", ""),
+            comparison_cards_json=json.dumps(comparison_cards),
+            agent_brief=synthesis.get("agent_brief", ""),
+            curated_evidence_json=json.dumps(
+                [card.get("curated_themes", []) for card in comparison_cards]
+            ),
+            frame_analyses_json=json.dumps(evidence.get("frame_analyses", [])),
+            screenshot_matches_json=json.dumps(evidence.get("screenshot_matches", [])),
+        )
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Adaptive analysis failed: {exc}",
+        ) from exc
+
+    return deliverable
+
+
+# ---------------------------------------------------------------------------
 # Session cleanup
 # ---------------------------------------------------------------------------
 

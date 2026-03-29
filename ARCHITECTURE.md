@@ -420,3 +420,131 @@ Each agent is constructed in `build_crew()` with:
 The `task_callback` parameter receives a callable from `DebateSession.build_task_callback()`. After each task completes, CrewAI calls this function with a `TaskOutput` object containing the agent's name and raw output text. The callback maps the task index to the canonical agent role slug, packages a JSON message dict, and enqueues it thread-safely onto `session.queue` via `asyncio.run_coroutine_threadsafe()`. The WebSocket handler dequeues these messages and streams them to the client as each round completes — users see Round 1 results while Round 2 is still running.
 
 The `None` sentinel pattern (`session.queue.put(None)`) signals end-of-stream to the WebSocket loop, which exits cleanly and closes the connection. Errors are caught in the `_run_debate()` try/except block and forwarded as `{"type": "error", "message": ...}` before the sentinel, ensuring the client always receives a terminal message.
+
+---
+
+## Hardware-Adaptive Execution Engine
+
+The DGX Spark experienced 7+ power-loss shutdowns during the hackathon under the following conditions:
+
+- Loading any model ≥32B with a large context window (10K+ tokens)
+- Loading multiple models simultaneously (cumulative VRAM pressure)
+- Sustained GPU load above ~70°C for more than 60 seconds
+- ChromaDB embedding 31,668 chunks while models were loaded
+
+The response is `src/orchestration/adaptive_runner.py` — a tiered execution engine that reads GPU telemetry before every inference call and adjusts model choice, context size, and cooling pauses in real time.
+
+### Execution Tiers
+
+| Tier | Name | Model | Context | Cooling | Trigger |
+|---|---|---|---|---|---|
+| 1 | Full Parallel (vLLM) | 3 models, 3 ports | Full | None | Stable multi-GPU; not used on Spark |
+| 2 | Sequential (Ollama) | qwen3:32b | 8,000 chars | 30s between rounds | GPU < 65°C and RAM < 60% |
+| 3 | Micro | llama3.1:8b | 4,000 chars | 60s between rounds | GPU ≥ 65°C or RAM ≥ 60% or GPU unreadable |
+
+Tier 1 is architecturally documented but deliberately not implemented in `adaptive_runner.py` — simultaneous multi-model loading is the root cause of the power-loss crashes.
+
+### Automatic Tier Selection
+
+`AdaptiveRunner._select_tier()` reads `nvidia-smi` and `psutil` before each analysis:
+
+```
+GPU temp < 65°C AND RAM < 60%  →  Tier 2 (qwen3:32b, 30s cooldown)
+GPU temp ≥ 65°C OR RAM ≥ 60%  →  Tier 3 (llama3.1:8b, 60s cooldown)
+GPU temp unreadable             →  Tier 3 (safest default)
+```
+
+### Thermal Safety Protocol
+
+Every analysis run follows this sequence:
+
+1. **Pre-flight**: `HardwareMonitor.unload_all_models()` stops all known Ollama models
+2. **Cool gate**: `wait_for_cool()` blocks until GPU drops below `THERMAL_RESUME` (default 55°C)
+3. **Context trim**: All evidence blocks are truncated to `MAX_CONTEXT_CHARS` before injection
+4. **Per-round gate**: `wait_for_cool()` is called again before each of the four analyst rounds
+5. **Cooling pause**: Fixed pause (`COOLDOWN_SECONDS`) between rounds to let GPU recover
+6. **Persist first**: `deliverable.json` is written to disk before the HTTP response is returned
+
+### Four-Analyst Pipeline
+
+The adaptive runner executes a different analytical framework from the adversarial debate engine — instead of three user personas arguing, it runs four specialist analysts sequentially:
+
+| Round | Analyst | Focus | Output Fields |
+|---|---|---|---|
+| 1 | Strategist | Market positioning, PMF signal, competitive defensibility | `market_position`, `pmf_verdict`, `market_readiness_score`, `top_3_priorities` |
+| 2 | UX Analyst | Screen-level friction from video frames and screenshot comparisons | `ux_score`, `critical_friction_points`, `quick_wins`, `onboarding_verdict` |
+| 3 | Market Researcher | User sentiment from real reviews, competitive threats, switching costs | `market_signal`, `top_unmet_needs`, `competitive_threats`, `pricing_signal` |
+| 4 | Partner Review | Synthesis of all three; non-hedged go/no-go | `headline`, `final_score`, `market_readiness`, `one_thing_to_do_monday` |
+
+All four analysts are prompted to respond with a single valid JSON object, which the runner parses and embeds directly into the deliverable. If a model wraps its output in markdown fences, the runner strips them before JSON parsing.
+
+### Hardware Preflight Check
+
+`GET /api/preflight` runs `src/orchestration/hardware_preflight.py` before analysis:
+
+```json
+{
+  "verdict": "GO | CAUTION | NO-GO",
+  "tier_recommendation": 2,
+  "issues": ["blocking issue strings"],
+  "warnings": ["warning strings"],
+  "recommendations": ["actionable fix strings"],
+  "health": {
+    "gpu_temp": 48,
+    "gpu_memory": {"used_mib": 12000, "total_mib": 131072, "free_mib": 119072},
+    "ram": {"used_gb": 42.1, "total_gb": 128.0, "percent": 33.0},
+    "loaded_models": []
+  }
+}
+```
+
+Check conditions:
+- **GPU temp ≥ THERMAL_CEILING (70°C)** → blocking issue; NO-GO
+- **GPU temp ≥ THERMAL_RESUME (55°C)** → warning; CAUTION, Tier 3 recommended
+- **GPU free memory < 20,000 MiB** → blocking issue; NO-GO
+- **RAM ≥ 80%** → blocking issue; NO-GO
+- **RAM ≥ 60%** → warning; CAUTION, Tier 3 recommended
+- **Multiple models loaded** → blocking issue; NO-GO (root crash cause)
+
+### Execution Metadata in Every Deliverable
+
+Every `deliverable.json` embeds `execution_metadata` for post-mortem analysis:
+
+```json
+{
+  "execution_metadata": {
+    "tier": 2,
+    "model": "qwen3:32b",
+    "thermal_ceiling_c": 70,
+    "thermal_resume_c": 55,
+    "cooldown_seconds": 30,
+    "max_context_chars": 8000,
+    "execution_log": [
+      {
+        "round": "Strategist",
+        "model": "qwen3:32b",
+        "tier": 2,
+        "elapsed_seconds": 47.3,
+        "status": "OK",
+        "gpu_temp_before": 52
+      }
+    ]
+  }
+}
+```
+
+This provides full transparency into what hardware state each inference call ran under, enabling diagnosis of quality vs. safety tradeoffs over multiple runs.
+
+### Environment Variables
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `WAR_ROOM_MODEL` | `qwen3:32b` | Tier 2 model tag |
+| `WAR_ROOM_FALLBACK_MODEL` | `llama3.1:8b` | Tier 3 model tag |
+| `THERMAL_CEILING` | `70` | °C above which execution blocks |
+| `THERMAL_RESUME` | `55` | °C below which execution resumes |
+| `COOLDOWN_SECONDS` | `30` | Inter-round cooling pause (Tier 2) |
+| `MAX_CONTEXT_CHARS` | `8000` | Max chars per evidence block (Tier 2) |
+| `OLLAMA_URL` | `http://localhost:11434/v1/chat/completions` | Ollama completions endpoint |
+
+All variables are optional with safe defaults. For Tier 3, cooldown doubles and context halves automatically — no extra configuration required.
