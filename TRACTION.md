@@ -30,7 +30,7 @@ See `sessions/` directory for real analysis deliverables including:
 - Evidence citations linking back to Reddit/HN/Google Play sources
 
 ## Deployment Evidence
-- 117+ commits across 24-hour hackathon window
+- 125+ commits across 24-hour hackathon window
 - Frontend live on Vercel with SPA routing (vercel.json configured)
 - Backend API exposed via ngrok with Swagger UI documentation
 - McKinsey-style Report component (Report.tsx, 1591 lines) rendering structured verdicts
