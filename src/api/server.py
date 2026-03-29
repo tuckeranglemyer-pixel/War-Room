@@ -37,7 +37,14 @@ from src.api.video_processor import (
     generate_journey_summary,
     process_video_frames,
 )
-from src.inference.model_config import API_HOST, API_PORT
+from src.inference.model_config import (
+    API_HOST,
+    API_PORT,
+    BUYER_MODEL,
+    DAILY_DRIVER_MODEL,
+    FALLBACK_MODEL,
+    FIRST_TIMER_MODEL,
+)
 from src.orchestration.adaptive_runner import AdaptiveRunner
 from src.orchestration.adversarial_debate_engine import build_crew
 from src.orchestration.response_synthesizer import parse_verdict
@@ -47,6 +54,12 @@ from src.orchestration.response_synthesizer import parse_verdict
 # ---------------------------------------------------------------------------
 
 ROUND_ROLES = ["first_timer", "daily_driver", "first_timer", "buyer"]
+
+ROLE_MODELS: dict[str, str] = {
+    "first_timer": FIRST_TIMER_MODEL,
+    "daily_driver": DAILY_DRIVER_MODEL,
+    "buyer": BUYER_MODEL,
+}
 
 # Persistent directory for session frames — created once at module load so static mount works.
 SESSIONS_DIR = Path("sessions")
@@ -117,7 +130,7 @@ class DebateSession:
                 "round": round_num,
                 "agent_name": task_output.agent,
                 "agent_role": agent_role,
-                "model": "mistral:7b",
+                "model": ROLE_MODELS.get(agent_role, FALLBACK_MODEL),
                 "status": "complete",
                 "content": task_output.raw,
             }
