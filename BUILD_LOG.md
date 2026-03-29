@@ -82,3 +82,13 @@ This turned a hardware limitation into an architectural feature — the adaptive
 - Python 3.12 pinned via .python-version for Railway compatibility
 - Start command: uvicorn with PYTHONPATH=/app for proper module resolution
 - 167+ commits shipped across 30+ hour hackathon window
+
+## Hour 30+ — Production Launch & Real Traction
+- Railway backend fully live at war-room-production.up.railway.app
+- Dockerfile with ffmpeg baked into build image — instant server startup
+- CORS resolved for Vercel → Railway cross-origin requests
+- 3 REAL users ran full video QA pipeline on their own hackathon products
+- All 3 received actionable findings and implemented them
+- Posted on Hacker News, Discord, Reddit for distribution
+- Vercel Analytics tracking: 10+ page views, 3 demo clicks
+- Mission accomplished: real people, real products, real actionable output
