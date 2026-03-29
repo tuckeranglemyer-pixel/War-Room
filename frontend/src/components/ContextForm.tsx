@@ -3,6 +3,8 @@ import AnalysisPipeline from './AnalysisPipeline'
 
 const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
 
+type ExecutionMode = 'dgx' | 'cloud'
+
 interface ContextFormProps {
   productName: string
   onComplete: (sessionId: string) => void
@@ -79,12 +81,34 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   const [submitting, setSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('uploading')
   const [error, setError] = useState('')
-  // Video pipeline state — set progressively as backend responds
   const [pipelineSessionId, setPipelineSessionId] = useState('')
   const [pipelineAnalysisDone, setPipelineAnalysisDone] = useState(false)
+  const [execMode, setExecMode] = useState<ExecutionMode>('cloud')
+  const [modeLoading, setModeLoading] = useState(false)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const textInputRef = useRef<HTMLInputElement>(null)
+
+  // Fetch current mode on mount
+  useEffect(() => {
+    fetch(`${API_BASE}/api/config/mode`)
+      .then(r => r.json())
+      .then((d: { mode: ExecutionMode }) => setExecMode(d.mode))
+      .catch(() => {/* non-critical */})
+  }, [])
+
+  async function switchMode(mode: ExecutionMode) {
+    if (mode === execMode || modeLoading) return
+    setModeLoading(true)
+    try {
+      await fetch(`${API_BASE}/api/config/mode/${mode}`, { method: 'POST' })
+      setExecMode(mode)
+    } catch {
+      // silently ignore — mode display will be stale but backend unchanged
+    } finally {
+      setModeLoading(false)
+    }
+  }
 
   const isVideoStep = step === 0
   const isLastStep = step === TOTAL_STEPS - 1
@@ -358,6 +382,36 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         .ctx-next-btn:hover {
           background: #5B9CF7 !important;
         }
+        .mode-toggle-btn {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 14px;
+          background: transparent;
+          border: 1px solid #1E2028;
+          border-radius: 100px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: 0.06em;
+          cursor: pointer;
+          transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+          color: #52525B;
+          white-space: nowrap;
+        }
+        .mode-toggle-btn.active {
+          border-color: #3B82F6;
+          color: #93c5fd;
+          background: rgba(59,130,246,0.08);
+        }
+        .mode-toggle-btn.active-dgx {
+          border-color: #a78bfa;
+          color: #c4b5fd;
+          background: rgba(167,139,250,0.08);
+        }
+        .mode-toggle-btn:hover:not(.active):not(.active-dgx) {
+          border-color: #3F3F46;
+          color: #A1A1AA;
+        }
       `}</style>
 
       <div style={{
@@ -529,6 +583,53 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
               {isLastStep ? 'Start War Room' : 'Next →'}
             </button>
           </div>
+        </div>
+
+        {/* Execution mode toggle */}
+        <div style={{
+          marginTop: 28,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          paddingTop: 20,
+          borderTop: '1px solid #1A1C24',
+        }}>
+          <span style={{
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 9,
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: '#3F3F46',
+            marginRight: 4,
+          }}>
+            Inference
+          </span>
+          <button
+            className={`mode-toggle-btn${execMode === 'cloud' ? ' active' : ''}`}
+            onClick={() => void switchMode('cloud')}
+            disabled={modeLoading}
+            title="OpenAI GPT-4o — parallel execution, ~2–5 min"
+          >
+            ☁️ Cloud API
+          </button>
+          <button
+            className={`mode-toggle-btn${execMode === 'dgx' ? ' active-dgx' : ''}`}
+            onClick={() => void switchMode('dgx')}
+            disabled={modeLoading}
+            title="Local Ollama on DGX Spark — sequential with thermal management, ~15–45 min"
+          >
+            ⚡ DGX Spark
+          </button>
+          {modeLoading && (
+            <span style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              color: '#3F3F46',
+              letterSpacing: '0.08em',
+            }}>
+              switching...
+            </span>
+          )}
         </div>
       </div>
     </div>

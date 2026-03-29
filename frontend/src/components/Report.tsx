@@ -50,11 +50,35 @@ interface ComparisonCard {
   what_to_avoid: string
 }
 
+type ExecutionMode = 'dgx' | 'cloud'
+
+interface ExecutionLogEntry {
+  round: string
+  mode: ExecutionMode
+  model: string
+  elapsed_seconds: number
+  status: string
+  gpu_temp_before?: number
+  tier?: number
+}
+
+interface ExecutionMetadata {
+  mode: ExecutionMode
+  model: string
+  max_context_chars?: number
+  execution_log?: ExecutionLogEntry[]
+  tier?: number
+  thermal_ceiling_c?: number
+  thermal_resume_c?: number
+  cooldown_seconds?: number
+}
+
 interface ReportData {
   product_name: string
   product_description: string
   target_user: string
   analysis_timestamp: string
+  execution_metadata?: ExecutionMetadata
   verdict: {
     headline: string
     score: number
@@ -112,6 +136,16 @@ const MOCK_DATA: ReportData = {
   product_description: 'All-in-one workspace for notes, docs, databases, and project management',
   target_user: 'Knowledge workers, startup teams, solopreneurs',
   analysis_timestamp: '2026-03-29T10:00:00Z',
+  execution_metadata: {
+    mode: 'cloud',
+    model: 'gpt-4o',
+    execution_log: [
+      { round: 'Strategist', mode: 'cloud', model: 'gpt-4o', elapsed_seconds: 18.4, status: 'OK' },
+      { round: 'UX Analyst', mode: 'cloud', model: 'gpt-4o', elapsed_seconds: 21.1, status: 'OK' },
+      { round: 'Market Researcher', mode: 'cloud', model: 'gpt-4o', elapsed_seconds: 19.7, status: 'OK' },
+      { round: 'Partner Review', mode: 'cloud', model: 'gpt-4o', elapsed_seconds: 11.2, status: 'OK' },
+    ],
+  },
   verdict: {
     headline: 'Strong product, fragile onboarding wall blocking mass adoption',
     score: 7.1,
@@ -527,6 +561,144 @@ function SectionTitle({ label, subtitle }: { label: string; subtitle?: string })
   )
 }
 
+function ExecutionBadge({ meta }: { meta: ExecutionMetadata }) {
+  const isDgx = meta.mode === 'dgx'
+  const totalElapsed = meta.execution_log
+    ? meta.execution_log.reduce((sum, e) => sum + e.elapsed_seconds, 0)
+    : null
+
+  const color = isDgx ? '#a78bfa' : 'var(--accent-blue)'
+  const bg = isDgx ? 'rgba(167,139,250,0.08)' : 'rgba(59,130,246,0.08)'
+  const border = isDgx ? 'rgba(167,139,250,0.2)' : 'rgba(59,130,246,0.2)'
+
+  return (
+    <div style={{
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '6px 14px 6px 10px',
+      background: bg,
+      border: `1px solid ${border}`,
+      borderRadius: 100,
+    }}>
+      <span style={{ fontSize: 12 }}>{isDgx ? '⚡' : '☁️'}</span>
+      <span style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 10,
+        fontWeight: 500,
+        color,
+        letterSpacing: '0.06em',
+      }}>
+        {isDgx
+          ? `DGX Spark — Local Inference (${meta.model})`
+          : `Cloud API — OpenAI ${meta.model}`}
+      </span>
+      {totalElapsed !== null && (
+        <>
+          <span style={{ width: 1, height: 12, background: border, flexShrink: 0 }} />
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            color: 'var(--text-muted)',
+          }}>
+            {totalElapsed.toFixed(1)}s total
+          </span>
+        </>
+      )}
+      {isDgx && meta.tier !== undefined && (
+        <>
+          <span style={{ width: 1, height: 12, background: border, flexShrink: 0 }} />
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            color: 'var(--text-muted)',
+          }}>
+            Tier {meta.tier}
+          </span>
+        </>
+      )}
+    </div>
+  )
+}
+
+function ExecutionLogPanel({ meta }: { meta: ExecutionMetadata }) {
+  const [open, setOpen] = useState(false)
+  const log = meta.execution_log ?? []
+  if (!log.length) return null
+  const isDgx = meta.mode === 'dgx'
+
+  return (
+    <div style={{ marginTop: 12 }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          background: 'transparent', border: 'none', cursor: 'pointer', padding: 0,
+          display: 'flex', alignItems: 'center', gap: 6,
+        }}
+      >
+        <span style={{
+          fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.12em',
+          textTransform: 'uppercase', color: 'var(--text-muted)',
+        }}>
+          {open ? '↑ Hide' : '↓ Show'} execution log
+        </span>
+      </button>
+      {open && (
+        <div style={{
+          marginTop: 10,
+          background: 'var(--bg-secondary)',
+          border: '1px solid var(--border)',
+          borderRadius: 4,
+          overflow: 'hidden',
+        }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ background: 'var(--bg-card)' }}>
+                {['Round', 'Model', isDgx ? 'GPU Temp' : 'Mode', 'Elapsed', 'Status'].map(h => (
+                  <th key={h} style={{
+                    padding: '8px 14px', textAlign: 'left',
+                    fontFamily: 'var(--font-mono)', fontSize: 9,
+                    letterSpacing: '0.1em', textTransform: 'uppercase',
+                    color: 'var(--text-muted)', fontWeight: 500,
+                  }}>
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {log.map((entry, i) => (
+                <tr key={i} style={{ borderTop: '1px solid var(--border)' }}>
+                  <td style={{ padding: '9px 14px', fontFamily: 'var(--font-body)', fontSize: 12, color: 'var(--text-primary)' }}>
+                    {entry.round}
+                  </td>
+                  <td style={{ padding: '9px 14px', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-secondary)' }}>
+                    {entry.model}
+                  </td>
+                  <td style={{ padding: '9px 14px', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--text-muted)' }}>
+                    {isDgx
+                      ? (entry.gpu_temp_before !== undefined && entry.gpu_temp_before >= 0
+                          ? `${entry.gpu_temp_before}°C`
+                          : '—')
+                      : 'parallel'}
+                  </td>
+                  <td style={{ padding: '9px 14px', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--accent-blue)' }}>
+                    {entry.elapsed_seconds}s
+                  </td>
+                  <td style={{ padding: '9px 14px', fontFamily: 'var(--font-mono)', fontSize: 11,
+                    color: entry.status === 'OK' ? 'var(--accent-green)' : 'var(--accent-red)' }}>
+                    {entry.status}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  )
+}
+
 function ScoreRing({ score, size = 'medium' }: { score: number; size?: 'large' | 'medium' | 'small' }) {
   const [animated, setAnimated] = useState(0)
 
@@ -687,7 +859,7 @@ function HeroSection({ data }: { data: ReportData }) {
       }}
     >
       {/* Top bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 64 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
         <div>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>
             War Room Analysis
@@ -704,6 +876,14 @@ function HeroSection({ data }: { data: ReportData }) {
           Download PDF
         </button>
       </div>
+
+      {/* Execution badge */}
+      {data.execution_metadata && (
+        <div style={{ marginBottom: 48 }}>
+          <ExecutionBadge meta={data.execution_metadata} />
+          <ExecutionLogPanel meta={data.execution_metadata} />
+        </div>
+      )}
 
       {/* Product name */}
       <p style={{
@@ -1472,12 +1652,14 @@ function PartnerVerdictSection({ data }: { data: ReportData }) {
 // Analyzing Screen (shown while background analysis is running)
 // ─────────────────────────────────────────────────────────────────────────────
 
-function AnalyzingScreen() {
+function AnalyzingScreen({ mode }: { mode?: ExecutionMode }) {
   const [dots, setDots] = useState('.')
   useEffect(() => {
     const id = setInterval(() => setDots(d => d.length >= 3 ? '.' : d + '.'), 600)
     return () => clearInterval(id)
   }, [])
+
+  const isDgx = mode === 'dgx'
 
   return (
     <div style={{
@@ -1489,16 +1671,19 @@ function AnalyzingScreen() {
       justifyContent: 'center',
       gap: 24,
     }}>
-      <p style={{
-        fontFamily: 'var(--font-mono)',
-        fontSize: 11,
-        letterSpacing: '0.2em',
-        textTransform: 'uppercase',
-        color: 'var(--accent-blue)',
-        margin: 0,
-      }}>
-        Analysis in progress{dots}
-      </p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span style={{ fontSize: 16 }}>{isDgx ? '⚡' : '☁️'}</span>
+        <p style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: 11,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'var(--accent-blue)',
+          margin: 0,
+        }}>
+          Analysis in progress{dots}
+        </p>
+      </div>
       <p style={{
         fontFamily: 'var(--font-body)',
         fontSize: 14,
@@ -1509,7 +1694,9 @@ function AnalyzingScreen() {
         margin: 0,
       }}>
         Running the 4-round pipeline — Strategist, UX Analyst, Market Researcher, and Partner Review.
-        This typically takes 15–45 minutes on the DGX Spark.
+        {isDgx
+          ? ' Running sequentially with thermal management on the DGX Spark. Typically 15–45 minutes.'
+          : ' Running analysts in parallel via OpenAI GPT-4o. Typically 2–5 minutes.'}
       </p>
       <p style={{
         fontFamily: 'var(--font-mono)',
@@ -1518,7 +1705,8 @@ function AnalyzingScreen() {
         letterSpacing: '0.08em',
         margin: 0,
       }}>
-        This page checks for updates every 10 seconds.
+        {isDgx ? 'Thermal governor active — cooling pauses between rounds.' : 'Parallel inference — no GPU constraints.'}
+        {' '}This page checks for updates every 10 seconds.
       </p>
     </div>
   )
@@ -1555,14 +1743,22 @@ export default function Report({ sessionId }: ReportProps) {
   const [data, setData] = useState<ReportData | null>(null)
   const [loading, setLoading] = useState(true)
   const [analyzing, setAnalyzing] = useState(false)
+  const [currentMode, setCurrentMode] = useState<ExecutionMode | undefined>(undefined)
   const pollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Fetch current execution mode for the analyzing screen
+  useEffect(() => {
+    fetch(`${API_BASE}/api/config/mode`)
+      .then(r => r.json())
+      .then((d: { mode: ExecutionMode }) => setCurrentMode(d.mode))
+      .catch(() => {/* non-critical */})
+  }, [])
 
   const fetchReport = useCallback(async () => {
     try {
       const res = await fetch(`${API_BASE}/api/report/${sessionId}`)
       if (res.status === 202) {
-        // Analysis still running — show the analyzing screen and poll again
         setAnalyzing(true)
         setLoading(false)
         pollTimerRef.current = setTimeout(() => { void fetchReport() }, 10_000)
@@ -1587,7 +1783,7 @@ export default function Report({ sessionId }: ReportProps) {
   }, [fetchReport])
 
   if (loading) return <LoadingSkeleton />
-  if (analyzing) return <AnalyzingScreen />
+  if (analyzing) return <AnalyzingScreen mode={currentMode} />
   if (!data) return null
 
   return (
