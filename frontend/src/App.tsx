@@ -7,7 +7,9 @@ import VerdictCard from './components/VerdictCard'
 import { fadeScale, spring } from './animations'
 import './index.css'
 
-type View = 'landing' | 'context' | 'debate' | 'verdict'
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
+
+type View = 'landing' | 'context' | 'starting' | 'debate' | 'verdict'
 
 export interface RoundData {
   round: number
@@ -38,16 +40,41 @@ export default function App() {
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
 
   /**
-   * From the landing view: advance to the context wizard to collect product
-   * metadata before launching a real debate, or skip straight to demo mode
-   * when the user clicks a suggestion chip (empty sessionId = demo).
-   * @param name - Product name from the input or a suggestion chip.
+   * Freeform input path: advance to the context wizard to collect product
+   * metadata (description, target user, competitors, etc.) before launching.
+   * @param name - Product name typed by the user.
    */
   function handleSelectProduct(name: string) {
     setProduct(name)
     setVerdictData(null)
     setSessionId('')
     setView('context')
+  }
+
+  /**
+   * Featured product path: skip the wizard entirely.
+   * POST /analyze with just the product name, then jump straight to the
+   * debate stream the moment the backend returns a session_id.
+   * @param name - Product name from a featured pill click.
+   */
+  async function handleFeaturedProduct(name: string) {
+    setProduct(name)
+    setVerdictData(null)
+    setSessionId('')
+    setView('starting')
+    try {
+      const res = await fetch(`${API_BASE}/analyze`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ product_name: name }),
+      })
+      if (!res.ok) throw new Error(`Analyze error ${res.status}`)
+      const { session_id } = await res.json()
+      setSessionId(session_id)
+      setView('debate')
+    } catch {
+      setView('landing')
+    }
   }
 
   /**
@@ -96,7 +123,10 @@ export default function App() {
             transition={spring.gentle}
             style={{ minHeight: '100vh' }}
           >
-            <Landing onSelectProduct={handleSelectProduct} />
+            <Landing
+              onSelectProduct={handleSelectProduct}
+              onFeaturedProduct={(name) => { void handleFeaturedProduct(name) }}
+            />
           </motion.div>
         )}
         {view === 'context' && (
@@ -113,6 +143,31 @@ export default function App() {
               onComplete={handleContextComplete}
               onBack={handleBack}
             />
+          </motion.div>
+        )}
+        {view === 'starting' && (
+          <motion.div
+            key="starting"
+            initial={fadeScale.initial}
+            animate={fadeScale.animate}
+            exit={fadeScale.exit}
+            transition={spring.gentle}
+            style={{
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <p style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 14,
+              color: '#3B82F6',
+              letterSpacing: '0.02em',
+            }}>
+              Starting War Room...
+            </p>
           </motion.div>
         )}
         {view === 'debate' && (

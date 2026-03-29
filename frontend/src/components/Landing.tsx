@@ -5,18 +5,28 @@ import { PRELOADED_PRODUCTS } from '../preloadedProducts'
 
 interface LandingProps {
   onSelectProduct: (product: string) => void
+  onFeaturedProduct: (product: string) => void
 }
 
 /** Landing page — product name input with animated background. Entry point for War Room analysis. */
-export default function Landing({ onSelectProduct }: LandingProps) {
+export default function Landing({ onSelectProduct, onFeaturedProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [focused, setFocused] = useState(false)
   const [exiting, setExiting] = useState(false)
   const pendingRef = useRef<string | null>(null)
+  const isFeaturedRef = useRef(false)
 
   function submit(product: string) {
     if (!product.trim() || exiting) return
     pendingRef.current = product.trim()
+    isFeaturedRef.current = false
+    setExiting(true)
+  }
+
+  function submitFeatured(product: string) {
+    if (!product.trim() || exiting) return
+    pendingRef.current = product.trim()
+    isFeaturedRef.current = true
     setExiting(true)
   }
 
@@ -32,8 +42,14 @@ export default function Landing({ onSelectProduct }: LandingProps) {
       transition={exiting ? { duration: 0.2 } : undefined}
       onAnimationComplete={() => {
         if (exiting && pendingRef.current) {
-          onSelectProduct(pendingRef.current)
+          const name = pendingRef.current
           pendingRef.current = null
+          if (isFeaturedRef.current) {
+            isFeaturedRef.current = false
+            onFeaturedProduct(name)
+          } else {
+            onSelectProduct(name)
+          }
         }
       }}
       style={{
@@ -196,7 +212,7 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           {PRELOADED_PRODUCTS.map((s) => (
             <motion.button
               key={s}
-              onClick={() => submit(s)}
+              onClick={() => submitFeatured(s)}
               whileHover={{ y: -1 }}
               transition={spring.snappy}
               style={{
