@@ -1,5 +1,11 @@
 # Traction — The War Room
 
+## Deployment Infrastructure
+- Frontend: https://frontend-untracked.vercel.app (Vercel)
+- Backend: https://war-room-production.up.railway.app (Railway)
+- DGX Spark: Local inference with thermal management
+- Dual inference: Cloud API (Railway) + Local (DGX Spark) operational
+
 ## Live Deployment
 - **Frontend:** https://frontend-untracked.vercel.app/
 - **API Docs:** https://paplike-hillary-beauteously.ngrok-free.dev/docs
