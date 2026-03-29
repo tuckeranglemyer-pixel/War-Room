@@ -89,6 +89,32 @@ def is_supported_product(name: str) -> bool:
     return any(normalized == p or p in normalized or normalized in p for p in SUPPORTED_PRODUCTS)
 
 
+# ---------------------------------------------------------------------------
+# Daily budget guard — circuit breaker for runaway API costs
+# ---------------------------------------------------------------------------
+
+MAX_DAILY_ANALYSES = 100
+_daily_analysis_count = 0
+_daily_reset_time = time.time()
+
+
+def check_budget_guard() -> bool:
+    """Increment the daily analysis counter and return True if budget is still available.
+
+    Resets the counter automatically after 24 hours. Returns False when the
+    daily cap is reached, signalling the caller to serve demo fallback instead
+    of running real inference.
+    """
+    global _daily_analysis_count, _daily_reset_time
+    if time.time() - _daily_reset_time > 86400:
+        _daily_analysis_count = 0
+        _daily_reset_time = time.time()
+    if _daily_analysis_count >= MAX_DAILY_ANALYSES:
+        return False
+    _daily_analysis_count += 1
+    return True
+
+
 def check_rate_limit(ip: str, max_requests: int = 3, window: int = 3600) -> bool:
     """Per-IP rate limiter — defaults to 3 analysis requests per hour for public launch."""
     now = time.time()
@@ -226,6 +252,8 @@ class AnalyzeResponse(BaseModel):
     """Response payload from POST /analyze containing the new debate session UUID."""
 
     session_id: str
+    demo_mode: bool = False
+    message: str = ""
 
 
 # ---------------------------------------------------------------------------
@@ -268,6 +296,13 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
                 "error": "Product not in our evidence corpus. Choose from our 20 supported products.",
                 "supported_products": SUPPORTED_PRODUCTS,
             },
+        )
+
+    if not check_budget_guard():
+        return AnalyzeResponse(
+            session_id="",
+            demo_mode=True,
+            message="High demand — showing demo analysis. Full analyses resume shortly.",
         )
 
     session_id = str(uuid.uuid4())
