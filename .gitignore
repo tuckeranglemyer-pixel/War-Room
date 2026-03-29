@@ -1,15 +1,52 @@
-# ChromaDB persistent store
+# ChromaDB persistent store (large binary files)
 chroma_db/
 
-# Python
+# Python bytecode
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyc
+*.pyd
+
+# Virtual environments
 .venv/
 venv/
+env/
+.env/
 
-# Environment
+# Environment variables
 .env
+.env.*
 
-# OS
+# Eggs and distribution
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Pytest cache
+.pytest_cache/
+
+# Type checker caches
+.mypy_cache/
+.dmypy.json
+
+# IDE
+.vscode/
+.idea/
+
+# macOS
 .DS_Store
+
+# Windows
 Thumbs.db
+desktop.ini
+
+# Node (frontend)
+node_modules/
+
+# Logs produced by safe/thermal runners
+*.log
+
+# Checkpoint files produced by chroma_safe_batch_loader
+chroma_db/.load_checkpoint.json

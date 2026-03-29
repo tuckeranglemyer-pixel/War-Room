@@ -1,6 +1,28 @@
-crewai
-chromadb
-streamlit
-fastapi
-uvicorn
-websockets
+# Core inference and orchestration
+crewai==0.130.0
+crewai-tools==0.47.1
+
+# Vector database (local, no external service)
+chromadb==0.6.3
+
+# API server
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+websockets==14.2
+pydantic==2.11.3
+python-multipart==0.0.20
+
+# OpenAI (GPT-4o Vision for video frame analysis)
+openai==1.75.0
+
+# Hardware monitoring (DGX Spark thermal checks)
+psutil==7.0.0
+
+# Ingestion pipeline
+requests==2.32.3
+google-play-scraper==1.2.7
+app-store-scraper==0.3.5
+
+# Testing
+pytest==9.0.2
+pytest-asyncio==0.26.0
