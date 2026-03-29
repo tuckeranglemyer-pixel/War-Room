@@ -102,3 +102,5 @@ MAX_WORKERS = _get_int("MAX_WORKERS", 10)
 
 API_HOST = _get_str("API_HOST", "0.0.0.0")
 API_PORT = _get_int("API_PORT", 8000)
+
+CLOUD_MODEL = os.environ.get("CLOUD_MODEL", "gpt-4o")
