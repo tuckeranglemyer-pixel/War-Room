@@ -42,7 +42,7 @@ Post-debate report card. Includes:
 Heavy pure-function parsing logic extracts citations, sentiment, and structured sections from raw round text.
 
 ### `ContextForm.tsx`
-Six-step wizard for video upload and product context fields. Posts to `POST /api/ingest/video` and `POST /analyze`. Currently **not wired into `App.tsx`** — available for integration when the full ingest flow is enabled.
+Six-step wizard for video upload and product context fields. Posts to `POST /api/ingest/video` and `POST /analyze`. **Wired into `App.tsx`** — featured/preloaded products bypass it via a fast-path directly to the debate view, while freeform product entries route through `ContextForm` before starting the debate.
 
 ## Shared Modules
 
