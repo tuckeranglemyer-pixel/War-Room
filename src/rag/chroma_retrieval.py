@@ -124,6 +124,8 @@ def _query_collection(
     Returns:
         Joined formatted chunks, or a human-readable error string.
     """
+    if _pm_tools_collection is None:
+        return "[ChromaDB] collection unavailable — no local database found on this host"
     try:
         kwargs: dict = {"query_texts": [query], "n_results": n_results}
         if where:

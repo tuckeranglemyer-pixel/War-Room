@@ -162,13 +162,26 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough. Ref
     personas = generate_personas(product_description, local_llm)
 
     # --- Step 1.5: Deploy reconnaissance swarm ---
-    swarm_result = deploy_swarm(
-        product_description,
-        max_scouts=MAX_SCOUTS,
-        max_workers=MAX_WORKERS,
-    )
-    swarm_briefing = swarm_result["briefing"]
-    swarm_stats = swarm_result["stats"]
+    # ChromaDB is local-only; on Railway/cloud the swarm gracefully returns an
+    # empty briefing (scouts detect the missing collection and are filtered out).
+    # The outer try/except is a safety net in case deploy_swarm itself throws.
+    try:
+        swarm_result = deploy_swarm(
+            product_description,
+            max_scouts=MAX_SCOUTS,
+            max_workers=MAX_WORKERS,
+        )
+        swarm_briefing = swarm_result["briefing"]
+        swarm_stats = swarm_result["stats"]
+    except Exception as swarm_exc:
+        print(f"⚠️  Swarm reconnaissance unavailable (non-fatal): {swarm_exc}")
+        swarm_briefing = "[Swarm reconnaissance unavailable — proceeding without pre-fetched evidence]"
+        swarm_stats = {
+            "scouts_deployed": 0,
+            "scouts_successful": 0,
+            "total_time": 0,
+            "product": product_description,
+        }
 
     # --- Step 1b: Pre-fetch real evidence from ChromaDB ---
     # "full" tier: inject pre-fetched evidence directly into task descriptions so
