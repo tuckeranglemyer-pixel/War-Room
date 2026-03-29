@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { VerdictData } from '../App'
 import { fadeUp, spring } from '../animations'
+import { API_BASE } from '../config'
 
 interface DebateStreamProps {
   product: string
@@ -613,7 +614,8 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
       return
     }
 
-    const ws = new WebSocket(`ws://localhost:8000/ws/${sessionId}`)
+    const wsBase = API_BASE.replace(/^http/, 'ws')
+    const ws = new WebSocket(`${wsBase}/ws/${sessionId}`)
     wsRef.current = ws
 
     ws.onmessage = (event) => {
