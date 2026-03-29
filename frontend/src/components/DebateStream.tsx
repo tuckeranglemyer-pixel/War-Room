@@ -578,24 +578,7 @@ function RoundCard({ msg, typewriter, onTypingComplete }: {
   )
 }
 
-/**
- * Live debate stream view orchestrating the full War Room debate UX.
- *
- * Renders three sequential phases: (1) SwarmCard reconnaissance animation,
- * (2) AgentInitSequence showing model initialisation, (3) RoundCard stream
- * as each debate round completes. Connects to the FastAPI WebSocket endpoint
- * at ``ws://localhost:8000/ws/{sessionId}`` after the swarm animation completes.
- *
- * When ``sessionId`` is empty, demo mode runs immediately after swarm + init
- * (no WebSocket). When a session ID is present, connects to the backend; if no
- * round arrives within 8 seconds, falls back to the same demo. Demo rounds use
- * typewriter animation.
- *
- * @param product - Product name displayed in the header and passed to SwarmCard.
- * @param sessionId - WebSocket session UUID returned by POST /analyze.
- * @param onBack - Callback to navigate back to the landing view.
- * @param onVerdict - Callback invoked with structured verdict data when Round 4 completes.
- */
+/** Live debate stream — renders 4 CrewAI rounds with typewriter animation. Falls back to demo mode after 8s WebSocket timeout. */
 export default function DebateStream({ product, sessionId, onBack, onVerdict }: DebateStreamProps) {
   const [swarmDone, setSwarmDone] = useState(false)
   const [initDone, setInitDone] = useState(false)
