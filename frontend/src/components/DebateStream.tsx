@@ -586,9 +586,10 @@ function RoundCard({ msg, typewriter, onTypingComplete }: {
  * as each debate round completes. Connects to the FastAPI WebSocket endpoint
  * at ``ws://localhost:8000/ws/{sessionId}`` after the swarm animation completes.
  *
- * Falls back to demo mode (pre-scripted DEMO_ROUNDS) if no WebSocket message
- * arrives within 8 seconds, enabling offline demonstration. In demo mode each
- * round is displayed with typewriter animation at 4-second intervals.
+ * When ``sessionId`` is empty, demo mode runs immediately after swarm + init
+ * (no WebSocket). When a session ID is present, connects to the backend; if no
+ * round arrives within 8 seconds, falls back to the same demo. Demo rounds use
+ * typewriter animation.
  *
  * @param product - Product name displayed in the header and passed to SwarmCard.
  * @param sessionId - WebSocket session UUID returned by POST /analyze.
@@ -621,6 +622,12 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
 
   useEffect(() => {
     if (!swarmDone) return
+
+    // No session = public/demo path: skip WebSocket and 8s wait; scripted rounds after init.
+    if (!sessionId.trim()) {
+      setDemoMode(true)
+      return
+    }
 
     const ws = new WebSocket(`ws://localhost:8000/ws/${sessionId}`)
     wsRef.current = ws
@@ -726,7 +733,9 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
       <div style={{ maxWidth: 880, margin: '0 auto', padding: '32px 24px 64px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <span
+            <button
+              type="button"
+              aria-label="Back to landing"
               onClick={onBack}
               style={{
                 width: 32, height: 32,
@@ -734,12 +743,13 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
                 cursor: 'pointer', color: '#71717A',
                 fontFamily: "'Inter', sans-serif", fontSize: 18,
                 transition: 'color 150ms ease',
+                background: 'none', border: 'none', padding: 0,
               }}
               onMouseEnter={(e) => { e.currentTarget.style.color = '#E4E4E7' }}
               onMouseLeave={(e) => { e.currentTarget.style.color = '#71717A' }}
             >
               ←
-            </span>
+            </button>
             <span style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 16, fontWeight: 600, color: '#E4E4E7',

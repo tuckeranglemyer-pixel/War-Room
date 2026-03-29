@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { fade, fadeScale, fadeUp, spring } from '../animations'
-
-const SUGGESTIONS = ['Canvas', 'Notion', 'Google Calendar', 'Asana', 'Microsoft To Do']
+import { PRELOADED_PRODUCTS } from '../preloadedProducts'
 
 interface LandingProps {
   onSelectProduct: (product: string) => void
@@ -216,11 +215,19 @@ export default function Landing({ onSelectProduct }: LandingProps) {
           fontWeight: 400,
           color: '#71717A',
         }}>
-          {SUGGESTIONS.map((s, i) => (
+          {PRELOADED_PRODUCTS.map((s, i) => (
             <span key={s}>
               {i > 0 && <span style={{ margin: '0 6px', color: '#3F3F46' }}> · </span>}
               <motion.span
+                role="button"
+                tabIndex={0}
                 onClick={() => submit(s)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    submit(s)
+                  }
+                }}
                 whileHover={{ y: -1 }}
                 transition={spring.snappy}
                 style={{

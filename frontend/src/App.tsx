@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Landing from './components/Landing'
-import ContextForm from './components/ContextForm'
 import DebateStream from './components/DebateStream'
 import VerdictCard from './components/VerdictCard'
 import { fadeScale, spring } from './animations'
 import './index.css'
 
-type View = 'landing' | 'context' | 'debate' | 'verdict'
+type View = 'landing' | 'debate' | 'verdict'
 
 export interface RoundData {
   round: number
@@ -27,7 +26,7 @@ export interface VerdictData {
 /**
  * Root application component managing top-level view state and navigation.
  *
- * Coordinates four views — landing → context → debate → verdict — and passes
+ * Coordinates views — landing → debate → verdict — and passes
  * shared state (product name, session ID, verdict data) down to each view
  * component. All view transitions are animated via Framer Motion AnimatePresence.
  */
@@ -38,21 +37,15 @@ export default function App() {
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
 
   /**
-   * Advance from the landing view to the context wizard for the chosen product.
-   * @param name - Product name string entered or selected by the user.
+   * From the landing view: go straight to the debate stream in demo mode.
+   * Empty sessionId signals DebateStream to skip the backend WebSocket and run
+   * the scripted demo (Vercel and external visitors have no API).
+   * @param name - Product name from the input or a suggestion chip.
    */
   function handleSelectProduct(name: string) {
     setProduct(name)
     setVerdictData(null)
-    setView('context')
-  }
-
-  /**
-   * Advance from the context wizard to the live debate stream.
-   * @param sid - WebSocket session ID returned by POST /analyze.
-   */
-  function handleContextComplete(sid: string) {
-    setSessionId(sid)
+    setSessionId('')
     setView('debate')
   }
 
@@ -88,22 +81,6 @@ export default function App() {
             style={{ minHeight: '100vh' }}
           >
             <Landing onSelectProduct={handleSelectProduct} />
-          </motion.div>
-        )}
-        {view === 'context' && (
-          <motion.div
-            key="context"
-            initial={fadeScale.initial}
-            animate={fadeScale.animate}
-            exit={fadeScale.exit}
-            transition={spring.gentle}
-            style={{ minHeight: '100vh' }}
-          >
-            <ContextForm
-              productName={product}
-              onComplete={handleContextComplete}
-              onBack={handleBack}
-            />
           </motion.div>
         )}
         {view === 'debate' && (
