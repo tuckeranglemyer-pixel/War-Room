@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import './Report.css'
-import { API_BASE } from '../config'
+import { API_BASE, STATIC_DEMO_REPORT_SESSION_ID } from '../config'
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -16,8 +16,6 @@ type Sentiment = 'NEGATIVE' | 'MIXED' | 'NEUTRAL' | 'POSITIVE' | 'VERY_POSITIVE'
 type FirstActionClarity = 'OBVIOUS' | 'FINDABLE' | 'BURIED' | 'MISSING'
 type CognitiveLoad = 'LOW' | 'MODERATE' | 'HIGH' | 'OVERWHELMING'
 type Confidence = 'LOW' | 'MEDIUM' | 'HIGH'
-type QuoteSource = 'reddit' | 'hackernews' | 'google_play'
-
 interface KillerQuote {
   quote: string
   source: string
@@ -539,12 +537,6 @@ const SENTIMENT_STYLE: Record<string, { color: string; bg: string; pct: number }
   NEUTRAL:      { color: 'var(--text-muted)',    bg: 'rgba(255,255,255,0.25)', pct: 45 },
   POSITIVE:     { color: 'var(--accent-green)',  bg: 'rgba(34,197,94,0.7)',    pct: 75 },
   VERY_POSITIVE:{ color: 'var(--accent-purple)', bg: 'rgba(168,85,247,0.7)',   pct: 92 },
-}
-
-const SOURCE_STYLE: Record<QuoteSource, { label: string; color: string; bg: string }> = {
-  reddit:     { label: 'Reddit',      color: '#fff', bg: '#FF4500' },
-  hackernews: { label: 'HN',          color: '#fff', bg: '#FF6600' },
-  google_play:{ label: 'Play Store',  color: '#fff', bg: '#34A853' },
 }
 
 const VERDICT_BADGE: Record<ComparisonVerdict, { label: string; color: string; bg: string; border: string }> = {
@@ -1894,15 +1886,22 @@ export default function Report({ sessionId }: ReportProps) {
   const pollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Fetch current execution mode for the analyzing screen
+  // Fetch current execution mode for the analyzing screen (live sessions only)
   useEffect(() => {
+    if (sessionId === STATIC_DEMO_REPORT_SESSION_ID) return
     fetch(`${API_BASE}/api/config/mode`)
       .then(r => r.json())
       .then((d: { mode: ExecutionMode }) => setCurrentMode(d.mode))
       .catch(() => {/* non-critical */})
-  }, [])
+  }, [sessionId])
 
   const fetchReport = useCallback(async () => {
+    if (sessionId === STATIC_DEMO_REPORT_SESSION_ID) {
+      setAnalyzing(false)
+      setData(MOCK_DATA)
+      setLoading(false)
+      return
+    }
     try {
       const res = await fetch(`${API_BASE}/api/report/${sessionId}`)
       if (res.status === 202) {

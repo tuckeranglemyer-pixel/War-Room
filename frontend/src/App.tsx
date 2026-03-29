@@ -8,9 +8,9 @@ import Report from './components/Report'
 import { fadeScale, spring } from './animations'
 import './index.css'
 
-import { API_BASE } from './config'
+import { STATIC_DEMO_REPORT_SESSION_ID } from './config'
 
-type View = 'landing' | 'context' | 'starting' | 'debate' | 'verdict' | 'report'
+type View = 'landing' | 'context' | 'debate' | 'verdict' | 'report'
 
 export interface RoundData {
   round: number
@@ -54,29 +54,15 @@ export default function App() {
   }
 
   /**
-   * Featured product path: skip the wizard entirely.
-   * POST /analyze with just the product name, then jump straight to the
-   * debate stream the moment the backend returns a session_id.
-   * @param name - Product name from a featured pill click.
+   * Featured product path: client-only scripted debate in DebateStream (empty sessionId
+   * → no WebSocket, no backend). Works on static Vercel deploys with zero API.
+   * @param name - Product name from a featured pill click (shown in header; rounds use bundled Notion demo script).
    */
-  async function handleFeaturedProduct(name: string) {
+  function handleFeaturedProduct(name: string) {
     setProduct(name)
     setVerdictData(null)
     setSessionId('')
-    setView('starting')
-    try {
-      const res = await fetch(`${API_BASE}/analyze`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product_name: name }),
-      })
-      if (!res.ok) throw new Error(`Analyze error ${res.status}`)
-      const { session_id } = await res.json()
-      setSessionId(session_id)
-      setView('debate')
-    } catch {
-      setView('landing')
-    }
+    setView('debate')
   }
 
   /**
@@ -90,7 +76,7 @@ export default function App() {
   }
 
   function handleViewReport() {
-    const id = sessionId || 'demo'
+    const id = sessionId.trim() ? sessionId : STATIC_DEMO_REPORT_SESSION_ID
     setReportSessionId(id)
     setView('report')
   }
@@ -134,7 +120,7 @@ export default function App() {
           >
             <Landing
               onSelectProduct={handleSelectProduct}
-              onFeaturedProduct={(name) => { void handleFeaturedProduct(name) }}
+              onFeaturedProduct={handleFeaturedProduct}
             />
           </motion.div>
         )}
@@ -153,31 +139,6 @@ export default function App() {
               onBack={handleBack}
               onReportReady={handleReportReady}
             />
-          </motion.div>
-        )}
-        {view === 'starting' && (
-          <motion.div
-            key="starting"
-            initial={fadeScale.initial}
-            animate={fadeScale.animate}
-            exit={fadeScale.exit}
-            transition={spring.gentle}
-            style={{
-              minHeight: '100vh',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <p style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 14,
-              color: '#3B82F6',
-              letterSpacing: '0.02em',
-            }}>
-              Starting War Room...
-            </p>
           </motion.div>
         )}
         {view === 'debate' && (
