@@ -16,6 +16,12 @@ from pathlib import Path
 import aiohttp
 
 from src.config import CHALLENGE_ENDPOINT, VLLM_ENDPOINTS
+from src.orchestration.adaptive_runner import (
+    normalize_challenge,
+    normalize_market_researcher,
+    normalize_strategist,
+    normalize_ux_analyst,
+)
 from src.prompts.market_researcher import (
     MARKET_RESEARCHER_SYSTEM_PROMPT,
     build_market_researcher_prompt,
@@ -161,14 +167,20 @@ async def run_parallel_analysis(
 
     async with aiohttp.ClientSession() as http:
         strategist_output = await call_vllm(http, VLLM_ENDPOINTS["strategist"], STRATEGIST_SYSTEM_PROMPT, strategist_prompt)
+        if "error" not in strategist_output:
+            strategist_output = normalize_strategist(strategist_output)
         print(f"  Strategist: {'OK' if 'error' not in strategist_output else 'FAILED — ' + strategist_output.get('error', '')}")
         await asyncio.sleep(5)
 
         ux_analyst_output = await call_vllm(http, VLLM_ENDPOINTS["ux_analyst"], UX_ANALYST_SYSTEM_PROMPT, ux_analyst_prompt)
+        if "error" not in ux_analyst_output:
+            ux_analyst_output = normalize_ux_analyst(ux_analyst_output)
         print(f"  UX Analyst: {'OK' if 'error' not in ux_analyst_output else 'FAILED — ' + ux_analyst_output.get('error', '')}")
         await asyncio.sleep(5)
 
         market_researcher_output = await call_vllm(http, VLLM_ENDPOINTS["market_researcher"], MARKET_RESEARCHER_SYSTEM_PROMPT, market_researcher_prompt)
+        if "error" not in market_researcher_output:
+            market_researcher_output = normalize_market_researcher(market_researcher_output)
         print(f"  Market Researcher: {'OK' if 'error' not in market_researcher_output else 'FAILED — ' + market_researcher_output.get('error', '')}")
         await asyncio.sleep(5)
 
@@ -200,6 +212,8 @@ async def run_parallel_analysis(
             max_tokens=2048,
             temperature=0.2,
         )
+        if "error" not in challenge_output:
+            challenge_output = normalize_challenge(challenge_output)
 
         round2_time = time.time() - start2
         print(_status_line("Partner Review:", challenge_output))
@@ -210,6 +224,14 @@ async def run_parallel_analysis(
     # ------------------------------------------------------------------
     print("\n[ASSEMBLY] Building final deliverable...")
 
+    raw_score = challenge_output.get("final_score", 0)
+    try:
+        score_float = float(raw_score)
+    except (TypeError, ValueError):
+        score_float = 0.0
+    if score_float > 10:
+        score_float = round(score_float / 10, 1)
+
     deliverable = {
         "product_name": product_name,
         "product_description": product_description,
@@ -217,15 +239,27 @@ async def run_parallel_analysis(
         "analysis_timestamp": datetime.now(timezone.utc).isoformat(),
         "verdict": {
             "headline": challenge_output.get("headline", "Analysis complete"),
-            "score": challenge_output.get("final_score", 0),
-            "recommendation": challenge_output.get("one_thing_to_do_monday", ""),
+            "score": score_float,
+            "recommendation": challenge_output.get(
+                "one_thing_to_do_monday",
+                challenge_output.get("recommendation", ""),
+            ),
             "market_readiness": challenge_output.get("market_readiness", "NEEDS_WORK"),
+            "one_thing_to_do_monday": challenge_output.get("one_thing_to_do_monday", ""),
         },
         "strategist_section": strategist_output,
         "ux_analyst_section": ux_analyst_output,
         "market_researcher_section": market_researcher_output,
         "challenge_layer": challenge_output,
     }
+
+    try:
+        if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
+            deliverable["comparison_cards"] = json.loads(comparison_cards_json)
+        else:
+            deliverable["comparison_cards"] = []
+    except Exception:
+        deliverable["comparison_cards"] = []
 
     session_dir = Path(f"sessions/{session_id}")
     session_dir.mkdir(parents=True, exist_ok=True)
