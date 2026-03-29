@@ -179,7 +179,11 @@ def process_video_frames(
     frames: list[Path],
     product_name: str,
     session_context: dict[str, Any],
-) -> tuple[list[dict[str, Any]], list[str], list[dict[str, Any]]]:
+) -> tuple[
+    list[dict[str, Any]],
+    list[str],
+    list[dict[str, Any]],
+]:
     """Analyze frames sequentially with rolling context for each vision call.
 
     Runs two GPT-4o passes per frame:
