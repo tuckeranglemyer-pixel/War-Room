@@ -60,6 +60,11 @@ export default function App() {
     setView('debate')
   }
 
+  function handleViewReport() {
+    const id = sessionId || 'demo'
+    window.location.href = `/report/${id}`
+  }
+
   /**
    * Advance from the debate stream to the verdict summary view.
    * @param data - Structured verdict payload received from the backend.
@@ -145,6 +150,32 @@ export default function App() {
               full_report={verdictData?.full_report ?? ''}
               onBack={handleBack}
             />
+            <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 100 }}>
+              <button
+                onClick={handleViewReport}
+                style={{
+                  background: 'rgba(15,15,22,0.95)',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  borderRadius: 8,
+                  padding: '10px 20px',
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  color: '#f0f0f5',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  backdropFilter: 'blur(12px)',
+                  transition: 'border-color 0.15s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)' }}
+              >
+                <span style={{ fontSize: 14 }}>📄</span>
+                View Full Report
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a25;
+  --text-primary: #f0f0f5;
+  --text-secondary: rgba(240, 240, 245, 0.6);
+  --text-muted: rgba(240, 240, 245, 0.35);
+  --accent-green: #22c55e;
+  --accent-amber: #f59e0b;
+  --accent-red: #ef4444;
+  --accent-blue: #3b82f6;
+  --accent-purple: #a855f7;
+  --border: rgba(255, 255, 255, 0.06);
+  --font-display: 'Instrument Serif', 'Georgia', serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'DM Mono', 'JetBrains Mono', monospace;
+}
+
+/* ── Scroll Reveal ─────────────────────────────────────────────────────────── */
+
+.report-section {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.report-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero never fades in — it's already visible on load */
+.report-section.hero-instant {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ─────────────────────────────────────────────────────────────── */
+
+@keyframes report-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes report-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200%  0; }
+}
+
+/* ── Skeleton Loading ──────────────────────────────────────────────────────── */
+
+.report-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 25%,
+    var(--bg-card) 50%,
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+/* ── Comparison Cards Horizontal Scroll ───────────────────────────────────── */
+
+.comparison-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+/* ── Killer Quotes Grid ───────────────────────────────────────────────────── */
+
+.killer-quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .killer-quotes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Friction Map Table ───────────────────────────────────────────────────── */
+
+.friction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.friction-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 16px 12px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.friction-table td {
+  padding: 14px 16px 14px 0;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.friction-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Sentiment Bars ───────────────────────────────────────────────────────── */
+
+.sentiment-bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 100px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.sentiment-bar-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Image Placeholder ────────────────────────────────────────────────────── */
+
+.img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px dashed rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: center;
+  padding: 24px;
+  min-height: 240px;
+}
+
+/* ── Score Ring ───────────────────────────────────────────────────────────── */
+
+.score-ring-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Collapsible ──────────────────────────────────────────────────────────── */
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s ease;
+}
+
+/* ── Download PDF Button ──────────────────────────────────────────────────── */
+
+.pdf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.pdf-btn:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.04);
+}
+
+/* ── Print Styles ─────────────────────────────────────────────────────────── */
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f6;
+    --bg-card: #f8f8fa;
+    --text-primary: #111111;
+    --text-secondary: rgba(17, 17, 17, 0.65);
+    --text-muted: rgba(17, 17, 17, 0.4);
+    --border: rgba(0, 0, 0, 0.1);
+  }
+
+  .report-section {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .pdf-btn,
+  .report-nav {
+    display: none !important;
+  }
+
+  .report-hero {
+    min-height: auto !important;
+    page-break-after: always;
+  }
+
+  .report-section {
+    page-break-inside: avoid;
+  }
+
+  .comparison-card {
+    page-break-inside: avoid;
+  }
+}
