@@ -15,21 +15,22 @@ from src.inference.model_config import _get_str, _get_int  # noqa: PLC2701
 
 
 # ---------------------------------------------------------------------------
-# vLLM endpoints — all specialists routed through the same Ollama endpoint
+# vLLM endpoints — three specialist roles mapped to distinct model defaults
+# Adaptive fallback routes all through FALLBACK_MODEL when DGX thermal constraints require it
 # ---------------------------------------------------------------------------
 
 VLLM_ENDPOINTS = {
     "strategist": {
         "url": "http://localhost:11434/v1/chat/completions",
-        "model": "qwen3:32b",
+        "model": _get_str("FIRST_TIMER_MODEL", "ollama/llama3.3:70b"),
     },
     "ux_analyst": {
         "url": "http://localhost:11434/v1/chat/completions",
-        "model": "qwen3:32b",
+        "model": _get_str("DAILY_DRIVER_MODEL", "ollama/qwen3:32b"),
     },
     "market_researcher": {
         "url": "http://localhost:11434/v1/chat/completions",
-        "model": "qwen3:32b",
+        "model": _get_str("BUYER_MODEL", "ollama/mistral-small:24b"),
     },
 }
 
