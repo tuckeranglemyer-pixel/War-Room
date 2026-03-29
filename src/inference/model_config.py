@@ -1,3 +1,4 @@
+# Multi-model inference configuration — three distinct LLM families
 """
 Model and runtime configuration for War Room.
 
