@@ -14,7 +14,7 @@
 
 **Orchestration Layer:** CrewAI manages a sequential four-round debate pipeline with full context chaining (R1→R2, R1+R2→R3, R1+R2+R3→R4). Four rounds map to three adversarial agent roles (First-Timer on rounds 1 and 3, Daily Driver on 2, Buyer on 4). **As implemented in `crew.py`:** two CrewAI `LLM` instances — `LOCAL_MODEL` for First-Timer, shared `DAILY_DRIVER_BUYER_MODEL` for Daily Driver and Buyer — each with isolated system prompts and personas. Agent configuration: `max_iter=10`, `verbose=True`, mandatory tool-use instructions embedded in both agent backstory and task description.
 
-**Data Model & Storage:** Evidence is stored in a ChromaDB persistent vector database containing 31,668 pre-embedded document chunks. Cosine similarity search with configurable `n_results` enables sub-50ms retrieval. Metadata schema enforces source-type filtering (`source: reddit | hackernews | google_play | metadata | screenshot`) with secondary fields for `app`, `subreddit`, `url`, and `rating`. A shared `_query_collection(query, n_results, where)` helper abstracts all retrieval operations, enforcing consistent formatting per source type.
+**Data Model & Storage:** Evidence is stored in a ChromaDB persistent vector database containing 31,668 pre-embedded document chunks. Cosine similarity search with configurable `n_results` enables sub-50ms retrieval. Metadata schema enforces source-type filtering (`source: reddit | hackernews | google_play | metadata | screenshot`) with secondary fields for `app`, `subreddit`, `url`, and `rating`. A shared `_query_collection(query, n_results, where)` helper abstracts all retrieval operations, enforcing consistent formatting per source type. Embedding model: `sentence-transformers/all-MiniLM-L6-v2` with 512-token chunks and 50-token overlap.
 
 **API & System Design:** FastAPI serves a REST endpoint (`POST /analyze`) returning a `session_id`, paired with a WebSocket endpoint (`WS /ws/{session_id}`) for real-time round-by-round streaming. Synchronous CrewAI execution is bridged to asynchronous WebSocket delivery via `asyncio.Queue` within a `ThreadPoolExecutor`, ensuring non-blocking concurrent session support. Automatic verdict parsing extracts score (regex 1-100), decision (YES/NO/CONDITIONS), and fixes from Round 4 raw text. Circuit-breaker pattern: if WebSocket disconnects, the frontend activates a hardcoded demo fallback, guaranteeing graceful degradation of the user experience.
 
@@ -114,7 +114,7 @@ Example verdict payload:
 
 **Friction Point:** Product teams making decisions about their software face a critical workflow bottleneck: synthesizing fragmented user feedback scattered across App Store reviews, Reddit threads, HN discussions, and support tickets into coherent, actionable product strategy. This synthesis currently requires manual qualitative research taking 2-6 weeks and costing $5K-$200K.
 
-**Quantified Cost:** UserTesting charges $49 per individual response with 2-5 day turnaround. McKinsey charges $200K+ for a competitive product analysis over 6-12 weeks. Internal research teams spend an average of 40+ hours per product evaluation cycle. Total addressable market: product analytics and user research ($4.2B, growing 18% YoY). Adjacent market: management consulting ($300B) where AI-powered analysis displaces junior analyst work.
+**Quantified Cost:** UserTesting charges $49 per individual response with 2-5 day turnaround. McKinsey charges $200K+ for a competitive product analysis over 6-12 weeks. Internal research teams spend an average of 40+ hours per product evaluation cycle. Total addressable market: product analytics and user research ($4.2B, growing 18% YoY). Bottom-up SAM: approximately 180,000 SaaS companies globally with 10-500 employees, of which ~60% have a dedicated PM function — yielding ~108,000 addressable product teams.
 
 **Root Cause:** Existing AI tools (ChatGPT, Claude, Perplexity) provide single-model, single-perspective analysis with no structured disagreement protocol, no evidence grounding in real user data, and no actionable output format. The root cause is architectural: one model cannot adversarially challenge its own assumptions.
 
@@ -148,7 +148,7 @@ Example verdict payload:
 - **Microsoft To Do** — 72/100, YES. Top finding: no collaboration features makes it a dead end for growing teams
 
 ### Democratization
-The War Room compresses the research capability gap between a 3-person startup and a 300-person product org to zero. A solo founder with a DGX Spark gets the same adversarial product intelligence that costs enterprise teams $5K-$200K and 2-6 weeks — delivered in under 10 minutes at zero marginal cost.
+The War Room compresses the research capability gap between a 3-person startup and a 300-person product org to zero. A solo founder with a DGX Spark gets the same adversarial product intelligence that costs enterprise teams $5K-$200K and 2-6 weeks — delivered in under 10 minutes at zero marginal cost. A PM who normally spends 40 hours on synthesis gets equivalent output in 10 minutes — a 240x time compression ratio.
 
 ### Responsible Impact Safeguards
 1. **Mandatory citation**: Every finding links to source reviews — no unsourced claims
