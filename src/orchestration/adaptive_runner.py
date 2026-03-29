@@ -45,7 +45,7 @@ import subprocess
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any, Awaitable, Callable, Optional
 
 import aiohttp
 
@@ -421,6 +421,7 @@ class AdaptiveRunner:
         n_screenshots: int = 69,
         n_apps: int = 10,
         n_reviews: int = 60,
+        log_fn: Optional[Callable[[str, str], Awaitable[None]]] = None,
     ) -> dict[str, Any]:
         """Run the full four-analyst pipeline with hardware-adaptive execution.
 
@@ -463,6 +464,12 @@ class AdaptiveRunner:
         execution_mode = _cfg.EXECUTION_MODE
         endpoints = _cfg.get_endpoints()
 
+        async def _log(analyst: str, message: str) -> None:
+            """Emit a log line to both the Python logger and the SSE callback (if wired)."""
+            logger.info("[%s] %s", analyst.upper(), message)
+            if log_fn is not None:
+                await log_fn(analyst, message)
+
         # ── Mode-specific setup ───────────────────────────────────────────────
         if execution_mode == "cloud":
             model = endpoints["strategist"]["model"]
@@ -474,6 +481,7 @@ class AdaptiveRunner:
             logger.info("ADAPTIVE RUNNER — CLOUD MODE")
             logger.info("Model: %s | Parallel execution | No thermal constraints", model)
             logger.info("=" * 60)
+            await _log("system", f"Cloud mode — {model} — running 3 analysts in parallel")
         else:
             tier = self._select_tier()
             self.tier_used = tier
@@ -485,6 +493,7 @@ class AdaptiveRunner:
             logger.info("ADAPTIVE RUNNER — DGX MODE — Tier %d", tier)
             logger.info("Model: %s | Max context: %d chars | Cooldown: %ds", model, max_ctx, cooldown)
             logger.info("=" * 60)
+            await _log("system", f"DGX Spark mode — Tier {tier} — model: {model} — cooldown: {cooldown}s")
 
             # Unload everything before starting to reclaim VRAM
             self.monitor.unload_all_models()
@@ -525,6 +534,10 @@ class AdaptiveRunner:
                 logger.info("\n[ROUNDS 1-3] Running analysts in parallel (cloud mode)")
                 pipeline_start = time.time()
 
+                await _log("strategist", f"Sending request to {model}...")
+                await _log("ux_analyst", f"Sending request to {model}...")
+                await _log("market_researcher", f"Sending request to {model}...")
+
                 strategist_out, ux_out, market_out = await asyncio.gather(
                     self._call_model(
                         http_session, endpoints["strategist"],
@@ -557,6 +570,8 @@ class AdaptiveRunner:
                             raw = normalize_market_researcher(raw)
                     status = "OK" if "error" not in raw else f"FAILED: {raw['error'][:80]}"
                     logger.info("  %s: %s", label, status)
+                    analyst_key = key  # strategist | ux_analyst | market_researcher
+                    await _log(analyst_key, f"Response received ({parallel_elapsed}s) — {status}")
                     results[key] = raw
                     self.execution_log.append({
                         "round": label,
@@ -584,11 +599,14 @@ class AdaptiveRunner:
                     self.monitor.wait_for_cool()
 
                     health_before = self.monitor.full_health_check()
+                    gpu_temp = health_before["gpu_temp"]
+                    ram_pct = health_before["ram"]["percent"]
                     logger.info(
                         "  Pre-inference: GPU %s°C | RAM %s%%",
-                        health_before["gpu_temp"],
-                        health_before["ram"]["percent"],
+                        gpu_temp,
+                        ram_pct,
                     )
+                    await _log(key, f"Starting analysis (model: {model} | GPU: {gpu_temp}°C | RAM: {ram_pct}%)")
 
                     start = time.time()
                     result = await self._call_model(
@@ -606,6 +624,7 @@ class AdaptiveRunner:
 
                     status = "OK" if "error" not in result else f"FAILED: {result['error'][:80]}"
                     logger.info("  %s: %s (%.1fs)", label, status, elapsed)
+                    await _log(key, f"Complete ({elapsed:.1f}s) — {status}")
 
                     results[key] = result
                     self.execution_log.append({
@@ -624,6 +643,7 @@ class AdaptiveRunner:
 
             # --- Round 4: Partner Review ---
             logger.info("\n[ROUND 4/4] Partner Review")
+            await _log("partner", "Cross-validating all three analyses...")
 
             if execution_mode == "dgx":
                 self.monitor.wait_for_cool()
@@ -648,6 +668,7 @@ class AdaptiveRunner:
                 challenge_out = normalize_challenge(challenge_out)
             partner_status = "OK" if "error" not in challenge_out else "FAILED"
             logger.info("  Partner Review: %s", partner_status)
+            await _log("partner", f"Partner review complete — {partner_status}")
 
         # --- Normalise schema before assembly ---
         # Clamp final_score to 0-10 range (prompt asks for 0-10, but guard against

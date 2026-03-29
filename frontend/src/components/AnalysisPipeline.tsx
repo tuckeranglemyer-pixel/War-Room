@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { fadeUp, spring } from '../animations'
+
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
 
 // ── Stage simulation data ───────────────────────────────────────────────────
 
@@ -69,10 +71,15 @@ const EVIDENCE_TOPICS: EvidenceTopic[] = [
   { topic: 'Export limitations',    count: 7  },
 ]
 
-const SPECIALISTS = [
-  { role: 'STRATEGIST',        model: 'Llama 3.3-70B',     dotColor: '#3B82F6' },
-  { role: 'UX ANALYST',        model: 'Qwen3-32B',         dotColor: '#E4E4E7' },
-  { role: 'MARKET RESEARCHER', model: 'Mistral-Small-24B', dotColor: '#F59E0B' },
+const CLOUD_SPECIALISTS = [
+  { key: 'strategist',        role: 'STRATEGIST',        model: 'GPT-4o',           dotColor: '#3B82F6' },
+  { key: 'ux_analyst',        role: 'UX ANALYST',        model: 'GPT-4o',           dotColor: '#E4E4E7' },
+  { key: 'market_researcher', role: 'MARKET RESEARCHER', model: 'GPT-4o',           dotColor: '#F59E0B' },
+]
+const DGX_SPECIALISTS = [
+  { key: 'strategist',        role: 'STRATEGIST',        model: 'Llama 3.3-70B',    dotColor: '#3B82F6' },
+  { key: 'ux_analyst',        role: 'UX ANALYST',        model: 'Qwen3-32B',        dotColor: '#E4E4E7' },
+  { key: 'market_researcher', role: 'MARKET RESEARCHER', model: 'Mistral-Small-24B',dotColor: '#F59E0B' },
 ]
 
 const TOTAL_REVIEWS = 31_668
@@ -143,6 +150,45 @@ function StageCard({
 }
 
 /**
+ * Monospace terminal showing live log lines for one analyst.
+ * Auto-scrolls to the bottom as new lines arrive.
+ */
+function LogTerminal({ lines }: { lines: string[] }) {
+  const bottomRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [lines])
+  return (
+    <div style={{
+      marginTop: 10,
+      background: '#080A0F',
+      border: '1px solid #1A1C22',
+      borderRadius: 4,
+      padding: '8px 10px',
+      maxHeight: 80,
+      overflowY: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+    }}>
+      {lines.map((line, i) => (
+        <span key={i} style={{
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 10,
+          color: line.startsWith('Error') || line.startsWith('FAILED') ? '#EF4444' : '#4ADE80',
+          lineHeight: 1.5,
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-all',
+        }}>
+          {'> '}{line}
+        </span>
+      ))}
+      <div ref={bottomRef} />
+    </div>
+  )
+}
+
+/**
  * Six-segment progress bar showing which pipeline stage is active.
  */
 function PipelineProgress({ stage, total }: { stage: number; total: number }) {
@@ -188,6 +234,8 @@ export interface AnalysisPipelineProps {
   analysisComplete: boolean
   /** Error message from the backend — shows an error state when non-empty. */
   error?: string
+  /** Current execution mode — controls which model names are shown on specialist cards. */
+  execMode?: 'cloud' | 'dgx'
   onBack: () => void
 }
 
@@ -206,8 +254,10 @@ export default function AnalysisPipeline({
   sessionId,
   analysisComplete,
   error = '',
+  execMode = 'cloud',
   onBack,
 }: AnalysisPipelineProps) {
+  const SPECIALISTS = execMode === 'dgx' ? DGX_SPECIALISTS : CLOUD_SPECIALISTS
   // 0=frames 1=vision 2=matching 3=evidence 4=specialists 5=assembly
   const [stageIndex, setStageIndex] = useState(0)
   const [flashStage, setFlashStage] = useState<number | null>(null)
@@ -236,11 +286,37 @@ export default function AnalysisPipeline({
   // Stage 6: assembly
   const [showDeliverable, setShowDeliverable] = useState(false)
 
+  // Live SSE logs per analyst key
+  const [specialistLogs, setSpecialistLogs] = useState<Record<string, string[]>>({
+    strategist: [], ux_analyst: [], market_researcher: [], partner: [], system: [],
+  })
+
   const analysisCompleteRef = useRef(analysisComplete)
   const sessionIdRef = useRef(sessionId)
 
   useEffect(() => { analysisCompleteRef.current = analysisComplete }, [analysisComplete])
   useEffect(() => { sessionIdRef.current = sessionId }, [sessionId])
+
+  // Subscribe to SSE log stream once we have a sessionId
+  const pushLog = useCallback((analyst: string, message: string) => {
+    setSpecialistLogs(prev => ({
+      ...prev,
+      [analyst]: [...(prev[analyst] ?? []), message],
+    }))
+  }, [])
+
+  useEffect(() => {
+    if (!sessionId) return
+    const es = new EventSource(`${API_BASE}/api/stream/logs/${sessionId}`)
+    es.onmessage = (e) => {
+      try {
+        const { analyst, message } = JSON.parse(e.data) as { analyst: string; message: string }
+        pushLog(analyst, message)
+      } catch {/* ignore malformed frames */}
+    }
+    es.onerror = () => es.close()
+    return () => es.close()
+  }, [sessionId, pushLog])
 
   /** Flash the card border then advance to the next stage. */
   function flashAndAdvance(from: number) {
@@ -591,66 +667,72 @@ export default function AnalysisPipeline({
                         animate={fadeUp.animate}
                         transition={spring.gentle}
                         style={{
-                          display: 'flex', alignItems: 'center', gap: 16,
                           background: '#0E1016',
                           border: '1px solid #1E2028',
                           borderRadius: 6, padding: '12px 16px',
                         }}
                       >
-                        <div style={{
-                          width: 8, height: 8, borderRadius: '50%',
-                          background: spec.dotColor,
-                          flexShrink: 0,
-                          animation: specialistStatuses[i] !== 'complete'
-                            ? 'dotPulse 1.5s ease-in-out infinite'
-                            : undefined,
-                        }} />
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
+                        {/* Header row */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+                          <div style={{
+                            width: 8, height: 8, borderRadius: '50%',
+                            background: spec.dotColor,
+                            flexShrink: 0,
+                            animation: specialistStatuses[i] !== 'complete'
+                              ? 'dotPulse 1.5s ease-in-out infinite'
+                              : undefined,
+                          }} />
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 2, minWidth: 0 }}>
+                            <span style={{
+                              fontFamily: "'JetBrains Mono', monospace",
+                              fontSize: 10, color: '#71717A',
+                              letterSpacing: '0.15em', textTransform: 'uppercase',
+                            }}>
+                              {spec.role}
+                            </span>
+                            <span style={{
+                              fontFamily: "'Inter', sans-serif",
+                              fontSize: 13, fontWeight: 600, color: '#E4E4E7',
+                            }}>
+                              {spec.model}
+                            </span>
+                          </div>
                           <span style={{
-                            fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: 10, color: '#71717A',
-                            letterSpacing: '0.15em', textTransform: 'uppercase',
+                            marginLeft: 'auto', flexShrink: 0,
+                            minHeight: 14, display: 'flex',
+                            alignItems: 'center', justifyContent: 'flex-end',
                           }}>
-                            {spec.role}
-                          </span>
-                          <span style={{
-                            fontFamily: "'Inter', sans-serif",
-                            fontSize: 13, fontWeight: 600, color: '#E4E4E7',
-                          }}>
-                            {spec.model}
+                            <AnimatePresence mode="wait">
+                              {specialistStatuses[i] ? (
+                                <motion.span
+                                  key={specialistStatuses[i]}
+                                  initial={{ opacity: 0, y: 8 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  exit={{ opacity: 0, y: -4 }}
+                                  transition={spring.gentle}
+                                  style={{
+                                    fontFamily: "'JetBrains Mono', monospace",
+                                    fontSize: 10,
+                                    color: specialistStatuses[i] === 'complete'
+                                      ? '#22C55E'
+                                      : specialistStatuses[i] === 'analyzing'
+                                      ? '#3B82F6'
+                                      : '#3F3F46',
+                                    animation: specialistStatuses[i] === 'complete'
+                                      ? 'readyFlash 300ms ease'
+                                      : undefined,
+                                  }}
+                                >
+                                  {specialistStatuses[i]}
+                                </motion.span>
+                              ) : null}
+                            </AnimatePresence>
                           </span>
                         </div>
-                        <span style={{
-                          marginLeft: 'auto', flexShrink: 0,
-                          minHeight: 14, display: 'flex',
-                          alignItems: 'center', justifyContent: 'flex-end',
-                        }}>
-                          <AnimatePresence mode="wait">
-                            {specialistStatuses[i] ? (
-                              <motion.span
-                                key={specialistStatuses[i]}
-                                initial={{ opacity: 0, y: 8 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -4 }}
-                                transition={spring.gentle}
-                                style={{
-                                  fontFamily: "'JetBrains Mono', monospace",
-                                  fontSize: 10,
-                                  color: specialistStatuses[i] === 'complete'
-                                    ? '#22C55E'
-                                    : specialistStatuses[i] === 'analyzing'
-                                    ? '#3B82F6'
-                                    : '#3F3F46',
-                                  animation: specialistStatuses[i] === 'complete'
-                                    ? 'readyFlash 300ms ease'
-                                    : undefined,
-                                }}
-                              >
-                                {specialistStatuses[i]}
-                              </motion.span>
-                            ) : null}
-                          </AnimatePresence>
-                        </span>
+                        {/* Live log terminal */}
+                        {(specialistLogs[spec.key]?.length ?? 0) > 0 && (
+                          <LogTerminal lines={specialistLogs[spec.key] ?? []} />
+                        )}
                       </motion.div>
                     ) : null
                   )}

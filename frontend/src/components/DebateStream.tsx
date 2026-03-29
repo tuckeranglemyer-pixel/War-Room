@@ -48,9 +48,9 @@ const ROLE_DOT: Record<string, string> = {
 }
 
 const INIT_AGENTS = [
-  { role: 'FIRST-TIMER', model: 'Llama 70B', dotColor: '#3B82F6' },
-  { role: 'DAILY DRIVER', model: 'Qwen 32B', dotColor: '#E4E4E7' },
-  { role: 'BUYER', model: 'Mistral 24B', dotColor: '#F59E0B' },
+  { role: 'FIRST-TIMER',  model: 'Llama 3.3-70B',    dotColor: '#3B82F6' },
+  { role: 'DAILY DRIVER', model: 'Qwen3-32B',         dotColor: '#E4E4E7' },
+  { role: 'BUYER',        model: 'Mistral-Small-24B', dotColor: '#F59E0B' },
 ]
 
 const DEMO_ROUNDS: RoundMessage[] = [
@@ -587,6 +587,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   const [completedRounds, setCompletedRounds] = useState(0)
   const [wsError, setWsError] = useState('')
   const [demoMode, setDemoMode] = useState(false)
+  const [wsLogs, setWsLogs] = useState<string[]>([])
 
   const wsRef = useRef<WebSocket | null>(null)
   const demoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -633,6 +634,11 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
 
       if (msg.type === 'error') {
         setWsError(msg.message ?? 'Unknown error from server')
+        return
+      }
+
+      if (msg.type === 'log') {
+        setWsLogs(prev => [...prev, msg.message as string])
         return
       }
 
@@ -757,6 +763,41 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
         {swarmDone && (
           <div style={{ marginTop: 12 }}>
             <AgentInitSequence onComplete={handleInitComplete} />
+          </div>
+        )}
+
+        {/* Live backend log terminal — shown while debate is running, hidden once rounds arrive */}
+        {initDone && !demoMode && wsLogs.length > 0 && rounds.length === 0 && (
+          <div style={{
+            marginTop: 12,
+            background: '#080A0F',
+            border: '1px solid #1A1C22',
+            borderRadius: 6,
+            padding: '10px 14px',
+            maxHeight: 120,
+            overflowY: 'auto',
+          }}>
+            <p style={{
+              fontFamily: "'JetBrains Mono', monospace",
+              fontSize: 9,
+              letterSpacing: '0.12em',
+              color: '#3F3F46',
+              textTransform: 'uppercase',
+              marginBottom: 6,
+            }}>
+              pipeline log
+            </p>
+            {wsLogs.map((line, i) => (
+              <p key={i} style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10,
+                color: '#4ADE80',
+                lineHeight: 1.6,
+                margin: 0,
+              }}>
+                {'> '}{line}
+              </p>
+            ))}
           </div>
         )}
 

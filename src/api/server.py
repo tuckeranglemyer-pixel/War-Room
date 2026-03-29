@@ -27,7 +27,7 @@ from typing import Any, AsyncIterator, Callable
 
 import uvicorn
 from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, Request, UploadFile, WebSocket, WebSocketDisconnect
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -71,6 +71,19 @@ SESSIONS: dict[str, DebateSession] = {}
 VIDEO_EVIDENCE: dict[str, dict] = {}
 ANALYSIS_STATUS: dict[str, str] = {}  # session_id → "pending" | "complete" | "failed"
 _executor = ThreadPoolExecutor(max_workers=4)
+
+# Per-session log buffers for SSE streaming — list buffers past messages so a late-connecting
+# client replays them; async queues deliver to an active SSE subscriber in real time.
+_analysis_log_buffers: dict[str, list[str]] = {}
+_analysis_log_queues: dict[str, asyncio.Queue[str | None]] = {}
+
+
+async def _push_analysis_log(session_id: str, analyst: str, message: str) -> None:
+    """Buffer a log line and deliver it to any active SSE subscriber for this session."""
+    entry = json.dumps({"analyst": analyst, "message": message})
+    _analysis_log_buffers.setdefault(session_id, []).append(entry)
+    if session_id in _analysis_log_queues:
+        await _analysis_log_queues[session_id].put(entry)
 
 _rate_limits: defaultdict[str, list[float]] = defaultdict(list)
 
@@ -390,6 +403,11 @@ def _run_debate(session: DebateSession) -> None:
                 if video_evidence:
                     session_context["video_evidence"] = video_evidence
 
+        asyncio.run_coroutine_threadsafe(
+            session.queue.put({"type": "log", "agent": "system", "message": f"Starting debate pipeline for {effective_name}..."}),
+            session.loop,
+        )
+
         # Pass the short product name as first arg so RAG key extraction works correctly.
         # The full description is available to build_crew via session_context.
         crew = build_crew(
@@ -608,6 +626,9 @@ async def _run_analysis_bg(session_id: str, evidence: dict) -> None:
     def _field(key: str, default: str = "") -> str:
         return synthesis.get(key) or evidence.get(key, default)
 
+    async def log_fn(analyst: str, message: str) -> None:
+        await _push_analysis_log(session_id, analyst, message)
+
     runner = AdaptiveRunner()
     try:
         await runner.run_analysis(
@@ -625,12 +646,19 @@ async def _run_analysis_bg(session_id: str, evidence: dict) -> None:
             ),
             frame_analyses_json=json.dumps(evidence.get("frame_analyses", [])),
             screenshot_matches_json=json.dumps(evidence.get("screenshot_matches", [])),
+            log_fn=log_fn,
         )
         ANALYSIS_STATUS[session_id] = "complete"
+        await _push_analysis_log(session_id, "system", "Analysis complete ✓")
         _log.info("Background analysis complete for session %s", session_id)
     except Exception as exc:
         ANALYSIS_STATUS[session_id] = "failed"
+        await _push_analysis_log(session_id, "system", f"Error: {exc}")
         _log.error("Background analysis failed for session %s: %s", session_id, exc)
+    finally:
+        # Signal SSE stream to close
+        if session_id in _analysis_log_queues:
+            await _analysis_log_queues[session_id].put(None)
 
 
 @app.post("/api/analyze/{session_id}", tags=["analysis"])
@@ -663,6 +691,45 @@ async def run_analysis(session_id: str, background_tasks: BackgroundTasks) -> JS
             "status": "analyzing",
             "report_url": f"/api/report/{session_id}",
         },
+    )
+
+
+@app.get("/api/stream/logs/{session_id}", tags=["analysis"])
+async def stream_analysis_logs(session_id: str, request: Request) -> StreamingResponse:
+    """SSE endpoint — streams per-analyst log lines while analysis is running.
+
+    Replays any messages buffered before the client connected, then delivers
+    new messages in real time. Sends a ``null`` sentinel when analysis ends.
+    Each event is a JSON object: ``{"analyst": "strategist"|..., "message": "..."}``.
+    """
+    buffered = list(_analysis_log_buffers.get(session_id, []))
+    queue: asyncio.Queue[str | None] = asyncio.Queue()
+    _analysis_log_queues[session_id] = queue
+
+    async def event_gen():
+        # Replay buffered messages first
+        for entry in buffered:
+            yield f"data: {entry}\n\n"
+        # Then stream live messages
+        try:
+            while True:
+                if await request.is_disconnected():
+                    break
+                try:
+                    msg = await asyncio.wait_for(queue.get(), timeout=30)
+                except asyncio.TimeoutError:
+                    yield "data: {\"analyst\":\"system\",\"message\":\"...\"}\n\n"
+                    continue
+                if msg is None:
+                    break
+                yield f"data: {msg}\n\n"
+        finally:
+            _analysis_log_queues.pop(session_id, None)
+
+    return StreamingResponse(
+        event_gen(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
 
 

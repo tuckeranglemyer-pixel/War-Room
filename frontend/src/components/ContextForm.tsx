@@ -263,6 +263,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
           sessionId={pipelineSessionId}
           analysisComplete={pipelineAnalysisDone}
           error={error}
+          execMode={execMode}
           onBack={() => { setSubmitting(false); setError('') }}
         />
       )
