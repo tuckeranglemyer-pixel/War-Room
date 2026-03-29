@@ -46,20 +46,35 @@ def _get_int(key: str, default: int) -> int:
 _load_env()
 
 # ---------------------------------------------------------------------------
-# Local dev defaults (small models, single Ollama instance)
+# Local dev defaults (small utility model for persona generation + swarm)
 # ---------------------------------------------------------------------------
 
 LOCAL_MODEL = _get_str("LOCAL_MODEL", "ollama/llama3.1:8b")
 LOCAL_BASE_URL = _get_str("LOCAL_BASE_URL", "http://localhost:11434")
-# Daily Driver and Buyer share this model in dev; First-Timer uses LOCAL_MODEL.
-DAILY_DRIVER_BUYER_MODEL = _get_str("DAILY_DRIVER_BUYER_MODEL", "ollama/llama3.3:60b")
 
 # ---------------------------------------------------------------------------
-# DGX Spark production model assignments
+# Per-agent model assignments — three distinct architectures for adversarial debate
+#
+# DGX Spark defaults (full three-model config):
+#   First-Timer  → Llama 3.3 70B  (~38 GB INT4)  — broad, impressionistic
+#   Daily Driver → Qwen3 32B      (~18 GB INT4)  — precise, technical
+#   Buyer        → Mistral 24B    (~14 GB INT4)  — concise, business-focused
+#
+# Local dev override: set all three to a smaller model via env vars, e.g.
+#   FIRST_TIMER_MODEL=ollama/llama3.1:8b DAILY_DRIVER_MODEL=ollama/llama3.1:8b ...
 # ---------------------------------------------------------------------------
-# FIRST_TIMER_MODEL  = "ollama/llama3.3:70b"   # port 8001
-# DAILY_DRIVER_MODEL = "ollama/qwen3:32b"       # port 8002
-# BUYER_MODEL        = "ollama/mistral-small:24b" # port 8003
+
+FIRST_TIMER_MODEL = _get_str("FIRST_TIMER_MODEL", "ollama/llama3.3:70b")
+DAILY_DRIVER_MODEL = _get_str("DAILY_DRIVER_MODEL", "ollama/qwen3:32b")
+BUYER_MODEL = _get_str("BUYER_MODEL", "ollama/mistral-small:24b")
+
+# Adaptive fallback — all personas route through one model when DGX thermal
+# constraints prevent concurrent multi-model serving. Multi-model is the design
+# intent; single-model rotation is the engineering response to hardware limits.
+FALLBACK_MODEL = _get_str("FALLBACK_MODEL", "ollama/qwen3:32b")
+
+# Legacy alias kept for backward compatibility with any scripts that reference it.
+DAILY_DRIVER_BUYER_MODEL = DAILY_DRIVER_MODEL
 
 # ---------------------------------------------------------------------------
 # RAG / ChromaDB

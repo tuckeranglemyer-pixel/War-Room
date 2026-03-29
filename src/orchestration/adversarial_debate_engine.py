@@ -24,7 +24,9 @@ from typing import Any, Callable, Optional
 from crewai import Agent, Crew, LLM, Process, Task
 
 from src.inference.model_config import (
-    DAILY_DRIVER_BUYER_MODEL,
+    BUYER_MODEL,
+    DAILY_DRIVER_MODEL,
+    FIRST_TIMER_MODEL,
     LOCAL_BASE_URL,
     LOCAL_MODEL,
     MAX_SCOUTS,
@@ -43,14 +45,20 @@ from src.rag.chroma_retrieval import (
 )
 
 # ---------------------------------------------------------------------------
-# LLM instances — swap to per-model vLLM endpoints on DGX Spark
+# LLM instances — three distinct model architectures for adversarial debate
+#
+# Each agent runs a different model family to guarantee independent analytical
+# perspectives. On DGX Spark these load concurrently into 128 GB unified memory;
+# on local hardware use thermal_safe_debate_runner for sequential model swaps.
 # ---------------------------------------------------------------------------
 
-local_llm = LLM(model=LOCAL_MODEL, base_url=LOCAL_BASE_URL)
-first_timer_llm = local_llm
-daily_driver_buyer_llm = LLM(model=DAILY_DRIVER_BUYER_MODEL, base_url=LOCAL_BASE_URL)
-daily_driver_llm = daily_driver_buyer_llm
-buyer_llm = daily_driver_buyer_llm
+local_llm = LLM(model=LOCAL_MODEL, base_url=LOCAL_BASE_URL)       # persona gen + swarm
+first_timer_llm = LLM(model=FIRST_TIMER_MODEL, base_url=LOCAL_BASE_URL)    # Llama 3.3 70B
+daily_driver_llm = LLM(model=DAILY_DRIVER_MODEL, base_url=LOCAL_BASE_URL)  # Qwen3 32B
+buyer_llm = LLM(model=BUYER_MODEL, base_url=LOCAL_BASE_URL)                # Mistral 24B
+
+# Kept for backward compatibility with any callers that imported this name.
+daily_driver_buyer_llm = daily_driver_llm
 
 
 def build_crew(

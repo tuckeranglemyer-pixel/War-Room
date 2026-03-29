@@ -118,17 +118,21 @@ Copy `.env.example` to `.env` and adjust as needed:
 cp .env.example .env
 ```
 
-Key variables (all optional — defaults match local dev):
+Key variables (all optional — defaults target DGX Spark production):
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LOCAL_MODEL` | `ollama/llama3.1:8b` | First-Timer model (dev) |
-| `DAILY_DRIVER_BUYER_MODEL` | `ollama/llama3.3:60b` | Daily Driver + Buyer model (dev) |
+| `FIRST_TIMER_MODEL` | `ollama/llama3.3:70b` | First-Timer agent model (Llama) |
+| `DAILY_DRIVER_MODEL` | `ollama/qwen3:32b` | Daily Driver agent model (Qwen) |
+| `BUYER_MODEL` | `ollama/mistral-small:24b` | Buyer agent model (Mistral) |
+| `LOCAL_MODEL` | `ollama/llama3.1:8b` | Utility model for persona generation + swarm |
 | `LOCAL_BASE_URL` | `http://localhost:11434` | Ollama API endpoint |
 | `CHROMA_DB_PATH` | `./chroma_db` | Path to ChromaDB persistence |
 | `COLLECTION_NAME` | `pm_tools` | ChromaDB collection name |
 | `API_PORT` | `8000` | FastAPI server port |
 | `MAX_SCOUTS` | `20` | Parallel swarm reconnaissance agents |
+
+> **Local dev tip:** Running all three large models concurrently requires DGX Spark's 128 GB unified memory. On local hardware, override all three model vars to a smaller model (e.g. `ollama/llama3.1:8b`) or use `optimized_crew.py` which routes through `thermal_safe_debate_runner` for single-model-at-a-time sequential loading.
 
 ---
 
