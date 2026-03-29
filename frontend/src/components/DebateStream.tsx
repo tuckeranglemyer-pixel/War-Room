@@ -587,8 +587,13 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   const [currentRound, setCurrentRound] = useState(0)
   const [completedRounds, setCompletedRounds] = useState(0)
   const [wsError, setWsError] = useState('')
+  /** True when WebSocket timed out with no rounds — falls back to scripted demo. */
   const [demoMode, setDemoMode] = useState(false)
   const [wsLogs, setWsLogs] = useState<string[]>([])
+
+  /** No session id = static featured path; never open WebSocket. */
+  const offlineDemo = !sessionId.trim()
+  const effectiveDemo = offlineDemo || demoMode
 
   const wsRef = useRef<WebSocket | null>(null)
   const demoTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -598,7 +603,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   const bottomRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { roundsRef.current = rounds }, [rounds])
-  useEffect(() => { demoModeRef.current = demoMode }, [demoMode])
+  useEffect(() => { demoModeRef.current = effectiveDemo }, [effectiveDemo])
   useEffect(() => { onVerdictRef.current = onVerdict }, [onVerdict])
 
   const handleSwarmComplete = useCallback(() => setSwarmDone(true), [])
@@ -609,10 +614,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     if (!swarmDone) return
 
     // No session = public/demo path: skip WebSocket and 8s wait; scripted rounds after init.
-    if (!sessionId.trim()) {
-      setDemoMode(true)
-      return
-    }
+    if (!sessionId.trim()) return
 
     const wsBase = API_BASE.replace(/^http/, 'ws')
     const ws = new WebSocket(`${wsBase}/ws/${sessionId}`)
@@ -673,7 +675,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   }, [swarmDone, sessionId])
 
   useEffect(() => {
-    if (!demoMode || !initDone) return
+    if (!effectiveDemo || !initDone) return
 
     const timers: ReturnType<typeof setTimeout>[] = []
     DEMO_ROUNDS.forEach((round, i) => {
@@ -684,7 +686,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
     })
 
     return () => timers.forEach(clearTimeout)
-  }, [demoMode, initDone])
+  }, [effectiveDemo, initDone])
 
   useEffect(() => {
     if (rounds.length > 0) {
@@ -695,13 +697,13 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
   }, [rounds.length])
 
   useEffect(() => {
-    if (demoMode && completedRounds >= 4) {
+    if (effectiveDemo && completedRounds >= 4) {
       const timer = setTimeout(() => {
         onVerdictRef.current(DEMO_VERDICT)
       }, 2000)
       return () => clearTimeout(timer)
     }
-  }, [demoMode, completedRounds])
+  }, [effectiveDemo, completedRounds])
 
   useEffect(() => {
     return () => { wsRef.current?.close() }
@@ -769,7 +771,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
         )}
 
         {/* Live backend log terminal — shown while debate is running, hidden once rounds arrive */}
-        {initDone && !demoMode && wsLogs.length > 0 && rounds.length === 0 && (
+        {initDone && !effectiveDemo && wsLogs.length > 0 && rounds.length === 0 && (
           <div style={{
             marginTop: 12,
             background: '#080A0F',
@@ -803,7 +805,7 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
           </div>
         )}
 
-        {wsError && !demoMode && initDone && (
+        {wsError && !effectiveDemo && initDone && (
           <p style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: 11, color: '#EF4444',
@@ -819,8 +821,8 @@ export default function DebateStream({ product, sessionId, onBack, onVerdict }: 
               <RoundCard
                 key={`${msg.round}-${i}`}
                 msg={msg}
-                typewriter={demoMode}
-                onTypingComplete={demoMode ? handleTypingComplete : undefined}
+                typewriter={effectiveDemo}
+                onTypingComplete={effectiveDemo ? handleTypingComplete : undefined}
               />
             ))}
           </div>
