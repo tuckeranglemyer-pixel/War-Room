@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Landing from './components/Landing'
+import ContextForm from './components/ContextForm'
 import DebateStream from './components/DebateStream'
 import VerdictCard from './components/VerdictCard'
 import { fadeScale, spring } from './animations'
 import './index.css'
 
-type View = 'landing' | 'debate' | 'verdict'
+type View = 'landing' | 'context' | 'debate' | 'verdict'
 
 export interface RoundData {
   round: number
@@ -37,15 +38,25 @@ export default function App() {
   const [verdictData, setVerdictData] = useState<VerdictData | null>(null)
 
   /**
-   * From the landing view: go straight to the debate stream in demo mode.
-   * Empty sessionId signals DebateStream to skip the backend WebSocket and run
-   * the scripted demo (Vercel and external visitors have no API).
+   * From the landing view: advance to the context wizard to collect product
+   * metadata before launching a real debate, or skip straight to demo mode
+   * when the user clicks a suggestion chip (empty sessionId = demo).
    * @param name - Product name from the input or a suggestion chip.
    */
   function handleSelectProduct(name: string) {
     setProduct(name)
     setVerdictData(null)
     setSessionId('')
+    setView('context')
+  }
+
+  /**
+   * Called by ContextForm when the backend returns a session_id.
+   * Advances to the live debate stream with the real WebSocket session.
+   * @param sid - WebSocket session ID from POST /analyze.
+   */
+  function handleContextComplete(sid: string) {
+    setSessionId(sid)
     setView('debate')
   }
 
@@ -81,6 +92,22 @@ export default function App() {
             style={{ minHeight: '100vh' }}
           >
             <Landing onSelectProduct={handleSelectProduct} />
+          </motion.div>
+        )}
+        {view === 'context' && (
+          <motion.div
+            key="context"
+            initial={fadeScale.initial}
+            animate={fadeScale.animate}
+            exit={fadeScale.exit}
+            transition={spring.gentle}
+            style={{ minHeight: '100vh' }}
+          >
+            <ContextForm
+              productName={product}
+              onComplete={handleContextComplete}
+              onBack={handleBack}
+            />
           </motion.div>
         )}
         {view === 'debate' && (
