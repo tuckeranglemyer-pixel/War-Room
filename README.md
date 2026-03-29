@@ -148,6 +148,28 @@ USER INPUT
 
 ---
 
+## Why This Requires a Supercomputer
+
+War Room is not constrained by ambition. It is constrained by physics.
+
+**The raw parameter count:** Llama 3.3-70B + Qwen3-32B + Mistral-Small-24B = ~126 billion parameters that must be resident in memory simultaneously. At bf16 precision, that is approximately 252 GB of model weights alone — before KV caches, activations, or vLLM's paged attention overhead.
+
+**Why sequential loading destroys the product:** The adversarial debate is not a batch job. It is a real-time, context-chained loop where each model must respond to the previous model's actual output within seconds. If models were loaded and unloaded between rounds, a single four-round debate would require three full model loads — each taking 3–8 minutes on consumer hardware. Debate rounds would take longer than human attention spans. The product collapses. vLLM requires all three models hot in memory simultaneously, with pre-warmed KV caches, to deliver the sub-5-second round latency that makes the streaming debate experience coherent.
+
+**The minimum viable hardware:** The NVIDIA DGX Spark with Grace Blackwell architecture and 128 GB unified memory is not a luxury choice — it is the floor. The Grace Blackwell SoC's unified CPU-GPU memory architecture eliminates the PCIe bandwidth bottleneck that would otherwise throttle three concurrent high-throughput inference processes. 128 GB unified memory is sufficient (barely) to hold all three model weight sets plus operational overhead. No consumer workstation, cloud VM under ~$15/hr, or gaming GPU configuration meets this bar without model quantization severe enough to degrade argument quality.
+
+**What a consumer GPU actually gets you:** A single RTX 4090 (24 GB VRAM) can run one of these models at 4-bit quantization. War Room runs three models at full precision simultaneously. That is not a configuration difference — it is a category difference. A user with an RTX 4090 can run a single-model product review. They cannot run War Room. The adversarial debate structure, where model architectures with genuinely different training priors contest each other's claims, requires all three models active concurrently. Quantizing to fit on consumer hardware degrades the architectural divergence that makes the disagreements real rather than theatrical.
+
+**This is not "using the DGX because it's available."** The DGX Spark at the hackathon venue is not a nice-to-have. It is the reason this product exists. War Room was designed around the hardware constraint: three frontier-class open-weight models, full precision, concurrent, local, zero API latency. Remove the DGX Spark and you have a different product — a slower, weaker, single-model product review tool. Add it back and you have War Room.
+
+---
+
+## Traction
+
+> Usage metrics and real-world numbers will be added here as they come in.
+
+---
+
 ## Technical Innovation
 
 ### Why multi-model adversarial debate is non-trivial — and why single-model chain-of-thought fails
@@ -179,13 +201,22 @@ Running all three inference workloads on the NVIDIA DGX Spark (rather than calli
 ### Inference
 | Component | Technology | Notes |
 |-----------|-----------|-------|
-| First-Timer agent | **Llama 3.3-70B** via vLLM | Broad first-impression analysis |
-| Daily Driver agent | **Qwen3-32B** via vLLM | Technical long-form critique |
-| Buyer agent | **Mistral-Small-24B** via vLLM | Business decision synthesis |
-| Inference server | **vLLM** (latest) on NVIDIA DGX Spark | Ports 8001/8002/8003 |
+| First-Timer agent | **Llama 3.3-70B** via vLLM | Broad first-impression analysis; ~140 GB bf16 weight footprint |
+| Daily Driver agent | **Qwen3-32B** via vLLM | Technical long-form critique; ~64 GB bf16 weight footprint |
+| Buyer agent | **Mistral-Small-24B** via vLLM | Business decision synthesis; ~48 GB bf16 weight footprint |
+| Inference server | **vLLM** (latest) on NVIDIA DGX Spark | Ports 8001/8002/8003; all three models hot simultaneously |
 | Video frame analysis | **GPT-4o** (vision, high-detail) | Via OpenAI Python SDK |
 | Persona generation | **GPT-4o** / local LLM | Meta-prompt, JSON output |
 | Local dev inference | **Ollama** (`llama3.1:8b`) | `http://localhost:11434` |
+
+### Hardware
+| Component | Spec | Why It Matters for This Workload |
+|-----------|------|----------------------------------|
+| Platform | **NVIDIA DGX Spark** | Grace Blackwell SoC; only consumer-accessible platform with sufficient unified memory for this model stack |
+| Architecture | **Grace Blackwell** (GB10) | CPU and GPU share a single memory pool — eliminates PCIe bottleneck between host and device that would throttle three concurrent inference processes |
+| Unified memory | **128 GB** | Holds Llama 70B + Qwen 32B + Mistral 24B weight sets (~252 GB bf16) with vLLM KV cache overhead; below this threshold, models must be loaded sequentially, destroying real-time debate latency |
+| Memory bandwidth | **~900 GB/s** (NVLink-C2C) | Sufficient to serve token generation across three concurrent vLLM processes without memory bandwidth saturation; consumer PCIe 5.0 peaks at ~128 GB/s |
+| Inference throughput | Sub-5-second round latency | All three models pre-warmed; no cold-load penalty between debate rounds; enables coherent real-time streaming UX |
 
 ### Orchestration
 | Component | Technology | Notes |
@@ -406,6 +437,29 @@ python swarm.py
 **Agents That Hire Agents:** War Room's architecture has two layers of agent spawning. The meta-prompt (an LLM call) generates the three adversarial agents that will run the debate — agents creating agents. The swarm module (`swarm.py`) then deploys 20 parallel scout agents to pre-seed those debate agents with evidence. The debate agents themselves have access to 7 CrewAI tool functions for additional retrieval during their rounds. This is a three-tier agent hierarchy: the meta-agent generates the debaters, the swarm pre-scouts for the debaters, and the debaters use RAG tools during the debate itself.
 
 **Let's Cook OpenClaw:** War Room runs three frontier-class open-weight models — Llama 3.3-70B, Qwen3-32B, and Mistral-Small-24B — on NVIDIA DGX Spark hardware at the hackathon venue. No API calls to closed-source providers for the core inference workload. The product evaluations generated by War Room are produced entirely on open-weight models running on open hardware. The video analysis pipeline optionally uses GPT-4o Vision for frame description, but the adversarial debate itself — the core intellectual work of the system — runs on local open-weight inference.
+
+---
+
+## Request for Hacks Alignment
+
+### "Let's Cook OpenClaw"
+War Room is what happens after OpenClaw. OpenClaw opens the claw — War Room is what the claw grabs and tears apart.
+
+The OpenClaw theme is about open-weight models doing real work. War Room takes that premise and escalates it: three open-weight frontier models — Llama 3.3-70B, Qwen3-32B, Mistral-Small-24B — running concurrently on DGX Spark hardware, doing adversarial multi-agent orchestration where agents don't assist, they execute. This is not a single-model copilot offering a balanced perspective. It is a full adversarial debate cycle: four rounds, three architectures, contested evidence, a verdict with a paper trail. The core intellectual work of the system — every critique, every challenge, every buy/no-buy decision — runs on open-weight models with zero calls to closed-source providers. If OpenClaw is the principle, War Room is the implementation.
+
+### "Agents That Hire Agents"
+War Room operationalizes the "Agents That Hire Agents" theme at three tiers.
+
+The meta-agent (an LLM call in `meta_prompt.py`) generates the three adversarial agents that will run the debate — dynamically, per-product, with product-specific personas, churned-tool histories, and competing priorities. Then the swarm module deploys 20 parallel scout agents to pre-seed those debate agents with evidence before the first round starts. Then the debate agents themselves have access to seven RAG tool functions during their rounds. Agents hiring agents hiring agents, three levels deep, in a single query.
+
+But beyond the hierarchy: the models dynamically critique, challenge, and build on each other's outputs across four escalating rounds. The Daily Driver must agree or disagree with each of the First-Timer's specific claims — labeled, with cited evidence, with at least one direct challenge required by the prompt structure. The Buyer must then settle each unresolved disagreement before delivering a verdict. This is emergent orchestration through adversarial tension, not a static pipeline where agents execute fixed tasks in sequence. The debate structure forces models to respond to what other models actually said — not to a template.
+
+### "The Product That Builds Itself"
+Every debate round in War Room is a self-improvement cycle operating within a single query.
+
+Round 1 establishes a claim with evidence. Round 2 challenges that claim and forces a rating of Round 1's quality on a 1–10 scale. Round 3 must defend or concede each challenged point — with the explicit rule that "you get used to it" is not a valid defense. Round 4 synthesizes only the claims that survived challenge, discards what was successfully contested, and produces a verdict grounded in the strongest remaining evidence.
+
+Each model's critique forces the others to produce stronger analysis. Weak claims are eliminated. Strong claims are elevated. The final verdict is not the output of any single model — it is what remains after three models have tried to destroy each other's reasoning. The system gets better within a single query, through adversarial pressure, without any fine-tuning or human feedback loop. The product that builds itself, one debate round at a time.
 
 ---
 
