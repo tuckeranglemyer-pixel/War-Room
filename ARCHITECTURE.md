@@ -548,3 +548,71 @@ This provides full transparency into what hardware state each inference call ran
 | `OLLAMA_URL` | `http://localhost:11434/v1/chat/completions` | Ollama completions endpoint |
 
 All variables are optional with safe defaults. For Tier 3, cooldown doubles and context halves automatically — no extra configuration required.
+
+---
+
+## Real-Time Streaming Architecture
+
+War Room exposes two streaming paths depending on which pipeline is active:
+
+### Debate Path — WebSocket
+`WS /ws/{session_id}` streams round-by-round JSON as each CrewAI task completes.
+
+- `task_callback` fires after each of the 4 debate rounds
+- Callback enqueues a JSON message dict onto `session.queue` via `asyncio.run_coroutine_threadsafe()`
+- WebSocket handler dequeues and forwards to client — users see Round 1 while Round 2 is still running
+- `None` sentinel signals end-of-stream; WebSocket loop exits and connection closes cleanly
+
+### Video Analysis Path — Server-Sent Events
+`GET /api/stream/logs/{session_id}` streams analyst-level progress during video ingestion and the 4-specialist adaptive pipeline.
+
+- Backend appends messages to an in-memory buffer keyed by `session_id`
+- Late-connecting clients receive full buffered message replay before the live stream begins
+- Stream closes automatically with a `[DONE]` event on pipeline completion
+- Stages: frame extraction → vision analysis → competitor matching → evidence curation → specialist deployment → report assembly
+
+### Shared Bridge Pattern
+
+Both paths use the same architectural pattern: background work runs in a `ThreadPoolExecutor` worker thread, which cannot directly write to an asyncio stream. The bridge is an `asyncio.Queue` (debate path) or an append-only in-memory log buffer with SSE flush (analysis path). The async handler on the main event loop reads from the queue/buffer and delivers to the client without blocking.
+
+```
+ThreadPoolExecutor worker
+    │  (runs CrewAI / AdaptiveRunner)
+    │  enqueues via asyncio.run_coroutine_threadsafe()
+    ▼
+asyncio.Queue / log buffer
+    │
+    ▼
+async WebSocket / SSE handler
+    │  (main event loop)
+    ▼
+Client (browser EventSource / wscat)
+```
+
+Late-connecting clients receive buffered message replay before live stream — no messages are dropped if the client connects after analysis has started.
+
+---
+
+## Dual Inference Routing
+
+The War Room frontend exposes a toggle that lets users select their inference path before starting an analysis.
+
+### Cloud API Mode
+Routes all 4 specialist rounds through GPT-4o (or Anthropic Claude) for speed and reliability.
+
+- Sub-60-second full analysis on any product
+- No thermal constraints; runs on commodity hardware
+- Requires `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` environment variable
+- Suitable for live demos, public traction, and contexts where inference latency matters more than data residency
+
+### DGX Spark Mode
+Routes through local Ollama models managed by `AdaptiveRunner` with thermal management.
+
+- Zero data egress — user reviews, product context, and analysis stay on-prem
+- `AdaptiveRunner._select_tier()` reads `nvidia-smi` before every round; auto-selects Tier 2 (qwen3:32b) or Tier 3 (llama3.1:8b) based on live GPU temp and RAM state
+- Thermal gating pauses execution between rounds when GPU exceeds `THERMAL_CEILING` (70°C)
+- Model unload/reload between rounds prevents cumulative VRAM pressure
+
+### Toggle Visibility
+
+The inference mode toggle is visible in the frontend UI — users choose their path explicitly. Both modes produce identical verdict JSON structure; only the underlying model and latency differ. The `POST /analyze` request carries a `mode` field (`"cloud"` or `"dgx"`) that the server routes accordingly.
