@@ -39,7 +39,14 @@ See `sessions/` directory for real analysis deliverables including:
 - Evidence citations linking back to Reddit/HN/Google Play sources
 
 ## Deployment Evidence
-- 125+ commits across 24-hour hackathon window
+- **141+ commits** across 24-hour hackathon window
 - Frontend live on Vercel with SPA routing (vercel.json configured)
 - Backend API exposed via ngrok with Swagger UI documentation
 - McKinsey-style Report component (Report.tsx, 1591 lines) rendering structured verdicts
+- Featured product fast-path deployed: click any of 20 curated products → debate in <5 seconds, no wizard
+- SSE streaming live: real-time log feed at `GET /api/stream/logs/{session_id}`
+- Dual inference toggle in UI: Cloud API mode (GPT-4o, sub-60s) and DGX Spark mode (local, thermal-managed)
+
+## What "Real-Time SSE Streaming" Actually Means
+
+Real-time SSE log streaming enables users to watch analysis progress live — not a loading spinner, but actual analyst-by-analyst status updates. As each stage of the pipeline completes (frame extraction, vision analysis, competitor matching, evidence curation, specialist deployment, report assembly), a named progress message fires to the browser via EventSource. Users know exactly what the system is doing at every moment of a 45–60 second analysis.
