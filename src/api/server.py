@@ -26,7 +26,8 @@ from pathlib import Path
 from typing import Any, AsyncIterator, Callable
 
 import uvicorn
-from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi import BackgroundTasks, FastAPI, File, Form, HTTPException, Request, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -67,6 +68,7 @@ SESSIONS_DIR.mkdir(exist_ok=True)
 
 SESSIONS: dict[str, DebateSession] = {}
 VIDEO_EVIDENCE: dict[str, dict] = {}
+ANALYSIS_STATUS: dict[str, str] = {}  # session_id → "pending" | "complete" | "failed"
 _executor = ThreadPoolExecutor(max_workers=4)
 
 _rate_limits: defaultdict[str, list[float]] = defaultdict(list)
@@ -532,45 +534,21 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/api/analyze/{session_id}", tags=["analysis"])
-async def run_analysis(session_id: str) -> dict[str, Any]:
-    """Run the hardware-adaptive analysis pipeline for a completed video ingest session.
-
-    Called after POST /api/ingest/video. Automatically selects execution tier
-    based on real-time GPU temperature and RAM usage:
-      Tier 2 (qwen3:32b, 30s cooling)  — GPU < 65°C and RAM < 60%
-      Tier 3 (llama3.1:8b, 60s cooling) — GPU >= 65°C or RAM >= 60%
-
-    All Ollama models are unloaded before inference starts. Context is trimmed
-    automatically. The deliverable is written to sessions/{session_id}/deliverable.json
-    before this response is returned — a network error will not lose the result.
-
-    Raises:
-        404: No video evidence found for this session_id.
-        500: Analysis pipeline encountered an unrecoverable error.
-    """
-    evidence = VIDEO_EVIDENCE.get(session_id)
-    if not evidence:
-        raise HTTPException(
-            status_code=404,
-            detail=(
-                f"No video evidence found for session {session_id}. "
-                "Run POST /api/ingest/video first."
-            ),
-        )
+async def _run_analysis_bg(session_id: str, evidence: dict) -> None:
+    """Background coroutine: run the adaptive analysis pipeline and write deliverable.json."""
+    import logging  # noqa: PLC0415
+    _log = logging.getLogger(__name__)
+    ANALYSIS_STATUS[session_id] = "pending"
 
     synthesis = evidence.get("synthesis", {})
     comparison_cards = evidence.get("comparison_cards", [])
 
-    # Synthesis may not echo all product-context fields back (depends on
-    # synthesize_evidence implementation). Fall back to the values stored
-    # directly in VIDEO_EVIDENCE during ingest.
     def _field(key: str, default: str = "") -> str:
         return synthesis.get(key) or evidence.get(key, default)
 
     runner = AdaptiveRunner()
     try:
-        deliverable = await runner.run_analysis(
+        await runner.run_analysis(
             session_id=session_id,
             product_name=_field("product_name", "Unknown Product"),
             product_description=_field("product_description"),
@@ -586,31 +564,64 @@ async def run_analysis(session_id: str) -> dict[str, Any]:
             frame_analyses_json=json.dumps(evidence.get("frame_analyses", [])),
             screenshot_matches_json=json.dumps(evidence.get("screenshot_matches", [])),
         )
+        ANALYSIS_STATUS[session_id] = "complete"
+        _log.info("Background analysis complete for session %s", session_id)
     except Exception as exc:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Adaptive analysis failed: {exc}",
-        ) from exc
+        ANALYSIS_STATUS[session_id] = "failed"
+        _log.error("Background analysis failed for session %s: %s", session_id, exc)
 
-    return {
-        "session_id": session_id,
-        "status": "complete",
-        "tier": runner.tier_used,
-        "score": deliverable.get("verdict", {}).get("score"),
-        "headline": deliverable.get("verdict", {}).get("headline"),
-        "market_readiness": deliverable.get("verdict", {}).get("market_readiness"),
-        "report_url": f"/api/report/{session_id}",
-    }
+
+@app.post("/api/analyze/{session_id}", tags=["analysis"])
+async def run_analysis(session_id: str, background_tasks: BackgroundTasks) -> JSONResponse:
+    """Start the hardware-adaptive analysis pipeline for a completed video ingest session.
+
+    Returns 202 Accepted immediately and runs the 4-round LLM pipeline as a
+    background task. Poll GET /api/report/{session_id} until it returns 200 —
+    it responds with {"status": "analyzing"} (202) while the pipeline is running.
+
+    Raises:
+        404: No video evidence found for this session_id (run ingest first).
+    """
+    evidence = VIDEO_EVIDENCE.get(session_id)
+    if not evidence:
+        raise HTTPException(
+            status_code=404,
+            detail=(
+                f"No video evidence found for session {session_id}. "
+                "Run POST /api/ingest/video first."
+            ),
+        )
+
+    background_tasks.add_task(_run_analysis_bg, session_id, evidence)
+
+    return JSONResponse(
+        status_code=202,
+        content={
+            "session_id": session_id,
+            "status": "analyzing",
+            "report_url": f"/api/report/{session_id}",
+        },
+    )
 
 
 @app.get("/api/report/{session_id}", tags=["analysis"])
-async def get_report(session_id: str) -> dict[str, Any]:
-    """Serve the final deliverable JSON for the one-pager."""
+async def get_report(session_id: str) -> JSONResponse:
+    """Serve the final deliverable JSON for the one-pager.
+
+    Returns 202 while the background analysis is still running so the frontend
+    can poll instead of getting a hard 404.
+    """
     report_path = Path(f"sessions/{session_id}/deliverable.json")
     if not report_path.exists():
-        raise HTTPException(status_code=404, detail="Report not generated yet.")
+        status = ANALYSIS_STATUS.get(session_id)
+        if status == "pending":
+            return JSONResponse(
+                status_code=202,
+                content={"status": "analyzing", "session_id": session_id},
+            )
+        raise HTTPException(status_code=404, detail="Report not found. Run analysis first.")
     with open(report_path) as f:
-        return json.load(f)
+        return JSONResponse(content=json.load(f))
 
 
 # ---------------------------------------------------------------------------

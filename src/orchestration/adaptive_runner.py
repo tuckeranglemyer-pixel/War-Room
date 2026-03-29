@@ -451,7 +451,7 @@ class AdaptiveRunner:
 
         # Unload everything before starting to reclaim VRAM
         self.monitor.unload_all_models()
-        time.sleep(5)
+        await asyncio.sleep(5)
         self.monitor.wait_for_cool()
 
         # Trim all evidence blocks to prevent KV cache pressure
@@ -536,7 +536,7 @@ class AdaptiveRunner:
 
             if i < len(rounds) - 1:
                 logger.info("  Cooling pause: %ds", cooldown)
-                time.sleep(cooldown)
+                await asyncio.sleep(cooldown)
 
         # --- Round 4: Partner Review ---
         logger.info("\n[ROUND 4/4] Partner Review")

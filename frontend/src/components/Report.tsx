@@ -1469,6 +1469,62 @@ function PartnerVerdictSection({ data }: { data: ReportData }) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
+// Analyzing Screen (shown while background analysis is running)
+// ─────────────────────────────────────────────────────────────────────────────
+
+function AnalyzingScreen() {
+  const [dots, setDots] = useState('.')
+  useEffect(() => {
+    const id = setInterval(() => setDots(d => d.length >= 3 ? '.' : d + '.'), 600)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div style={{
+      minHeight: '100vh',
+      background: 'var(--bg-primary)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 24,
+    }}>
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 11,
+        letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        color: 'var(--accent-blue)',
+        margin: 0,
+      }}>
+        Analysis in progress{dots}
+      </p>
+      <p style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: 14,
+        color: 'var(--text-secondary)',
+        maxWidth: 420,
+        textAlign: 'center',
+        lineHeight: 1.7,
+        margin: 0,
+      }}>
+        Running the 4-round pipeline — Strategist, UX Analyst, Market Researcher, and Partner Review.
+        This typically takes 15–45 minutes on the DGX Spark.
+      </p>
+      <p style={{
+        fontFamily: 'var(--font-mono)',
+        fontSize: 10,
+        color: 'var(--text-muted)',
+        letterSpacing: '0.08em',
+        margin: 0,
+      }}>
+        This page checks for updates every 10 seconds.
+      </p>
+    </div>
+  )
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
 // Loading Skeleton
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1498,13 +1554,23 @@ interface ReportProps {
 export default function Report({ sessionId }: ReportProps) {
   const [data, setData] = useState<ReportData | null>(null)
   const [loading, setLoading] = useState(true)
+  const [analyzing, setAnalyzing] = useState(false)
+  const pollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const fetchReport = useCallback(async () => {
     try {
       const res = await fetch(`${API_BASE}/api/report/${sessionId}`)
+      if (res.status === 202) {
+        // Analysis still running — show the analyzing screen and poll again
+        setAnalyzing(true)
+        setLoading(false)
+        pollTimerRef.current = setTimeout(() => { void fetchReport() }, 10_000)
+        return
+      }
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const json = await res.json() as ReportData
+      setAnalyzing(false)
       setData(json)
     } catch {
       setData(MOCK_DATA)
@@ -1515,9 +1581,13 @@ export default function Report({ sessionId }: ReportProps) {
 
   useEffect(() => {
     void fetchReport()
+    return () => {
+      if (pollTimerRef.current) clearTimeout(pollTimerRef.current)
+    }
   }, [fetchReport])
 
   if (loading) return <LoadingSkeleton />
+  if (analyzing) return <AnalyzingScreen />
   if (!data) return null
 
   return (
