@@ -12,7 +12,7 @@ This file is written so a **human judge** can follow it live *and* so an **AI su
 
 **Problem:** Manual research and panels are slow ($5K–$200K, weeks) or shallow (single-model chat with no evidence or structured disagreement).
 
-**Traction (hackathon):** **3** real teams ran full video QA on their own builds; **200** commits in **~30** hours; live on **Vercel + Railway**; **10+** page views, **5** GitHub stars; distribution on HN / Discord / Reddit.
+**Traction (hackathon):** **3** real teams ran full video QA on their own builds; **200** commits in **~30** hours; live on **Vercel + Railway**; **10+** page views, **5** GitHub stars; distribution on Discord / Reddit.
 
 **Moat:** Large curated evidence corpus + adversarial protocol + optional full local inference for sensitive data.
 
