@@ -321,7 +321,13 @@ def _run_crew(product: str, result_q: queue.Queue) -> None:
         result_q: Thread-safe queue consumed by ``drain_queue`` on the main thread.
     """
     try:
-        from backend.debate_orchestrator import build_crew  # import here so Streamlit loads fast
+        import sys
+        from pathlib import Path
+
+        _repo_root = Path(__file__).resolve().parents[1]
+        if str(_repo_root) not in sys.path:
+            sys.path.insert(0, str(_repo_root))
+        from crew import build_crew  # canonical orchestration at repo root
 
         round_counter: list[int] = [0]
         round_start: list[float] = [time.time()]
