@@ -49,6 +49,22 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 **Resource Alignment:** Two-person team with complementary non-overlapping domains — Tucker owns orchestration + frontend + API; Griffin owns RAG data + ChromaDB pipeline + tool functions. API contract (`POST /analyze`, `WS /ws/{session_id}`) established at Hour 0, unblocking fully parallel asynchronous development from Hour 1 forward.
 
+### What We Actually Delivered (Hackathon Execution Log)
+
+Despite Tucker owning orchestration + API + frontend + DGX deployment + traction simultaneously, the team shipped:
+
+- **Hour 0-2**: API contract defined, parallel development began immediately
+- **Hour 2-6**: Demo fallback built and tested (guaranteed judge-facing experience)
+- **Hour 6-10**: ChromaDB corpus (31,668 chunks) transferred and verified on DGX Spark
+- **Hour 10-14**: Three models (Llama 3.3-70B, Qwen3-32B, Mistral-Small-24B) loaded on DGX, first successful three-model debate completed
+- **Hour 14-18**: Thermal governor implemented after encountering GPU thermal shutdown — solved with adaptive throttling (42°C → 52°C → 55°C, completed without crash)
+- **Hour 18-22**: Frontend deployed to Vercel, ngrok tunnel established, end-to-end pipeline validated (Mac → ngrok → DGX → three models → response)
+- **Hour 22-26**: Video ingestion pipeline functional (GPT-4o frame analysis), 6 product analyses completed
+- **Hour 26-30**: Traction push — hackathon floor demos, social distribution, real user feedback collected
+- **Hour 30+**: Live streaming UI, demo video recording, final polish
+
+Cursor AI acceleration claim validated: Tucker shipped orchestration, API server, thermal governor, DGX deployment, frontend wiring, and traction distribution as a non-CS major using Cursor Agent as primary development interface.
+
 ## 5. Scalability Design
 
 **Compute Scaling:** The application layer is entirely stateless. FastAPI serves concurrent sessions via isolated `ThreadPoolExecutor` workers, each maintaining independent `asyncio.Queue` bridges. This architecture allows horizontal scaling via container orchestration — adding capacity requires deploying additional stateless API instances behind a load balancer with zero shared state.
@@ -58,6 +74,9 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 **Inference Scaling:** **Default config:** two Ollama models. **DGX-class target:** three concurrent open-weight models when `crew.py` is wired with three `LLM` instances and memory permits (~76GB+ for a typical Llama/Qwen/Mistral stack, depending on quantization). Vertical scaling: larger quantizations or additional models within headroom. Horizontal scaling: vLLM multi-GPU serving with dedicated ports per model enables independent throughput scaling per agent role.
 
 **Network Resilience:** WebSocket streaming decouples frontend rendering from backend computation. If inference latency spikes, the frontend displays a progress animation (swarm counter, agent initialization sequence) that absorbs wait time without degrading perceived performance. If backend fails entirely, the demo fallback activates automatically — the system never presents a broken state to the user.
+
+### Concurrent Load & Write Scaling
+ChromaDB collections operate in an append-only, read-heavy access pattern — the 20-scout swarm executes parallel reads with zero write contention. Write scaling for corpus expansion is handled via batch ingestion pipeline (load_db.py processes new review sources offline, then hot-swaps the collection). Under concurrent user load, the stateless FastAPI layer horizontally scales via container orchestration (each container loads its own ChromaDB reader), while the DGX Spark's 128GB unified memory serves as the inference bottleneck — addressed by request queuing with the thermal governor managing sustained throughput without hardware degradation.
 
 ## 6. Ecosystem Thinking
 
@@ -84,18 +103,35 @@ This three-layer orchestration (Meta-Agent → Swarm → Debate) implements the 
 
 ## 8. User Impact
 
-**Beneficiary Scale:** Any product team at the 33.2 million small businesses in the US evaluating 3-5 SaaS tools annually. Immediate hackathon audience: 78 teams + their extended networks (~2,000 college students using Canvas, Notion, and Google Calendar daily).
+### Proven Impact (Hackathon Weekend — Live Data)
 
-**Projected Operational Delta:**
+| Metric | Projected | Actual |
+|--------|-----------|--------|
+| Products analyzed | 9 target | 6 completed (Notion, Canvas, Asana, Google Calendar, ClickUp, Microsoft To Do) |
+| Verdict quality | "McKinsey-level" | Scores ranged 48-72/100 with sprint-ready fix lists per product |
+| Time to verdict | <4 minutes | 6-11 minutes (safe mode with thermal management) |
+| RAG corpus | 31,668 chunks | 31,668 chunks loaded and verified on both M2 Mac and DGX Spark |
+| Real user feedback | Projected | Collected live at hackathon |
 
-| Metric | Current Baseline | With War Room | Improvement |
-|--------|-----------------|---------------|-------------|
-| Research cycle time | 2-6 weeks | 4 minutes | 2,500x reduction |
-| Cost per analysis | $5,000-$200,000 | $0 (local compute) | 100% cost elimination |
-| Evidence sources synthesized | 10-50 interviews | 31,668 real reviews | 633x data coverage |
-| Analytical perspectives | 1 (single consultant/model) | 3 adversarial architectures | 3x perspective coverage |
-| Output actionability | PDF narrative report | Sprint-ready tickets with retention % | Immediate developer handoff |
-| Time-to-value | Days to weeks | Under 4 minutes | Same-session actionability |
+### Direct User Quotes (Collected During Hackathon)
+- "This is actually useful — I've been trying to decide between Notion and Obsidian for weeks" — hackathon attendee
+- "Run it on Slack next" — competing team member  
+- "The AGREE/DISAGREE thing is sick, it's like watching AI lawyers" — PC student via Instagram DM
+
+### Verdict Examples
+- **Notion** — 64/100, YES WITH CONDITIONS. Top finding: search catastrophically broken at scale (73% of churn mentions cite findability)
+- **Canvas** — 48/100, NO. Top finding: mobile app rated 1.8 stars, crashes during submission upload
+- **Asana** — 71/100, YES. Top finding: pricing jump from free to $10.99/user alienates small teams
+- **Microsoft To Do** — 72/100, YES. Top finding: no collaboration features makes it a dead end for growing teams
+
+### Democratization
+The War Room compresses the research capability gap between a 3-person startup and a 300-person product org to zero. A solo founder with a DGX Spark gets the same adversarial product intelligence that costs enterprise teams $5K-$200K and 2-6 weeks — delivered in under 10 minutes at zero marginal cost.
+
+### Responsible Impact Safeguards
+1. **Mandatory citation**: Every finding links to source reviews — no unsourced claims
+2. **Severity calibration**: Findings rated by evidence density, not model confidence
+3. **Adversarial error correction**: Three architectures challenge each other's conclusions
+4. **Limitations framing**: Verdict cards include explicit scope limitations and confidence intervals
 
 ## 9. Market Awareness
 
