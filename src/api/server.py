@@ -302,17 +302,16 @@ async def health() -> dict[str, str]:
 @app.post("/analyze", response_model=AnalyzeResponse, tags=["debate"])
 async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeResponse:
     """Start a War Room debate for the given product and return a session_id."""
-    client_ip = http_request.client.host if http_request.client else "unknown"
-    if not check_rate_limit(client_ip):
-        raise HTTPException(
-            status_code=429,
-            detail="Rate limit reached: 3 analyses per IP per hour. Try again later.",
-        )
+    try:
+        client_ip = http_request.client.host if http_request.client else "unknown"
+        if not check_rate_limit(client_ip):
+            raise HTTPException(
+                status_code=429,
+                detail="Rate limit reached: 3 analyses per IP per hour. Try again later.",
+            )
 
-    effective_name = (body.product_name or body.product_description).strip()
-    # Determine evidence tier: products matching the ChromaDB corpus get full RAG grounding;
-    # freeform products get a general analysis using model knowledge and live tool calls.
-    evidence_tier = "full" if is_supported_product(effective_name) else "general"
+        effective_name = (body.product_name or body.product_description).strip()
+        evidence_tier = "full" if is_supported_product(effective_name) else "general"
 
     if not check_budget_guard():
         return AnalyzeResponse(
@@ -324,21 +323,33 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
 
     session_id = str(uuid.uuid4())
     loop = asyncio.get_running_loop()
-    session = DebateSession(
-        session_id,
-        body.product_description,
-        loop,
-        product_name=body.product_name,
-        upload_session_id=body.session_id,
-        target_user=body.target_user,
-        competitors=body.competitors,
-        differentiator=body.differentiator,
-        product_stage=body.product_stage,
-        evidence_tier=evidence_tier,
-    )
-    SESSIONS[session_id] = session
-    _ = loop.run_in_executor(_executor, _run_debate, session)
-    return AnalyzeResponse(session_id=session_id, evidence_tier=evidence_tier)
+    try:
+        session = DebateSession(
+            session_id,
+            body.product_description,
+            loop,
+            product_name=body.product_name,
+            upload_session_id=body.session_id,
+            target_user=body.target_user,
+            competitors=body.competitors,
+            differentiator=body.differentiator,
+            product_stage=body.product_stage,
+            evidence_tier=evidence_tier,
+        )
+        SESSIONS[session_id] = session
+        _ = loop.run_in_executor(_executor, _run_debate, session)
+        return AnalyzeResponse(session_id=session_id, evidence_tier=evidence_tier)
+    except Exception as exc:
+        SESSIONS.pop(session_id, None)
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to start debate session: {exc}",
+        ) from exc
+    except HTTPException:
+        raise
+    except Exception as exc:
+        _log.exception("POST /analyze failed")
+        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 @app.websocket("/ws/{session_id}")
@@ -581,37 +592,42 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
     Raises:
         404: Session not found or synthesis not yet complete.
     """
-    evidence = VIDEO_EVIDENCE.get(session_id)
-    if not evidence:
-        raise HTTPException(status_code=404, detail="Session not found.")
-    cards = evidence.get("comparison_cards")
-    if not cards:
-        raise HTTPException(
-            status_code=404,
-            detail="No comparison cards found for this session. "
-            "Either the video had no matching competitor screens or synthesis failed.",
-        )
-    synthesis = evidence.get("synthesis", {})
+    try:
+        evidence = VIDEO_EVIDENCE.get(session_id)
+        if not evidence:
+            raise HTTPException(status_code=404, detail="Session not found.")
+        cards = evidence.get("comparison_cards")
+        if not cards:
+            raise HTTPException(
+                status_code=404,
+                detail="No comparison cards found for this session. "
+                "Either the video had no matching competitor screens or synthesis failed.",
+            )
+        synthesis = evidence.get("synthesis", {})
 
-    # Deep-copy so we don't mutate the in-memory evidence store
-    base_url = str(request.base_url).rstrip("/")
-    enriched_cards = copy.deepcopy(cards)
-    for card in enriched_cards:
-        user_side = card.get("user_side", {})
-        if user_side.get("image_path"):
-            user_side["image_url"] = f"{base_url}/{user_side['image_path']}"
-        comp_side = card.get("competitor_side", {})
-        if comp_side.get("image_path"):
-            comp_side["image_url"] = f"{base_url}/{comp_side['image_path']}"
+        base_url = str(request.base_url).rstrip("/")
+        enriched_cards = copy.deepcopy(cards)
+        for card in enriched_cards:
+            user_side = card.get("user_side", {})
+            if user_side.get("image_path"):
+                user_side["image_url"] = f"{base_url}/{user_side['image_path']}"
+            comp_side = card.get("competitor_side", {})
+            if comp_side.get("image_path"):
+                comp_side["image_url"] = f"{base_url}/{comp_side['image_path']}"
 
-    return {
-        "session_id": session_id,
-        "cards": enriched_cards,
-        "total_comparisons": len(enriched_cards),
-        "apps_compared": synthesis.get("apps_compared", []),
-        "dominant_themes": synthesis.get("dominant_themes", []),
-        "summary": synthesis.get("agent_brief", ""),
-    }
+        return {
+            "session_id": session_id,
+            "cards": enriched_cards,
+            "total_comparisons": len(enriched_cards),
+            "apps_compared": synthesis.get("apps_compared", []),
+            "dominant_themes": synthesis.get("dominant_themes", []),
+            "summary": synthesis.get("agent_brief", ""),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        _log.exception("GET /api/comparisons/%s failed", session_id)
+        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 # ---------------------------------------------------------------------------
