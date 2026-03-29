@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import AnalysisPipeline from './AnalysisPipeline'
 
 const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
 
@@ -46,7 +47,7 @@ type Answers = {
   productStage: string
 }
 
-type SubmitStatus = 'uploading' | 'extracting' | 'analyzing'
+type SubmitStatus = 'uploading' | 'analyzing'
 
 /**
  * Multi-step context wizard collecting product metadata before launching a debate.
@@ -77,8 +78,10 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('uploading')
-  const [framesAnalyzed, setFramesAnalyzed] = useState(0)
   const [error, setError] = useState('')
+  // Video pipeline state — set progressively as backend responds
+  const [pipelineSessionId, setPipelineSessionId] = useState('')
+  const [pipelineAnalysisDone, setPipelineAnalysisDone] = useState(false)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const textInputRef = useRef<HTMLInputElement>(null)
@@ -167,6 +170,8 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
   async function runSubmit() {
     setSubmitting(true)
     setError('')
+    setPipelineSessionId('')
+    setPipelineAnalysisDone(false)
     try {
       if (videoFile) {
         // ── Video path ────────────────────────────────────────────────────
@@ -180,24 +185,23 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         formData.append('differentiator', answers.differentiator)
         formData.append('product_stage', answers.productStage)
 
-        const extractTimer = setTimeout(() => setSubmitStatus('extracting'), 2000)
         const ingestRes = await fetch(`${API_BASE}/api/ingest/video`, {
           method: 'POST',
           body: formData,
         })
-        clearTimeout(extractTimer)
         if (!ingestRes.ok) throw new Error(`Ingest error ${ingestRes.status}`)
         const ingestData = await ingestRes.json()
-        setFramesAnalyzed(ingestData.key_frames_analyzed ?? ingestData.frames_extracted ?? 0)
         const sessionId = ingestData.session_id ?? ''
+        // Signal the pipeline that ingest is done — session ID is now known
+        setPipelineSessionId(sessionId)
 
         setSubmitStatus('analyzing')
         const analysisRes = await fetch(`${API_BASE}/api/analyze/${sessionId}`, {
           method: 'POST',
         })
         if (!analysisRes.ok) throw new Error(`Analysis error ${analysisRes.status}`)
-
-        setTimeout(() => { window.location.href = `/report/${sessionId}` }, 400)
+        // Signal the pipeline that analysis is complete — it will navigate
+        setPipelineAnalysisDone(true)
         return
       }
 
@@ -225,17 +229,22 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
     }
   }
 
-  const submitLabel =
-    submitStatus === 'uploading'
-      ? 'Uploading video...'
-      : submitStatus === 'extracting'
-      ? `Analyzing frames... ${framesAnalyzed > 0 ? `${framesAnalyzed} extracted` : 'processing'}`
-      : videoFile
-      ? 'Running analysis — this may take a few minutes...'
-      : 'Starting War Room...'
-
   // ── Submitting screen ──────────────────────────────────────────────────
   if (submitting) {
+    // Video path: show the animated pipeline
+    if (videoFile) {
+      return (
+        <AnalysisPipeline
+          product={productName}
+          sessionId={pipelineSessionId}
+          analysisComplete={pipelineAnalysisDone}
+          error={error}
+          onBack={() => { setSubmitting(false); setError('') }}
+        />
+      )
+    }
+
+    // Non-video path: simple status label
     return (
       <div style={{
         minHeight: '100vh',
@@ -280,7 +289,7 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
             color: '#3B82F6',
             letterSpacing: '0.02em',
           }}>
-            {submitLabel}
+            {submitStatus === 'analyzing' ? 'Starting War Room...' : 'Uploading...'}
           </p>
         )}
       </div>
