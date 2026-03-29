@@ -129,6 +129,18 @@ class DebateSession:
         differentiator: str = "",
         product_stage: str = "",
     ) -> None:
+        """Initialize a new debate session with product context and an async event loop.
+
+        Args:
+            session_id: Unique UUID for this debate run.
+            product_description: Free-text product name and description.
+            loop: Running asyncio event loop used for thread-safe queue puts.
+            upload_session_id: Optional session UUID from a prior /api/ingest/video call.
+            target_user: Who the product is for (from the wizard).
+            competitors: Products it competes with.
+            differentiator: Key competitive advantage claim.
+            product_stage: Current development stage of the product.
+        """
         self.session_id = session_id
         self.product_description = product_description
         self.loop = loop
@@ -205,6 +217,8 @@ app.add_middleware(
 
 
 class AnalyzeRequest(BaseModel):
+    """Request payload for POST /analyze."""
+
     product_description: str
     session_id: str = ""  # upload session_id from POST /api/ingest/video; empty string = no upload
     target_user: str = ""
@@ -214,6 +228,8 @@ class AnalyzeRequest(BaseModel):
 
 
 class AnalyzeResponse(BaseModel):
+    """Response payload from POST /analyze containing the new debate session UUID."""
+
     session_id: str
 
 

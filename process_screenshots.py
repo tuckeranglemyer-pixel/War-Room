@@ -1,3 +1,11 @@
+"""
+Screenshot ingestion pipeline: GPT-4o Vision analysis and ChromaDB indexing.
+
+Iterates over product screenshot directories, sends each image to GPT-4o for
+detailed UX analysis, and upserts the resulting description chunks into the
+``pm_tools`` ChromaDB collection for downstream RAG retrieval.
+"""
+
 import os
 import base64
 import chromadb
@@ -22,11 +30,30 @@ VISION_PROMPT = """You are a UX analyst. Describe this screenshot of a project m
 Be specific. Reference exact UI elements, colors, layout choices, and interaction patterns.
 Write 3-5 detailed paragraphs. This description will be used as evidence in an adversarial product debate."""
 
-def encode_image(image_path):
+def encode_image(image_path: str) -> str:
+    """Read an image file from disk and return its base64-encoded string.
+
+    Args:
+        image_path: Absolute or relative path to the image file.
+
+    Returns:
+        Base64-encoded UTF-8 string of the raw image bytes.
+    """
     with open(image_path, "rb") as f:
         return base64.b64encode(f.read()).decode("utf-8")
 
-def describe_screenshot(image_path):
+def describe_screenshot(image_path: str) -> str:
+    """Send a screenshot to GPT-4o Vision and return a detailed UX analysis.
+
+    Encodes the image as base64, constructs a vision message with the standard
+    UX analyst prompt, and returns the model's textual description.
+
+    Args:
+        image_path: Path to the screenshot file (png, jpg, jpeg, gif, or webp).
+
+    Returns:
+        Multi-paragraph UX analysis string from GPT-4o Vision.
+    """
     base64_image = encode_image(image_path)
     ext = Path(image_path).suffix.lower()
     media_type = {".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".gif":"image/gif",".webp":"image/webp"}.get(ext,"image/png")
@@ -37,7 +64,12 @@ def describe_screenshot(image_path):
     )
     return response.choices[0].message.content
 
-def main():
+def main() -> None:
+    """Walk all app screenshot directories and ingest undescribed images into ChromaDB.
+
+    Skips files already present in the collection (keyed by filename metadata).
+    Prints a summary of processed, skipped, and errored files on completion.
+    """
     screenshot_dirs = sorted(DATA_DIR.glob("*/screenshots"))
     all_images = []
     for ss_dir in screenshot_dirs:

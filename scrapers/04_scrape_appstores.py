@@ -56,7 +56,17 @@ APP_STORE_IDS = {
 }
 
 
-def scrape_play_store(app_key, package_id):
+def scrape_play_store(app_key: str, package_id: str) -> list:
+    """Fetch up to 200 Google Play reviews for the given package.
+
+    Args:
+        app_key: Short app identifier used only for error messages.
+        package_id: Google Play package ID (e.g. ``"notion.id"``).
+
+    Returns:
+        List of review dicts with ``rating``, ``text``, ``thumbs_up``, and ``date``
+        keys; empty list if scraping fails.
+    """
     try:
         result, _ = gplay_reviews(
             package_id,
@@ -79,7 +89,17 @@ def scrape_play_store(app_key, package_id):
         return []
 
 
-def scrape_app_store(app_key, app_info):
+def scrape_app_store(app_key: str, app_info: dict) -> list:
+    """Fetch up to 200 Apple App Store reviews for the given app.
+
+    Args:
+        app_key: Short app identifier used only for error messages.
+        app_info: Dict with ``name`` (slug) and ``id`` (numeric) keys for the App Store.
+
+    Returns:
+        List of review dicts with ``rating``, ``title``, ``text``, and ``date``
+        keys; empty list if scraping fails.
+    """
     try:
         scraper = AppStore(
             country="us",

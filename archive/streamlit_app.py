@@ -309,7 +309,17 @@ for _k, _v in _DEFAULTS.items():
 
 # ── Background crew runner ────────────────────────────────────────────────────
 def _run_crew(product: str, result_q: queue.Queue) -> None:
-    """Runs in a daemon thread. Emits typed tuples onto result_q."""
+    """Run the War Room crew in a daemon thread and stream results via a queue.
+
+    Builds the CrewAI crew for the given product, attaches a task callback that
+    emits ``("round", num, raw, agent_role, elapsed)`` tuples after each round,
+    and emits ``("complete", None)`` or ``("error", message)`` when finished.
+    Persona generation status is signalled via ``("status", "personas_ready")``.
+
+    Args:
+        product: Product name and description string passed to ``build_crew``.
+        result_q: Thread-safe queue consumed by ``drain_queue`` on the main thread.
+    """
     try:
         from crew import build_crew  # import here so Streamlit loads fast
 
@@ -453,6 +463,14 @@ def parse_issues_with_severity(rounds: list[dict]) -> list[dict]:
 
 # ── UI helpers ────────────────────────────────────────────────────────────────
 def _verdict_color(verdict: str) -> str:
+    """Return the hex color associated with a buy-decision verdict string.
+
+    Args:
+        verdict: One of ``"YES"``, ``"NO"``, ``"YES WITH CONDITIONS"``, or unknown.
+
+    Returns:
+        Hex color string for use in inline CSS.
+    """
     if verdict == "YES":
         return "#00ff88"
     if verdict == "NO":
@@ -463,6 +481,14 @@ def _verdict_color(verdict: str) -> str:
 
 
 def _score_color(score: Optional[int]) -> str:
+    """Return the hex color for a 1–100 quality score.
+
+    Args:
+        score: Integer score, or ``None`` if unparsed.
+
+    Returns:
+        Green for ≥ 70, amber for ≥ 40, red below 40, grey for ``None``.
+    """
     if score is None:
         return "#555555"
     if score >= 70:
@@ -473,6 +499,14 @@ def _score_color(score: Optional[int]) -> str:
 
 
 def _fmt_elapsed(seconds: float) -> str:
+    """Format a duration in seconds as a human-readable string.
+
+    Args:
+        seconds: Elapsed time in seconds.
+
+    Returns:
+        ``"Xs"`` for durations under a minute, ``"X.Xm"`` otherwise.
+    """
     if seconds < 60:
         return f"{seconds:.0f}s"
     return f"{seconds / 60:.1f}m"
@@ -480,6 +514,7 @@ def _fmt_elapsed(seconds: float) -> str:
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 def render_sidebar() -> None:
+    """Render the left sidebar with methodology, agent descriptions, and knowledge base stats."""
     with st.sidebar:
         st.markdown(
             '<div class="sidebar-title">⚔️ WAR ROOM</div>', unsafe_allow_html=True
@@ -560,6 +595,7 @@ chunks** from Reddit, Hacker News, Google Play, and app metadata.
 
 # ── Hero ──────────────────────────────────────────────────────────────────────
 def render_hero() -> None:
+    """Render the War Room hero banner with title and subtitle."""
     st.markdown(
         """
 <div class="hero">
@@ -573,6 +609,7 @@ def render_hero() -> None:
 
 # ── Input form ────────────────────────────────────────────────────────────────
 def render_input_form() -> None:
+    """Render the product input field and Deploy button, and launch the debate on submit."""
     col_in, col_btn = st.columns([6, 1])
     with col_in:
         product_val = st.text_input(
@@ -645,6 +682,7 @@ def drain_queue() -> None:
 
 # ── Debate feed ───────────────────────────────────────────────────────────────
 def render_debate_feed() -> None:
+    """Render the live debate feed showing completed, in-progress, and pending rounds."""
     completed = {r["num"]: r for r in st.session_state.rounds}
     n_done = len(completed)
     is_running = st.session_state.running
@@ -702,6 +740,12 @@ def render_debate_feed() -> None:
 
 # ── Executive summary ─────────────────────────────────────────────────────────
 def render_executive_summary() -> None:
+    """Render the executive summary panel after all four rounds complete.
+
+    Parses the Buyer's Round 4 output to extract verdict, score, top 3 fixes,
+    strategic blind spot, competitive positioning, and severity-rated issues,
+    then renders them as structured UI components.
+    """
     rounds = st.session_state.rounds
     if len(rounds) < 4:
         return

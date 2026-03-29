@@ -47,7 +47,19 @@ HEADERS = {
 }
 
 
-def search_reddit(query, limit=25):
+def search_reddit(query: str, limit: int = 25) -> list:
+    """Query Reddit's public search JSON endpoint and return raw post children.
+
+    Handles HTTP 429 rate-limit responses with a 60-second back-off retry.
+
+    Args:
+        query: URL-encoded search string (spaces replaced with ``+``).
+        limit: Maximum number of results to request (default 25).
+
+    Returns:
+        List of post ``children`` dicts from the Reddit JSON response, or an
+        empty list on error or non-200 status.
+    """
     url = f"https://www.reddit.com/search.json?q={query}&sort=relevance&limit={limit}"
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
@@ -65,7 +77,17 @@ def search_reddit(query, limit=25):
         return []
 
 
-def get_comments(permalink, limit=15):
+def get_comments(permalink: str, limit: int = 15) -> list:
+    """Fetch the top comments for a Reddit post via the public JSON API.
+
+    Args:
+        permalink: Reddit post permalink path (e.g. ``"/r/productivity/comments/..."``).
+        limit: Maximum number of comments to retrieve (default 15).
+
+    Returns:
+        List of comment dicts with ``body``, ``score``, and ``author`` keys;
+        empty list on request failure or if comments are missing.
+    """
     url = f"https://www.reddit.com{permalink}.json?limit={limit}&sort=best"
     try:
         resp = requests.get(url, headers=HEADERS, timeout=15)
@@ -90,7 +112,20 @@ def get_comments(permalink, limit=15):
         return []
 
 
-def scrape_app(app_key, app_names):
+def scrape_app(app_key: str, app_names: list) -> int:
+    """Scrape Reddit posts for a single app using the no-auth public JSON API.
+
+    Iterates over name variants and search suffixes, deduplicates by post ID,
+    fetches comments for qualifying posts, and writes results to
+    ``data/{app_key}/reviews/reddit.json``.
+
+    Args:
+        app_key: Short identifier for the app (e.g. ``"notion"``).
+        app_names: List of URL-encoded name variants (spaces replaced with ``+``).
+
+    Returns:
+        Total number of unique posts collected.
+    """
     print(f"\n{'='*60}")
     print(f"  {app_key}")
     print(f"{'='*60}")

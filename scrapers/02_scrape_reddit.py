@@ -73,7 +73,20 @@ TARGET_SUBREDDITS = [
 ]
 
 
-def scrape_app(app_key, app_names):
+def scrape_app(app_key: str, app_names: list) -> int:
+    """Scrape Reddit posts and top comments for a single app and save to JSON.
+
+    Searches ``TARGET_SUBREDDITS`` using each ``SEARCH_TEMPLATES`` query for every
+    name variant in ``app_names``, deduplicates by post ID, and writes results to
+    ``data/{app_key}/reviews/reddit.json``.
+
+    Args:
+        app_key: Short identifier for the app (e.g. ``"notion"``).
+        app_names: List of search-friendly name variants (e.g. ``["Notion", "Notion app"]``).
+
+    Returns:
+        Total number of unique posts collected.
+    """
     print(f"\n{'='*60}")
     print(f"Scraping: {app_key}")
     print(f"{'='*60}")
