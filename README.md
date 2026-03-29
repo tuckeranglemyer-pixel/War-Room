@@ -79,8 +79,7 @@ User Input (product name)
 ┌─────────────────┐
 │  Verdict Card    │ ← Score (1-100), BUY/PASS/CONDITIONS
 │                  │   Sprint-ready findings with severity ratings
-│  Export: JSON,   │   Evidence citations linking to source reviews
-│  Markdown, Jira  │
+│  Export: JSON    │   Evidence citations linking to source reviews
 └─────────────────┘
 ```
 
@@ -157,7 +156,7 @@ npm run dev
 # Via API
 curl -X POST http://localhost:8000/analyze \
   -H "Content-Type: application/json" \
-  -d '{"product": "Notion"}'
+  -d '{"product_description": "Notion - All-in-one workspace", "product_name": "Notion"}'
 
 # Connect to WebSocket for live streaming
 wscat -c ws://localhost:8000/ws/{session_id}
@@ -165,11 +164,7 @@ wscat -c ws://localhost:8000/ws/{session_id}
 
 ### Environment Variables
 
-Copy `.env.example` to `.env` and adjust as needed:
-
-```bash
-cp .env.example .env
-```
+Set these in your shell or a `.env` file in the project root:
 
 Key variables (all optional — defaults target DGX Spark production):
 
@@ -198,13 +193,13 @@ Triggers a full War Room analysis session.
 **Request:**
 
 ```json
-{"product": "Notion - All-in-one workspace for notes, docs, and project management"}
+{"product_description": "All-in-one workspace for notes, docs, and project management", "product_name": "Notion"}
 ```
 
 **Response:**
 
 ```json
-{"session_id": "abc-123", "status": "started"}
+{"session_id": "abc-123", "evidence_tier": "full"}
 ```
 
 ### `WS /ws/{session_id}`
@@ -214,10 +209,10 @@ Real-time streaming of debate rounds.
 **Events:**
 
 ```json
-{"type": "round", "round": 1, "agent": "First-Timer", "model": "llama3.3:70b", "content": "..."}
-{"type": "round", "round": 2, "agent": "Daily Driver", "model": "qwen3:32b", "content": "..."}
-{"type": "round", "round": 3, "agent": "First-Timer", "model": "llama3.3:70b", "content": "..."}
-{"type": "verdict", "round": 4, "agent": "Buyer", "score": 72, "decision": "CONDITIONS", "findings": [...]}
+{"round": 1, "agent_name": "First-Timer", "agent_role": "first_timer", "model": "ollama/llama3.3:70b", "status": "complete", "content": "..."}
+{"round": 2, "agent_name": "Daily Driver", "agent_role": "daily_driver", "model": "ollama/qwen3:32b", "status": "complete", "content": "..."}
+{"round": 3, "agent_name": "First-Timer", "agent_role": "first_timer", "model": "ollama/llama3.3:70b", "status": "complete", "content": "..."}
+{"type": "verdict", "score": 72, "decision": "CONDITIONS", "top_3_fixes": [...], "full_report": "..."}
 ```
 
 ### `GET /api/stream/logs/{session_id}`
@@ -257,6 +252,26 @@ Hardware pre-flight check. Returns GO/NO-GO verdict with GPU temp, RAM usage, an
 
 Walkthrough video ingestion — extracts key frames via ffmpeg and analyzes with GPT-4o Vision, then stores evidence chunks in ChromaDB. Requires `OPENAI_API_KEY`.
 
+### `POST /api/analyze/{session_id}`
+
+Start the hardware-adaptive analysis pipeline for a completed video ingest session. Returns 202 Accepted; poll `GET /api/report/{session_id}` for the deliverable.
+
+### `GET /api/report/{session_id}`
+
+Serve the final deliverable JSON for the one-pager. Returns 202 while analysis is running, 200 with the deliverable on completion.
+
+### `GET /api/comparisons/{session_id}`
+
+Return structured side-by-side comparison cards pairing user frames against the closest competitor screenshots.
+
+### `GET /api/config/mode` / `POST /api/config/mode/{mode}`
+
+Read or switch execution mode at runtime (`dgx` for local Ollama, `cloud` for OpenAI GPT-4o).
+
+### `DELETE /api/sessions/{session_id}`
+
+Clean up session directory and in-memory evidence store.
+
 ### `GET /health`
 
 Health check for orchestration and demo status.
@@ -271,17 +286,29 @@ Health check for orchestration and demo status.
 War-Room/
 ├── src/                              # Core application package
 │   ├── api/
-│   │   └── server.py                 # FastAPI REST + WebSocket streaming server
+│   │   ├── server.py                 # FastAPI REST + WebSocket streaming server
+│   │   └── video_processor.py        # ffmpeg frame extraction + GPT-4o Vision analysis
+│   ├── config.py                     # Execution mode config (cloud/dgx) + endpoint routing
+│   ├── utils.py                      # Shared helpers (JSON fence stripping, score clamping)
 │   ├── inference/
 │   │   ├── model_config.py           # Model & runtime configuration (env-driven)
 │   │   ├── vllm_multi_model_dispatch.py  # Multi-model dispatch + thermal management
 │   │   └── dgx_preflight_check.py    # DGX Spark pre-flight health checker
 │   ├── orchestration/
 │   │   ├── adversarial_debate_engine.py  # CrewAI 4-round debate pipeline
+│   │   ├── adaptive_runner.py        # Hardware-adaptive 3-tier execution engine
+│   │   ├── parallel_analysis.py      # Parallel 3-model analysis (legacy vLLM path)
 │   │   ├── persona_generator.py      # Meta-prompt adversarial persona generation
 │   │   ├── swarm_reconnaissance.py   # Parallel 20-scout evidence gathering
+│   │   ├── hardware_preflight.py     # API-facing GO/NO-GO preflight wrapper
 │   │   ├── thermal_safe_debate_runner.py  # Single-model-at-a-time DGX runner
 │   │   └── response_synthesizer.py   # Verdict parsing and synthesis
+│   ├── prompts/                      # System prompts and output schemas
+│   │   ├── schema.py                 # Deliverable JSON schema + dataclasses
+│   │   ├── strategist.py             # Strategist analyst system prompt
+│   │   ├── ux_analyst.py             # UX analyst system prompt
+│   │   ├── market_researcher.py      # Market researcher system prompt
+│   │   └── partner_review.py         # Partner review (challenge layer) prompt
 │   └── rag/
 │       └── chroma_retrieval.py       # ChromaDB query wrappers + CrewAI @tool functions
 ├── ingestion/                        # Data pipeline
@@ -301,20 +328,15 @@ War-Room/
 │   │       ├── Landing.tsx           # Landing page with product search
 │   │       ├── DebateStream.tsx      # Live debate round streaming display
 │   │       ├── VerdictCard.tsx       # Final verdict with score and findings
+│   │       ├── Report.tsx            # McKinsey-style one-pager report
+│   │       ├── AnalysisPipeline.tsx  # 6-stage analysis progress feed
 │   │       └── ContextForm.tsx       # Product context input form
 │   ├── package.json
 │   └── vite.config.ts
-├── tests/                            # Integration test suite
-│   ├── conftest.py                   # Shared fixtures
-│   ├── test_adversarial_debate_orchestration.py
-│   ├── test_rag_retrieval.py
-│   ├── test_response_synthesis.py
-│   └── test_vllm_model_dispatch.py
 ├── optimized_crew.py                 # DGX-optimized CLI: smart evidence + thermal-safe debate
 ├── test_crew.py                      # Lightweight smoke tests (no CrewAI import)
 ├── chroma_db/                        # Pre-embedded vector database (31,668 chunks)
 ├── requirements.txt                  # Python dependencies
-├── .env.example                      # Documented environment variable defaults
 ├── LICENSE                           # MIT
 └── README.md
 ```
@@ -423,9 +445,6 @@ Verifies GPU temperature, free VRAM, Ollama model availability, RAM headroom, an
 ```bash
 # Lightweight smoke tests (no CrewAI import required)
 pytest test_crew.py -v
-
-# Full integration suite
-pytest tests/ -v
 ```
 
 ---
