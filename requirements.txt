@@ -1,6 +1,5 @@
 # Core inference and orchestration
 crewai==0.130.0
-crewai-tools==0.47.1
 
 # Vector database (local, no external service)
 chromadb==0.6.3
