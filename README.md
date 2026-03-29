@@ -10,7 +10,9 @@
 
 The War Room is a multi-agent AI platform that conducts adversarial product quality analysis by orchestrating structured debate between three distinct open-weight language model architectures, grounded in a pre-curated RAG corpus of real user reviews.
 
-**Live Demo:** [Frontend](https://frontend-untracked.vercel.app/) · [API Docs](https://paplike-hillary-beauteously.ngrok-free.dev/docs) · [Swagger UI](https://paplike-hillary-beauteously.ngrok-free.dev/docs#/)
+**Live Demo:** [Frontend](https://frontend-untracked.vercel.app/) · [API Docs](https://war-room-production.up.railway.app/docs) · [Health Check](https://war-room-production.up.railway.app/health)
+
+**Production Backend:** Railway (Dockerfile, ffmpeg, Python 3.12, ChromaDB 31,668 chunks)
 
 **Built with:**
 [![Python](https://img.shields.io/badge/python-3.11+-blue)](https://www.python.org/)
