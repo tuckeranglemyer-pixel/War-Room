@@ -198,6 +198,7 @@ class AdaptiveRunner:
     """
 
     def __init__(self) -> None:
+        """Initialize the runner with a fresh hardware monitor and empty execution log."""
         self.monitor = HardwareMonitor()
         self.execution_log: list[dict[str, Any]] = []
         self.tier_used: Optional[int] = None

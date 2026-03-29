@@ -89,6 +89,7 @@ class DebateSession:
         differentiator: str = "",
         product_stage: str = "",
     ) -> None:
+        """Initialize a debate session and its inter-thread communication queue."""
         self.session_id = session_id
         self.product_description = product_description
         self.product_name = product_name
