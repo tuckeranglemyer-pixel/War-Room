@@ -12,6 +12,14 @@ The War Room is a multi-agent AI platform that conducts adversarial product qual
 
 **Live Demo:** [Frontend](https://frontend-untracked.vercel.app/) · [API Docs](https://paplike-hillary-beauteously.ngrok-free.dev/docs) · [Swagger UI](https://paplike-hillary-beauteously.ngrok-free.dev/docs#/)
 
+**Built with:**
+[![Python](https://img.shields.io/badge/python-3.11+-blue)](https://www.python.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev/)
+[![CrewAI](https://img.shields.io/badge/CrewAI-multi--agent-orange)](https://www.crewai.com/)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-vector--store-green)](https://www.trychroma.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-websocket-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![NVIDIA DGX Spark](https://img.shields.io/badge/NVIDIA-DGX%20Spark-76B900?logo=nvidia&logoColor=white)](https://www.nvidia.com/en-us/products/workstations/dgx-spark/)
+
 > Built at the **2026 yconic New England Inter-Collegiate AI Hackathon** by **Tucker Anglemyer** & **Griffin Kovach**
 
 ---
