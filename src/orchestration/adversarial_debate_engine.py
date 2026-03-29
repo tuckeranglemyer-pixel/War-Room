@@ -65,6 +65,7 @@ def build_crew(
     product_description: str,
     task_callback: Optional[Callable[..., None]] = None,
     session_context: Optional[dict[str, Any]] = None,
+    evidence_tier: str = "full",
 ) -> Crew:
     """Assemble the War Room crew with generated personas, swarm briefing, and four tasks.
 
@@ -74,6 +75,10 @@ def build_crew(
         session_context: Optional user evaluation context (target_user, competitors,
             differentiator, product_stage, video_evidence). When set, agents
             prioritize user-supplied evidence over general reviews.
+        evidence_tier: "full" pre-fetches ChromaDB evidence and injects it into task
+            prompts (default for the 20 curated products). "general" skips ChromaDB
+            pre-fetch — agents rely on model knowledge and live search_pm_knowledge
+            tool calls instead.
 
     Returns:
         A configured sequential Crew ready to kickoff().
@@ -166,13 +171,21 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough. Ref
     swarm_stats = swarm_result["stats"]
 
     # --- Step 1b: Pre-fetch real evidence from ChromaDB ---
-    # Small local models don't reliably execute the ReAct tool-calling loop,
-    # so we inject evidence directly into task descriptions as a guaranteed
-    # knowledge base. Agents cite from this rather than hallucinating.
-    print("\n📚 Fetching real user evidence from knowledge base...")
-    real_evidence = fetch_context_for_product(product_description)
-    evidence_count = real_evidence.count("[") - real_evidence.count("[Query error")
-    print(f"   → Loaded {evidence_count} real evidence chunks for debate context\n")
+    # "full" tier: inject pre-fetched evidence directly into task descriptions so
+    # small local models have a guaranteed knowledge base to cite from.
+    # "general" tier: skip pre-fetch — agents rely on model knowledge and live
+    # search_pm_knowledge tool calls (no cached RAG citations in prompts).
+    if evidence_tier == "full":
+        print("\n📚 Fetching real user evidence from knowledge base...")
+        real_evidence = fetch_context_for_product(product_description)
+        evidence_count = real_evidence.count("[") - real_evidence.count("[Query error")
+        print(f"   → Loaded {evidence_count} real evidence chunks for debate context\n")
+    else:
+        real_evidence = (
+            "[General analysis mode — no pre-seeded ChromaDB evidence. "
+            "Use search_pm_knowledge tool calls to gather evidence during debate.]"
+        )
+        print("\n📚 General analysis mode — skipping ChromaDB pre-fetch\n")
 
     # --- Step 2: Create Agents ---
     first_timer = Agent(

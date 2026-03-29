@@ -144,6 +144,7 @@ class DebateSession:
         competitors: str = "",
         differentiator: str = "",
         product_stage: str = "",
+        evidence_tier: str = "full",
     ) -> None:
         """Initialize a debate session and its inter-thread communication queue."""
         self.session_id = session_id
@@ -155,6 +156,7 @@ class DebateSession:
         self.competitors = competitors
         self.differentiator = differentiator
         self.product_stage = product_stage
+        self.evidence_tier = evidence_tier
         self.queue: asyncio.Queue[dict | None] = asyncio.Queue()
         self._round_index = 0
 
@@ -254,6 +256,7 @@ class AnalyzeResponse(BaseModel):
     session_id: str
     demo_mode: bool = False
     message: str = ""
+    evidence_tier: str = "full"  # "full" = RAG-grounded, "general" = model knowledge only
 
 
 # ---------------------------------------------------------------------------
@@ -289,20 +292,16 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
         )
 
     effective_name = (body.product_name or body.product_description).strip()
-    if not is_supported_product(effective_name):
-        raise HTTPException(
-            status_code=400,
-            detail={
-                "error": "Product not in our evidence corpus. Choose from our 20 supported products.",
-                "supported_products": SUPPORTED_PRODUCTS,
-            },
-        )
+    # Determine evidence tier: products matching the ChromaDB corpus get full RAG grounding;
+    # freeform products get a general analysis using model knowledge and live tool calls.
+    evidence_tier = "full" if is_supported_product(effective_name) else "general"
 
     if not check_budget_guard():
         return AnalyzeResponse(
             session_id="",
             demo_mode=True,
             message="High demand — showing demo analysis. Full analyses resume shortly.",
+            evidence_tier=evidence_tier,
         )
 
     session_id = str(uuid.uuid4())
@@ -317,10 +316,11 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
         competitors=body.competitors,
         differentiator=body.differentiator,
         product_stage=body.product_stage,
+        evidence_tier=evidence_tier,
     )
     SESSIONS[session_id] = session
     _ = loop.run_in_executor(_executor, _run_debate, session)
-    return AnalyzeResponse(session_id=session_id)
+    return AnalyzeResponse(session_id=session_id, evidence_tier=evidence_tier)
 
 
 @app.websocket("/ws/{session_id}")
@@ -396,6 +396,7 @@ def _run_debate(session: DebateSession) -> None:
             effective_name,
             task_callback=session.build_task_callback(),
             session_context=session_context,
+            evidence_tier=session.evidence_tier,
         )
         result = crew.kickoff()
         verdict = parse_verdict(str(result))
