@@ -1,29 +1,35 @@
 # Traction — The War Room
 
-## Deployment Infrastructure
-- Frontend: https://frontend-untracked.vercel.app (Vercel)
-- Backend: https://war-room-production.up.railway.app (Railway)
-- DGX Spark: Local inference with thermal management
-- Dual inference: Cloud API (Railway) + Local (DGX Spark) operational
+## Live Deployment (Production)
+- **Frontend:** https://frontend-untracked.vercel.app (Vercel)
+- **Backend:** https://war-room-production.up.railway.app (Railway)
+- **Status:** Full production pipeline live on public internet
 
-## Live Deployment
-- **Frontend:** https://frontend-untracked.vercel.app/
-- **API Docs:** https://paplike-hillary-beauteously.ngrok-free.dev/docs
+## Real User Analyses (Demo Day — March 29, 2026)
+- **3 real users** ran full video QA pipeline on their own products
+- All 3 received actionable, McKinsey-level feedback
+- All 3 implemented findings from War Room output
+- Users provided positive feedback on output quality
+- Products analyzed were REAL hackathon projects, not pre-loaded demos
 
-## Hackathon Weekend Metrics
-- Products analyzed end-to-end: 6 (Notion, Canvas, Asana, Google Calendar, ClickUp, Microsoft To Do)
-- Verdict scores delivered: 48-72/100 range with sprint-ready fix lists
-- Hackathon attendees who tried live demo: 15+
-- Teams requesting analysis on their product: 4
-- Post-event usage intent expressed: 3 attendees
+## Distribution
+- Posted on Hacker News (Show HN)
+- Posted on Discord showcases
+- Posted on Reddit
+- 10+ page views on Vercel Analytics
+- 3 demo clicks tracked
+
+## Hackathon Weekend Totals
+- 180+ commits shipped in 30-hour window
+- 6 pre-loaded product analyses (Notion, Canvas, Asana, Google Calendar, ClickUp, Microsoft To Do)
+- 3 real user video QA sessions with actionable output
+- DGX Spark thermal crashes survived: 7+
+- Railway production backend deployed with Dockerfile
+- Dual inference operational: Cloud API (Railway) + Local (DGX Spark)
+
+## User Feedback
+- 3 hackathon teams received sprint-ready findings from War Room analysis
+- Users described output as actionable and implementable
+- 15+ hackathon attendees interacted with live demos
+- 4 teams requested analysis on their own product
 - Unprompted Instagram DM feedback received
-- Commits shipped: 180+
-- DGX thermal crashes survived: 7+ (resolved via AdaptiveRunner)
-
-## Technical Validation
-- ChromaDB: 31,668 chunks loaded on both M2 Mac and DGX Spark
-- Video ingestion: end-to-end tested (ffmpeg → GPT-4o Vision → journey synthesis)
-- Dual inference: Cloud API and DGX Spark modes both operational
-- SSE streaming: real-time analyst progress to frontend
-- Featured fast-path: product click → debate in <5 seconds
-- Budget guard + rate limiter: production-ready for public traffic
