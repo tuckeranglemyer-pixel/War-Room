@@ -24,6 +24,27 @@ The War Room is a multi-agent AI platform that conducts adversarial product qual
 
 ---
 
+## Features
+
+| Feature | Description |
+|---------|-------------|
+| **4-round adversarial debate** | Three distinct open-weight LLM families (Llama / Qwen / Mistral) argue over real user evidence, with context chaining R1→R2→R3→R4 |
+| **31,668-chunk RAG corpus** | Pre-embedded user reviews, Reddit posts, HN comments, and app metadata across 20 PM tools |
+| **Reconnaissance swarm** | 20 parallel ChromaDB scouts query across product dimensions in 1–3 seconds |
+| **Live SSE streaming** | Real-time analysis progress via Server-Sent Events at `GET /api/stream/logs/{session_id}` |
+| **Dual inference** | Cloud API mode (GPT-4o, sub-60s) and DGX Spark mode (local open-weight, thermal-managed) |
+| **Featured product fast-path** | Click any of 20 curated products → debate starts in <5 seconds, no wizard |
+| **Two-tier evidence** | Full RAG for 20 curated products, general analysis for freeform entries |
+| **6-stage analysis pipeline** | Animated progress feed: frame extraction → vision analysis → competitor matching → evidence curation → specialist deployment → report assembly |
+| **Budget guard** | Auto-fallback to demo after 100 daily analyses |
+| **Per-IP rate limiting** | 3 analyses per hour per IP |
+| **Video ingestion** | ffmpeg frame extraction → GPT-4o Vision → ChromaDB evidence chunks |
+| **Hardware-adaptive execution** | 3-tier thermal management on DGX Spark — auto-degrades under GPU pressure |
+| **Demo fallback** | Hardcoded typewriter-animated debate activates automatically if WebSocket disconnects |
+| **McKinsey-style report** | Structured verdict with score, BUY/PASS/CONDITIONS, sprint-ready findings, evidence citations |
+
+---
+
 ## Architecture
 
 ```
@@ -60,6 +81,8 @@ User Input (product name)
 │  Markdown, Jira  │
 └─────────────────┘
 ```
+
+> **Routing note:** Featured products (20 curated) bypass the context wizard and route directly to `POST /analyze` → WebSocket debate stream. Freeform products go through the full context form with optional video upload. Both paths converge on the same 4-round CrewAI pipeline.
 
 ---
 
@@ -193,6 +216,39 @@ Real-time streaming of debate rounds.
 {"type": "round", "round": 2, "agent": "Daily Driver", "model": "qwen3:32b", "content": "..."}
 {"type": "round", "round": 3, "agent": "First-Timer", "model": "llama3.3:70b", "content": "..."}
 {"type": "verdict", "round": 4, "agent": "Buyer", "score": 72, "decision": "CONDITIONS", "findings": [...]}
+```
+
+### `GET /api/stream/logs/{session_id}`
+
+Server-Sent Events endpoint for real-time analysis progress. Replays buffered messages for late-connecting clients, streams live updates, and closes on completion.
+
+**Events** (text/event-stream):
+
+```
+data: {"stage": "frame_extraction", "message": "Extracting 10 frames from video..."}
+data: {"stage": "vision_analysis", "message": "Analyzing frames with GPT-4o Vision..."}
+data: {"stage": "competitor_matching", "message": "Matching against ChromaDB corpus..."}
+data: {"stage": "evidence_curation", "message": "Curating evidence for specialists..."}
+data: {"stage": "specialist_deployment", "message": "Deploying Round 1: Strategist..."}
+data: {"stage": "report_assembly", "message": "Assembling final deliverable..."}
+data: [DONE]
+```
+
+### `GET /api/preflight`
+
+Hardware pre-flight check. Returns GO/NO-GO verdict with GPU temp, RAM usage, and loaded model status.
+
+```json
+{
+  "verdict": "GO",
+  "tier_recommendation": 2,
+  "health": {
+    "gpu_temp": 48,
+    "gpu_memory": {"used_mib": 12000, "total_mib": 131072, "free_mib": 119072},
+    "ram": {"used_gb": 42.1, "total_gb": 128.0, "percent": 33.0},
+    "loaded_models": []
+  }
+}
 ```
 
 ### `POST /api/ingest/video`
