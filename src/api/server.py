@@ -302,16 +302,17 @@ async def health() -> dict[str, str]:
 @app.post("/analyze", response_model=AnalyzeResponse, tags=["debate"])
 async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeResponse:
     """Start a War Room debate for the given product and return a session_id."""
-    try:
-        client_ip = http_request.client.host if http_request.client else "unknown"
-        if not check_rate_limit(client_ip):
-            raise HTTPException(
-                status_code=429,
-                detail="Rate limit reached: 3 analyses per IP per hour. Try again later.",
-            )
+    client_ip = http_request.client.host if http_request.client else "unknown"
+    if not check_rate_limit(client_ip):
+        raise HTTPException(
+            status_code=429,
+            detail="Rate limit reached: 3 analyses per IP per hour. Try again later.",
+        )
 
-        effective_name = (body.product_name or body.product_description).strip()
-        evidence_tier = "full" if is_supported_product(effective_name) else "general"
+    effective_name = (body.product_name or body.product_description).strip()
+    # Determine evidence tier: products matching the ChromaDB corpus get full RAG grounding;
+    # freeform products get a general analysis using model knowledge and live tool calls.
+    evidence_tier = "full" if is_supported_product(effective_name) else "general"
 
     if not check_budget_guard():
         return AnalyzeResponse(
@@ -339,17 +340,15 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
         SESSIONS[session_id] = session
         _ = loop.run_in_executor(_executor, _run_debate, session)
         return AnalyzeResponse(session_id=session_id, evidence_tier=evidence_tier)
+    except HTTPException:
+        raise
     except Exception as exc:
         SESSIONS.pop(session_id, None)
+        _log.exception("POST /analyze failed")
         raise HTTPException(
             status_code=500,
             detail=f"Failed to start debate session: {exc}",
         ) from exc
-    except HTTPException:
-        raise
-    except Exception as exc:
-        _log.exception("POST /analyze failed")
-        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 @app.websocket("/ws/{session_id}")
@@ -592,42 +591,37 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
     Raises:
         404: Session not found or synthesis not yet complete.
     """
-    try:
-        evidence = VIDEO_EVIDENCE.get(session_id)
-        if not evidence:
-            raise HTTPException(status_code=404, detail="Session not found.")
-        cards = evidence.get("comparison_cards")
-        if not cards:
-            raise HTTPException(
-                status_code=404,
-                detail="No comparison cards found for this session. "
-                "Either the video had no matching competitor screens or synthesis failed.",
-            )
-        synthesis = evidence.get("synthesis", {})
+    evidence = VIDEO_EVIDENCE.get(session_id)
+    if not evidence:
+        raise HTTPException(status_code=404, detail="Session not found.")
+    cards = evidence.get("comparison_cards")
+    if not cards:
+        raise HTTPException(
+            status_code=404,
+            detail="No comparison cards found for this session. "
+            "Either the video had no matching competitor screens or synthesis failed.",
+        )
+    synthesis = evidence.get("synthesis", {})
 
-        base_url = str(request.base_url).rstrip("/")
-        enriched_cards = copy.deepcopy(cards)
-        for card in enriched_cards:
-            user_side = card.get("user_side", {})
-            if user_side.get("image_path"):
-                user_side["image_url"] = f"{base_url}/{user_side['image_path']}"
-            comp_side = card.get("competitor_side", {})
-            if comp_side.get("image_path"):
-                comp_side["image_url"] = f"{base_url}/{comp_side['image_path']}"
+    # Deep-copy so we don't mutate the in-memory evidence store
+    base_url = str(request.base_url).rstrip("/")
+    enriched_cards = copy.deepcopy(cards)
+    for card in enriched_cards:
+        user_side = card.get("user_side", {})
+        if user_side.get("image_path"):
+            user_side["image_url"] = f"{base_url}/{user_side['image_path']}"
+        comp_side = card.get("competitor_side", {})
+        if comp_side.get("image_path"):
+            comp_side["image_url"] = f"{base_url}/{comp_side['image_path']}"
 
-        return {
-            "session_id": session_id,
-            "cards": enriched_cards,
-            "total_comparisons": len(enriched_cards),
-            "apps_compared": synthesis.get("apps_compared", []),
-            "dominant_themes": synthesis.get("dominant_themes", []),
-            "summary": synthesis.get("agent_brief", ""),
-        }
-    except HTTPException:
-        raise
-    except Exception as exc:
-        _log.exception("GET /api/comparisons/%s failed", session_id)
-        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
+    return {
+        "session_id": session_id,
+        "cards": enriched_cards,
+        "total_comparisons": len(enriched_cards),
+        "apps_compared": synthesis.get("apps_compared", []),
+        "dominant_themes": synthesis.get("dominant_themes", []),
+        "summary": synthesis.get("agent_brief", ""),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -637,8 +631,6 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
 
 async def _run_analysis_bg(session_id: str, evidence: dict) -> None:
     """Background coroutine: run the adaptive analysis pipeline and write deliverable.json."""
-    import logging  # noqa: PLC0415
-    _log = logging.getLogger(__name__)
     ANALYSIS_STATUS[session_id] = "pending"
 
     synthesis = evidence.get("synthesis", {})
@@ -693,27 +685,33 @@ async def run_analysis(session_id: str, background_tasks: BackgroundTasks) -> JS
     Raises:
         404: No video evidence found for this session_id (run ingest first).
     """
-    evidence = VIDEO_EVIDENCE.get(session_id)
-    if not evidence:
-        raise HTTPException(
-            status_code=404,
-            detail=(
-                f"No video evidence found for session {session_id}. "
-                "Run POST /api/ingest/video first."
-            ),
+    try:
+        evidence = VIDEO_EVIDENCE.get(session_id)
+        if not evidence:
+            raise HTTPException(
+                status_code=404,
+                detail=(
+                    f"No video evidence found for session {session_id}. "
+                    "Run POST /api/ingest/video first."
+                ),
+            )
+
+        ANALYSIS_STATUS[session_id] = "pending"
+        background_tasks.add_task(_run_analysis_bg, session_id, evidence)
+
+        return JSONResponse(
+            status_code=202,
+            content={
+                "session_id": session_id,
+                "status": "analyzing",
+                "report_url": f"/api/report/{session_id}",
+            },
         )
-
-    ANALYSIS_STATUS[session_id] = "pending"
-    background_tasks.add_task(_run_analysis_bg, session_id, evidence)
-
-    return JSONResponse(
-        status_code=202,
-        content={
-            "session_id": session_id,
-            "status": "analyzing",
-            "report_url": f"/api/report/{session_id}",
-        },
-    )
+    except HTTPException:
+        raise
+    except Exception as exc:
+        _log.exception("POST /api/analyze/%s failed", session_id)
+        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 @app.get("/api/stream/logs/{session_id}", tags=["analysis"])
@@ -762,17 +760,23 @@ async def get_report(session_id: str) -> JSONResponse:
     Returns 202 while the background analysis is still running so the frontend
     can poll instead of getting a hard 404.
     """
-    report_path = Path(f"sessions/{session_id}/deliverable.json")
-    if not report_path.exists():
-        status = ANALYSIS_STATUS.get(session_id)
-        if status == "pending":
-            return JSONResponse(
-                status_code=202,
-                content={"status": "analyzing", "session_id": session_id},
-            )
-        raise HTTPException(status_code=404, detail="Report not found. Run analysis first.")
-    with open(report_path) as f:
-        return JSONResponse(content=json.load(f))
+    try:
+        report_path = Path(f"sessions/{session_id}/deliverable.json")
+        if not report_path.exists():
+            status = ANALYSIS_STATUS.get(session_id)
+            if status == "pending":
+                return JSONResponse(
+                    status_code=202,
+                    content={"status": "analyzing", "session_id": session_id},
+                )
+            raise HTTPException(status_code=404, detail="Report not found. Run analysis first.")
+        with open(report_path) as f:
+            return JSONResponse(content=json.load(f))
+    except HTTPException:
+        raise
+    except Exception as exc:
+        _log.exception("GET /api/report/%s failed", session_id)
+        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 # ---------------------------------------------------------------------------
@@ -821,9 +825,13 @@ async def run_preflight() -> dict[str, Any]:
     Use this before POST /api/analyze/{session_id} to verify the hardware is
     in a safe state to run inference without triggering a thermal shutdown.
     """
-    from src.orchestration.hardware_preflight import preflight_check  # noqa: PLC0415
+    try:
+        from src.orchestration.hardware_preflight import preflight_check  # noqa: PLC0415
 
-    return preflight_check()
+        return preflight_check()
+    except Exception as exc:
+        _log.exception("GET /api/preflight failed")
+        raise HTTPException(status_code=500, detail=f"Preflight check failed: {exc}") from exc
 
 
 # ---------------------------------------------------------------------------
@@ -840,14 +848,20 @@ async def cleanup_session(session_id: str) -> dict[str, Any]:
     Raises:
         404: Session directory and in-memory record both absent.
     """
-    session_dir = SESSIONS_DIR / session_id
-    if not session_dir.exists() and session_id not in VIDEO_EVIDENCE:
-        raise HTTPException(status_code=404, detail="Session not found.")
-    if session_dir.exists():
-        shutil.rmtree(session_dir, ignore_errors=True)
-    VIDEO_EVIDENCE.pop(session_id, None)
-    SESSIONS.pop(session_id, None)
-    return {"deleted": True, "session_id": session_id}
+    try:
+        session_dir = SESSIONS_DIR / session_id
+        if not session_dir.exists() and session_id not in VIDEO_EVIDENCE:
+            raise HTTPException(status_code=404, detail="Session not found.")
+        if session_dir.exists():
+            shutil.rmtree(session_dir, ignore_errors=True)
+        VIDEO_EVIDENCE.pop(session_id, None)
+        SESSIONS.pop(session_id, None)
+        return {"deleted": True, "session_id": session_id}
+    except HTTPException:
+        raise
+    except Exception as exc:
+        _log.exception("DELETE /api/sessions/%s failed", session_id)
+        raise HTTPException(status_code=500, detail=f"Internal error: {exc}") from exc
 
 
 # ---------------------------------------------------------------------------
