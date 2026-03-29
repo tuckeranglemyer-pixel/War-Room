@@ -9,7 +9,13 @@ from typing import Any, Callable, Optional
 
 from crewai import Agent, Crew, LLM, Process, Task
 
-from config import LOCAL_BASE_URL, LOCAL_MODEL, MAX_SCOUTS, MAX_WORKERS
+from config import (
+    DAILY_DRIVER_BUYER_MODEL,
+    LOCAL_BASE_URL,
+    LOCAL_MODEL,
+    MAX_SCOUTS,
+    MAX_WORKERS,
+)
 from meta_prompt import generate_personas
 from swarm import deploy_swarm
 from tools import (
@@ -22,8 +28,12 @@ from tools import (
 #   first_timer_llm = LLM(model=FIRST_TIMER_MODEL, base_url=LOCAL_BASE_URL)
 local_llm = LLM(model=LOCAL_MODEL, base_url=LOCAL_BASE_URL)
 first_timer_llm = local_llm
-daily_driver_llm = local_llm
-buyer_llm = local_llm
+daily_driver_buyer_llm = LLM(
+    model=DAILY_DRIVER_BUYER_MODEL,
+    base_url=LOCAL_BASE_URL,
+)
+daily_driver_llm = daily_driver_buyer_llm
+buyer_llm = daily_driver_buyer_llm
 
 
 def build_crew(

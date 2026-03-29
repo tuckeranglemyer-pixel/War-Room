@@ -6,6 +6,8 @@ Centralized settings for models, API endpoints, and feature flags.
 # Model Configuration
 LOCAL_MODEL = "ollama/llama3.1:8b"
 LOCAL_BASE_URL = "http://localhost:11434"
+# Daily Driver and Buyer agents share this model (First-Timer uses LOCAL_MODEL).
+DAILY_DRIVER_BUYER_MODEL = "ollama/llama3.3:60b"
 
 # DGX Spark model assignments (uncomment during DGX window)
 # FIRST_TIMER_MODEL = "ollama/llama3.3:70b"
