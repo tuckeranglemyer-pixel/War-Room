@@ -11,6 +11,7 @@ uvicorn[standard]==0.34.0
 websockets==14.2
 pydantic==2.11.3
 python-multipart==0.0.20
+python-dotenv==1.0.1
 
 # OpenAI (GPT-4o Vision for video frame analysis)
 openai==1.75.0

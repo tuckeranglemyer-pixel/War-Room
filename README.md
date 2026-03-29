@@ -1,6 +1,56 @@
 # War Room — The Multi-Model Adversarial Debate Engine That Replaces Opinion With Evidence-Backed Verdicts
 
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 > Built at the **yconic New England Inter-Collegiate AI Hackathon 2026** by Griffin Kovach & Tucker Anglemyer.
+
+**Interactive API docs (when the server is running):** [Swagger UI — `/docs`](http://127.0.0.1:8000/docs) · [ReDoc — `/redoc`](http://127.0.0.1:8000/redoc) · [OpenAPI JSON — `/openapi.json`](http://127.0.0.1:8000/openapi.json)
+
+---
+
+## Features
+
+| Feature | Description |
+|--------|-------------|
+| **Adversarial debate** | Four CrewAI rounds, three personas, two Ollama model backends (configurable) |
+| **RAG + swarm** | ChromaDB `pm_tools` (~31.7K chunks), 20-dimension scout briefing before Round 1 |
+| **Streaming API** | `POST /analyze` + `WebSocket /ws/{session_id}` for round-by-round JSON |
+| **Demo fallback** | Frontend typewriter demo if the backend is unreachable |
+| **Optional video ingest** | `POST /api/ingest/video` — ffmpeg key frames + GPT-4o Vision (requires API key) |
+| **Health** | `GET /health` for orchestration / demo checks |
+
+---
+
+## Quick architecture (Mermaid)
+
+```mermaid
+flowchart LR
+  subgraph client [Frontend]
+    UI[Vite + React + Tailwind]
+  end
+  subgraph server [Python API]
+    API[FastAPI api.py]
+    CR[crew.py]
+    MP[meta_prompt.py]
+    SW[swarm.py]
+    TG[tools.py]
+  end
+  subgraph data [Data]
+    CH[(ChromaDB pm_tools)]
+  end
+  UI -->|POST /analyze, WS| API
+  API --> CR
+  CR --> MP
+  CR --> SW
+  CR --> TG
+  SW --> CH
+  TG --> CH
+```
+
+For a full ASCII pipeline diagram, see **Architecture** below.
 
 ---
 
@@ -301,7 +351,7 @@ Running the debate on **Ollama** (or vLLM) keeps product text and retrieved evid
 
 ### Prerequisites
 
-- Python 3.11+
+- **Python 3.11 or 3.12** (recommended for the CrewAI / LangChain stack; **3.14+** may not be supported yet by upstream wheels)
 - [Ollama](https://ollama.ai/) for local dev, or vLLM on NVIDIA DGX Spark for production
 - ffmpeg (optional, for video ingestion): [ffmpeg.org](https://ffmpeg.org/download.html)
 - OpenAI API key (optional, for video frame analysis and screenshot ingestion)
@@ -322,6 +372,13 @@ pip install crewai chromadb fastapi uvicorn websockets openai pydantic
 ```
 
 ### 2. Set environment variables
+
+Copy the example file and adjust (optional — `config.py` has defaults when unset):
+
+```bash
+cp .env.example .env
+# Edit .env to override LOCAL_MODEL, API_PORT, CHROMA_DB_PATH, etc.
+```
 
 ```bash
 # Required only for video ingestion and screenshot processing
@@ -377,7 +434,17 @@ python3 -c "import chromadb; c = chromadb.PersistentClient(path='./chroma_db'); 
 python api.py
 # Server starts at http://0.0.0.0:8000
 # WebSocket at ws://localhost:8000/ws/{session_id}
+# OpenAPI: http://127.0.0.1:8000/docs  |  Health: curl http://127.0.0.1:8000/health
 ```
+
+### 5b. Tests (lightweight)
+
+```bash
+pip install pytest python-dotenv
+pytest test_crew.py -v
+```
+
+`test_crew.py` avoids importing CrewAI so it runs in minimal CI; full-stack tests live in `test_*.py` at the repo root.
 
 ### 6. Run a debate (CLI)
 

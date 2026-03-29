@@ -168,11 +168,30 @@ class DebateSession:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+    """Run ffmpeg check at startup; shut down the thread pool on exit."""
+    _check_ffmpeg()
     yield
     _executor.shutdown(wait=False)
 
 
-app = FastAPI(title="War Room API", lifespan=lifespan)
+app = FastAPI(
+    title="War Room API",
+    description=(
+        "Adversarial multi-agent product QA: `POST /analyze` returns a `session_id`; "
+        "open `WS /ws/{session_id}` for round-by-round JSON. "
+        "**Interactive docs:** [/docs](/docs) (Swagger UI), [/redoc](/redoc)."
+    ),
+    version="0.1.0",
+    lifespan=lifespan,
+    openapi_tags=[
+        {"name": "meta", "description": "Health and API discovery."},
+        {"name": "debate", "description": "CrewAI debate pipeline and streaming."},
+        {"name": "video", "description": "Video frame extraction and vision analysis."},
+    ],
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -208,7 +227,24 @@ class AnalyzeResponse(BaseModel):
 # ---------------------------------------------------------------------------
 
 
-@app.post("/analyze", response_model=AnalyzeResponse)
+@app.get("/", tags=["meta"])
+async def root() -> dict[str, str]:
+    """API discovery — links to OpenAPI UIs (judges often check ``/docs``)."""
+    return {
+        "service": "war-room",
+        "docs": "/docs",
+        "redoc": "/redoc",
+        "openapi_json": "/openapi.json",
+    }
+
+
+@app.get("/health", tags=["meta"])
+async def health() -> dict[str, str]:
+    """Liveness probe for orchestrators and hackathon demos."""
+    return {"status": "ok", "service": "war-room-api"}
+
+
+@app.post("/analyze", response_model=AnalyzeResponse, tags=["debate"])
 async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
     """Start a War Room debate for the given product and return a session_id."""
     session_id = str(uuid.uuid4())
@@ -248,6 +284,13 @@ async def websocket_debate(websocket: WebSocket, session_id: str) -> None:
             await websocket.send_text(json.dumps(message))
     except WebSocketDisconnect:
         pass
+    except Exception as exc:  # pragma: no cover — defensive; client may drop mid-send
+        try:
+            await websocket.send_text(
+                json.dumps({"type": "error", "message": f"Stream error: {exc}"})
+            )
+        except Exception:
+            pass
     finally:
         await websocket.close()
         SESSIONS.pop(session_id, None)
@@ -301,6 +344,23 @@ def _run_debate(session: DebateSession) -> None:
         )
     finally:
         asyncio.run_coroutine_threadsafe(session.queue.put(None), session.loop)
+
+
+# ---------------------------------------------------------------------------
+# Startup checks (ffmpeg; also invoked from lifespan)
+# ---------------------------------------------------------------------------
+
+
+def _check_ffmpeg() -> None:
+    """Log whether ffmpeg is available (required for video frame extraction)."""
+    try:
+        subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
+        print("ffmpeg found — video ingestion ready.")
+    except FileNotFoundError:
+        print(
+            "WARNING: ffmpeg not found. Video ingestion will not work. "
+            "Install: https://ffmpeg.org/download.html"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -442,7 +502,7 @@ def generate_journey_summary(
 # ---------------------------------------------------------------------------
 
 
-@app.post("/api/ingest/video")
+@app.post("/api/ingest/video", tags=["video"])
 async def ingest_video(
     product_name: str = Form(...),
     file: UploadFile = File(...),
@@ -505,24 +565,6 @@ async def ingest_video(
         }
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
-
-
-# ---------------------------------------------------------------------------
-# Startup checks
-# ---------------------------------------------------------------------------
-
-
-@app.on_event("startup")
-def check_ffmpeg() -> None:
-    """Log whether ffmpeg is available (required for video frame extraction)."""
-    try:
-        subprocess.run(["ffmpeg", "-version"], capture_output=True, check=True)
-        print("ffmpeg found — video ingestion ready.")
-    except FileNotFoundError:
-        print(
-            "WARNING: ffmpeg not found. Video ingestion will not work. "
-            "Install: https://ffmpeg.org/download.html"
-        )
 
 
 # ---------------------------------------------------------------------------
