@@ -75,3 +75,10 @@ This turned a hardware limitation into an architectural feature — the adaptive
 - Frontend live: https://frontend-untracked.vercel.app/
 - API live: https://paplike-hillary-beauteously.ngrok-free.dev/docs
 - 125+ commits shipped in 24-hour window
+
+## Final Hour — Deployment Sprint
+- Railway backend deployed with Dockerfile (ffmpeg baked into build image)
+- CORS fixed for cross-origin Vercel → Railway requests
+- Python 3.12 pinned via .python-version for Railway compatibility
+- Start command: uvicorn with PYTHONPATH=/app for proper module resolution
+- 167+ commits shipped across 30+ hour hackathon window
