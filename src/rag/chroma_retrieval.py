@@ -1,3 +1,4 @@
+# ChromaDB RAG retrieval tools — 31,668 chunks across 20 PM tools
 """
 ChromaDB RAG retrieval for War Room.
 
