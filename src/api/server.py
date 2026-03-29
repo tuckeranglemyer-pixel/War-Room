@@ -38,8 +38,8 @@ from src.api.video_processor import (
     process_video_frames,
 )
 from src.inference.model_config import API_HOST, API_PORT
+from src.orchestration.adaptive_runner import AdaptiveRunner
 from src.orchestration.adversarial_debate_engine import build_crew
-from src.orchestration.parallel_analysis import run_parallel_analysis
 from src.orchestration.response_synthesizer import parse_verdict
 
 # ---------------------------------------------------------------------------
@@ -512,112 +512,21 @@ async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
 
 @app.post("/api/analyze/{session_id}", tags=["analysis"])
 async def run_analysis(session_id: str) -> dict[str, Any]:
-    """Trigger the parallel analysis pipeline.
-
-    Called after video ingest and evidence curation are complete.
-    Runs three specialist models in parallel, then a challenge pass,
-    and writes the final deliverable JSON to the session directory.
-    """
-    evidence = VIDEO_EVIDENCE.get(session_id)
-    if not evidence:
-        raise HTTPException(
-            status_code=404,
-            detail="No video evidence found for this session. Run /api/ingest/video first.",
-        )
-
-    session = SESSIONS.get(session_id)
-    if not session:
-        raise HTTPException(status_code=404, detail="No session context found.")
-
-    comparison_cards_json = json.dumps(evidence.get("comparison_cards", []), indent=2)
-    agent_brief = evidence.get("synthesis", {}).get("agent_brief", "")
-    curated_evidence_json = json.dumps(evidence.get("curated_evidence", []), indent=2)
-    frame_analyses_json = json.dumps(evidence.get("frame_analyses", []), indent=2)
-    screenshot_matches_json = json.dumps(evidence.get("screenshot_matches", []), indent=2)
-
-    deliverable = await run_parallel_analysis(
-        session_id=session_id,
-        product_name=session.product_name or session.product_description,
-        product_description=session.product_description or "",
-        target_user=session.target_user,
-        differentiator=session.differentiator,
-        product_stage=session.product_stage,
-        competitors=session.competitors,
-        comparison_cards_json=comparison_cards_json,
-        agent_brief=agent_brief,
-        curated_evidence_json=curated_evidence_json,
-        frame_analyses_json=frame_analyses_json,
-        screenshot_matches_json=screenshot_matches_json,
-    )
-
-    return {
-        "session_id": session_id,
-        "status": "complete",
-        "score": deliverable.get("verdict", {}).get("score"),
-        "headline": deliverable.get("verdict", {}).get("headline"),
-        "report_url": f"/api/report/{session_id}",
-    }
-
-
-@app.get("/api/report/{session_id}", tags=["analysis"])
-async def get_report(session_id: str) -> dict[str, Any]:
-    """Serve the final deliverable JSON for the one-pager."""
-    report_path = Path(f"sessions/{session_id}/deliverable.json")
-    if not report_path.exists():
-        raise HTTPException(status_code=404, detail="Report not generated yet.")
-    with open(report_path) as f:
-        return json.load(f)
-
-
-# ---------------------------------------------------------------------------
-# Hardware pre-flight check
-# ---------------------------------------------------------------------------
-
-
-@app.get("/api/preflight", tags=["meta"])
-async def run_preflight() -> dict[str, Any]:
-    """Hardware GO/NO-GO check — run before any analysis on the DGX Spark.
-
-    Reads GPU temperature, GPU memory, system RAM, and currently loaded Ollama
-    models. Returns a structured verdict with blocking issues, warnings, and
-    recommended remediation steps.
-
-    Use this before POST /api/analyze/{session_id} to verify the hardware is
-    in a safe state to run inference without triggering a thermal shutdown.
-    """
-    from src.orchestration.hardware_preflight import preflight_check  # noqa: PLC0415
-
-    return preflight_check()
-
-
-# ---------------------------------------------------------------------------
-# Adaptive analysis endpoint
-# ---------------------------------------------------------------------------
-
-
-@app.post("/api/analyze/{session_id}", tags=["debate"])
-async def run_adaptive_analysis(session_id: str) -> dict[str, Any]:
     """Run the hardware-adaptive analysis pipeline for a completed video ingest session.
 
-    Looks up the video evidence stored by POST /api/ingest/video for the given
-    session_id, then runs the four-analyst adaptive pipeline (Strategist →
-    UX Analyst → Market Researcher → Partner Review) with automatic tier selection
-    based on real-time GPU temperature and RAM usage.
+    Called after POST /api/ingest/video. Automatically selects execution tier
+    based on real-time GPU temperature and RAM usage:
+      Tier 2 (qwen3:32b, 30s cooling)  — GPU < 65°C and RAM < 60%
+      Tier 3 (llama3.1:8b, 60s cooling) — GPU >= 65°C or RAM >= 60%
 
-    Execution tiers:
-      Tier 2 (Sequential): GPU < 65°C and RAM < 60% — uses qwen3:32b, 30s cooling
-      Tier 3 (Micro):      GPU >= 65°C or RAM >= 60% — uses llama3.1:8b, 60s cooling
-
-    All models are unloaded before starting. Context is trimmed automatically.
-    The deliverable is saved to sessions/{session_id}/deliverable.json before
-    returning — a crash mid-transfer will not lose the result.
+    All Ollama models are unloaded before inference starts. Context is trimmed
+    automatically. The deliverable is written to sessions/{session_id}/deliverable.json
+    before this response is returned — a network error will not lose the result.
 
     Raises:
         404: No video evidence found for this session_id.
         500: Analysis pipeline encountered an unrecoverable error.
     """
-    from src.orchestration.adaptive_runner import AdaptiveRunner  # noqa: PLC0415
-
     evidence = VIDEO_EVIDENCE.get(session_id)
     if not evidence:
         raise HTTPException(
@@ -655,7 +564,46 @@ async def run_adaptive_analysis(session_id: str) -> dict[str, Any]:
             detail=f"Adaptive analysis failed: {exc}",
         ) from exc
 
-    return deliverable
+    return {
+        "session_id": session_id,
+        "status": "complete",
+        "tier": runner.tier_used,
+        "score": deliverable.get("verdict", {}).get("score"),
+        "headline": deliverable.get("verdict", {}).get("headline"),
+        "market_readiness": deliverable.get("verdict", {}).get("market_readiness"),
+        "report_url": f"/api/report/{session_id}",
+    }
+
+
+@app.get("/api/report/{session_id}", tags=["analysis"])
+async def get_report(session_id: str) -> dict[str, Any]:
+    """Serve the final deliverable JSON for the one-pager."""
+    report_path = Path(f"sessions/{session_id}/deliverable.json")
+    if not report_path.exists():
+        raise HTTPException(status_code=404, detail="Report not generated yet.")
+    with open(report_path) as f:
+        return json.load(f)
+
+
+# ---------------------------------------------------------------------------
+# Hardware pre-flight check
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/preflight", tags=["meta"])
+async def run_preflight() -> dict[str, Any]:
+    """Hardware GO/NO-GO check — run before any analysis on the DGX Spark.
+
+    Reads GPU temperature, GPU memory, system RAM, and currently loaded Ollama
+    models. Returns a structured verdict with blocking issues, warnings, and
+    recommended remediation steps.
+
+    Use this before POST /api/analyze/{session_id} to verify the hardware is
+    in a safe state to run inference without triggering a thermal shutdown.
+    """
+    from src.orchestration.hardware_preflight import preflight_check  # noqa: PLC0415
+
+    return preflight_check()
 
 
 # ---------------------------------------------------------------------------
