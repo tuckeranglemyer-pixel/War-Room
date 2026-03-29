@@ -237,7 +237,9 @@ War-Room/
 
 ## Key Design Decisions
 
-- **Multi-model adversarial debate:** Three distinct model families (Llama / Qwen / Mistral) ensure genuinely independent analytical perspectives — different training data → different biases → real disagreement
+- **Multi-model adversarial debate:** Three distinct model families (Llama / Qwen / Mistral) ensure genuinely independent analytical perspectives — different training data → different biases → real disagreement. This is the architectural default, not an aspirational target.
+
+- **Inference strategy — design vs. adaptive fallback:** `config.py` defines three canonical model IDs (`FIRST_TIMER_MODEL`, `DAILY_DRIVER_MODEL`, `BUYER_MODEL`) as the primary configuration. When DGX Spark thermal constraints prevent concurrent multi-model serving, `FALLBACK_MODEL` routes all personas through a single model via `thermal_safe_debate_runner.py`. Multi-model is the design; single-model rotation is the engineering response to real hardware limits.
 
 - **Pre-seeded context injection:** `fetch_context_for_product()` retrieves RAG results at crew build time and injects directly into task descriptions, guaranteeing evidence grounding even if the LLM skips ReAct tool calls
 
@@ -245,7 +247,7 @@ War-Room/
 
 - **Smart evidence curation:** `optimized_crew.py` uses a lightweight 8B model to generate product-specific RAG queries instead of hardcoded templates, then unloads it before the debate starts
 
-- **Thermal-safe debate runner:** Single-model-at-a-time loading with GPU thermal gating prevents cumulative VRAM pressure from crashing the DGX Spark mid-debate — tradeoff is ~30-second cooldown between rounds
+- **Thermal-safe debate runner:** Single-model-at-a-time loading with GPU thermal gating prevents cumulative VRAM pressure from crashing the DGX Spark mid-debate. Triggered automatically when GPU exceeds `SAFE_THERMAL_CEILING` (default 75°C); resumes when it drops below `SAFE_THERMAL_RESUME` (default 65°C). Tradeoff: ~30-second cooldown between rounds vs. concurrent serving when thermals permit.
 
 - **Demo fallback:** Hardcoded 4-round debate with typewriter animation activates automatically if WebSocket disconnects within 8 seconds — the system never shows a broken state
 
@@ -253,9 +255,39 @@ War-Room/
 
 ---
 
+## Inference Configuration
+
+### Default: Three Distinct Models (DGX Spark)
+
+```python
+# config.py — Multi-model defaults (DGX Spark target)
+FIRST_TIMER_MODEL  = "ollama/llama3.3:70b"      # Llama family — broad, impressionistic
+DAILY_DRIVER_MODEL = "ollama/qwen3:32b"          # Qwen family — precise, technical
+BUYER_MODEL        = "ollama/mistral-small:24b"  # Mistral family — concise, business
+
+# Adaptive fallback (thermal constraints)
+FALLBACK_MODEL     = "ollama/qwen3:32b"          # All personas on single model
+```
+
+Three distinct open-weight architectures maximize epistemic divergence: different training data → different priors → genuine disagreement rather than correlated outputs from the same model family.
+
+### Adaptive Fallback: Thermal-Safe Single-Model Rotation
+
+When DGX Spark GPU temperatures exceed the thermal ceiling during sustained debate inference, `thermal_safe_debate_runner.py` automatically degrades to `FALLBACK_MODEL`, loading one model at a time with cooldown intervals. This is not a limitation — it is hardware-aware engineering that keeps the system running under real production constraints.
+
+| Condition | Mode | Behavior |
+|-----------|------|----------|
+| GPU temp < 75°C | **Multi-model** | Llama / Qwen / Mistral run concurrently |
+| GPU temp ≥ 75°C | **Adaptive fallback** | Single model, sequential loading, 30s cooldowns |
+| Consumer hardware | **Local dev** | `LOCAL_MODEL` + `DAILY_DRIVER_BUYER_MODEL` (small models) |
+
+All three modes produce a valid 4-round debate with full evidence grounding — only the model diversity varies.
+
+---
+
 ## DGX Spark Configuration
 
-The War Room requires DGX Spark's 128GB unified memory to serve three concurrent models:
+The War Room is designed for DGX Spark's 128GB unified memory to serve three concurrent models:
 
 | Model | Architecture | INT4 Memory |
 |-------|-------------|-------------|
@@ -265,7 +297,7 @@ The War Room requires DGX Spark's 128GB unified memory to serve three concurrent
 | KV Cache overhead | — | ~15-20GB |
 | **Total** | | **~85-90GB** |
 
-On consumer hardware (16-64GB RAM), only one 70B model loads at a time — forcing 30-60 second swap delays that destroy the real-time debate experience. The `thermal_safe_debate_runner.py` manages this single-model rotation with thermal gating.
+On consumer hardware (16-64GB RAM), `thermal_safe_debate_runner.py` manages single-model rotation with thermal gating, preserving full debate functionality at the cost of inter-round latency.
 
 ### Pre-flight Check
 
