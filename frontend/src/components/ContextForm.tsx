@@ -196,7 +196,8 @@ export default function ContextForm({ productName, onComplete, onBack }: Context
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          product_description: productName,
+          product_name: productName,
+          product_description: answers.productDescription,
           session_id: uploadSessionId,
           target_user: answers.targetUser,
           competitors: answers.competitors,

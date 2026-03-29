@@ -77,6 +77,11 @@ ANALYZE THIS FRAME:
 
 Write 2-3 paragraphs of detailed analysis. Be specific about exact UI elements."""
 
+UX_MATCH_PROMPT = """You are a senior UX analyst. Analyze this screenshot with EXTREME specificity.
+Cover: 1) Screen ID (app, exact view), 2) Layout & visual hierarchy, 3) Every interactive element,
+4) UX friction points (be brutal), 5) UX strengths, 6) Onboarding impact (cognitive load 1-10),
+7) Competitor comparison. Write 4-6 detailed paragraphs. Be specific enough to reconstruct the screen."""
+
 JOURNEY_SUMMARY_PROMPT = """You analyzed {total_frames} frames from a founder walking through {product_name}.
 
 PRODUCT CONTEXT:
@@ -120,6 +125,7 @@ class DebateSession:
         session_id: str,
         product_description: str,
         loop: asyncio.AbstractEventLoop,
+        product_name: str = "",
         upload_session_id: str = "",
         target_user: str = "",
         competitors: str = "",
@@ -128,6 +134,7 @@ class DebateSession:
     ) -> None:
         self.session_id = session_id
         self.product_description = product_description
+        self.product_name = product_name
         self.loop = loop
         self.upload_session_id = upload_session_id
         self.target_user = target_user
@@ -209,6 +216,7 @@ class AnalyzeRequest(BaseModel):
     """Request payload for POST /analyze."""
 
     product_description: str
+    product_name: str = ""
     session_id: str = ""
     target_user: str = ""
     competitors: str = ""
@@ -253,6 +261,7 @@ async def analyze(request: AnalyzeRequest) -> AnalyzeResponse:
         session_id,
         request.product_description,
         loop,
+        product_name=request.product_name,
         upload_session_id=request.session_id,
         target_user=request.target_user,
         competitors=request.competitors,
@@ -312,9 +321,14 @@ def _run_debate(session: DebateSession) -> None:
             session.product_stage,
         ])
         session_context: dict[str, Any] | None = None
+        # product_name is the short landing-page name; product_description is the full
+        # description typed in the wizard. Fall back gracefully for older clients that
+        # don't send product_name.
+        effective_name = session.product_name or session.product_description
         if has_context:
             session_context = {
-                "product_name": session.product_description,
+                "product_name": effective_name,
+                "product_description": session.product_description,
                 "target_user": session.target_user,
                 "competitors": session.competitors,
                 "differentiator": session.differentiator,
@@ -326,8 +340,10 @@ def _run_debate(session: DebateSession) -> None:
                 if video_evidence:
                     session_context["video_evidence"] = video_evidence
 
+        # Pass the short product name as first arg so RAG key extraction works correctly.
+        # The full description is available to build_crew via session_context.
         crew = build_crew(
-            session.product_description,
+            effective_name,
             task_callback=session.build_task_callback(),
             session_context=session_context,
         )
@@ -426,11 +442,22 @@ def process_video_frames(
     frames: list[Path],
     product_name: str,
     session_context: dict[str, Any],
-) -> tuple[list[dict[str, Any]], list[str]]:
-    """Analyze frames sequentially with rolling context for each vision call."""
+) -> tuple[list[dict[str, Any]], list[str], list[dict[str, Any]]]:
+    """Analyze frames sequentially with rolling context for each vision call.
+
+    Runs two GPT-4o passes per frame:
+    1. VIDEO_FRAME_PROMPT — persona-aware analysis for debate injection.
+    2. UX_MATCH_PROMPT — generic UX analysis for screenshot similarity matching.
+
+    Returns:
+        chunks: Debate-ready text chunks (debate_analysis per frame).
+        all_descriptions: Debate analyses for journey summary generation.
+        ux_frames: List of dicts with debate_analysis, ux_analysis, frame_number.
+    """
     previous_screens: list[str] = []
     chunks: list[dict] = []
     all_descriptions: list[str] = []
+    ux_frames: list[dict[str, Any]] = []
     session_id = session_context.get("session_id", "")
 
     for i, frame_path in enumerate(frames):
@@ -439,7 +466,9 @@ def process_video_frames(
             if previous_screens
             else "This is the first screen in the session."
         )
-        prompt = VIDEO_FRAME_PROMPT.format(
+
+        # Pass 1: debate-oriented analysis
+        debate_prompt = VIDEO_FRAME_PROMPT.format(
             frame_number=i + 1,
             total_frames=len(frames),
             product_name=product_name,
@@ -450,9 +479,20 @@ def process_video_frames(
             product_stage=session_context.get("product_stage", "Unknown"),
             previous_screens_summary=previous_summary,
         )
-        description = call_gpt4o_vision(frame_path, prompt)
+        description = call_gpt4o_vision(frame_path, debate_prompt)
         all_descriptions.append(description)
         previous_screens.append(f"Frame {i + 1}: {description[:150]}...")
+
+        # Pass 2: generic UX analysis for screenshot similarity matching
+        ux_analysis = ""
+        try:
+            ux_analysis = call_gpt4o_vision(
+                frame_path,
+                f"This is a screenshot of a product.\n\n{UX_MATCH_PROMPT}",
+            )
+        except Exception as exc:
+            print(f"   WARNING: UX match analysis failed for frame {i + 1}: {exc}")
+
         chunks.append(
             {
                 "text": f"[Video Frame {i + 1}/{len(frames)}: {product_name}]\n\n{description}",
@@ -466,8 +506,15 @@ def process_video_frames(
                 },
             }
         )
+        ux_frames.append(
+            {
+                "frame_number": i + 1,
+                "debate_analysis": description,
+                "ux_analysis": ux_analysis,
+            }
+        )
 
-    return chunks, all_descriptions
+    return chunks, all_descriptions, ux_frames
 
 
 def generate_journey_summary(
@@ -544,16 +591,36 @@ async def ingest_video(
                 "chunks_added": 0,
             }
 
-        frame_chunks, all_descriptions = process_video_frames(
+        frame_chunks, all_descriptions, ux_frames = process_video_frames(
             frames, product_name, session_context
         )
         journey_report = generate_journey_summary(
             product_name, all_descriptions, session_context
         )
         frame_analyses = [chunk["text"] for chunk in frame_chunks]
+
+        # Match each frame's UX analysis against the 69-app competitor screenshot suite
+        screenshot_matches: list[dict[str, Any]] = []
+        try:
+            from screenshot_suite.matcher import find_similar_screens  # noqa: PLC0415
+
+            for ux_frame in ux_frames:
+                if ux_frame["ux_analysis"]:
+                    matches = find_similar_screens(ux_frame["ux_analysis"], top_k=3)
+                    screenshot_matches.append(
+                        {
+                            "frame_number": ux_frame["frame_number"],
+                            "user_analysis": ux_frame["ux_analysis"],
+                            "matched_competitors": matches,
+                        }
+                    )
+        except Exception as exc:
+            print(f"   WARNING: Screenshot matching failed: {exc}")
+
         VIDEO_EVIDENCE[session_id] = {
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
+            "screenshot_matches": screenshot_matches,
         }
 
         return {
@@ -562,6 +629,7 @@ async def ingest_video(
             "key_frames_analyzed": frames_extracted,
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
+            "screenshot_matches_count": len(screenshot_matches),
         }
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)

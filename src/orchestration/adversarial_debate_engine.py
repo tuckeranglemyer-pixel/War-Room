@@ -34,7 +34,12 @@ from src.orchestration.persona_generator import generate_personas
 from src.orchestration.swarm_reconnaissance import deploy_swarm
 from src.rag.chroma_retrieval import (
     fetch_context_for_product,
+    search_app_reviews,
+    search_competitor_data,
+    search_hn_comments,
     search_pm_knowledge,
+    search_reddit,
+    search_screenshots,
 )
 
 # ---------------------------------------------------------------------------
@@ -70,6 +75,8 @@ def build_crew(
     context_block = ""
     if session_context:
         product_name = session_context.get("product_name", product_description)
+        # Use the full description from context if available (set when product_name is sent separately)
+        product_full_desc = session_context.get("product_description", product_description)
         target_user = session_context.get("target_user") or "Not specified"
         competitors = session_context.get("competitors") or "Not specified"
         differentiator = session_context.get("differentiator") or "Not specified"
@@ -77,7 +84,7 @@ def build_crew(
 
         product_section = f"""PRODUCT BEING EVALUATED:
 - Product: {product_name}
-- What it does: {product_description}
+- What it does: {product_full_desc}
 - Target user: {target_user}
 - Competes with: {competitors}
 - Key differentiator: {differentiator}
@@ -104,10 +111,31 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough. Ref
 
 """
             context_block = product_section + video_section
+
+            # Append screenshot comparison evidence when available
+            screenshot_matches = video_evidence.get("screenshot_matches", [])
+            if screenshot_matches:
+                match_lines = ["\n\nSCREENSHOT COMPARISON EVIDENCE (user frames vs competitor UI patterns):\n"]
+                for m in screenshot_matches[:10]:
+                    for comp in m.get("matched_competitors", [])[:2]:
+                        match_lines.append(
+                            f"\nUser Frame {m['frame_number']} matches "
+                            f"{comp['app']}/{comp['filename']} "
+                            f"(similarity: {comp['similarity_score']:.2f}):\n"
+                            f"Competitor analysis: {comp['document'][:500]}...\n"
+                        )
+                context_block += "".join(match_lines)
         else:
             context_block = product_section
 
-    agent_tools = [search_pm_knowledge]
+    agent_tools = [
+        search_pm_knowledge,
+        search_app_reviews,
+        search_reddit,
+        search_hn_comments,
+        search_competitor_data,
+        search_screenshots,
+    ]
 
     # --- Step 1: Generate personas via meta-prompt ---
     personas = generate_personas(product_description, local_llm)

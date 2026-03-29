@@ -202,15 +202,23 @@ def search_reddit(query: str) -> str:
 
 @tool("Search G2 Reviews")
 def search_g2_reviews(query: str) -> str:
-    """Search G2-style business reviews (stub — not yet wired to a G2 collection).
+    """Search G2-style business reviews.
+
+    G2 review data is not available in this dataset.
+    Use search_app_reviews for mobile app reviews or search_reddit for
+    community feedback instead.
 
     Args:
         query: Search string.
 
     Returns:
-        Placeholder message until the G2 pipeline is connected.
+        Redirect message pointing to available alternatives.
     """
-    return f"[RAG not connected yet] No results for: {query}"
+    return (
+        "G2 reviews are not available in this dataset. "
+        "Use search_app_reviews for Google Play/App Store reviews, "
+        "or search_reddit for community user feedback."
+    )
 
 
 @tool("Search HN Comments")
@@ -241,15 +249,34 @@ def search_competitor_data(query: str) -> str:
 
 @tool("Search Screenshots")
 def search_screenshots(query: str) -> str:
-    """Search UI screenshot descriptions (stub — not yet wired).
+    """Search the 69-app UI screenshot analysis suite for competitor UI patterns.
+
+    Uses sentence-transformer embeddings (all-MiniLM-L6-v2) over pre-analyzed
+    screenshots from Airtable, Asana, Basecamp, ClickUp, Jira, Linear, Monday,
+    Notion, Todoist, and Trello. Returns the 5 most similar competitor screens.
 
     Args:
-        query: Search string.
+        query: Natural-language description of the UI pattern or screen to find.
 
     Returns:
-        Placeholder message until screenshot embeddings are connected.
+        Formatted competitor screenshot analyses ordered by similarity score.
     """
-    return f"[RAG not connected yet] No results for: {query}"
+    try:
+        from screenshot_suite.matcher import find_similar_screens  # noqa: PLC0415
+    except ImportError:
+        return "Screenshot suite unavailable (sentence-transformers not installed)."
+
+    matches = find_similar_screens(query, top_k=5)
+    if not matches:
+        return "Screenshot suite not available or no matching screens found."
+
+    parts = []
+    for m in matches:
+        parts.append(
+            f"[{m['app'].upper()} | {m['filename']} | similarity: {m['similarity_score']:.3f}]\n"
+            f"{m['document'][:800]}"
+        )
+    return "\n\n---\n\n".join(parts)
 
 
 @tool("Search PM Knowledge Base")
