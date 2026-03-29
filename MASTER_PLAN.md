@@ -89,6 +89,23 @@ ChromaDB collections operate in an append-only, read-heavy access pattern — th
 
 **Output Interoperability:** Verdict JSON schema maps directly to Jira/Linear/Asana ticket format — score, severity, description, and estimated retention impact are machine-readable fields. CI/CD pipelines can consume War Room output as automated quality gates.
 
+Example verdict payload:
+
+```json
+{
+  "score": 64,
+  "decision": "YES WITH CONDITIONS",
+  "findings": [
+    {
+      "severity": "critical",
+      "finding": "search broken at scale",
+      "evidence": "73% of churn mentions cite findability",
+      "source": "reddit"
+    }
+  ]
+}
+```
+
 **Forward Compatibility:** Each `@tool` function in `tools.py` maps 1:1 to a Model Context Protocol (MCP) tool definition, ensuring cross-platform agent interoperability as the MCP ecosystem matures. The frontend is a standalone React application deployable as an embeddable iframe widget inside any product dashboard.
 
 ## 7. Problem Definition
@@ -184,6 +201,7 @@ The War Room compresses the research capability gap between a 3-person startup a
 | Small models (8B) bypassing CrewAI ReAct tool-calling loop | Confirmed | High | Pre-seeded context injection: `fetch_context_for_product()` retrieves 10 RAG results at crew build time and injects directly into task descriptions | Evidence is structurally guaranteed regardless of whether the LLM executes tool calls during inference |
 | Live demo failure during Sunday presentation | Medium | Critical | Hardcoded demo fallback with typewriter animation built into frontend — activates automatically if WebSocket disconnects within 8 seconds | Pre-recorded screen capture of best DGX demo run available as instant backup video |
 | RAG retrieval returning irrelevant evidence | Low | Medium | Metadata filtering by source type (`reddit`, `hackernews`, `google_play`). Cosine similarity thresholding on 31,668 chunks | Swarm runs 20 parallel queries across different dimensions — irrelevant results in one dimension are diluted by relevant results across 19 others |
+| Corpus quality bias (over-reliance on a single review platform skewing findings) | Low | Medium | Evidence sourced from 5 independent platforms (Reddit, HN, Google Play, metadata, screenshots) to prevent single-source skew | Source-type metadata filter enforces platform diversity per query; swarm dimension coverage distributes retrieval across all 5 sources |
 
 ## 12. Differentiation Strategy
 
