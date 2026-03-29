@@ -1,3 +1,4 @@
+# Hardware-adaptive execution engine — 3-tier thermal management for DGX Spark
 """
 Adaptive Runner — Hardware-aware execution engine for the War Room analysis pipeline.
 
