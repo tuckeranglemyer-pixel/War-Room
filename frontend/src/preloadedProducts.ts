@@ -1,8 +1,7 @@
-/** Suggestion chips on the landing page; routed with empty sessionId → demo debate. */
+/** 20 products with real evidence in the ChromaDB corpus — drives the Landing product grid. */
 export const PRELOADED_PRODUCTS = [
-  'Canvas',
-  'Notion',
-  'Google Calendar',
-  'Asana',
-  'Microsoft To Do',
+  'Notion', 'Asana', 'ClickUp', 'Monday', 'Linear',
+  'Todoist', 'Trello', 'Jira', 'Basecamp', 'Airtable',
+  'Google Calendar', 'Obsidian', 'Evernote', 'Roam Research',
+  'Coda', 'Confluence', 'Teamwork', 'Wrike', 'Smartsheet', 'Height',
 ] as const

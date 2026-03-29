@@ -74,6 +74,20 @@ _executor = ThreadPoolExecutor(max_workers=4)
 
 _rate_limits: defaultdict[str, list[float]] = defaultdict(list)
 
+# Products with real evidence in ChromaDB — all other submissions are rejected.
+SUPPORTED_PRODUCTS = [
+    "notion", "asana", "clickup", "monday", "linear",
+    "todoist", "trello", "jira", "basecamp", "airtable",
+    "google calendar", "obsidian", "evernote", "roam research",
+    "coda", "confluence", "teamwork", "wrike", "smartsheet", "height",
+]
+
+
+def is_supported_product(name: str) -> bool:
+    """Return True if *name* fuzzy-matches any entry in SUPPORTED_PRODUCTS (case-insensitive)."""
+    normalized = name.strip().lower()
+    return any(normalized == p or p in normalized or normalized in p for p in SUPPORTED_PRODUCTS)
+
 
 def check_rate_limit(ip: str, max_requests: int = 3, window: int = 3600) -> bool:
     """Per-IP rate limiter — defaults to 3 analysis requests per hour for public launch."""
@@ -245,6 +259,17 @@ async def analyze(http_request: Request, body: AnalyzeRequest) -> AnalyzeRespons
             status_code=429,
             detail="Rate limit reached: 3 analyses per IP per hour. Try again later.",
         )
+
+    effective_name = (body.product_name or body.product_description).strip()
+    if not is_supported_product(effective_name):
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Product not in our evidence corpus. Choose from our 20 supported products.",
+                "supported_products": SUPPORTED_PRODUCTS,
+            },
+        )
+
     session_id = str(uuid.uuid4())
     loop = asyncio.get_running_loop()
     session = DebateSession(
