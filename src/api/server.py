@@ -1,3 +1,4 @@
+# War Room API — FastAPI + WebSocket + SSE streaming server
 """
 War Room — FastAPI server with WebSocket streaming.
 
