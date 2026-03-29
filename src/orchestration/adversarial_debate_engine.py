@@ -112,19 +112,27 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough. Ref
 """
             context_block = product_section + video_section
 
-            # Append screenshot comparison evidence when available
-            screenshot_matches = video_evidence.get("screenshot_matches", [])
-            if screenshot_matches:
-                match_lines = ["\n\nSCREENSHOT COMPARISON EVIDENCE (user frames vs competitor UI patterns):\n"]
-                for m in screenshot_matches[:10]:
-                    for comp in m.get("matched_competitors", [])[:2]:
-                        match_lines.append(
-                            f"\nUser Frame {m['frame_number']} matches "
-                            f"{comp['app']}/{comp['filename']} "
-                            f"(similarity: {comp['similarity_score']:.2f}):\n"
-                            f"Competitor analysis: {comp['document'][:500]}...\n"
-                        )
-                context_block += "".join(match_lines)
+            # Prefer the synthesised agent brief (curated themes + reviews + insights).
+            # Fall back to raw similarity matches when synthesis is not available.
+            synthesis = video_evidence.get("synthesis")
+            if synthesis and synthesis.get("agent_brief"):
+                context_block += "\n\n" + synthesis["agent_brief"]
+            else:
+                screenshot_matches = video_evidence.get("screenshot_matches", [])
+                if screenshot_matches:
+                    match_lines = [
+                        "\n\nSCREENSHOT COMPARISON EVIDENCE "
+                        "(user frames vs competitor UI patterns):\n"
+                    ]
+                    for m in screenshot_matches[:10]:
+                        for comp in m.get("matched_competitors", [])[:2]:
+                            match_lines.append(
+                                f"\nUser Frame {m['frame_number']} matches "
+                                f"{comp['app']}/{comp['filename']} "
+                                f"(similarity: {comp['similarity_score']:.2f}):\n"
+                                f"Competitor analysis: {comp['document'][:500]}...\n"
+                            )
+                    context_block += "".join(match_lines)
         else:
             context_block = product_section
 

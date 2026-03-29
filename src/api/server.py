@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any, AsyncIterator, Callable
 
 import uvicorn
-from fastapi import FastAPI, File, Form, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 from pydantic import BaseModel
@@ -623,6 +623,27 @@ async def ingest_video(
             "screenshot_matches": screenshot_matches,
         }
 
+        # Synthesise comparison cards + agent brief from screenshot matches
+        synthesis: dict[str, Any] = {}
+        try:
+            from screenshot_suite.synthesis import synthesize_evidence  # noqa: PLC0415
+
+            synthesis = synthesize_evidence(
+                session_id=session_id,
+                video_evidence=VIDEO_EVIDENCE[session_id],
+                user_context={
+                    "productDescription": product_description,
+                    "target_user": target_user,
+                    "competitors": competitors,
+                    "differentiator": differentiator,
+                    "product_stage": product_stage,
+                },
+            )
+            VIDEO_EVIDENCE[session_id]["synthesis"] = synthesis
+            VIDEO_EVIDENCE[session_id]["comparison_cards"] = synthesis.get("comparison_cards", [])
+        except Exception as exc:
+            print(f"   WARNING: Evidence synthesis failed: {exc}")
+
         return {
             "session_id": session_id,
             "frames_extracted": frames_extracted,
@@ -630,9 +651,49 @@ async def ingest_video(
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
             "screenshot_matches_count": len(screenshot_matches),
+            "comparison_cards_count": len(synthesis.get("comparison_cards", [])),
+            "apps_compared": synthesis.get("apps_compared", []),
+            "dominant_themes": synthesis.get("dominant_themes", []),
         }
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
+
+
+# ---------------------------------------------------------------------------
+# Comparison cards endpoint
+# ---------------------------------------------------------------------------
+
+
+@app.get("/api/comparisons/{session_id}", tags=["video"])
+async def get_comparisons(session_id: str) -> dict[str, Any]:
+    """Return structured side-by-side comparison cards for a completed video ingest.
+
+    Cards are generated during POST /api/ingest/video and cached in memory.
+    Each card pairs a user frame analysis against the closest competitor
+    screenshot from the 69-app suite, with curated reviews and actionable insight.
+
+    Raises:
+        404: Session not found or synthesis not yet complete.
+    """
+    evidence = VIDEO_EVIDENCE.get(session_id)
+    if not evidence:
+        raise HTTPException(status_code=404, detail="Session not found.")
+    cards = evidence.get("comparison_cards")
+    if not cards:
+        raise HTTPException(
+            status_code=404,
+            detail="No comparison cards found for this session. "
+            "Either the video had no matching competitor screens or synthesis failed.",
+        )
+    synthesis = evidence.get("synthesis", {})
+    return {
+        "session_id": session_id,
+        "cards": cards,
+        "total_comparisons": len(cards),
+        "apps_compared": synthesis.get("apps_compared", []),
+        "dominant_themes": synthesis.get("dominant_themes", []),
+        "summary": synthesis.get("agent_brief", ""),
+    }
 
 
 # ---------------------------------------------------------------------------
