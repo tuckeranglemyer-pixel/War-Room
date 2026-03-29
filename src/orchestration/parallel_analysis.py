@@ -160,33 +160,19 @@ async def run_parallel_analysis(
     )
 
     async with aiohttp.ClientSession() as http:
-        strategist_output, ux_analyst_output, market_researcher_output = (
-            await asyncio.gather(
-                call_vllm(
-                    http,
-                    VLLM_ENDPOINTS["strategist"],
-                    STRATEGIST_SYSTEM_PROMPT,
-                    strategist_prompt,
-                ),
-                call_vllm(
-                    http,
-                    VLLM_ENDPOINTS["ux_analyst"],
-                    UX_ANALYST_SYSTEM_PROMPT,
-                    ux_analyst_prompt,
-                ),
-                call_vllm(
-                    http,
-                    VLLM_ENDPOINTS["market_researcher"],
-                    MARKET_RESEARCHER_SYSTEM_PROMPT,
-                    market_researcher_prompt,
-                ),
-            )
-        )
+        strategist_output = await call_vllm(http, VLLM_ENDPOINTS["strategist"], STRATEGIST_SYSTEM_PROMPT, strategist_prompt)
+        print(f"  Strategist: {'OK' if 'error' not in strategist_output else 'FAILED — ' + strategist_output.get('error', '')}")
+        await asyncio.sleep(5)
+
+        ux_analyst_output = await call_vllm(http, VLLM_ENDPOINTS["ux_analyst"], UX_ANALYST_SYSTEM_PROMPT, ux_analyst_prompt)
+        print(f"  UX Analyst: {'OK' if 'error' not in ux_analyst_output else 'FAILED — ' + ux_analyst_output.get('error', '')}")
+        await asyncio.sleep(5)
+
+        market_researcher_output = await call_vllm(http, VLLM_ENDPOINTS["market_researcher"], MARKET_RESEARCHER_SYSTEM_PROMPT, market_researcher_prompt)
+        print(f"  Market Researcher: {'OK' if 'error' not in market_researcher_output else 'FAILED — ' + market_researcher_output.get('error', '')}")
+        await asyncio.sleep(5)
 
         round1_time = time.time() - start
-        print(_status_line("Strategist:", strategist_output))
-        print(_status_line("UX Analyst:", ux_analyst_output))
-        print(_status_line("Market Researcher:", market_researcher_output))
         print(f"  Round 1 time: {round1_time:.1f}s")
 
         # ------------------------------------------------------------------

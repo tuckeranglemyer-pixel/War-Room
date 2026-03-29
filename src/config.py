@@ -15,25 +15,25 @@ from src.inference.model_config import _get_str, _get_int  # noqa: PLC2701
 
 
 # ---------------------------------------------------------------------------
-# vLLM endpoints — one per specialist model on the DGX Spark
+# vLLM endpoints — all specialists routed through the same Ollama endpoint
 # ---------------------------------------------------------------------------
 
 VLLM_ENDPOINTS = {
     "strategist": {
-        "url": _get_str("VLLM_STRATEGIST_URL", "http://localhost:8001/v1/chat/completions"),
-        "model": _get_str("VLLM_STRATEGIST_MODEL", "meta-llama/Llama-3.1-70B-Instruct"),
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": "qwen3:32b",
     },
     "ux_analyst": {
-        "url": _get_str("VLLM_UX_ANALYST_URL", "http://localhost:8002/v1/chat/completions"),
-        "model": _get_str("VLLM_UX_ANALYST_MODEL", "Qwen/Qwen2.5-32B-Instruct"),
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": "qwen3:32b",
     },
     "market_researcher": {
-        "url": _get_str("VLLM_MARKET_RESEARCHER_URL", "http://localhost:8003/v1/chat/completions"),
-        "model": _get_str("VLLM_MARKET_RESEARCHER_MODEL", "mistralai/Mistral-Small-24B-Instruct-2501"),
+        "url": "http://localhost:11434/v1/chat/completions",
+        "model": "qwen3:32b",
     },
 }
 
-# Challenge pass reuses the Strategist endpoint (Llama 70B)
+# Challenge pass reuses the Strategist endpoint
 CHALLENGE_ENDPOINT = VLLM_ENDPOINTS["strategist"]
 
 # Frame extraction settings
