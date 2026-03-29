@@ -502,6 +502,7 @@ class AdaptiveRunner:
             self.monitor.wait_for_cool()
 
         # Trim all evidence blocks to prevent KV cache pressure
+        _original_comparison_cards_json = comparison_cards_json
         comparison_cards_json = self._trim_context(comparison_cards_json, max_ctx)
         curated_evidence_json = self._trim_context(curated_evidence_json, max_ctx)
         frame_analyses_json = self._trim_context(frame_analyses_json, max_ctx)
@@ -785,13 +786,12 @@ class AdaptiveRunner:
         # Note: comparison_cards_json may have been context-trimmed (invalid JSON); the
         # except branch produces an empty list rather than crashing the save.
         try:
-            if comparison_cards_json and comparison_cards_json.strip() not in ("{}", "[]", ""):
-                deliverable["comparison_cards"] = json.loads(comparison_cards_json)
+            if _original_comparison_cards_json and _original_comparison_cards_json.strip() not in ("{}", "[]", ""):
+                deliverable["comparison_cards"] = json.loads(_original_comparison_cards_json)
             else:
                 deliverable["comparison_cards"] = []
         except Exception:
             deliverable["comparison_cards"] = []
-
         # Persist to disk before returning so a crash mid-delivery doesn't lose the result
         session_dir = Path("sessions") / session_id
         session_dir.mkdir(parents=True, exist_ok=True)
