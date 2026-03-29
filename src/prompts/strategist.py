@@ -1,10 +1,36 @@
-STRATEGIST_SYSTEM_PROMPT = """You are The Strategist — a senior partner at a top-tier management consulting firm with 20 years of experience evaluating technology products. You think in terms of competitive moats, market positioning, risk matrices, and strategic optionality. You have seen hundreds of product launches and you know exactly which patterns lead to success and which lead to failure.
+"""
+Strategist prompt — market positioning and product-market fit analysis.
 
-You are brutally honest. You do not sugarcoat. You do not hedge with "it depends." You give clear, directional recommendations backed by evidence. When the evidence is thin, you say so. When a product is weak, you say so. When a product has a genuine edge, you acknowledge it clearly.
+The strategist synthesizes competitive intelligence, curated user evidence, and
+the agent brief into a structured assessment of whether the product has a
+defensible position and what the top-line risks are to adoption.
 
-You are analyzing a product on behalf of its founder. Your job is to tell them the strategic truth — not what they want to hear, but what they need to hear to make their product succeed or to know when to pivot.
+Output: JSON with market_position, key_risks, key_strengths, competitive_gaps,
+market_readiness_score (0-100), top_3_priorities, and pmf_verdict.
+"""
 
-You MUST respond with valid JSON matching the schema below. No markdown. No preamble. No explanation outside the JSON. Just the JSON object."""
+from __future__ import annotations
+
+STRATEGIST_SYSTEM_PROMPT = """You are a senior product strategist at a top-tier VC firm.
+You have reviewed hundreds of early-stage B2B SaaS products and have a near-perfect track record
+of identifying which ones will reach product-market fit within 18 months.
+
+Your job is to assess market positioning and competitive defensibility.
+You are HARSH on undifferentiated products and GENEROUS toward products with genuine insight.
+You do not sugarcoat. If the product is a vitamin masquerading as a painkiller, you say so.
+
+Respond with a single valid JSON object. No markdown, no prose, no code fences.
+Required fields:
+{
+  "market_position": "string — one sharp sentence on where this product sits vs competitors",
+  "pmf_verdict": "STRONG_SIGNAL | WEAK_SIGNAL | NO_SIGNAL",
+  "market_readiness_score": integer 0-100,
+  "key_strengths": ["string", ...],
+  "key_risks": ["string", ...],
+  "competitive_gaps": ["string", ...],
+  "top_3_priorities": ["string", ...],
+  "strategic_summary": "string — 2-3 sentences max, blunt"
+}"""
 
 
 def build_strategist_prompt(
@@ -17,62 +43,39 @@ def build_strategist_prompt(
     comparison_cards_json: str,
     agent_brief: str,
     curated_evidence_json: str,
-    n_screenshots: int,
-    n_apps: int,
-    n_reviews: int,
+    n_screenshots: int = 69,
+    n_apps: int = 10,
+    n_reviews: int = 60,
 ) -> str:
-    return f"""PRODUCT UNDER ANALYSIS:
+    """Build the user-turn prompt for the strategist analysis."""
+    return f"""PRODUCT UNDER EVALUATION
+========================
 Name: {product_name}
 Description: {product_description}
-Target User: {target_user}
-Key Differentiator: {differentiator}
+Target user: {target_user}
+Key differentiator: {differentiator}
 Stage: {product_stage}
-Stated Competitors: {competitors}
+Competing against: {competitors}
 
-EVIDENCE PACKAGE:
-The following evidence was compiled from automated analysis of the founder's product walkthrough video, matched against {n_screenshots} competitor screenshots across {n_apps} apps, and cross-referenced against {n_reviews} real user reviews from Reddit, Hacker News, and Google Play.
+COMPETITIVE INTELLIGENCE
+========================
+Evidence corpus: {n_screenshots} competitor screenshots across {n_apps} apps, {n_reviews} curated user reviews.
 
-COMPARISON CARDS:
-{comparison_cards_json}
+AGENT BRIEF (synthesized from video walkthrough and competitor matching):
+{agent_brief[:3000] if agent_brief else "No agent brief available."}
 
-AGENT BRIEF:
-{agent_brief}
+CURATED USER EVIDENCE (reviews and sentiment from real users of competing products):
+{curated_evidence_json[:4000] if curated_evidence_json else "No curated evidence available."}
 
-CURATED EVIDENCE:
-{curated_evidence_json}
+COMPARISON CARDS (side-by-side UX comparisons vs top competitor screens):
+{comparison_cards_json[:2000] if comparison_cards_json else "No comparison cards available."}
 
----
+ASSIGNMENT
+==========
+Assess this product's market positioning and competitive defensibility.
+- Does the differentiator hold up against the competitive evidence?
+- What does the curated user evidence reveal about unmet needs this product could own?
+- Where are the competitive gaps this product could exploit vs. where it is already late?
+- Give a market_readiness_score: 0=completely unready, 100=ready to scale.
 
-Based on ALL the evidence above, produce your strategic analysis as a JSON object with EXACTLY these fields:
-
-{{
-  "competitive_positioning": "2-3 sentences on where this product sits relative to the competitors identified in the evidence. Reference specific competitors by name. Be specific about what segment they own vs what segment is open.",
-
-  "top_risks": [
-    // EXACTLY 3 risks. Each must reference a specific piece of evidence (a review quote, a similarity score, a friction point from the comparison cards). Do NOT invent risks that aren't supported by the data.
-    {{
-      "risk": "One sentence. Be specific. Not 'UX could be better' but 'Navigation sidebar has 8 ungrouped items which directly mirrors the pattern that drove 60% negative sentiment in ClickUp reviews'",
-      "severity": "LOW | MEDIUM | HIGH | CRITICAL",
-      "evidence": "The specific review text, similarity score, or comparison finding that supports this risk",
-      "competitor_learned_from": "Which competitor already learned this lesson the hard way"
-    }}
-  ],
-
-  "top_opportunities": [
-    // EXACTLY 3 opportunities. Same evidence requirements as risks.
-    {{
-      "opportunity": "One sentence. Be specific about what to build/change and why the market wants it.",
-      "impact": "LOW | MEDIUM | HIGH | TRANSFORMATIVE",
-      "evidence": "The specific review text or market gap that supports this opportunity",
-      "competitor_failed_at": "Which competitor left this gap open for you to exploit"
-    }}
-  ],
-
-  "moat_assessment": "2-3 sentences. Is the stated differentiator ({differentiator}) actually defensible? Could Trello/Asana/ClickUp ship this in a quarter? Reference competitor evidence if any of them are already doing something similar.",
-
-  "strategist_score": "A number 1-10. Be harsh. A 7 means genuinely competitive. A 5 means major work needed. A 3 means pivot consideration territory. Base this on the EVIDENCE, not vibes.",
-
-  "strategist_summary": "3-4 sentences. Your executive summary. What is the one thing the founder must understand about their competitive position? Lead with the verdict, then support it."
-}}
-
-RESPOND WITH ONLY THE JSON OBJECT. NO OTHER TEXT."""
+Respond with a single valid JSON object matching the schema in your system prompt."""

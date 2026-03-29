@@ -1,4 +1,7 @@
-from .strategist import STRATEGIST_SYSTEM_PROMPT, build_strategist_prompt
-from .ux_analyst import UX_ANALYST_SYSTEM_PROMPT, build_ux_analyst_prompt
-from .market_researcher import MARKET_RESEARCHER_SYSTEM_PROMPT, build_market_researcher_prompt
-from .partner_review import PARTNER_REVIEW_SYSTEM_PROMPT, build_partner_review_prompt
+"""
+Prompt templates for the adaptive analysis pipeline.
+
+Each module exports a SYSTEM_PROMPT constant and a build_*_prompt() function
+that assembles the user-turn from structured evidence. All prompts instruct the
+model to respond with a single valid JSON object — no markdown fences, no prose.
+"""

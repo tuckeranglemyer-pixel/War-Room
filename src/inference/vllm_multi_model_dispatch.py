@@ -62,10 +62,15 @@ SKIP_SWARM = _env_bool("SAFE_SKIP_SWARM")
 # ---------------------------------------------------------------------------
 
 ROUND_MODELS: dict[str, str] = {
-    "first_timer": os.environ.get("FIRST_TIMER_MODEL", "llama3.1:8b"),
-    "daily_driver": os.environ.get("DAILY_DRIVER_MODEL", "llama3.3:70b"),
+    "first_timer": os.environ.get("FIRST_TIMER_MODEL", "llama3.3:70b"),
+    "daily_driver": os.environ.get("DAILY_DRIVER_MODEL", "qwen3:32b"),
     "buyer": os.environ.get("BUYER_MODEL", "mistral-small:24b"),
 }
+
+# When thermal constraints prevent concurrent multi-model serving, the
+# thermal_safe_debate_runner falls back to rotating all personas through this
+# single model. Set FALLBACK_MODEL env var to override.
+FALLBACK_MODEL_TAG = os.environ.get("FALLBACK_MODEL", "qwen3:32b")
 
 MODEL_SIZES_GB = {
     "llama3.3:70b": 42,
