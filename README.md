@@ -10,6 +10,8 @@
 
 The War Room is a multi-agent AI platform that conducts adversarial product quality analysis by orchestrating structured debate between three distinct open-weight language model architectures, grounded in a pre-curated RAG corpus of real user reviews.
 
+**Live API:** [Swagger UI](https://paplike-hillary-beauteously.ngrok-free.dev/docs)
+
 > Built at the **2026 yconic New England Inter-Collegiate AI Hackathon** by **Tucker Anglemyer** & **Griffin Kovach**
 
 ---
