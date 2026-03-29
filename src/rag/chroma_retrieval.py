@@ -139,7 +139,7 @@ def _query_collection(
         if not documents:
             return f"No results found for: {query}"
 
-        formatted_chunks = []
+        formatted_chunks: list[str] = []
         for doc, meta in zip(documents, metadatas):
             app = meta.get("app", "unknown")
             source = meta.get("source", "unknown")
