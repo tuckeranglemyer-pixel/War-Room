@@ -67,10 +67,14 @@ def find_similar_screens(query: str, top_k: int = 3) -> list[dict[str, Any]]:
     results = []
     for idx in top_idx:
         chunk = _chunks[idx]
+        app = chunk["metadata"]["app"]
+        filename = chunk["metadata"]["filename"]
         results.append(
             {
-                "app": chunk["metadata"]["app"],
-                "filename": chunk["metadata"]["filename"],
+                "app": app,
+                "filename": filename,
+                # Constructed once here; passed through every downstream module unchanged.
+                "image_path": f"data/{app}/screenshots/{filename}",
                 "similarity_score": float(sims[idx]),
                 "document": chunk["document"],
             }

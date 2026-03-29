@@ -1,0 +1,1318 @@
+[
+  {
+    "card_id": "comparison_000",
+    "user_side": {
+      "frame_number": 0,
+      "frame_path": null,
+      "screen_label": "Onboarding \u2014 Welcome to Notion",
+      "key_observations": [
+        "Clear visual hierarchy guides user attention.",
+        "Interactive checklist helps track onboarding progress.",
+        "Sidebar options may overwhelm new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "01.jpg",
+      "image_path": null,
+      "screen_label": "Onboarding \u2014 Getting Started",
+      "similarity_score": 0.8457368612289429,
+      "key_observations": [
+        "Sidebar may overwhelm new users with options.",
+        "Checklist format assumes familiarity with terminology.",
+        "Minimalist design fosters a calm user experience."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation that includes multiple interactive elements, which can create a sense of overwhelm for new users. Additionally, they both utilize a checklist format in their onboarding processes, helping guide users through initial tasks effectively. This comparison is relevant for the founder's product as it highlights the importance of balancing functionality with user-friendly design for non-technical marketing managers.",
+    "actionable_insight": "Given that users have expressed feeling overwhelmed by the density of interactive elements in the competitor's sidebar, the founder should consider simplifying the navigation in their own product. This could involve reducing the number of links or grouping related tasks together to enhance clarity and ease of use for new marketing managers.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "onboarding checklist effectiveness",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'onboarding checklist effectiveness' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_001",
+    "user_side": {
+      "frame_number": 1,
+      "frame_path": null,
+      "screen_label": "Onboarding \u2014 Welcome to Notion",
+      "key_observations": [
+        "Clear two-column layout enhances navigation.",
+        "Structured checklist guides user setup effectively.",
+        "Command-based interactions may confuse new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "01.jpg",
+      "image_path": null,
+      "screen_label": "Onboarding \u2014 Getting Started",
+      "similarity_score": 0.8700813055038452,
+      "key_observations": [
+        "Sidebar may overwhelm new users with options.",
+        "Checklist format assumes familiarity with terminology.",
+        "Minimalist design fosters a calm user experience."
+      ]
+    },
+    "match_reasoning": "These screens are comparable because they both feature a two-column layout with a sidebar for navigation and a central area for onboarding content, specifically utilizing checklists to guide users through initial setup. This comparison matters for the founder's product as it highlights the importance of a clear and organized interface for non-technical marketing managers, who may feel overwhelmed by complex navigation systems. By analyzing these shared UI patterns, the founder can better understand how to design an intuitive experience that meets the needs of their target users.",
+    "actionable_insight": "Given that users found the competitor's sidebar navigation overwhelming due to its density, the founder should ensure their product's sidebar remains clearly organized with categorized sections to enhance navigation for new users. Additionally, while both products use checklists effectively, the founder should focus on making interactive elements more discoverable to prevent users from overlooking features, as noted in user feedback regarding the competitor's toggle blocks.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "onboarding checklist effectiveness",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'onboarding checklist effectiveness' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element discoverability",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element discoverability' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_002",
+    "user_side": {
+      "frame_number": 2,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 New Page",
+      "key_observations": [
+        "Sidebar provides clear navigation options.",
+        "Main area encourages content creation.",
+        "Sharing overlay could obscure important information."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7970524430274963,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Sidebar effectively categorizes navigation options.",
+        "Potential overwhelm for new users due to features."
+      ]
+    },
+    "match_reasoning": "Both screens feature a left sidebar for navigation, which helps users focus on their tasks without distraction. This comparison is relevant for the founder's product as it targets non-technical marketing managers who benefit from clear organization and simplicity in their project management tools. Additionally, the emphasis on a spacious content creation area aligns with the needs of marketing teams looking for an uncluttered workspace to manage their projects effectively.",
+    "actionable_insight": "The founder should ensure that the sharing options are prominently displayed and easily accessible, as competitor reviews indicate that their share option may be less noticeable among other settings, potentially hindering collaboration. By prioritizing visibility and ease of use for sharing features, the founder can enhance user experience and facilitate better teamwork among small marketing teams.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "content creation space",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'content creation space' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "sharing options visibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sharing options visibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_003",
+    "user_side": {
+      "frame_number": 3,
+      "frame_path": null,
+      "screen_label": "Notion \u2014 New Page Creation",
+      "key_observations": [
+        "Sidebar navigation is clear and organized.",
+        "Central canvas is minimal, potentially confusing for new users.",
+        "Interactive elements support collaboration effectively."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.8059569001197815,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation is well-organized but may overwhelm new users.",
+        "Interactive elements are distinct and easily recognizable."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes various sections, which can be overwhelming for new users. They also share a central content area designed for interactive engagement, highlighting the importance of guiding users through content creation. This comparison is crucial for the founder's product as it aims to cater to non-technical marketing managers who may struggle with complex interfaces.",
+    "actionable_insight": "To enhance user experience, the founder should simplify the sidebar navigation by categorizing options more clearly, similar to the competitor's use of 'Favorites' and 'Private' sections. Additionally, incorporating bold titles and distinct colors in the central canvas, as seen in the competitor's design, could provide clearer visual cues and guide users more effectively in content creation.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive content creation",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive content creation' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_004",
+    "user_side": {
+      "frame_number": 4,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 New Page",
+      "key_observations": [
+        "Minimalist design enhances visual hierarchy.",
+        "Floating invite dialog is prominently displayed.",
+        "Cognitive overhead may confuse first-time users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.7883398532867432,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive load for new users is high."
+      ]
+    },
+    "match_reasoning": "Both screens exhibit a sidebar navigation structure that categorizes options for users, enhancing usability and accessibility. They also share a clear visual hierarchy, with prominent titles and distinct interactive elements that guide users' attention. This comparison is crucial for the founder's product as it targets non-technical marketing managers who benefit from intuitive navigation and clarity in task management and reporting functionalities.",
+    "actionable_insight": "Given that users appreciate the clarity of the competitor's visual hierarchy and interactive elements, the founder should ensure that their product's sidebar navigation is equally well-organized and visually distinct. Incorporating a bold, easily recognizable header for the main content area, similar to the competitor's approach, could enhance user engagement and reduce cognitive friction.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element discoverability",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element discoverability' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_005",
+    "user_side": {
+      "frame_number": 5,
+      "frame_path": null,
+      "screen_label": "Workspace Dashboard \u2014 New Page",
+      "key_observations": [
+        "Minimalistic design enhances content visibility.",
+        "Sidebar navigation aids quick section identification.",
+        "Invite interface could benefit from clearer permissions."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.7833411693572998,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes multiple options, which can overwhelm new users unfamiliar with the layout. This comparison matters for the founder's product as it targets non-technical marketing managers who may struggle with complex interfaces, highlighting the importance of a user-friendly design. Additionally, both products emphasize a clean visual hierarchy that directs attention to the main workspace area, essential for effective project management.",
+    "actionable_insight": "Given that users found the competitor's sidebar navigation to create cognitive load for first-time users, the founder should consider simplifying the sidebar options in their product to enhance usability. Implementing clearer contextual tooltips for interactive elements, similar to the competitor's distinct '+ New' button, could help guide users more effectively and reduce confusion.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy effectiveness",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy effectiveness' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_006",
+    "user_side": {
+      "frame_number": 6,
+      "frame_path": null,
+      "screen_label": "Dashboard \u2014 Main Workspace",
+      "key_observations": [
+        "Clear separation between navigation and content creation.",
+        "Upgrade prompt may disrupt user workflow.",
+        "Cluttered sidebar could overwhelm new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7368664741516113,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Sidebar effectively categorizes navigation options.",
+        "Potential cognitive overload for new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a two-column layout with a navigation sidebar and a main content area, which is a common UI pattern in project management tools. This comparison is important for the founder's product as it highlights how effective organization and visual hierarchy can aid non-technical marketing managers in focusing on content creation while navigating the tool. Additionally, the presence of upgrade prompts in both screens indicates a shared challenge in maintaining user workflow amidst promotional distractions.",
+    "actionable_insight": "Given user feedback indicating that both the founder's product and the competitor's interface have cluttered sidebars that may overwhelm new users, the founder should consider simplifying the navigation options to enhance user experience. Implementing a more streamlined sidebar similar to the competitor's organized approach could help reduce confusion and improve the onboarding experience for non-technical marketing managers.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "content creation focus",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'content creation focus' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "upgrade prompts impact",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'upgrade prompts impact' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_007",
+    "user_side": {
+      "frame_number": 7,
+      "frame_path": null,
+      "screen_label": "New Page \u2014 Document Creation",
+      "key_observations": [
+        "Minimalistic layout enhances focus on content creation.",
+        "Sidebar navigation facilitates easy access to features.",
+        "Too many options may overwhelm new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.8113154172897339,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention.",
+        "Interactive elements are easily recognizable and accessible.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens share a similar layout with a left sidebar for navigation and a main content area focused on task management, which is critical for the target user of non-technical marketing managers. The clear visual hierarchy and interactive elements in both interfaces facilitate user engagement and content creation, making this comparison relevant for the founder's project management tool aimed at simplifying workflows for small marketing teams.",
+    "actionable_insight": "Given that users noted the potential for cognitive overload due to numerous interactive options in the competitor's interface, the founder should prioritize a streamlined design with fewer, more intuitive features. Implementing a guided onboarding process or tooltips could help mitigate confusion for new users, enhancing their experience and adoption of the product.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element overload",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element overload' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_008",
+    "user_side": {
+      "frame_number": 8,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 Document View",
+      "key_observations": [
+        "Sidebar may overwhelm new users with options.",
+        "Icons lack clarity for unfamiliar users.",
+        "Minimalist design enhances content focus."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.7923246622085571,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Sidebar effectively separates navigation from content.",
+        "Potential cognitive load for new users exists."
+      ]
+    },
+    "match_reasoning": "Both the user's product and the competitor's Notion interface feature a sidebar navigation system that presents a variety of options, which can potentially overwhelm new users. This comparison is important for the founder as it highlights a common user experience challenge in project management tools, particularly for non-technical marketing managers who may struggle with complex navigation. Additionally, both interfaces emphasize a clean and minimalist design, which is crucial for maintaining user focus on content and task management.",
+    "actionable_insight": "Given that users have expressed concerns about the density of the sidebar navigation in both products, the founder should consider simplifying the sidebar by reducing the number of visible options or implementing a tiered navigation system. This adjustment could alleviate cognitive load for new users, similar to how the competitor's design has been noted for its effective visual hierarchy, which directs attention to the main content area.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "onboarding cognitive load",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'onboarding cognitive load' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_009",
+    "user_side": {
+      "frame_number": 9,
+      "frame_path": null,
+      "screen_label": "Notion \u2014 CLERION: New Page",
+      "key_observations": [
+        "Clean layout with clear visual hierarchy.",
+        "Sidebar may overwhelm new users.",
+        "Editable page title enhances user engagement."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7143765687942505,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Interactive elements are easily recognizable.",
+        "Potential cognitive load for new users."
+      ]
+    },
+    "match_reasoning": "Both the user's product and the competitor's Notion feature a sidebar navigation system that organizes various options, which can be overwhelming for new users. They also share a clear visual hierarchy with prominent titles that guide user focus towards the main task area. This comparison matters for the founder's product as it highlights the importance of user-friendly navigation and clarity in task management for non-technical marketing managers at small agencies.",
+    "actionable_insight": "Given that users found the sidebar navigation in both products potentially confusing, the founder should consider simplifying the sidebar by reducing the number of options or providing a guided onboarding process to help new users acclimate. Additionally, since both products have been critiqued for interactive element overload, the founder could streamline the bottom buttons in their tool to minimize cognitive load, perhaps by consolidating similar functions or offering tooltips for clarity.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element overload",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element overload' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_010",
+    "user_side": {
+      "frame_number": 10,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 CLERION Page",
+      "key_observations": [
+        "Minimalist design enhances focus on content.",
+        "Collapsible side panel maintains workspace flexibility.",
+        "Variety of interactive elements supports user collaboration."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7863276600837708,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar provides quick navigation with recognizable icons.",
+        "Initial cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes content hierarchically, allowing users to navigate through various sections efficiently. This comparison matters for the founder's product as it targets non-technical marketing managers who benefit from a clean and focused workspace, which is essential for maintaining productivity in small teams. Additionally, both interfaces prioritize visual hierarchy, directing user attention to the main content area effectively.",
+    "actionable_insight": "Given that users found the competitor's sidebar potentially overwhelming due to too many nested pages, the founder should ensure that their product's collapsible sidebar remains simple and intuitive, possibly limiting the number of nested options. This approach could enhance user experience by preventing cognitive overload, thereby improving overall satisfaction with the product.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_011",
+    "user_side": {
+      "frame_number": 11,
+      "frame_path": null,
+      "screen_label": "Document View \u2014 CLERION Updates",
+      "key_observations": [
+        "Sidebar options may overwhelm new users.",
+        "Command hints lack clarity without context.",
+        "Minimalist design enhances content focus."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "01.jpg",
+      "image_path": null,
+      "screen_label": "Onboarding \u2014 Getting Started",
+      "similarity_score": 0.7380216121673584,
+      "key_observations": [
+        "Clean, minimalist design reduces overwhelm.",
+        "Checklist format guides users step-by-step.",
+        "Sidebar may overwhelm with too many options."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes various interactive elements, which can lead to user overwhelm due to their density. This comparison is important for the founder's product, as non-technical marketing managers may struggle to navigate a cluttered interface, impacting their ability to efficiently manage projects and generate reports. Additionally, both applications present onboarding challenges that can hinder user engagement and adoption.",
+    "actionable_insight": "To improve user experience, the founder should consider implementing a clear onboarding process similar to the competitor's 'Getting Started' guide, which helps users familiarize themselves with the tool's functionalities. By simplifying the sidebar navigation and providing structured guidance, the founder can enhance discoverability of interactive elements and reduce user confusion, addressing the sentiment that users felt overwhelmed by the number of options available.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "onboarding experience clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'onboarding experience clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element discoverability",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element discoverability' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_012",
+    "user_side": {
+      "frame_number": 12,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Sidebar may overwhelm new users.",
+        "Input field is prominently placed for engagement.",
+        "Ambiguous 'New agent' label could confuse users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7434172034263611,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick access to options.",
+        "Potential cognitive overload for new users exists."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that categorizes various sections, which can lead to cognitive overload for new users. They also emphasize a clear visual hierarchy with bold titles and distinct interactive elements, making it easy for users to focus on the main content area. This comparison is important for the founder as it highlights the need for a user-friendly interface that caters to non-technical marketing managers who may be overwhelmed by dense navigation options.",
+    "actionable_insight": "Given that users found the sidebar navigation in both products potentially overwhelming, the founder should consider simplifying the sidebar by reducing the number of categories or using a collapsible design to enhance usability. Additionally, incorporating distinct colors for interactive elements, similar to the competitor's approach, could improve user engagement and help guide users more effectively through their tasks.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element engagement",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element engagement' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_013",
+    "user_side": {
+      "frame_number": 13,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Sidebar navigation is well-organized and spaced.",
+        "AI query input box invites user interaction.",
+        "Potential overwhelm for first-time users due to options."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.8168242573738098,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Sidebar effectively categorizes navigation options.",
+        "Potential cognitive load for new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes multiple sections and categories, which can lead to cognitive overload for first-time users. This comparison is relevant for the founder's product as it targets non-technical marketing managers who may find complex navigation challenging, making it crucial to strike a balance between functionality and user-friendliness. Additionally, both products emphasize visual hierarchy and interactive elements, which are essential for guiding users through their workflows effectively.",
+    "actionable_insight": "Given that users expressed concerns about the overwhelming nature of the sidebar navigation in both products, the founder should consider simplifying the sidebar by reducing the number of options or categorizing them more intuitively. Implementing a clearer visual distinction for interactive elements, similar to the competitor's use of distinct coloring for the '+ New' button, could also enhance user comprehension and accessibility.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_014",
+    "user_side": {
+      "frame_number": 14,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 CLERION Updates",
+      "key_observations": [
+        "Clear visual hierarchy enhances navigation.",
+        "Interactive search bar aids user queries.",
+        "Sidebar sections may overwhelm new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Notion \u2014 Detailed View of Proposed Locations",
+      "similarity_score": 0.7515329122543335,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes content into various sections, which is essential for users to efficiently access different parts of the application. This comparison matters for the founder's product as non-technical marketing managers will benefit from a clear, intuitive layout that enhances usability and minimizes overwhelm. Additionally, both products utilize a visual hierarchy to guide user focus, making it easier for users to navigate and complete tasks effectively.",
+    "actionable_insight": "Given user feedback indicating that the competitor's sidebar uses indentation to create a clearer hierarchy, the founder should consider implementing a similar design approach to improve navigation clarity. Simplifying the sidebar and ensuring that critical elements stand out with distinct coloring, as seen in the competitor's design, could enhance user experience and reduce potential confusion for new users.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element functionality",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element functionality' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_015",
+    "user_side": {
+      "frame_number": 15,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Prominent AI interaction area enhances user focus.",
+        "Minimalist design reduces cognitive load effectively.",
+        "Lack of contextual guidance may confuse new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.711060643196106,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus effectively.",
+        "Sidebar navigation is well-organized but may overwhelm new users.",
+        "Interactive elements are distinct and easily recognizable."
+      ]
+    },
+    "match_reasoning": "Both screens feature a left-side navigation pane that categorizes options clearly, which is crucial for non-technical marketing managers who may feel overwhelmed by complex interfaces. Additionally, both products emphasize visual hierarchy with bold titles and prominent interactive elements, making it easier for users to focus on their primary tasks. This comparison matters for the founder's product as it highlights the importance of a user-friendly design that caters to the target audience's needs.",
+    "actionable_insight": "Given that users appreciate the clarity of sidebar navigation in the competitor's product but may feel overwhelmed by its depth, the founder should ensure that their navigation pane is simplified and intuitive. They should focus on maintaining clear categories while minimizing the number of options presented at once, thus enhancing user experience and reducing cognitive load.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_016",
+    "user_side": {
+      "frame_number": 16,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Sidebar navigation is well-organized and hierarchical.",
+        "Prominent search bar enhances user interaction.",
+        "Ambiguous layout may overwhelm first-time users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7464419603347778,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both the user's product and the competitor's Notion interface feature a collapsible sidebar that organizes navigation elements hierarchically, which is essential for non-technical marketing managers to easily navigate their project management tasks. Additionally, both screens employ a clear visual hierarchy, directing user focus towards important content and interactive elements, which is crucial for maintaining usability in a project management tool designed for small teams.",
+    "actionable_insight": "Users appreciated the competitor's use of bold titles and distinct coloring for interactive elements, which enhanced clarity and accessibility. The founder should consider implementing similar visual differentiation in their product to improve user recognition of key areas and actions, thereby enhancing the overall user experience.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_017",
+    "user_side": {
+      "frame_number": 17,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Two-column layout enhances visual hierarchy.",
+        "Prominent AI input box lacks contextual guidance.",
+        "Overwhelming sidebar options may confuse new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "clickup",
+      "filename": "02.jpg",
+      "image_path": null,
+      "screen_label": "AI Personalization \u2014 Step 2 of 3",
+      "similarity_score": 0.6970518827438354,
+      "key_observations": [
+        "Clear layout with distinct sections enhances navigation.",
+        "Input field encourages user interaction effectively.",
+        "Illustration supports engagement but may distract from input."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes various functionalities, which is crucial for users managing multiple projects. Additionally, they include interactive AI components, with the user's product focusing on an 'Ask AI anything' feature while ClickUp provides a structured onboarding experience for its AI assistant. This comparison is important for the founder as it highlights the need for effective navigation and user guidance, particularly for non-technical marketing managers who may require additional support in using the tool effectively.",
+    "actionable_insight": "To enhance user experience, the founder should consider implementing a structured onboarding process similar to ClickUp's, which guides users through setting up the AI features. User feedback indicates that the lack of contextual guidance in the user's product may lead to uncertainty about next steps, so incorporating clear visual hierarchies and instructional prompts could significantly improve user engagement and satisfaction.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Clickup users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "AI interaction guidance",
+        "verdict": "mixed",
+        "review_summary": "Clickup users are 0% positive on 'AI interaction guidance' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Clickup users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_018",
+    "user_side": {
+      "frame_number": 18,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Clear visual hierarchy enhances focus on AI input.",
+        "Overwhelming sidebar may confuse new users.",
+        "Sparse feedback leaves users unclear on next steps."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7581239342689514,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention.",
+        "Interactive elements are well-defined and accessible.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that organizes content and options, which is a common UI pattern in collaborative workspace applications. This comparison is relevant for the founder's product as it highlights the importance of intuitive navigation for non-technical marketing managers who may find overwhelming sidebars challenging. Additionally, both screens emphasize visual hierarchy to guide user focus, a critical aspect for ensuring task completion in project management tools.",
+    "actionable_insight": "Given that users of the competitor's product noted potential confusion due to the density of sidebar navigation, the founder should consider simplifying the sidebar in their own product to enhance usability. Implementing clearer labels and reducing the number of visible options could help alleviate user overwhelm and improve overall navigation, aligning with positive feedback on visual hierarchy clarity.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element feedback",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element feedback' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_019",
+    "user_side": {
+      "frame_number": 19,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Sidebar navigation is intuitive with icons and text.",
+        "Whitespace reduces cognitive overload effectively.",
+        "Static sidebar may limit space on smaller displays."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.8095026016235352,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention.",
+        "Sidebar effectively separates navigation from content.",
+        "Potential cognitive load for new users is high."
+      ]
+    },
+    "match_reasoning": "Both screens feature a collapsible sidebar for navigation, allowing users to access different sections of the application easily. They also share a strong visual hierarchy with bold headers that guide users' attention to key content areas, which is crucial for non-technical marketing managers who may benefit from intuitive design. This comparison matters as it highlights effective UI patterns that can enhance usability for the target audience of small marketing teams.",
+    "actionable_insight": "To improve user experience, the founder should ensure that interactive elements in their product are distinctly colored and labeled, similar to the competitor's approach. User feedback suggests that clear visual differentiation aids in quick recognition, which can enhance navigation efficiency for marketing managers.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_020",
+    "user_side": {
+      "frame_number": 20,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Clear visual hierarchy guides user actions.",
+        "Sidebar navigation is compact yet comprehensive.",
+        "Potential confusion from unlabeled icons in sidebar."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.8196364641189575,
+      "key_observations": [
+        "Clear visual hierarchy directs user focus.",
+        "Interactive elements are distinct and recognizable.",
+        "Potential cognitive load for new users is high."
+      ]
+    },
+    "match_reasoning": "Both screens feature a two-column layout with a left sidebar for navigation and a main content area, which is a common UI pattern in project management tools. This comparison is relevant for the founder's product as it highlights effective navigation and visual hierarchy, essential for non-technical marketing managers who need to quickly access features and focus on task completion without getting overwhelmed by complexity.",
+    "actionable_insight": "Given that users appreciated the clear hierarchy and effective navigation in the competitor's design, the founder should ensure that their product's sidebar is not only compact but also categorically organized to facilitate quick access to key areas. Incorporating distinct visual cues for interactive elements, similar to the competitor's use of blue coloring for action buttons, could enhance user engagement and clarity.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element design",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element design' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_021",
+    "user_side": {
+      "frame_number": 21,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 CLERION: New App Updates",
+      "key_observations": [
+        "Minimalistic design enhances clarity and navigation.",
+        "Sidebar effectively contrasts with vibrant icons.",
+        "Interactive elements facilitate easy access to features."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7747339010238647,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive overload for new users exists."
+      ]
+    },
+    "match_reasoning": "Both screens showcase a minimalistic design with clear sidebar navigation, emphasizing user-friendly interaction for task management. The shared UI patterns of bold typography for visual hierarchy and interactive elements like clickable sidebar items are crucial for non-technical marketing managers, as they enhance usability and streamline workflow. This comparison matters because it highlights effective design strategies that can improve user experience in the founder's project management tool.",
+    "actionable_insight": "Given that users appreciate the clarity and organization of sidebar navigation in both products, the founder should ensure that their tool's sidebar is not only minimalistic but also effectively categorizes options for easy access. Additionally, incorporating bold typography to emphasize key content areas, as seen in the competitor's design, could enhance user focus and engagement.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy effectiveness",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy effectiveness' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_022",
+    "user_side": {
+      "frame_number": 22,
+      "frame_path": null,
+      "screen_label": "CLERION \u2014 New App Updates",
+      "key_observations": [
+        "Sidebar navigation may overwhelm first-time users.",
+        "Main content area lacks immediate guidance.",
+        "Clear interactive elements enhance user expectations."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.8100274205207825,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation is well-organized but may overwhelm new users.",
+        "Interactive elements are distinct and easily recognizable."
+      ]
+    },
+    "match_reasoning": "Both screens feature a two-column layout with a sidebar for navigation and a main content area for displaying detailed information, which is a common UI pattern in productivity tools. This comparison is relevant for the founder's project management tool as it highlights the importance of effective navigation and content organization for non-technical marketing managers who may be overwhelmed by too many options. Understanding these shared UI patterns can help the founder design a more user-friendly interface that meets the needs of their target audience.",
+    "actionable_insight": "Given that users have expressed feelings of cognitive overload due to the density of navigation options in both the user's product and Notion, the founder should consider simplifying the sidebar by reducing the number of clickable items or grouping them into collapsible categories. This adjustment could enhance user experience by making navigation more intuitive, as indicated by user feedback on the competitor's interface.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual hierarchy clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual hierarchy clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element accessibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element accessibility' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_023",
+    "user_side": {
+      "frame_number": 23,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 CLERION: New App Updates",
+      "key_observations": [
+        "Sidebar navigation is well-organized and intuitive.",
+        "Main content area emphasizes readability and engagement.",
+        "Overwhelming sidebar options may confuse new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "01.jpg",
+      "image_path": null,
+      "screen_label": "Onboarding \u2014 Getting Started",
+      "similarity_score": 0.7903439402580261,
+      "key_observations": [
+        "Sidebar may overwhelm new users with options.",
+        "Checklist format assumes familiarity with terminology.",
+        "Clean design fosters a calm user experience."
+      ]
+    },
+    "match_reasoning": "Both screens feature a sidebar navigation system that houses numerous interactive elements, which can lead to user overwhelm, particularly for non-technical marketing managers. The shared minimalist design approach enhances readability and user engagement, making this comparison relevant for the founder's product, which aims to simplify project management for small marketing teams. Understanding these UI patterns can help the founder refine their interface to better serve their target audience's needs.",
+    "actionable_insight": "Given that users have expressed confusion regarding the density of interactive elements in both products, the founder should consider simplifying the sidebar navigation by reducing the number of categories and options. Additionally, incorporating clearer labeling and tooltips for interactive icons, similar to the competitor's checklist items, could enhance user clarity and reduce friction during onboarding.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "minimalist design strength",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'minimalist design strength' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_024",
+    "user_side": {
+      "frame_number": 24,
+      "frame_path": null,
+      "screen_label": "Workspace \u2014 App Updates",
+      "key_observations": [
+        "Two-column layout enhances navigation clarity.",
+        "Interactive elements support quick user actions.",
+        "Cognitive overload may confuse new users."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "03.jpg",
+      "image_path": null,
+      "screen_label": "Detailed View \u2014 Proposed Locations",
+      "similarity_score": 0.7519362568855286,
+      "key_observations": [
+        "Clear visual hierarchy directs user attention effectively.",
+        "Sidebar navigation aids quick recognition of options.",
+        "Potential cognitive load may overwhelm new users."
+      ]
+    },
+    "match_reasoning": "Both screens feature a two-column layout with a left sidebar for navigation, which is crucial for users to easily access different sections of the project management tool. This comparison matters for the founder's product as it highlights the importance of organized navigation for non-technical marketing managers who may be overwhelmed by complex interfaces. Additionally, both interfaces include interactive elements that aim to facilitate user actions, making them directly comparable in terms of usability and design effectiveness.",
+    "actionable_insight": "The founder should consider simplifying the interactive elements in their product, as user feedback indicates that both their product and Notion may overwhelm new users with numerous options and ambiguous prompts. Implementing clearer, more intuitive action buttons similar to Notion's prominent '+ New' button could enhance usability and reduce cognitive load for non-technical marketing managers.",
+    "market_evidence": [
+      {
+        "theme": "sidebar navigation density",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'sidebar navigation density' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "cognitive load for new users",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'cognitive load for new users' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_025",
+    "user_side": {
+      "frame_number": 25,
+      "frame_path": null,
+      "screen_label": "Error \u2014 Screenshot Not Visible",
+      "key_observations": [
+        "Screenshot appears completely black.",
+        "No interface elements are visible.",
+        "Unable to provide detailed analysis."
+      ]
+    },
+    "competitor_side": {
+      "app": "trello",
+      "filename": "07.jpg",
+      "image_path": null,
+      "screen_label": "Trello \u2014 Board Overview",
+      "similarity_score": 0.483106791973114,
+      "key_observations": [
+        "Clear task organization with lists and cards.",
+        "Intuitive drag-and-drop functionality.",
+        "Visual indicators for task progress and deadlines."
+      ]
+    },
+    "match_reasoning": "Both the user's product and Trello utilize a card-based system for task management, which is a common UI pattern in project management tools. This comparison is relevant for the founder as it highlights how their built-in client reporting feature differentiates them from Trello, which lacks this automation and requires manual report compilation, a significant pain point for their target users.",
+    "actionable_insight": "The founder should emphasize the ease of use and time-saving benefits of the automated client reporting feature in their marketing, as Trello users have expressed feeling overwhelmed by the manual reporting process. By showcasing how their product minimizes cognitive load and streamlines reporting, the founder can attract non-technical marketing managers who are looking for a more efficient solution.",
+    "market_evidence": [
+      {
+        "theme": "client reporting automation",
+        "verdict": "mixed",
+        "review_summary": "Trello users are 0% positive on 'client reporting automation' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "task completion visibility",
+        "verdict": "mixed",
+        "review_summary": "Trello users are 0% positive on 'task completion visibility' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "user-friendly interface",
+        "verdict": "mixed",
+        "review_summary": "Trello users are 0% positive on 'user-friendly interface' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_026",
+    "user_side": {
+      "frame_number": 26,
+      "frame_path": null,
+      "screen_label": "Onboarding \u2014 Connect Google Account",
+      "key_observations": [
+        "Minimalistic layout focuses on connection prompt.",
+        "Prominent 'Connect to Google' button is clear.",
+        "Fine print may cause accessibility issues."
+      ]
+    },
+    "competitor_side": {
+      "app": "notion",
+      "filename": "01.jpg",
+      "image_path": null,
+      "screen_label": "Onboarding \u2014 Getting Started",
+      "similarity_score": 0.668874979019165,
+      "key_observations": [
+        "Clean layout promotes user focus.",
+        "Checklist format aids step-by-step learning.",
+        "Sidebar may overwhelm new users with options."
+      ]
+    },
+    "match_reasoning": "Both screens serve as onboarding experiences aimed at guiding users through initial setup processes, showcasing a focus on clarity and user engagement. They share UI patterns such as prominent headings, minimalistic design, and interactive elements that facilitate user actions, which is crucial for non-technical marketing managers who may feel overwhelmed by complex interfaces. This comparison matters for the founder's product as it highlights the importance of a streamlined onboarding experience that resonates with their target audience's needs.",
+    "actionable_insight": "Given that users found the competitor's sidebar overwhelming due to the density of interactive elements, the founder should ensure that their product maintains a clear focus on primary actions, like the 'Connect to Google' button. By simplifying the onboarding process and minimizing the number of visible options, the founder can enhance user experience and reduce potential friction points during setup.",
+    "market_evidence": [
+      {
+        "theme": "onboarding clarity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'onboarding clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element visibility",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'interactive element visibility' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "visual design simplicity",
+        "verdict": "mixed",
+        "review_summary": "Notion users are 0% positive on 'visual design simplicity' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  },
+  {
+    "card_id": "comparison_027",
+    "user_side": {
+      "frame_number": 27,
+      "frame_path": null,
+      "screen_label": "Authorization \u2014 Google Sign-In",
+      "key_observations": [
+        "Centralized design focuses user attention on key elements.",
+        "Prominent 'Continue' button encourages user action.",
+        "Explanatory text may overwhelm users seeking quick interactions."
+      ]
+    },
+    "competitor_side": {
+      "app": "monday",
+      "filename": "05.jpg",
+      "image_path": null,
+      "screen_label": "Automation \u2014 Setup View",
+      "similarity_score": 0.5997331142425537,
+      "key_observations": [
+        "Clean design emphasizes automation rule clarity.",
+        "Underlined words indicate interactive options for users.",
+        "Potential confusion for new users due to minimal text."
+      ]
+    },
+    "match_reasoning": "Both screens utilize a modal design that effectively isolates key interactive elements, directing user attention to essential actions\u2014Google Sign-In for the user's product and automation setup for the competitor. This comparison is significant for the founder as it highlights the importance of minimizing distractions for non-technical marketing managers, ensuring they can focus on completing necessary tasks without confusion. Additionally, both screens emphasize interactive elements, guiding users through their respective processes.",
+    "actionable_insight": "Given that users appreciated the clean layout of the competitor's automation setup but expressed potential confusion due to minimal text and reliance on underlined words, the founder should ensure that their authorization modal maintains clarity while providing sufficient context. Incorporating more descriptive text or tooltips alongside interactive elements could enhance user understanding and confidence during the Google Sign-In process.",
+    "market_evidence": [
+      {
+        "theme": "modal design clarity",
+        "verdict": "mixed",
+        "review_summary": "Monday users are 0% positive on 'modal design clarity' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "interactive element visibility",
+        "verdict": "mixed",
+        "review_summary": "Monday users are 0% positive on 'interactive element visibility' based on 0 reviews.",
+        "reviews": []
+      },
+      {
+        "theme": "cognitive load management",
+        "verdict": "mixed",
+        "review_summary": "Monday users are 0% positive on 'cognitive load management' based on 0 reviews.",
+        "reviews": []
+      }
+    ]
+  }
+]

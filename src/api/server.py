@@ -15,12 +15,12 @@ from __future__ import annotations
 
 import asyncio
 import base64
+import copy
 import json
 import os
 import re
 import shutil
 import subprocess
-import tempfile
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import asynccontextmanager
@@ -28,8 +28,9 @@ from pathlib import Path
 from typing import Any, AsyncIterator, Callable
 
 import uvicorn
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 from pydantic import BaseModel
 
@@ -42,6 +43,10 @@ from src.orchestration.response_synthesizer import parse_verdict
 # ---------------------------------------------------------------------------
 
 ROUND_ROLES = ["first_timer", "daily_driver", "first_timer", "buyer"]
+
+# Persistent directory for session frames — created once at module load so static mount works.
+SESSIONS_DIR = Path("sessions")
+SESSIONS_DIR.mkdir(exist_ok=True)
 
 SESSIONS: dict[str, DebateSession] = {}
 VIDEO_EVIDENCE: dict[str, dict] = {}
@@ -205,6 +210,15 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve user session frames: GET /sessions/{session_id}/frames/frame_NNNN.jpg
+app.mount("/sessions", StaticFiles(directory=str(SESSIONS_DIR)), name="sessions")
+
+# Serve competitor screenshots: GET /data/{app}/screenshots/{filename}
+# Only mounted when the data/ directory exists (may be absent during local dev).
+_DATA_DIR = Path("data")
+if _DATA_DIR.exists():
+    app.mount("/data", StaticFiles(directory=str(_DATA_DIR)), name="screenshots")
 
 
 # ---------------------------------------------------------------------------
@@ -509,6 +523,8 @@ def process_video_frames(
         ux_frames.append(
             {
                 "frame_number": i + 1,
+                # Relative path from repo root; served at /sessions/{id}/frames/{name}
+                "image_path": f"sessions/{session_id}/frames/{frame_path.name}",
                 "debate_analysis": description,
                 "ux_analysis": ux_analysis,
             }
@@ -570,16 +586,17 @@ async def ingest_video(
         "product_stage": product_stage or "Unknown",
     }
 
-    tmp_dir = tempfile.mkdtemp(prefix="warroom_video_")
-    try:
-        video_suffix = Path(file.filename or "upload.mp4").suffix or ".mp4"
-        video_path = os.path.join(tmp_dir, f"input{video_suffix}")
-        with open(video_path, "wb") as fh:
-            shutil.copyfileobj(file.file, fh)
+    session_dir = SESSIONS_DIR / session_id
+    frames_dir = session_dir / "frames"
+    frames_dir.mkdir(parents=True, exist_ok=True)
 
-        frames_dir = os.path.join(tmp_dir, "frames")
-        os.makedirs(frames_dir, exist_ok=True)
-        frames = extract_key_frames(video_path, frames_dir)
+    video_suffix = Path(file.filename or "upload.mp4").suffix or ".mp4"
+    video_path = str(session_dir / f"input{video_suffix}")
+    with open(video_path, "wb") as fh:
+        shutil.copyfileobj(file.file, fh)
+
+    frames = extract_key_frames(video_path, str(frames_dir))
+    try:
         frames_extracted = len(frames)
 
         if frames_extracted == 0:
@@ -611,6 +628,8 @@ async def ingest_video(
                         {
                             "frame_number": ux_frame["frame_number"],
                             "user_analysis": ux_frame["ux_analysis"],
+                            # image_path carried forward so synthesis can stamp it on cards
+                            "user_image_path": ux_frame.get("image_path", ""),
                             "matched_competitors": matches,
                         }
                     )
@@ -618,6 +637,7 @@ async def ingest_video(
             print(f"   WARNING: Screenshot matching failed: {exc}")
 
         VIDEO_EVIDENCE[session_id] = {
+            "frames_dir": str(frames_dir),
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
             "screenshot_matches": screenshot_matches,
@@ -648,6 +668,7 @@ async def ingest_video(
             "session_id": session_id,
             "frames_extracted": frames_extracted,
             "key_frames_analyzed": frames_extracted,
+            "frames_dir": str(frames_dir),
             "journey_summary": journey_report,
             "frame_analyses": frame_analyses,
             "screenshot_matches_count": len(screenshot_matches),
@@ -655,8 +676,8 @@ async def ingest_video(
             "apps_compared": synthesis.get("apps_compared", []),
             "dominant_themes": synthesis.get("dominant_themes", []),
         }
-    finally:
-        shutil.rmtree(tmp_dir, ignore_errors=True)
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 # ---------------------------------------------------------------------------
@@ -665,12 +686,13 @@ async def ingest_video(
 
 
 @app.get("/api/comparisons/{session_id}", tags=["video"])
-async def get_comparisons(session_id: str) -> dict[str, Any]:
+async def get_comparisons(session_id: str, request: Request) -> dict[str, Any]:
     """Return structured side-by-side comparison cards for a completed video ingest.
 
     Cards are generated during POST /api/ingest/video and cached in memory.
     Each card pairs a user frame analysis against the closest competitor
     screenshot from the 69-app suite, with curated reviews and actionable insight.
+    Both sides include an ``image_url`` field the frontend can use directly.
 
     Raises:
         404: Session not found or synthesis not yet complete.
@@ -686,14 +708,50 @@ async def get_comparisons(session_id: str) -> dict[str, Any]:
             "Either the video had no matching competitor screens or synthesis failed.",
         )
     synthesis = evidence.get("synthesis", {})
+
+    # Deep-copy so we don't mutate the in-memory evidence store
+    base_url = str(request.base_url).rstrip("/")
+    enriched_cards = copy.deepcopy(cards)
+    for card in enriched_cards:
+        user_side = card.get("user_side", {})
+        if user_side.get("image_path"):
+            user_side["image_url"] = f"{base_url}/{user_side['image_path']}"
+        comp_side = card.get("competitor_side", {})
+        if comp_side.get("image_path"):
+            comp_side["image_url"] = f"{base_url}/{comp_side['image_path']}"
+
     return {
         "session_id": session_id,
-        "cards": cards,
-        "total_comparisons": len(cards),
+        "cards": enriched_cards,
+        "total_comparisons": len(enriched_cards),
         "apps_compared": synthesis.get("apps_compared", []),
         "dominant_themes": synthesis.get("dominant_themes", []),
         "summary": synthesis.get("agent_brief", ""),
     }
+
+
+# ---------------------------------------------------------------------------
+# Session cleanup
+# ---------------------------------------------------------------------------
+
+
+@app.delete("/api/sessions/{session_id}", tags=["video"])
+async def cleanup_session(session_id: str) -> dict[str, Any]:
+    """Delete the session directory and evict it from the in-memory evidence store.
+
+    Not required for demo use; prevents disk bloat in long-running deployments.
+
+    Raises:
+        404: Session directory and in-memory record both absent.
+    """
+    session_dir = SESSIONS_DIR / session_id
+    if not session_dir.exists() and session_id not in VIDEO_EVIDENCE:
+        raise HTTPException(status_code=404, detail="Session not found.")
+    if session_dir.exists():
+        shutil.rmtree(session_dir, ignore_errors=True)
+    VIDEO_EVIDENCE.pop(session_id, None)
+    SESSIONS.pop(session_id, None)
+    return {"deleted": True, "session_id": session_id}
 
 
 # ---------------------------------------------------------------------------

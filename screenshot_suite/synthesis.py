@@ -145,6 +145,8 @@ def synthesize_evidence(
     for match in screenshot_matches:
         frame_number: int = match["frame_number"]
         user_analysis: str = match.get("user_analysis", "")
+        # image_path constructed in process_video_frames and carried through screenshot_matches
+        user_image_path: str = match.get("user_image_path", "")
         competitors_list: list[dict[str, Any]] = match.get("matched_competitors", [])
 
         if not user_analysis or not competitors_list:
@@ -172,6 +174,7 @@ def synthesize_evidence(
                 curated_themes=curated_themes,
                 user_context=user_context,
                 card_index=card_index,
+                user_frame_image_path=user_image_path,
             )
             cards.append(card)
             card_index += 1

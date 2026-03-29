@@ -238,6 +238,7 @@ def build_comparison_card(
     curated_themes: list[dict[str, Any]],
     user_context: dict[str, Any],
     card_index: int = 0,
+    user_frame_image_path: str = "",
 ) -> dict[str, Any]:
     """Build a single side-by-side comparison card.
 
@@ -269,16 +270,15 @@ def build_comparison_card(
         "card_id": f"comparison_{card_index:03d}",
         "user_side": {
             "frame_number": frame_number,
-            # Frames live in a temp dir and are deleted after ingest — path not persisted.
-            "frame_path": None,
+            "image_path": user_frame_image_path,
             "screen_label": user_struct["screen_label"],
             "key_observations": user_struct["key_observations"],
         },
         "competitor_side": {
             "app": app,
             "filename": competitor_match.get("filename", ""),
-            # Raw images not stored in this pipeline yet — future extension.
-            "image_path": None,
+            # image_path constructed once in matcher.find_similar_screens and passed through.
+            "image_path": competitor_match.get("image_path", ""),
             "screen_label": competitor_struct["screen_label"],
             "similarity_score": float(competitor_match.get("similarity_score", 0.0)),
             "key_observations": competitor_struct["key_observations"],
