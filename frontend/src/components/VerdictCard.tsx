@@ -862,22 +862,7 @@ function FeatureEvidenceCard({ evidence }: { evidence: FeatureEvidence }) {
 // Main component
 // ---------------------------------------------------------------------------
 
-/**
- * Full-page verdict summary rendered after all four debate rounds complete.
- *
- * Sections (in order): hero score ring + verdict badge, executive summary
- * paragraphs + metrics grid, feature-level evidence cards (when citations are
- * found), priority fixes list, collapsible debate round transcripts, competitive
- * positioning, and a back button. Fades in on mount.
- *
- * @param product - Product name displayed in the hero heading.
- * @param score - Overall quality score (1–100) from the Buyer agent.
- * @param decision - Raw buy decision string (normalised internally).
- * @param fixes - Top-3 priority fix strings from the Buyer agent.
- * @param rounds - All four completed debate round objects.
- * @param full_report - Full Round 4 Buyer output used for section extraction.
- * @param onBack - Callback invoked when the user clicks "Start New Analysis".
- */
+/** Verdict card — displays final score (1-100), BUY/PASS/CONDITIONS decision, and severity-rated findings with evidence citations. */
 export default function VerdictCard({
   product, score, decision, fixes, rounds, full_report, onBack,
 }: VerdictCardProps) {
