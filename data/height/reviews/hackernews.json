@@ -1,0 +1,645 @@
+{
+  "app": "height",
+  "source": "hackernews",
+  "total_items": 62,
+  "items": [
+    {
+      "id": "5397794",
+      "type": "comment",
+      "text": "I noticed this posthttps://news.ycombinator.com/item?id=5392943and commented there (based on the specs sheet they show):Not pleased.Keyboard changes, including what appears to be a \"sharper\" front edge to the palm rest. (I hate having that pressing into my wrists when a table is not at the ideal typing height.)Apparently only one DIMM; initial 4 GB soldered.WWAN and mSATA share a slot; it's either/or.No optical drive or spare drive bay. Yes, some of us still use those.--P.S.  Also, this perspective just occurred to me:They are no longer offering a $1000 laptop.  They are offering a $700 (perhaps generous -- soon to be $600 or lower equivalent) laptop.I won't pay them $1000 for this.  I'll pick up a competitor's $600 model.Aside from the price inflation, there's little left in this model of Thinkpad to tempt me to make a longer-timeframe purchase decision.  I'll probably switch to buying something else, and just upgrading every year or year and a bit -- if and as needed.",
+      "author": "pasbesoin",
+      "points": null,
+      "created_at": "2013-03-18T23:12:05Z",
+      "story_title": "The inside story of Lenovo's ThinkPad redesign",
+      "hn_url": "https://news.ycombinator.com/item?id=5397794"
+    },
+    {
+      "id": "5397741",
+      "type": "comment",
+      "text": "Not pleased.Keyboard changes, including what appears to be a \"sharper\" front edge to the palm rest.  (I hate having that pressing into my wrists when a table is not at the ideal typing height.)Apparently only one DIMM; initial 4 GB soldered.WWAN and mSATA share a slot; it's either/or.No optical drive or spare drive bay.  Yes, some of us still use those.",
+      "author": "pasbesoin",
+      "points": null,
+      "created_at": "2013-03-18T23:01:18Z",
+      "story_title": "Lenovo Launchs New ThinkPad T431",
+      "hn_url": "https://news.ycombinator.com/item?id=5397741"
+    },
+    {
+      "id": "4627661",
+      "type": "comment",
+      "text": "It's not good jQuery code either.* The naming convention is terrible. 'canvasElement' sounds like it would be the canvas element, yes? No, it's the canvas jQuery object!* Use of hard-to-read string concatenation.* Use of .get(0) - use [0] instead.And some non-jQuery objections:* Unfortunate line continuation style that is hard to maintain (What if you change the length of the canvasElement variable name? You have to re-align it!) and falls apart in a proportional font.* Inconsistent use of single vs. double quotes. I recommend single quotes for JS strings and double quotes for HTML attributes. Do it the other way around if you prefer, but at least pick one and stick with it!* I'm reading the code out of context, but I'm guessing that CANVAS_WIDTH and CANVAS_HEIGHT are \"constants\". Why are they being used directly in the code like this? Shouldn't this code be wrapped up in a function that takes those as parameters?Ignoring that last objection for the moment, I might write the jQuery version like this:  var $canvas = $('&#60;canvas&#62;'), ctx = $canvas[0].getContext('2d');\n  $canvas\n      .width(CANVAS_WIDTH)\n      .height(CANVAS_HEIGHT)\n      .appendTo('body');\n\nYou're right, of course, that in this particular example jQuery has little or no advantage over direct DOM manipulation, but if they are going to offer a jQuery example, it ought to at least be a good one.BTW the $ prefix on a variable containing a jQuery object is a very common practice in jQuery code. It's especially useful when you need both the jQuery object and the corresponding DOM element (assuming a single-element selector like '#foo'). Then you can use $ on the jQuery object and the same name without the $ for the DOM element:  var $footer = $('#footer'), footer = $footer[0];",
+      "author": "Stratoscope",
+      "points": null,
+      "created_at": "2012-10-08T16:45:59Z",
+      "story_title": "Apple, Facebook, Google, Microsoft and others launch webplatform.org",
+      "hn_url": "https://news.ycombinator.com/item?id=4627661"
+    },
+    {
+      "id": "42756611",
+      "type": "comment",
+      "text": "Maybe this? https:&#x2F;&#x2F;height.app&#x2F;",
+      "author": "matt_kantor",
+      "points": null,
+      "created_at": "2025-01-19T13:01:25Z",
+      "story_title": "GitHub introduces sub-issues, issue types and advanced search",
+      "hn_url": "https://news.ycombinator.com/item?id=42756611"
+    },
+    {
+      "id": "34929203",
+      "type": "comment",
+      "text": "Netflix very much had a dominant position in DVD rentals at its height.Apple had a dominant position in selling music and in music players by 2006.  It was the number one music retailer in the US.  It very much used that to get into the phone market and part of its early success in the App Store was that it was built on top of iTunes and it already had more credit cards on file than any other company in the US besides Amazon.If you&#x27;re not arguing that a company shouldn&#x27;t branch out, are you arguing that once a company gets a certain size, it shouldn&#x27;t be allowed to invest those profits and resources into another industry?By 2011, Apple was the most valuable company in the US.  Should it not have been allowed to start selling watches, home stereo equipment and AirPods?",
+      "author": "scarface_74",
+      "points": null,
+      "created_at": "2023-02-24T19:53:14Z",
+      "story_title": "It’s time for Alphabet to spin off YouTube?",
+      "hn_url": "https://news.ycombinator.com/item?id=34929203"
+    },
+    {
+      "id": "33870680",
+      "type": "comment",
+      "text": "I see now. Do you see this image [0] on https:&#x2F;&#x2F;height.app&#x2F;compare&#x2F;asana? Now that&#x27;s what I wanted to see, now I understand it&#x27;s some sort of task manager for teams that presumably integrates with GitLab, GitHub etc.---Ok on a further look, I think I understand what happened. You linked directly to https:&#x2F;&#x2F;height.app&#x2F;product&#x2F;automations, but I and probably others who see this post would have thought that it was the base URL, ie your product was an automation software. It&#x27;s like if (assuming people didn&#x27;t know what Stripe was) Stripe had a Show HN for the URL https:&#x2F;&#x2F;stripe.com&#x2F;payments&#x2F;elements, people would click it and assume, &quot;hey this Stripe thing looks like it helps customize payment UIs,&quot; not understanding that this is just one part of the main Stripe app.It also doesn&#x27;t help that there aren&#x27;t any breadcrumbs [1] in either your site or Stripe&#x27;s to show that this is a feature of the app.For Show HNs, you can add text as well as a URL, and I think you should have done that to explain that this Show HN is for launching a new feature of an existing app, rather than the main app itself.[0] https:&#x2F;&#x2F;height.app&#x2F;a&#x2F;statics&#x2F;assets&#x2F;smart-filters-M2IQGQVS.g...[1] https:&#x2F;&#x2F;www.google.com&#x2F;search?q=breadcrumb+component&amp;sxsrf=A...",
+      "author": "satvikpendem",
+      "points": null,
+      "created_at": "2022-12-05T19:35:33Z",
+      "story_title": "Show HN: Automations for Tasks – Height.app",
+      "hn_url": "https://news.ycombinator.com/item?id=33870680"
+    },
+    {
+      "id": "33870506",
+      "type": "comment",
+      "text": "It&#x27;s actually not based on other tools, it&#x27;s automating tasks within Height.app.Does that make sense?",
+      "author": "michaelvillar",
+      "points": null,
+      "created_at": "2022-12-05T19:23:18Z",
+      "story_title": "Show HN: Automations for Tasks – Height.app",
+      "hn_url": "https://news.ycombinator.com/item?id=33870506"
+    },
+    {
+      "id": "33475114",
+      "type": "comment",
+      "text": "I personally love https:&#x2F;&#x2F;height.app now",
+      "author": "nikivi",
+      "points": null,
+      "created_at": "2022-11-04T22:51:17Z",
+      "story_title": "From Google to Twitter",
+      "hn_url": "https://news.ycombinator.com/item?id=33475114"
+    },
+    {
+      "id": "31657760",
+      "type": "comment",
+      "text": "Loved using Interval in the past few months at height.app. I highly recommend it if you don&#x27;t want to bother building UI within your internal admin pages.",
+      "author": "michaelvillar",
+      "points": null,
+      "created_at": "2022-06-07T17:43:54Z",
+      "story_title": "Show HN: Interval, CLIs in browser with no front end code",
+      "hn_url": "https://news.ycombinator.com/item?id=31657760"
+    },
+    {
+      "id": "29020019",
+      "type": "comment",
+      "text": "I like https:&#x2F;&#x2F;airtable.com&#x2F;, https:&#x2F;&#x2F;linear.app&#x2F;, and https:&#x2F;&#x2F;height.app&#x2F;. They are all pushing the limits of interactive web apps, not always entirely successfully, but the overall product experience is mostly smooth and polished. I wouldn&#x27;t really be able to say what it means to be &quot;considered good UX by webdev standards,&quot; but I develop for the web and I like these three.",
+      "author": "tshaddox",
+      "points": null,
+      "created_at": "2021-10-27T22:51:11Z",
+      "story_title": "How I made Google’s data grid scroll faster with a line of CSS",
+      "hn_url": "https://news.ycombinator.com/item?id=29020019"
+    },
+    {
+      "id": "28908645",
+      "type": "comment",
+      "text": "The new &quot;feature&quot; is that the function keys are full height. Apple laptops had half height function keys for as long as I can remember.",
+      "author": "yarcob",
+      "points": null,
+      "created_at": "2021-10-18T18:00:45Z",
+      "story_title": "MacBook Pro 14-inch and MacBook Pro 16-inch",
+      "hn_url": "https://news.ycombinator.com/item?id=28908645"
+    },
+    {
+      "id": "27611054",
+      "type": "comment",
+      "text": "Reminds me of https:&#x2F;&#x2F;height.app&#x2F;. I highly recommend giving it a go.",
+      "author": "dorian-graph",
+      "points": null,
+      "created_at": "2021-06-23T22:02:10Z",
+      "story_title": "New GitHub Issues Beta",
+      "hn_url": "https://news.ycombinator.com/item?id=27611054"
+    },
+    {
+      "id": "27018961",
+      "type": "comment",
+      "text": "Height[0] is also similar to Linear.[0] https:&#x2F;&#x2F;height.app&#x2F;",
+      "author": "fedormoiseev",
+      "points": null,
+      "created_at": "2021-05-02T21:00:22Z",
+      "story_title": "Ask HN: Jira Alternatives?",
+      "hn_url": "https://news.ycombinator.com/item?id=27018961"
+    },
+    {
+      "id": "25595345",
+      "type": "comment",
+      "text": "As others have mentioned, check out: https:&#x2F;&#x2F;linear.apphttps:&#x2F;&#x2F;height.app is also quite good",
+      "author": "meagher",
+      "points": null,
+      "created_at": "2020-12-31T18:18:09Z",
+      "story_title": "Why Jira Sucks",
+      "hn_url": "https://news.ycombinator.com/item?id=25595345"
+    },
+    {
+      "id": "23717327",
+      "type": "comment",
+      "text": "Height — https:&#x2F;&#x2F;height.appLocation: Remote (US and Europe timezones) or New York---Height is a project management software for the whole company. We are currently 5 people, the tool is behind invite-only access. Funded by Matrix Partners, Lightspeed, Background Capital, Elad Gil, Naval Ravikant, …Open roles:- Software engineer- Product designer→ Contact me at michael@height.app",
+      "author": "michaelvillar",
+      "points": null,
+      "created_at": "2020-07-02T19:57:01Z",
+      "story_title": "Ask HN: Who is hiring? (July 2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=23717327"
+    },
+    {
+      "id": "17901738",
+      "type": "comment",
+      "text": "I&#x27;ve been a mac user since before the &quot;i&quot; came along. But as my all time favorite 2015 Macbook Pro ages, I&#x27;m concerned where to turn next. The current Touchbar Macbook Pro line seems to favor weight and slimness over true &quot;Pro&quot; features like having a desktop grade keyboard, speed and battery stamina.Apple hit near perfectionism with the 2015 keyboard&#x2F; current desktop keyboard line, please don&#x27;t try to put a portable keyboard in a machine made for professionals, just to free an extra fraction of an inch in height.Apple used to make the worlds fastest, yet beautiful to look at, portable workstations. Please don&#x27;t forget us actual professionals who type all day and care less about fractions of inches and shiny emojis.Call it the Macbook Actual Pro and charge more I don&#x27;t care, I just wanna get back to work.",
+      "author": "myl",
+      "points": null,
+      "created_at": "2018-09-03T10:40:21Z",
+      "story_title": "An ode to Apple’s awful MacBook keyboard",
+      "hn_url": "https://news.ycombinator.com/item?id=17901738"
+    },
+    {
+      "id": "14460912",
+      "type": "comment",
+      "text": "Universe | Senior Full Stack Developer | Toronto, Canada | ONSITE, VISA | https:&#x2F;&#x2F;www.universe.com&#x2F;At Universe, we bring the world together through real-life experiences, so you build memories that last a lifetime.  We’re on a mission to reclaim the human connection by providing event ticketing technology which has touched the lives of millions around the world.As a Senior Full Stack Developer at Universe, you will apply your passion for technology and live events in your quest to build a world-class Event Ticketing platform. In this deeply technical and business-minded position, you’ll architect, implement, and evolve our frontend and backend systems with a talented team of like-minded peers. As a senior developer with great influence on our product, you’ll be challenged with the rewarding tasks of understanding our customers with strong empathy, curating an amazing product experience, and championing our vision to new heights.Application process:* Submit application at http:&#x2F;&#x2F;universe.applytojob.com&#x2F;apply&#x2F;6hV3Xj&#x2F;Senior-Full-Stac...* Phone screen* Meet the leadership team + Pair programming challenge (in person if you’re local)What your day would look like:* Writing new application code for our core product API and client (especially transactional pieces)* Advocating best practices for development and testing* Performance profiling new and existing features in both our server processes and in the browser* Mentoring junior developers on the team and promoting skill growthWhat we’re looking for:* Experienced in Ruby on Rails, NodeJS, and&#x2F;or MVC backend frameworks* Experienced in React or Ember frontends* Excited about BDD, automated deployment, fixing bugs, and shipping codeHere&#x27;s why you&#x27;ll love working at Universe:* You&#x27;ll work with veteran engineers, who will challenge you to ship frequently* You&#x27;ll work with amazing designers, who will challenge you to implement beautiful interactions and user interfaces* You&#x27;ll be at the helm of your own career, shaping it with your own innovative contributions to a nascent team and product* You&#x27;ll enjoy the culture and perks of a startup, with the stability of a fortune 500 company (NYSE:LYV). Perks include local sake and cold brew coffee on tap, 2 tickets to see a concert of your choice every year, unlimited access to Amphitheatre shows in North America for you and a friend, and 4 weeks vacation (2 weeks during the Christmas holidays &amp; 2 weeks of your choice)More information @ http:&#x2F;&#x2F;careers.universe.com",
+      "author": "joshuakelly",
+      "points": null,
+      "created_at": "2017-06-01T15:13:04Z",
+      "story_title": "Ask HN: Who is hiring? (June 2017)",
+      "hn_url": "https://news.ycombinator.com/item?id=14460912"
+    },
+    {
+      "id": "9674945",
+      "type": "comment",
+      "text": "1) Efficiency of algorithms stems from disabling interruptsThe efficiency stems from having little to zero synchronization cost for readers in a read-mostly workload or workload that just isn&#x27;t update-intensive. In addition to that, note that a deferral interface is available so writers basically never have to block until it is actually safe to free memory. URCU and ck_epoch all share those desirable qualities.2) &quot;RCU algorithm I&#x27;ve seen ... protects with a read-write&quot;The synchronize portion of RCU and RCU-like systems is almost always heavy-weight. Applications that adopt URCU can typically afford this.3) &quot;no algorithm more efficient than a general purpose GC&quot;All the blocking schemes are magnitudes more efficient but the trade-off is that it isn&#x27;t generally applicable. However, they&#x27;re still applicable for plenty of workloads. We are starting to see more GC mechanisms adopt SMR-like techniques so that may change.4) &quot;Common authorship, BTW, says little&quot;Not in this case.If you would like to learn more about the performance trade-off with the various mechanisms, I suggest  http:&#x2F;&#x2F;www.rdrop.com&#x2F;users&#x2F;paulmck&#x2F;RCU&#x2F;hart_ipdps06.pdf and the URCU paper as a start. I&#x27;ve some additional numbers on something similar at http:&#x2F;&#x2F;concurrencykit.org&#x2F;presentations&#x2F;ebr.pdfPaul also has a good introduction up at https:&#x2F;&#x2F;queue.acm.org&#x2F;detail.cfm?id=2488549",
+      "author": "sbahra",
+      "points": null,
+      "created_at": "2015-06-07T15:16:04Z",
+      "story_title": "Concurrent Memory Deallocation in the Objective-C Runtime",
+      "hn_url": "https://news.ycombinator.com/item?id=9674945"
+    },
+    {
+      "id": "9266717",
+      "type": "comment",
+      "text": "Article: Reinvent the wheel, because if you just mount whatever wheels fit the axle they will inevitably work poorly for your purposes.Wheels work just fine. Choose the best wheel from those available and tweak it as desired. Test it to make sure it doesn&#x27;t shatter under too much weight. Apply and move on.This pervading notion of &quot;if you don&#x27;t understand you shouldn&#x27;t do it&quot; is silly. Sure it is nice to understand, but it doesn&#x27;t put food on the table. Sometimes it&#x27;s just handy to use the gun as is and go shoot your dinner in the woods. You don&#x27;t need to understand the formulation of gunpowder or rifling in order to use a gun properly for it&#x27;s intended use.",
+      "author": "rilita",
+      "points": null,
+      "created_at": "2015-03-25T23:16:17Z",
+      "story_title": "A significant amount of programming is done by superstition",
+      "hn_url": "https://news.ycombinator.com/item?id=9266717"
+    },
+    {
+      "id": "46044703",
+      "type": "comment",
+      "text": "My boy is 2mo old and he could lock his legs with extreme strength in the first few days. I was very impressed, but my wife told me to stop letting his legs hold any weight. Apparently his uncle was walking at 9mo but his body wasn&#x27;t ready and he gave himself a hernia.",
+      "author": "walthamstow",
+      "points": null,
+      "created_at": "2025-11-25T11:10:25Z",
+      "story_title": "Human brains are preconfigured with instructions for understanding the world",
+      "hn_url": "https://news.ycombinator.com/item?id=46044703"
+    },
+    {
+      "id": "45257952",
+      "type": "comment",
+      "text": "Everything humans do is carbon negative. Breathing, eating, driving, pooping (Westerners: toilet paper, All: waste management) and building. Getting every human to be carbon neutral would be an amazing thing!From searched &#x2F; online numbers, Apple has shipped 150 million AirPods since 2016. The AirPods 3 weigh 5.5g. The gross weight of a basic Tesla model 3 is 1760Kg.  I picked a Tesla because it has plastic, metals, magnets, copper, lithium - similar materials.In the ~10 years Apple has been making AirPods the materials used (by weight) is ~ 470 Tesla cars. So, per year (avg, not really good for this), resources consumed is about 47 Teslas (by weight).Apple claims 40% of AirPods 3 are from recycled materials, so ~ 290 crashed &#x2F; discarded Teslas could provide part of these materials - on average 29 per year.I did the above because it perceptually relates to &quot;real things&quot;. Teslas are NOT carbon neutral, very much carbon negative.The reality &#x2F; HORROR of waste is far, far worse. Any single plastic bag used to dispose of weekly waste likely weighs more than a pair of AirPods. Any can, made of steel or aluminum, could likely could make a lot of AirPods. The toy or product you bought that had a flap that you could lift up - there was likely a magnet under there. Any disposed single use battery might have zinc, if it was a CR2032 or &quot;watch&quot; battery, lithium (or silver).Yes, AirPods might be disposable. Do they improve the qualify of life of the humans that purchase them? What is the real cost in perspective - with everything else taken into consideration?  If the AirPods are used to listen to music or entertainment, then the positive mental health aspects are likely significant in a positive value direction.",
+      "author": "VogonPoetry",
+      "points": null,
+      "created_at": "2025-09-16T04:12:43Z",
+      "story_title": "I feel Apple has lost its alignment with me and other long-time customers",
+      "hn_url": "https://news.ycombinator.com/item?id=45257952"
+    },
+    {
+      "id": "42504935",
+      "type": "comment",
+      "text": "Here&#x27;s my take.One of my hidden superpower that I often see others are missing is navigating library code. Especially in new language.I don&#x27;t like reading docs. Very rarely docs are good. Usually docs are incomplete or outright wrong. So I never read them unless absolutely required. I just navigate library, skimming through its source code. Whether it&#x27;s standard library or third-party library.I failed this approach with Scala and it was main reason that I abandoned this language. Its collections were so absurdly overcomplicated, that I decided this language is doomed to collapse under its own weight. Apparently I wasn&#x27;t very wrong.Another failure with this approach is C&#x2F;C++. For reasons that I kind of understand but don&#x27;t approve, its standard library either hidden (so I can&#x27;t just navigate to malloc implementation) or obfuscated with endless underscores (header template libraries), which makes it unreadable.So it&#x27;s not absolutely universal approach, but generally it works. And of course it requires &quot;jump to definition&quot; editor feature.",
+      "author": "vbezhenar",
+      "points": null,
+      "created_at": "2024-12-24T21:10:01Z",
+      "story_title": "Ask HN: Programmers who don't use autocomplete/LSP, how do you do it?",
+      "hn_url": "https://news.ycombinator.com/item?id=42504935"
+    },
+    {
+      "id": "42026665",
+      "type": "comment",
+      "text": "The 12-inch macbook was probably the best computer I&#x27;ve ever used in my life. I don&#x27;t think anyone has come close to its weight. Apparently it weighs in at 2.03 pounds.Sadly, I don&#x27;t think we&#x27;ll ever get a computer that good from apple (or anyone) again.",
+      "author": "PittleyDunkin",
+      "points": null,
+      "created_at": "2024-11-02T14:41:11Z",
+      "story_title": "An Update on Apple M1/M2 GPU Drivers",
+      "hn_url": "https://news.ycombinator.com/item?id=42026665"
+    },
+    {
+      "id": "4107039",
+      "type": "comment",
+      "text": "Not really a compromise. Glossy vs. matte is a function of whether the front glass of the LCD has an anti-glare coating on it.There is no front glass on the Retina MBP LCD. Apple removed it to save weight.Apple: So innovative, they solve problems they weren't even trying to solve.",
+      "author": "bitwize",
+      "points": null,
+      "created_at": "2012-06-13T17:10:20Z",
+      "story_title": "Engadget Retina Macbook Pro Review",
+      "hn_url": "https://news.ycombinator.com/item?id=4107039"
+    },
+    {
+      "id": "38597766",
+      "type": "comment",
+      "text": "the american consumer punches far above its weight. apple cares and goes to great lengths to wall imessage. See the article linked in this post for instance",
+      "author": "grouchomarx",
+      "points": null,
+      "created_at": "2023-12-11T04:54:47Z",
+      "story_title": "Apple cuts off Beeper Mini's access",
+      "hn_url": "https://news.ycombinator.com/item?id=38597766"
+    },
+    {
+      "id": "33984389",
+      "type": "comment",
+      "text": "Traditionally, furniture makers have used different types of backs to increase the rigidity of the carcass, depending on how the carcass was constructed. If it&#x27;s just an open box, for example, it&#x27;ll require a more significant back compared to if it has multiple dividers spanning the interior. This excerpt[0] describes a few common types with relevant illustrations.Ikea--and other flat pack furniture--takes this approach to an extreme. Their backs are the absolute bare minimum to keep the carcass sides square under their own weight. Apply a bit of pressure to the corner of one of their bookcases, for example, and you can easily move it out of square. Cheap knockdown joinery that&#x27;s meant to be easy to assemble make the problem worse. The bookcase won&#x27;t have a very long lifespan, but that&#x27;s acceptable for most of their customers. They&#x27;re cheap and easy to replace for a reason. Other Ikea cabinets, with internal dividers, are a bit stronger because they&#x27;re no longer relying on just the back to increase rigidity.As for homebuilding, exterior sheathing plays a critical role in racking strength, resisting wind loads, etc. by effectively tying the stud wall assembly together. But as with the Ikea bookcases, for builders looking to save every penny that can be found, there are options. Stuff like Thermo-Ply--basically, aluminum-faced cardboard--is used in lieu of plywood or OSB. It might not immediately disintegrate if it&#x27;s properly covered with a quality house wrap as a water-resistant barrier, but how common is that with most production builders? And that&#x27;s completely ignoring serious weather events like hurricanes, which will turn all that cardboard into mush.You can even take it a step further and rely on metal strapping and tension ties instead of structural sheathing.[1] That kind of house should at least use panels of foam insulation on the exterior, but given that it&#x27;s generally a radical cost-saving measure, you&#x27;d be lucky if you even get that. Here&#x27;s a terrifying video[2] walking through a new spec home that just relies on a cheap and ineffective house wrap. The unlucky buyers are going to have lots of fun with water damage, mold, bug infestation, and more. To say nothing of the house&#x27;s other problems.0. https:&#x2F;&#x2F;blog.lostartpress.com&#x2F;2021&#x2F;03&#x2F;09&#x2F;types-of-cabinet-ba...1. https:&#x2F;&#x2F;www.continuousinsulation.org&#x2F;sites&#x2F;default&#x2F;files&#x2F;H30...2. https:&#x2F;&#x2F;youtu.be&#x2F;zRy1AZYrUE8?t=75",
+      "author": "Bluestrike2",
+      "points": null,
+      "created_at": "2022-12-14T15:06:21Z",
+      "story_title": "Balloon framing is worse-is-better (2021)",
+      "hn_url": "https://news.ycombinator.com/item?id=33984389"
+    },
+    {
+      "id": "32416015",
+      "type": "comment",
+      "text": "since years ago apple added the little back button to return you to your previous app, even webview is dead weight. apple should only allow one, in some special context, that&#x27;s so counterintuitive to implement that only frameworks e.g. react native can justify the effort",
+      "author": "replygirl",
+      "points": null,
+      "created_at": "2022-08-10T17:58:18Z",
+      "story_title": "Instagram can track anything you do on any website in their in-app browser",
+      "hn_url": "https://news.ycombinator.com/item?id=32416015"
+    },
+    {
+      "id": "32169244",
+      "type": "comment",
+      "text": "&gt; Since there is only one app store for iPhones, almost every app vendor is willing to conform to Apple&#x27;s guidelines (which are often pro-privacy and protect the user). Otherwise they lose out on a significant market share with a lot of spending power.You&#x27;ve just described why these changes are good. I feel like the word &quot;willing&quot; in your statement is carrying a lot of weight.Apple forces developers to publish from Apple devices, spend $100 a year for a developer account, give up 15-30% of any revenue generated from that app, use WebKit, etc.That is not at all what I describe as restrictions that lead to &quot;willing&quot; app vendors.",
+      "author": "tristan957",
+      "points": null,
+      "created_at": "2022-07-20T17:30:56Z",
+      "story_title": "EU Digital Markets Act, aimed at Google, Apple, Amazon, approved",
+      "hn_url": "https://news.ycombinator.com/item?id=32169244"
+    },
+    {
+      "id": "32037074",
+      "type": "comment",
+      "text": "I was shocked to learn that many farms are using the chemical to spray the entire field in order to not just kill weeds, but also to increase bud yield &#x2F; weight.Similar to the rohip whatever chemical is given to some beef when it close to slaughter to magically make it gain weight.Apparently when you spray this stuff on the plants a couple days before harvest, they know they are being killed &#x2F; dieing - so they put all their energy in to the buds to give the seeds &#x2F; fruits a better chance at living - so the sell weight is higher.So it&#x27;s not just being used to kill weeds, it&#x27;s actually being used to cover the food a short time before it&#x27;s cut and sold.",
+      "author": "stevenicr",
+      "points": null,
+      "created_at": "2022-07-09T17:02:19Z",
+      "story_title": "Weedkiller ingredient tied to cancer found in 80% of US urine samples",
+      "hn_url": "https://news.ycombinator.com/item?id=32037074"
+    },
+    {
+      "id": "30769046",
+      "type": "comment",
+      "text": "Over the past few months we’ve been trying hard to make Appwrite as simple to setup and use as possible. Your candid feedback has been crucial in shaping the project and it would be great if you can share some features you’d like to see in the project going forward.What is Appwrite ? \nIn simplest terms, Appwrite is an open source Backend As A Service (aka BaaS). Appwrite is an all in one solution with all the essentials you need like Authentication, User Management, Realtime Databases, Webhooks, Storage, Cloud Functions, SDKs for your favourite language and it’s light weight. Appwrite even runs on a Raspberry Pi. Most importantly, Appwrite is self-hosted which means you own your data and prevent any vendor lock-ins.Talking about Appwrite’s features\n- Realtime Databases and events ( Recent benchmarks have showed a single server handling 1M+ concurrent connections )- SDKs for iOS, Android, Flutter, Web ( React, Angular, Vue, Svelte etc.) Python, PHP, Node, Deno, Kotlin and more- Bring your own Database - Use your choice of SQL or MySQL databases ( MariaDB, MySQL, MongoDB and more )- Database permissions for finer tuned access control- Storage API with built in encryption, compression and antivirus- Bring your own Storage - Use your choice of the local filesystem, DigitalOcean Spaces, S3 or an any other storage provider of your choice- Cloud functions with support for over 20 runtimes- Webhooks to connect with 3rd party APIs and services- User Management and Authentication- Multiple authentication methods - email, 25+ OAuth providers, JWT, API Keys- Completely stateless and extensible architecture allowing easy integration with your existing backend- A Dashboard, CLI and VSCode extensions to manage your server and many more...",
+      "author": "christyjacob4",
+      "points": null,
+      "created_at": "2022-03-22T17:37:17Z",
+      "story_title": "Show HN: Appwrite – Open-Source and Self Hosted Firebase Alternative",
+      "hn_url": "https://news.ycombinator.com/item?id=30769046"
+    },
+    {
+      "id": "29182834",
+      "type": "comment",
+      "text": "&gt; Downside of this field is that there are very few job opportunities without relocating. If you&#x27;re in the US, you can work at Intel... or Intel. Unless you&#x27;re willing to move to Taiwan and work at TSMC.Only if we&#x27;re talking specifically about cutting edge logic. There&#x27;s Texas Instruments and GlobalFoundries in the US on the trailing edge for logic. In memory, where the fabrication techniques are similar, there&#x27;s Micron, IMFT in Utah, and Samsung in Texas. Not to mention that TSMC is building a leading edge logic fab in Arizona.And then of course there are all of the capital equipment suppliers, where the US punches way above its weight. Applied Materials, Lam Research, and KLA are all headquartered in California and employ a lot of the same talent that Intel does.",
+      "author": "nwiswell",
+      "points": null,
+      "created_at": "2021-11-11T00:20:09Z",
+      "story_title": "How to make a CPU – a simple picture-based explanation",
+      "hn_url": "https://news.ycombinator.com/item?id=29182834"
+    },
+    {
+      "id": "29176947",
+      "type": "comment",
+      "text": "I definitely lean more towards the libertarian side of things, but in instances like this I do think the monopoly&#x2F;antitrust arguments carry some weight.  Apple and Google both DOMINATE the mobile market; and it&#x27;s not an insignificant market.  Unseated Microsoft from decades of dominating how the vast majority of computing power was used almost overnight.I think it&#x27;s LONG past time for both Apple and Google to be forced to offer mechanisms that are far less onerous for third party app stores than the hoops and fear mongering Google makes you go through on Android.If Apple and&#x2F;or Google were actually successful on delivering a fraction of their promises about safety and security in their app stores that would be one thing - but they don&#x27;t even appear to be trying, despite all their bluster to the contrary.",
+      "author": "EricE",
+      "points": null,
+      "created_at": "2021-11-10T16:54:41Z",
+      "story_title": "Tim Cook: Users Who Want to Sideload Apps Can Use Android",
+      "hn_url": "https://news.ycombinator.com/item?id=29176947"
+    },
+    {
+      "id": "2813116",
+      "type": "comment",
+      "text": "When I got a netbook in 2008 and realized that the optical, while possibly useful during install (USB key boot is just as good), was never missed once Ubuntu was installed and running.Ever since then, I've felt like the drives on my other laptops are dead weight.Apple is definitely doing the right thing... just wonder why it took them so long.",
+      "author": "r00fus",
+      "points": null,
+      "created_at": "2011-07-27T17:23:36Z",
+      "story_title": "Apple's officially over the optical drive, for better or worse",
+      "hn_url": "https://news.ycombinator.com/item?id=2813116"
+    },
+    {
+      "id": "27453102",
+      "type": "comment",
+      "text": "&gt; This is a business problem disguised as a justice issue.And we&#x27;re discussing it because the monopoly known as Apple is continuing to gaslight and extort our industry.Apple cannot be the single point of entry into a device that is responsible for 50% of American computing-related commerce. That might have worked if Apple was a small device used by 5% of consumers, but let&#x27;s be real. Apple is the face of modern computing.What the question really should be is, &quot;why should Apple get to enjoy all commerce and freedoms linked to computing?&quot; Through marketing and developing a good product, they&#x27;ve brought themselves into a market leader position. The choice to lock down their device may have made sense at 5%, but now it suffocates our entire industry under their gargantuan weight.Apple isn&#x27;t a device maker anymore. They&#x27;re the fabric of computing itself. They have all the customers, they control all the software, and they make all the choices. You don&#x27;t get ingress without going through them. They&#x27;ve been transformed into an analog of a common carrier, and the law now needs to treat them as such.The only path forward is to force Apple to allow web-based downloads of apps, no longer allow them to force Apple payment rails, and to enable non-Safari based browsers to be installed.Simple fix that will restore balance and health to the industry.After this change happens, Apple will remain a 2 Trillion dollar company. This has negligible impact on their revenue - all it does is force them to work harder and gives the rest of us much-needed breathing room.(Nevermind the right to repair and compute arguments.)",
+      "author": "echelon",
+      "points": null,
+      "created_at": "2021-06-09T20:54:40Z",
+      "story_title": "Apple is threatening to remove Fanhouse unless they give 30% of creator earning",
+      "hn_url": "https://news.ycombinator.com/item?id=27453102"
+    },
+    {
+      "id": "23687608",
+      "type": "comment",
+      "text": "Back when Microsoft was doing those obscure job interview questsions like &quot;how much does a 747 weigh&quot;, this was my solution, measure the deflection of the tires and the PSI to calculate weight. Apparently the answers they were looking for were more along the lines of &quot;put the plane on an aircraft carrier in a lake and measure the water displacement&quot; &lt;shrug&gt;",
+      "author": "pedalpete",
+      "points": null,
+      "created_at": "2020-06-30T07:33:18Z",
+      "story_title": "Weighing a Car with Tire Pressures",
+      "hn_url": "https://news.ycombinator.com/item?id=23687608"
+    },
+    {
+      "id": "23437393",
+      "type": "comment",
+      "text": "The A380(-800) is known to be “over-winged” (larger and generates more lift than would be optimal, at the cost of drag and weight).Apparently Airbus was planning to make a larger variant as well, and the wing was designed to accommodate that. But the -800 was years delayed and struggled to find customers, the larger variant was never made.",
+      "author": "mrpippy",
+      "points": null,
+      "created_at": "2020-06-06T07:09:00Z",
+      "story_title": "Four million parts, 30 countries: How an Airbus A380 comes together (2018)",
+      "hn_url": "https://news.ycombinator.com/item?id=23437393"
+    },
+    {
+      "id": "21449133",
+      "type": "comment",
+      "text": "I was just listing some of the advantages I and maybe others see in, say, the Ford and Chevy versions of pickup trucks. So, there are some advantages in utility; the attractions are not all just style and fashion. Yes, there are disadvantages.  Welcome to the ubiquitous problem of engineering design trade offs.I&#x27;ve recently moved from NY to TN -- yup, the fraction of pickup trucks is higher in TN!!!  I&#x27;m liking TN a LOT better!&gt; Solid axle are mechanically simpler, but there is a reason most of the world dropped them - they will chew tires on turns. Also prevents nifty stuff like electronic stability control applying variable braking left &amp; right.The axle HOUSING is solid and is called a &quot;solid axle&quot; instead of an independent suspension.  The actual axles that rotate with the wheels are inside the solid housing; there are two, each a &quot;half axle&quot;; they come together in the &quot;center section&quot; which has the &quot;differential&quot; with a &quot;pinion gear&quot;, &quot;ring gear&quot;, and 4 &quot;spider gears&quot; -- clever device.  So, such an axle does not &quot;chew tires&quot; on corners.  And anti-lock brakes, etc. are plenty easy, generally a little easier than for independent rear suspensions -- the independent suspensions usually have more linkages to work around.  Also, for chewing tires, independent suspensions tend to do this more due to the less good control of castor and camber -- that is, an axle does better keeping the tilt and direction of the wheels where they belong than the linkages in an independent suspension.  E.g., might have to have a independent rear suspension &quot;aligned&quot;; with a solid axle (HOUSING) and leaf springs, essentially never have to do this if only because typically there is no means of such adjustment and regarded as no need, either.Yes, an independent rear suspension has some advantages in traction on uneven surfaces.  The key criterion is to reduce &quot;unsprung weigh&quot;.  E.g., when MB went racing after WWII, they used a rear &quot;swing axle&quot; independent rear suspension with the brakes mounted inboard instead of at the wheels -- all for lower unsprung weight.Apparently in a relatively heavy vehicle, the extra unsprung weight of a solid axle, rear AND front, causes no serious ride or traction problems.The struts have cute geometry and do well with castor and camber but are comparatively delicate and with just a little wear give problems.&gt; Same for the weight of PUTs - the lighter the better due to stopping distance.The standard model of friction in physics is just a coefficient of friction.  So, the force to slide against the friction is just the down force (weight) times the coefficient of friction.  So, a vehicle that weights twice as much has twice the friction when the brakes are locked or nearly so (as in anti-lock brakes) and with sufficiently larger brakes should stop as fast as a lighter vehicle.  In practice, I&#x27;m not sure whether a 2500 pound car or a 4500 pound truck with a 1000 pound load stops in less distance.&gt;  regularly hitting deerHit a deer with a good bumper and usually just stop, drag the deer to the side of the road, and keep on going.  Been there, done that with my old SUV that does have good front bumpers.  With one of those plastic covered crumple zones, maybe are in for $1000 in repairs.Bumpers are good protection when parallel parked:  The guy in front or in rear who parks &quot;by the audio method&quot; will just hit the bumpers and do little or no damage to the truck although there might be damage to his crumple zones.  Every time I see a car front or rear end with lots of plastic and no good, strong steel bumpers I think little bumps and $1000 repair bills -- that&#x27;s just me.The bumpers are at least just some prudent protection.Trucks need full frames; now lots of passenger cars have mostly just sheet steel instead.  The frames &quot;crumple&quot; less and are &quot;stronger&quot; -- maybe that makes the truck safer in some respects and less good for the passengers in other respects.Yes, the higher center of gravity of a truck increases the chances of rolling over.  My SUV came with a sticker with stark warnings about the threat of roll over.  Also it appears that they deliberately put a lot of extra steel in the frame just to lower the center of gravity -- the frame looks like something off the battleship Missouri.For people who want to do a lot of 80 MPH driving on Interstates, a car of about 3500 pounds, 600+ horsepower, wide tires with especially high coefficient of friction, stiff suspension (so the car won&#x27;t bounce around), small frontal area, and low aerodynamic coefficient of friction -- maybe\nCorvette, Camaro, and Mustang are examples -- will be better than a truck.  The issues of frontal area and drag coefficient might be huge, for fuel economy and maybe for stability in some winds.",
+      "author": "graycat",
+      "points": null,
+      "created_at": "2019-11-05T02:46:45Z",
+      "story_title": "Flood of Oil Is Coming, Complicating Efforts to Fight Global Warming",
+      "hn_url": "https://news.ycombinator.com/item?id=21449133"
+    },
+    {
+      "id": "17584565",
+      "type": "comment",
+      "text": "The wood is stronger, as stated by several post above, because the wood fibers are intact all the way through the piece. This is important for chairs in particular, because they take quite large stresses for their size and weight. Apparently green wood is easier to carve as well - I don&#x27;t have direct experience of that. And finally, it can be steamed and bent. That&#x27;s how you get the curved wood pieces in chairs.",
+      "author": "GlenTheMachine",
+      "points": null,
+      "created_at": "2018-07-22T00:11:09Z",
+      "story_title": "Riving, a Viking-age woodworking technique",
+      "hn_url": "https://news.ycombinator.com/item?id=17584565"
+    },
+    {
+      "id": "14981470",
+      "type": "comment",
+      "text": "Hate to say it, but it could be true. I am in an area of heavy heavy marijuana use (DABs, oils, etc 250mg&gt; THC daily) and it is not just me, other people have noticed negative health of these users.  They look sick. Another diesease is that they can no longer eat and they lose weight. Apparanetly according to the doctors the stomach is unable to make the right acid to digest food. We also noticed mania, strange behavior, etc.  Just everything: a little bit is fun&#x2F;good, a lot is bad.  It doesn&#x27;t help that the proponents of medical marijuana push it as the cure for everything. Type any disease or condition into google and &quot;medical marijuana&quot; and you will find &quot;evidence&quot; that it cures that condition.  The internet is full of this bad medical advice.  I&#x27;ve actually known people that ruined their lives with just marijuana",
+      "author": "delbel",
+      "points": null,
+      "created_at": "2017-08-10T16:39:39Z",
+      "story_title": "Marijuana use holds three-fold blood pressure death risk: study",
+      "hn_url": "https://news.ycombinator.com/item?id=14981470"
+    },
+    {
+      "id": "1380235",
+      "type": "comment",
+      "text": "I started using a stand up desk full time roughly a month ago. It takes some adjusting after many years of sitting for eight hours a day, but I'm starting to reap the benefits. I've suffered from lower back and neck pain for years, and those issues are gone. There's a perceivable increase in my overall energy level, and oddly enough, I just feel happier on a day to day basis. Looking through my git logs, it also seems I've been more productive, but it's hard to quantatively prove that without a real analysis. One thing I can measure for sure though is the fact that I've lost a little weight. Apparently standing for eight hours a day burns roughly 10,000 calories per month, so that's another perk.",
+      "author": "tmountain",
+      "points": null,
+      "created_at": "2010-05-26T13:46:39Z",
+      "story_title": "Standing desk experiment and experiences",
+      "hn_url": "https://news.ycombinator.com/item?id=1380235"
+    },
+    {
+      "id": "13510617",
+      "type": "comment",
+      "text": "At any given time, some (heavy) users were critical about new Apple products and Apple decisions, lamenting that they forget about their most valuable and vocal fans. Apple killed the floppy drive, multiple connectors, &quot;great&quot; products (clickwheel iPod, anyone), resetted software products (FCP, Pages), killed services and so on. Heck, they even killed the Apple ][. And some users cried foul on each of these decisions.Just now, the internet and clickbait journalism give these voices much more weight. Apple isn&#x27;t the underdog anymore and Apple bashing produces page views.That said, of course Apple products aren&#x27;t perfect. But they never were. But even 10 or 15 years ago, a lot of Apple supporters didn&#x27;t buy 1.0 releases of new products, didn&#x27;t install OS&#x2F;X x.0 releases and so on.How reasonable are these critics? E.g.: How many users do really need 32GB RAM on their MBP, an option not available before, but now a big failure if you read comments, blogs and articles about Apple. I bet its a tiny minority that is truly\nlimited by this constraint. But still, everyone is complaining.",
+      "author": "mstolpm",
+      "points": null,
+      "created_at": "2017-01-29T00:10:56Z",
+      "story_title": "My Next Mac Mini",
+      "hn_url": "https://news.ycombinator.com/item?id=13510617"
+    },
+    {
+      "id": "12881657",
+      "type": "comment",
+      "text": "I think they would as well. If I am buying a machine that I won&#x27;t be able to upgrade the memory on, I&#x27;ll very likely buy the maximum amount available. If I were in the market for a new laptop now, I&#x27;d buy the 16GB model.AIUI, Apple made a choice to limit the memory to 16GB based on size and weight, and battery life. They&#x27;d need more power if they went with processors that handled 32GB, and that in turn would either diminish battery life or increase size and weight. Apple does have a strong desire for good battery life, size, and weight. That doesn&#x27;t square with some of their existing or potential customers, but I&#x27;m sure they took that into account when they made their choice.And there were rumors that there are going to be updates coming out next year.[0][0]: http:&#x2F;&#x2F;www.macrumors.com&#x2F;2016&#x2F;10&#x2F;31&#x2F;macbooks-2017-price-cuts...Note the update that this rumor does not line up with leaked Intel roadmaps, so it sounds doubtful. I also don&#x27;t know the history of Kuo as a rumor source. I&#x27;m leaving this in for informational purposes only.As an aside, I think SSD has changed this discussion quite a bit over the years as well. While still slower than RAM, SSD is so much faster[1] than HDD. We do always want faster, understandably. That said, swapping isn&#x27;t nearly as bad as it was.[1]: Yeah, that&#x27;s an SI unit, I believe :)Edited to qualify rumors of the 32GB MacBook Pro.",
+      "author": "grzm",
+      "points": null,
+      "created_at": "2016-11-05T20:15:37Z",
+      "story_title": "Why 2016 is such a terrible year for the Mac",
+      "hn_url": "https://news.ycombinator.com/item?id=12881657"
+    },
+    {
+      "id": "12855575",
+      "type": "comment",
+      "text": "&quot;Very thin&quot; is not a professional criterion. There is no context in which an extra millimetre of bulk means that you&#x27;re unable to get the job done.Apple no longer has a truly professional mobile workstation. By focussing obsessively on size and weight, the whole product line has shifted downwards in relative performance, leaving a gaping void at the top end. The most powerful machine in the Apple lineup competes with mid-range PC laptops.A Windows user can choose from some extraordinarily powerful mobile workstations. If you need it, you can have 64gb of RAM, a desktop-class CPU, two desktop-class GPUs and quad M.2 RAID. You have the choice of ultimate performance or light weight. Apple offers no such choice.It may be a perfectly rational business decision, but Apple has decided to abandon the high-end. It has been nearly three years since the Mac Pro was updated; even on their supposedly high-end desktop workstation, Apple have traded performance for compactness.As we have seen on HN, Apple is risking an exodus of professional users. This exodus has already happened in many fields; I know a great many people in video and audio post-production who could not tolerate Apple&#x27;s indifference towards the needs of media professionals. The abandonment of Final Cut Pro 7 and the inadequacies of FCPX were the icing on the cake. These users were Apple&#x27;s mainstay in the difficult pre-iPhone years, but Apple seem happy to let them go.",
+      "author": "jdietrich",
+      "points": null,
+      "created_at": "2016-11-02T15:12:18Z",
+      "story_title": "Stuck between a rock and a hard placem: An explanation of Apple’s new MBP",
+      "hn_url": "https://news.ycombinator.com/item?id=12855575"
+    },
+    {
+      "id": "12456177",
+      "type": "comment",
+      "text": "&gt; Any statement from them should hold some weight considering this whole debate is a conspiracy theory at best.Those are two separate issues.  Whether or not the &quot;whole debate is conspiracy theory at best&quot; has no bearing on whether a statement like this from apple should hold any weight.  Apple&#x27;s claim may or may not be true, but we should look to other sources of evidence to evaluate this, and completely disregard &#x27;because apple said so&#x27;.",
+      "author": "jshevek",
+      "points": null,
+      "created_at": "2016-09-08T19:00:58Z",
+      "story_title": "The End of Headphone Jacks, the Rise of DRM",
+      "hn_url": "https://news.ycombinator.com/item?id=12456177"
+    },
+    {
+      "id": "33870282",
+      "type": "story",
+      "title": "Show HN: Automations for Tasks – Height.app",
+      "text": "",
+      "author": "michaelvillar",
+      "points": 5,
+      "num_comments": 4,
+      "created_at": "2022-12-05T19:07:45Z",
+      "hn_url": "https://news.ycombinator.com/item?id=33870282"
+    },
+    {
+      "id": "43454034",
+      "type": "story",
+      "title": "Height.app project management tool shuts down",
+      "text": "",
+      "author": "vlugovsky",
+      "points": 2,
+      "num_comments": 2,
+      "created_at": "2025-03-23T16:42:54Z",
+      "hn_url": "https://news.ycombinator.com/item?id=43454034"
+    },
+    {
+      "id": "32813086",
+      "type": "story",
+      "title": "VSCode extension to turn // todo comments into tasks",
+      "text": "",
+      "author": "michaelvillar",
+      "points": 24,
+      "num_comments": 0,
+      "created_at": "2022-09-12T16:55:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=32813086"
+    },
+    {
+      "id": "40251784",
+      "type": "story",
+      "title": "The History of Project Management",
+      "text": "",
+      "author": "jrajasingh",
+      "points": 4,
+      "num_comments": 0,
+      "created_at": "2024-05-03T20:04:59Z",
+      "hn_url": "https://news.ycombinator.com/item?id=40251784"
+    },
+    {
+      "id": "40646403",
+      "type": "story",
+      "title": "Project Management",
+      "text": "",
+      "author": "rafaelc",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2024-06-11T14:15:33Z",
+      "hn_url": "https://news.ycombinator.com/item?id=40646403"
+    },
+    {
+      "id": "37050982",
+      "type": "story",
+      "title": "Height Copilot: Project Management Automated with AI",
+      "text": "",
+      "author": "rafaelc",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2023-08-08T15:55:04Z",
+      "hn_url": "https://news.ycombinator.com/item?id=37050982"
+    },
+    {
+      "id": "45694466",
+      "type": "story",
+      "title": "Building like it's 1984: Scrollbars in web applications",
+      "text": "",
+      "author": "Bogdanp",
+      "points": 2,
+      "num_comments": 2,
+      "created_at": "2025-10-24T13:34:52Z",
+      "hn_url": "https://news.ycombinator.com/item?id=45694466"
+    },
+    {
+      "id": "36312350",
+      "type": "story",
+      "title": "Show HN: Made it so time tracking isn’t the worst part of your day",
+      "text": "Many of our users at Height work for development and design agencies where building timesheets is a weekly responsibility — so we built a native timer to make it easy for them to track time on their work (tasks) and then sync to their invoicing&#x2F;billing app. Currently we have two integrations to Toggl and Harvest, but would be interested to hear where else are people tracking time?<p>Quick overview:<p>- Time can be tracked directly to tasks and is synced in real time to Toggl or Harvest. (We used webhooks for Toggl, and for Harvest a 1 min poll to fetch any updated timers)<p>- Timers in Toggl or Harvest can connected to Height tasks by just pasting in the task ID.<p>- Edits to timers are synced across both apps.",
+      "author": "michaelvillar",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2023-06-13T16:11:38Z",
+      "hn_url": "https://news.ycombinator.com/item?id=36312350"
+    },
+    {
+      "id": "34808989",
+      "type": "story",
+      "title": "Show HN: Web Game to Run Standups",
+      "text": "",
+      "author": "michaelvillar",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2023-02-15T19:10:59Z",
+      "hn_url": "https://news.ycombinator.com/item?id=34808989"
+    },
+    {
+      "id": "34004486",
+      "type": "story",
+      "title": "Height – 2022 Year-in-Review",
+      "text": "",
+      "author": "michaelvillar",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2022-12-15T19:35:06Z",
+      "hn_url": "https://news.ycombinator.com/item?id=34004486"
+    },
+    {
+      "id": "20874935",
+      "type": "story",
+      "title": "Collaborate faster with Real-Time tasks, chat, and adaptive workflows",
+      "text": "",
+      "author": "tablet",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2019-09-04T07:54:01Z",
+      "hn_url": "https://news.ycombinator.com/item?id=20874935"
+    },
+    {
+      "id": "41994531",
+      "type": "story",
+      "title": "Height: Autonomous Project Management",
+      "text": "",
+      "author": "handfuloflight",
+      "points": 1,
+      "num_comments": 2,
+      "created_at": "2024-10-30T13:28:06Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41994531"
+    },
+    {
+      "id": "33954756",
+      "type": "story",
+      "title": "Spotify Wrapped/Apple Replay, but for Work (Jira/Asana/Height)",
+      "text": "",
+      "author": "rolfvanroot",
+      "points": 1,
+      "num_comments": 1,
+      "created_at": "2022-12-12T14:11:47Z",
+      "hn_url": "https://news.ycombinator.com/item?id=33954756"
+    },
+    {
+      "id": "45825514",
+      "type": "story",
+      "title": "Building like it's 1984: Scrollbars in web applications",
+      "text": "",
+      "author": "PaulHoule",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2025-11-05T17:31:33Z",
+      "hn_url": "https://news.ycombinator.com/item?id=45825514"
+    },
+    {
+      "id": "40927213",
+      "type": "story",
+      "title": "The Backlog Dilemma",
+      "text": "",
+      "author": "jrajasingh",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2024-07-10T14:20:43Z",
+      "hn_url": "https://news.ycombinator.com/item?id=40927213"
+    },
+    {
+      "id": "33957850",
+      "type": "story",
+      "title": "Embed your project management tool within Figma",
+      "text": "",
+      "author": "michaelvillar",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2022-12-12T18:00:20Z",
+      "hn_url": "https://news.ycombinator.com/item?id=33957850"
+    },
+    {
+      "id": "30768595",
+      "type": "story",
+      "title": "Building like it's 1984: Scrollbars in web applications",
+      "text": "",
+      "author": "bpierre",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2022-03-22T17:00:06Z",
+      "hn_url": "https://news.ycombinator.com/item?id=30768595"
+    },
+    {
+      "id": "30167354",
+      "type": "story",
+      "title": "Building like it's 1984: Comprehensive guide to creating intuitive context menus",
+      "text": "",
+      "author": "samwillis",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2022-02-01T18:57:30Z",
+      "hn_url": "https://news.ycombinator.com/item?id=30167354"
+    }
+  ]
+}

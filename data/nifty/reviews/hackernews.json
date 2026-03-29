@@ -1,0 +1,595 @@
+{
+  "app": "nifty",
+  "source": "hackernews",
+  "total_items": 58,
+  "items": [
+    {
+      "id": "32402594",
+      "type": "comment",
+      "text": "https:&#x2F;&#x2F;ehp.niehs.nih.gov&#x2F;doi&#x2F;10.1289&#x2F;ehp.1003231&quot;On the basis of distance to airport coefficients, children living within 500 m, 1,000 m, or 1,500 m of an airport had average blood lead levels that were 4.4, 3.8, or 2.1% higher, respectively, than other children.&quot;On the other hand, in 1971 lead averaged 2.5 g&#x2F;gal. (https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pmc&#x2F;articles&#x2F;PMC6522252&#x2F; which has a nifty graph of leaded gas use and air lead concentrations with the neat note, &quot;The increase in air lead concentration between 2000 and 2001 is likely due to changes at sites near stationary industrial sources. The decline in air lead concentrations between 2001 and 2002 is likely due to lower lead concentrations at sites in Herculaneum, Missouri.&quot;)100LL has about 2.1 g&#x2F;gal. (https:&#x2F;&#x2F;www.exxonmobil.com&#x2F;en&#x2F;aviation&#x2F;products-and-services...)Ah-hah: Herculaneum https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Herculaneum,_Missouri#Lead_pol...",
+      "author": "mcguire",
+      "points": null,
+      "created_at": "2022-08-09T19:11:29Z",
+      "story_title": "Saskatoon Freezing Deaths",
+      "hn_url": "https://news.ycombinator.com/item?id=32402594"
+    },
+    {
+      "id": "9888436",
+      "type": "comment",
+      "text": "Perl was what made one my all-time favorite side projects possible.Back around 2000, I was working at a mid-size company that stored tons of data in a company intranet. There was lots of useful stuff locked up in there, but hardly anybody ever used it because the web interface was clunky and slow.One day I had a brainstorm, and after a few evenings&#x27; Perl hacking it was up and running -- a conversational interface to the intranet, running over AOL Instant Messenger. You added the bot as a buddy, and then you could query the intranet a bunch of different ways; IM it a client&#x27;s name, for instance, and it would ping you back with their contact information, who their account reps were, what projects they were associated with, etc. (Which is very useful when your phone rings and it&#x27;s someone you don&#x27;t recognize.) Pretty nifty stuff, for the time. Everyone had AIM running all the time anyway, so this turned out to be a big hit -- much bigger than I ever expected.And I probably never would have been able to get it working were it not for the ease of programming in Perl and the ability to tap into CPAN&#x27;s massive library of code and take advantage of modules like Net::AIM (http:&#x2F;&#x2F;search.cpan.org&#x2F;~aryeh&#x2F;Net-AIM-1.22&#x2F;AIM.pm). So thanks Larry, and thanks to all the Perl folks who contributed to CPAN over the years!",
+      "author": "smacktoward",
+      "points": null,
+      "created_at": "2015-07-14T22:15:38Z",
+      "story_title": "Interview: Larry Wall",
+      "hn_url": "https://news.ycombinator.com/item?id=9888436"
+    },
+    {
+      "id": "9765699",
+      "type": "comment",
+      "text": "The speaker said that SciPy uses Boost Python. My comment here was that it does not.  I said nothing about SciPy&#x27;s performance.I didn&#x27;t say that my co-worker was the first to compute the derivatives. I said that it wasn&#x27;t that complex of a task. Mark Nelson worked out by hand the second derivatives for the force fields and implemented them in NAMD (note: NAMD is not VMD). He also checked it against a couple of other implementations, including the one in XPLOR. I think he also checked against PMD and YAMD, and I believe he noticed that the PMD implementation was copied from XPLOR.My point is that it&#x27;s not hard to find these manually. In any case there&#x27;s little need to figure it out from scratch since nowadays the force-fields are available in code with a permissive license, and the math available in publications like https:&#x2F;&#x2F;books.google.com&#x2F;books?id=GYTuCAAAQBAJ&amp;pg=PA168&amp;lpg=... .It can make sense to develop new tooling to generate code automatically. The result might be faster than manual code, but as we heard, the auto-generated code is currently 10% slower than manual code. Or it might make sense when developing many different types of force fields, like what Konrad Hinsen does in ScientificPython (see http:&#x2F;&#x2F;citeseerx.ist.psu.edu&#x2F;viewdoc&#x2F;download?doi=10.1.1.97.... ). However, I heard nothing about developing new force fields, and in any case, parameterization is the limiting factor, not computing the second derivatives.My &#x27;quibbles&#x27; are two-fold. The major one is that I heard or read 30+ years of history on how molecular modeling can be used to design solutions to real-world problems. The 1980s thought that it would be a CAD problem (which it wasn&#x27;t). The late 1990s thought it was a simple matter of nanotech, with all sorts of designs for nifty diamond-based structures with no real-world hope. We&#x27;ve had special purpose programming languages for molecular modeling, custom computers with specialized networks, custom designed chips, GPU-based implementations, and more.There&#x27;s no evidence that the limitation is in the tooling, which is a major part of the speaker&#x27;s thesis.The minor one is that if someone makes minor mistakes that end up placing the speaker in a brighter light, and says them with confidence, then I believe it&#x27;s reasonable to discount more the major points said with confidence which have less evidence, and which also place the speaker in a brighter light. What you see as quibbles for minor points I see as a way to judge how strongly the speaker is willing to trust personal beliefs over evidence and proof. (Yes, those personal beliefs might be right, but that&#x27;s my previous point.)",
+      "author": "dalke",
+      "points": null,
+      "created_at": "2015-06-23T16:24:00Z",
+      "story_title": "Making sexy molecules in PowerPoint",
+      "hn_url": "https://news.ycombinator.com/item?id=9765699"
+    },
+    {
+      "id": "6000979",
+      "type": "comment",
+      "text": "slightly more credible source - his attorney on winny&#x27;s case confirmed he passed away 7&#x2F;6 6:55 pm JST due to a heart attack. http:&#x2F;&#x2F;danblog.cocolog-nifty.com&#x2F;index&#x2F;2013&#x2F;07&#x2F;post-9e47.htm...",
+      "author": "bulknews",
+      "points": null,
+      "created_at": "2013-07-07T03:51:57Z",
+      "story_title": "Isamu Kaneko, creator of the encrypted P2P file sharing program Winny, has died",
+      "hn_url": "https://news.ycombinator.com/item?id=6000979"
+    },
+    {
+      "id": "5326923",
+      "type": "comment",
+      "text": "I wish there would be more NFC enabled devices: I think its a really nifty way to initiate contact between electronics. I see a future where one device, most likely the cellphone, will be the 'remote' for all other household devices. Tagstand sounds promising, but I would also prefer the app to be as invisible as possible, once the functions are defined/set.In my case, I use my N9 to turn on and connect to my Nokia Play 360 speakers[0] by just tapping it. It's really cool and I'm surprised the novelty of it hasn't worn off even after a year of use.[0]: http://www.amazon.com/Nokia-Play-Bluetooth-Speaker-Black/dp/...",
+      "author": "pm90",
+      "points": null,
+      "created_at": "2013-03-05T19:57:12Z",
+      "story_title": "NFC Task Launcher Maker Tagstand Partners With T-Mobile, Other Carriers and OEMs",
+      "hn_url": "https://news.ycombinator.com/item?id=5326923"
+    },
+    {
+      "id": "44940303",
+      "type": "comment",
+      "text": "I too have an odd obsession with keeping everything in 1 file.I recently (as an experiment) exclusively vibe-coded an Asteroids clone (with a couple of nifty additions), all in a single HTML file, including a unit test suite, which also works on either desktop or mobile: https:&#x2F;&#x2F;github.com&#x2F;pmarreck&#x2F;vibesteroids&#x2F;blob&#x2F;yolo&#x2F;docs&#x2F;inde...Playable version (deployed via github docs) is here: https:&#x2F;&#x2F;pmarreck.github.io&#x2F;vibesteroids&#x2F; Hit Esc to pause and see instructions (pause should be automatic on mobile; can re-pause by tapping top center area).Type shift-B (or shake mobile device... you also would have had to approve its ability to sense that on iOS) to activate the &quot;secret&quot; ability (1 per life)No enemy UFO&#x27;s to shoot (yet) but the pace does quicken on each level which feels fun.It doesn&#x27;t update itself, however... (and I just noticed it has a test fail, and a test rendering bug... LOL, well at least the tests are valid!)",
+      "author": "pmarreck",
+      "points": null,
+      "created_at": "2025-08-18T13:21:19Z",
+      "story_title": "Web apps in a single, portable, self-updating, vanilla HTML file",
+      "hn_url": "https://news.ycombinator.com/item?id=44940303"
+    },
+    {
+      "id": "4437917",
+      "type": "comment",
+      "text": "Say what you will about Windows (and I will even join you), but Microsoft can put out some alarmingly competent docs. I say \"can\" and not \"always do\", because where they are lacking, I agree it can be frustrating. That said, in one such scenario the solution for me was to get in touch with a PM at MS and say:\"You designed [system #42]. I'm trying to accomplish [nifty goal] that is an obvious extension of what you suggest that [system #42] should be used for. You said some examples are included with the most recent Windows SDK. After downloading it, I found no such example and the problem seems a little intractable. What gives?\"The response contained an attachment of the overlooked/unincluded examples, and some clarifications about the system I was working with and even explained that some of what I was doing was explicitly NOT possible, for very good reasons (for the record, an earlier version of Windows Search).I say this as a desktop Linux user, where at times my only recourse for \"Why won't [application x] properly fullscreen?\" is to go and do just what you suggest: an easter egg hunt on google. Furthermore, the end-all-be-all solution is the same as it is with our Windows example: get in touch with someone at the project and ask for clarification. The difference lies in that with one case, it's someone's job to provide clarification for the system they designed. In the other case, the possibilities are too varied to speculate on (e.g. unmaintained project, antisocial developer).",
+      "author": "chao-",
+      "points": null,
+      "created_at": "2012-08-27T08:20:44Z",
+      "story_title": "The coming civil war over general purpose computing",
+      "hn_url": "https://news.ycombinator.com/item?id=4437917"
+    },
+    {
+      "id": "44109761",
+      "type": "comment",
+      "text": "I have a Mac (and am very familiar with all its nifty shortcuts) but also a Windows and Linux machine, how would one type it on those?",
+      "author": "pmarreck",
+      "points": null,
+      "created_at": "2025-05-27T19:01:53Z",
+      "story_title": "Highlights from the Claude 4 system prompt",
+      "hn_url": "https://news.ycombinator.com/item?id=44109761"
+    },
+    {
+      "id": "440906",
+      "type": "comment",
+      "text": "like open a twitter acount, and pull it for pm match on user name, parse out time in '4pm(-5pm) &#60;text-descriptor&#62;', and also use dm to send sms responses..anyways, nifty",
+      "author": "kleevr",
+      "points": null,
+      "created_at": "2009-01-19T21:14:22Z",
+      "story_title": "www.TomorrowIt.com your day",
+      "hn_url": "https://news.ycombinator.com/item?id=440906"
+    },
+    {
+      "id": "41870875",
+      "type": "comment",
+      "text": "Before the early 1960&#x27;s I was a preschooler and like many American kids had gotten a Matchbox car in a Christmas stocking one year.They came in a little box that had the two-tone artistic motif intended to be reminiscent of an actual box of  traditional wooden matches.It&#x27;s hard to remember if they were all right-side steering, but the boxes were definitely made for the North American market, and naturally in the days of non-fiat currency were permanently imprinted with the purchase price in US terms which was 50c.  Approximately half the size and twice the price of a pack of cigarettes.  Like anything else there was no foreseeable reason that the price would be expected to increase whatsoever.  A half-dollar for something like this was recognized as truly overpriced already compared to many other types of toys, but sooner or later most young boys had one or more.In Florida most people still went back up north during the summer, except for a number of hardy retirees who actually liked the sub-tropical environment.  Remember almost nobody had air conditioning yet except for banks and supermarkets.  Which had big lobbies where senior citizens would congregate daily, of course banks closed at 2:00 PM and no supermarket opened before 8:00 AM or remained open much after dark.  If you wanted some essentials outside those business hours your only choice was a 7-11 store, which as the name implies, was open from 7:00 AM to 11:00 PM.  But on a Sunday many of those 7-11&#x27;s had not yet defied tradition, and were not open for business, just like anything else.In the local Eckerd Drugs store, they had small selection of various toys in one aisle, and had been carrying Matchbox cars obviously since before I was born.  And a few of those were still on the shelf, priced at 35c.  These were the unpopular oddball construction models or very unfamiliar designs that did not resemble any American cars.  Apparently 35c was the price they were when it was closer to the immediate post-war period.  So all the mainstream models had been picked over for years before I became a student and earned an allowance of 25c per week for various household chores.  Remember back then there was only a small percent of the number of kids in the Florida &quot;snowbird&quot; cities compared to any ordinary US state, since most residents were over 65 years old.  When they would buy a Matchbox for a grandchild the purchase was usually made up north where the grandchildren were, but when the kids came down to visit grandma in Florida they would sometimes get one.  However there was a great deal of hesitation for someone born in the 19th century to pay 50c for such a small toy.  Or anything else where you could detect the least bit of overpricing.  A lot of them were still in shock from the pre-war devaluation of the US dollar, where their parents&#x27; generation of private ownership of gold was first outlawed, confiscated and reimbursed at a &quot;fair&quot; price, before the devaluation could be accomplished.  This had been so painful that there was somewhat of a backlash of attitude that it could never happen again outside of another world war brewing.Anyway, I don&#x27;t think the Matchbox factory built very many different models at one time.  Probably doing a large run of each new model, which would go into inventory and sell for years while the factory retooled for the next designs.  So they would arrive in the stores like comic books, on a regular basis the store would get about a dozen of a new model, about half would fly off the shelf and the rest of the new ones would join the other recent models so there was always a selection of between 10 and 20 different choices, other than the few dusty old 35c items.  I would imagine when a certain model sold out at Eckerd it would be restocked until factory inventory had been fully depleted.  There were a number that I had wanted to buy but were sold out before I could save the money.  But there was always something interesting and new on a regular basis.I would save my money and try to purchase one per month, I didn&#x27;t know the value of the dollar to begin with but I thought they were nifty.  Kids who had them did feel kind of fortunate having a fancy imported toy, even if it was a small example.A very big number of pre-teens back then had been born up north where their family had traditionally earned twice as much for generations compared to Florida, where there wasn&#x27;t even 10 percent as many career opportunities, most anything else would be considered minimum wage today.  Of course there were no &quot;minimum-wage&quot; regulations yet.Well they just didn&#x27;t value the dollar as highly as we did, and didn&#x27;t take as good care of their toys by nature.These were models worthy of display when new, but kids played with them, plowing through the sand, crashing into each other and stuff.  One thing was, the paint on some chipped real easily, they could be dented and they only rolled as well as you would expect from a model descended from things originally produced mainly for sitting on a shelf decoratively.Once there were more numerous spoiled kids who had moved down, and Matchbox got more popular, those kids were rapidly accumulating more than I had which took me years.But I was careful only to crash a small number of mine, especially since most of them were irreplaceable and had not been available for years.  Eventually they had collector cases that held a couple dozen, and I had two cases where only a handful were not in mint condition.One day, Hotwheels came out and as the name implies all the focus had been on making them roll so much more friction-free as a more fun playable toy than the Matchboxes which just happened to have rolling wheels.  A Matchbox would only roll a few feet or less but Hotwheels would go across the room, so much of the time not stopping until it did crash into something.  Then they got the fast tracks for Christmas, and the whole novelty was because Matchboxes were everywhere by then, but nobody ever dreamed there could be a little car like this that was the least bit speedy.  So it was a real game-changer and they flew off the shelf.  I only ever added about a half-dozen Hotwheels to my carrying case which I would bring to my friends house where he had dozens of banged up Matchboxes he had been crashing along with my limited number of non-mint cars for a couple years.  By that time silver US coins had then been discontinued, replaced by much less worthy metals, Matchboxes had risen to 55c but Hotwheels were over a dollar.He would set up the tracks that covered the floor in his room, and his mom would let him keep it that way for weeks.The next summer we did the same thing but by then we had basically outgrown them, we spent more time riding our bikes to the beach, fishing or skateboarding than playing with toys, even in the air-conditioning which had become much more common by then.  People who had it were cooling to 80F (27C), it was such a luxury but quite costly for those paying the electric bill.One day she picked up all the tracks and cars, put them in his closet with other less-utilized toys and they remodeled his room. Mine were in there somewhere and I didn&#x27;t really think about it for a couple more years when I figured I should bring my cases back home even if I was not going to play with them any more, they were a pretty good collection.Too late, she had already donated about half the closet to Goodwill, never to be seen again :(",
+      "author": "fuzzfactor",
+      "points": null,
+      "created_at": "2024-10-17T15:59:59Z",
+      "story_title": "The Rise and Fall of Matchbox's Toy-Car Empire",
+      "hn_url": "https://news.ycombinator.com/item?id=41870875"
+    },
+    {
+      "id": "41544673",
+      "type": "comment",
+      "text": "For anyone skipping straight to the comments, just for context, this article is not about how to nest arena allocators in rust, it&#x27;s moreso about imagining how the syntax ought to look once someone decides to pick up the work.Say what you will about C++, but allocators are something it gets incredibly right. Bloomberg lead the effort to standardize std::pmr (derived from a similar implementation in their internal codebase), and the work and thought that went into that strongly shows. If you do it right, you end up with code that largely reads as normal C++ without any sacrifice in performance -- the allocation details are capable of mostly being embedded into the type system itself. I don&#x27;t see that here in this article, and I think if Rust wants to beat C++ in this space it&#x27;s going to need to try to do something similar.I wish that there were more projects happening atop std::pmr. NVIDIA&#x27;s cccl has an experimental memory_resource for CUDA memory (and their RMM library has a lot of nifty resource adapters), and it&#x27;s cool to see how they&#x27;re adopting this to heterogeneous compute, but there&#x27;s nothing interesting in the open source world that I&#x27;ve seen that tries to build atop the learnings of mimalloc&#x2F;glibc&#x2F;etc. in terms of beating the STL pool resources. Probably, they exist but are just kept proprietary.",
+      "author": "nickysielicki",
+      "points": null,
+      "created_at": "2024-09-15T02:14:05Z",
+      "story_title": "Nesting Allocators (2023)",
+      "hn_url": "https://news.ycombinator.com/item?id=41544673"
+    },
+    {
+      "id": "4078942",
+      "type": "comment",
+      "text": "If not (I assume no), would you accept(pmap [1 2 3 4 5 6 7 8 9 10] [0 3 4])instead? pmap being defined as \"Like map, except f is applied in parallel\" [1]That said, I'm too ignorant to understand the deeper benefits of the parallel approach. It seems it enables nifty things according to some other comments in this thread, yet I've been unable to understand quite why so far.1: http://clojure.github.com/clojure/clojure.core-api.html#cloj...",
+      "author": "darklajid",
+      "points": null,
+      "created_at": "2012-06-07T13:38:13Z",
+      "story_title": "Another Programming Idiom You've Never Heard Of",
+      "hn_url": "https://news.ycombinator.com/item?id=4078942"
+    },
+    {
+      "id": "35648064",
+      "type": "comment",
+      "text": "I&#x27;ve been using evidence as part of my pipeline for generating reports at work, and it&#x27;s wonderful. I use my own tool to generate the SQL itself, because I&#x27;m tired of writing SQL by itself. Here&#x27;s a little overview about how this all works: https:&#x2F;&#x2F;share.descript.com&#x2F;view&#x2F;ppBx1MZB174 (and https:&#x2F;&#x2F;share.descript.com&#x2F;view&#x2F;pMYlLZO4hOo for generating the commands generating the SQL using GPT).I&#x27;ve got a pretty nifty little reports app for the business I work going now. Beautiful, fast, does what it says, thanks so much for this.",
+      "author": "larve",
+      "points": null,
+      "created_at": "2023-04-20T23:42:46Z",
+      "story_title": "Evidence.dev – Business Intelligence as Code",
+      "hn_url": "https://news.ycombinator.com/item?id=35648064"
+    },
+    {
+      "id": "28832246",
+      "type": "comment",
+      "text": "&gt; Future maintainability and readability is now orders of magnitude more important than nifty tricks when writing the code.Explain npm, then.",
+      "author": "_pmf_",
+      "points": null,
+      "created_at": "2021-10-11T19:49:33Z",
+      "story_title": "Companies that use Lisp extensively",
+      "hn_url": "https://news.ycombinator.com/item?id=28832246"
+    },
+    {
+      "id": "28489713",
+      "type": "comment",
+      "text": "This is why I keep emphasising on &quot;domain knowledge&quot;. As an engineer my domain knowledge is zero when I wade into a new problem space.A good way to approach is to partner with a domain expert to understand the following aspects.  1. Know about various stake holders that make up a business process. Understand each of their incentives. Some actors standout explicitly but some do not, such as regulators.\n  2. The value add by different player&#x2F;stake holder in the chain.\n  3. Location of power centres. No one will explicitly call it out but you will be able to figure it out.\n\nNow pick one stake holder or actor, go deep into their problems, and see how you can make their life easier without disrupting rest of the actors. This latter part is important. If there are three actors (A, B, and C) and your solution is intended to make life easy for &quot;A&quot; but requires B and C to disrupt their workflow without them getting anything in return then it&#x27;ll be that much difficult for your solution to be adopted.Also, at the end of the day automation is making someone (or part of someone) redundant. Make sure you identify that person and be subtle about your messaging to them.All of this takes time so in olden days there used to be a role called &quot;system analysts&quot;. Their job was to go deep into the problem domain, untangle all the above for you and help you define product. These analysts are typically ex-workers in the same domain so they have seen everything first hand. Given the nature of their job their role is not fungible in that you can&#x27;t take one person and make them move around to be system analyst in different domains. Somewhere along the way system analyst role disappeared and they were replaced by fungible &quot;product managers&quot;. These PMs have a generic set of product development skills such as UX, user retention optimisation etc., But they lack the domain knowledge. And they are expected to be fungible. If a PM changes job once every 3 years into a different domain they can at best do a superficial job.Of the top of my head here are two examples.There&#x27;s this software called Docon (https:&#x2F;&#x2F;docon.co.in) used by small-setup medical doctors and physicians. The value add for doctors is very clear. It saves them time and all the hassle. What is good about Docon is it requires zero actions by the patient or any one else. So Doctors are happy to be using it. It is a nifty little tool to automate key parts of doctors&#x27; workflow.Now let me talk about JIRA. It is mainly targeted towards management and execs. Because, let&#x27;s face it, they have a genuine problem of not having clear view into project development state. They can&#x27;t see how their quarterly projects are shaping up at different zoom levels. To that end I would say JIRA does a reasonably good job. Where JIRA fails spectacularly is it requires leaf level works to massively disrupt their workflow. Not only does it require  them to use JIRA for daily updates and what not it also forces a way of agile development which comes with its own set of baggages.",
+      "author": "vishnugupta",
+      "points": null,
+      "created_at": "2021-09-11T05:54:42Z",
+      "story_title": "Work on interesting problems. Not interesting tech",
+      "hn_url": "https://news.ycombinator.com/item?id=28489713"
+    },
+    {
+      "id": "28406131",
+      "type": "comment",
+      "text": "I&#x27;ve used Jira, Pivotal Tracker, Trello, Asana, Zenhub, and other project management software that was written internally.In my opinion, based on my needs on every project I&#x27;ve worked on, I&#x27;ve yet to use a project management software that did anything better than a simple Trello board or the like.  At the end of the day, I want a list of tasks, a way to indicate the status on the task, a discussion section for the task, and to be able to close it when I&#x27;m finished.  That&#x27;s about 99% of what I need it for.  Well, besides the fact that it also should provide insight to management.My issue with project management software that&#x27;s more complicated than a set of to-do lists is that they seem to be designed to make you invest in that specific product.  They are different enough from each other in terms of layout and workflow that they are unique yet those differences offer no clear value.  Depending on which one you use, you have a &quot;task&quot;, or a &quot;story&quot;, or a &quot;ticket&quot;, or an &quot;issue&quot;, or something entirely unique if it was written by some clever person for internal PM software.Then there are concepts like &quot;milestones&quot;, &quot;epics&quot;, &quot;iterations&quot;, and &quot;sprints&quot; (speaking of more concepts I&#x27;ve never needed).  You might be &quot;assigned&quot; a task, or perhaps you are the &quot;owner&quot;.  It&#x27;s all so tainted by Agile that we have to speak this goofy ass language which makes us feel more sophisticated than the rest of the world which... does the same thing using common verbage.Worst of all is these tools have barely any meaningful integration with source control hosting like GitHub or GitLab.  Yes, they can do nifty things like show the title of the GitHub issue, but every place I&#x27;ve worked for forced me to ping pong between the PM software and GitHub&#x2F;Lab and I always ended up having to manually sync things between the two.  Or I would have to manually copy information between the PM software and whatever non-engineers were using, like Asana.Like, I really don&#x27;t care that badly about having to sync some things by hand, but it&#x27;s a nuisance when the tool pretends to be advanced by shoving a bunch of information, terminology, and processes in my face.  Give me a tool that will stay out of my way.---Oh, yes, the article.&gt; The thing I really like about this idea is that the user can organize their hierarchy however they like. They are not restricted to what the software defines as an “epic.”Yep, exactly.  It should get out of the way and not force organizations or individuals into hard and fast paradigms.  Funny how we overuse abstractions in code but our project management tools are overly concrete.&gt; Want to create a sprint? Create a circle and reference other circles within it. Want to create an epic? Create a circle and reference other circles within it. Want to view your circle and its children as a kanban? It supports that. Want to move circles around, such as nesting them or unnesting them? It’s as easy as pressing “tab” or “shift+tab.”Although obviously I&#x27;m not a fan of adding more neologisms, the way that circles work here definitely sounds appealing in terms of flexibility.  In this case, it kind of makes sense since a circle doesn&#x27;t necessarily have to represent anything in particular besides what the user wants it to be.&gt; I want a project management solution that:&gt;    - Emphasizes team collaboration&gt;    - Is able to scale with a company’s growth&gt;    - A playground for teams to experiment and build tasks&gt;    - Ability to capture OKRs (objectives and key results)&gt;    - Task managementMost project management software claims to do most of those things.  Not that you aren&#x27;t right in wanting those things, but the possibilities circles have is the main selling point IMO.",
+      "author": "ravenstine",
+      "points": null,
+      "created_at": "2021-09-03T16:15:11Z",
+      "story_title": "A critique of project management software",
+      "hn_url": "https://news.ycombinator.com/item?id=28406131"
+    },
+    {
+      "id": "27721913",
+      "type": "comment",
+      "text": "Some of the objections from the article:Sean Kieghran, president of San Francisco&#x27;s Residential Builders Association, said he supports getting rid of single-family only zoning but doesn&#x27;t think it will result in many new units. Kieghran said that building fourplexes requires either two staircases or a staircase and an elevator, which takes up too much of the site.And, unless the city streamlined the process of building a fourplex on a single-family lot, builders would run into too many bureaucratic obstacles, Kieghran said. &quot;With how long it takes to get through planning and fire and DPW and all the other red tape it&#x27;s not likely we are going to see anybody building fourplexes anytime soon,&quot; he said....One of the few architects to design fourplexes on single-family sized lots in the last few decades is Daniel Solomon, who has worked on three such projects...&quot;These are nifty little projects, but they won&#x27;t make a big dent in the housing need,&quot; Solomon said. &quot;That zoning is a tool to create housing production is a widely held and completely fallacious idea. Just because something is permitted doesn&#x27;t mean it happens. It&#x27;s very hard to find a vacant lot or tear down at a price that would work.&quot;He said the fourplexes he designed and built were profitable, but barely. And they took as much time to design and execute as the 100-unit complexes his firm, Mithun, is known for.&quot;You would need to find a developer willing to take a risk on a minuscule profit and an architect who enjoys brain damage,&quot; he said. &quot;They are complicated little projects. It&#x27;s the absolute opposite of economy of scale.&quot;",
+      "author": "pmoriarty",
+      "points": null,
+      "created_at": "2021-07-03T14:44:23Z",
+      "story_title": "Bay Area cities want to end single-family home zoning",
+      "hn_url": "https://news.ycombinator.com/item?id=27721913"
+    },
+    {
+      "id": "26518690",
+      "type": "comment",
+      "text": "Nifty. Now if only this was the required homepage on all major browsers starting up for the first time then folks at home would quickly become aware of just how well tracked they all are.",
+      "author": "pmastela",
+      "points": null,
+      "created_at": "2021-03-19T22:17:09Z",
+      "story_title": "Click",
+      "hn_url": "https://news.ycombinator.com/item?id=26518690"
+    },
+    {
+      "id": "2611564",
+      "type": "comment",
+      "text": "1)    (map #(* % 2) (range 1 10))\n\n2)    (reduce + (range 1 1000))\n\n3)    (def string \"This is an example tweet talking about scala and sbt.\")\n\n    (some #(.contains string %) [\"scala\", \"akka\", \"play framework\", \"sbt\", \"typesafe\"])\n\n4)As a string:    (slurp \"filename\")\n\nAs a list you could just do:    (.split (slurp \"filename\") \"\\n\")\n\nOr if you want a lazy sequence:    (line-seq (BufferedReader. (InputStreamReader. (FileInputStream. file-path) \"UTF-8\")))\n\nThere are also contrib libraries for this that do it nicer.5)    (apply prn (map #(str \"Happy birthday\" (if (= % 4) \" dear NAME\" \" to you\")) (range 1 5)))\n\n6) I'm going to leave this blank for now. It's an easy enough problem, but I can't think of a way of doing it in a nifty one-liner.Edit: Ahh thought of it now. group-by does it nicely:    (group-by #(&#62; % 60) [49, 58, 76, 82, 88, 90])\n\nwhich returns a map with the elements keyed to the result of the anonymous function. In this case:    {false [49 58], true [76 82 88 90]}\n\n7) Something like    (xml-seq (clojure.xml/parse the-xml))\n\nprobably.8)    (apply max [14, 35, -7, 46, 98])\n\n    (apply min [14, 35, -7, 46, 98])\n\n9)\nClojure has pmap, which is used just like map is, work is just done in parallel. Also Clojure is known for its concurrency features, which I won't go over here.10) I'm sure this can be done in a similar amount of code in Clojure, though I am not going to try.Any comments/corrections are welcome.",
+      "author": "SomeIdiot",
+      "points": null,
+      "created_at": "2011-06-02T11:57:48Z",
+      "story_title": "Scala One Liners",
+      "hn_url": "https://news.ycombinator.com/item?id=2611564"
+    },
+    {
+      "id": "23481604",
+      "type": "comment",
+      "text": "For a while I used pm2 to deploy stuff. It&#x27;s honestly a nifty little tool but I&#x27;m moving away into a docker based solution.Initially I was thinking into having a CI build the images and push it to the server and so one but for my personal projects, it&#x27;s too much. So I might just do a bash script to build the image, push it to the hub and then connect to ssh to pull the image and restart.Regarding your script, could you share a template?",
+      "author": "xcubic",
+      "points": null,
+      "created_at": "2020-06-10T20:20:31Z",
+      "story_title": "Ask HN: Which tools have made you a much better programmer?",
+      "hn_url": "https://news.ycombinator.com/item?id=23481604"
+    },
+    {
+      "id": "23400258",
+      "type": "comment",
+      "text": "Hi Paul, thanks for Ardour.For anyone curious, this wiki page describes how to package and run some precompiled binaries on NixOS, particularly the section &quot;The Dynamic Loader&quot;: https:&#x2F;&#x2F;nixos.wiki&#x2F;wiki&#x2F;Packaging&#x2F;BinariesNixOS tries to insist that programs reference only other paths within the nix store (e.g. &#x2F;nix&#x2F;store&#x2F;9rabxvqbv0vgjmydiv59wkz768b5fmbc-glibc-2.30&#x2F;lib64&#x2F;ld-linux-x86-64.so.2 which is a specific version built by a specific compiler, rather than &#x2F;lib64&#x2F;ld-linux-x86-64.so.2). This is the source of the per-program isolation that enables all the nifty features of NixOS.NixOS _does_ make exceptions to that though, for example providing both &#x2F;bin&#x2F;sh and &#x2F;usr&#x2F;bin&#x2F;env at those paths.",
+      "author": "pmahoney",
+      "points": null,
+      "created_at": "2020-06-03T05:49:28Z",
+      "story_title": "A Nix terminology primer by a newcomer",
+      "hn_url": "https://news.ycombinator.com/item?id=23400258"
+    },
+    {
+      "id": "22119403",
+      "type": "comment",
+      "text": "It doesn&#x27;t degrade and accumulates in the body (https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Perfluorooctanoic_acid#Human_d...), where it looks like it acts like a &quot;biological handgrenade&quot; (a nifty term I heard elsewhere).&quot;PFOA is not rapidly eliminated from the human body, with a half-life of 3.8 years in human blood, thus raising the public concerns over the toxicological implications due to internal exposure.&quot; (https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pmc&#x2F;articles&#x2F;PMC4817033&#x2F;)That&#x27;s elimination from retired &quot;fluorochemical production workers&quot; (https:&#x2F;&#x2F;www.ncbi.nlm.nih.gov&#x2F;pubmed&#x2F;17805419&#x2F;).",
+      "author": "mcguire",
+      "points": null,
+      "created_at": "2020-01-22T17:04:31Z",
+      "story_title": "U.S. drinking water widely contaminated with 'forever chemicals': report",
+      "hn_url": "https://news.ycombinator.com/item?id=22119403"
+    },
+    {
+      "id": "21734907",
+      "type": "comment",
+      "text": "This is a really confusing post on a lot of levels. I think that some refinement in your pitch would go a long way. Some of the questions that arise after reading your post are:* If you&#x27;re a startup scrambling for traction, why are you so particular about the method by which your partners&#x27; services are delivered? What&#x27;s so special about REST APIs? Why do you care if it&#x27;s compute-bound? Shouldn&#x27;t you be willing to work with anyone?* What value do you actually offer? I&#x27;m not sure if you&#x27;re an API integrator, a billing backend person, a contract sales team, or what.* You specialize in connecting API publishers to business users, but you&#x27;re on HN asking for SW companies. If this is your specialty shouldn&#x27;t you already know? Or do you have a deep list of businesses with validated needs? The impression you&#x27;re giving here is that you don&#x27;t actually have ANY clients on either side of this transaction. I&#x27;m left wondering if there is a similar post on a business-focused message board somewhere.I&#x27;ve re-written your pitch as an example. I don&#x27;t know if this is anything close to what you actually do, but hopefully it&#x27;s illustrative: &quot;Hi! We&#x27;re a new startup in the cloud computing space. We take high performance hardware and manage it for other software companies... we&#x27;re like AWS EC2, but focused exclusively on compute-bound workloads (and we&#x27;re less expensive too). If you sell your services through an API, we&#x27;ve also built a nifty service layer to automate all your security, logins, and billing. We take care of all the paperwork so you can focus on running your service. We&#x27;re looking for more partners, so please take a look at our beta [insert link here]. We&#x27;d love to hear your feedback. If you send me a PM, I&#x27;ll also get you 50% off your first 3 months. Thanks!&quot;Anyway, hope that&#x27;s at least somewhat helpful.",
+      "author": "_ah",
+      "points": null,
+      "created_at": "2019-12-08T08:24:48Z",
+      "story_title": "Ask HN: Ideas for s/w company we can reach out to?",
+      "hn_url": "https://news.ycombinator.com/item?id=21734907"
+    },
+    {
+      "id": "21448900",
+      "type": "comment",
+      "text": "Different priorities for different people I guess. And also very much dependent on profession &amp; lifestyle. Couple of the points you raised though I thought that&#x27;s the exact opposite of what I want.Crumple zones - I want that. My life matters more to me than repair cost. And it&#x27;s missing a second reason for soft exteriors - pedestrian safety. Deers aren&#x27;t the only thing getting hit.Suspension, brakes etc designed to carry 1000+ pounds, to me that just means the it&#x27;s calibrated for a state it&#x27;ll rarely be in - and by default is suboptimal for that state it is then. Same for the weight of PUTs - the lighter the better due to stopping distance.More ground clearance&#x2F;higher seating = higher center of gravity which bring ends safety &amp; handling issues.Solid axle are mechanically simpler, but there is a reason most of the world dropped them - they will chew tires on turns. Also prevents nifty stuff like electronic stability control applying variable braking left &amp; right.I totally get the utility angle in the sense you lay it out. But the US population is like 80% urbanized. I don&#x27;t see them sling 1000 pounds of hay-bales on their rides and regularly hitting deer on the way back from work.People that need that exist sure, but it doesn&#x27;t account for 50%+ of sales being pickups. pm90&#x27;s &quot;symbol of rugged manliness&quot; theory seems much better at explaining that.",
+      "author": "Havoc",
+      "points": null,
+      "created_at": "2019-11-05T01:57:00Z",
+      "story_title": "Flood of Oil Is Coming, Complicating Efforts to Fight Global Warming",
+      "hn_url": "https://news.ycombinator.com/item?id=21448900"
+    },
+    {
+      "id": "20883431",
+      "type": "comment",
+      "text": "Some smaller companies essentially run customer service directly through Slack. It can be pretty nifty in that a customer support message thread can easily be rerouted to a developer if it involves a bug, attached to an issue, which then notifies the customer service team that the bug is resolved once the code branch is pushed to master and deployed.Other use cases can be simple things like notifying teams when you get new subscribers, reporting metrics&#x2F;charts that are displayed in a thread versus pushed via email (allowing newly joined channel members, etc. to scroll through.I&#x27;m not saying any of these are game changes by themselves, but they each bring incremental value.",
+      "author": "pmart123",
+      "points": null,
+      "created_at": "2019-09-05T02:44:13Z",
+      "story_title": "Slack plunges after posting first earnings report since going public",
+      "hn_url": "https://news.ycombinator.com/item?id=20883431"
+    },
+    {
+      "id": "19331615",
+      "type": "comment",
+      "text": "&gt; If you want to use a wiki like dokuwiki or pmwiki, you can run a webserver on localhost like this: php -S localhost:8001That&#x27;s a really nifty idea!(Also second dokuwiki, it is probably the most useful and least annoying wiki I know of.)",
+      "author": "eitland",
+      "points": null,
+      "created_at": "2019-03-07T19:55:51Z",
+      "story_title": "Ask HN: How do you organize your ideas?",
+      "hn_url": "https://news.ycombinator.com/item?id=19331615"
+    },
+    {
+      "id": "1891205",
+      "type": "comment",
+      "text": "Making sure a PM on the product reads your blog post isn't about optimising the title and having buzzwords like graduate. Think about being in the PM's shoes and where you would be looking for coverage and posts and so on on your product.Hint: Writing a cool, insightful blog post, teardown or even nifty mashup (youtube instant?) that appeals to both the HN community as well as being hand crafted to subliminally read 'Please hire me, Google' would more than get you noticed.The premise in the main post is very sound. If you want a product job at Google, put yourself in the shoes and start thinking product.",
+      "author": "jlees",
+      "points": null,
+      "created_at": "2010-11-10T17:56:27Z",
+      "story_title": "How To Land a Job at Google",
+      "hn_url": "https://news.ycombinator.com/item?id=1891205"
+    },
+    {
+      "id": "18376074",
+      "type": "comment",
+      "text": "Alice: Hey Bob, want to try my nifty new function?Bob: Sure, Alice, what does it do?Alice: It takes an object and it returns an object.Bob: But what does it actually do?Alice: I told you.  It takes an object and it returns an object.Bob:  But what does it do with the object?  What&#x27;s it for?  Why should I use it?Alice: Hey, I just gave you the full documentation for my function.  You have everything you need.  Now go use it.Bob:  Um, no thanks.  I like to know more about what I&#x27;m getting myself in to.",
+      "author": "pmoriarty",
+      "points": null,
+      "created_at": "2018-11-04T14:45:43Z",
+      "story_title": "Why I love Common Lisp and hate Java (2012)",
+      "hn_url": "https://news.ycombinator.com/item?id=18376074"
+    },
+    {
+      "id": "17324122",
+      "type": "comment",
+      "text": "Recently, I was helping out a friend in analyzing some RNA samples for her work. These samples are huge - like nearly a gigabyte of data. There was this tool which was recommended for the job - mirexpress. It was a small job, perhaps 10 minutes worth of effort. To make my work easier, I provisioned a beefy (and costly) machine on Azure to do the job, took a quick look at the clock (it said 11 PM), ran the tool, and relaxed. The tool crashed while reading the file.In an attempt to fix the bug, I opened mirexpress&#x27;s code. And all my confidence in my programming ability vanished when I saw its innards. I understand that the code may have been written by scientists who had no experience in programming, but I have never been so utterly _disoriented_ by bad code. Anyways, after hacking away at the mess for about 3-4 hours, I realized that this was a fool&#x27;s errand and thought I&#x27;ll just phone it in the next day saying I couldn&#x27;t do it. I went to sleep thinking that it was already late and I&#x27;d get late for work the next day.- 5 minutes later -I woke up with a start, recalling this nifty tool called awk. I had last used it maybe 3 years ago, and before that only in college. But I could see how awk could do some of the things which mirexpress was claiming to do. So I fire up my computer, write an awk script - 2 lines only! TWO FUCKING LINES! And it runs like a charm - eats away at megabytes of sample data and gives me results I can show. So then like any rational person, I spent the remaining hours re-discovering awk and forgot to sleep. Pissed away the whole next day (and some part of the day after that too!) :-DIt&#x27;s really fascinating that this nifty little tools invented DECADES ago are still going strong, and there&#x27;s been no _evolutionary_ leap in areas where tools like awk&#x2F;grep&#x2F;sed excel at.",
+      "author": "kumarharsh",
+      "points": null,
+      "created_at": "2018-06-15T22:20:49Z",
+      "story_title": "Learn just a little Awk (2010)",
+      "hn_url": "https://news.ycombinator.com/item?id=17324122"
+    },
+    {
+      "id": "16487961",
+      "type": "comment",
+      "text": "Its interesting that FM 44-85 &quot;Patriot Battalion and Battery Operations&quot; is publicly available and pretty easy to find.  We discussed this in a systems analysis class back in &#x27;04 using a copy of FM 44-85 released in &#x27;97.  In summary the class blamed TRADOC and the tech writers for publishing a manual that did not accurately reflect real world use cases, with the software bug being a secondary concern.I googled up a copy of FM 44-85 to refresh my memory and write this post, its pretty much as I remember it.The doctrine in chapter 3, planning, is extreme mobility and rapid hour to hour activation and deactivation of individual missile batteries, kinda like infantry bounding overwatch but glacially slower on an hourly basis, for example see Table 3-2 where the four batteries are rotating on and off and moving&#x2F;maintaining on detailed hour by hour basis, so the doctrine seems to be uptimes should typically be on the order of 3 or 4 hours maybe.  Not a zillion days in a row as actually deployed when the software bug hit.The doctrine in chapter 5, operations, goes into a big discussion of defense design strategies.  The weapon system is inherently sectorized this naturally leads to overlapping areas of fire being very important.  You have to ask why the unit that had a ridiculous uptime never shut down to perform daily maintenance which would inherently involve rebooting stuff, its no big deal to down a system because sectorization and overlap is inherently built into the technology.  Its reasonably well understood that technically you can tell an individual infantry soldier to guard a post for 100 hours or 1000 hours continuously, but someone screwed up if they issued an order like that because its simply impractical.  That leadership failure will be discussed later.  So... aside from the question of why the software failed under ridiculous conditions, you have to ask WHO more or less knowingly misapplied the resource without backup or planned maintenance intervals?  Possibly this section of the FM was rewritten between the tragedy and the the release of the copy I have access to, but its still poorly written.  Or what section of the FM would have ever given the officers the idea that the weapons system can be deployed the way they did it?  The idea that the weapon system could do what they told it to do came from somewhere and it apparently was not the documentation?The doctrine in chapter 6, support, has a little blurb about battalion level staff officers.  What did the EMMO think about keeping a patriot booted up and running for 100 hours without a maintenance interval?  Missile maintenance is literally his only job.  And if that slot was unfilled, its the job of S4 and the XO to cover or reassign someone or otherwise work around.  Around page 6-16 there&#x27;s a discussion about operators being responsible for maintenance... I had a humvee assigned to me, I hated it, it leaked oil all the time, but the point is even my junky humvee had daily maintenance tasks for PMCS.  The patriot missile PMCS checklist is probably classified, but if a lowly humvee has daily maint, how can a missile not have a much longer and more complicated daily maint?  And this implies someone is pencil whipping maint (I mean, everyone kinda does that, but..)Its hard to summarize a class discussion but from the point of view of a systems analysis class, mostly non-military other than myself, the end users were being innovative and adapting and overcoming which unfortunately means the doctrine and specifications of the weapon system have little to do with how its being used.  The class considered this the biggest systems analysis mistake of the tragedy.  Why even write docs and specs if the users won&#x27;t read them and they have no relation to what the users want to do?  I guess a good HN analogy would be you could creatively deploy binary executables using the &quot;cat&quot; command and hand typing unicode and that would be a nifty hack to work around a problem but would be a pretty stupid way to operate normally.  Specifically the Army&#x27;s own docs used to train and plan operations imply shorter operations terms interspersed with maintenance intervals and deep redundancy, none of which seems to have anything to do with the failed deployment.There was a big argument in class that it had nothing to do with systems analysis and was merely a leadership failure, using the example above of technically you can order a soldier to stand guard for a hundred hours, when guard shifts are normally a couple hours, and when he passes out asleep around 48 hours into his shift, you can try to blame the soldier or declare there&#x27;s a bug in our brain preventing 100 hour deployments, or you can even blame the manual and the technical writers for not putting a warning in the manual not to do dumb things, but fundamentally thats just passing the buck that it was a failure of leadership to assign a unit to a task its not designed to handle, then cover it up by pretending its merely a software bug or something.  I don&#x27;t know enough history of the tragedy; its possible the Army correctly relieved some officers of command and its only the media and press who blame the software bug.You can imagine the look on the face of the software developers when they got the bug report; like dude, did you ever read FM 44-85, or if you aren&#x27;t reading it, what are you reading, so we can read it?",
+      "author": "VLM",
+      "points": null,
+      "created_at": "2018-02-28T22:49:43Z",
+      "story_title": "Failed intercept at Dhahran caused by a software error in handling of timestamps",
+      "hn_url": "https://news.ycombinator.com/item?id=16487961"
+    },
+    {
+      "id": "13200484",
+      "type": "comment",
+      "text": "One of the greatest way to advance human knowledge is to combine ideas from seemingly different domains in fruitful ways.For example AI and molecular topography.Another striking example is combining the 419 scam with the Sokol affair.https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Advance-fee_scam\nhttps:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Sokal_affairPro tip: on this forum you should replace &quot;nifty AI&quot; with &quot;tensor deep stacking networks&quot;, or at the least with &quot;deep learning&quot;. Common, it&#x27;s only a wikipedia link away.Otherwise I applaud the effort.Allow me to make yet another non-obvious and potentially super-profitable connection to your innovation: the pyramid scheme. I&#x27;ve been putting together some materials that can help young and energetic entrepreneurs such as yourself to improve their con game and also reach a wider audience, and more importantly, an audience with more disposable income. Generally, I offer my package for $120 and 5% participation in your net income derived from it, but I think you show extraordinary promise, so if you PM me the rate will be the practical give away of $19.99 and 3% of the profits.",
+      "author": "credit_guy",
+      "points": null,
+      "created_at": "2016-12-17T12:42:22Z",
+      "story_title": "A new type of molecular medicine may be needed to halt cancers",
+      "hn_url": "https://news.ycombinator.com/item?id=13200484"
+    },
+    {
+      "id": "10602376",
+      "type": "comment",
+      "text": "With the disclaimer that there are different schools of thought, I can give a basic outline, and provide some references.  This pertains mainly to optimizing engineering models, which tend to be continuous or mixed integer.  GAs are just OK at combinatorial optimization (although GP is pretty nifty, from what I hear about it).* Steady-state: pioneered to the best of my knowledge by Deb&#x27;s epsilon-MOEA, steady-state algorithms use function evaluations as soon as they are received, rather than waiting for a whole generation to complete. [1]* Multi-objective: Pareto ranking as dominance relation lets us have multiple objectives [2].  This is good because it gives us a whole bunch of solutions at once and lets us decide which one we want, instead of tweaking objectives and constraints to get an idea of the tradeoffs involved.* Epsilon resolution: comes from an idea by Laumanns et al. [3].  We can have more objectives if we don&#x27;t care about differences below a certain threshold.  Otherwise the Pareto front explodes in size.* Restarting: Proposed by Coello-Coello [4] and demonstrated by his micro-GA, restarting helps you get out of local optima.* Better search operators: Binary crossover doesn&#x27;t work so well, especially for real-valued decision variables.  It took some fancy theoretical footwork involving schema theory and domino convergence to support it.  There were a lot of new search operators proposed in the late &#x27;90s, the best of which seem to be simulated binary crossover (SBX), and polynomial mutation (PM).  [5]* Alternatively, the Differential Evolution search operator [6] works really well too.* Better selection operator: tournament selection beats the pants off of the alternatives [7].Resources:* Dave Hadka&#x27;s MOEAFramework [8], which includes open-source multi-objective evolutionary algorithm implementations.* Dave Hadka&#x27;s dissertation [9], which describes a (regrettably patented) MOEA that&#x27;s kind of a greatest-hits of good MOEA ideas.* Deb&#x27;s website [10], which includes questionably-licensed algorithm implementations, as well as a number of technical reports.Links.  I&#x27;m posting raw bibtex because I&#x27;m lazy.[1] \n@article{deb_2005_emoea,\n    author = { Deb, K. and Mohan, M. and Mishra, S},\n    year = {2005},\n    title = {Evaluating the $\\varepsilon$-domination based multiobjective evolutionary algorithm for a quick computation of Pareto-optimal solutions.},\n    journal = {Evolutionary Computation Journal}, \n    volume= {13}, number = {4}, pages ={501--525}\n}[2] \n@book{goldberg_1989_book,\n    title={Genetic algorithms in search, optimization, and machine learning},\n    author={Goldberg, D.E.},\n    year={1989},\n    publisher={Addison-Wesley Professional}\n}[3] \n@article{laumanns_2002_combining,\n    title={Combining convergence and diversity in evolutionary multiobjective optimization},\n    author={Laumanns, M. and Thiele, L. and Deb, K. and Zitzler, E.},\n    journal={Evolutionary computation},\n    volume={10},\n    number={3},\n    pages={263--282},\n    year={2002},\n    publisher={MIT Press}\n}[4]\n@inproceedings{coello_2001_uga,\n  author = {Carlos A Coello Coello and Gregorio Toscano Pulido},\n  title = {Multi-Objective Optimization Using a Micro-Genetic Algorithm},\n  booktitle = {Proceedings of the Genetic and Evolutionary Computation Conference (GECCO 2001)},\n  pages = {274--282},\n  publisher = {Morgan Kaufmann},\n  address = {San Francisco, CA},\n  year = {2001}\n}[5]\n@techreport{deb_1994_sbx,\n    author = {Deb, K. and Agrawal, R. B.},\n    year = 1994,\n    title = {Simulated binary crossover for continuous search space},\n    number = { Technical Report IITK&#x2F;ME&#x2F;SMD-94027},\n    institution = {Indian Institute of Technology, Kanpur},\n    address = {Kanpur,  UP, India}\n}[6]\n@article{storn_1997_de,\n    author = {Storn, R. and Price, K.},\n    year = 1997,\n    title = {Differential evolution --- a simple and efficient heuristic for global optimization over continuous spaces},\n    journal =  { Journal of Global Optimization}, \n    volume = 11, number = 4, \n    pages = {341--359}\n}[7]\n@inproceedings{back_1994_selection,\n    title={Selective pressure in evolutionary algorithms: A characterization of selection mechanisms},\n    author={B{\\&quot;a}ck, Thomas},\n    booktitle={Proceedings of the First IEEE Conference on Evolutionary Computation},\n    pages={57--62},\n    year={1994},\n    organization={IEEE}\n}[8] http:&#x2F;&#x2F;moeaframework.org&#x2F;[9] https:&#x2F;&#x2F;etda.libraries.psu.edu&#x2F; You&#x27;ll have to search for it, I&#x27;m afraid.  The site&#x27;s not responding for me right now.  But his dissertation is publicly available on Penn State&#x27;s ETD site.[10] http:&#x2F;&#x2F;www.iitk.ac.in&#x2F;kangal&#x2F;deb.shtmledit: formatting",
+      "author": "sevensor",
+      "points": null,
+      "created_at": "2015-11-20T17:19:21Z",
+      "story_title": "Genetic Algorithm 2D Car Thingy",
+      "hn_url": "https://news.ycombinator.com/item?id=10602376"
+    },
+    {
+      "id": "13154698",
+      "type": "comment",
+      "text": "Radio is definitely one of the best sources and unsung heroes of news in the UK. I feel BBC Radio 4 does this especially well, in that it provides coverage in a few different formats. The hourly bulletins allow you to stay informed without investing a lot of time, the longer news summaries cover a broad range of news, and the current affairs programmes (such as Today and PM) dig deep into the nitty-gritty of the issues.Elsewhere on the BBC Radio network, Radio 5 live does a good job with its rolling news coverage, the BBC World Service has fantastic features (I enjoy their technology programmes Click and Tech Tent), and the local radio stations are sometimes the only place you&#x27;ll find decent coverage of local news.As you point out, the BBC does dominate, although I have a fondness for LBC and talkRADIO, too.",
+      "author": "ldjb",
+      "points": null,
+      "created_at": "2016-12-12T01:08:48Z",
+      "story_title": "Things You Notice When You Quit the News",
+      "hn_url": "https://news.ycombinator.com/item?id=13154698"
+    },
+    {
+      "id": "46185358",
+      "type": "comment",
+      "text": "This is why stuff like Jira is so polarizing for many developers. It is an additional translation tax on me, the developer, to have to go constantly keep this tracking tool thing up to date so that the product owners&#x2F;managers stay off my nuts. The burden of effort is placed on me to make their tool functional that they can have what they need to provide roll up status. This tool virtually never benefits me, it&#x27;s always a time consuming sidequest that breaks focus and scatters important information all over a kanban board where tickets disappear and makes it really hard to cohesively work as a unit to get anything done. Like many orgs we&#x27;ve had PM&#x27;s and stuff try to mandate expectations on when those updates should be provided, somehow completely oblivious to the human nature of development: you should never expect that a developer can simply hop in and out of moments of deep focus and suddenly provide a bunch of updates regularly when it&#x27;s convenient for you, as if that has zero impact on their work. It takes a toll, full stop. I won&#x27;t say no to it, but I do expect PM&#x27;s to know that style of PM&#x27;ing is effectively asking me to make your job easier by populating your tool with updates that are useful to you and not me because I&#x27;m well aware you aren&#x27;t involved enough to assess where things are yourself.We&#x27;ve gone through so many cycles of how to use Jira well at my org where these frustrations are shared and we try a different approach, and we&#x27;re finally starting to converge on the idea that this has historically been a little too lopsided requiring too much tax on the developer doing the actual work. We agreed on a new approach that has actually been pretty awesome: the product owners or managers that are trying to direct a body of work must be a little more in the trenches with us to have an overall understanding of where the different pieces are in a moving body of work. We don&#x27;t expect them to understand the nitty gritty work in the trenches, but at the same time no more 30,000 foot view product managers who just ask for status updates at EOD. _Everyone_, developers included, is responsible for keeping documentation up to date as we go. So we have central working-bodies of information to find details without having to cruise thru 100+ jira tickets to find details we&#x27;re looking for. The expectation is that they&#x27;re engaged enough with development whether in chat or on meetings that if they were blindsided by an executive asking for an update, they could speak to it with some authority over at the water cooler without having to go check Jira. This has really helped weed out the lazy product owners&#x2F;managers, has forced them to thoughtfully consider their meeting schedules, and has placed the exceptional ones in the pod of work being done and really added a lot of velocity and together-ness about the things we&#x27;re pushing along.This approach we&#x27;re using now was born out of some hurt feelings from projects that didn&#x27;t go so well &amp; we had to have some real restrospective convos where everyone aired out their beef. Those are good convos to have, I think a lot of teams would find that people aren&#x27;t deceptively trying to screw you over. Being encouraged to level set human-to-human genuinely is one of the greatest parts of working where I work. Always walk away from those types of chats learning valuable things: for the most part our product owners really do care. Not just about their career aspirations but also about _us_ nerdy and sometimes socially maladjusted developers. They look forward to working with us, and they want to make this as easy as possible for themselves but also for the developers. In the past they spent a lot of time in planning phases trying to scaffold out a project in Jira and attaching timelines to it so that their needs are met to provide predictable timelines to their bosses... but also with the hope that by plainly outlining work it sort of 2 in 1 satisfies our needs and will make development timelines a breeze. We&#x27;ve had to ask them to cede rigidity on that latter part because even the software architects admit the work being done is often a moving target. And when that target moves, maybe you realized you need to add a pivotal software solution to the stack, you can sometimes throw like 45 planned tickets into the dumpster. New ship dates need to be assessed. This was our reality check that we were all collectively shit at adapting to the dynamic nature of any given project. Now, our product owners decided that the expectation they have of their own role is that they understand this dynamic and are prepared and willing to make the case about why the shipping timeline must change. So there&#x27;s actually a pain point solved here: don&#x27;t break your back doing so much up front work to try and guess&#x2F;capture what the body of work might look like only for it all to possibly get thrown away, involve architecture a bit more in the planning phases, but most importantly let&#x27;s engage throughout the project and we&#x27;ll try our best to have shared ownership&#x2F;interest in making sure where we are in the project is broadly understood by everyone involved.We&#x27;re currently in phases of implementing a major platform right now and it&#x27;s just night and day better and dare I say fun. We&#x27;re still keeping Jira up to date, but the product owners and PMs are more or less managing this as it is a tool they find useful. Removing the &quot;can you update this ticket please&quot; 24&#x2F;7 has forced them to be a little more involved and have the right chats, but also makes us developers happier to jump in and get it updated on our own volition because we also want to help them have an easier time. If my PM pings me and says &quot;hey I&#x27;m looking at this ticket that&#x27;s stuck in blocked, I just wanted to make sure we got an update from so-and-so about provisioning this credential so I can follow up if needed&quot; I will likely automagically jump in and be like &quot;still stuck, but let me update that ticket for you there&#x27;s a couple key details I want to make sure our there for you before you reach out&quot;. There&#x27;s an inherent &quot;we&#x27;re both interested in seeing this ticket through&quot; here that doesn&#x27;t strike a nerve with either party. Pretty much everyone involved both developers &amp; non developers has a really solid read on where anything&#x27;s at and we&#x27;re all just talking a lot more. And for developers I find that it&#x27;s really good, even if you&#x27;ve got them committed in one narrow body of work, to understand the larger pieces in motion. When they&#x27;re in tune with the broader orchestration of a projects timeline, they tend to weigh in during unsuspecting moments that might tie seemingly unrelated pieces together. They might be assigned to work on x, but in a group chat about y they notice y has a dependency on x and they&#x27;ll speak up and call out the need to test that they both work together. We&#x27;ve had a lot of great callouts materialize like this, and on a human-psyche level I think it snowballs &amp; avalanches encouraging developer participation in a way that is really meaningful for PMs. It&#x27;s interesting that Jira &amp; the expectation that predicting development time in an arena of uncertainty was previously in the way of forming the group dynamics we have now. Jira, despite just being a tool, can really amplify a lot of bad outcomes when it&#x27;s used by those who aren&#x27;t fit to be near development, it sort of devolves into a two dimensional behind-schedule tracker that detrimentally impacts how team members on the ground communicate with each other.And since we&#x27;re talking a lot more there&#x27;s just like... way more memes. And memes are important in any development timeline. We prioritize laughing through the pain together.",
+      "author": "trueno",
+      "points": null,
+      "created_at": "2025-12-07T21:31:17Z",
+      "story_title": "Estimates are difficult for developers and product owners",
+      "hn_url": "https://news.ycombinator.com/item?id=46185358"
+    },
+    {
+      "id": "46083413",
+      "type": "comment",
+      "text": "If you understand what are the metrics being tracked, and what are the primary goals that an initiative or product has, you can make a case.We are an engineering discipline and engineering decisions can have revenue making implications. But it is hubris to assume why you should care about the nitty gritties of a codebase. It&#x27;s the same way no one in leadership cares about the nitty-gritties of HR policies or accounting practices - people are hired to deal with the intricacies.When I was a PM, I didn&#x27;t have a difficult time making a business case for &quot;keep the lights on&quot; or tech debt work so long as I was able to attach tangible revenue implications (eg. X customer might churn because of subpar experience and we have both customer testimony and user stats showing that) or roadmap implications (eg. If we spend 6 months refactoring our monorepo, we can add new revenue generating modules every quarter instead of annually).",
+      "author": "alephnerd",
+      "points": null,
+      "created_at": "2025-11-28T22:35:47Z",
+      "story_title": "How good engineers write bad code at big companies",
+      "hn_url": "https://news.ycombinator.com/item?id=46083413"
+    },
+    {
+      "id": "44399090",
+      "type": "comment",
+      "text": "I tested 15 different agents and come up with my own way to range them. Would you hire an agent? Does it spark joy?  What is the output quality?  It turned into a 61-page deep dive into all the nitty-gritty. \nFrom IDE beasts like Cursor and Copilot to CLI warriors like Aider and full-stack champs like Replit and v0, etc – it’s a no-BS breakdown of what these tools can actually do when you throw a real-world web app prompt at ‘em.All the resulting code is onSo, Who’s Crushing It?Cursor Background Agent, v0, Warp: These three scored a near-perfect 24&#x2F;25. Production-ready, polished, and just chef’s kiss. Cursor Agent was like, “Huh, didn’t expect that level of awesome.”Copilot Agent &amp; Jules: Tight GitHub integration makes ‘em PM-friendly, though they’re still a bit rough around the edges.Replit: Stupid-easy for casuals. You’re trapped in their ecosystem, but damn, it’s a nice trap.v0: UI prototyping on steroids. NextJS and Vercel vibes, but don’t expect it to play nice with your existing codebase.RooCode &amp; Goose: For you tinkerers who wanna swap models like Pokémon cards and run ‘em locally.Who Flopped?Windsurf. I wanted to hate it (gut feeling, don’t ask), and it delivered – basic tests, flimsy docs, and a Dockerfile that choked. 13&#x2F;25, yawn.Pro Tips:Software Pros: Cursor + Warp is your power combo. IDE + CLI = dopamine hits for days.\nCasual Coders: Replit’s your jam. Zero friction, instant hosting.\nDesigners: v0 for quick, slick MVPs. Just embrace the NextJS cult.\nTinkerers: RooCode or Goose. Total control, local LLMs, open-source swagger.The full report’s got the juicy details – screenshots, rants, and all. I will be doing another report on agents at the end of the summer – let me know what’s your go-to coding agent in 2025. Drop your hot takes or grill me on specifics below.",
+      "author": "combray",
+      "points": null,
+      "created_at": "2025-06-27T18:29:25Z",
+      "story_title": "15 AI Coding Agents evaluated with the same prompt",
+      "hn_url": "https://news.ycombinator.com/item?id=44399090"
+    },
+    {
+      "id": "44352317",
+      "type": "comment",
+      "text": "I spent the last two months &quot;vibe coding&quot;.  I really think VC as it is defined (keep smashing the accept button and let the LLM eventually &quot;get there&quot;) is terrible.    My flow has been to use Claude code for an incredibly amazing code gen where:1. I know exactly what I want architecturally2. I know how I want itIn this mode the flow is then about validating the code to make sure it is my &quot;image&quot; frequently rather than me dreading not know what rube Goldberg machine it generated after 10s or Ks of lines.Sometimes I even let it get &quot;close&quot; (ie it took care of all the nitty gritty) and I take over and finish the interesting bits then tell CC what I did and why to update the project memory.   Frequent checkpointing and sprinkling .md files with latest understanding is very important (it also has the advantage of making your code llm-portable).I think the biggest irony is PMs, VPs, CEO had traditional been pretty derisive of &quot;clean code&quot; and yet clean code is absolutely essential to make vibe coding work.   Feels like a huge vindication.",
+      "author": "flashgordon",
+      "points": null,
+      "created_at": "2025-06-23T03:52:17Z",
+      "story_title": "Dev jobs are about to get a hard reset and nobody's ready",
+      "hn_url": "https://news.ycombinator.com/item?id=44352317"
+    },
+    {
+      "id": "42435027",
+      "type": "comment",
+      "text": "Long-time enterprise SaaS PM here, and sorry, this does not make any sense. The SMB segment is likely to be the least exposed to AI, and software, and the concept of DIY software through AI.As you visualize whole swaths of human workers getting automated away, also visualize the nitty gritty of day-to-day work with AI. If it gets something wrong, it will say &quot;I apologize&quot; until you, dear user, are blue in the face. If an actual person tried to do the same, the blueness would instead be on their, not your, face. Therein lies the value of a human worker. The big question, I think, is going to be: is that value commensurate to what we&#x27;re making on our paycheck right now?",
+      "author": "achrono",
+      "points": null,
+      "created_at": "2024-12-16T20:26:06Z",
+      "story_title": "Ask HN: SWEs how do you future-proof your career in light of LLMs?",
+      "hn_url": "https://news.ycombinator.com/item?id=42435027"
+    },
+    {
+      "id": "36640909",
+      "type": "comment",
+      "text": "Maybe. Even when a PM is very technical in their field, they are not expected to know the nitty gritty of the broad area they tackle in a program. To come up with realistic programs and execute them successfully, a PM needs to know where are the boundaries of current knowledge, how much $$ is required to push research to transition to real tech... and sniff out bullshit being sold by research labs. Bullshitters or not, they need to be really good at sniffing bullshit!",
+      "author": "zzz95",
+      "points": null,
+      "created_at": "2023-07-08T02:49:22Z",
+      "story_title": "DARPA Seeks to Shield Blood from Fungal and Bacterial Pathogens",
+      "hn_url": "https://news.ycombinator.com/item?id=36640909"
+    },
+    {
+      "id": "34867455",
+      "type": "comment",
+      "text": "Most good software out there were started by engineers and not by product managers and engineer only products are generally great and liked by people. Linux and the ecosystem is one example.I am not sure what really happens after Product Managers come in that the product takes a dive. I have seen this repeat almost everywhere. You start with a small team of engineers and have a product that people love, now you need more engineers and hence you bring in a manager and managers almost always demand to have a product manager and the whole thing devolves into a game of promotion.Doctors are lead by Senior Doctors, Lawyers are lead by Senior lawyers, whereas Engineers need handholding that also sucks the very joy out of engineering.In my opinion, What could be more beneficial is to have Product Managers who also are senior engineers and who atleast do hands-on development 10% of their time. This is exactly how even the senior most doctors still perform surgeries.unless it is customized B2B or B2G, where the engineers are not really interested in the mundane chores of the nitty gritty of a drop-down or having to have constant arguments on what the button should be called, you likely dont need a ProductMgr.The other thing that happens as soon as productMgrs enter is engineers let go of the ownership of the product. The back button doesn&#x27;t work? well good luck, that was not in the PMs requirements. now raise more unnecessary tickets and show the improved velocity.",
+      "author": "evnix",
+      "points": null,
+      "created_at": "2023-02-20T12:25:42Z",
+      "story_title": "B2B startups stop innovating the day you give power to product managers",
+      "hn_url": "https://news.ycombinator.com/item?id=34867455"
+    },
+    {
+      "id": "31984197",
+      "type": "comment",
+      "text": "in unix, xattr and setfattr drive me crazy. As a PM, I do sometimes realize that the UX drive here would be &quot;lets just remove these extended attributes, people hate them&quot; instead of thinking about what they do, and how people (mis)understand them.I think Android permissions are like xattr. its the noise behind chmod, it shows up in odd ways like when you can&#x27;t move or delete a setuid file, or in ls -&lt;flags&gt; contexts if you tickle it right. its the nitty gritty, the details. Not &quot;does this s&#x2F;w respect my privacy&quot; but &quot;of 100+ distinct attributes, data items about &#x27;me&#x27;, can I atomically grant&#x2F;deny access or apply some conditionality to them&quot;So I think the same thing about AWS Privs. My god, theres a million of the suckers. Do I want Amazon to simply remove the pane? God no. I just want to understand it better.Why can&#x27;t google &quot;do both&quot; and have a path to see these, but feature-parity with Apple and simplify it on the surface?",
+      "author": "ggm",
+      "points": null,
+      "created_at": "2022-07-05T04:04:14Z",
+      "story_title": "We can't check the app permissions on Google Play anymore",
+      "hn_url": "https://news.ycombinator.com/item?id=31984197"
+    },
+    {
+      "id": "31913864",
+      "type": "comment",
+      "text": "I&#x27;ve encountered this so many times in my career, having worked on a lot of UI that product and UX designers came up with.At first I would spot potential missing pieces in the UI designs as they were proposed and would work with PM and design to come up with workarounds. I did also notice that PMs like to set up meetings to go over them, but often the specific details don&#x27;t have a massive impact on the actual usability, but still a decision has to be made.In the early stages, so much of the product design is hypothetical to everyone. Even though you could drill down on specific details, nobody really wants to, unless you&#x27;re the engineer who has to implement it. This often means it&#x27;s hard to communicate precisely the design issue you need to address (and often, it&#x27;s &quot;only&quot; an issue because the implementation has to choose an option).So, what I eventually would do over time was just work as far as I could until I had a concrete issue I could demo and explain easily to PM and design. Before I&#x27;d bring up the issue to them, however, I&#x27;d come up with a couple of best-effort solutions. (Not completed, although sometimes I could hack something together.) Usually I&#x27;d prefer one solution over the other. I&#x27;d present both options and give enough pros&#x2F;cons to show why my preferred was better, but I wouldn&#x27;t tell them necessarily that that was my preference, just the facts about what you get with it over the other.More often than not, product and design would just go with my recommendation. It&#x27;s true that they really don&#x27;t care about a lot of nitty gritty details, and often they have bigger fish to fry, so it&#x27;s a great way of making progress.Obviously, there are some tricks to how you present the pros and cons to ensure you get your way, but obviously as a senior member of the team, you need to do what you think is best of the team and overall product.",
+      "author": "allenu",
+      "points": null,
+      "created_at": "2022-06-28T22:24:05Z",
+      "story_title": "How individual contributors get stuck (2017)",
+      "hn_url": "https://news.ycombinator.com/item?id=31913864"
+    },
+    {
+      "id": "30422385",
+      "type": "comment",
+      "text": "As a former PM, I kinda hate posts like this, because they imply that there&#x27;s a single way to deal with engineers. It turns out, though, that engineers are human beings and thus are each very different! They have unique preferences and desires, and the best way to deal with them (which also happens to be the best way to deal with non-engineers) is to learn about those preferences and respect them.You can see the problem in the fact that two back to back section headings are &quot;Don’t isolate them from the outside world&quot; and &quot;Respect their time&quot;. Respecting engineers&#x27; time often means leaving them alone to work. This can also be construed as isolating them from the outside world, because it means you&#x27;re not pulling them into meetings and spending lots of time giving them background.Some engineers really want a lot of context on what they&#x27;re doing. They&#x27;d love to join you in meetings with customers and other stakeholders so they can get a feel for the bigger picture. As a PM, I love this - engineers who get the big picture are incredibly valuable in providing feedback beyond the nitty-gritty.On the other hand, many engineers loathe customer meetings! They want the PM to do the research and provide a clear spec on what needs to be built, so they can focus on the engineering side of things. If you put them into a bunch of meetings so they can get broader context, they will be unhappy because this is not what they want.So yeah - deal with engineers like you&#x27;d deal with other people. Respect them, get to know them, and interact with them in a way that enables everyone to get their jobs done in the most efficient, pleasant way possible. I know that doesn&#x27;t make for much of an article, but I think it&#x27;s much better advice than what&#x27;s presented here.",
+      "author": "awillen",
+      "points": null,
+      "created_at": "2022-02-21T23:58:20Z",
+      "story_title": "A PM's guide to communicate effectively with software engineers",
+      "hn_url": "https://news.ycombinator.com/item?id=30422385"
+    },
+    {
+      "id": "23862539",
+      "type": "comment",
+      "text": "Never let the client dictate the how.  Focus on outcomes.It sounds like this was a tough person to work with. I&#x27;ve been a consultant (independent and on behalf of larger enterprise vendors) for some 20 years.  After reading your story, that&#x27;s my strongest piece of advice to you.Would you tell the carpenter renovating your house what technique he should use at his tablesaw?  Try it and see how long it takes before he walks off the job.&quot;I began to explain the methodology we like, that I personally as well as most of the software industry believes in; minimum viable project. In essence... &quot;Your shop uses MVP, tell them that&#x27;s how you&#x27;ll deliver.  Don&#x27;t get technical.  Just &quot;we&#x27;ll start with a small prototype to get something in your hands quickly, then fill in the features from there&quot;.&quot;Whoa! The sketches have suddenly become a specification. Inconsistencies and all.&quot;Good on you for recognizing what happened.  When you realized the PowerPoint became a defective spec, you needed to go back to the client and make them fix it before you accepted it.  &quot;Sorry, what you&#x27;ve sketched for this room can&#x27;t be built.&quot;That&#x27;s part of your job.  It&#x27;s clear you have a lot of professional pride - don&#x27;t be an architect who allows construction to begin knowing the rafters will crash down on someone&#x27;s head.I carefully explained all my suggestions and backed them up with UI conventions, implementation details and code reuse.Readiness to explain your recommendations is an asset.  Unfortunately this time you were speaking into a black hole.  I&#x27;m sure by this point you saw the pattern in your working relationship with the customer - the more detail you expose, the more control over it they try to exert.  With this guy in particular, you need to actively avoid that trap, and project strong signals as to what is and is not in his purview.  Clearly the client was invested.  A really talented PM will steer that energy to where it&#x27;s useful (or at least someplace less destructive).Again, avoid diving into nitty gritty implementation details and talking about things like &quot;code reuse&quot; with the client.  You&#x27;re not selling them a methodology, you&#x27;re selling them a product.I hate to say it, but ultimately I think you needed to &quot;alpha up&quot;.  It&#x27;s clear you were intimidated by this guy.  He&#x27;s big, strong, powerful, older and bull-headed.  If you met him and his clan in a tribal woods setting it would make sense to submit.  But in a software development setting, you&#x27;re the authority.  Act like it.  You&#x27;re not a junior fellow.  You have good judgement, a wealth experience and a strong sense of what works and what doesn&#x27;t.  BE the expert the client is paying you to be.  Be opinionated on the stuff you know.  Flex that opinion, and don&#x27;t be afraid to tell a client &quot;that won&#x27;t work, here&#x27;s why&quot;.  It&#x27;s good you want to make them happy, but that doesn&#x27;t mean blindly doing everything they ask.  A customer relationship is just like any other, and it&#x27;s normal for some frustration and conflict to develop along the way.  Don&#x27;t be afraid to exercise your professional judgement and take charge.Work on projecting confidence.  You don&#x27;t even have to pretend - confidence can come from experience, and this project was a formidable teacher.  Draw on this well next time you need to convince yourself to be more assertive.There&#x27;s a comment elsewhere on this page suggesting &#x27;the problem is the relative social status between the client and Geon&#x27; and you mentioned your &#x27;suggestions were so completely disregarded. There was no motivation, or reasoning given. Just &quot;no, do it my way&quot;&#x27;.  It&#x27;s also been proposed this wouldn&#x27;t happen to a doctor or cardiologist.I think software developers tend to be more reserved individuals; there&#x27;s even this colloquial stereotype they&#x27;re what became of the &quot;wimps&quot; you knew from childhood.  Behind that cautious demeanor may be someone who really knows their stuff.  If doctors don&#x27;t have to deal with condescension as often, one reason is they don&#x27;t put up with it.  Mine would probably tell me firmly &quot;Decide as you will, but I&#x27;m the expert and I&#x27;m telling you X is a problem, you need to do Y, and if you don&#x27;t, Z will happen.&quot;  They&#x27;ll also refuse to prescribe or perform a procedure they feel is plainly not in the interest of the patient.Please don&#x27;t take the advice of your coworker to stop caring.  Rather, care enough to push back.  Hopefully you work for a company that will support you.  If I was your CEO I&#x27;d put someone with grey hair on the project to help stick-handle this client, and if that didn&#x27;t work I&#x27;d intervene personally to clarify the roles (which we tend to set out clearly in our contracts).",
+      "author": "rkagerer",
+      "points": null,
+      "created_at": "2020-07-16T19:01:21Z",
+      "story_title": "The Trick",
+      "hn_url": "https://news.ycombinator.com/item?id=23862539"
+    },
+    {
+      "id": "23521089",
+      "type": "comment",
+      "text": "When it is summer (like now) and the sun sets here around 10 pm, my son can put his head on the pillow for 5 mins, get up, see there is light outside (by leaving his room, as his rooms is dark) and exclaim: &quot;It is now morning!&quot;. He is not always convinced that we are not lying to him when saying that is still evening &#x2F; night.Maybe it gets easier to explain when they have a better understanding of time? \nUnderstanding time has past and how much of it seems to be difficult for kids to grasp &#x2F; understand ? (I have no clue, just observing my own small world).I guess the same could be said for adults though, our concept of time often depends on whether or not we want to do what we are doing - time flies and so on. Sorry for the tangent!",
+      "author": "nift",
+      "points": null,
+      "created_at": "2020-06-14T20:34:36Z",
+      "story_title": "The privilege of boredom: How philosophy can happen in isolation",
+      "hn_url": "https://news.ycombinator.com/item?id=23521089"
+    },
+    {
+      "id": "21729434",
+      "type": "comment",
+      "text": "I&#x27;ve done freelancing and I&#x27;m currently developer on a corporation.I&#x27;ve seen a lot of talent go in and out. Usually it goes out like this:- PM is seeking resources internally, you could be reached out and be told on what they are trying to do. \n- The project can be complex or easy. Honestly it doesn&#x27;t matter within the context of working for a company. As far freelancer, you can go on a nitty-gritty with the client on what it takes to do and justify your rates to them... for a already-hired developer:- There&#x27;s absolutely no guarantee they will incentivize you after all the efforts (working as a developer for a company). So it really doesn&#x27;t matter if the project is super complex or not. Management is pretty stupid most of the time and they can&#x27;t see the level of effort in things even if you break them out to them. Or they can simply be ignorant about it.- I&#x27;ve said no. Usually I&#x27;m very driven with new challenges but I&#x27;ve learned the hard way that it doesn&#x27;t matter at all. These days I just say &quot;I don&#x27;t know, sorry.&quot; and &quot;yea I just never worked on that&quot;. I&#x27;ve seen people gone the road of talking about training courses so they could stall management a lot if they don&#x27;t have many options.Why? Because there&#x27;s really no end goal. You are already hired within the company. Employers take for granted that that&#x27;s reason enough for you to do it.Honestly it could go many ways. Not all companies will be as awful as mine. If you are lucky enough to land with a company that recognizes your efforts and incentivizes you for it good for you. I don&#x27;t think many people are that lucky.I&#x27;d say, believe me there are quite a lot of geniuses, but I&#x27;ve yet to meet a fool that takes the bait of taking more complex work in without proper incentive. (excluding fresh graduates and those still in their starting years)",
+      "author": "allenskd",
+      "points": null,
+      "created_at": "2019-12-07T10:06:20Z",
+      "story_title": "Ask HN: What mistakes did you make when starting as a consultant/freelancer?",
+      "hn_url": "https://news.ycombinator.com/item?id=21729434"
+    },
+    {
+      "id": "19333191",
+      "type": "comment",
+      "text": "&gt; more used than previously, though in different ways to how it used toAre these new uses of Apache Groovy really what we would call &quot;using&quot; a programming language?Although many &quot;use&quot; Groovy in Gradle, it&#x27;s mainly 20-liners without any procedural code, so really only the parsing functionality is being used. Jenkins goes further by transforming the AST after parsing to such an extent that none of the collections-based functions work, and the runtime behavior isn&#x27;t really Groovy at all. The adoption of Groovy in these uses is so dependent on the nitty gritty behavior of its Antlr 2.x -based parser that the Apache Groovy PMC seem to be stalling on moving along the upgrade to Antlr 4 in Groovy 3, keeping it in alpha mode for as long as possible, and even removing the optional Antlr 4 preview feature from the Groovy 2.6 beta.Most other uses of Groovy out there use it like &quot;Bash for the JVM&quot;. For building actual systems, sites use Java (with lambdas), Kotlin or Scala rather than the static typing that was bolted on for Groovy 2. Even dynamically typed uses of Groovy are losing momentum, evidenced by how few Grails 2 websites and plugins have been upgraded to Grails 3, and how few new websites have been built in Grails 3. The official download numbers for Groovy are grossly manipulated, and Tiobe&#x27;s ranking for Groovy has been gamed in the past by faulty search numbers, e.g. 2 yrs ago it was Baidu giving bad results.I suggest your view of Groovy&#x27;s momentum might be skewed by what you see immediately around you, and not by overall worldwide trends.",
+      "author": "vorg",
+      "points": null,
+      "created_at": "2019-03-07T22:26:17Z",
+      "story_title": "Java, C, Python – are the top languages based on TIOBE Index",
+      "hn_url": "https://news.ycombinator.com/item?id=19333191"
+    },
+    {
+      "id": "1899789",
+      "type": "comment",
+      "text": "Question --- I haven't done much webdev stuff so this may sound silly, but --- why can't PMs work that way?  Like, why can't I send markbao a private message by sending an email to markbao@news.ycombinator.com?  And then the site could forward it on to his email address, or if the site wants to get fancy they'd store it in a database and display them as \"comments\" in the target user's \"editing profile\" screen (whenever you edit your own profile).More than that though, I'd like to learn about the nitty-gritty of e-mail.  As a game developer I do mostly C++ application code, so everyone else probably has way more knowledge than I... But for example I'd like to be able to embed the ability for my programs to send emails (as a debugging mechanism).  Or even receive emails!  (Imagine taking down some number of your servers, for patching purposes, by sending a \"console command\" as an  email to servers+someadminpassword@yourservice.com.  Or running queries on your servers by sending the query as an email, and then they email back the response.How would I write a C++ function like:  bool SendEmail( const tchar* destination_email_address, const tchar* subject, const tchar* body );",
+      "author": "palish",
+      "points": null,
+      "created_at": "2010-11-13T00:04:56Z",
+      "story_title": "Gmail Creator Paul Buchheit Leaves Facebook for Y Combinator",
+      "hn_url": "https://news.ycombinator.com/item?id=1899789"
+    },
+    {
+      "id": "18010898",
+      "type": "comment",
+      "text": "Not really. In my area, the school day is 8:00 AM to 3:00 PM. Teachers typically arrive by 7:30 AM and leave around 3:30 PM - and then do grading and other work activities in their evenings. Where do you cut 25% from that? Who watches the kids - especially in some communities where single parent households are the norm? If the state provides daycare, the money has to come from somewhere, and school budgets are stretched as is.The workday reduction is a bit hand-wavy - it sounds good on the surface but when you get into the nitty gritty.",
+      "author": "nhebb",
+      "points": null,
+      "created_at": "2018-09-17T23:08:03Z",
+      "story_title": "Wharton professor says America should shorten the work day by 2 hours",
+      "hn_url": "https://news.ycombinator.com/item?id=18010898"
+    },
+    {
+      "id": "14868328",
+      "type": "comment",
+      "text": "He has enough adversity managing his risky business ventures. I wouldn&#x27;t say that his intentions are purely philanthropic, but he has definitely shown that he can grok the fundamentals of a completely different scientific field a lot better than most people can. Zuckerberg was pretty smart himself in his younger days (lol...relatively young), but I&#x27;m not sure how much time he spends in the nitty gritty technical stuff v&#x2F;s big picture business stuff.",
+      "author": "pm90",
+      "points": null,
+      "created_at": "2017-07-27T19:02:25Z",
+      "story_title": "Zuckerberg and Musk Are Fighting About Their Personal Brands, Not AI",
+      "hn_url": "https://news.ycombinator.com/item?id=14868328"
+    },
+    {
+      "id": "22324102",
+      "type": "story",
+      "title": "The Ultimate Guide to SaaS Product Development",
+      "text": "",
+      "author": "skapoor_nyc",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2020-02-14T05:07:45Z",
+      "hn_url": "https://news.ycombinator.com/item?id=22324102"
+    },
+    {
+      "id": "17610331",
+      "type": "story",
+      "title": "Nifty has launched on PH promising to deliver the future of project management",
+      "text": "",
+      "author": "skapoor_nyc",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2018-07-25T16:09:03Z",
+      "hn_url": "https://news.ycombinator.com/item?id=17610331"
+    },
+    {
+      "id": "22588998",
+      "type": "story",
+      "title": "Remote Collaboration Is More Than Just Communication",
+      "text": "",
+      "author": "skapoor_nyc",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2020-03-16T02:02:23Z",
+      "hn_url": "https://news.ycombinator.com/item?id=22588998"
+    },
+    {
+      "id": "21217167",
+      "type": "story",
+      "title": "Why project management is broken",
+      "text": "",
+      "author": "skapoor_nyc",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2019-10-10T17:33:54Z",
+      "hn_url": "https://news.ycombinator.com/item?id=21217167"
+    },
+    {
+      "id": "17761073",
+      "type": "story",
+      "title": "Ask HN: How to deal with PM and dev. responsibilities in one person? (startup)",
+      "text": "Today I&#x27;m turning to the HN community for advice. After having spend countless hours reading HN, this is now my first submission :)<p>I have a Computer Science background (officially I&#x27;m still an enrolled student) and since 8 months I&#x27;m now the technical co-founder in a Berlin startup, which I founded with two friends whose expertise lies mostly in the Business, sales and operations part.<p>This leaves me responsible for all technical aspects and the development of the MVP stage product. I&#x27;m supported by one co-founder who has taken charge of Design and content (maintaining our Webflow landing page).<p>Since the beginning we have been struggling with the question who should be responsible for the product (Product Management&#x2F;Product Owner). Almost naturally my co-founders expected me to manage this.<p>It&#x27;s generally something that I would love to do, but I struggle to reconcile both responsibilities (PM and being the sole developer) in one person.<p>• both roles require very different levels of thinking: detail vs. big picture. In the past months it has been hard for me to do big picture thinking when there are so many other (immediate) demands on my time<p>• I also feel that naturally there should be a struggle&#x2F;argument between PM and tech lead where the product roadmap is the result of a fruitful discussion and compromises<p>• being responsible for the execution of all nitty-gritty details I can&#x27;t see myself objectively arguing about the trade-offs of different features<p>• I&#x27;m probably not the best at challenging my own solutions in the same way as an &quot;external&quot; person would do<p>But then again I&#x27;m also thinking about the fact that startups are never operating in an ideal situation and that I should maybe just show more motivation in rising up to this challenge.<p>If you have experienced a similar situation, I&#x27;m eager to hear your advice. Do you think it&#x27;s possible (and advisable) to have both roles handled by the same person?",
+      "author": "MDcker",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2018-08-14T19:28:52Z",
+      "hn_url": "https://news.ycombinator.com/item?id=17761073"
+    },
+    {
+      "id": "35466575",
+      "type": "story",
+      "title": "Ask HN: What is your agile product development process?",
+      "text": "Dear HN, I&#x27;m a software engineer with several years of experience in web development and generally SaaS products.<p>In all my experience, the agile product development process has been pretty much the same. For example, in my latest role, the PM will verbally or in a very short and vague document describe something that we want to build to the Engineering Manager (or to one of the engineers) and then they will gather the engineers to refine the problem by discussing possible solutions and as an outcome we will produce tickets that are ready to be picked up.<p>While this process has been working fine, we always had the same complaints, a) very vague requirements b) no documentation&#x2F;history produced during the process and as a result, in a few months we will have forgotten what we&#x27;ve done and why c) communication between engineers and stakeholders is rare and as a result, many times, the stakeholders will receive something else that what they actually needed d) very poorly written tickets description exactly because the communication is poor.<p>I&#x27;ve been trying to figure out what could be a better approach but because my experience has been the same, I&#x27;m not able to sell any alternative to the team&#x2F;stakeholders. I&#x27;ve reading about user stories and other agile-related solutions but I&#x27;m struggling to understand the nitty gritty details of such a process.<p>What is your current process and if possible, describe it in as much detail as you think someone that has never done it before will understand.<p>Thank you",
+      "author": "kostarelo",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2023-04-06T10:39:35Z",
+      "hn_url": "https://news.ycombinator.com/item?id=35466575"
+    },
+    {
+      "id": "9103947",
+      "type": "story",
+      "title": "Whips, chains and capitalism: What ‘Fifty Shades of Grey’ is really about",
+      "text": "",
+      "author": "pmcpinto",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2015-02-24T22:21:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=9103947"
+    },
+    {
+      "id": "23597824",
+      "type": "story",
+      "title": "Fifty psychological and psychiatric terms to avoid",
+      "text": "",
+      "author": "elsewhen",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2020-06-22T06:43:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=23597824"
+    }
+  ]
+}

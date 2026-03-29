@@ -1,0 +1,828 @@
+{
+  "app": "smartsheet",
+  "source": "hackernews",
+  "total_items": 80,
+  "items": [
+    {
+      "id": "9802243",
+      "type": "comment",
+      "text": "Smartsheet\nhttp:&#x2F;&#x2F;www.smartsheet.com",
+      "author": "mergy",
+      "points": null,
+      "created_at": "2015-06-30T01:17:52Z",
+      "story_title": "Best project management software for non-tech project?",
+      "hn_url": "https://news.ycombinator.com/item?id=9802243"
+    },
+    {
+      "id": "9664809",
+      "type": "comment",
+      "text": "wappalyzer is very cool thanks for the tip.I realize I won&#x27;t be building Smartsheet anytime soon, but I want to start learning the tools with enough power to get me there.I do plan to &quot;Start with PHP, Rails or Node and build stuff,&quot; but first I would like to have a broad understanding of the frontend to backend path you describe. I know nothing of this process. I am looking for the basic concepts. In some ways, I feel like I&#x27;m trying to take derivatives with a fuzzy understanding of algebra. Following the book&#x27;s example can get you from x^n to n*x^(n-1), but not to understanding.",
+      "author": "sonofwisconsin",
+      "points": null,
+      "created_at": "2015-06-05T11:00:56Z",
+      "story_title": "Ask HN: Looking for an overview of web application development",
+      "hn_url": "https://news.ycombinator.com/item?id=9664809"
+    },
+    {
+      "id": "9664787",
+      "type": "comment",
+      "text": "I think you answered your own question. The reason most pieces on web development are opinionated is because there is no 1 way to do something. Everyone has they&#x27;re favorite stack and everyone has limited knowledge; even &quot;great&quot; programmers haven&#x27;t written in every language &#x2F; framework.https:&#x2F;&#x2F;wappalyzer.com&#x2F;download - one of my favorite tools - will give you a little more insight into what smartsheet uses - they&#x27;re homepage at least, is a LAMP stack with Drupal.Smartsheet would be a tall order for your first or 5th project. Get a cheap server somewhere - start with PHP, Rails or Node and build stuff. Learn how to communicate from the frontend to the backend - make mistakes, rinse repeat.I haven&#x27;t bought or read a book in years; once you get the basic concepts down, searching google &#x2F; stackoverflow for how to do something will come much easier.",
+      "author": "lsiunsuex",
+      "points": null,
+      "created_at": "2015-06-05T10:50:30Z",
+      "story_title": "Ask HN: Looking for an overview of web application development",
+      "hn_url": "https://news.ycombinator.com/item?id=9664787"
+    },
+    {
+      "id": "8990873",
+      "type": "comment",
+      "text": "Looks interesting, but lack of task dependency would be a deal breaker.  One of the reasons our team has stuck with Smartsheets.I agree with earlier comment asking for a demo project.",
+      "author": "saukrates",
+      "points": null,
+      "created_at": "2015-02-03T15:31:16Z",
+      "story_title": "Show HN: Matterhorn – Your new project manager",
+      "hn_url": "https://news.ycombinator.com/item?id=8990873"
+    },
+    {
+      "id": "8688265",
+      "type": "comment",
+      "text": "Backupify - Cambridge, MA - Contact Tyler Sakats tsakats@backupify.comRuby, Angular, Cassandra, AWSBackupify is looking for a senior software engineer to join our core team supporting our SaaS applications (Google Apps, Salesforce, SmartSheet)This position will be working with a great team of engineers on significant problems involving the Cloud, Big Data (over 3 Petabytes), and Scalability.This role will be responsible for full stack development of new core features, providing mentorship and support for more junior engineers, and work on a product directly used by 8,000+ end users.We are looking for a developer with 6+ years of experience working in an environment that dealt with large data sets and scaling issues.  Strong communication skills are imperative and an interest in the business side of engineering is preferred.For more information take a look at our careers page. www.backupify.com&#x2F;careers",
+      "author": "tylersakats",
+      "points": null,
+      "created_at": "2014-12-02T17:19:38Z",
+      "story_title": "Ask HN: Who is hiring? (December 2014)",
+      "hn_url": "https://news.ycombinator.com/item?id=8688265"
+    },
+    {
+      "id": "8121716",
+      "type": "comment",
+      "text": "Smartsheet - Bellevue, WA------------------------------------------------------------Smartsheet.com is a well established and rapidly-growing Software as a Service (SaaS) company, offering an enterprise-ready cloud app for work management and collaboration. The award-winning tool is trusted by more than 40,000 businesses and millions of users in over 160 countries.We have several open technical positions on our core development team including a team lead role, a QA Engineer position, and are also seeking a mobile developer (Android). Smartsheet is mostly built in JavaScript with a Java backend. We&#x27;re seeking engineers who are interested in building rich, real-time collaborative client experiences, and the backend systems to support these features at scale.------------------------------------------------------------http:&#x2F;&#x2F;www.smartsheet.com&#x2F;careers",
+      "author": "natehark",
+      "points": null,
+      "created_at": "2014-08-01T17:41:52Z",
+      "story_title": "Ask HN: Who is hiring? (August 2014)",
+      "hn_url": "https://news.ycombinator.com/item?id=8121716"
+    },
+    {
+      "id": "7973027",
+      "type": "comment",
+      "text": "Smartsheet - Bellevue, WASmartsheet.com is an enterprise-ready cloud app for work management and collaboration used by more than 40,000 businesses in over 160 countries. Smartsheet recently won Seattle Business Magazine&#x27;s Best Midsize Company to Work For award. http:&#x2F;&#x2F;seattlebusinessmag.com&#x2F;article&#x2F;100-best-companies-wor...We have several open technical positions, including Senior and Lead Software Engineers, Systems Engineer, Mobile (Android) developers, and QA Engineer. Smartsheet.com is built with a variety of technologies including Java, JavaScript, MySQL, RabbitMQ, and Redis.See: http:&#x2F;&#x2F;www.smartsheet.com&#x2F;careers",
+      "author": "natehark",
+      "points": null,
+      "created_at": "2014-07-01T19:41:17Z",
+      "story_title": "Ask HN: Who is hiring? (July 2014)",
+      "hn_url": "https://news.ycombinator.com/item?id=7973027"
+    },
+    {
+      "id": "7606821",
+      "type": "comment",
+      "text": "I&#x27;d consider Smartsheet.com to be playing in that space.",
+      "author": "natehark",
+      "points": null,
+      "created_at": "2014-04-17T22:14:25Z",
+      "story_title": "Dropbox acquires Hackpad (YC W12)",
+      "hn_url": "https://news.ycombinator.com/item?id=7606821"
+    },
+    {
+      "id": "7508603",
+      "type": "comment",
+      "text": "Smartsheet - Bellevue, WASmartsheet.com is a well established and rapidly-growing Software as a Service (SaaS) company, offering an enterprise-ready cloud app for work management and collaboration. The award-winning tool is trusted by more than 40,000 businesses and millions of users in over 160 countries.We have several open technical positions, including Senior and Principal Software Engineer roles, Systems Engineer, and Moblie (Android) developer. We are also hiring a few engineering INTERNs for the summer. Smartsheet.com is built with a variety of technologies, but you&#x27;ll feel right at home if you have strong JavaScript development skills and some familiarity with Java.http:&#x2F;&#x2F;www.smartsheet.com&#x2F;careers",
+      "author": "natehark",
+      "points": null,
+      "created_at": "2014-04-01T14:50:47Z",
+      "story_title": "Ask HN: Who is hiring? (April 2014)",
+      "hn_url": "https://news.ycombinator.com/item?id=7508603"
+    },
+    {
+      "id": "7393382",
+      "type": "comment",
+      "text": "SmartSheet is pretty much an excel&#x2F;database hybrid and is pretty popular.",
+      "author": "spullara",
+      "points": null,
+      "created_at": "2014-03-13T17:46:26Z",
+      "story_title": "Ask PG: Is this what you meant by \"web-based Excel/database hybrid\"?",
+      "hn_url": "https://news.ycombinator.com/item?id=7393382"
+    },
+    {
+      "id": "7146678",
+      "type": "comment",
+      "text": "Smartsheet.http:&#x2F;&#x2F;www.smartsheet.comIF you want to do dates, milestones, and run a date and resource to task-driven setup.",
+      "author": "mergy",
+      "points": null,
+      "created_at": "2014-01-29T20:40:40Z",
+      "story_title": "Ask HN: Best project management software for a small team?",
+      "hn_url": "https://news.ycombinator.com/item?id=7146678"
+    },
+    {
+      "id": "7079115",
+      "type": "comment",
+      "text": "use www.cellmaster.com.au (disclosure I am the founder) At the moment it is free for low volume usage.These also look like they would do what you want, maybe spreadsheetconverter depends on your needs:BaseCase.comstoic.comwww.spreadsheetconverter.comwww.smartsheet.comhttp:&#x2F;&#x2F;www.forguncy.com&#x2F; (Japanese)www.spreadsheetweb.comPlease tell me more. Details of my email on  www.cellmaster.com.au.P.S. I also like ethercalc as spreadsheetguru suggested - but think many of above would be less work.",
+      "author": "eddyparkinson",
+      "points": null,
+      "created_at": "2014-01-17T23:09:17Z",
+      "story_title": "Ask HN: How do you keep a client from stealing your excel spreadsheet?",
+      "hn_url": "https://news.ycombinator.com/item?id=7079115"
+    },
+    {
+      "id": "6903942",
+      "type": "comment",
+      "text": "Cool home page I wish mine was that good. Impressive UI.Related work:\n  (my stuff) http:&#x2F;&#x2F;www.cellmaster,com.au&#x2F;AppBuilder.html The product is is different, unlike other approaches, you can create sophisticated custom software. Create custom software, with spreadsheet formulas, the kind a only programmer is able to create.http:&#x2F;&#x2F;stoic.com - this is maybe the closet to relatable.iohttp:&#x2F;&#x2F;www.spreadsheetconverter.comhttp:&#x2F;&#x2F;www.spreadsheetweb.comhttp:&#x2F;&#x2F;BaseCase.comhttp:&#x2F;&#x2F;www.smartsheet.comhttp:&#x2F;&#x2F;www.forguncy.com&#x2F; (Japanese)",
+      "author": "eddyparkinson",
+      "points": null,
+      "created_at": "2013-12-14T00:56:10Z",
+      "story_title": "Show HN - Relatable.io, turn spreadsheets into customizable apps",
+      "hn_url": "https://news.ycombinator.com/item?id=6903942"
+    },
+    {
+      "id": "6103143",
+      "type": "comment",
+      "text": "A checklist can be as simple as an spread sheet, so you could use:-A shared network- or Dropbox folder containing Excel sheets-A google docs account with check list spreadsheets-Smartsheet.com-Any wiki software, self-hosted or managed, i.e. wikidot etc.-Any of the myriad of todo-list apps, just be sure the todo-lists (actually checklists) can be re-used as templates.",
+      "author": "MortenK",
+      "points": null,
+      "created_at": "2013-07-25T16:10:50Z",
+      "story_title": "How to use checklists effectively in your tech company",
+      "hn_url": "https://news.ycombinator.com/item?id=6103143"
+    },
+    {
+      "id": "607979",
+      "type": "comment",
+      "text": "I'm still not sure what your intention is:\\I think the original author would consider smartsheet as a me-too solution(ie. excel, google spreadsheets)--but an innovative one for using Amazon's Turk.",
+      "author": "zaidf",
+      "points": null,
+      "created_at": "2009-05-14T00:34:43Z",
+      "story_title": "Solving the problems of early stage me-too product startups",
+      "hn_url": "https://news.ycombinator.com/item?id=607979"
+    },
+    {
+      "id": "607967",
+      "type": "comment",
+      "text": "That wasn't my intention. As an example look at what SmartSheet has done with SmartSourcing http://www.smartsheet.com/product/smartsourcing they are taking a \"me too\" on-line spreadsheet and integrating it with Amazon's Turk in a novel and useful way. If it takes off it will be a different service from other on-line spreadsheets (provided they are not copied). I am not affiliated with SmartSheet but was impressed by this idea.",
+      "author": "skmurphy",
+      "points": null,
+      "created_at": "2009-05-14T00:23:38Z",
+      "story_title": "Solving the problems of early stage me-too product startups",
+      "hn_url": "https://news.ycombinator.com/item?id=607967"
+    },
+    {
+      "id": "5517923",
+      "type": "comment",
+      "text": "I just started a customer on Smartsheet.com, it is actually more or less exactly the above. There's webforms for data submission, special column types (contact dropdown lists, checkboxes etc). It's been running for a few weeks only, but so far its been a joy to use compared to the myriad of Excel files that were used before.",
+      "author": "MortenK",
+      "points": null,
+      "created_at": "2013-04-09T13:35:23Z",
+      "story_title": "Excel as a database",
+      "hn_url": "https://news.ycombinator.com/item?id=5517923"
+    },
+    {
+      "id": "546389",
+      "type": "comment",
+      "text": "Most useful I would describe as 'wheels come off if we stop using'. Ours are:\n- Quickbooks Online (backoffice/finance)\n- Smartsheet (work management/collaboration/file sharing)\n- Amazon AWS (hosting infrastructure)Other services I subscribe to and find work well are:\n- Zoomerang (online surveys)\n- MyEmma (e-mail marketing)\n- GoToMeeting (web conferencing)\n- Jott (voice capture and transcription, integrated with Smartsheet)",
+      "author": "mjon7",
+      "points": null,
+      "created_at": "2009-04-04T15:53:06Z",
+      "story_title": "Ask HN: What Paid Services Do You Use For Your Startup?",
+      "hn_url": "https://news.ycombinator.com/item?id=546389"
+    },
+    {
+      "id": "47514052",
+      "type": "comment",
+      "text": "Having worked in non-swe enterprise for two decades I would argue that this is less true today than it was 10 years ago. It used to be that new hires would come with a basic knowledge of windows and office, but that&#x27;s no longer the case. At the same time, you have things like Smartsheets and so on, which are more popular, at least with our employees, than Excel and everyone seems to hate Outlook these days. I don&#x27;t think it was ever really the case though. What Microsoft sells to enterprise is governance, and they really don&#x27;t have any competition in this area.Being in the European energy sector we&#x27;re naturally looking into how we can replace every US tech product with an EU&#x2F;FOSS one. It&#x27;s actually relatively easy to buy the 365 experience through consultants which will setup a NextCloud, Libre&#x2F;Only Office, Proton and a teams replacement I can&#x27;t for the life of me remember the name of. Beneath it there is a mix of Identity Management systems, often based around Keycloak, at least for now. It works, from what we&#x27;ve seen in Germany (specificlaly with their military) it&#x27;s also possible to roll it out relatively quickly. It&#x27;s all the &quot;other&quot; stuff that gets murky. There isn&#x27;t a real alternative to AD&#x2F;Entra, yet, from a governance perspective. There are great tech solutions which does the same thing, but they require a lot of IT man hours. Something the public sector is always going to be more willing to deal with than the private sector. If we collectively decided that trains in Denmark should be free for passengers, then that would happen. You can&#x27;t do that in a private business, though security obviously does factor into it.This is the general story really. Microsoft&#x27;s copilot studio is relatively new, and it&#x27;s probably been flying under the radar in a lot of tech circles because it&#x27;s basically what power automate always wished it could be. Having used it to build a HR flow, where an AI model will receive the applications, read them, auto-reply to irrelevant ones, create a teams site with files and the relevant people for the relevant applications, and invite the applicant to their first appointment. Well... I gotta say that I&#x27;m not sure what we have that&#x27;s an alternative to that. It took me a couple of hours to build it, and it frankly works better than I thought it would. Granted, I did know the tool because I had previously done a PoC where I build a teams agent which &quot;took over&quot; my teams interactions. Everyone noticed because it spelled correctly and wasn&#x27;t capable of posting Warhammer 40k ORK meme&#x27;s in any form of quality, but it was frightenly easy. What Microsoft sells in this area is again the governance of it all. You can do these things because of how EntraID lets you connect services seamlessly with a few clicks. While behind the scenes all of those clicks are only available to you because your IT department control them... Again... without hundreds of manhours.I&#x27;m sure we&#x27;ll eventually get there, but it&#x27;ll likely come down to change management. Because even if you&#x27;re willing to retrain your IT operations crew, it&#x27;s not likely that they will want to leave the Microsoft world where they are well paid and job-secure. Well, maybe I&#x27;m in a cheese bell, but I&#x27;ve never met an Azure&#x2F;Microsoft IT person who would want to work with something else, and having been forced to work a little bit with it behind the scenes, I sort of get it... well not really.Which boils down to why Microsoft has always been good with enterprise customers. The decision makers in your organisation will listen to everything, but their own IT departments will often sort of automatically recommend Microsoft products and at the end of the day, it&#x27;ll all boil down to risk. Which is what Microsoft really sells... risk-mitigation. Sure their licenses are expensive, but is it really more expensive than losing your entire IT staff? (this isn&#x27;t an actual question I&#x27;m asking, it&#x27;s what goes through the considerations.)",
+      "author": "Quothling",
+      "points": null,
+      "created_at": "2026-03-25T06:41:04Z",
+      "story_title": "Wine 11 rewrites how Linux runs Windows games at kernel with massive speed gains",
+      "hn_url": "https://news.ycombinator.com/item?id=47514052"
+    },
+    {
+      "id": "46038441",
+      "type": "comment",
+      "text": "I usually find these kinds of articles by big consulting companies distracting&#x2F;inaccurate (WAGs), but this one by Bain on why programs in hard&#x2F;deep tech (aerospace, maritime, nuclear, robotics, etc.) keep blowing schedules and budgets is pretty darn good. Their main point is basically, “it’s a coordination problem, not an engineering problem.” After ~10 years bouncing around places like SpaceX, Northrop, ABL, etc., that’s pretty much what I saw too.Some patterns I personally ran into:1. The most chaotic part of any hardware program is the few months before there are real procedures. You’re trying to outline a test campaign, or an I&amp;T flow, or some intense multi-org field op, while requirements and configs are still shifting every week. The &quot;plan&quot; ends up being slides, spreadsheets, random trackers, emails, and whatever a couple people keep in their heads. Everyone thinks they have the latest version, but no one actually does.2. Everything becomes the “source of truth,” just not at the same time. Test leads update a spreadsheet. PMs update a slide deck. Engineering updates Jira. Ops has a readiness checklist. Leadership looks at some dashboard. These drift out-of-sync fast. Most “surprises” are just stale artifacts.3. Hardware programs have real temporal&#x2F;resource&#x2F;personnel&#x2F;location couplings that normal PM tools can&#x27;t handle. For things like a ten day test campaign or integrated field op with three other companies out in the middle of nowhere, good luck using Asana, smartsheets, or ppt. Hardware stuff is tied to tings like facility windows, equipment readiness, partner dependencies, safety constraints, sequence logic, etc. If one thing moves, every other thing needs to reflow too. Most orgs are doing this manually, which means the plan is obsolete the moment it’s written since plans change all the time in our world.4. The moment multiple orgs are involved, everything breaks faster.\nSpacecraft &lt;&gt; LV; \nPrime &lt;&gt; suppliers; \nCustomer &lt;&gt; integrator; \nEngineering &lt;&gt; test houses; \netc.\nEveryone uses their own tool stack, their own cadence&#x2F;workflows, their own naming conventions. Nothing interoperates in a meaningful way, so schedule drift and misalignments accumulate at the boundaries.5. People outside these industries say “just use ERP&#x2F;MRP&#x2F;CRM&#x2F;etc.” Those tools have their place, but they&#x27;re optimized mostly for orgs creating highly repeatable and mass manufacturable products with very little differentiation. Space, nuclear, robotics, energy, a lot of deep-tech.. none of them are well suited for these tools. They&#x27;re low-volume, high-variability, tons of uncertainty, long lead items, complex sequencing, one-off integrations, etc. You’re basically inventing a new process every cycle. The modern enterprise stack isn’t designed for that topology of work.6. Most PMs&#x2F;engineers&#x2F;ops people aren’t failing. They’re just stuck in workflows that don’t match the complexity of what they’re doing. In other words, their workflows are majorly constrained by the limited tools available to them. In practice the “workflow” is realistically like... update the slide -&gt; export PDF -&gt; update spreadsheet -&gt; copy things into Jira -&gt; paste into Confluence -&gt; send update email -&gt; update IMS&#x2F;Gantt -&gt; track all upstream&#x2F;downstream effects -&gt; sync with partners -&gt; redo everything when a date or other detail slips -&gt; repeat weekly. No one is set up to win under that overhead.The root cause to all of these issues is that there’s no shared environment where teams can plan + adjust + sync on things like complex ops (and overall programs) before formal procedures and documentation exist, especially when multiple orgs are involved.Curious how others here have seen this. If you’ve worked in aerospace&#x2F;maritime&#x2F;defense&#x2F;robotics&#x2F;energy&#x2F;etc., what did your team actually do to survive the early-phase chaos between requirements and procedures? Did anything actually work?",
+      "author": "dnlh_lvg",
+      "points": null,
+      "created_at": "2025-11-24T19:53:22Z",
+      "story_title": "Why Hard and Deep Tech Programs Keep Failing (It's Not the Engineering)",
+      "hn_url": "https://news.ycombinator.com/item?id=46038441"
+    },
+    {
+      "id": "45725019",
+      "type": "comment",
+      "text": "&gt; these users LOVE smartsheetI hate smartsheet…Excel or R. (Or more often, regex followed by pen and paper followed by more regex.)",
+      "author": "JumpCrisscross",
+      "points": null,
+      "created_at": "2025-10-27T19:07:14Z",
+      "story_title": "Claude for Excel",
+      "hn_url": "https://news.ycombinator.com/item?id=45725019"
+    },
+    {
+      "id": "45724779",
+      "type": "comment",
+      "text": "Sysadmin of a small company. I get asked pretty often to help with a pivot table, vlookup, or just general excel functions (and smartsheet, these users LOVE smartsheet)",
+      "author": "dpoloncsak",
+      "points": null,
+      "created_at": "2025-10-27T18:46:41Z",
+      "story_title": "Claude for Excel",
+      "hn_url": "https://news.ycombinator.com/item?id=45724779"
+    },
+    {
+      "id": "45505765",
+      "type": "comment",
+      "text": "I&#x27;m getting timeouts or very degraded performance trying to hit github and smartsheet as of the last 30 minutes or so.",
+      "author": "jamwil",
+      "points": null,
+      "created_at": "2025-10-07T17:06:39Z",
+      "story_title": "[dead]",
+      "hn_url": "https://news.ycombinator.com/item?id=45505765"
+    },
+    {
+      "id": "45455275",
+      "type": "comment",
+      "text": "Baserow is in the same realm of Airtable&#x2F;Monday.com&#x2F;SmartSheet&#x2F;etc, which are all effectively visual DBs. These tools shine with structured data &amp; rich field types. The core assumption that unlocks their power is that every row of data in a given tab has the exact same schema.While powerful, this assumption also creates rigidity that a pure spreadsheet doesn&#x27;t have. You can&#x27;t, for example, do some quick scratchpad analysis off to the side of your data, or quickly subtotal a few rows with an adhoc formula. For that type of flexibility, you need a pure spreadsheet, which is the camp that Row Zero falls in (along with Excel &amp; Sheets).So, to answer your question - they&#x27;re solving different problems. Some spreadsheet usage may be better served by a visual (or actual) database, which is why that sector has exploded in the last decade. But not all use-cases fit that criteria - the flexibility of the pure spreadsheet remains an incredibly powerful thing.",
+      "author": "blitt",
+      "points": null,
+      "created_at": "2025-10-02T20:40:00Z",
+      "story_title": "I only use Google Sheets",
+      "hn_url": "https://news.ycombinator.com/item?id=45455275"
+    },
+    {
+      "id": "45115321",
+      "type": "comment",
+      "text": "Depends - sometimes with simple Jira boards, sometimes with other tools like Smartsheets or Air Table or a simple spreadsheet, sometimes with post-its and a white board, sometimes with no system formal or otherwise. My point is less about Jira specifically and more about tool&#x2F;process dogma (although I do think Jira is the tool of choice for most “we must used the Agile Toolkit Scaled Enterprise Framework Productivity System MegaProcess for all things!” types than others, mostly because of having been around forever and because of Atlassian pitching organizations to use Jira workflows for compliance as if it were uniquely capable of tracking when someone clicked a button in a UI).",
+      "author": "010101010101",
+      "points": null,
+      "created_at": "2025-09-03T13:11:20Z",
+      "story_title": "You don't want to hire \"the best engineers\"",
+      "hn_url": "https://news.ycombinator.com/item?id=45115321"
+    },
+    {
+      "id": "43290436",
+      "type": "comment",
+      "text": "A lot of naysayers on this idea but there’s plenty of low hanging fruit that companies would love to find a cheaper option for. It would of course take time to gain traction without a sales force but also this very community of people that would band together could effectively evangelize a better solution with just their existing network. Tech people are often the early adopters and word spread via Twitter, etc.I’m in non-tech industries in finance&#x2F;accounting and during budget conversations a few things over the past few years consistently pop up as this costs too damn much; smartsheets, zoom, slack, etc.  I actually implement a specific \nOracle product that costs most companies 6 figures a year that could easily be self service SAAS product with a much better solution. Financial analysts skew mildly technical and could implement it themselves and be targeted fairly easily. Competition exists but they always bloat the product to charge almost as much or more than Oracle does. But end users only care about a few small features and I think some one could execute those much better than what exists on the market. All competitors require an enterprise software sales process to even see&#x2F;demo their software. If the analysts could login, connect to their data, and set some custom configurations (possibly llm assisted?), and worry about monetizing the relationship until the value prop has been realized- then I think this would spread on its own, people in the industry talk, change jobs frequently and take their tooling preferences with them. Best of all, this group of people usually report to a cfo and can offer their department a significant cost savings by doing this, saving the company money is literally their job already. That’s my business idea without giving it away entirely lol.Comment here if you’re actually interested in this, I would love to join a group like this working on something as a group. I can code but never done so professionally or as part of a team.",
+      "author": "conductr",
+      "points": null,
+      "created_at": "2025-03-07T14:28:00Z",
+      "story_title": "Ask HN: Are you a 40-year old software engineer without a job for > 1 year?",
+      "hn_url": "https://news.ycombinator.com/item?id=43290436"
+    },
+    {
+      "id": "42923561",
+      "type": "comment",
+      "text": "Scott WillekeLocation: Seattle, WARemote: Open to remote or hybridWilling to relocate: NoTechnologies: TypeScript, JavaScript, React, Node.js, Kubernetes, C#, SQL (PostgreSQL, Snowfalke, Red Shift, MySQL, BigQuery), AWS, GCP Node.js, Python, Go, Java, LLM integration (OpenAI models &amp; Realtime API, Replicate, Flux, Groq, etc.)Résumé&#x2F;CV: https:&#x2F;&#x2F;scott.willeke.com&#x2F;experienceEmail: scott[at]willeke[dot]comI am a motivational leader with strong sense of ownership, always building trust with others. After developing software for 10 years in a zero-to-one startup, I served as a Product and Engineering Leader in Daptiv (acquired by Planview), AWS, and Smartsheet. I care as much about developing people as I do about developing products customers use and love. I still can’t stop coding in my spare time. I am a regular open source contributor and a top 4% overall contributor on Stack Overflow.",
+      "author": "activescott",
+      "points": null,
+      "created_at": "2025-02-03T21:38:18Z",
+      "story_title": "Ask HN: Who wants to be hired? (February 2025)",
+      "hn_url": "https://news.ycombinator.com/item?id=42923561"
+    },
+    {
+      "id": "42920875",
+      "type": "comment",
+      "text": "Location: Boston, MARemote: Any (remote, hybrid, on-site)Willing to relocate: NoTechnologies: Confluence, Jira, MS Office, Sharepoint, Smartsheet, Teams, Zendesk, Power BI, R, SQL, Salesforce, SAPRésumé: can send on requestLinkedIn: https:&#x2F;&#x2F;www.linkedin.com&#x2F;in&#x2F;kathrynhaapala&#x2F;Email: kathryn.haapala@gmail.comHi, I&#x27;m Kathryn! I have 5+ years experience in Customer Success - with additional experience in customer service - both in the startup space and small family owned businesses. Previous customers I&#x27;ve worked with would tell you that I&#x27;m an expert on the product and that they trust me to advocate for them internally. Previous colleagues would tell you that I&#x27;m a great teacher and communicator.Now I&#x27;m looking for an opportunity to start or scale a Customer Success team, where I can build close relationships with early customers, establish processes for future customers&#x2F;products, and mentor new CSMs as the company grows.Healthtech is preferred, but I&#x27;d consider others if the mission is interesting.",
+      "author": "kathrynhaa",
+      "points": null,
+      "created_at": "2025-02-03T17:54:50Z",
+      "story_title": "Ask HN: Who wants to be hired? (February 2025)",
+      "hn_url": "https://news.ycombinator.com/item?id=42920875"
+    },
+    {
+      "id": "39973459",
+      "type": "comment",
+      "text": "Maybe SmartSheets and Grist cover this use case?",
+      "author": "nytesky",
+      "points": null,
+      "created_at": "2024-04-08T20:38:09Z",
+      "story_title": "Ask HN: Cloud Office Version of MS Access DB",
+      "hn_url": "https://news.ycombinator.com/item?id=39973459"
+    },
+    {
+      "id": "39671507",
+      "type": "comment",
+      "text": "In the comments, everyone is interested in the core differences between Teable and similar products. Here, I&#x27;ll compare the products mentioned. Please note that since I&#x27;m not a deep user of the other products, there might be inaccuracies, and I welcome corrections.GristI had heard of Grist before but never actually experienced it. A quick look at Grist through videos showed that its dynamic spreadsheet capabilities are incredibly powerful, complete with fixed field types, making it excellent for organizing structured data. It seems to have an edge in flexibility, and compared to Airtable, it might be more akin to Smartsheet.According to its official documentation, Grist&#x27;s Pro Plan offers up to 100k rows, indicating that queries and calculations are processed on the frontend or in memory, which typically makes it challenging to scale data rows further. This is a problem that Airtable also faces.Baserow and NocoDB,my impression is that Baserow&#x27;s features are relatively more stable, and it started commercializing earlier, being among the first batch of open-source Airtable alternatives.Baserow initially had a limit on the number of rows, but this year&#x27;s updates seem to have significantly increased its data capacity. Notably, Baserow does not support Bring Your Own Database or query by SQL, but it offers a seamless scrolling table interface, unlike NocoDB, which requires pagination. In terms of other functionalities, both have their strengths. My assessment aligns with what I found on Baserow&#x27;s official forum and comparisons with NocoDB.Teable\n Compared to similar products, Teable invests heavily in its table format UI, striving for seamless scrolling, copy-pasting, batch editing, and other quick table operations, which we believe are key to saving users&#x27; time. Therefore, we developed our Canvas table rendering component to achieve perfection. Meanwhile, batch operations pose a significant challenge for database compatibility, but we see this as a necessary investment.Additionally, Teable supports developers by offering open database connections and database permission management, a concept inspired by Supabase. This allows both developers and users to create on the same platform.What we think the future of no-code products look like1. An interface that anyone can use to build applications easily.2. Easy access to data, letting users grab, move, and reuse their information as they wish.3. Data privacy and choice, whether that&#x27;s in the cloud, on-premise, or even just on your local.4. It needs to work for developers too, not just non-tech users.5. It should handle lots of data, so it can grow with your business.6. Flexibility to integrate with other software, combining strengths to get the job done.7. Native AI integration to takes data automation to a whole new level.",
+      "author": "bieberChen",
+      "points": null,
+      "created_at": "2024-03-11T18:10:11Z",
+      "story_title": "Show HN: Teable – Open-Source No-Code Database Fusion of Postgres and Airtable",
+      "hn_url": "https://news.ycombinator.com/item?id=39671507"
+    },
+    {
+      "id": "39616121",
+      "type": "comment",
+      "text": "Please keep working on this! I started a similar tool because I desperately needed it, but haven’t found the time to maintain it. https:&#x2F;&#x2F;github.com&#x2F;corytheboyd-smartsheet&#x2F;json-log-explorerHaving something like the log explorer in DataDog for local development is so insanely useful",
+      "author": "corytheboyd",
+      "points": null,
+      "created_at": "2024-03-06T14:12:44Z",
+      "story_title": "Show HN: Piping logs, visualizing in a web app – just suffix \"| npx logscreen\"",
+      "hn_url": "https://news.ycombinator.com/item?id=39616121"
+    },
+    {
+      "id": "39497516",
+      "type": "comment",
+      "text": "We use Smartsheet for the project planning feature. I even wrote a utility to take a Smartsheet excel export and generate a more polished Gantt chart for presentation.",
+      "author": "Tagbert",
+      "points": null,
+      "created_at": "2024-02-25T04:07:02Z",
+      "story_title": "Spreadsheet.com will be retired on May 31, 2024",
+      "hn_url": "https://news.ycombinator.com/item?id=39497516"
+    },
+    {
+      "id": "39489192",
+      "type": "comment",
+      "text": "Almost anybody using Smartsheet isn’t paying for the spreadsheet functionality. Otherwise they would just use the cloud version of Excel. Smartsheets value add is all of the eventing, reporting, and product management tools that are baked right into the spreadsheet. It’s like a crappier (but vastly cheaper) version of salesforce, qualtrix, asana, and tableau all in one beautiful data model.I say this as a former employee.",
+      "author": "timeagain",
+      "points": null,
+      "created_at": "2024-02-24T04:43:56Z",
+      "story_title": "Spreadsheet.com will be retired on May 31, 2024",
+      "hn_url": "https://news.ycombinator.com/item?id=39489192"
+    },
+    {
+      "id": "39477386",
+      "type": "comment",
+      "text": "My work uses smartsheet and its widely popular. Wonder why spreadsheet.com couldn&#x27;t compete.",
+      "author": "IronWolve",
+      "points": null,
+      "created_at": "2024-02-23T05:46:04Z",
+      "story_title": "Spreadsheet.com will be retired on May 31, 2024",
+      "hn_url": "https://news.ycombinator.com/item?id=39477386"
+    },
+    {
+      "id": "39376473",
+      "type": "comment",
+      "text": "I worked at Smartsheet for a while, and it can compete with Jira for most cases (we used Smartsheet rather than Jira internally)",
+      "author": "neaumusic",
+      "points": null,
+      "created_at": "2024-02-14T22:29:39Z",
+      "story_title": "I Fucking Hate Jira (2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=39376473"
+    },
+    {
+      "id": "39272917",
+      "type": "comment",
+      "text": "As well as can be expected in a company that gives Smartsheet access to Jira with an Admin Service Account.https:&#x2F;&#x2F;github.com&#x2F;BishopFox&#x2F;sliver&quot;Since the Smartsheet service account had administrative access to Atlassian Jira, the threat actor was able to install the Sliver Adversary Emulation Framework, which is a widely used tool and framework that red teams and attackers use to enable “C2” (command and control), connectivity gaining persistent and stealthy access to a computer on which it is installed. Sliver was installed using the ScriptRunner for Jira plugin.&quot;https:&#x2F;&#x2F;blog.cloudflare.com&#x2F;thanksgiving-2023-security-incid...",
+      "author": "itomato",
+      "points": null,
+      "created_at": "2024-02-06T10:46:15Z",
+      "story_title": "Thanksgiving 2023 security incident",
+      "hn_url": "https://news.ycombinator.com/item?id=39272917"
+    },
+    {
+      "id": "39240186",
+      "type": "comment",
+      "text": "I am trying to learn and understand the attack. Can someone please help me brainstorm some possibilities? (please note, I do not intend to question Cloudflare&#x27;s business practices or security program; my intention is to learn and understand).\n--Blog: The threat actor (TA) accessed Okta’s customer support system and viewed files uploaded by Cloudflare (CF) as support cases.Why was the session token part of the support files uploaded to Okta support? Does Okta require it for troubleshooting?TA hijacked a session token of a CF employee from a support ticket.Blog: Using the token extracted from Okta, the TA accessed Cloudflare’s Okta and compromised two separate Cloudflare employee accounts within the Okta platform.How did this happen? Was the stolen token privileged? Also, why only 2 employee accounts? Were these different employees, or was one the same one whose token was compromised? What does Okta employee account compromise mean - did TA reset the password and MFA, and how or was there no MFA?Blog: TA used stolen credentials to get access to our Atlassian server and accessed some documentation and a limited amount of source code.Did the stolen employee credentials only have access to Atlassian?Blog: TA gained access to a set of credentialsDoes this mean multiple credentials got uploaded to the Okta support system?Blog: The Okta compromise was in October, but the threat actor only began targeting CF systems using stolen credentials from the Okta compromise in mid-November.Does this mean the compromised token was long-lived?Blog: We failed to rotate one service token and three service accounts (out of thousands) of credentials that were leaked during the Okta compromise.I didn’t get this. Does this mean that over time, CF employees had uploaded support info for 1000s of apps managed by Okta? Which credentials did CF rotate initially after the Okta compromise?Leaked Credentials:\n1. Moveworks service token that granted remote access into our Atlassian system.Is this service token a bearer token? And without expiry. Is this like an API key?TA accessed Atlassian Jira and Confluence using the Moveworks service token to authenticate through the gateway.2. A service account used by the SaaS-based Smartsheet application that had administrative access to our Atlassian Jira instance,So here, the Smartsheet Saas was given access to the on-prem Atlassian Jira instance? What kind of trust is it? Is this as well managed through Okta? And how does support case filing include a service account? Here, does the Service account mean again some kind of hardcoded API key without expiryTA used the Smartsheet service account to gain access to the Atlassian suite. They used Smartsheet credentials to create an Atlassian account that looked like a normal Cloudflare user. They added this user to a number of groups within Atlassian so that they’d have persistent access to the Atlassian environment.Since the Smartsheet service account had administrative access to Atlassian Jira, the TA was able to install the Sliver Adversary Emulation Framework, which is a widely used tool and framework that red teams and attackers use to enable “C2” (command and control), connectivity gaining persistent and stealthy access to a computer on which it is installed. Sliver was installed using the ScriptRunner for the Jira plugin.\nThis allowed them continuous access to the Atlassian server, and they used this to attempt lateral movement. With this access, the Threat Actor attempted to gain access to a non-production console server in our São Paulo, Brazil data center due to a non-enforced ACL. The access was denied, and they could not access any global networks.3. A Bitbucket service account, which was used to access our source code management system4. AWS environment that had no access to the global network and no customer or sensitive data.Were these AWS access keys? Also, it looks like these keys did provide access to the AWS account. That means the access key didn’t require MFA.The only production system the TA could access using the stolen credentials was our Atlassian environment.Mitigations:Blog: We decided a huge effort was needed to further harden our security protocols to prevent the threat actor from being able to get that foothold had we overlooked something from our log files.What does hardening security protocol mean here? Is it techniques for D&amp;R or something elseBlog: We undertook a comprehensive effort to rotate every production credential (more than 5,000 individual credentials)I believe this means forced resets on employees (Okta users), right?",
+      "author": "nullpointer00",
+      "points": null,
+      "created_at": "2024-02-03T13:33:01Z",
+      "story_title": "Thanksgiving 2023 security incident",
+      "hn_url": "https://news.ycombinator.com/item?id=39240186"
+    },
+    {
+      "id": "39223414",
+      "type": "comment",
+      "text": "&gt;   Cloudflare doesnt explain why they ignored&#x2F;failed to identify the elevated accounts or how those accounts became compromised to begin with. They just explain remediation without accountability.They did, and they admitted that it was their fault. I have to give them credit for that much.&gt; They did this by using one access token and three service account credentials that had been taken, and that we failed to rotate, after the Okta compromise of October 2023...The one service token and three accounts were not rotated because mistakenly it was believed they were unused. This was incorrect and was how the threat actor first got into our systems and gained persistence to our Atlassian products. Note that this was in no way an error on the part of AWS, Moveworks or Smartsheet. These were merely credentials which we failed to rotate.",
+      "author": "autoexec",
+      "points": null,
+      "created_at": "2024-02-02T00:23:36Z",
+      "story_title": "Thanksgiving 2023 security incident",
+      "hn_url": "https://news.ycombinator.com/item?id=39223414"
+    },
+    {
+      "id": "39222533",
+      "type": "comment",
+      "text": "blameless post mortem most likelyGreat call out too&gt; Note that this was in no way an error on the part of AWS, Moveworks or Smartsheet. These were merely credentials which we failed to rotate.",
+      "author": "htrp",
+      "points": null,
+      "created_at": "2024-02-01T22:44:11Z",
+      "story_title": "Thanksgiving 2023 security incident",
+      "hn_url": "https://news.ycombinator.com/item?id=39222533"
+    },
+    {
+      "id": "39221209",
+      "type": "comment",
+      "text": "Great write up.&gt; Over the next day, the threat actor viewed 120 code repositories (out of a total of 11,904 repositories&gt;  They accessed 36 Jira tickets (out of a total of 2,059,357 tickets) and 202 wiki pages (out of a total of 14,099 pages).Is it just me or 12K git repos and 2 million JIRA tickets sound like a crazy  lot. 15K wiki pages is not that high though.&gt; Since the Smartsheet service account had administrative access to Atlassian Jira, the threat actor was able to install the Sliver Adversary Emulation Framework, which is a widely used tool and framework that red teams and attackers use to enable “C2” (command and control), connectivity gaining persistent and stealthy access to a computer on which it is installed. Sliver was installed using the ScriptRunner for Jira plugin.&gt; This allowed them continuous access to the Atlassian server, and they used this to attempt lateral movement. With this access the Threat Actor attempted to gain access to a non-production console server in our São Paulo, Brazil data center due to a non-enforced ACL.Ouch. Full access to a server OS is always scary.",
+      "author": "belltaco",
+      "points": null,
+      "created_at": "2024-02-01T20:47:00Z",
+      "story_title": "Thanksgiving 2023 security incident",
+      "hn_url": "https://news.ycombinator.com/item?id=39221209"
+    },
+    {
+      "id": "38536433",
+      "type": "comment",
+      "text": "SEEKING WORK: Available: Seasoned Product&#x2F;Engineering Leader Ready to Elevate Your TeamGreetings,I am Scott Willeke, a seasoned engineering and product leader with a background in guiding teams through technological transformations and growth. My journey includes pivotal roles at Smartsheet and Amazon Web Services, where I&#x27;ve honed my expertise in product management, leadership and DevOps operational excellence.What I Bring:- Extensive Experience: Over a decade of software development experience with substantial leadership roles, enhancing product quality, and driving continuous improvement.- Technical Mastery: Proficient in a variety of technologies, including BI (Python, Jupyter, Pandas, SQL, Snowflake, etc.), TypeScript (React), Node.js, AWS, GCP, C#, and more ensuring your team stays ahead of the curve.- Strategic Leadership: A track record of overseeing large teams and complex projects, from system design to deployment, with a focus on operational excellence and innovation.- Engaging Communication: My leadership is rooted in clear, effective communication, fostering a culture where every team member’s contribution is valued.I am excited to explore opportunities where I can contribute as a Fractional Head of Engineering or a similar role. My goal is to drive quality development practices, shape technology roadmaps, and ensure the delivery of scalable, reliable, and secure applications.\nLet&#x27;s connect to discuss how my expertise aligns with your needs.Scott Willeke\nhttps:&#x2F;&#x2F;scott.willeke.com",
+      "author": "activescott",
+      "points": null,
+      "created_at": "2023-12-05T20:22:59Z",
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (December 2023)",
+      "hn_url": "https://news.ycombinator.com/item?id=38536433"
+    },
+    {
+      "id": "38384831",
+      "type": "comment",
+      "text": "Is this what I need?  We have ad hoc business processes like:1. Sell service to client2. Email client with scheduling info3. Agree to scheduling date with client4. Send client email with documentation and request their data5. Remind client to send data6. Alert admins data hasn&#x27;t been received7. Beat data out of client8. Prepare data9. QA and checkoff service10. Email client to review and approve11. Publish&#x2F;run service12. Send client stats&#x2F;resultsAnd I want to move that from spreadsheets, personal emails and admins keeping in their head where everything is at, to web forms and uploads, automated emails and dashboards.  I looked at airtable, smartsheet, budibase and many others but they seem to be very project-based, where you are inventing a unique workflow for each project and using it to keep managers on top of where their team is at with the various steps.  Project Management vs process management.  None of them seem to have decent calendar integration.  Few of them seem to be great about emails or scheduled scripts.I have APIs for my data, or I can code them if needed.  I&#x27;d prefer a low-code to a no-code approach, where managers have a spreadsheet view and can do some of of the UI work and programmers can make it do stuff and handle integrations.",
+      "author": "haroldp",
+      "points": null,
+      "created_at": "2023-11-22T20:43:55Z",
+      "story_title": "Fast self-hostable open-source workflow engine",
+      "hn_url": "https://news.ycombinator.com/item?id=38384831"
+    },
+    {
+      "id": "37880806",
+      "type": "comment",
+      "text": "When we set out to build GRID, we quickly realized that what people use spreadsheets for can broadly be split in  two categories: Models and tables.Models are free-form sheets with formulas that typically generate insights in the form of output based on a set of inputs.Tables are the structured sheets that typically have (somewhat) defined columns detailing the attributes of each row of data. Insights from tables generally come from filtering, grouping, aggregating and sorting the row-level data.As you point out, a lot more attention has been paid to the table use-case where people are essentially using their spreadsheets as small databases. Historically you could say this the usage pattern that gave birth to the modern BI tools (such as Qlik, Tableau and PowerBI). More recently, this is where companies like Airtable and Smartsheet play, but also to some extent what Coda and Notion are trying to achieve with their tables&#x2F;databases.The models are where GRID shines. The unique value GRID offers is the ability to easily create and publish an interactive web document on top of spreadsheet calculations, whether the models are built in Excel, Google Sheets or in our own built-in GRID Sheets.I don&#x27;t think this specific category has a name, but more broadly we&#x27;ve seen people talk about &quot;next-gen spreadsheets&quot; where - in addition to GRID - Equals, Rows and Spreadsheet.com also play, each with their own unique flavor.GRID is clearly the solution that leans most heavily into models and interactivity (hence the focus on our engine as evidenced e.g. by alexharri&#x27;s article).While all the other solutions have capable calculation engines, I think it&#x27;s fair to say that they are more focused on table-like use cases. Equals leans heavily into data connectivity, governance and reusability of spreadsheets, while Spreadsheet.com focuses a lot on project management use cases. Both offer an otherwise very traditional spreadsheet user experience. Rows has also focused a lot on connectivity, but lately they have leant heavily into AI to generate insights from data in their spreadsheets.",
+      "author": "hjalmarg",
+      "points": null,
+      "created_at": "2023-10-14T14:38:01Z",
+      "story_title": "Making GRID's spreadsheet engine 10% faster",
+      "hn_url": "https://news.ycombinator.com/item?id=37880806"
+    },
+    {
+      "id": "37878034",
+      "type": "comment",
+      "text": "Thanks for posting this as I learned about Grid and it looks really interesting. I wonder how exactly do you name this category of spreadsheet app for SEO purposes? When i search top spreadsheet apps or Excel alternatives, apps like yours don’t often show up, instead I get AirTable, SmartSheets and other general spreadsheet apps that are not calculation intensive. I’m trying to find Excel on steroids for data analysis and reporting that connects to DBs directly, does database exploration, connects or offers a BI tool and has convenient integrations like PowerAutomate. Is there any Microsoft killer out there with this roadmap?",
+      "author": "cssanchez",
+      "points": null,
+      "created_at": "2023-10-14T04:16:36Z",
+      "story_title": "Making GRID's spreadsheet engine 10% faster",
+      "hn_url": "https://news.ycombinator.com/item?id=37878034"
+    },
+    {
+      "id": "37822033",
+      "type": "comment",
+      "text": "There is Smartsheet, which mostly works well for this, but its power-user features are pretty limited compared to Excel.",
+      "author": "jamesmaniscalco",
+      "points": null,
+      "created_at": "2023-10-09T16:25:19Z",
+      "story_title": "The pivot table, the spreadsheet's most powerful tool (2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=37822033"
+    },
+    {
+      "id": "37473922",
+      "type": "comment",
+      "text": "LibreOffice Base is... okay. It&#x27;s not great but I was able to do most of the things I used to use Access for (simple small CRUD database tools that let you quickly build forms, simple table relationships, enter&#x2F;review data, generate reports). Basically, it&#x27;s better than nothing and nothing is what we&#x27;ve got now. Base can get pretty confusing at points and has given me a lot of head-scratchers at some times.Even with otherwise seemingly easy-to-use web-based improvements to Excel that my employer has like smartsheet... these don&#x27;t seem to let you do any sort of super basic many-to-one relationships (maybe with some expensive ad on package? dunno... and smartsheet has plastered their site with a bunch of 101 intro to databases SEO spam that explain what different types of relationships are rather than how to fucking build them with smartsheet)",
+      "author": "fluidcruft",
+      "points": null,
+      "created_at": "2023-09-11T21:24:46Z",
+      "story_title": "Ask HN: Why did Visual Basic die?",
+      "hn_url": "https://news.ycombinator.com/item?id=37473922"
+    },
+    {
+      "id": "37230092",
+      "type": "comment",
+      "text": "I hadn&#x27;t even considered collecting traces&#x2F;spans in this way yet, and have taken the approach of &quot;stuff outputting logs in JSON format to stderr&#x2F;local file&quot;. I usually end up writing a (temporary, structured) log message with the relevant span tags, but wouldn&#x27;t it be much better to run the actual trace&#x2F;span code and be able to verify it locally without the ad-hoc log message?The prototype I built is a web application that creates websocket connections, and if those connections receive messages that are JSON, log lines are added. Columns are built dynamically as log messages arrive, and then you can pick which columns to render in the table. If you&#x27;re curious here&#x27;s the code, including a screenshot: https:&#x2F;&#x2F;github.com&#x2F;corytheboyd-smartsheet&#x2F;json-log-explorerWith websockets, it&#x27;s very easy to use websocketd (http:&#x2F;&#x2F;websocketd.com), which will watch input files for new lines, and write them verbatim as websocket messages to listeners (the web app).To make the idea real, would want to figure out how to not require the user to run websocketd out of band, but watching good ol&#x27; files is dead simple, and very easy to add to most code (add a new log sink, use existing log file, etc.)",
+      "author": "corytheboyd",
+      "points": null,
+      "created_at": "2023-08-22T23:49:43Z",
+      "story_title": "Structured logging with slog",
+      "hn_url": "https://news.ycombinator.com/item?id=37230092"
+    },
+    {
+      "id": "36113323",
+      "type": "comment",
+      "text": "Depends on what way you want to track it. If you’re tracking schedule&#x2F;timeline&#x2F;progress of activities then use a Gantt chart (smartsheet, msproject or excel) or a Burndown.",
+      "author": "ssss11",
+      "points": null,
+      "created_at": "2023-05-29T12:31:22Z",
+      "story_title": "Ask HN: Does anyone here track their projects? What systems have you used?",
+      "hn_url": "https://news.ycombinator.com/item?id=36113323"
+    },
+    {
+      "id": "35209763",
+      "type": "comment",
+      "text": "&gt; I wish there was something like GSheets + AirtableSmartsheet.com ?",
+      "author": "rs999gti",
+      "points": null,
+      "created_at": "2023-03-18T15:17:51Z",
+      "story_title": "Libgsqlite: A SQLite extension which loads a Google Sheet as a virtual table",
+      "hn_url": "https://news.ycombinator.com/item?id=35209763"
+    },
+    {
+      "id": "16681606",
+      "type": "story",
+      "title": "Smartsheet S-1",
+      "text": "",
+      "author": "whoisjuan",
+      "points": 8,
+      "num_comments": 0,
+      "created_at": "2018-03-26T19:15:36Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16681606"
+    },
+    {
+      "id": "13945",
+      "type": "story",
+      "title": "Intelligent online task management | Smartsheet.com",
+      "text": "",
+      "author": "interfun",
+      "points": 6,
+      "num_comments": 1,
+      "created_at": "2007-04-18T03:06:45Z",
+      "hn_url": "https://news.ycombinator.com/item?id=13945"
+    },
+    {
+      "id": "41253519",
+      "type": "story",
+      "title": "Show HN: Open-source Powerful virtual data grid smartsheet with customization",
+      "text": "",
+      "author": "niomarketing",
+      "points": 5,
+      "num_comments": 1,
+      "created_at": "2024-08-15T06:14:14Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41253519"
+    },
+    {
+      "id": "5650340",
+      "type": "story",
+      "title": "API Marketing: Making a Splash with the Smartsheet API",
+      "text": "",
+      "author": "Baustin",
+      "points": 5,
+      "num_comments": 0,
+      "created_at": "2013-05-03T14:48:34Z",
+      "hn_url": "https://news.ycombinator.com/item?id=5650340"
+    },
+    {
+      "id": "16941428",
+      "type": "story",
+      "title": "Software company Smartsheet spikes in IPO",
+      "text": "",
+      "author": "mikikian",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2018-04-27T15:21:51Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16941428"
+    },
+    {
+      "id": "16606015",
+      "type": "story",
+      "title": "Thoughts on Airtable from a Longtime Smartsheet User",
+      "text": "",
+      "author": "mergy",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2018-03-17T08:07:06Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16606015"
+    },
+    {
+      "id": "7699503",
+      "type": "story",
+      "title": "Smartsheet raises $35M at triple the valuation of previous round",
+      "text": "",
+      "author": "natehark",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2014-05-05T16:39:05Z",
+      "hn_url": "https://news.ycombinator.com/item?id=7699503"
+    },
+    {
+      "id": "6288775",
+      "type": "story",
+      "title": "New Webix Demo App \"Smart Sheet\" Focused on Grid",
+      "text": "While developing Webix, we’ve made several demo projects, in order to check the usability of our library. One of these projects is “Smart Sheet demo”. It is focused on the DataTable, one of the core Webix components. Smart Sheet demo can be used to show tabular or hierarchical data.<p>screen-001<p>You can download the full demo or check the demo online.<p>This mini application resembles the interface of Smartsheet, one of the best web-based spreadsheets. It presents the hierarchy of tasks and allows users to edit it. (We’ve implemented only the client-side interface. There’s no real back end code for this demo).<p>Let’s look from the inside.",
+      "author": "kelluvuus",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2013-08-28T09:19:28Z",
+      "hn_url": "https://news.ycombinator.com/item?id=6288775"
+    },
+    {
+      "id": "4868337",
+      "type": "story",
+      "title": "Smartsheet Raises $26M",
+      "text": "",
+      "author": "Quekster",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2012-12-03T22:36:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=4868337"
+    },
+    {
+      "id": "41637924",
+      "type": "story",
+      "title": "Blackstone/ Vista Equity Partners to acquire software maker Smartsheet for $8.4B",
+      "text": "",
+      "author": "twiddling",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2024-09-24T15:54:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41637924"
+    },
+    {
+      "id": "339252",
+      "type": "story",
+      "title": "Smartsheet Launches New Version With Enhanced Features",
+      "text": "",
+      "author": "noodle",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2008-10-21T19:13:51Z",
+      "hn_url": "https://news.ycombinator.com/item?id=339252"
+    },
+    {
+      "id": "16682925",
+      "type": "story",
+      "title": "Smartsheet files for IPO",
+      "text": "",
+      "author": "jkuria",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2018-03-26T21:46:00Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16682925"
+    },
+    {
+      "id": "16158643",
+      "type": "story",
+      "title": "Smartsheet acquires UK-based chatbot startup Converse.AI – SiliconANGLE",
+      "text": "",
+      "author": "rbanffy",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2018-01-16T15:05:07Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16158643"
+    },
+    {
+      "id": "14410207",
+      "type": "story",
+      "title": "Collaboration platform Smartsheet nabs $52M at $800M valuation",
+      "text": "",
+      "author": "sevendig",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2017-05-24T14:24:30Z",
+      "hn_url": "https://news.ycombinator.com/item?id=14410207"
+    },
+    {
+      "id": "1137797",
+      "type": "story",
+      "title": "Chairman of Smartsheet.com: Joining Google in Feasting on Microsoft's Fat",
+      "text": "",
+      "author": "cwan",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2010-02-19T19:56:52Z",
+      "hn_url": "https://news.ycombinator.com/item?id=1137797"
+    },
+    {
+      "id": "31098065",
+      "type": "story",
+      "title": "Show HN: Two-way Jira sync in a collaborative spreadsheet and Gantt",
+      "text": "Hello HN,<p>Our startup nearly died 2 years ago.  We kept losing customers to spreadsheets. And it made us see a problem right under our nose: everyone just wanted flexibility &amp; speed from a spreadsheet. But they have to stay in sync with {Jira &#x2F; Salesforce &#x2F; insert SaaS app}.<p>When we followed this thread, we discovered how broken the integration experience was for flexible products like Airtable, Smartsheet, Monday, and Google Sheets.  Their big problem is that they transform external data into their own format.  This makes setup harder, since you have to get the mapping just right.  And often you can’t sync back.<p>We took a different path when building Visor.  We essentially made a data lake &amp; ETL tool with a front-end.  Visor integrates with your Jira instance, reads its schema, helps you import the right data, and lets you work in a flexible spreadsheet* that syncs both ways.  There’s also an interactive Gantt &amp; Timeline view.<p>*Spreadsheet is a generous term for now.  Formulas are still on the roadmap.  As are many true “spreadsheet” features.  But we’re working towards it.<p>Our roadmap is public, here: <a href=\"https:&#x2F;&#x2F;support.visor.us&#x2F;visor-roadmap\" rel=\"nofollow\">https:&#x2F;&#x2F;support.visor.us&#x2F;visor-roadmap</a><p>And for VueJS devs, we eked out more performance from Vue 2 by modifying the core, documented here: <a href=\"https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;vuejs&#x2F;comments&#x2F;u6tzv8&#x2F;how_we_resolved_hitting_major_performance_issues&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;vuejs&#x2F;comments&#x2F;u6tzv8&#x2F;how_we_resolv...</a><p>For database geeks, you might enjoy learning about the realtime graph DB we built to power the product: <a href=\"https:&#x2F;&#x2F;blog.visor.us&#x2F;cloudstore-part-1&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;blog.visor.us&#x2F;cloudstore-part-1&#x2F;</a><p>I’ve seen so many great companies start out by launching on HN.  It’s quite a special personal moment finally to be sharing with you all.<p>I’m happy to answer questions, take criticism, and generally hear what you think.",
+      "author": "electric_muse",
+      "points": 116,
+      "num_comments": 53,
+      "created_at": "2022-04-20T15:11:19Z",
+      "hn_url": "https://news.ycombinator.com/item?id=31098065"
+    },
+    {
+      "id": "3448022",
+      "type": "story",
+      "title": "Ask HN: Death by design, poor on-boarding or do we just smell?",
+      "text": "We’d like to get some unbiased feedback (I know – there is no such thing) for our product – http://www.birdviewprojects.com<p>Our goal was to create an alternative to the typical entry-level project management systems like Basecamp, activeCollab, Smartsheet, etc.<p>We wanted our product to have a fresher approach: not your typical hierarchy or table view. So we spent over 2 years creating some really sophisticated features and UI elements.<p>However we’re not able to get any significant traction yet. So where do you think we went wrong: do we have too many features or too few? Is our interface an overkill? Do you think that a better on-boarding can help or we have to do something more dramatic?<p>Any feedback from our fellow startup’ers or just anyone with an opinion on this topic would be much appreciated!",
+      "author": "TheRealLogic",
+      "points": 8,
+      "num_comments": 19,
+      "created_at": "2012-01-10T17:54:31Z",
+      "hn_url": "https://news.ycombinator.com/item?id=3448022"
+    },
+    {
+      "id": "33116603",
+      "type": "story",
+      "title": "Ask HN: Software answering “How long will this project take with N people?”",
+      "text": "I am looking for a project planning tool like Smartsheet or Monday, where I can enter a list of tasks and see a Gantt view that helps estimate time to completion...which Smartsheet and Monday (AFAIK) support, except:<p>* I want it to know that someone can only do one task at a time (I don&#x27;t see how to do this with Smartsheet, at least).\n* I want it to know that unassigned tasks are blocked on people finishing other tasks and becoming available.\n* I want to be able to see how long things will take if I add or remove N people from the project.  (For example, if only one person is on the project, the total project time should be the sum of the time of all the tasks; if enough people are on the project, the time to completion should be the length of the longest sequence of dependent tasks.)<p>I am surprised this doesn&#x27;t exist, or at least that I can&#x27;t find it (it&#x27;s a feature and not a product, but feel free to take the idea and run with it if you want).  AFAICT, the major project management tools in this space don&#x27;t do this.  But I hope to find out I&#x27;m wrong. :)",
+      "author": "endtime",
+      "points": 6,
+      "num_comments": 11,
+      "created_at": "2022-10-07T02:00:20Z",
+      "hn_url": "https://news.ycombinator.com/item?id=33116603"
+    },
+    {
+      "id": "9664715",
+      "type": "story",
+      "title": "Ask HN: Looking for an overview of web application development",
+      "text": "I am interested in web development.<p>There seem to be a lot of languages involved. I am finding the abundance of options confusing. Searching the web mostly revealed strong opinions about the author&#x27;s platform of choice without convincing analysis.<p>Can anyone direct me to a book or site which describes the overall web framework and discusses the merits of competing options? I need something that breaks down how websites are served and what type of operations are performed on the client vs the server.<p>I tried to figure out how websites I liked were built. They tended to list various stacks. The variations convinced me that many roads lead to Rome, but left me without a map of the various paths.<p>Background: I have built desktop applications in java and common lisp. I find lisp more enjoyable, and would prefer to work in a lisp style. However, I recognize that a flexible approach may be required. I took a class in Ruby on Rails several years ago, but it was rather poorly taught. I have played around with html and css.<p>Endstate: I would like to be able to produce a site with capabilities similar to smartsheet.",
+      "author": "sonofwisconsin",
+      "points": 5,
+      "num_comments": 6,
+      "created_at": "2015-06-05T10:16:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=9664715"
+    },
+    {
+      "id": "12163462",
+      "type": "story",
+      "title": "Ask HN: Building an email killer",
+      "text": "Hi<p>Need help in building an email killer app. The concept around it is taking the logic of collaboration tools and apply it to tame emails. Here&#x27;s how we are thinking:<p>Step 1: We build a collaboration tool (done it already: https:&#x2F;&#x2F;comtify.com). It has a thread-like architecture wherein each issue is discussed in threads (just like email threads) and the logic of email (to, cc, folders, etc.) apply.<p>Step 2: We are in the middle of this. We are injecting the features of email import-export into Comtify. So it will work like this: A message thread in Comtify will detect whether an external user (email ID) is tagged into it. If yes, when a new message is posted in a thread, it will fire that message as an email to the external user (email ID). This email will be like a regular email with all other members of thread visible in To&#x2F;cc (for whom, the email will be imported and ignored). Now if the external user makes a reply-to-all on the email, it will be imported, recognized and posted as a message in Comtify in the same thread. In case this user does not do a reply-to-all but changes the recipients, a sub-thread (within the master thread) will be created in Comtify.<p>So this should solve a much needed problem with collaboration tools (Asana, Slack, Wunderlist, Smartsheet) which is that they are only limited to use within an internal team and fail in external communication.<p>It should also solve the problem of single-user utility which no collaboration tool currently has - user wouldn&#x27;t require any team to be first invited and even one user from a particular team can use it, while others might not.<p>Need deep thoughts into this on whether:<p>1. You think this is a big problem to be solved.<p>2. How exactly do you visualize the system to work.<p>Regards,<p>paekut",
+      "author": "paekut",
+      "points": 4,
+      "num_comments": 3,
+      "created_at": "2016-07-26T05:11:03Z",
+      "hn_url": "https://news.ycombinator.com/item?id=12163462"
+    },
+    {
+      "id": "18248392",
+      "type": "comment",
+      "text": "While I like the UX of Trello in general more, Smartsheet has a spreadsheet view and more.",
+      "author": "s1mon",
+      "points": null,
+      "created_at": "2018-10-18T14:05:54Z",
+      "story_title": "Atlassian debuts new Jira Software Cloud with timeline view, configuration flow",
+      "hn_url": "https://news.ycombinator.com/item?id=18248392"
+    },
+    {
+      "id": "18463870",
+      "type": "comment",
+      "text": "People keep calling out how this isn&#x27;t a new solution&#x2F;idea (i.e. MS Access, FileMaker, SmartSheet, Google Sheets + Scripts, Knack) and those people I hope understand that Airtable&#x27;s success has everything to do with their execution of this idea not that the idea is somehow groundbreaking.I&#x27;ve used many of those ^ products and I can tell you they are no where near Airtable&#x27;s level of UX. The Airtable team has obviously taken a lot of time and energy to really nail the design and user experience instead of making another &quot;just good enough&quot;.I think this is also a good example of how desperate users will resort to using subpar products or cobbling-together numerous subpar solutions if the problem is painful enough. Having used MS Access a decade ago I can tell you it was out of desperation and it never really solved the problem- it sort of got you ~75% there.One last thing I&#x27;ll mention is that when you take on something as flexible as Airtable you end up dealing with an much larger dimension of possible edge-cases and more importantly you end up challenging designers to craft constraints on the users very thoughtfully so that you&#x27;re not limiting them but also you&#x27;re not overwhelming them with too much complexity. In other words- solutions in this space succeed precisely because they figure out how to walk that fine line not because the idea itself is earth-shattering.",
+      "author": "jamesmcintyre",
+      "points": null,
+      "created_at": "2018-11-15T22:03:04Z",
+      "story_title": "Airtable raises $100M at a $1.1B valuation",
+      "hn_url": "https://news.ycombinator.com/item?id=18463870"
+    },
+    {
+      "id": "17249488",
+      "type": "comment",
+      "text": "See here for templates that might help pull somethings together:https:&#x2F;&#x2F;www.smartsheet.com&#x2F;free-onboarding-checklists-and-te...Assuming you have HR&#x2F;IT set up and onboarding guides done and the general intro to company stuff set up etc: I have found the following to be helpful to getting team productive but your mileage may vary:For engineers -intro projects with assigned mentor. short project (from few days to a week) on a specific small feature that is designed to take them through all tooling, codebase and environments that you use. Idea is to expose new hire to development environment in a controlled way, give them a chance to learn, document their frustrations&#x2F;questions, discover who to ask, how to ask (e..g do you use slack, in person etc), how  peer and code review are done etc and get them productive with a win that contributes to the product.It takes time to set up - but its worth while and if you know your onboarding - its easy enough to review sprint plans and id suitable tasks ahead of time and after you do it a few times it becomes routine and expected.For marketing team - similar usually get them to review a marketing plan in an area they are going to be working in and  how that fits across marketing tools and evaluate it and present insights back to team at following weeks marketing meeting.  Same idea - expose them, get their insights and get them talking with their team and have them work on something that is needed.For sales team - take them through structures sales training: Product, customer value prop, competitive analysis, target customer profiles, critical problems we solve, scenario role play finishing with sales and product qualification (ie have a test they must pass so you know they have a minimum level of product and target customer knowledge)For all new hires assign a mentor - person who will help them through their first week and first weeks tasks. At end of on boarding  Ask new hires to rate their mentors and the onboarding process - you want your onboarding  experience to be positive for everyone and you want it to get better.You will be tempted to  have recent hires mentors the next in- since many things will be fresh in their memory- this works but its also useful to remind established folks what entry is like and expose senior team to new team members and map mentors to incoming expertise (e.g. some senior engineers may know a specific area of codebase so will be a better mentor for that position etc) so don&#x27;t do it exclusively.with any new hire - do a end of  day 1, mid week and end of week check in to make sure all is going ok and they have opportunity to ask questions&#x2F;follow up (it is surprising how many HR questiosn come up on day 4).This sounds like a lot - but its worth investing in it. Most onboarding sucks - it shouldnt.",
+      "author": "ptrott2017",
+      "points": null,
+      "created_at": "2018-06-06T18:07:14Z",
+      "story_title": "Ask HN: Best practices for onboarding new employees?",
+      "hn_url": "https://news.ycombinator.com/item?id=17249488"
+    },
+    {
+      "id": "347772",
+      "type": "comment",
+      "text": "Ask HN: Review my Sports Statistics startup, StatSheetPretty much a convention around here.",
+      "author": "qhoxie",
+      "points": null,
+      "created_at": "2008-10-29T18:20:33Z",
+      "story_title": "What is a good HN title?",
+      "hn_url": "https://news.ycombinator.com/item?id=347772"
+    },
+    {
+      "id": "28896044",
+      "type": "comment",
+      "text": "I had a look and  https:&#x2F;&#x2F;www.tomshardware.com&#x2F;uk&#x2F;reviews&#x2F;amd-ryzen-9_3900x-vs...&quot;AMD’s Ryzen 9 3900X also has the new Collaborative Power Performance Control 2 (CPPC2) feature, which manipulates Ryzen 3000&#x27;s power states from within the operating system. This is similar to Intel&#x27;s Speed Shift technology and reduces power state transition latency. Ultimately, that results in a more efficient processor during all facets of operation.&quot;Though that seems to be about boosting clocks higher clocks when it can.https:&#x2F;&#x2F;www.amd.com&#x2F;en&#x2F;technologies&#x2F;smartshiftAgain does seem to focus upon boosting performanceSo no clear-cut stand-out answer, but does seem some level of OS interaction is required, I couldn&#x27;t say with 100% certainty.",
+      "author": "Zenst",
+      "points": null,
+      "created_at": "2021-10-17T12:41:09Z",
+      "story_title": "Automatic CPU speed and power optimizer for Linux",
+      "hn_url": "https://news.ycombinator.com/item?id=28896044"
+    },
+    {
+      "id": "34914470",
+      "type": "comment",
+      "text": "ClickUp, Monday.com, Linear, Wrike, Asana, Smartsheet, Teamwork.There are lots of good modern alternatives to Jira. The reason people still use them is the same as why Oracle DBs are still so popular – they have a large sales team and corporate contacts, and so their products are pushed down your throat.",
+      "author": "paxys",
+      "points": null,
+      "created_at": "2023-02-23T18:30:33Z",
+      "story_title": "Google stopping coding competitions",
+      "hn_url": "https://news.ycombinator.com/item?id=34914470"
+    },
+    {
+      "id": "28760644",
+      "type": "comment",
+      "text": "Another open source airtable alternative on the top of HN this year.NocoDB (https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=27303783)BaseRow (https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=26448985)Any idea why these projects are so popular in HN? What are the big pain points &#x2F; problems these address?None have template libraries like Airtable or Smartsheet do, so it’s hard to get a sense of the use cases these tools specialize in.",
+      "author": "peterthehacker",
+      "points": null,
+      "created_at": "2021-10-05T15:20:19Z",
+      "story_title": "Rowy: Open-source Airtable alternative on Google Cloud",
+      "hn_url": "https://news.ycombinator.com/item?id=28760644"
+    },
+    {
+      "id": "13472183",
+      "type": "comment",
+      "text": "Looked into Bullet, but not the style I wanted. I needed more of a journal of what was done and information around that being driven from collaboration tech (Smartsheet, Wunderlist, etc.) vs. what I needed to do. I think Bullet is great for the individual, but everything around teams or groups needs to be run in a tech solution.",
+      "author": "mergy",
+      "points": null,
+      "created_at": "2017-01-24T15:40:31Z",
+      "story_title": "How to Bullet Journal",
+      "hn_url": "https://news.ycombinator.com/item?id=13472183"
+    },
+    {
+      "id": "33170623",
+      "type": "comment",
+      "text": "(responding to a now deleted comment, that argued that this wasn&#x27;t an announcement for people who play Beat saber, and the whole segmentation of pro users vs. end-users made sense)I agree the segmentation of devices makes sense, but it requires an app ecosystem that sits on top and needs to work for everyone together, and you need developers creating those experiences. Like when Apple launched iOS 2 and supported apps for the first time; you need a strong line up of developers and creators in order to move the industry forward.Adobe Acrobat is not the thing to get corporate users excited. Nor Smartsheet. Where&#x27;s Zoom and meetings with 3D spatial audio? Autodesk? Maya? Matlab? Training experiences? And yes, bring in games, fitness apps, movies together. We talk so much about &quot;making remote work fun&quot;, that this can be a fantastic team experience to blend experiences.But ok, it seems I&#x27;m overreacting to a lousy product landing page put together at the last minute. I&#x27;m now watching the keynote[1][2] (which, weirdly, it&#x27;s not linked anywhere), and it&#x27;s waay better.As I expected, lots of mentions of new games, fitness apps, Marvel movies, and all intermixed with Zoom and Microsoft Teams (ha!), virtual monitors, collaboration tools, etc. And if you pay close attention, you&#x27;ll notice that Beat Saber came right after Accenture and Satya Nadella (!), and discussions on the future of work. So it seems they are indeed blurring the lines between these segments, no matter what device you&#x27;re using.I&#x27;m still a believer, both as a professional and end user [3], so looking forward to testing the new hardware.[1] On YT: https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=hvfV-iGwYX8[2] On FB: https:&#x2F;&#x2F;www.facebook.com&#x2F;RealityLabs&#x2F;videos&#x2F;1425118524564060[3] https:&#x2F;&#x2F;news.ycombinator.com&#x2F;item?id=31819718",
+      "author": "guiambros",
+      "points": null,
+      "created_at": "2022-10-11T23:27:58Z",
+      "story_title": "Meta Quest Pro",
+      "hn_url": "https://news.ycombinator.com/item?id=33170623"
+    },
+    {
+      "id": "18080491",
+      "type": "comment",
+      "text": "do you mean strategy&#x2F;planning&#x2F;design&#x2F;bestpractice or troubleshooting and implementation?  the former can get complicated if you dont scope right, which is why business analysts and enterprise architects exist.  just because youre a startup, doesnt mean you dont want to explore where components can be reused, how many places you need to log in to manage your company, how things compliment and overlap each other, and which vendor you should use for which service.  good foresight and some lucky guesses can make your life easier later. when you buy three kitchen sinks, and they all offer payroll services, you have to pick which is authoritative.  same with file services, corporate planning, financial forcasting.where do you want to put your portfolio management, in something dedicated like clarizen, smartsheet, or wrike; somewhere simplistic like or asana or trello, with finance like anaplan. now that anaplan is on the table, it might change how you feel about adaptive insight. now you might need to replace your gl.  losing adaptive insight for anaplan might push you away from workday and towards ultimate, because of the ownership structure (not at all a technical decision.)  ten cascades later, you are asking yourself aryaka+hyperv+qumulo+simplivity+ruckus+salesforce+gsuite+adaptiveinsight+workday or velocloud+esxi+nasuni+nutanix+ubiquiti+anaplan+dynamics+office365teams.  your either or&#x27;s become complex and intertwined.  you might think some of these decisions are just &quot;IT&#x2F;technical&quot; but at the the end of the day every decision cascades into another, changing the scope of the next decision.if my somewhat silly rant didnt make my point: too often companies want to outsource decision making that belongs in the c suite, that can give them a competitive edge, if done right, in house by magicians.  you lose your magic and secret sauce by going with what everybody else does.  its akin to whatsapp being erlang based vs going with metoo ruby.  or how newspaper publishers have an edge when they also develop the hosting platform and license to others (vox chorus, gizmodo kinja, wapo arc, say tempest, bi viking, vs wordpress.)https:&#x2F;&#x2F;www.wsj.com&#x2F;articles&#x2F;why-do-the-biggest-companies-ke...http:&#x2F;&#x2F;www.niemanlab.org&#x2F;2018&#x2F;09&#x2F;newsonomics-the-washington-...",
+      "author": "basch",
+      "points": null,
+      "created_at": "2018-09-26T21:37:46Z",
+      "story_title": "How we solved our office Wi-Fi problems",
+      "hn_url": "https://news.ycombinator.com/item?id=18080491"
+    },
+    {
+      "id": "16565791",
+      "type": "story",
+      "title": "Agile vs. Scrum vs. Waterfall vs. Kanban",
+      "text": "",
+      "author": "gasull",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2018-03-12T02:10:06Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16565791"
+    }
+  ]
+}

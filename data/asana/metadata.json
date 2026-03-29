@@ -1,0 +1,43 @@
+{
+  "name": "Asana",
+  "category": "project_management",
+  "subcategories": [
+    "task_management",
+    "workflow",
+    "portfolio",
+    "goals"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $11-$25 per user/mo",
+  "primary_use_case": "Work management and project tracking for teams",
+  "target_audience": [
+    "mid_market",
+    "enterprise",
+    "marketing_teams",
+    "product_teams"
+  ],
+  "key_features": [
+    "tasks",
+    "timelines",
+    "boards",
+    "portfolios",
+    "goals",
+    "forms",
+    "rules",
+    "reporting"
+  ],
+  "founded": 2008,
+  "estimated_users": "20M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "monday",
+    "clickup",
+    "trello",
+    "jira"
+  ]
+}

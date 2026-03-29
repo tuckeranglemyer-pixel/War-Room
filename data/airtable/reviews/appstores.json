@@ -1,0 +1,1206 @@
+{
+  "app": "airtable",
+  "play_store_reviews": [
+    {
+      "rating": 1,
+      "text": "There are two things that need to be fixed asap for this app to be usable. Number one is that interfaces don't refresh when you add a record, meaning the only way to see what you (or anyone else) just added is to reopen the entire app. Number two is that forms need to be added/fixed, because right now they don't even open from an external link.",
+      "thumbs_up": 19,
+      "date": "2025-10-14T00:34:41"
+    },
+    {
+      "rating": 1,
+      "text": "The only thing I want to use it for, editing a form and seeing responses, should be simple and easy, but it's literally impossible in the app. It tells me \"This view cannot be displayed in the Android app yet\" and tells me to use a desktop browser. The mobile browser also tells me to use the Android app even though it's not available in the app. It's been this way for a year, at least. What gives?",
+      "thumbs_up": 28,
+      "date": "2025-02-21T12:43:37"
+    },
+    {
+      "rating": 4,
+      "text": "This is an excellent app but I do have a couple of feature requests. First, rating, progress bars, and addresses would be really helpful fields. Second, users should be able to choose which columns are shown in the list view. And third, it could really use a night mode, and/or AMOLED mode, that would not only be easier on your eyes, but save battery life (as is the case when you use black pixels for the background, instead of dark grey). Otherwise good app",
+      "thumbs_up": 51,
+      "date": "2019-11-21T20:20:48"
+    },
+    {
+      "rating": 3,
+      "text": "I am in love with Airtable and have been geeking out with it so much recently. I have a few qualms with the Android app, which is why this isn't a 5 star review.   When switching between views, the search box goes away. You have to get out of the table completely and then open it back up for the search box to show in that view.   You can add linked records but you can't remove linked records from the mobile app, which is very inconvenient, especially if want to re-assign a record, or you add an assignment by accident.",
+      "thumbs_up": 26,
+      "date": "2018-10-03T15:12:33"
+    },
+    {
+      "rating": 2,
+      "text": "App freezes constantly. I'm paying $12 per month to catalogue my fiber arts projects and yarn stash. The desktop browser version works great. Unfortunately, they do not allow access to the web browser version on android devices. I am forced to use the buggy nightmare of an app. I constantly have to stop in the middle of data entry to force close the app. This is the only way to make sure my data gets saved. Now I'm finding that entries from 6 months ago have been erased. FIX THE APP!!!",
+      "thumbs_up": 42,
+      "date": "2021-11-22T01:56:15"
+    },
+    {
+      "rating": 3,
+      "text": "* Update changed the way tables/views scroll sideways, leaving a descriptive header for each row, but I'll be OK with it eventually, since I see what the goal is. * Searching for a barcode that resulted in no records, then tapping the (+), I think would add a record with the barcode, but no longer does. * However, the change(s) to the individual record view is driving me crazy. The older, I think more compact, view seemed better to me. Missing features available on desktop and web browser.",
+      "thumbs_up": 10,
+      "date": "2021-04-17T15:31:55"
+    },
+    {
+      "rating": 3,
+      "text": "LOVE this tool on desktop, but it rarely works on mobile. I have a Samsung Note9 and the app crashes 4 out of every 5 times I try to use it. As someone who works remotely and travels for work (making me reliant on apps to stay on top of my workload when I can't get to my laptop), I hate that Airtable doesn't work well enough to be useful. I'm the one who pitched the tool to my employer, who eagerly adopted it, and yet now I can't get it to work... 😔",
+      "thumbs_up": 14,
+      "date": "2018-09-20T10:59:05"
+    },
+    {
+      "rating": 1,
+      "text": "Scammers! I signed up for a $24 account, added a user to set things up, which apparently doubles the cost of the subscription. It's fault for not seeing the small print (would have just given that user my email/password instead). Got a bill for 6 times the amount because when you add a user and then remove them, you are charged each time. I added a user and then removed them for security reasons (least privilege principle), then added them back again to fix something and then removed them again.",
+      "thumbs_up": 18,
+      "date": "2024-02-16T06:37:45"
+    },
+    {
+      "rating": 5,
+      "text": "I love how even I feel confident setting up tables, cross referencing other tables, calendars, photos, websites or spreadsheets! I am in my late 50's and not super techy and I am good enough that I can teach others how to use it. My techy friends love it too! How awesome is that? A platform for everyone! It's also easy to use as a team across generations. That is not simple to find.",
+      "thumbs_up": 28,
+      "date": "2019-11-12T12:06:09"
+    },
+    {
+      "rating": 2,
+      "text": "The app is serviceable (barely) but is missing some very basic features. List view and form view are not supported at all. The app looks and feels nothing like the desktop version so it can be disorienting to switch between them. My staff really dislikes the android app. Overall, we like Airtable and we pay a lot of money for it. We would like to see more effort put into the mobile app very soon.",
+      "thumbs_up": 39,
+      "date": "2023-03-30T17:45:12"
+    },
+    {
+      "rating": 3,
+      "text": "I am using this to keep track of my whiskey collection. The app used to have a real nice card layout that I customized to show the most important stuff first, but in a recent update that all went away and I'm left with this awkward spreadsheet view that just doesn't fit on a phone screen like the cards did. The cards still exist on desktop, but I like having the app so I can reference my opinions and prices quickly while out shopping around, and its become a lot more difficult to use.",
+      "thumbs_up": 31,
+      "date": "2020-10-06T20:39:43"
+    },
+    {
+      "rating": 4,
+      "text": "No time blocking? I can't find any view, base, or template that is relevant || I gave it another try, recently (on desktop). Vastly improved! I will be using this site in my daily life. On the app... Much like everyone is saying, incredibly limited. Basic templates not available to work with. I'm sure they're working on it!",
+      "thumbs_up": 4,
+      "date": "2023-05-31T14:23:39"
+    },
+    {
+      "rating": 1,
+      "text": "One of the worst apps I've endured for two years. Airtable really dropped the ball on this app. Do NOT expect to use this app as a regularbsolution for on-the-go mobile data entry / updating your database. The app often doesn't save paragraph text field data, and if you switch to another app for a few moments to copy something, chances are you'll have to renavigate back to the base, view, and row you were just on. The app was easier to endure before Airtable recently changed the plans.",
+      "thumbs_up": 6,
+      "date": "2023-11-28T07:25:48"
+    },
+    {
+      "rating": 1,
+      "text": "The functionality of the Android app vs the desktop app is very limited to the point of making the app practically useless. I can view records and download attachments. That's the sum total of the functions I can perform on my tablet. Everything else has to be done on my laptop, making me wonder why they bothered to make an Android app in the first place. At least there aren't any ads.",
+      "thumbs_up": 13,
+      "date": "2023-06-09T23:19:28"
+    },
+    {
+      "rating": 2,
+      "text": "Takes forever to load. Some boards load immediately, but the main one my company uses spins for well over 15 minutes without any results, even for just my personal view. Makes it impossible to check comments, update the status, or even create new cards. The organization for the one board I can view is a mess, splicing together everything into a blob separated only by the color of the tag. Considering that you're forced to use the app on mobile, the least it could do is be functional.",
+      "thumbs_up": 27,
+      "date": "2020-02-04T08:37:00"
+    },
+    {
+      "rating": 4,
+      "text": "Airtable is a game changer! I use or for both personal organization and at work. It has filled the gap between Google spreadsheets and custom apps. My only complaint and the reason I give 4 stars is I find the pricing very limiting for personal use. At work we use advanced features and the pricing is reasonable. For personal use I can't justify the subscription cost. I would happily pay a cheaper subscription with additional feature limitations for personal.",
+      "thumbs_up": 19,
+      "date": "2022-01-02T16:55:21"
+    },
+    {
+      "rating": 3,
+      "text": "We use this app for work. It's ok except for the fact that it doesn't want to work at all for me unless I have a full wifi signal Which can be very frustrating when trying to access a file on a job site. I normally have to connect to my cars wifi to get a better signal so it will open the app. Otherwise it's great for what my job uses it for. Wish we could upload video to it though. Only can upload pics and files but doesnt support video.",
+      "thumbs_up": 16,
+      "date": "2020-11-28T15:23:07"
+    },
+    {
+      "rating": 3,
+      "text": "Works for the most part, but it's very slow. Lots of spinning loading pages that take forever, and on android you can't open the app from a notification, and can't open a comment from a notification inside the app. It'll spin forever and never load. It's irritating when you have a ton of tasks and can't find that one comment or reply",
+      "thumbs_up": 16,
+      "date": "2025-01-31T15:12:55"
+    },
+    {
+      "rating": 1,
+      "text": "I'm so happy to have this app, the company I work for uses airtable as the core of our business, and as a remote worker, having access on the go is a huge game changer. I'm leaving one star because the app is crashing like crazy, I've already uninstalled and reinstalled multiple times, can't find a reason why. Please fix it so I can leave five stars!!!",
+      "thumbs_up": 22,
+      "date": "2022-07-01T19:47:20"
+    },
+    {
+      "rating": 3,
+      "text": "It's easy to use. However, mine downloaded with a bug. I'll be working on a project. It'll save, but then instead of moving to the next task I need to perform, it'll shut down and exit the app. I'll have to reenter or clear catch before I can continue. When my phone has me clear catch it reports a bug on the app.",
+      "thumbs_up": 10,
+      "date": "2023-07-17T05:30:30"
+    },
+    {
+      "rating": 2,
+      "text": "I use Airtable at my job and was hoping the app would be a big help when I'm on the go. NOPE. Every single time I try to check notifications, the app freezes, refreshes and then shuts itself. It is so frustrating and something that has happening for at least the past 6 months. I reported it but the issue hasn't been resolved. I finally uninstalled this morning because it's useless to me if I can't even check notifications.",
+      "thumbs_up": 12,
+      "date": "2022-01-10T09:54:53"
+    },
+    {
+      "rating": 4,
+      "text": "I'm having issues with loading on my Android. Every time I click in the top left corner to switch sheets it is spinning and not loading the page. I can work inside my current sheet and I can switch bases. An additional tiny issue-- I can't click on a URL in a note field on an iPhone like I can on Android. I have to edit the note and copy and paste into the browser.",
+      "thumbs_up": 50,
+      "date": "2024-12-13T10:00:28"
+    },
+    {
+      "rating": 2,
+      "text": "Constantly doesn't sync my updates or undoes them completely, causing me to lose all my work. Would be so great if it didn't.",
+      "thumbs_up": 0,
+      "date": "2026-03-21T10:07:07"
+    },
+    {
+      "rating": 5,
+      "text": "⭐️⭐️⭐️⭐️⭐️ Airtable is a very practical and flexible app for managing projects, records, and workflows. I use it to organize information, track progress, and collaborate easily. The ability to customize tables, views, and fields makes it adaptable to almost any use case. It saves time, improves clarity, and helps keep everything in one place. Highly recommended for anyone who values organization.",
+      "thumbs_up": 15,
+      "date": "2026-01-18T09:14:53"
+    },
+    {
+      "rating": 2,
+      "text": "Ok in a pinch, but unreliable. Frequently crashes or simply won't load data. Search functions are unavailable, so be prepared for a LOT of scrolling. Certain workspaces blocked on app that are fully functional on desktop",
+      "thumbs_up": 2,
+      "date": "2026-01-15T02:23:04"
+    },
+    {
+      "rating": 4,
+      "text": "great little app. does exactly what I needed to do. took a little figuring at first though.",
+      "thumbs_up": 1,
+      "date": "2026-03-05T15:10:03"
+    },
+    {
+      "rating": 1,
+      "text": "So. Buggy. Notifications that won't clear. Random crashes. Uploads that duplicate 2 to 7 times, lagging the app terribly. Clearly AirTable devs all use iOS because this interface and all the bugs are just unbelievable. 5 years later and improvement but not by much. Fewer crashes but still too much lag and buggy behavior (typing into an interface can lag up to 10 to 15 seconds). such great ideas and concept but poor execution makes it a poor choice to invest in.",
+      "thumbs_up": 10,
+      "date": "2025-12-05T06:07:11"
+    },
+    {
+      "rating": 1,
+      "text": "most confusing app I've ever had the pleasure to use. I kept trying to start a blank project but it's populated with random people and lots of random stuff everywhere with no walkthrough or explanation on how to use or what different functions were. tried a few times and even AI couldn't help understand it.",
+      "thumbs_up": 3,
+      "date": "2025-11-05T05:10:24"
+    },
+    {
+      "rating": 1,
+      "text": "Still no changes on the (name:ascending vs descending) issues. Plus, now when I try to add more places to a travel base, the app freaks out a lot & starts to glitch so the typing cursor is all over the place. If I type something like 'Ireland', it ends up as something like 'land' or even 'ndlr'. I can't even backspace because it somehow ends up the same mispelled results again. I was gonna use this while I travel to keep track but now I'm scared it'll crash and I can't see my notes and lists!",
+      "thumbs_up": 12,
+      "date": "2024-03-17T21:27:02"
+    },
+    {
+      "rating": 1,
+      "text": "The app overall is (was) fine. There are fewer features than on the website (I would really like the option to create mobile interfaces), but it's serviceable for now. However, the recent update has made it impossible to use. I can't open any database without it crashing after 20 seconds. I use Airtable because of its cross-platform capabilities, but if the mobile app literally will not open, I am going to find a different service.",
+      "thumbs_up": 9,
+      "date": "2023-08-25T13:18:19"
+    },
+    {
+      "rating": 3,
+      "text": "The mobile experience is limited compared to desktop, but was originally what I wanted (organised data that I can easily access and carry around with me!). Unfortunately, the app recently began crashing whenever I opened and scrolled down a record. This issue only happened about 70% of the time so I desperately continued to use the app, but then my phone told me that the Airtable app now, for whatever reason, contains malware, so I have finally given up and uninstalled.",
+      "thumbs_up": 13,
+      "date": "2022-01-22T06:29:14"
+    },
+    {
+      "rating": 1,
+      "text": "Too many limitations to use it conveniently. Data doesn't refresh on a record view when a new record is created. Required reopening the app. No inline record entry. Please don't claim that an interface format is mobile ready when crucial functionality is lacking.",
+      "thumbs_up": 3,
+      "date": "2025-10-08T04:42:26"
+    },
+    {
+      "rating": 5,
+      "text": "Edit: big improvements. Awesome product. ------‐----‐----------------------------------------------- The desktop version is awesome. Love it. The Android app version is very disappointing. The screen layouts aweful. Learning the desktop version lets me achieve my goals. I'm not going through another learrning process to figure out how to do things in the app. It's that different.",
+      "thumbs_up": 40,
+      "date": "2021-08-01T02:50:55"
+    },
+    {
+      "rating": 1,
+      "text": "Was looking for an Android alternative to MS Access, this seemed to do the job but if, of course due to limitations of the system, weak in comparison, though usable for most purposes. The main issue is that this app crashes constantly and gets stuck in a loop where each button takes you back to the home screen. Thus rendering the app unusable. Even closing a reopening doesn't seem to fix this. Have to close and come back 20min later. Not actually usable a majority of the time. Uninstalled.",
+      "thumbs_up": 8,
+      "date": "2023-05-13T05:10:10"
+    },
+    {
+      "rating": 5,
+      "text": "A perfect app for both business and personal use. Relating table, storing documents as a data and most beautiful thing, you can do all these online!... No alternative available, this is the most useful online database currently available.  Only thing is, as being a free user, I am missing the blocks, since they moved to premium version now.  I am not asking many, would be just nice to give a single block per base for free-users... Leaving it to the developers... :)",
+      "thumbs_up": 34,
+      "date": "2018-12-24T05:44:05"
+    },
+    {
+      "rating": 2,
+      "text": "There are many bugs and features that are not available on the app. On the desktop version interface, it says that Kanban is visible on mobile, I spent hours editing the version on my desktop only to find out here that it is unavailable on mobile even if it stated the contrary. The three dots to view more buttons crashes my interface every time I click on the three buttons. All this is just within 5 minutes of browsing my interface, there are probably a lot more issues than that.",
+      "thumbs_up": 3,
+      "date": "2024-04-29T18:35:49"
+    },
+    {
+      "rating": 2,
+      "text": "The phone version isn't great. Even if I dumb down views just for my phone, it's awkward to use. To change a check box, you need to click the row, hit the check, and then back out.  It's be better if there was a view just for phone use where you just hit the one thing you need to edit that feel for what it is, and commit. Do for a check box, just toggle. A date, select a date from a pop-up. A number, edit the number and submit with an enter.  The phone view doesn't need to have things move around or disappear based on sorts and filters, but I guess that could be a toggle.",
+      "thumbs_up": 15,
+      "date": "2019-08-26T02:03:25"
+    },
+    {
+      "rating": 2,
+      "text": "Bit of a disappointment. The desktop app is fantastic, but the lack of crossover features with the mobile app (particularly lists, which are not available at all) present a major limitation to what can be achieved on mobile. We're heavily invested in lists, so the mobile app is now really only used for light edits and commenting. Calendar views are also very limited - records are just dots in boxes and there are no weekly of fortnightly views.",
+      "thumbs_up": 12,
+      "date": "2023-10-18T02:29:52"
+    },
+    {
+      "rating": 5,
+      "text": "this has already massively decreased my stress on finishing my house. We put the punch list on here and now everybody can see it including the general contractor",
+      "thumbs_up": 2,
+      "date": "2026-02-01T16:47:02"
+    },
+    {
+      "rating": 2,
+      "text": "everything is perfect just one thing is missing, offline mode there should be offline Version of the database or cached database which would be very useful when dealing with internet issue. or at least the interface should have an option of downloading offline view",
+      "thumbs_up": 2,
+      "date": "2025-12-20T03:18:10"
+    },
+    {
+      "rating": 1,
+      "text": "we use this company for our crm, download the app to do mobile updates, but policies can't even be pulled up. it says not supported on mobile. no real point in the app if all of the data is hidden",
+      "thumbs_up": 1,
+      "date": "2025-11-05T16:13:56"
+    },
+    {
+      "rating": 1,
+      "text": "So dumbed down you can't get in. Weather it is a phone app or on the browser, this product forces you through AI template builds that are exhausting and not what I wanted. 30 minutes down the tube and still hadn't managed a simple grid with a title. The product was more focused on what Icon and color scheme. Let people chose whether they want the templates or build their own.",
+      "thumbs_up": 1,
+      "date": "2026-02-02T02:07:15"
+    },
+    {
+      "rating": 3,
+      "text": "The app is a great companion if you already use the desktop/browser vers of airtable. But there are some technical issues that you might run into for those with larger databases, such as loading speed and search. What this app needs is an offline mode, the ability to cache some or all your data onto the app for quick pull-up in areas that might have poor reception or for those who are mobile data limited. The pricing structure isen't that appealing for someone who just wants expanded records",
+      "thumbs_up": 9,
+      "date": "2022-09-15T20:07:17"
+    },
+    {
+      "rating": 2,
+      "text": "Lost all my files. This is a good app if a bit clunky to navigate. It holds files/images well. I deleted my whole collection by accident trying to work on different views and could not get them back from the bin. I deleted the app and came back only to find someone else is now using my login details with their own images and have lost all my files and hundreds of images I had collected and stored.",
+      "thumbs_up": 16,
+      "date": "2023-01-11T05:39:53"
+    },
+    {
+      "rating": 3,
+      "text": "Some features are missing compared to the Web version; a few simple ones would be the ability to make records' height smaller, and to be able to collapse some groups when using the \"Group\" function. Finally, a great feature would be the ability to have a working script button, but I understand this is quite hard to implement correctly on mobile; maybe sending a link to a mobile-friendly Web page where the script is executed would be easier to implement? Other than that, very decent app!",
+      "thumbs_up": 8,
+      "date": "2021-11-02T08:24:48"
+    },
+    {
+      "rating": 3,
+      "text": "Good idea.......Excel (on a real computer) already provides much much more than this......however, I can see how this could be a great system (although many other similar systems exist) for creating a phone/ tablet system. Unfortunately the user does not have full control to adapt the system so other app systems seem to be better although possibly more expensive. Keep working on it though!",
+      "thumbs_up": 7,
+      "date": "2020-01-08T17:06:01"
+    },
+    {
+      "rating": 2,
+      "text": "The app crashes almost every time I try to use it. There are a lot of features I need to access that are unavailable on the mobile app as well. Hoping the functionality and feature availability issues are corrected soon. The reason I gave 2 stars instead of 1 (even though I can't use the app at all) is because I've seen Airtable correct issues pretty aggressively in the past, and I'm hoping this trend continues.",
+      "thumbs_up": 7,
+      "date": "2024-04-28T14:01:23"
+    },
+    {
+      "rating": 4,
+      "text": "The app is very nice and easy to use at some times. I downloaded it so I could keep track of my expenses but what I noticed is that on computer and ipad it shows my balance but on my phone it doesn't show the balance it kinda of really bugs me. If you make any updates please make that a thing yall update cause I really don't want to have to keep opening up my laptop or ipad to check the balance when my phone is always with me more.",
+      "thumbs_up": 17,
+      "date": "2021-02-25T16:20:01"
+    },
+    {
+      "rating": 2,
+      "text": "Love Airtable on desktop, mobile is just a terrible experience. Super slow and such a bad interface.",
+      "thumbs_up": 5,
+      "date": "2026-01-01T07:08:54"
+    },
+    {
+      "rating": 2,
+      "text": "The app's monthly subscription fee has increased to $48, which many users find unreasonable. The app also suffers from glitches; for example, tapping on some cells leads to different cells, which is confusing. It seems that the app is losing its quality and reputation, which is unfortunate because it used to be excellent, but nothing lasts forever.",
+      "thumbs_up": 26,
+      "date": "2023-09-01T04:01:37"
+    },
+    {
+      "rating": 1,
+      "text": "It's hard to describe how bad this app is when you have limited connectivity. It must be trying to download everything possible on every interaction. It fails to save even a checkbox state change, then force resets the app. Sometimes it'll make you think it's saved but when you go in later the changes aren't there. Yet somehow on the same internet connection I'm able to use Slack, browse the internet, use Twitter and write this review",
+      "thumbs_up": 15,
+      "date": "2023-12-21T17:47:59"
+    },
+    {
+      "rating": 1,
+      "text": "doesn't allow me to scroll so am unable to see the password field at login",
+      "thumbs_up": 0,
+      "date": "2026-03-12T09:53:07"
+    },
+    {
+      "rating": 5,
+      "text": "airtable is very good platform",
+      "thumbs_up": 0,
+      "date": "2026-03-13T06:19:34"
+    },
+    {
+      "rating": 1,
+      "text": "It must have an internet connection to run. I see no reason for this. I don't need my data on a cloud or to interact with other people. I can keep my data local. I don't have reliable Internet so the app spends a lot of time spinning or just plain grey screen. I need to enter very brief records throughout the day so it becomes a nuisance that drags me down. I wasted hours setting it up and using it for a few days, only to now need to try another program that actually runs. :(",
+      "thumbs_up": 11,
+      "date": "2022-06-16T04:17:41"
+    },
+    {
+      "rating": 2,
+      "text": "It's Meh! I will NEVER understand why this website cannot be used from a handheld device and I MUST download the app to use it. Especially since all the features are not in the app!! Absolutely ludicrous! I do all my work on the movei cannot ALWAYS have my laptop with me and connected to the internet. If you don't need those extra features (which I'm sure you will eventually) or you can always be tied to your laptop then it should be good., Otherwise find something else.",
+      "thumbs_up": 6,
+      "date": "2023-03-15T10:04:01"
+    },
+    {
+      "rating": 2,
+      "text": "I love Airtable but this app is not very good. The pdf reader is painful to use, the downloads/uploads don't always work, the app glitches a lot more lately (in fact, it won't even open for me this morning). Just unfortunate because it's such a great platform when used on browser.",
+      "thumbs_up": 2,
+      "date": "2022-12-30T11:12:24"
+    },
+    {
+      "rating": 3,
+      "text": "I love Airtable but the android app is much slower than the website when loading tables and searching in records When I try to search for a record, as soon as I enter just the first letter, it start searching and freezes the mobile for a couple of seconds and when I type the second letter it freezes again and so on... You can easily fix this by allowing the user to type the full search term before start searching",
+      "thumbs_up": 17,
+      "date": "2020-08-29T01:47:11"
+    },
+    {
+      "rating": 2,
+      "text": "Mobile app is so inadequate. I can't access comments on mobile. The notifications are not clickable. And worse, if you try to visit the site on the browser, it mandates you to use either desktop or download the app (the same app which doesn't have feature parity with desktop). On top of that, if you add the site shortcut to homescreen, it creates a PWA app on phone which only asks you to download the app or access the site on desktop. Guys, have you heard of user experience?",
+      "thumbs_up": 15,
+      "date": "2021-02-17T08:53:20"
+    },
+    {
+      "rating": 2,
+      "text": "They've finally added the \"upload local file\" feature, but it doesn't work properly - once the file is uploaded, it instantly disappears from the table. The developer is constantly advertising so many automation and programming features, why don't you stop and solve the basic bugs first?",
+      "thumbs_up": 2,
+      "date": "2023-08-03T09:59:20"
+    },
+    {
+      "rating": 2,
+      "text": "I want to love this app - Airtable is very cool on the desktop. And it seems to work okay for viewing? But for editing, it's dangerously broken. It loses entered data. I can add a table column and it'll be invisible until I force close and reopen the app. I can edit a record; see my results right there in the table; go away and edit some other record; and come back and find the first record's changes gone. Or only partially applied. A database with inconsistent state is worse than useless.",
+      "thumbs_up": 71,
+      "date": "2022-01-09T11:49:45"
+    },
+    {
+      "rating": 5,
+      "text": "Easy to use, powerful, short development times, lots of available templates, and outstanding training available for free. Airtable helps me manage everything from time spent on jobs, inventory, the business check book, the customer waiting list, a jobs kanban board, and every other detail of my business. Let's me focus on customers and the work. I couldn't ask for a better product. I use Airtable instead of Quickbooks. It does everything Quickbooks does for $50/month less. I'm sold.",
+      "thumbs_up": 6,
+      "date": "2020-06-10T07:30:23"
+    },
+    {
+      "rating": 5,
+      "text": "Love it. Works perfect for keeping my craft stamps, embossing folders and stencils categorized by my needs. Description and photos most helpful. Nice layout. Pretty easy to use. Have no issues save being able to have basic edit options with photos, just turning them right side up would be helpful. Otherwise no complaints at all.",
+      "thumbs_up": 14,
+      "date": "2023-12-15T18:57:42"
+    },
+    {
+      "rating": 1,
+      "text": "I can't sign in without granting access, which, should be optional on mobile too. Why should it be necessary? I'm working solo and should have a choice to begin with. Such a shame because I work better on mobile devices so I probably won't use it on desktop either. I liked the sync to Google Drive feature but guess there's no point now. App removed.",
+      "thumbs_up": 5,
+      "date": "2019-05-26T02:40:42"
+    },
+    {
+      "rating": 2,
+      "text": "This app looks great and could of been really good. Unfortunately, it didn't work and I could not get the app to work right. Since I was mostly using it to keep up with college and assignment due dates, I cannot afford to chancing it and praying it works right. It closed on me a couple times when it was working and saved nothing. 2/5 since it did seem like a good app and probably just needs a bug or two worked out. Will try again at a later date and will change rating. Thanks anyways! :)",
+      "thumbs_up": 3,
+      "date": "2020-01-02T21:04:21"
+    },
+    {
+      "rating": 5,
+      "text": "Since the 22-Feb-2021 update I've had problems with the app crashing. The only workaround I've found is to go to the app store and click OPEN. This app usually works after that for a while. I've used Airtable on my phone for at least a couple of years without having problems. This most recent \"update\" was disappointing. 3/5 just because I'm hoping that Airtable will find the bug for the Android version. ***GOOD NEWS*** Airtable fixed the bug right away with an update on 26-Feb-2021. I like that",
+      "thumbs_up": 16,
+      "date": "2021-02-26T10:03:27"
+    },
+    {
+      "rating": 2,
+      "text": "Have to constantly restart the app when switching tables. It will stay blank unless the app is restarted. Missing valuable features on mobile vs web. Cannot readily access the forms on mobile. Even when desktop site via mobile, you can't adjust celll width, hard to scroll, hard to move cells around. In terms of pricing, I believe they should have some things a la carte. It's not worth paying double or even triple for a higher tier to get table synchronizations across multiple workspaces.",
+      "thumbs_up": 5,
+      "date": "2024-11-27T17:25:35"
+    },
+    {
+      "rating": 3,
+      "text": "Make form links accessible! I am obsessed with Airtable. I use it every single day for a variety of personal and professional uses. The fact that it is impossible to access my form links from my phone, without having to go sit at a desktop and email them to myself, is absurd. I'm not asking to edit or use them within the app on mobile, I'm just trying to copy the URL so I can fill out my own forms on my phone from the web link.",
+      "thumbs_up": 5,
+      "date": "2023-07-27T10:28:49"
+    },
+    {
+      "rating": 2,
+      "text": "Obviously a database. Not very intuitive. Trying to use it as a membership database. After creating fields, no obvious way to add the next data set for another member. Default view is light blue with white text ... unreadable. I'm trying to like it, but has a distinct 1990s feel of usability.",
+      "thumbs_up": 12,
+      "date": "2024-03-13T20:23:23"
+    },
+    {
+      "rating": 1,
+      "text": "No matter how many times I delete my account or block emails, I still get their legal notices since, apparently, legal notices are allowed to ignore your preferences of opting out of emails. Actual notice I copied/pasted from the email. prepare to be on their list until they disappear: \"(legal notices are not covered by any opt-out from Airtable marketing and promotional emails)\" As for the actual app, awful. Desktop is the only functional way to use this service. So, making an app was useless.",
+      "thumbs_up": 3,
+      "date": "2024-06-14T09:16:39"
+    },
+    {
+      "rating": 2,
+      "text": "Airtable fits into my work flow well for most things, but I've recently come across an issue that makes me reconsider it entirely: I'm unable to attach local files that aren't pictures to any of my records. Listen. If I had an online storage location like Box or Dropbox, I'd be using those as my primary system. Do you know how crippling it is not to be able to upload PDFs/docs without 9 extra steps to upload it somewhere else first? Absolutely ludicrous, fix it Airtable.",
+      "thumbs_up": 58,
+      "date": "2022-01-20T12:08:07"
+    },
+    {
+      "rating": 3,
+      "text": "Great desktop experience, app in iPad is very good, but mobile app in android cellphone is not good enough. My main complains are: views/filter/sorting are very limited, app is clunky and unreliable, and it doesn't work offline (which is dealbreaker). I will keep using Airtable in my laptop, and probably my ipad, but until it gets better on cellphones I am just going to delete the app. I'll keep an eye on future updates thought, hopefully it improves.",
+      "thumbs_up": 21,
+      "date": "2018-12-31T11:19:45"
+    },
+    {
+      "rating": 3,
+      "text": "Love Airtable; not in love with mobile onboarding. Signed up online, created some bases; logged into the mobile app and it's a whole new workspace for a new user. None of my apps available, despite having now upgraded to pro. How do I have 2 instances running on 1 email address, based on device sign-in? Very unusual bug, and very frustrating. Couple of emails to support since yesterday and nothing back yet. Only upgraded to pro today, so I'll give em a chance. Great overall product otherwise.",
+      "thumbs_up": 6,
+      "date": "2019-05-06T16:42:29"
+    },
+    {
+      "rating": 3,
+      "text": "I love Airtable, the desktop version. The app looks like a 2006 interface and very clunky. Also, we can't see full size images. I have a databse of reciepts and I can't zoom out to see the full reciept it's just cut off, what's that about? Improve this please, I pay for premium.",
+      "thumbs_up": 0,
+      "date": "2020-07-28T13:35:10"
+    },
+    {
+      "rating": 1,
+      "text": "I use the desktop version all the time and was excited to be able to use the mobile app, but I was wrong. I am not able to view interfaces in the Android app. My coworker has an iPhone and it works perfectly. This is very disappointing. Fix the interfaces for Android please.",
+      "thumbs_up": 25,
+      "date": "2024-03-05T22:22:58"
+    },
+    {
+      "rating": 3,
+      "text": "Overall an awesome app, but there are some worsened features over the latest versions, as well as some stupid missing ones on android versions. 1. Previously images in the records - which are often representative for the records and help you visually find what you want- where large so you could clearly see them, now they are half the size. Hope they will realize and change it back 2. You simply cannot tag your collaborators in a conversation under a record - a stupid missing point in androids.",
+      "thumbs_up": 8,
+      "date": "2021-01-22T18:08:50"
+    },
+    {
+      "rating": 4,
+      "text": "Some limitations but what it does it does beautifully and you can't beat the price. I would like to see more customizable interface screens. And flexibility in printing options. I am working with the free edition so some of the features of looking for a baby in the paid version that I don't have access to.",
+      "thumbs_up": 8,
+      "date": "2018-10-22T17:39:17"
+    },
+    {
+      "rating": 2,
+      "text": "The mobile app is very lacking. Trying to select a column for grouping always causes it to crash. Cannot share, cannot change filters. I could live with it if I cou,d get into the browser version from my tablet...but they block it on mobile devices. Looking for alternatives.",
+      "thumbs_up": 2,
+      "date": "2024-02-12T21:42:29"
+    },
+    {
+      "rating": 5,
+      "text": "The best (free!) database I have ever used! I love the flexibility, ease of use, clean interface, just...everything. The phone app is almost identical to the desktop app, which is also appreciated. This is so much better than Evernote it's not even funny. I'm constantly telling people about it.",
+      "thumbs_up": 14,
+      "date": "2021-07-26T19:41:18"
+    },
+    {
+      "rating": 3,
+      "text": "So far I appreciate field access to the data I have stored, but the photo upload from camera is terribly unstable and you can not use the app until the upload completes or interrupt data connection or you lose your photos. I need calendar functionality to really organize information for group access, it has been a struggle sorting thing on the app vs at a computer. I have the exact same issues running it on apple products, so it is not device specific. Airtable is an excellent product though.",
+      "thumbs_up": 2,
+      "date": "2020-09-17T09:22:23"
+    },
+    {
+      "rating": 1,
+      "text": "Missing features that are available in Desktop. I personally really think that the footer which contains information like total number of records, sum, average etc is really useful. This feature is missing in the mobile app, which I think really brings down the utility factor.",
+      "thumbs_up": 3,
+      "date": "2022-09-02T03:16:16"
+    },
+    {
+      "rating": 1,
+      "text": "The app can't seem to switch views. I can't tell if it has to do with the amount of data or views but it just spins and never comes back. There is 100pct a bug here (as a developer and tester for 25 years). Please address asap. I love this service but this needs to be addressed asap. I've tested on many phones and connections.",
+      "thumbs_up": 4,
+      "date": "2024-12-08T12:12:03"
+    },
+    {
+      "rating": 3,
+      "text": "It's ok. The one feature missing in the app is the # of records displayed in the bottom when you're filtering. I need to know how many while on my phone A LOT and this is a big inconvenience to have to go to a computer to get that simple number. I am hoping this new update June 27th 2022 is going to help with data loss that I have experienced along with other reviewers.",
+      "thumbs_up": 16,
+      "date": "2022-07-02T17:48:25"
+    },
+    {
+      "rating": 3,
+      "text": "The recent Android update messed up a lot of my apps and system settings. For airtable, when I try to type in a field within a record, the app starts quickly and uncontrollably adding blank spaces into the field, preventing me from typing. I try to delete all those extra spaces so the text appears on screen, but more space is immediately added. Can you resolve this? Thanks!",
+      "thumbs_up": 20,
+      "date": "2022-12-06T16:25:58"
+    },
+    {
+      "rating": 1,
+      "text": "About 85% of the time or more, the app won't start. This was the case on a Samsung Galaxy series. Recently upgraded to a Pixel 7 and the same thing happens. The \"waiting\" circle just spins and spins. Please fix as I find airtable very useful. Thanks",
+      "thumbs_up": 8,
+      "date": "2023-04-26T16:10:19"
+    },
+    {
+      "rating": 1,
+      "text": "If I open the app, make some edits, then leave, there is a chance my changes won't be saved. Not only that, but if I go to another app, then hop back into it, the airtable app refreshes and goes back to the home screen, away from the record I just had open!",
+      "thumbs_up": 0,
+      "date": "2024-03-16T11:02:45"
+    },
+    {
+      "rating": 1,
+      "text": "Update: After a couple updates its gotten worse. You must force close the app after every action and then launch it again. This app is very slow to load and is very difficult to make any changes in. It's easier to use the desktop view on a mobile device. It consistently crashes and creates multiple records when adding a new one. Bad ui. Bad interface. Poor execution.",
+      "thumbs_up": 14,
+      "date": "2024-08-07T03:09:50"
+    },
+    {
+      "rating": 1,
+      "text": "Airtable the service is great, the app however is useless. I'm not sure what other people are doing with this app, but to me it seems to do exactly the opposite of what it should: it accesses the backend data, but can't display the interfaces. Who is working on data structures on a cell phone? My advice to the devs would be to throw out all the code for working on the backend and make the mobile app ONLY able to view interfaces.",
+      "thumbs_up": 0,
+      "date": "2023-07-15T20:36:07"
+    },
+    {
+      "rating": 1,
+      "text": "Airtables Android app won't load images - can't add anything except basic text and numerals. Would love to have my data available on the go - trying to use this on the farm but can't take the laptop down the paddock... App needs to perform on par with the desktop version. (Galaxy note 10+)",
+      "thumbs_up": 1,
+      "date": "2020-08-22T21:41:40"
+    },
+    {
+      "rating": 2,
+      "text": "I've had this for a while to keep records of yarn and fibres. Just tried to add more and the pictures are getting all muddled up. It's showing the wrong pictures for records. My fibre database only shows 4 pictures and they are just repeated for each record. It's very strange and nothing seems to help.",
+      "thumbs_up": 9,
+      "date": "2023-06-20T11:24:06"
+    },
+    {
+      "rating": 1,
+      "text": "Won't let me sign in with Google account unless I give permission to access my contacts. I uninstalled the app because I think this is an unreasonable requirement. I have been using the desktop platform, functionality is OK but I wouldn't keep using the free version and I don't have enough need to justify premium payment.",
+      "thumbs_up": 20,
+      "date": "2020-07-17T02:09:27"
+    },
+    {
+      "rating": 2,
+      "text": "Really clunky, dated and unintuitive mobile UI I'm afraid. The schedule view never seems to order things correctly. The calendar view has no clear indicator of the current day. It's too easy to accidentally delete text fields then lose that data permanently with no undo. Lots of little things add up.",
+      "thumbs_up": 5,
+      "date": "2024-06-11T21:12:27"
+    },
+    {
+      "rating": 1,
+      "text": "Trying to create a new base and it's nothing but an infinite loading icon.",
+      "thumbs_up": 1,
+      "date": "2025-10-07T05:08:35"
+    },
+    {
+      "rating": 4,
+      "text": "Airtable is an amazing app. highly recommend. Four stars because their app has a long way to go to catch up to there web app. It doesn't work without connection and has limited functionality. Understandably difficult to merge the two though.",
+      "thumbs_up": 1,
+      "date": "2022-08-19T18:53:37"
+    },
+    {
+      "rating": 2,
+      "text": "It is an amazing app and I really used to love it, but they keep changing so many things on it I can't customize the fields how I want to anymore. It would be a 5 star app if it would go back to how easy it was to use before & with all the same options.",
+      "thumbs_up": 1,
+      "date": "2023-07-16T21:47:10"
+    },
+    {
+      "rating": 1,
+      "text": "I used to love this app for data organization, but why does the app need to view and download my personal contacts? I tolerated the glitches, since they're usually not too difficult to work around. I tolerated the holes in security that come with sharing bases, since I don't need to share my bases and I'm not working with any secret information. However, this is the last straw. There's no reason that access to my personal contacts should be necessary in order to run this app.",
+      "thumbs_up": 33,
+      "date": "2021-04-28T01:12:58"
+    },
+    {
+      "rating": 3,
+      "text": "Overall experience is just okay. Nowhere near the desktop version in terms of functionality, ease of use or navigation. Understandable that the app isn't as powerful but could be better nonetheless. Most frustrating part is that it regularly crashes and freezes requiring frequent relaunching of the app.",
+      "thumbs_up": 14,
+      "date": "2023-04-19T21:07:28"
+    },
+    {
+      "rating": 5,
+      "text": "Just what I was searching for! I was looking for a free, functional database to catalogue my personal sports card collection. I had been using Memento, which was good but does not auto sync across devices like Airtable. Airtable checks all the boxes and the free account is perfect for personal use.",
+      "thumbs_up": 6,
+      "date": "2021-08-09T23:36:49"
+    },
+    {
+      "rating": 2,
+      "text": "The app has a few bugs that are major issues. When sending invites, I can not type a message after entering an email address in the first section for the contact. When assigning people to a task, I can't see who has been added. This app developer needs professional service assistance.",
+      "thumbs_up": 1,
+      "date": "2020-04-10T23:27:05"
+    },
+    {
+      "rating": 1,
+      "text": "Airtable was great. Then tapping one cell would lead to a different one. Now it won't sync. My bases are not complex. I'll go back to Google and Microsoft. A dbase is better than a spreadsheet but what's the point when it doesn't sync.",
+      "thumbs_up": 1,
+      "date": "2023-10-08T20:19:55"
+    },
+    {
+      "rating": 1,
+      "text": "App is unusable for Android and iOS, grouped views do not work and there is no ability to export CSV files. There is NO correlation between the website version/desktop version and their mobile apps which are TERRIBLE and have been for years now. For a paid product Airtable MUST modernize their apps or finally allow tablets and phones to access the website without being forced to use this highly inferior app!",
+      "thumbs_up": 14,
+      "date": "2019-04-28T02:00:43"
+    },
+    {
+      "rating": 1,
+      "text": "Using Galaxy Note 9, Airtable locks up every time I try to search in it. I have to restart my phone to regain the use of my phone. I thought they would have fixed the problem by now, but no. Yes, I have uninstalled and reinstalled multiple times. It still doesn't work. Useless to me on this phone.",
+      "thumbs_up": 18,
+      "date": "2020-04-29T22:00:13"
+    },
+    {
+      "rating": 1,
+      "text": "This app is terrible. It crashes constantly and takes ages to load. It makes Airtable practically impossible to use and rely on when away from a computer and is enough to put me off the Airtable services altogether. Also there is no Kanban view. A look on the forums shows a blatant lack of user support or feedback. I really don't get a good feel about the company's ethos which makes me not want to invest time and effort in building anything here with them. The paid for services are very petty.",
+      "thumbs_up": 37,
+      "date": "2020-05-26T19:03:03"
+    },
+    {
+      "rating": 5,
+      "text": "I use Airtable to keep an inventory of my craft supplies. Having this database lets me know what items I already have and stops me from buying duplicate or similar items. Being able to open Airtable on my phone or tablet makes it very accessible. I highly recommend using Airtable to keep a handle on your supplies.",
+      "thumbs_up": 1,
+      "date": "2024-05-26T10:19:22"
+    },
+    {
+      "rating": 5,
+      "text": "Awesome note app and organization app. Highly customizable. if you want the ability to get rid of all the fluff and text boxes you never use, then this is the app for you. the templates can be edited and are good for giving you ideas regarding the setup.",
+      "thumbs_up": 13,
+      "date": "2018-12-17T13:56:51"
+    },
+    {
+      "rating": 5,
+      "text": "Perfect app for my work. I can work on my laptop at the office using the windows version app. I can also work on it while on site using this android version app. With 2gb free space and 1200 records for each base, this is the best app ever...👍👍👍 I wish the calendar view on the free plan can have date range 😢 I will definitely buy the paid plan once my company grows bigger. Thank you.",
+      "thumbs_up": 5,
+      "date": "2020-04-30T11:55:28"
+    },
+    {
+      "rating": 3,
+      "text": "Whenever I go into the app it resets to the home page meaning I have to wait for it to load before getting back to my work. It would be great if it would simply open to where I was before. Other than that, some old bugs seem to be fixed & the phone app is improved so I'm giving it another couple of stars.",
+      "thumbs_up": 30,
+      "date": "2024-04-10T08:43:44"
+    },
+    {
+      "rating": 2,
+      "text": "Why?! Why also these stupid changes? Make the pictures on the main list large again!! That's the whole point of having a picture there, so I can see it! Seems extra glitchy. I took one picture and somehow had three, of the same pic, listed. Makes an annoying noise when a make a new record. Why?? I was super happy before all of these dumb changes. I really don't want to have to find something else and redo all of this!!",
+      "thumbs_up": 28,
+      "date": "2020-10-14T08:45:30"
+    },
+    {
+      "rating": 2,
+      "text": "Can't add fields to my database without the app crashing. Changes to existing fields don't stick. New records seem to save only for them to disappear later. Airtable itself is great, but I only trust the app to show me existing data, not make any changes at all.",
+      "thumbs_up": 1,
+      "date": "2023-08-03T12:21:18"
+    },
+    {
+      "rating": 1,
+      "text": "This app has gotten worse over the years... Every time you switch to another app and come back, it forgets what record you had open and goes to the main home page, forcing you to start over. It's such a displeasure to use this app that I stick to the browser site and force desktop view. It makes using Airtble unenjoyable",
+      "thumbs_up": 3,
+      "date": "2025-06-26T21:44:32"
+    },
+    {
+      "rating": 4,
+      "text": "I love Airtable. Amazing product. The Android app isn't fully functional though. I needed to go to my computer to change the primary field and create an interface, and list views aren't supported. Most functionality is there though! Love the product.",
+      "thumbs_up": 12,
+      "date": "2024-05-21T17:15:26"
+    },
+    {
+      "rating": 3,
+      "text": "Overall I really like this app, it's very good for what I'm trying to do, but it feels like every week there's some major update and I need to learn how to navigate everything again, or it just complicates things. In some cases, it completely messes up a system I had in place because it removes something. I'm okay with updates, updates are good, but it's been wayyyy too much at a time (Edit: They made it to where you can't relocate bases anymore. Like why are we getting rid of useful things?)",
+      "thumbs_up": 32,
+      "date": "2024-01-07T10:34:49"
+    },
+    {
+      "rating": 1,
+      "text": "Glitches. Can't do anything easily without constant crashing.",
+      "thumbs_up": 0,
+      "date": "2025-12-26T16:03:43"
+    },
+    {
+      "rating": 1,
+      "text": "Part1 Loading, loading, loading......... Joke, waste if time.... You'll get one more chance..... Part2 This app has more bugs than Swiss cheese Part3 - You delete base, and it keeps popping up in recent - you cannot create a base if you don't have a workspace, no error message to tell you this - when creating EMPTY base, it comes up with a bunch of preloaded stuff that can not be deleted Part4 Seems bugs 3+ old, reported, but not cleaned up? Poor response, very poor...",
+      "thumbs_up": 1,
+      "date": "2025-02-26T02:58:30"
+    },
+    {
+      "rating": 4,
+      "text": "Love this app! I use it for my monthly books in my business. But lately i cannot get it to stay open. I can access at fine on my computer but my phone just won't work. Very frustrated and sad. Was great until then. Now i have to get my computer out which is inconvenient.",
+      "thumbs_up": 5,
+      "date": "2024-01-31T07:46:28"
+    },
+    {
+      "rating": 2,
+      "text": "I used to work on Trello and started using Airtable since last few months. Airtable is absolutely amazing to use with various templates and stuff. I liked that we can create our own template. Works and runs beautifully on web version. However the only thing goes negative is its App version. Its app version as compared to Trello is poor and not user friendly at all. The comments or activity record do not appear quickly. Hope it gets resolved sooner.",
+      "thumbs_up": 11,
+      "date": "2021-05-03T11:34:33"
+    },
+    {
+      "rating": 1,
+      "text": "Don't understand who'd come up with a user interface like this and put it out on the market. Very unhandy, tried working around with it with for a couple hours and then decided to uninstall, if it is that complicated to just set a work space up and use it for what I need I don't want to imagine how awful continuously working with it is. Will be looking elsewhere",
+      "thumbs_up": 0,
+      "date": "2025-02-16T10:13:18"
+    },
+    {
+      "rating": 3,
+      "text": "Pros: Dyamic database building functionality, impeccable integrations Cons: Record Linking can get very messy! Mobile use is awful on Android and iPad. Pricing structure caters to business users and does not consider us single/personal users. There are a few Excel features I wish could be incorporated in this app. Not presentation- or print-friendly.",
+      "thumbs_up": 10,
+      "date": "2024-04-10T22:32:15"
+    },
+    {
+      "rating": 4,
+      "text": "I love Airtable. I just wish I didn't have to re-navigate from the homepage when switching between it and other apps on my phone (e.g. inputting info from a webpage). The ideal UX would be to have most recently accessed view open when you switch back to the app.",
+      "thumbs_up": 4,
+      "date": "2023-04-16T08:47:14"
+    },
+    {
+      "rating": 3,
+      "text": "Freezes even on small base Mostly good, but the app often hangs when regaining system focus, even with a small base (a few tables, a few dozen records, no attachments). Also, some table connections (links) cannot be removed with the app, instead requiring the web interface.",
+      "thumbs_up": 4,
+      "date": "2021-07-08T12:11:19"
+    },
+    {
+      "rating": 3,
+      "text": "Airtable itself is good. But the app is very slow to load when open. The concept of display information differently than on the desktop version is nice, but they didn't executed well. It seems a beta version of a final good app.",
+      "thumbs_up": 7,
+      "date": "2019-12-08T00:44:21"
+    },
+    {
+      "rating": 5,
+      "text": "Clever app! Not used to write a review for this type of apps, but this one is really powerful. You can organise your data like a database. It is so intuitive that I feel almost ashamed for the people making tutorial videos (sorry guys ;-). Special mention for the possibility to add predecessors from the same table, and also for the grouping option, making your table visualisation dynamic while adding new records. Well done!",
+      "thumbs_up": 5,
+      "date": "2024-10-03T10:39:04"
+    },
+    {
+      "rating": 3,
+      "text": "The service is great. The important features from web version are still missing e.g. table, Kanban view. Updating data from the app needs data and consumes battery. Putting in more features will make the app more useful. The worst thing is filestack for attachment field. File list is incompletely shown. The sorting is chaotic result in uselessness of the attachment field.",
+      "thumbs_up": 4,
+      "date": "2018-09-17T23:19:24"
+    },
+    {
+      "rating": 4,
+      "text": "LOVE using Airtable! It has made my project tracking and content creation much easier. However, the app version really lacks the same capabilities I enjoy using on the desktop version. Wishing there was a way to integrate some of those components!",
+      "thumbs_up": 1,
+      "date": "2020-08-13T10:59:34"
+    },
+    {
+      "rating": 2,
+      "text": "The Android app is barely serviceable. I use airtable extensively and have no problems with the website or iOS app. It is basically impossible to get anything done in the Android app. Filters don't work, linking records is glitchy, and navigating the app is laggy and inconsistent",
+      "thumbs_up": 2,
+      "date": "2023-10-31T00:56:17"
+    },
+    {
+      "rating": 1,
+      "text": "Can't sign in via Google without granting access to contacts. I don't see a reason why it needs that. I don't support apps that needlessly try to take advantage of permissions like that. Might as well not have an app. Oh well. I like the desktop version.",
+      "thumbs_up": 32,
+      "date": "2019-10-28T11:24:10"
+    },
+    {
+      "rating": 1,
+      "text": "ugh. the most recent updates destroyed this app. the UX is awful for Android. I used to be able to search and add a new item in a category from the section itself. now I have to pull up the section separately, add new item, then go back into my chart and add it...it's such a huge pain. and now it shows my items in colored labels in the list even when I've selected no colors. it's almost unusable now.",
+      "thumbs_up": 3,
+      "date": "2023-05-08T11:02:29"
+    },
+    {
+      "rating": 2,
+      "text": "I love Airtable, but the app is useless and has been for years. Don't count on being able to use your data on the go with Airtable. The load times are long and it reloads anytime it loses connection even for a second.",
+      "thumbs_up": 6,
+      "date": "2024-08-14T17:16:40"
+    },
+    {
+      "rating": 5,
+      "text": "I created a poetry database to keep track of journal subscriptions, poems, and simultaneous submissions. I'm not nerdy by modern standards, but I was able to do it with the android app which I prefer to the windows desktop version. Flexible! Fun! And forgiving.",
+      "thumbs_up": 7,
+      "date": "2020-04-23T21:46:52"
+    },
+    {
+      "rating": 5,
+      "text": "I needed a todo-list app that went beyond what simple todo apps provided, but couldn't stand how the highly opinionated full-feature apps forced me to structure my work. I was actually just about to take the time to create my own, which would have been essentially a spreadsheet UI over the top of an RDBMS, when I came across Airtable. It is exactly what I would have made for myself (actually way better, tbh).",
+      "thumbs_up": 3,
+      "date": "2020-03-09T11:27:22"
+    },
+    {
+      "rating": 1,
+      "text": "Lack of Features like in Desktop app makes this app merely usable. I hope developers will make this app as better as the desktop Version of the air table. Desktop version has different Views that I can provide to different persons with kind of information i want But this app is Just main table and either I have to give full edit access to everyone or it's nothing",
+      "thumbs_up": 1,
+      "date": "2023-12-14T11:05:26"
+    },
+    {
+      "rating": 2,
+      "text": "Good Product and the app is well written. Reminds me very much of database applications such as Paradox which I used extensively in the 1980's although much smarter, more modern, cloud based and clean! The app requires access to your google account (I used my google account to login). I am not comfortable with giving anyone far less an app full access to my google account hence only two stars. I will try to create an account without using my google account and see what happens.",
+      "thumbs_up": 13,
+      "date": "2019-11-04T16:17:39"
+    },
+    {
+      "rating": 2,
+      "text": "It is a great app. Too bad the last update broke it. If I switch to a different app, like my photo gallery to attach a pic, the app closes and will not reopen. I have to reboot my phone, so now its useless. Please fix for Android use.",
+      "thumbs_up": 0,
+      "date": "2024-03-17T19:07:03"
+    },
+    {
+      "rating": 1,
+      "text": "The app is very disappointing compared to the amazing web version. The app for Android does not show summary overview on top of the columns as compared to the app for Apple. Although there needs to be group view options for both Android and Apple apps. The app requires more features to be refined in order to be user friendly and easy to use.",
+      "thumbs_up": 7,
+      "date": "2019-06-10T02:26:13"
+    },
+    {
+      "rating": 5,
+      "text": "Incredibly useful database on the go. While I still depend on the desktop version of Airtable for the advanced features like table linking, blocks, and formulas, I am grateful for a mobile solution for data changes. Looking forward to improvements in the future.",
+      "thumbs_up": 6,
+      "date": "2020-01-24T01:20:34"
+    },
+    {
+      "rating": 1,
+      "text": "App barely even works. Creating a new (blank) base will duplicate old data so you can't ever start fresh. It's not possible to add fields or entries since the app just doesn't load the modal. All you can do is look at existing bases created on another platform. Not worth the time since cross-platform capabilities should be a core functionality.",
+      "thumbs_up": 2,
+      "date": "2023-11-18T11:31:46"
+    },
+    {
+      "rating": 5,
+      "text": "perfect, fast and easy to use cloud database with ability to easily share the database with collaborators, and lots and lots of features in free app. if only it had the ability to export the data to other databases in a format other than csv... and if course you can work on your database offline",
+      "thumbs_up": 13,
+      "date": "2019-07-31T16:29:17"
+    },
+    {
+      "rating": 1,
+      "text": "Unfortunately can't use the app because of lots of errors with uploading pictures in correct column. If you upload picture in column, it often uploads it in next column. You just can't upload it in the column you need. This error is same for Android app and iOS app.",
+      "thumbs_up": 2,
+      "date": "2020-03-10T07:14:07"
+    },
+    {
+      "rating": 3,
+      "text": "EzraB is correct, desktop much better than mobile. I ONLY USE 4.5+ Had desktop 2yrs before I looked at mobile. Rating was so poor, I didn't bother to download until now. In fact, together AIRTABLE didn't meet expectations so I stopped subscription. I'll give it another chance, start at 3. Main complaint popular IT STYLE LIE about \"integrations\" from that HORRIBLE 3RD PARTY zapier GARBAGE which we all know just builds INTERFACES. Not good policy TO MISLEAD CUSTOMER/PUBLIC. WE WANT PARITY + TRUTH.",
+      "thumbs_up": 12,
+      "date": "2022-01-17T00:04:30"
+    },
+    {
+      "rating": 4,
+      "text": "Excellent functionality. I'm using to it both inventory my tools, and organize my D&D campaign. Only issue I have is that it's a bit buggy (Samsung Note 10) crashes now and then, have to restart it now and then. It's such a good app that I use it regularly nonetheless. 4 stars for now, 5 if updates fix some of the bugs.",
+      "thumbs_up": 5,
+      "date": "2021-07-10T16:01:01"
+    },
+    {
+      "rating": 4,
+      "text": "This is a great way to store all my sewing pattern info but the latest update made the pictures half the size which are now impossible to see properly without clicking on them. Its really made a big difference to how user friendly it is for me and I see no benefit of the change. Alas all my data is in there so I'm stuck with it but will plead with the developer to increase the images again please! Would easily be 5 star before this change.",
+      "thumbs_up": 20,
+      "date": "2020-10-10T03:41:50"
+    },
+    {
+      "rating": 4,
+      "text": "Great app for collaborative tabular data. The main downside is that it loses all functionality in the absence of a strong internet connection! Would love to be able to queue edits locally while offline to sync to server later.",
+      "thumbs_up": 0,
+      "date": "2022-08-29T18:47:09"
+    },
+    {
+      "rating": 4,
+      "text": "I want to love AirTable soooo badly, and it feels like the issues I experience with it might be due to bad administration by my employer. I like it a lot personally and would use it for my own projects, but I'm also *very* technically inclined. Getting my less-techy coworkers to use it properly is a struggle and they all HATE it. It's almost... *too* functional? Like, it can do and integrate so many things, but it ends up feeling jumbled and like none of it works with itself for an avg. user?",
+      "thumbs_up": 5,
+      "date": "2022-04-25T11:51:51"
+    },
+    {
+      "rating": 5,
+      "text": "The support team is phenomenal! I switched phones to a One Plus 8 and the take and attach picture was not functioning. They found the bug and released new version that is just outstanding! Thank you Jacob and the support team!",
+      "thumbs_up": 6,
+      "date": "2020-08-26T09:09:33"
+    },
+    {
+      "rating": 5,
+      "text": "I've been using Airtable as a writing aid. My database of scene ideas and character notes is the most important tool I have. It's always with me when I have random ideas, and so easy to configure. I can't imaging writing anything without it now.",
+      "thumbs_up": 3,
+      "date": "2022-12-19T15:47:13"
+    },
+    {
+      "rating": 5,
+      "text": "So far, seems like it could be useful. I am interested in an app that would seek my gmails by search word, then copy them into a cloud or device database, in which they would be listed by person who sent, and by date received...with a brief notes section on top, extended writer's section below, and checklist area for things needing to be done regarding them, with a goal date tracker that includes the capability to set a reminder in my notifications, with \"dismiss/remind again\" swipe options? :)",
+      "thumbs_up": 6,
+      "date": "2021-12-09T17:44:50"
+    },
+    {
+      "rating": 4,
+      "text": "Light, fast, straightforward. Faster than excel, sheets and even notion. I know some teams from work use it as a shared base, but I use it for personal use. The down side is that there's no offline editing.",
+      "thumbs_up": 5,
+      "date": "2022-02-21T06:52:18"
+    },
+    {
+      "rating": 2,
+      "text": "Almost useless to me if it can't even sort alphabetically. If I could attach a photo you'd see. It sorts by Company as requested but then when I sort under a secondary requested set (Name) it cant put correctly m is after s & l is before h. Its going to be really annoying to sift through 200 to find what I want",
+      "thumbs_up": 3,
+      "date": "2021-08-11T15:41:38"
+    },
+    {
+      "rating": 1,
+      "text": "Looks promising. Please keep improving. Prefer a DB tool that can export or migrate. It is precisely with frustration that a previous tool I use cannot migrate after hitting some limit. Again, another tool which just seems the same, doesn't make sense.",
+      "thumbs_up": 2,
+      "date": "2023-06-15T09:32:20"
+    },
+    {
+      "rating": 5,
+      "text": "I like it and I like it more because of person who made it easier to make a fakedex by coding in this app",
+      "thumbs_up": 0,
+      "date": "2025-11-10T03:13:34"
+    },
+    {
+      "rating": 1,
+      "text": "Somehow I have an account with this and I'm getting emails!! I hate & can't stand AI, don't want to use it, never subscribed or intended to subscribe to anything of this nature!! Likely invasive? I'll unsubscribe from your unwanted emails, idk yet what else to do. I don't even have this app in my device!! 😡 Logo looks suspiciously/typically google-like. This is invasive unwanted garbage to me!",
+      "thumbs_up": 0,
+      "date": "2024-06-04T17:43:44"
+    },
+    {
+      "rating": 1,
+      "text": "I know adapting such a complicated webapp into a native app for small screens is extremely difficult but my reason for one star review is one missing feature - I want to be able to quickly switch accounts (or even better - work in parallel with 2 accounts). Please allow me to use this as parallel app (available in good android phones) and it will be 5 stars.",
+      "thumbs_up": 2,
+      "date": "2020-01-16T09:14:01"
+    },
+    {
+      "rating": 5,
+      "text": "it's very good application and it's making my life so much easier thanks",
+      "thumbs_up": 0,
+      "date": "2026-01-15T04:24:28"
+    },
+    {
+      "rating": 5,
+      "text": "After learning to set it up, it's a super organizational tool. A YouTube helped me learn the setup process. I am planning to use it a lot. There are so many things I can use the app for. Airtable is very helpful in what I need to get done.",
+      "thumbs_up": 42,
+      "date": "2019-08-16T01:02:52"
+    },
+    {
+      "rating": 4,
+      "text": "I love Airtable! Unfortunately the app doesn't support certain features of the desktop version that is why I am giving it a 4 star. Nonetheless, I will always recommend this platform to anyone who would like to create a custom-made application for its business! They are just the best.",
+      "thumbs_up": 10,
+      "date": "2021-01-26T09:26:08"
+    },
+    {
+      "rating": 4,
+      "text": "App overall is workable but it has a long way for improvement and also recently it started crashing when scrolling the record down. So 4 stars is to encourage further work on it, otherwise it would be 2 or 3 stars at this time.",
+      "thumbs_up": 3,
+      "date": "2021-12-29T22:32:03"
+    },
+    {
+      "rating": 2,
+      "text": "Not updating the data correctly. I'd add something via an \"Add record\" - it populates correctly in the web view, but not in the app.",
+      "thumbs_up": 0,
+      "date": "2026-02-16T20:07:44"
+    },
+    {
+      "rating": 1,
+      "text": "Every update is compoundingly worse. Add record button disappears randomly, can't scan in a record while inside another record, records appear one place but don't exist in another, the list goes on. iOS app seems functional still.",
+      "thumbs_up": 3,
+      "date": "2023-05-30T18:11:46"
+    },
+    {
+      "rating": 4,
+      "text": "I really love this app and their website, but I hardly use either of them. They are useful and customizable but the access could be better. I would love a Widget tool for my phone to display my desired information at a glance.",
+      "thumbs_up": 1,
+      "date": "2023-07-28T06:12:55"
+    },
+    {
+      "rating": 1,
+      "text": "This app is almost unusable on android in its current state. Cant view the contents of any base - continually 'loading' . same story with trying to create new ones. Limited browsing at best. Use the web based version - infinitely better.",
+      "thumbs_up": 3,
+      "date": "2024-01-11T15:33:03"
+    },
+    {
+      "rating": 2,
+      "text": "Everything takes absolutely way too long. And so, at the moment of this review, definitely considering not even bothering to find out if it will do what I need done. If change effects positive, I will change my rating, conversely, negative will get uninstall, review of the review to scathing, and drop rating, and give up hope that I can make my family farm modernized.",
+      "thumbs_up": 5,
+      "date": "2021-12-23T06:23:27"
+    },
+    {
+      "rating": 4,
+      "text": "biggest drawback on this app is not having an offline synched version as I mainly use it for recording garden planning/planting as well as craft materials inventory to avoid duplicate purchases but this is not possible as I don't have a data plan!! Please can this be added :-)",
+      "thumbs_up": 1,
+      "date": "2022-05-03T03:33:16"
+    },
+    {
+      "rating": 2,
+      "text": "Very slow. Lost 4+ records I entered. Pretty easy to use, but I don't trust it to keep important data since it lost records I just entered. And yes, I am 100% positive I entered them.",
+      "thumbs_up": 0,
+      "date": "2024-11-17T09:36:52"
+    },
+    {
+      "rating": 1,
+      "text": "This app compared to the desktop is horrible. It works when it feels like it and most of the time it doesn't feel like it. I believe my company has a partnership with Airtable and I \"have\" to use this app. If I didn't have to I would have never downloaded this broken app.",
+      "thumbs_up": 1,
+      "date": "2023-09-29T10:55:23"
+    },
+    {
+      "rating": 2,
+      "text": "The web version of trello is excellent, but the Android app is infuriating. It takes ages to load, and doesn't remember which card you have open if you leave it in the background for too long.",
+      "thumbs_up": 1,
+      "date": "2023-07-27T12:00:39"
+    },
+    {
+      "rating": 4,
+      "text": "Great app, Have been looking for a good database app & this is exactly it. Only one issue is that after setting up a \"base\", it takes forever to do the initial setup & the app feels like it's stuck loading. But once it's done, it's as speedy as anything.",
+      "thumbs_up": 0,
+      "date": "2025-07-29T05:32:03"
+    },
+    {
+      "rating": 1,
+      "text": "What's the point of letting me add fields or change names of things if when I hit save it doesn't save and reverts back to the original? Uninstalled. Not worth the frustration when I can just use my word and excel apps.",
+      "thumbs_up": 0,
+      "date": "2021-03-02T23:58:00"
+    },
+    {
+      "rating": 1,
+      "text": "This app is NOT A DATABASE. It is just something that someone thinks is a DB. No referential integrity, no key enforcement, no query language / reporting. I could do almost the same in PowerPoint. Also why do I need an account? I suspect you content is not being serious locally.. i.e. you don't own it anymore.",
+      "thumbs_up": 1,
+      "date": "2023-07-21T15:22:17"
+    },
+    {
+      "rating": 2,
+      "text": "The app is too slow compared to the desktop version. Load times really kill the experience. I'm pretty sure it's not my Internet connection, since it operates quite fast on desktop using the same connection.",
+      "thumbs_up": 3,
+      "date": "2023-03-06T20:58:17"
+    },
+    {
+      "rating": 4,
+      "text": "So far the app seems to run very smoothly and is wildly customizable. My only complaint is that it doesn't contain a template for what could easily be its most useful application: cataloguing a personal library!!!",
+      "thumbs_up": 1,
+      "date": "2023-02-15T12:20:13"
+    },
+    {
+      "rating": 4,
+      "text": "Does everything I needed it to do on desktop except for list view. Some of the UI like the plus button for the tables is a little too easy to miss tap on instead of seeing a pre-existing table. Which is a tad annoying.",
+      "thumbs_up": 1,
+      "date": "2023-08-15T04:09:24"
+    },
+    {
+      "rating": 1,
+      "text": "Does not create bases properly. When creating a new base, it duplicates an existing one instead. Reinstalled, etc. but persists. Web app works okay but you can't use it on a phone. Was going to start importing data today and start using this but don't trust it now. Will update my review if fixed in next release.",
+      "thumbs_up": 1,
+      "date": "2025-04-26T09:22:58"
+    },
+    {
+      "rating": 1,
+      "text": "Without ANY offline functionality (actually disables itself if no connection detected) this MOBILE app becomes significantly less useful. Also no way to create alerts or alarms without learning their scripting language and also using the web app from a browser.",
+      "thumbs_up": 0,
+      "date": "2022-12-10T10:56:50"
+    },
+    {
+      "rating": 2,
+      "text": "What about incorporating the whole Airtable experience in the app? I can do 1% of what I can do on desktop.. at least allow different views other than grids, this is just limiting and tbh, lazy and outdated, competition is doing much better on mobile. Btw, I love your product, is just the mobile app that.. meh",
+      "thumbs_up": 5,
+      "date": "2021-06-07T03:07:58"
+    },
+    {
+      "rating": 2,
+      "text": "Great software but poor android APP. I found a bug and after 2 weeks of messages and videos to support still don't understand what the bug is. Look like they don't want to fix problems. Also, UX in android APP are very bed and both mobile apps are missing simple feature like \"click Button\", show apps like Map and others. Is not a big upgrade they need but still beyond competitors like trello for mobile APP, Very important in 2021 where everyone get connected mostly with mobile. Just read comments below most of them complain about mobile Experience, Airtable Team, you should take care of it.",
+      "thumbs_up": 9,
+      "date": "2021-06-13T20:20:25"
+    },
+    {
+      "rating": 5,
+      "text": "This app is amazing. I just downloaded it a month ago and I have already organized my cardmaking stamps and dies, books, some recipes, and upcoming trips! There is so much more I will be using it for!",
+      "thumbs_up": 0,
+      "date": "2020-03-11T17:12:01"
+    },
+    {
+      "rating": 1,
+      "text": "\"Forgot password\" emails you a link which takes you back to the sign-in screen. OK, poor design but maybe they mean enter my new password here. But it's rejected as incorrect (of course it is, I've never set it). Tried \"Create account\" just in case it's expecting my new password there, but I'm told this email address is already in use (well duh, yes, it's mine...). ONE more try before I lose patience; clicked \"Forgot password\" yet again - same farce again. Pitiful.",
+      "thumbs_up": 10,
+      "date": "2022-05-21T15:39:32"
+    },
+    {
+      "rating": 3,
+      "text": "I adore the browser version, but the app is buggy. I think you have an off by 1 error in the paste function (pastes my 2nd-to-last clipboard item) and it doesn't always load a record or save my changes consistently.",
+      "thumbs_up": 5,
+      "date": "2021-07-15T23:52:39"
+    },
+    {
+      "rating": 1,
+      "text": "Like everything else that became way too complicated, it's horrible now. Went to AI. Not you have to jump through hoops while tossing rings and riding a unicycle on a slack rope. Can't access account to cancel subscription. Have to call card company to put a stop on payments.",
+      "thumbs_up": 1,
+      "date": "2025-04-27T06:16:36"
+    },
+    {
+      "rating": 4,
+      "text": "It's not as usable as the website version, but it works well enough. My main complaint is that it loses its connection to the database too often, meaning you have to close the app then reopen it.",
+      "thumbs_up": 10,
+      "date": "2021-03-13T18:37:37"
+    },
+    {
+      "rating": 1,
+      "text": "I love the browser version, but the app never works, just loads forever. I've tried reinstalling, clearing the cache, nada. It's a shame since I need something cross-platform. Please let me know if anyone knows a better option.",
+      "thumbs_up": 2,
+      "date": "2022-07-25T17:03:10"
+    },
+    {
+      "rating": 2,
+      "text": "The barcode functionality is half baked. I created another table for outgoing list linked to product inventory , however I can't search using the barcode even though the primary field on main table is already set to barcode. Hope you can improve the mobile app barcode",
+      "thumbs_up": 2,
+      "date": "2020-02-07T03:04:13"
+    },
+    {
+      "rating": 4,
+      "text": "Great but with a few small bugs. For example if you upload an image on this app, it increases the size of any compressed images. Still, for any text-based edits this app does very well.",
+      "thumbs_up": 1,
+      "date": "2023-08-09T05:59:17"
+    },
+    {
+      "rating": 3,
+      "text": "It's great except for when you need to upgrade. The worst part about it is that they make you pay per user not $120 per year. well it is if you only have one user. But if you have three users on your team then that's $360 per year for their next level up",
+      "thumbs_up": 0,
+      "date": "2022-07-19T16:21:18"
+    },
+    {
+      "rating": 2,
+      "text": "This app needs a lots of improvements. I am not able to access comments. App stopped working sometimes. Need to force close. Notification are late like 2 minutes. Main concern is comments access. Please fix.",
+      "thumbs_up": 2,
+      "date": "2022-05-15T11:51:05"
+    },
+    {
+      "rating": 3,
+      "text": "Every session, this app's back-end freezes after a number of actions - either won't load data any longer, or won't complete edits. Has to be restarted. Would love it if it worked.",
+      "thumbs_up": 2,
+      "date": "2022-12-09T02:22:32"
+    },
+    {
+      "rating": 3,
+      "text": "In the browser, Airtable works fine for me. In the app, changes are not being saved properly and I have to restart it frequently as my board isn't loading or functions are not working.",
+      "thumbs_up": 1,
+      "date": "2024-10-16T21:33:15"
+    },
+    {
+      "rating": 5,
+      "text": "Best for Professional and Personal Use..",
+      "thumbs_up": 0,
+      "date": "2025-12-07T03:57:17"
+    },
+    {
+      "rating": 1,
+      "text": "Just give an option for what day of the week to start calendar view on. It's ridiculous this doesn't exist, and makes the calendar features of airtable (our primary use for it at work) very irritating to use.",
+      "thumbs_up": 3,
+      "date": "2023-07-11T17:50:04"
+    },
+    {
+      "rating": 2,
+      "text": "It's a nice app but they will let you sign in via email and then delete your password if you sign in from mobile using oauth and then hold your account hostage unless you give them permissions to download all your contacts, which is very unnecessary. I had to restart from an alt email.",
+      "thumbs_up": 0,
+      "date": "2022-12-23T15:57:37"
+    },
+    {
+      "rating": 1,
+      "text": "App rarely works and crashes A LOT. Which is a shame because their web version is great but sometimes I can't be at my laptop all the time. I need something mobile and fast and this isn't it.",
+      "thumbs_up": 1,
+      "date": "2018-10-12T11:29:20"
+    },
+    {
+      "rating": 1,
+      "text": "I love Airtable but the app is useless. I've never been able to even load data for viewing, let alone add or edit anything. I wish I could just use a browser on mobile which the site discourages.",
+      "thumbs_up": 11,
+      "date": "2021-05-14T08:55:02"
+    },
+    {
+      "rating": 3,
+      "text": "Useful features but crashes a lot and has minimal functionality compared to the browser version (for example can't resize columns to view more info on phone screen). Requires internet connection, absolutely zero offline functionality - if your connection drops the app closes.",
+      "thumbs_up": 5,
+      "date": "2023-07-30T11:03:11"
+    },
+    {
+      "rating": 5,
+      "text": "I'm unable to get rid or change my first rating. So if possible, could you delete it please? I am ABSOLUTELY IMPRESSED by this app maker/company. Not only an awesome app but extremely fast at responding. I give it 5⭐'s, 3👍👍👍, I'll be telling everyone I know about this app. THANK YOU!💜👏👏👏",
+      "thumbs_up": 1,
+      "date": "2021-11-09T20:34:55"
+    },
+    {
+      "rating": 4,
+      "text": "There is a bug when you attempt to change a field type in the app. I've tried to change a single line of text to long text. it says it saves but it never changes. 😕",
+      "thumbs_up": 12,
+      "date": "2018-12-29T18:34:48"
+    },
+    {
+      "rating": 2,
+      "text": "The android app is inferior to the actual product's browser experience. Airtable itself in incredible. There are many reviews here that echo this sentiment so I won't belabor the point through a long review. If the company doesn't dedicate some resources to a better app experience, they'll probably lose more customers over time. It's sad when companies don't put their resources into maintaining a good customer experience. Please consider overhauling the app!!",
+      "thumbs_up": 0,
+      "date": "2023-11-12T14:26:26"
+    },
+    {
+      "rating": 2,
+      "text": "Tried to try it but unfortunately after creating my first table, it was too slow to use. I tried closing and reopening the app. I tried on WiFi and data. It might be a good app for some but didn't work for me.",
+      "thumbs_up": 0,
+      "date": "2025-11-29T01:15:32"
+    },
+    {
+      "rating": 1,
+      "text": "Little more than a toy as is. Every time I lose my signal it stops working. Also slow to update. Missing basic features like alarms. So much work went into this... why such obvious oversights?",
+      "thumbs_up": 1,
+      "date": "2022-12-20T07:42:50"
+    },
+    {
+      "rating": 5,
+      "text": "love the flexibility of this app. there are so many customisations available on the free version and it's being constantly updated. different views (gallery, grid, calendar) make it easy for my to work out what I'm supposed to be doing and when",
+      "thumbs_up": 0,
+      "date": "2021-12-07T05:16:44"
+    },
+    {
+      "rating": 4,
+      "text": "super useful app. desktop is AMAZING. would love to be able to pin shortcuts to bases on home screen, or quickly search them always scrolling through too many, but only need access to a couple on mobile",
+      "thumbs_up": 0,
+      "date": "2021-07-18T00:05:35"
+    },
+    {
+      "rating": 5,
+      "text": "I was waiting 10 years for someone to make this app - was so happy that it finally came... Been using it everyday ever since - set up 3 factories with management tables and it facilitates organization and communications inside and outside of company. I wouldn't know what to do without it at this point...",
+      "thumbs_up": 2,
+      "date": "2022-05-30T07:40:20"
+    }
+  ],
+  "app_store_reviews": []
+}

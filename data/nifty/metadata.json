@@ -1,0 +1,39 @@
+{
+  "name": "Nifty",
+  "category": "project_management",
+  "subcategories": [
+    "milestones",
+    "collaboration",
+    "docs"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $7-$16 per user/mo",
+  "primary_use_case": "All-in-one project management with milestone-driven progress",
+  "target_audience": [
+    "agencies",
+    "small_teams",
+    "consultants"
+  ],
+  "key_features": [
+    "tasks",
+    "milestones",
+    "docs",
+    "discussions",
+    "time_tracking",
+    "portfolios",
+    "forms"
+  ],
+  "founded": 2017,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "basecamp",
+    "teamwork"
+  ]
+}

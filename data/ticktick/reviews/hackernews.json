@@ -1,0 +1,848 @@
+{
+  "app": "ticktick",
+  "source": "hackernews",
+  "total_items": 82,
+  "items": [
+    {
+      "id": "8553764",
+      "type": "comment",
+      "text": "But how about a person in the center of the Atlantic listening to a metronome broadcast from Death Valley and one from Mt. Everest, tick-tick-ticktick-ticktick-tick-a-tick-tick-a-tick :-)",
+      "author": "ChuckMcM",
+      "points": null,
+      "created_at": "2014-11-03T21:50:22Z",
+      "story_title": "A clock that can detect tiny shifts in the flow of time itself",
+      "hn_url": "https://news.ycombinator.com/item?id=8553764"
+    },
+    {
+      "id": "7862449",
+      "type": "comment",
+      "text": "TIME, GOT THE TIME TICK TICK TICKIN IN MY HEADTIME, GOT THE TIME TICK TICK TICKIN IN MY HEADTIME, GOT THE TIME TICK TICK TICKIN IN MY HEADTIME, GOT THE TIME TICK TICK TICKIN IN MY HEAD... sorry",
+      "author": "slashnull",
+      "points": null,
+      "created_at": "2014-06-07T16:45:42Z",
+      "story_title": "Dan Spitz, Anthrax Guitarist Turned Master Watchmaker",
+      "hn_url": "https://news.ycombinator.com/item?id=7862449"
+    },
+    {
+      "id": "7789401",
+      "type": "comment",
+      "text": "I get like this more often than I like to admit. I just break the entire thing down and write a multitude of check box&#x27;s. Personally I&#x27;m using the bulletjournal technique (www.bulletjournal.com)If I cant get the motivation then I need more abstraction. Abstract until you drop! You are naturally conditioned towards completing things and positivity. That&#x27;s why people get badly addicted to games like farmville and such. You do something simple, you get something back, you do something else, you get something else. Really your just baking time. But the psychology of achieving is where the addiction comes from. It&#x27;s not the game. It&#x27;s the fulfilment from completing something. You need to see this progress visually so you feel like your moving.It&#x27;s not uncommon for me (when I&#x27;m really low and scraping the barrel) to have a task like for a job such as this;[ ] Open Sublime\n[ ] Set-up folder structure\n[ ] Skim read spec\n[ ] note areas of concern for later  \n[ ] Describe required method to self &#x2F; colleague &#x2F; rubber duck \n[ ] pseudo code initial method \n[ ] expand pseudo to code \n[ ] looks in spec for extra details \n[ ] list who needs to be contacted for further information\n[ ] email manager estimate\n[ ] take a break\n...Now you can start to get &quot;little wins&quot; even on something you don&#x27;t really agree with &#x2F; want to do. The goal now becomes to tick those damn boxes, not to implement some feature you don&#x27;t agree with. It might seem strange to tick a box for something as simple as opening a program, but if that&#x27;s the level you need for your motivation then that&#x27;s OK. The reality is these check box&#x27;s are just mental milestones for progression. What&#x27;s really important is your ticking them though. If you find yourself for hours on end not doing the list, the list is wrong somehow. Perhaps you don&#x27;t have small enough tasks. Perhaps the tasks are too hi level and need to be split into sub tasks on those. Just tick, tick, tick.Try it, it might work for you, it might not. This sure helped me though! Good luck.",
+      "author": "CaRDiaK",
+      "points": null,
+      "created_at": "2014-05-23T14:12:09Z",
+      "story_title": "Ask HN: What do you do when your entire being opposes the task at hand?",
+      "hn_url": "https://news.ycombinator.com/item?id=7789401"
+    },
+    {
+      "id": "737257",
+      "type": "comment",
+      "text": "Tick!\"tick the right answer\" (in english exams)may be useful for you!",
+      "author": "csomar",
+      "points": null,
+      "created_at": "2009-08-02T09:28:18Z",
+      "story_title": "Ask HN: Best word to describe this process?",
+      "hn_url": "https://news.ycombinator.com/item?id=737257"
+    },
+    {
+      "id": "608175",
+      "type": "comment",
+      "text": "besides this, does anyone else find the \"Tick,Tick\" sounds in IE as annoying as I do?",
+      "author": "cellis",
+      "points": null,
+      "created_at": "2009-05-14T03:22:35Z",
+      "story_title": "RIP Internet Explorer: 1995-2021",
+      "hn_url": "https://news.ycombinator.com/item?id=608175"
+    },
+    {
+      "id": "5889816",
+      "type": "comment",
+      "text": "We&#x27;ve seen this with companies as well as with government:  One of the things they still respond to is outsized pressure.  Perhaps at its most basic, the fear that people will quit them.  (Lost business, lost good will, lost votes.)A few years ago, there was a lot of outrage about Facebook&#x27;s relentless &quot;publification&quot; of user data.  And it did produce some at least temporary retraction as well as some degree of redesign.In lieu of other mechanisms and options, people are &quot;voting&quot; with their voice.  And past a certain volume, this appears to produce some success with respect to the concerns of those voices.Remember a year ago, when the front page was full of SOPA posts and commentary?  Well, that appears to have led to something that -- at least temporarily -- was in favor of the majority of those posting.&quot;60 Minutes&quot; [1], for and by the masses.  Tick tick tick tick...----[1] A prominent U.S. TV news &#x2F; investigative journalism program.  (I think it&#x27;s now been somewhat internationalized, or &quot;franchised&quot;.)  Although its credibility has come increasingly into question in recent years.  Its opening segment and transitions display a ticking stopwatch.Some of its stories have been credited with producing significant private and public policy shifts -- in perception, or substance, or both.",
+      "author": "pasbesoin",
+      "points": null,
+      "created_at": "2013-06-16T20:30:22Z",
+      "story_title": "Moving On...",
+      "hn_url": "https://news.ycombinator.com/item?id=5889816"
+    },
+    {
+      "id": "5785637",
+      "type": "comment",
+      "text": "That was epic.And this is the heart of everything:&#62;&#62;&#62;It’s not rocket science: people build what they know.  Cosmopolitan, well-educated young men and women in America’s big cities are rushing into startups and building for other cosmopolitan well-educated young men and women in big cities.Until you've become part of the exotic underclass -- or an over-50 perma-unemployable (tick tick tick) -- you won't see these problems, won't be affected by them, and won't use your skills to solve them.In ten, twenty, thirty years, shit will start to get done.  Too late for many, but better late than never.",
+      "author": "mikecane",
+      "points": null,
+      "created_at": "2013-05-29T11:19:37Z",
+      "story_title": "The Unexotic Underclass",
+      "hn_url": "https://news.ycombinator.com/item?id=5785637"
+    },
+    {
+      "id": "5133573",
+      "type": "comment",
+      "text": "Damn pretty smart move.They place themselves in the 'lowest common denominator' of the industry.Whilst the smaller companies and startups compete and struggle to find the right combination of factors for their awesome video/web/cloud/storage/etc product at the end of the day they all need the same kind of thing to operate on and Amazon is often the cheapest option to start with and it serves the whole industry making little cents tick tick tick one after another...",
+      "author": "borplk",
+      "points": null,
+      "created_at": "2013-01-29T12:23:14Z",
+      "story_title": "Amazon Elastic Transcoder",
+      "hn_url": "https://news.ycombinator.com/item?id=5133573"
+    },
+    {
+      "id": "47435042",
+      "type": "comment",
+      "text": "The sliders don&#x27;t respond well, like the server is authoritative but the client isn&#x27;t properly predicting where the slider will be.I&#x27;m playing on a 144Hz monitor, but the game is struggling to hit over 80 FPS.I keep getting errors which display in the bottom right of the screen, such as &quot;tick&quot; (tick failed, ZeroInvestment) errors and WebSocket receive errors.I started a custom game and &quot;things&quot; are just happening super quickly. All I can seemingly do is right click some stuff and do some actions.There is almost no feedback on the few actions you can do. Nothing much to observe. I don&#x27;t even know where &quot;I&quot; am on the map.Sorry but this isn&#x27;t a game yet. There&#x27;s no compelling core gameplay loop, too little explanation, and wayyyy too many bugs.",
+      "author": "bschwindHN",
+      "points": null,
+      "created_at": "2026-03-19T04:43:20Z",
+      "story_title": "Show HN: Browser grand strategy game for hundreds of players on huge maps",
+      "hn_url": "https://news.ycombinator.com/item?id=47435042"
+    },
+    {
+      "id": "47432157",
+      "type": "comment",
+      "text": "It&#x27;s a good point.My hope would be that since openclaw is communicating with me to my personal device, where I have all noise filtered, it would be a bit better.I also know it can integrate with TickTick, which has been a huge change for me with task management. Then again - in my experience whatever tool I use to keep track of stuff only works for as long as it&#x27;s a novelty, but 3 months is a record anyway.The thing is - when I receive a message and I&#x27;m not in the headspace to answer, I close the notification and forget about it. My expectation would be openclaw reminding me that I still haven&#x27;t replied to this person about that thing.\nObviously, there&#x27;s a million ways to do it that don&#x27;t require openclaw. Obviously there&#x27;s a million things that I won&#x27;t be able to grant openclaw access to (e.g. company jira or slack). And obviously, I don&#x27;t want it evaluating every single of my personal messages. But I think there is a reasonable middle ground where it can work well. But I don&#x27;t yet know how to reach it",
+      "author": "ttsalami",
+      "points": null,
+      "created_at": "2026-03-18T22:23:35Z",
+      "story_title": "Nvidia NemoClaw",
+      "hn_url": "https://news.ycombinator.com/item?id=47432157"
+    },
+    {
+      "id": "4737264",
+      "type": "comment",
+      "text": "oh man, is my face red :(.  I'm still your new watcher on github though ... :)I just moved back to the 2.6.0 tag. works.This looks like a scalable database.  I don't know if it was a for-profit company that you just open-sourced at the end or what.All I know is that I don't see what I'm using.  This is about a day worth of authorship on your part. Literally.1. Write something to help a noob like me find out what I'm doing.2. Give some (it can be silly and contrived) but useful example to bootstrap the user.In programming you are fundamentally building something abstract that lacks concrete reality. The key to success, I've found, is giving it that concrete reality through coherent narratives, consistent verbiage, probably more.Silly marketing can make or break your product.Example time (I don't have many)I have this dumb little library called TickTick. When I linked people directly to the github is flopped (https://github.com/kristopolous/TickTick) ... so what I made was this http://qaa.ath.cx/TheEmperorsNewClothes.html.I made it very carefully; being light hearted, poking fun at myself, trying to balance what people would think of it, being overall positive. I was trying to strike a really delicate balance in basically an advertising-to-geeks campaign.Well, I think it worked pretty well. The project has 203 followers, which is my most successful by far.I've found that this stuff matters a lot. Man does it ever.  Backbone, underscore, and socket.io are probably popular not only because they have functional code (there's a lot of functional code out there) but because they have pretty websites (pretty is a POV word, but I think most people would agree those three sites follow aesthetic rules of thumb or modern web design ideas).The readership of my blog entries went up phenomenally when I spent about 2 hours on my CSS. I spend 2-3 weeks on my longer articles ... that's 100+ hours, per article, it seems ludicrous that 2 hours on layout could lead to a larger gain than an extra 20 hours on citations and research.But let me tell you right now, that is irrefutably true if you hadn't done it at all yet.I think jQuery was so successful (and probably PHP too)  because their documentation is so easy to navigate. No, it's not that it was so well written (Python is better written), but because google picked it up well and it was a cinch to navigate, and it worked.Can someone far more successful than me weigh in on this, I hate to see people doing solid work and not getting acknowledged; that's enormously frustrating.Anybody out there?",
+      "author": "kristopolous",
+      "points": null,
+      "created_at": "2012-11-03T17:36:41Z",
+      "story_title": "Now 0-for-3, SpaceX's Elon Musk Vows to Make Orbit (2008)",
+      "hn_url": "https://news.ycombinator.com/item?id=4737264"
+    },
+    {
+      "id": "47196592",
+      "type": "comment",
+      "text": "I use Ticktick for my Markdown notes and todos. I can add tasks from my lockscreen. I have a single view of notes and tasks. Costs me 5 biriyanis per year, yes its localized pricing.Been meaning to switch to an open source app out of principle, one which can handle rich notes too.",
+      "author": "aitchnyu",
+      "points": null,
+      "created_at": "2026-02-28T15:39:50Z",
+      "story_title": "Simplenote is no longer in active development",
+      "hn_url": "https://news.ycombinator.com/item?id=47196592"
+    },
+    {
+      "id": "46652033",
+      "type": "comment",
+      "text": "TickTick gives me reminders to do some of these things - daily reflection is a “habit” and weekly reflection is a recurring task. That helps me not forget. There’s still value in doing the daily plan regardless of whether I do it right after I wake up (things are going well) or if I do it many hours later when I realize my day has not gone well and I want to get back on track.The calendars and checklists really help with not forgetting things, and getting back on task once distracted. I can have 100 adhd moments; the system can’t prevent that, but it can help me find my way back to shore when I’m lost at sea.I don’t really struggle with kitchen cleaning, but sometimes I do set out to clean the kitchen and end up folding laundry or scrolling instead. I can do that but if I haven’t checked off “clean the kitchen”, I know to come back to it.The weekly reflection is a chore but I set aside time for it, and I keep doing it because it works. I can spend an hour doing deep reflection, or I can rush through it, there is value either way. It is really just a check list, and check lists are very ADHD friendly.Separately, I find that physical and mental health improve performance regardless - so a system that improves these factors _is_ a system that helps with ADHD. Getting to bed on time, and building the system that produces that outcome, is an ADHD-friendly system. I struggle with this, but I try to get better over time by experimenting and adjusting.The reality is that the system will not solve ADHD problems, the system is just a tool - you still have to do the work. Same for the app that is being shared.",
+      "author": "n8cpdx",
+      "points": null,
+      "created_at": "2026-01-16T20:50:26Z",
+      "story_title": "Launch HN: Indy (YC S21) – A support app designed for ADHD brains",
+      "hn_url": "https://news.ycombinator.com/item?id=46652033"
+    },
+    {
+      "id": "46650854",
+      "type": "comment",
+      "text": "Here is my template from obsidian that I use for my weekly reflection - customize reflection based on your values and priorities. I have goals to improve work-life balance, social connections (social isolation was a factor driving poor outcomes, and through deliberate consistent effort I have solved this problem).Hyper scheduling: https:&#x2F;&#x2F;dev.to&#x2F;maxpatiiuk&#x2F;series&#x2F;32301 (I stumbled upon this and implemented a form of it, although mostly I just like the colors in my calendar)Yearly reflection: https:&#x2F;&#x2F;yearcompass.com&#x2F;Weekly reflection:```md\n## Preparation- [ ] Review year compass\n- [ ] Review journal entries from the week\n- [ ] Review last week&#x27;s reflection## Quick summary&gt; *Headline for the week*:## Basic planning- [ ] Set up outline of the week in Outlook\n- [ ] Plan a fun weekend activity: \n- [ ] Plan to visit one new restaurant:\n- [ ] Plan one meet up or social activity:## Values-based reflection1. Health:\n - \n2. Resilience:\n - \n3. Social connection:\n - \n4. Mindfulness:\n - \n5. Adventure:\n -## Retrospective1. Went Well\n - \n2. To improve\n - \n3. Plan to improve&#x2F;action items\n -## Other notes- \n```Daily reflection&#x2F;journal:```md_Created: {{date}} {{time}}_\n({{date:DDD}}&#x2F;365)Gratitude (I am for three items):Healthy Living Plan:- Diet:\n- Exercise:\n- Work+Learning:Daily reflection:- Overall wellbeing (1-10):\n- Career:\n- Lifestyle hygiene:\n- Rose and thorn:Journal:```I use TickTick because of the habit-tracking feature. Used to be todoist loyalist but it sucks for habits. https:&#x2F;&#x2F;help.ticktick.com&#x2F;articles&#x2F;7055781878401335296Key habits I track:- meditation (I combine with a fancy LED face mask to help reinforce the habit via my desire to combat wrinkles and acne - the cryoglow is better at acne than wrinkles so far)\n- exercise (you can add notes)\n- evening leisure time (if I don’t have dedicated leisure time, I end up revenge bedtime procrastinating&#x2F;doomscrolling)\n- stretching (there are two simple band stretching exercises that solved what I thought would be life-long neck and shoulder pain)When I really struggle with productivity, I find the pomodoro system is a good bootstrap, and TickTick makes it easy to start. I like seeing the pomos on the built-in calendar.",
+      "author": "n8cpdx",
+      "points": null,
+      "created_at": "2026-01-16T19:21:36Z",
+      "story_title": "Launch HN: Indy (YC S21) – A support app designed for ADHD brains",
+      "hn_url": "https://news.ycombinator.com/item?id=46650854"
+    },
+    {
+      "id": "46259234",
+      "type": "comment",
+      "text": "My wife and I plus our (then) two small children were driving though France from the UK. I was towing a caravan and suddenly realised that the van had got a flat tyre. No worries, I thought, I have a spare, a jack and a wheel wrench. So, I pulled over and got to work changing the tyre. To my horror, I immediately discovered that my car’s wheel nuts were bigger than the van’s, so my car wheel wrench was useless for the flat van tyre! And all I had otherwise were small hand tools.I should add that this was back in the days of dumb phones, long before GPS devices were common in cars, so all I had was a small-scale paper route map of France. I had no clue which way to go to find help, and no way to find a phone number. It was late afternoon, and we were still a long way from the campsite. I was starting to sweat.But then a French woman with her daughter pulled over in a small car and asked if we needed any help. Using a mixture of my poor French and sign language, I indicated I needed a wheel wrench, which she pulled out of her boot. My joy and relief were obvious. I change the van wheel in no time, thanked her profusely, and off she went.But there was twist in the tale: my hazard lights had been flashing so long that when I tried to start up the car, all I got was that sickening tick-tick-tick sound of a dead battery. Could my day get any worse? But then I remembered that my van had its own battery! A quick battery swap-over later, and we were back on the road, and had a great holiday, all thanks to the kindness of a big-hearted French woman who was kind enough to stop and offer help to foreign strangers stuck in the middle of nowhere.",
+      "author": "bobosola",
+      "points": null,
+      "created_at": "2025-12-13T23:25:20Z",
+      "story_title": "What is the nicest thing a stranger has ever done for you?",
+      "hn_url": "https://news.ycombinator.com/item?id=46259234"
+    },
+    {
+      "id": "45447708",
+      "type": "comment",
+      "text": "omg tick tick tick.Does everyone have this to some extent? Or is it really only a thing neurospicy folks experience? I have to run away from my wife when she&#x27;s chewing loudly sometimes, the rage is real.I&#x27;ve just realised that my hatred of foly in films is another symptom (https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Foley_(sound_design)) - can&#x27;t watch films where this is overdone.As others mentioned, noise cancelling headphones bring me so much peace.",
+      "author": "rhubarbtree",
+      "points": null,
+      "created_at": "2025-10-02T09:26:10Z",
+      "story_title": "Show HN: Autism Simulator",
+      "hn_url": "https://news.ycombinator.com/item?id=45447708"
+    },
+    {
+      "id": "44956095",
+      "type": "comment",
+      "text": "What are you using to sync with TickTick?",
+      "author": "hed",
+      "points": null,
+      "created_at": "2025-08-19T20:45:05Z",
+      "story_title": "Notion releases offline mode",
+      "hn_url": "https://news.ycombinator.com/item?id=44956095"
+    },
+    {
+      "id": "44955493",
+      "type": "comment",
+      "text": "Obsidian&#x27;s plug-in ecosystem is fantastic. I&#x27;ve used Obsidian for three years as a replacement for Notion, and I have never used the Graph mode. My Obsidian plugins enable automatic task synchronization with TickTick (where I manage my tasks) and allow me to set up features like templates. I strongly recommend giving it a spin.The only downside for me is the inability to use it from a web browser. This isn&#x27;t a major issue for my workflows.",
+      "author": "c4wrd",
+      "points": null,
+      "created_at": "2025-08-19T19:41:29Z",
+      "story_title": "Notion releases offline mode",
+      "hn_url": "https://news.ycombinator.com/item?id=44955493"
+    },
+    {
+      "id": "44884727",
+      "type": "comment",
+      "text": "+1 for TickTick. It gets the job done and I love that I can set reminders for my tasks that I can snooze from my Apple Watch or computer desktops instead of having to rely on Apple Reminders.",
+      "author": "fraXis",
+      "points": null,
+      "created_at": "2025-08-13T04:49:13Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44884727"
+    },
+    {
+      "id": "44874286",
+      "type": "comment",
+      "text": "Can I ask why you abandoned TickTick?",
+      "author": "jpfromlondon",
+      "points": null,
+      "created_at": "2025-08-12T09:49:12Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44874286"
+    },
+    {
+      "id": "44869401",
+      "type": "comment",
+      "text": "&gt; Obviously one needs to be an Emacs user firstThis makes it so infuriating that the top comment on Todo systems is almost invariably &quot;just org-mode lol&quot;. Same as remote editing &quot;just TRAMP lol&quot;.I am not going to completely change my editor and rebuild two decades of optimization just to use two Emacs tools.On-topic: TickTick or Todoist with a slimmed-down &quot;Getting Things Done&quot; system works really well. Almost no learning curve, and you get to free up so much mental bandwidth vis a vis remembering things and prioritizing things. And you don&#x27;t have to do hamfisted tricks to make a &#x27;simple&#x27; .txt system work. Bliss.",
+      "author": "jorvi",
+      "points": null,
+      "created_at": "2025-08-11T20:59:27Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44869401"
+    },
+    {
+      "id": "44868422",
+      "type": "comment",
+      "text": "&gt;I’ve tried them all. Notion, Todoist, Things 3, OmniFocus, Asana, Trello, Any.do, TickTick.There are hundreds of todo apps. Possibly 1000s. Including mine, which isn&#x27;t mentioned. ;0) So all is something of an exaggeration.",
+      "author": "hermitcrab",
+      "points": null,
+      "created_at": "2025-08-11T19:28:29Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44868422"
+    },
+    {
+      "id": "44866416",
+      "type": "comment",
+      "text": "I have use a system similar to this guy and TickTick is perfect. I even use shared lists with my girlfriend to track chores which is something we implemented recently and works great.",
+      "author": "ukFxqnLa2sBSBf6",
+      "points": null,
+      "created_at": "2025-08-11T16:47:32Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44866416"
+    },
+    {
+      "id": "44866336",
+      "type": "comment",
+      "text": "Too much organization never helps, I&#x27;ve learned this with both note taking and with todo apps.My workflow with ticktick is largely based on having all my to-dos in one &quot;next actions&quot; list.\nTags are the one feature I can&#x27;t throw away though, most of my to-do lists is tagged with a project name. My day to day view of Ticktick is usually some tag",
+      "author": "melodyogonna",
+      "points": null,
+      "created_at": "2025-08-11T16:42:31Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44866336"
+    },
+    {
+      "id": "44864556",
+      "type": "comment",
+      "text": "I use TickTick.I saw the author tried it but didn’t actually write about it under “What Actually Happened With Each App”I use TickTick over Todoist and other apps because it’s basically a .txt file dump for me, but with notifications and reoccurring tasks &#x2F;shrug",
+      "author": "jackero",
+      "points": null,
+      "created_at": "2025-08-11T14:32:48Z",
+      "story_title": "I tried every todo app and ended up with a .txt file",
+      "hn_url": "https://news.ycombinator.com/item?id=44864556"
+    },
+    {
+      "id": "44269853",
+      "type": "comment",
+      "text": "I have been TickTick for daily-habit tracking for years now. It has a monthly GitHub-like graph widget for phones which is amazing for feedback. I also use TickTick for misc. task-tracking like &quot;laundry&quot;, &quot;buy apple&quot;, etc.Then for non-recurring areas like job-tasks, I use a separate tool with a simple Kanban board. Prior to Kanban, I used to just track time, and write a list of things I did for the day, but I realized there was no feedback and it was just a passive &quot;I did this stuff&quot;.So coming from that, a Kanban board has been god-sent. Because otherwise Parkinson&#x27;s Law was a common occurrence for me. Each task in the board is somewhat tied to a project&#x2F;outcome through a tag. So there is a feedback&#x2F;working-backwards&#x2F;active concept to it. I have just started using it, but the more I use it, the more I automatically learn how to set better tasks, because otherwise they do not go from TODO -&gt; DOING -&gt; DONE.",
+      "author": "abhaynayar",
+      "points": null,
+      "created_at": "2025-06-13T16:15:18Z",
+      "story_title": "A receipt printer cured my procrastination",
+      "hn_url": "https://news.ycombinator.com/item?id=44269853"
+    },
+    {
+      "id": "44218446",
+      "type": "comment",
+      "text": "What I’m saying is that the gate count problem that is profitable is in m³ not n³. And as long as m &lt; n^2&#x2F;3 then you are n² despite applying a cubic time solution to m.I would argue that this is essentially part of why Intel is flagging now. They had a model of ever increasing design costs that was offset by a steady inflation of sales quarter after quarter offsetting those costs. They introduced the “tick tock” model of biting off a major design every second cycle and small refinements in between, to keep the slope of the cost line below the slope of the sales line. Then they stumbled on that and now it’s tick tick tock and clearly TSM, AMD and possibly Apple (with TSM’s help) can now produce a better product for a lower cost per gate.Doesn’t TSM’s library of existing circuit layouts constitute a substantial decrease in the complexity of laying out an entire chip? As grows you introduce more precalculated components that are dropped in, bringing the slope of the line down.Meanwhile NVIDIA has an even better model where they spam gpu units like mad. What’s the doubling interval for gpu units?",
+      "author": "hinkley",
+      "points": null,
+      "created_at": "2025-06-08T17:53:35Z",
+      "story_title": "How we decreased GitLab repo backup times from 48 hours to 41 minutes",
+      "hn_url": "https://news.ycombinator.com/item?id=44218446"
+    },
+    {
+      "id": "44191460",
+      "type": "comment",
+      "text": "OP, what does that get you that Todoist&#x2F;Ticktick&#x2F;Reminders don&#x27;t?",
+      "author": "swah",
+      "points": null,
+      "created_at": "2025-06-05T13:21:19Z",
+      "story_title": "Ask HN: Anyone using project management tools for personal projects?",
+      "hn_url": "https://news.ycombinator.com/item?id=44191460"
+    },
+    {
+      "id": "43820736",
+      "type": "comment",
+      "text": "My least favorite was the protection typical on C-64 games that caused constant resets of the floppy drive, banging the head against the stop repeatedly.  tick-tick-tick-tick-BRRRRRAAAAAAP.  I would crack games I owned (admittedly, most I did not own) just to keep them from eventually knocking my drive out of alignment.  Loaded a lot faster too.  Fast-Hack-Em FTW.",
+      "author": "chuckadams",
+      "points": null,
+      "created_at": "2025-04-28T12:29:20Z",
+      "story_title": "Uncovering the mechanics of The Games: Winter Challenge",
+      "hn_url": "https://news.ycombinator.com/item?id=43820736"
+    },
+    {
+      "id": "43466491",
+      "type": "comment",
+      "text": "I just recently started heavily using TickTick, and my first thought on seeing this was that it would be cool to be able to integrate this into it. Very cool to see someone has done it, thank you!If I might ask, how was your experience working with the TickTick API? I&#x27;ve been waffling on whether my frustration with some of the pain points I have with it (e.g. no way to hide recurring daily tasks that you&#x27;ve already completed today but aren&#x27;t actionable for tomorrow from cluttering the &quot;tomorrow&quot; heading in every smart list) justify building my own dashboards for it.",
+      "author": "LordDragonfang",
+      "points": null,
+      "created_at": "2025-03-24T23:26:59Z",
+      "story_title": "Goblin.tools: simple, single-task tools to help neurodivergent people with tasks",
+      "hn_url": "https://news.ycombinator.com/item?id=43466491"
+    },
+    {
+      "id": "43464931",
+      "type": "comment",
+      "text": "Oh hey! I made something like this that integrates with TickTickhttps:&#x2F;&#x2F;github.com&#x2F;Podginator&#x2F;TickGPTickIt needs updating, but basically you set a tag that let’s you expand tasks out much in the way goblin tools does.",
+      "author": "podgietaru",
+      "points": null,
+      "created_at": "2025-03-24T20:10:49Z",
+      "story_title": "Goblin.tools: simple, single-task tools to help neurodivergent people with tasks",
+      "hn_url": "https://news.ycombinator.com/item?id=43464931"
+    },
+    {
+      "id": "43392653",
+      "type": "comment",
+      "text": "I hadn&#x27;t heard of TickTick, going to check it out. Super neat that Easter trips it up!",
+      "author": "jackomelon",
+      "points": null,
+      "created_at": "2025-03-17T20:55:48Z",
+      "story_title": "Show HN: Today – A task manager that resets at midnight, powered by localStorage",
+      "hn_url": "https://news.ycombinator.com/item?id=43392653"
+    },
+    {
+      "id": "43392618",
+      "type": "comment",
+      "text": "Sounds like reinventing TickTick. &quot;Recurring&quot; can be a complex subject which it mostly gets right. Still can&#x27;t do &quot;every Easter&quot;!",
+      "author": "beardyw",
+      "points": null,
+      "created_at": "2025-03-17T20:52:38Z",
+      "story_title": "Show HN: Today – A task manager that resets at midnight, powered by localStorage",
+      "hn_url": "https://news.ycombinator.com/item?id=43392618"
+    },
+    {
+      "id": "43208920",
+      "type": "comment",
+      "text": "I highly recommend ticktick to anyone looking good tasks manager. It&#x27;s one of those very few apps that just doesn&#x27;t disappoint me and even though I have ADHD and hard time sticking to some system, I always come back ticktick.",
+      "author": "lukaslalinsky",
+      "points": null,
+      "created_at": "2025-02-28T18:43:09Z",
+      "story_title": "Microsoft is shutting down Skype in favor of Teams",
+      "hn_url": "https://news.ycombinator.com/item?id=43208920"
+    },
+    {
+      "id": "43207840",
+      "type": "comment",
+      "text": "Ticktick was the closest approximation at the time of Wunderlist shutdown. Still solid, but haven&#x27;t researched the market recently.\nI don&#x27;t remember details about the Microsoft version except it wasn&#x27;t good enough.",
+      "author": "Reefersleep",
+      "points": null,
+      "created_at": "2025-02-28T17:03:12Z",
+      "story_title": "Microsoft is shutting down Skype in favor of Teams",
+      "hn_url": "https://news.ycombinator.com/item?id=43207840"
+    },
+    {
+      "id": "43068811",
+      "type": "comment",
+      "text": "To make any type of app really good is super hard.I have yet to see a good to-do list tool.I&#x27;m not kidding. I tried TickTick, Notion, Workflowy ... everything I tried so far feels cumbersome compared to how I would like to handle my To-Do list. The way you create, edit, browse, drag+drop items is not as all as fluid as I imagine it.So if anyone knows a good To-Do list software (must be web based, so I can use it anywhere without installing something) - let me know!",
+      "author": "mg",
+      "points": null,
+      "created_at": "2025-02-16T15:33:50Z",
+      "story_title": "“A calculator app? Anyone could make that”",
+      "hn_url": "https://news.ycombinator.com/item?id=43068811"
+    },
+    {
+      "id": "42500368",
+      "type": "comment",
+      "text": "What are some of the biggest challenges you face in the productivity space? We already have major players like Todoist, TickTick, Asana, Microsoft To Do, and countless others, so the tools for task management are widely available. Time-tracking apps like Toggl Track offer robust solutions, and AI-powered scheduling tools are emerging to optimize calendar management.With so many options already on the market, it can feel like there’s nothing new to invent in productivity. But how is productivity really going for you? What tools or solutions do you wish existed that don’t currently?As a builder with access to tools and resources, I’m eager to connect with others and understand the core challenges they face in staying productive. Are these challenges something software can address, or are they rooted more in behavioral changes?I’d love to dive deeper into this topic. It seems like there’s a stigma around creating yet another to-do list app, but there’s still room for innovation if we focus on real pain points. What are the obstacles—whether daily or related to your bigger life goals—that, if solved, could help you be more productive?",
+      "author": "peterudokaa",
+      "points": null,
+      "created_at": "2024-12-24T07:53:12Z",
+      "story_title": "[dead]",
+      "hn_url": "https://news.ycombinator.com/item?id=42500368"
+    },
+    {
+      "id": "42241376",
+      "type": "comment",
+      "text": "Good idea! I tried setting up an integration with TickTick, but their API is jank, so I gave up. I will try Todoist soon and maybe Things.",
+      "author": "georg-stone",
+      "points": null,
+      "created_at": "2024-11-26T00:05:04Z",
+      "story_title": "Show HN: Minimal, customizable new tab for Chrome/Firefox",
+      "hn_url": "https://news.ycombinator.com/item?id=42241376"
+    },
+    {
+      "id": "42035374",
+      "type": "comment",
+      "text": "All multi-device&#x2F;synced TODO lists have authentication to keep it private. That&#x27;s half the utility. Add an item when on your laptop or iPad then when you need it outside you pull out your phone.TickTick also has markdown notes and a calendar. I use the notes probably as much as lists, which fit desktop usecase better. Lists could be fine if it was mobile only but still annoying.",
+      "author": "dmix",
+      "points": null,
+      "created_at": "2024-11-03T19:16:14Z",
+      "story_title": "I couldn't find a free, no-login, no-AI checklist app–so I built one",
+      "hn_url": "https://news.ycombinator.com/item?id=42035374"
+    },
+    {
+      "id": "41866019",
+      "type": "comment",
+      "text": "Apple will have a completely AI capable product line in 18 months, with the major platforms basically done.Microsoft is built around the broken Intel tick&#x2F;tick model of incremental improvement — they are stuck with OEM shitware that will take years to flush out of the channel. That means for AI, they are stuck with cloud based OpenAI, where NVIDIA has them by the balls and the hyperscalers are all fighting for GPU.Apple will deliver local AI features as software (the hardware is “free”) at a much higher margin - while Office 365 AI is like $400+ a year per user.You’ll have people getting iPhones to get AI assisted emails or whatever Apple does that is useful.",
+      "author": "Spooky23",
+      "points": null,
+      "created_at": "2024-10-17T02:56:14Z",
+      "story_title": "AI PCs Aren't Good at AI: The CPU Beats the NPU",
+      "hn_url": "https://news.ycombinator.com/item?id=41866019"
+    },
+    {
+      "id": "41854383",
+      "type": "comment",
+      "text": "&gt; but I find either a notebook and pen, or butcher paper and pen to be far superior for capturing anything.I have phases where I convince myself this is true, in between switching back to a note taking app (TickTick last few yrs) and every time I go back it&#x27;s because it a) has total historical recall + a search box when I want to find something and b) I already carry my phone everywhere, like the grocery store, or I&#x27;m on my laptop for work.Papers only true benefit is focus and &quot;zen&quot; stuff.",
+      "author": "dmix",
+      "points": null,
+      "created_at": "2024-10-16T00:12:51Z",
+      "story_title": "Apple introduces iPad mini built for Apple Intelligence",
+      "hn_url": "https://news.ycombinator.com/item?id=41854383"
+    },
+    {
+      "id": "41825748",
+      "type": "comment",
+      "text": "IF is an offline content and data system designed to help professionals achieve their goals more effectively. Currently, it can serve as an alternative to Typora, Ticktick, and Notion Calendar.",
+      "author": "matrixages",
+      "points": null,
+      "created_at": "2024-10-13T06:46:57Z",
+      "story_title": "Show HN: A free alternative to Typora –– IF",
+      "hn_url": "https://news.ycombinator.com/item?id=41825748"
+    },
+    {
+      "id": "41816348",
+      "type": "comment",
+      "text": "Yeah, but they don&#x27;t emulate the smells, the sound of fans spinning up and the gentle breeze they generate, the beeps and boops, the tick tick tick hard drives make, the long travel of keys on that old keyboard with a slightly sticky shift (gotta be from that coffee I spilled in &#x27;97).",
+      "author": "dr_kiszonka",
+      "points": null,
+      "created_at": "2024-10-12T04:13:18Z",
+      "story_title": "Are retrocomputers best left on or off?",
+      "hn_url": "https://news.ycombinator.com/item?id=41816348"
+    },
+    {
+      "id": "41373286",
+      "type": "comment",
+      "text": "I tried many times to like Notion but it is far too complicated for my needs. It felt like procrastination, a tech version of a bullet journal. Spending too much time designing the system, and not enough actually using it. It felt like there was too much potential and flexibility, if that&#x27;s possible - whilst being really crap at what I was looking for (todo list with notifications &#x2F; offline personal document storage).So its ticktick + one note (used to have Evernote until they mucked it up).I&#x27;ve tried journaling but never feel like I have enough interesting things to document. Have you tried Apple Journal? Do you have templates you recommend?",
+      "author": "stranded22",
+      "points": null,
+      "created_at": "2024-08-27T21:29:10Z",
+      "story_title": "Just use fucking paper, man",
+      "hn_url": "https://news.ycombinator.com/item?id=41373286"
+    },
+    {
+      "id": "41179101",
+      "type": "comment",
+      "text": "Feynman wrote a exceptionally clear explanation of this experiment and what it meant:- &quot;To illustrate the whole problem still more clearly, imagine that we were talking to a Martian, or someone very far away, by telephone. We are not allowed to send him any actual samples to inspect; for instance, if we could send light, we could send him right-hand circularly polarized light and say, “That is right-hand light—just watch the way it is going.” But we cannot give him anything, we can only talk to him. He is far away, or in some strange location, and he cannot see anything we can see. For instance, we cannot say, “Look at Ursa major; now see how those stars are arranged. What we mean by ‘right’ is …” We are only allowed to telephone him.&quot;- &quot;Now we want to tell him all about us. Of course, first we start defining numbers, and say, “Tick, tick, two, tick, tick, tick, three, …,” so that gradually he can understand a couple of words, and so on. After a while we may become very familiar with this fellow, and he says, “What do you guys look like?” We start to describe ourselves, and say, “Well, we are six feet tall.” He says, “Wait a minute, what is six feet?” Is it possible to tell him what six feet is? Certainly! We say, “You know about the diameter of hydrogen atoms—we are 17,000,000,000 hydrogen atoms high!” That is possible because physical laws are not invariant under change of scale, and therefore we can define an absolute length. And so we define the size of the body, and tell him what the general shape is—it has prongs with five bumps sticking out on the ends, and so on, and he follows us along, and we finish describing how we look on the outside, presumably without encountering any particular difficulties. He is even making a model of us as we go along. He says, “My, you are certainly very handsome fellows; now what is on the inside?” So we start to describe the various organs on the inside, and we come to the heart, and we carefully describe the shape of it, and say, “Now put the heart on the left side.” He says, “Duhhh—the left side?” Now our problem is to describe to him which side the heart goes on without his ever seeing anything that we see, and without our ever sending any sample to him of what we mean by “right”—no standard right-handed object. Can we do it?&quot;https:&#x2F;&#x2F;www.feynmanlectures.caltech.edu&#x2F;I_52.html",
+      "author": "perihelions",
+      "points": null,
+      "created_at": "2024-08-07T07:40:01Z",
+      "story_title": "Tsung-Dao Lee, physicist who challenged a law of nature, has died",
+      "hn_url": "https://news.ycombinator.com/item?id=41179101"
+    },
+    {
+      "id": "40873528",
+      "type": "comment",
+      "text": "Ah shoot it was worth a guess. Huge fan of Tick Tick",
+      "author": "mriziq",
+      "points": null,
+      "created_at": "2024-07-04T09:21:27Z",
+      "story_title": "The saddest \"Just Ship It\" story ever (2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=40873528"
+    },
+    {
+      "id": "40872871",
+      "type": "comment",
+      "text": "nah, back when I wrote this article tick tick was a super basic app. I&#x27;ve tried it a few times but it never clicked for me, not enough features.",
+      "author": "thekitze",
+      "points": null,
+      "created_at": "2024-07-04T06:45:52Z",
+      "story_title": "The saddest \"Just Ship It\" story ever (2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=40872871"
+    },
+    {
+      "id": "3327983",
+      "type": "story",
+      "title": "TickTick enables you to put JSON in your bash scripts",
+      "text": "",
+      "author": "kristopolous",
+      "points": 18,
+      "num_comments": 6,
+      "created_at": "2011-12-08T06:25:26Z",
+      "hn_url": "https://news.ycombinator.com/item?id=3327983"
+    },
+    {
+      "id": "441281",
+      "type": "story",
+      "title": "Tick tick tick... significant number of Seagate hard drives failing",
+      "text": "",
+      "author": "transburgh",
+      "points": 14,
+      "num_comments": 14,
+      "created_at": "2009-01-20T03:19:37Z",
+      "hn_url": "https://news.ycombinator.com/item?id=441281"
+    },
+    {
+      "id": "4240823",
+      "type": "story",
+      "title": "Tick tick tick",
+      "text": "",
+      "author": "ph0rque",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2012-07-13T17:38:30Z",
+      "hn_url": "https://news.ycombinator.com/item?id=4240823"
+    },
+    {
+      "id": "41640707",
+      "type": "story",
+      "title": "Show HN: A modern alternative to Todoist and TickTick",
+      "text": "",
+      "author": "iJohnPaul",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2024-09-24T20:42:04Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41640707"
+    },
+    {
+      "id": "40511965",
+      "type": "story",
+      "title": "So Real List. Planning Urgent and Important in TickTick",
+      "text": "",
+      "author": "solist",
+      "points": 1,
+      "num_comments": 1,
+      "created_at": "2024-05-29T13:46:52Z",
+      "hn_url": "https://news.ycombinator.com/item?id=40511965"
+    },
+    {
+      "id": "14336511",
+      "type": "story",
+      "title": "Ask HN: Best Wunderlist replacement?",
+      "text": "Hi guys,<p>as many others I am not really impressed with Microsoft’s Wunderlist replacement called To-Do. So my question is, is there any similiar, simple and safe alternative? It seems to me most of the competitors tend to overcomplicate things (e.g Omnifocus) which is something I am not looking for. The closest thing to Wunderlist I was able to find is probably TickTick, but I would love to hear other tips.<p>Thanks",
+      "author": "michalpt",
+      "points": 3,
+      "num_comments": 7,
+      "created_at": "2017-05-14T17:31:00Z",
+      "hn_url": "https://news.ycombinator.com/item?id=14336511"
+    },
+    {
+      "id": "27172607",
+      "type": "story",
+      "title": "Ask HN: Which SaaS apps do you pay for personal use?",
+      "text": "I&#x27;m curious which SaaS apps are people paying for personal use.<p>I&#x27;ll go first, I use Notion personal pro account ($4&#x2F;mo) to get access of page version history.\nI use Ticktick (todo list app) premium account (25$&#x2F;yr) because it  is more feature-rich than other todo apps and works smoothly on my android device.",
+      "author": "jerrygoyal",
+      "points": 3,
+      "num_comments": 3,
+      "created_at": "2021-05-16T10:16:22Z",
+      "hn_url": "https://news.ycombinator.com/item?id=27172607"
+    },
+    {
+      "id": "42789751",
+      "type": "story",
+      "title": "Show HN: I made a productivity app that saves more time than it takes",
+      "text": "I created TalkNotes.tech!<p>A voice powered to do list, notes, flashcards, transcript and more... Wake up in the morning and talk through your day, and have a list of tasks and events generated for you. Check them off throughout the day and track your progress.<p>Future Roadmap:\n- Adding google calendar integration\n- Build IOS and Android native app\n- Give some sort of free trial\n- Add other productivity app integrations like TickTick, IOS reminders, notion calendar....<p>Tech Stack;\n- NextJS\n- Typescript\n- Prisma\n- AuthJS\n- Resend\n- Zono\n- Stripe\n- Plausible<p>Let me know what you think! Psst: with the code &#x27;FIRST&#x27; it&#x27;s only $4 for the first month!",
+      "author": "adsasdsad",
+      "points": 2,
+      "num_comments": 2,
+      "created_at": "2025-01-22T06:36:11Z",
+      "hn_url": "https://news.ycombinator.com/item?id=42789751"
+    },
+    {
+      "id": "33778229",
+      "type": "story",
+      "title": "Ask HN: An Ideal Project Task Manager?",
+      "text": "I am looking for a project task manager with the following features (example).<p>---<p>Tasks, Sub Tasks (Graph), Recurring Tasks<p>- Add notes related to task (TickTick).<p>- Assign tasks to users or vice versa (ClickUp).<p>- Automatic addition of tasks to calendar when date is mentioned (Taskade).<p>---<p>Organization<p>- Projects<p>- Lists<p>- Tags<p>- etc<p>* Multiple views for each task list (Taskade).<p>---<p>Time Tracking<p>- Recording, Manual Entry (Toggl)<p>- Reports (Toggl)<p>- Activity Log (optional)<p>---<p>Suggest applications that are file-based (offline usage) or self-hosted (open source), AND&#x2F;OR that provide ANY of the requested features using CalDav (but remain file-based or self-hosted).<p>Please don&#x27;t recommend single user linux command line * (like orgmode or taskwarrior).",
+      "author": "switchupcb",
+      "points": 1,
+      "num_comments": 1,
+      "created_at": "2022-11-28T19:20:46Z",
+      "hn_url": "https://news.ycombinator.com/item?id=33778229"
+    },
+    {
+      "id": "47088626",
+      "type": "story",
+      "title": "Show HN: Focusmo – A macOS focus timer that connects to your existing task apps",
+      "text": "I kept losing focus not because I lacked discipline, but because starting a focus session had too many steps: open the task app, pick a task, open a separate timer, set the duration, start. By step 3 I was already on Twitter.<p>So I built Focusmo — a native macOS app that pulls tasks from the tools you already use (Things, Todoist, TickTick, Reminders, Google Tasks, Microsoft To Do, Obsidian) and lets you start a timed focus session on any task in seconds.<p>The core idea: your task list and your focus timer should be the same app.<p>What it does:<p>- Connects to 7 task managers so you don&#x27;t maintain a separate list\n- Command palette (like Raycast) — keyboard shortcut, type task name, hit enter, you&#x27;re working\n- Floating timer that stays visible across spaces and monitors\n- Pomodoro mode with automatic work&#x2F;break cycles, or a &quot;minimum goal&quot; mode that keeps going if you&#x27;re in flow\n- Activity tracking that shows which apps you used during sessions (no keylogging, all local)\n- Workspaces with app blocking — define &quot;deep work&quot; vs &quot;meetings&quot; environments\n- Streaks and achievements that celebrate, never punish<p>It&#x27;s a native SwiftUI app, not Electron. Runs as a menu bar app or a regular window.<p>I&#x27;ve been building this solo for about two years. Happy to answer questions about the architecture, the integrations, or the product decisions.",
+      "author": "elesinn",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2026-02-20T14:42:36Z",
+      "hn_url": "https://news.ycombinator.com/item?id=47088626"
+    },
+    {
+      "id": "41369009",
+      "type": "story",
+      "title": "Calling for beta users – an app that protects your focus",
+      "text": "Hey HN! I&#x27;m Danny, and I’ve been an entrepreneur for a few months. As my product is not live yet so I would make a regular post instead<p>Living in a world where billions of dollars are spent on stealing your attention, I am well aware of my reduced focus muscle and ability to get distracted easily during work. That&#x27;s why I picked this problem to solve and tried it as a startup idea. After working with current beta users, I&#x27;ve put together this version (https:&#x2F;&#x2F;productiv.digital&#x2F;) and want to ask for valuable feedback by posting for more beta users.<p>So shortly, to train your focus muscle, my approach is to (1) eliminate the source of distraction and (2) let your brain know what&#x27;s coming next (or else it will actively crave distraction). Ultimately, I want to make “something” that could go along with users - like their own companion that progressively trains users’ brains to lower dopamine baseline and achieve more by quality time. Having said that, so far this app will:\n- App blocker: block unwanted apps&#x2F;sites, create personalized messages for yourself at the block wall, increasingly delaying time to unblock\n- Plan your daily day effectively fast (Sunsama-like): you cannot focus if you don’t have a purpose to do so. Just write down what&#x27;s in your mind (Like Todoist or TickTick),\n- Smart scheduling: schedule your day via one-click, it will also suggest a new schedule if unplanned event slots in (new meeting for example)\n- Check-in reminder to check messages and emails: So focus mode is great, but the problem is that it amplifies FOMO in our minds. The app will remind you regularly to check during your focus flow\n- (in progress) capture your day accurately, weekly analytics to learn how you spent your day<p>I&#x27;m looking for a new batch of beta users where you can give us feedback while using for free and receive a lifetime deal in return. If this is within your interest, click “try for free” button in the website and leave your contact. Looking forward to all the ideas&#x2F;feedback to cover my blindspot as well. Appreciate every comment to make it happen. Thanks guys!",
+      "author": "afk191202",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2024-08-27T16:02:49Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41369009"
+    },
+    {
+      "id": "47513482",
+      "type": "story",
+      "title": "1929: Inside the Greatest Crash in Wall Street History",
+      "text": "",
+      "author": "mitchbob",
+      "points": 3,
+      "num_comments": 1,
+      "created_at": "2026-03-25T05:01:58Z",
+      "hn_url": "https://news.ycombinator.com/item?id=47513482"
+    },
+    {
+      "id": "25954527",
+      "type": "story",
+      "title": "PDCA Cycle Explained: 4 Steps for Continuous Learning and Improvement",
+      "text": "",
+      "author": "lizzyliu",
+      "points": 3,
+      "num_comments": 1,
+      "created_at": "2021-01-29T05:56:13Z",
+      "hn_url": "https://news.ycombinator.com/item?id=25954527"
+    },
+    {
+      "id": "26261308",
+      "type": "story",
+      "title": "SMART Goals Framework: How It Helps Us with Goal-Reaching",
+      "text": "",
+      "author": "lizzyliu",
+      "points": 2,
+      "num_comments": 1,
+      "created_at": "2021-02-25T09:50:37Z",
+      "hn_url": "https://news.ycombinator.com/item?id=26261308"
+    },
+    {
+      "id": "16193292",
+      "type": "story",
+      "title": "A comprehensive guide to corporate online surveillance in everyday life",
+      "text": "",
+      "author": "infodroid",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2018-01-20T13:44:03Z",
+      "hn_url": "https://news.ycombinator.com/item?id=16193292"
+    },
+    {
+      "id": "3259989",
+      "type": "story",
+      "title": "Ask HN: Getting into iOS Development (Advice)?",
+      "text": "In short here is the situation.<p>I am bored with my day job (under challenged and no creative work), and recently got interested in iOS app development. I am from cs background and 3 years of experience in programming (not good at design). Can some experienced developers/freelancers throw advice for me as well job opportunities in this area?",
+      "author": "ticktick22",
+      "points": 5,
+      "num_comments": 4,
+      "created_at": "2011-11-21T04:34:00Z",
+      "hn_url": "https://news.ycombinator.com/item?id=3259989"
+    },
+    {
+      "id": "6069701",
+      "type": "story",
+      "title": "Igloo 1.1.0 released",
+      "text": "",
+      "author": "tickticktick",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2013-07-19T12:36:37Z",
+      "hn_url": "https://news.ycombinator.com/item?id=6069701"
+    },
+    {
+      "id": "5903726",
+      "type": "story",
+      "title": "VisaDoor",
+      "text": "",
+      "author": "ticktick",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2013-06-19T04:19:54Z",
+      "hn_url": "https://news.ycombinator.com/item?id=5903726"
+    },
+    {
+      "id": "2666415",
+      "type": "story",
+      "title": "TDD Kata in C++: String Calculator",
+      "text": "",
+      "author": "tickticktick",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2011-06-17T17:50:40Z",
+      "hn_url": "https://news.ycombinator.com/item?id=2666415"
+    },
+    {
+      "id": "6144680",
+      "type": "story",
+      "title": "The Ticktock of the Death Clock",
+      "text": "",
+      "author": "timr",
+      "points": 7,
+      "num_comments": 0,
+      "created_at": "2013-08-02T00:38:46Z",
+      "hn_url": "https://news.ycombinator.com/item?id=6144680"
+    },
+    {
+      "id": "38641509",
+      "type": "comment",
+      "text": "That ship has sailed. If I look at my Dock right now, from left to right I&#x27;m running:- Nautilus- Brave (Chromium)- Gnome-terminal- VSCode (Electron)- Telegram Desktop (̶E̶l̶e̶c̶t̶r̶o̶n̶ QT)[1]- WhatsApp (web wrapper in Electron)[1]- Discord (Electron)- Spotify (Chromium Embedded Framework)- Betterbird (Gecko, might as well be Electron)- TickTick (Electron)- Steam (Chromium Embedded Framework)In a way it is very interesting to me, Chromium has pretty much become a &quot;kernel&quot; of sorts that all web technologies run atop. And I don&#x27;t really buy the &quot;Chromium gives Google power over the web&quot;, as it is permissively licensed, and there is at least one other giant stakeholder in the form of Microsoft.Kind of makes me wish GNU and Apple would do what Microsoft has done, integrate a Chromium-based WebView into the OS and optimize it to the gills. The battle between Blink (Chromium), WebKit and Gecko has already been lost, might as well give your users the best UX they can get.[1]There is work being done on native GTK clients by third parties, namely- Paper Plane for Telegram: https:&#x2F;&#x2F;github.com&#x2F;paper-plane-developers&#x2F;paper-plane- Whakarere for Whatsapp: https:&#x2F;&#x2F;github.com&#x2F;tobagin&#x2F;whakarere",
+      "author": "jorvi",
+      "points": null,
+      "created_at": "2023-12-14T14:12:55Z",
+      "story_title": "Proton Mail gets a desktop app for encrypted email and calendar",
+      "hn_url": "https://news.ycombinator.com/item?id=38641509"
+    },
+    {
+      "id": "29665548",
+      "type": "comment",
+      "text": "Congratulations are indeed due, so ditto there.I have to say I have the same response - dammit, not another one - but I&#x27;m rather more interested in our complete fascination with these tools. Like - I have my note taking &#x2F; knowledge stuff pretty much nailed [+] but STILL I always find myself clicking through on posts like this. Like many others on HN, I&#x27;m absolutely, unbearably, totally addicted to considering and re-considering my methodology in the notes &#x2F; to-do space, even though I&#x27;m really happy with what I&#x27;ve got.When I try to analyse this I realise there&#x27;s a part-dopamine level thing (I love a beautiful, clean UI and idea), partly a wishful thinking (man, if only I could remember X, maybe this is the tool to help me!), and partly (this is the hard one to admit to but I would bet money on many other HN types as being here with me) an addiction with process, pure and simple. Anything to not actually have to DO that thing I need to do - oh look, I could review a tool that&#x27;ll help me procrastinate a while longer.It reminds me of the me when I was 16 and &quot;revising&quot; for GCSE exams. I spent about 90% of my time re-formatting and colouring in my revision timetable rather than actually doing the work of revision. That me is still here, only now it&#x27;s notes apps rather than colouring in...Finally - I think admitting that there simply isn&#x27;t a perfect tool that will enable All The Things and Make Me A Much More Effective Person is much, much harder than the alternative which is to keep the Holy Grail somewhere in my consciousness, and keep on clicking those damn notes app links :-)[+] In case anyone cares, I&#x27;ve used them all but I&#x27;m really happy with current 3-pronged approach: Evernote for transient &#x2F; meeting &#x2F; throwaway notes. TickTick for to-do&#x27;s. Dokuwiki for longer term &#x2F; journaled &#x2F; documentation type stuff. All connected together via the common beauty of hyperlinks. Hook for Mac is amazeballs for this...",
+      "author": "dmje",
+      "points": null,
+      "created_at": "2021-12-23T19:31:55Z",
+      "story_title": "/tap – Powerful and customizable note-taking system",
+      "hn_url": "https://news.ycombinator.com/item?id=29665548"
+    },
+    {
+      "id": "24429358",
+      "type": "comment",
+      "text": "This kind of statement really depends on what you mean by &quot;worthwhile&quot;. Writing doesn&#x27;t have to (and rarely does) give raw information to provide worth. Sometimes it just points in a direction, sometimes it just collects people together over a single topic, sometimes it&#x27;s just for fun.One day another of Saroyan’s friends, the poet Ted Berrigan, got a look at his latest one-word poem, eyeye, on a sheet of typewriter paper. “He said, ‘What the fuck is this?’” Saroyan recalls, “which I thought was a promising response.”https:&#x2F;&#x2F;www.poetryfoundation.org&#x2F;articles&#x2F;68913&#x2F;you-call-tha...A poem should not meanBut be.https:&#x2F;&#x2F;www.poetryfoundation.org&#x2F;poetrymagazine&#x2F;poems&#x2F;17168&#x2F;...In a world that&#x27;s meaningless and mostly empty there&#x27;s time to waste reading and writing and discussing nonsense poetry until it starts to make sense. I think you&#x27;re right that Saroyan found the responses to his poetry more interesting than the work itself. The Reagan administration went in trying to dismantle the National Endowment for the Arts, citing Saroyan among others, wound up eventually inflating the budget, and was rewarded with Immersion (Piss Christ). I think it&#x27;s funny too.https:&#x2F;&#x2F;www.arts.gov&#x2F;open-government&#x2F;national-endowment-arts...So what if he was high and having a laugh? It exists, it&#x27;s been read, noticed, observed, considered. &quot;You could feel him in a room at his typewriter, like a monkey or a cat with a little extra brainpower.&quot; It does not have to be liked, it can be &quot;banal&quot;.https:&#x2F;&#x2F;www.nytimes.com&#x2F;2008&#x2F;04&#x2F;27&#x2F;books&#x2F;review&#x2F;Hell-t.html?...As for the analysis, you may have overlooked some of the more nuanced conclusions. The North American field cricket chirps 33 times a minute. Big Ben, six-o&#x27;clock, 1924. Tic-tac (1969). Obviously there&#x27;s is an oversight in the claim a clock only makes one sound Tick Tick. A pendulum clock swinging to two distinct sides will in fact make two sounds. And extending lighght to L-I-G-H-G-H-T is absurd, this is visual art and it&#x27;s not the same at all once that&#x27;s done.",
+      "author": "aimor",
+      "points": null,
+      "created_at": "2020-09-10T06:05:39Z",
+      "story_title": "Aram Saroyan and the Art of the One-Word Poem",
+      "hn_url": "https://news.ycombinator.com/item?id=24429358"
+    },
+    {
+      "id": "19996513",
+      "type": "comment",
+      "text": "I utilize a similar system to &quot;reverse engineer the year&quot;.Breaking down the major outcomes I want for the year into quarters which each having a specific focus and theme. At the end of each quarter I have a 90 day review to reflect on how I&#x27;m doing, where I&#x27;m heading and if there is any recalibration that needs to happen from changing priorities.Each month I is essentially 3 &quot;Acts&quot; that play out the goals of that quarter and those in turn have weekly sprints.With all that said the day is the most important of it all. What I choose to do each day reverberates across the year. This is where deep investment in intentionally building habits and focusing on systems over goals come into play.I write more about that system here:\nhttps:&#x2F;&#x2F;juvoni.com&#x2F;you-are-a-rocketship&#x2F;A great book that talks about that system is The One Thing by Gary KellerAs for time management tools I’ve focus on four categories- Tracking- Quotas- Blocking- Scheduling &amp; Task ManagementI talk about the tools I use here:\nhttps:&#x2F;&#x2F;juvoni.com&#x2F;tools-of-the-time-manager&#x2F;Big highlights are:- Rescuetime- Freedom- TickTick",
+      "author": "juvoni",
+      "points": null,
+      "created_at": "2019-05-23T22:07:57Z",
+      "story_title": "Ask HN: What tools/methods do you use to focus your time well?",
+      "hn_url": "https://news.ycombinator.com/item?id=19996513"
+    },
+    {
+      "id": "29894171",
+      "type": "comment",
+      "text": "&gt;MassiveI just posted the data, which you ignore. Post this &quot;massive&quot; increase, because, as I show next, ....&gt;There has been a massive uptick in VAERS reporting since the introduction of this series of vaccines.This amuses me - you put such effort into reading the worst materials and believing them, while ignoring any good, reliable sites, or putting any thought why there might possibly be an uptick in deaths not attributable to vaccines that also shows up in VAERS....Maybe there has been an uptick in deaths unrelated to the vaccine, say, perhaps, from the worst pandemic in 100 years? Gee, guess what. Increased deaths for ANY reason will increase deaths in VAERS.COVID was 10% of deaths in 2020. That is a large increase, so large, that life expectancy dropped. It&#x27;s a category that did not exist in 2019. The US death rate soared 17% in 2020, with no vaccines, leading to, you guessed it, a ~20% increase in VAERS deaths, because the underlying population is also dying.Before the vaccine. Yet you are happy to put the blame on a vaccine that had not been invented?Same in 2021.If you actually find the VAERS deaths, and look at the graphs (which are public) you will see no such massive uptick - there is one, which begins, you guessed it, when COVID started, not when the vaccine did.So, again, cite a source. Because this is not true, except for tiny values of &quot;massive&quot;... And again you will not cite a source....This is why it&#x27;s not worth my trying to give you data - you ignore, attribute the least thought out and nonsensical claims attributable to data that is easily explained not needing such fear and doubt.Again, any death in VAERS cannot be attributed to a vaccine until a study determines the cause. Stop making this simple reasoning mistake. It&#x27;s clearly stated on the VAERS site that this is faulty reasoning, I pointed it out, and you do it again.Seriously - why do people believe fringe sites, youtube idiots, facebook, ticktok, over the people that have put entire careers into hard science to solve precisely this type of problem?&gt;Myocarditis has been observedThis is the perfect example of spreading fear and doubt. Quick question: which has shown more likely to increase the chance of myocarditis: getting the vaccine or getting COVID? Hint, one has been shown in peer reviewed, vetted, published papers to have a vastly greater (over 10x) chance of leading to myocarditis. Yet you continue to recite the fear and doubt nonsense on the opposite side of what the actual evidence is. The evidence so far is not getting a vaccine leads to a higher chance of getting myocarditis by a large margin since it comes along with COVID.Seriously - put the time into learning this stuff before you continue to spread more ignorant fear, which is exactly what such statements are. They are the opposite of reality, completely well documented, yet you must have consumed enough nonsense fear sites to repeat it without simply looking at the evidence.I&#x27;ll help you - go to google scholar, google covid myocarditis and read rates, then add the word vaccine, search again, and read the rates. Done. Now you know, and should never repeat such nonsense again. But you won&#x27;t put in the work and will repeat it I am quite sure.&gt;attempt to shut things down and have the last word so as to appear correct.No, it&#x27;s realizing that, as I wrote, people that have worked themselves into such deluded worldviews do not change easily, so becomes worth less and les of my time the clearer it becomes such people straight up ignore well presented data. I&#x27;ve requested multiple times you source ANY of your claims with reputable sources, and so far, zero. I only continue since others that are not like that do learn from such discussions get better knowledge. And it&#x27;s interesting to see how people rationalize behavior.Once I realize that someone does not want to look at evidence, look at data, cite and inspect reputable sources, it is clear they are not someone who uses reason to make choices or adapt. At that point it&#x27;s sometimes useful to poke them enough to anger them into looking stuff up. Or give up on them. That&#x27;s the game, purely rational based on actions.",
+      "author": "ChrisLomont",
+      "points": null,
+      "created_at": "2022-01-11T17:03:02Z",
+      "story_title": "More Americans are saying they’re ‘vaxxed and done’",
+      "hn_url": "https://news.ycombinator.com/item?id=29894171"
+    },
+    {
+      "id": "27872424",
+      "type": "comment",
+      "text": "Aww man, I&#x27;ve got an Android phone. Anyone know of any alternatives for Android? I&#x27;m currently using TickTick, but daily or activity based repeatable tasks isn&#x27;t its focus. I was only able to get what I need because of its decently powerful filter.",
+      "author": "pgn674",
+      "points": null,
+      "created_at": "2021-07-18T12:39:23Z",
+      "story_title": "Show HN: I built an app to create repeatable checklists to help with ADHD",
+      "hn_url": "https://news.ycombinator.com/item?id=27872424"
+    },
+    {
+      "id": "35703926",
+      "type": "comment",
+      "text": "I have been quite happy with Obsidian + Tasks.org (synced via nextcloud). I don&#x27;t connect them in any way.I used TickTick for several years and quite liked it (still recommend it) but at some point they started nerfing the free version and I became more concerned about privacy and supportively of open source so tried a few alternatives and found them to be great.I mostly use Todo list to keep track of things I need to follow up on (like volunteer work) and homework.Unfortunately, I still use Notion for a few things like Wikipedia page ideas because I simply don&#x27;t like the way &quot;databases&quot; feel to edit in Obsidian with the available plugins.Obsidian for me is mostly a daily journal plus a few pages that are like notes about cities I visited or my thoughts on the language learning apps I&#x27;ve experimented with.",
+      "author": "raybb",
+      "points": null,
+      "created_at": "2023-04-25T17:39:37Z",
+      "story_title": "People who use Notion to plan their whole lives",
+      "hn_url": "https://news.ycombinator.com/item?id=35703926"
+    },
+    {
+      "id": "27133612",
+      "type": "comment",
+      "text": "&gt;What will it take? An asteroid impact?I think dislodging US dollar from being &#x27;reserve currency&#x27;, and subsequently removing US (and UK) financial and judicial systems from being the &#x27;international financial litigation and contract management&#x27; realms -- will do it.If it USD is replaced by a gold-backed crypto currency network that uses something other than &#x27;Proof-of-Work&#x27; to ensure resiliency against attack.  This will be 50% of the steps to get to the above.Replacement of US and UK judicial systems as &#x27;arbitrators&#x27; of the contract terms -- will be harder to replace, however.Overall US dollar seems, now supporting what some would call, &#x27;perception based&#x27; economy.Where majority of the leverage are afforded to non-material based businesses (Ad networks, financial services, legal services, etc).This kind of focus, perhaps affects the direction of the world progress.Not sure if this &#x27;skewing&#x27; is good or bad for the world and future generations.For long time, there was no alternative to Western world ideals and approaches in many respects.But the trust in these has been quickly eroding, and it started decades ago.We might be at the &#x27;apex&#x27; of the trust erosion process, but yet to see where it will go.Right now, whether it is a 48K USD for an influencer&#x27;s ticktock post, or 60K USD + for a bitcoin, or 20 Bln USD losses by a small hedge fund.This all hardly makes any sense ... to many.\nUnless you look at it as faint indicators of the USD super-volcano-sized inflation, erupting.",
+      "author": "semilattice",
+      "points": null,
+      "created_at": "2021-05-12T18:35:56Z",
+      "story_title": "Bill Hwang of Archegos Capital lost $20B in two days",
+      "hn_url": "https://news.ycombinator.com/item?id=27133612"
+    },
+    {
+      "id": "21666676",
+      "type": "story",
+      "title": "Dhamick: Alternative to Facebook?",
+      "text": "",
+      "author": "tickyticky",
+      "points": 17,
+      "num_comments": 6,
+      "created_at": "2019-11-29T20:36:13Z",
+      "hn_url": "https://news.ycombinator.com/item?id=21666676"
+    },
+    {
+      "id": "31099013",
+      "type": "comment",
+      "text": "Hey thanks for the attention, I think the project is awesome and when it works I feel right at home.Two big issues I encountered today running 0.1.8 installed with Scoop on Windows 11 Education N:1. The empty space around apps gets bigger as you move them to new workspaces not primary (this is with Komorebi&#x27;s workspaces, not Windows&#x27; Virtual Desktops which you have indicated have poorly documented APIs). It seems to be this issue [1] but that issue was closed as fixed2. Sometimes apps left empty spaces when they were minimized. That might have been VS Code or Spotify (or Slack?). Spotify when visible didn&#x27;t resize appropriately.All my user-installed apps if that is helpful:- KeyPirinha- Mochi- PowerToys- Slack- Telegram Desktop- TickTick- Ubuntu on Windows- VS Code- Thunderbird- Ditto- Everything- 1Password[1] https:&#x2F;&#x2F;github.com&#x2F;LGUG2Z&#x2F;komorebi&#x2F;issues&#x2F;15",
+      "author": "emptysongglass",
+      "points": null,
+      "created_at": "2022-04-20T16:08:11Z",
+      "story_title": "Ask HN: What’s a good laptop for software development at around $2k?",
+      "hn_url": "https://news.ycombinator.com/item?id=31099013"
+    },
+    {
+      "id": "32518041",
+      "type": "comment",
+      "text": "These are the ones I use the most-Notion for note taking-TickTick for to-do (though I&#x27;m currently developing my own to-do app)-Fig for autocomplete in the terminal-iTerm with zsh and ohmyzsh-f.lux for eye care-Hazel to dim windows other than the current active-Alfred as spotlight replacement-CleanShotX for screenshots and recording-CommandQ to have a timer if you accidentally hit Cmd + Q-1Password as password manager-aText for text shorcuts-Menuwhere to get the menu of the current app with a shortcut-Hookshot for window management-ColorSlurp as color picker-EasyFind to search for files and folder-Calibre to read epub and ebooks and manage books library-Contexts as window switcher (Cmd + Tab replacement)-DaisyDisk as disk space usage calculator-Fork as git client (Tower and GitKraken are pretty good too)-Postman as http client-Rocket for easy emoji access-TinkerTool modify macOS preferences not visible in user \npreferences-VLC as video player-VOX as music player-VS Code and JetBrains Rider for development",
+      "author": "jpozo",
+      "points": null,
+      "created_at": "2022-08-19T06:26:58Z",
+      "story_title": "Ask HN: Must have tools for a new MacBook",
+      "hn_url": "https://news.ycombinator.com/item?id=32518041"
+    },
+    {
+      "id": "31379862",
+      "type": "comment",
+      "text": "TickTick is the best app I&#x27;ve found.  I started with Todoist.  But bugs and missing features made be check out the competition a few years back.  I&#x27;ve been happy with the switch to TickTick, and I haven&#x27;t had any reason to re-shop since.TickTick has steadily improved&#x2F;refined their offering without ever interrupting my existing workflows.Thoughts&#x2F;details about how I use it:(1) I never try to remember to do anything.  I just always add a quick reminder in TickTick and let my brain move on. I have ~300 reminders right now.  This is part of the answer to how I remember to manage the list.  The list has every I need to know&#x2F;track in it, so the need for management shows up whenever the list becomes unwieldy.  More on that below.(2) Everything that needs to get done gets a due date.  I add an arbitrary one if it doesn&#x27;t have to get done by a certain date.  I won&#x27;t see any task with a due date again until the due date arrives.  The only thing I regularly pay attention to is my &quot;Today&quot; view -- the list of due or overdue tasks.(3) Actually-scheduled things go on my calendar.  The to-do list is for things that don&#x27;t necessarily have to get done at a fixed time.  (Tick Tick is good about showing both your calendar and your tasks at the same time, so you can maintain this separation while still seeing what has to get done.)(4) There are lots of tasks (e.g. perform annual maintenance) that I don&#x27;t perform right away.  Having these tasks automatically repeat 1 year from completion (vs. 1 year from the original due date) is a very helpful&#x2F;useful option.  (Both Todoist and TickTick support this.)(5) I remind myself to do more things than I actually do.  As tasks come up that I&#x27;m not going to perform right away, I re-schedule them (e.g. for 1 more week out). But once I&#x27;ve dismissed&#x2F;delayed a task a few times, it&#x27;s time to re-evaluate whether it&#x27;s actually worth doing.It&#x27;s always interesting to notice thoughts like: &quot;I should do this, but I&#x27;m about to skip doing so again.&quot;  Sometimes this prompts working to develop new habits or other corrective action. But more often it results in me re-evaluating why I think I &quot;should&quot; do it and deleting the task.  Until I take one of those actions, I have explicit evidence that my thoughts (what I should do) and actions (what I&#x27;m actually doing) aren&#x27;t quite aligned.  Seeing that gap is useful -- it provides some insights.(6) The biggest downside of this system is that it can result in a mountain of delayed (so clearly not very important) tasks building up.  But I find it better to deal with that as described in (5) than to be careful about what I add to my task list up front.",
+      "author": "sesquipedalian2",
+      "points": null,
+      "created_at": "2022-05-14T16:55:22Z",
+      "story_title": "Ask HN: How do you manage – and remember to manage – your to-do list in 2022?",
+      "hn_url": "https://news.ycombinator.com/item?id=31379862"
+    },
+    {
+      "id": "18036833",
+      "type": "comment",
+      "text": "Hi Jon, I just tried it out and I really love it. 20MB of memory, super fast, intuitive to use. Tick, tick tick.There&#x27;s just one thing I found really annoying and it&#x27;s that the window doesn&#x27;t remember where I snap it to (Windows). Every time I open it I have to snap it to half my display again. GitKraken (and as of a month ago, VS Code) remember where they belong.",
+      "author": "jazoom",
+      "points": null,
+      "created_at": "2018-09-21T02:41:19Z",
+      "story_title": "Show HN: Sublime Merge – A Git client from the makers of Sublime Text",
+      "hn_url": "https://news.ycombinator.com/item?id=18036833"
+    },
+    {
+      "id": "24065389",
+      "type": "comment",
+      "text": "Instagram has a real shot at out-doing ticktock here.  It&#x27;s got much better penetration among youth and can take serious advantage of that.  Ticktock is basically a subculture, used by the same people that used vsco a few years ago.  Just my two cents.",
+      "author": "collegeburner",
+      "points": null,
+      "created_at": "2020-08-05T20:44:35Z",
+      "story_title": "Facebook launches its TikTok rival, Instagram Reels",
+      "hn_url": "https://news.ycombinator.com/item?id=24065389"
+    },
+    {
+      "id": "23031087",
+      "type": "comment",
+      "text": "On one hand this is correct, many apps compete only on form function like (Instagram vs snap).I think there will always be a random form function that captivates (today’s ticktok), but my prediction is that the web will be won less by competing on form factor, and rather won focused on other parts of the user experience.In a simple example, logistics is an obvious differentiator, 2 day vs 5 day shipping etc.There are so many dimensions to compete on and app design will contribute to many of those dimensions, but some ways to compete will not involve coding.",
+      "author": "wtvanhest",
+      "points": null,
+      "created_at": "2020-04-30T14:23:47Z",
+      "story_title": "No-code founders are on the rise. Are they making money?",
+      "hn_url": "https://news.ycombinator.com/item?id=23031087"
+    }
+  ]
+}

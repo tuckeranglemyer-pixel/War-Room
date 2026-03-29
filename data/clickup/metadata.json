@@ -1,0 +1,42 @@
+{
+  "name": "ClickUp",
+  "category": "project_management",
+  "subcategories": [
+    "task_management",
+    "docs",
+    "whiteboards",
+    "goals"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $7-$12 per user/mo",
+  "primary_use_case": "All-in-one productivity platform replacing multiple tools",
+  "target_audience": [
+    "startups",
+    "small_teams",
+    "agencies",
+    "developers"
+  ],
+  "key_features": [
+    "tasks",
+    "docs",
+    "whiteboards",
+    "dashboards",
+    "goals",
+    "AI",
+    "time_tracking",
+    "sprints"
+  ],
+  "founded": 2017,
+  "estimated_users": "10M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "monday",
+    "notion"
+  ]
+}

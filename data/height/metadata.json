@@ -1,0 +1,37 @@
+{
+  "name": "Height",
+  "category": "project_management",
+  "subcategories": [
+    "task_management",
+    "ai_native",
+    "developer_tools"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $8.50 per user/mo",
+  "primary_use_case": "AI-native project management that automates routine work",
+  "target_audience": [
+    "startups",
+    "developers",
+    "product_teams"
+  ],
+  "key_features": [
+    "tasks",
+    "AI",
+    "smart_lists",
+    "chat",
+    "sprints",
+    "roadmaps",
+    "cross_team_views"
+  ],
+  "founded": 2020,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web",
+    "desktop"
+  ],
+  "competitors": [
+    "linear",
+    "asana",
+    "clickup"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Shortcut",
+  "category": "issue_tracking",
+  "subcategories": [
+    "project_management",
+    "developer_tools",
+    "sprint_planning"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $8.50-$12 per user/mo",
+  "primary_use_case": "Project management for software teams (formerly Clubhouse)",
+  "target_audience": [
+    "developers",
+    "engineering_teams",
+    "startups"
+  ],
+  "key_features": [
+    "stories",
+    "epics",
+    "iterations",
+    "milestones",
+    "roadmap",
+    "git_integration",
+    "docs"
+  ],
+  "founded": 2016,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web"
+  ],
+  "competitors": [
+    "linear",
+    "jira",
+    "github_issues"
+  ]
+}

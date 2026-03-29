@@ -18,6 +18,21 @@ type CognitiveLoad = 'LOW' | 'MODERATE' | 'HIGH' | 'OVERWHELMING'
 type Confidence = 'LOW' | 'MEDIUM' | 'HIGH'
 type QuoteSource = 'reddit' | 'hackernews' | 'google_play'
 
+interface KillerQuote {
+  quote: string
+  source: string
+  app: string
+  sentiment?: string
+  relevance: string
+}
+
+interface PainPoint {
+  quote: string
+  source: string
+  app: string
+  pain_point: string
+}
+
 interface ScreenData {
   frame_number?: number
   image_path: string
@@ -110,7 +125,8 @@ interface ReportData {
       overall_sentiment: Sentiment
       sentiment_by_competitor: Array<{ app: string; sentiment: string; sample_size: number; top_praise: string; top_complaint: string }>
     }
-    killer_quotes: Array<{ quote: string; source: QuoteSource; app: string; relevance: string }>
+    killer_quotes?: KillerQuote[]
+    user_pain_points?: PainPoint[]
     pricing_positioning: { competitor_range: string; sweet_spot: string; pricing_insight: string }
     adoption_signals: { easy_wins: string[]; dealbreakers: string[] }
     market_researcher_score: number
@@ -320,25 +336,89 @@ const MOCK_DATA: ReportData = {
         quote: "I've rebuilt my entire company's operations in Notion. Nothing else even comes close for the way we work.",
         source: 'reddit',
         app: 'Notion',
+        sentiment: 'positive',
         relevance: 'Power user retention signal — once embedded, stays embedded',
       },
       {
         quote: 'Switched from Notion to Linear for engineering. Notion is a blank canvas. Linear is an opinionated tool. I needed the opinion.',
         source: 'hackernews',
         app: 'Linear',
+        sentiment: 'mixed',
         relevance: 'Clear segmentation signal — different tools for different team types',
       },
       {
         quote: 'The mobile app is an embarrassment for a product at this price point. Crashes 3–4 times per session.',
         source: 'google_play',
         app: 'Notion',
+        sentiment: 'negative',
         relevance: 'Mobile UX is active churn driver, not just a complaint signal',
       },
       {
         quote: 'Onboarding is a disaster. I watched 4 coworkers give up in the first hour. We went back to Confluence.',
         source: 'reddit',
         app: 'Notion',
+        sentiment: 'negative',
         relevance: 'Onboarding failure has org-level switching cost implications',
+      },
+      {
+        quote: "Airtable's automation pricing jumped from free to $20/user overnight. We felt held hostage.",
+        source: 'reddit',
+        app: 'Airtable',
+        sentiment: 'negative',
+        relevance: 'Pricing resentment opens the door for a more predictable pricing model',
+      },
+      {
+        quote: "Linear is the best issue tracker I've ever used. The keyboard shortcuts alone are worth switching for.",
+        source: 'hackernews',
+        app: 'Linear',
+        sentiment: 'positive',
+        relevance: 'Speed and keyboard-first UX are table stakes for engineering-led teams',
+      },
+      {
+        quote: 'Coda finally lets me build internal tools without begging engineering. Game changer for ops teams.',
+        source: 'reddit',
+        app: 'Coda',
+        sentiment: 'positive',
+        relevance: 'No-code internal tooling is a high-value wedge for non-technical buyers',
+      },
+      {
+        quote: "Confluence feels like it was designed by someone who hates writing. Every page is a battle.",
+        source: 'hackernews',
+        app: 'Confluence',
+        sentiment: 'negative',
+        relevance: 'Legacy tooling frustration is a direct acquisition opportunity for modern docs products',
+      },
+    ],
+    user_pain_points: [
+      {
+        quote: 'Notion search is completely broken. It never finds what I need inside databases. Unusable for large workspaces.',
+        source: 'reddit',
+        app: 'Notion',
+        pain_point: 'Full-text search gaps in databases create direct opening for a product with reliable universal search',
+      },
+      {
+        quote: "Airtable's automation tier is a money grab. They cut off free automations with zero warning.",
+        source: 'reddit',
+        app: 'Airtable',
+        pain_point: 'Surprise pricing changes create churn windows — transparent, flat pricing is a strong counter-positioning lever',
+      },
+      {
+        quote: 'Lost two hours of work because Notion offline mode silently failed. No error, just gone.',
+        source: 'google_play',
+        app: 'Notion',
+        pain_point: 'Unreliable offline/sync is a retention killer for mobile-heavy users; reliable sync is table stakes',
+      },
+      {
+        quote: 'Coda is incredibly powerful but the learning curve is insane. I gave up after two weeks.',
+        source: 'hackernews',
+        app: 'Coda',
+        pain_point: "Power-tool complexity creates a segment of churned users ready for a 'smart but simple' alternative",
+      },
+      {
+        quote: 'Confluence permissions are a nightmare. Took us three IT tickets just to share a page externally.',
+        source: 'reddit',
+        app: 'Confluence',
+        pain_point: 'Enterprise permission complexity alienates smaller teams — a simpler sharing model is a direct wedge',
       },
     ],
     pricing_positioning: {
@@ -1318,6 +1398,7 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
   const sentimentData = mr.sentiment_analysis ?? { overall_sentiment: 'NEUTRAL', sentiment_by_competitor: [] }
   const overallSt = SENTIMENT_STYLE[sentimentData.overall_sentiment] ?? SENTIMENT_STYLE['NEUTRAL']
   const killerQuotes = mr.killer_quotes ?? []
+  const painPoints = mr.user_pain_points ?? []
   const sentimentByComp = sentimentData.sentiment_by_competitor ?? []
   const pricingPos = mr.pricing_positioning ?? { competitor_range: 'N/A', sweet_spot: 'N/A', pricing_insight: '' }
   const adoptionSignals = mr.adoption_signals ?? { easy_wins: [], dealbreakers: [] }
@@ -1326,53 +1407,120 @@ function MarketIntelligenceSection({ data }: { data: ReportData }) {
     <SectionWrap>
       <SectionTitle label="Market Intelligence" subtitle="Sentiment, quotes, and pricing from real user data" />
 
-      {/* Killer Quotes */}
-      <div style={{ marginBottom: 32 }}>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 16 }}>
-          Killer Quotes
-        </p>
-        <div className="killer-quotes-grid">
-          {killerQuotes.map((q, i) => {
-            const src = SOURCE_STYLE[q.source] ?? SOURCE_STYLE['reddit']
-            return (
-              <div key={i} style={{
-                background: 'var(--bg-secondary)',
-                border: '1px solid var(--border)',
-                borderRadius: 2,
-                padding: '20px 22px',
-              }}>
-                <p style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 17,
-                  fontStyle: 'italic',
-                  color: 'var(--text-primary)',
-                  lineHeight: 1.55,
-                  margin: '0 0 16px',
+      {/* KILLER QUOTES */}
+      {killerQuotes.length > 0 && (
+        <div style={{ marginBottom: 48 }}>
+          <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: 3, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8 }}>
+            KILLER QUOTES
+          </h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 15, marginBottom: 24 }}>What real users are saying about your competitors</p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(2, 1fr)',
+            gap: 16,
+          }}>
+            {killerQuotes.map((q: KillerQuote, i: number) => {
+              const sentimentColor = (q.sentiment || 'mixed') === 'negative' ? 'var(--accent-red)' : (q.sentiment || 'mixed') === 'positive' ? 'var(--accent-green)' : 'var(--accent-amber)'
+              const sourceBg = q.source === 'reddit' ? '#FF4500' : q.source === 'hackernews' ? '#FF6600' : '#34A853'
+              const sourceLabel = q.source === 'reddit' ? 'Reddit' : q.source === 'hackernews' ? 'HN' : 'Play Store'
+              return (
+                <div key={i} style={{
+                  background: 'var(--bg-card)',
+                  borderRadius: 10,
+                  padding: '20px 24px',
+                  borderLeft: `3px solid ${sentimentColor}`,
                 }}>
-                  "{q.quote}"
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-                  <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <p style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 18,
+                    fontStyle: 'italic',
+                    color: 'var(--text-primary)',
+                    lineHeight: 1.6,
+                    marginBottom: 12,
+                  }}>
+                    "{q.quote}"
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                     <span style={{
-                      fontFamily: 'var(--font-mono)', fontSize: 9, fontWeight: 500,
-                      color: src.color, background: src.bg,
-                      borderRadius: 100, padding: '2px 8px', letterSpacing: '0.07em',
-                    }}>
-                      {src.label}
-                    </span>
-                    <span style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--text-muted)' }}>
-                      {q.app}
-                    </span>
+                      background: sourceBg,
+                      color: '#fff',
+                      fontSize: 10,
+                      fontWeight: 700,
+                      padding: '2px 8px',
+                      borderRadius: 4,
+                      fontFamily: 'var(--font-mono)',
+                      textTransform: 'uppercase',
+                    }}>{sourceLabel}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: 13, fontFamily: 'var(--font-body)' }}>{q.app}</span>
                   </div>
-                  <span style={{ fontFamily: 'var(--font-body)', fontSize: 11, color: 'var(--text-muted)', fontStyle: 'italic' }}>
-                    {q.relevance}
-                  </span>
+                  <p style={{ color: 'var(--text-muted)', fontSize: 13, lineHeight: 1.5 }}>{q.relevance}</p>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* USER PAIN POINTS — Competitor Weaknesses */}
+      {painPoints.length > 0 && (
+        <div style={{ marginBottom: 48 }}>
+          <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: 3, color: 'var(--accent-red)', textTransform: 'uppercase', marginBottom: 8 }}>
+            COMPETITOR PAIN POINTS
+          </h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 15, marginBottom: 24 }}>Gaps you can exploit — real complaints from competitor users</p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: 12,
+          }}>
+            {painPoints.map((p: PainPoint, i: number) => {
+              const sourceBg = p.source === 'reddit' ? '#FF4500' : p.source === 'hackernews' ? '#FF6600' : '#34A853'
+              const sourceLabel = p.source === 'reddit' ? 'Reddit' : p.source === 'hackernews' ? 'HN' : 'Play Store'
+              return (
+                <div key={i} style={{
+                  background: 'rgba(239, 68, 68, 0.06)',
+                  border: '1px solid rgba(239, 68, 68, 0.15)',
+                  borderRadius: 10,
+                  padding: '16px 20px',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr auto',
+                  gap: 16,
+                  alignItems: 'start',
+                }}>
+                  <div>
+                    <p style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 16,
+                      fontStyle: 'italic',
+                      color: 'var(--text-primary)',
+                      lineHeight: 1.5,
+                      marginBottom: 8,
+                    }}>
+                      "{p.quote}"
+                    </p>
+                    <p style={{ color: 'var(--accent-red)', fontSize: 14, lineHeight: 1.5, fontFamily: 'var(--font-body)' }}>
+                      → {p.pain_point}
+                    </p>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
+                    <span style={{
+                      background: sourceBg,
+                      color: '#fff',
+                      fontSize: 10,
+                      fontWeight: 700,
+                      padding: '2px 8px',
+                      borderRadius: 4,
+                      fontFamily: 'var(--font-mono)',
+                      textTransform: 'uppercase',
+                    }}>{sourceLabel}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: 12, fontFamily: 'var(--font-mono)' }}>{p.app}</span>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Sentiment by competitor */}
       <div style={{ marginBottom: 32 }}>

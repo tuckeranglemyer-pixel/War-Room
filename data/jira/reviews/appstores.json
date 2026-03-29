@@ -1,0 +1,1206 @@
+{
+  "app": "jira",
+  "play_store_reviews": [
+    {
+      "rating": 1,
+      "text": "Constantly hangs, leads to blank pages, and comments rarely work. When tapping on a notification, it often leads to a blank page. I have to close out, and even sometimes it still leads to a blank page. Past versions were even worse! Sometimes the notification page was completely blank. I also am very rarely able to post a comment on mobile, as the comment field is missing!! Most of the time I just give up.",
+      "thumbs_up": 44,
+      "date": "2020-03-25T11:34:23"
+    },
+    {
+      "rating": 1,
+      "text": "Commenting on tickets has become impossible. My cursor gets randomly moved and I type in the middle of a sentence. Or 10 blank lines will randomly get added. I find myself only looking at tickets in the app and just going to my computer to comment to do any actual work. We are Premium users for several Atlassian products, and are 24/7. It's incredibly frustrating that the app is so unreliable. I may end up deleting the app and just using mobile web.",
+      "thumbs_up": 43,
+      "date": "2022-12-21T06:46:26"
+    },
+    {
+      "rating": 2,
+      "text": "Compared to the website, the app is VERY lacking. The app is unintuitive and is missing a lot of the features that make the website more useable. For example: the backlog does not list the time frame of a sprint, just its name, and the task list only contains the name, id and number of points. This makes the backlog much more difficult to use.",
+      "thumbs_up": 77,
+      "date": "2019-02-26T15:24:14"
+    },
+    {
+      "rating": 3,
+      "text": "It's fine. It gives me basic info I need, but when I need to actually use Jira I'll go use the laptop. I mainly use it to check on comments on ongoing tasks. It would be very handy if the issue counter would allow me to add custom filters to that widget. So when I quick check Jira with the issue counter on the homepage, I could see if issues are in which specific columns with our sprints, so I can manage team members who need to do approval or take action when it's in their column.",
+      "thumbs_up": 2,
+      "date": "2022-08-27T12:05:30"
+    },
+    {
+      "rating": 2,
+      "text": "Aside from the core Jira program being difficult to set up, mobile leaves a lot to be desired. The worst part is that it includes a non-functioning dashboard. In order to use the majority of dashboard gadgets, you have to log in through the browser. The app is difficult to set up but much more capable than the competition. If they improve the app so that the dashboard functions, and maybe make the design a bit more user friendly, they have a winner. Recommend only to devs, end users beware.",
+      "thumbs_up": 70,
+      "date": "2023-07-26T17:57:43"
+    },
+    {
+      "rating": 4,
+      "text": "I like that the fact that this app just works out the Box. However there is a difference between starting a project on a phone and on a computer. You will have different settings if you rely only on the mobile device. I also use this app on an iPad as well and have noticed at the log work and time estimates do not work there. On here (andriod) I'm having a problem finding him in general. But I'm still new to the jira cloud app and may have just simply missed it.",
+      "thumbs_up": 9,
+      "date": "2019-07-20T18:02:49"
+    },
+    {
+      "rating": 4,
+      "text": "I love this application! Logging tickets is very smooth. || A few suggestions I have: Add the ability to attach Confluence articles to Jira tickets (I'm using the business space). There is a bug where when I use the home button, it closes all Jira components rather than letting it run in the background. I went through troubleshooting, but nothing was effective. Thank you!",
+      "thumbs_up": 1,
+      "date": "2026-03-04T14:51:27"
+    },
+    {
+      "rating": 1,
+      "text": "Used to work. but after the last update it's unusable. EXPLORE NEW ALERT GROUPS and the screen freezes - it's the end of it. the explore button doesn't work, after the message is dismissed nothing works on the screen, can't see alerts, can't acknowledge alerts. As usual, break the working app for the sake of new \"features\" nobody asked for.",
+      "thumbs_up": 7,
+      "date": "2026-01-30T00:48:56"
+    },
+    {
+      "rating": 2,
+      "text": "Works fine on the front/narrow display of my Samsung fold6, but unusable on the larger/unfolded display. The right side (where task comments are displayed) goes crazy with jittery scrolling, comment text input sits on top of content making it impossible to read the latest comment, etc.",
+      "thumbs_up": 1,
+      "date": "2026-02-27T17:40:58"
+    },
+    {
+      "rating": 1,
+      "text": "Much worse user experience than the OpsGenie app. Simple things like not being able to click links in an alert description. Can't easily view favourite alert filters. Even the alert notification message is annoying. Overall lower quality experience than what it is replacing.",
+      "thumbs_up": 4,
+      "date": "2026-02-21T12:31:52"
+    },
+    {
+      "rating": 1,
+      "text": "Buggy on Z Fold 6 You would assume that the bigger the screen is, the more productive you get. But no, on unfold screen, you put in the descriptions, comments... Etc, the \"submit\" button is no where to be found, you can't submit your \"hardwork\" on the phone screen at all. Imagine the frustration after typing a long description, comment, with photos from your phone... And COULDN'T submit. You want to \"save yourself\" by copy the text but that's not working neither. The menu keeps disappearing.",
+      "thumbs_up": 6,
+      "date": "2025-12-09T19:52:53"
+    },
+    {
+      "rating": 3,
+      "text": "Great app when it works. However, few recent app updates break the comment adding feature. UI got weird and mess up with the on-screen keyboard. You cannot see the text when typing message. I'm using Google Gboard, the popular keyboard app in Samsung phone.",
+      "thumbs_up": 0,
+      "date": "2026-01-13T21:34:40"
+    },
+    {
+      "rating": 3,
+      "text": "A good way to get quick updates on Jira tasks, but more difficult to navigate than the web version.",
+      "thumbs_up": 0,
+      "date": "2026-03-20T12:04:20"
+    },
+    {
+      "rating": 1,
+      "text": "Can't set a custom notification tone, so good luck waking me up during on-call with my rather subtle global notification tone. Also, feedback button was broken for me, just got errors when trying to submit...",
+      "thumbs_up": 2,
+      "date": "2026-01-14T21:52:44"
+    },
+    {
+      "rating": 3,
+      "text": "Buggy app. Doesn't work correctly on Foldable phones and is extremely buggy when editing the data on tickets. Does not support many basic features for editing on the go.",
+      "thumbs_up": 0,
+      "date": "2026-02-07T04:25:16"
+    },
+    {
+      "rating": 1,
+      "text": "this app is frustratingly complex to use. limited features make using the site in a mobile browser a better option. It is only possible to attach one file to a record via the app. Any further attached files either are blocked or the existing file is removed. status updates are limited, crossed project searches and connections either can't be made or the process is not intuitive, records cannot be elevated to higher tier support, buttons don't size well and often disappear from the screen.",
+      "thumbs_up": 10,
+      "date": "2025-10-14T20:32:03"
+    },
+    {
+      "rating": 3,
+      "text": "Helpful to have an app but usefulness is limited. Data is missing, for instance online I get created dates or status in my dashboards lists. Those fields are completely gone here so you have to open each incident. Screen shots are restricted so I can't snapshot and share status unless I take a photo externally or logon via a browser which is rather short sided. It's ok but could be great with more thoughtful consideration and design.",
+      "thumbs_up": 6,
+      "date": "2025-10-24T07:57:02"
+    },
+    {
+      "rating": 1,
+      "text": "Only useful if your Jira instance use native (standard) Jira fields. The app does not support many Custom fields provided by marketplace apps. When those apps are build on the Forge platform, they do not appear in the forms on the mobile app. Which is unfortunate because then a mobile app cannot be used. Therefore, I rate the app as not useful as on 2025-10-21. I hope Atlassian fix these limitations, after which I will certainly review and change my rating accordingly.",
+      "thumbs_up": 4,
+      "date": "2025-10-21T03:45:15"
+    },
+    {
+      "rating": 1,
+      "text": "This is THE WORST on-call notification app I have ever used! Opsgenie wasn't great, but this is a MASSIVE step backwards. I hear it works okay on Apple, but notifications simply DO NOT WORK on Android. The documentation is wrong at EVERY step, the menus change depending on which pages you have viewed in the browser, and regardless of how it's configured it WILL NOT override volume or Do Not Disturb settings. Atlassian has really out Atlassianed themselves with this pile of garbage.",
+      "thumbs_up": 4,
+      "date": "2025-10-09T12:44:27"
+    },
+    {
+      "rating": 3,
+      "text": "extremely delayed compared to the web version. also jumpy and uncomfortable to use",
+      "thumbs_up": 0,
+      "date": "2026-02-15T03:17:16"
+    },
+    {
+      "rating": 3,
+      "text": "I don't need notifications about alerts that I myself acknowledged. Annoying",
+      "thumbs_up": 0,
+      "date": "2026-03-19T16:00:05"
+    },
+    {
+      "rating": 3,
+      "text": "hard to modify events. when I press into the text area it jumps to the top of the page",
+      "thumbs_up": 0,
+      "date": "2026-03-05T14:22:33"
+    },
+    {
+      "rating": 5,
+      "text": "Great app, can edit alot without having to take out your laptop, or geting too your stationary pc, so that is a big plus. Also, fast and easy way to check on the board, and get notified on the activity. The only major problem would be, the fact you can't edit story points, which is pretty odd, so you cant do everything in this app. But still pretty great.",
+      "thumbs_up": 72,
+      "date": "2020-02-28T18:48:50"
+    },
+    {
+      "rating": 4,
+      "text": "Overall the app works fine. But it took me a while to be able to login, the app saying \"unable to continue - please install a browser\" when I tried to login. If that happens to you, you can fix it by opening the legals from the links in the bottom, which will trigger the browser options to open, and select the \"always\" option otherwise the bug will persist. Then the app works ok.",
+      "thumbs_up": 36,
+      "date": "2022-05-23T23:58:49"
+    },
+    {
+      "rating": 1,
+      "text": "This application is terrible! Pictures, documents, either never load or take years to actually see! It's super glitchy whenever trying to load any other cards or \"issues\", and the calenders never load! Also, this app only really functions semi properly when using an Iphone; androids can't use calenders unless using the browser version (which doesn't work at all with android phones). It seems like as time goes on, these issues keep getting worse and more pop randomly pop up.",
+      "thumbs_up": 0,
+      "date": "2026-01-13T10:34:42"
+    },
+    {
+      "rating": 2,
+      "text": "I switched from opsgenie. I have an issue on Android where my ringtone is silent when I'm on call after my Do not disturb period finishes. The issue is reported and acknowledged by support but is rated as low priority!! Guys my phone doesn't ring ..",
+      "thumbs_up": 2,
+      "date": "2025-10-12T06:29:33"
+    },
+    {
+      "rating": 5,
+      "text": "I use this app frequently on my foldable phone. The latest update has introduced a bug in the notification tab, which does not allow reviewing comments on tickets. Looking forward to a bug fix.",
+      "thumbs_up": 14,
+      "date": "2025-12-09T10:24:31"
+    },
+    {
+      "rating": 2,
+      "text": "The app does not allow me to post an internal comment when closing a ticket or when modifying a status. Also, the number of tickets in a queue does not refresh anymore. I have to log out and log back in for them to refresh. Update June 2, 2020: I have noticed when I have the app open and I get a Jira notification, if I tap on the phone notification, it doesn't redirect me to the ticket for which the notification showed. Older issues still exist and new issues are popping up!",
+      "thumbs_up": 4,
+      "date": "2020-06-02T13:43:08"
+    },
+    {
+      "rating": 1,
+      "text": "It works but the web version is way a lot better than the mobile app. It's a bit disappointing actually. You just see TOO much in the board like why do they have to repeat the epic header? In the web version, when you scroll, there is only one header and so it is very easy to locate which item is in TODO, Doing, etc in one row. The mobile version does this differently and it is just very painful to scroll specially if you have hundreds of work items to track.",
+      "thumbs_up": 20,
+      "date": "2019-11-11T16:39:41"
+    },
+    {
+      "rating": 5,
+      "text": "The oversight extent and integration capabilities provided by the service really make the JIRA stand out as a default PMIS!",
+      "thumbs_up": 0,
+      "date": "2026-01-18T18:44:00"
+    },
+    {
+      "rating": 1,
+      "text": "very bad on mobile i can't see qctive sprint or attached videos and many many things are missing in mobile version",
+      "thumbs_up": 1,
+      "date": "2026-01-27T01:31:04"
+    },
+    {
+      "rating": 4,
+      "text": "there are some small UI enhancements which can be done for better UX. 1. one issue that I faced was that when I opened \"My work\" and saw there was one update on my ticket then after reviewing that update on my ticket then also I got a badge that there is one update-> which is confusing for me.Did I review that update or not. few more...",
+      "thumbs_up": 15,
+      "date": "2025-12-03T04:02:08"
+    },
+    {
+      "rating": 1,
+      "text": "Hate screen popups asking me to rate the app while I'm doing work. Covering a supposed productivity tool randomly with a marketing prompt results in one star.",
+      "thumbs_up": 3,
+      "date": "2025-10-21T12:15:32"
+    },
+    {
+      "rating": 5,
+      "text": "I really love this app it has a lot of features and good for everything, I do however wish there was a widget that shows your to do list, other than that, I have no complaints whatsoever, I HOPE Y'ALL ADD ONE!!",
+      "thumbs_up": 0,
+      "date": "2025-12-15T07:34:53"
+    },
+    {
+      "rating": 1,
+      "text": "It always fails to save any ticket updates. Your work just disappears when the ticket is opened from another user or device.",
+      "thumbs_up": 3,
+      "date": "2025-10-06T16:19:31"
+    },
+    {
+      "rating": 4,
+      "text": "The UI buttons at the bottom (Home, Spaces, All Work, Dash Board, Notifications) should take the user to the top of the section if used while in the section.",
+      "thumbs_up": 1,
+      "date": "2026-03-19T10:26:28"
+    },
+    {
+      "rating": 2,
+      "text": "If you have to use Jira, why not use it in an even slower, clunkier manner? The app successfully exposes the experience of using Jira to the mobile user, except it's even more hostile to multi tasking and retaining your working context. Definitely don't try to write anything nontrivial, it's likely to eat it if you do anything else for a while. So yep. It's Jira. On mobile. It's still awful.",
+      "thumbs_up": 13,
+      "date": "2023-11-27T15:20:32"
+    },
+    {
+      "rating": 2,
+      "text": "The largest issue with the mobile app is speed. There seems to be no caching at all. Every time you have slightly slow internet (even 5g), you get problem after problem after problem. With slow loading times, every single element you click, seems to download a whole web page. It seems so inefficient. All my issue is, is like 10kb of text but it ends up taking multiple seconds to load. Makes me want to use something more primitive...",
+      "thumbs_up": 12,
+      "date": "2024-10-09T04:47:31"
+    },
+    {
+      "rating": 5,
+      "text": "Ok with bugs. One is that Jira links e.g. from email updates try to open the app but fail. EDIT: The app has gotten way more useful. Great work!",
+      "thumbs_up": 19,
+      "date": "2025-11-25T05:37:16"
+    },
+    {
+      "rating": 3,
+      "text": "Just a very convoluted experience overall. Info within the ticket shouldn't be that large nor that far in-between. Takes too much scrolling to get small pieces of information on the screen, even when my font is set at its lowest setting.",
+      "thumbs_up": 1,
+      "date": "2026-03-10T12:58:49"
+    },
+    {
+      "rating": 2,
+      "text": "The app is a little confusing. When receiving notifications from a task most of the time when I click on them, they don't work. Lots of times the app has connections problems, even though the connection on my phone is fine. Some of the boards seem hidden. Besides that, the app is ok to manage the project on the go, no heavy work on it.",
+      "thumbs_up": 35,
+      "date": "2021-04-06T13:58:12"
+    },
+    {
+      "rating": 3,
+      "text": "The basics seem to work, but there are many problems. Crashes a lot. Issue labels cannot be edited because the popup list completely obscures the screen. Dashboard card titles are unreadable if the project background is dark. Issue type icons are missing. At this rate, given I installed the app only yesterday, I expect many more frustrations. I suspect the developers are not eating their own dog food.",
+      "thumbs_up": 20,
+      "date": "2023-08-02T08:13:06"
+    },
+    {
+      "rating": 1,
+      "text": "it mostly works. lots of odd user interface issues. many things just can't be done in the app.",
+      "thumbs_up": 3,
+      "date": "2025-11-11T21:58:51"
+    },
+    {
+      "rating": 2,
+      "text": "Can't create issues. It always says \"Jira encountered an error. Shake to send feedback\". According to the Play Store my device is no longer supported. I would understand if new versions didn't work. But given the nature of the app, already installed versions of the app should not stop working.",
+      "thumbs_up": 0,
+      "date": "2025-12-21T08:25:38"
+    },
+    {
+      "rating": 5,
+      "text": "like the features just trying to get the hang of things and still learning more and more every time I get to use it",
+      "thumbs_up": 4,
+      "date": "2026-02-09T05:38:28"
+    },
+    {
+      "rating": 1,
+      "text": "Lot of issues recently came into the app. If h you tag more than one person without using , or any other characters l, it makes it @@testuser and then leave one @ sign in the same. Fromt yesterday, I have started to note that the projects, issues have issues in loading in one go and also comments do not save in one go and we get 'failed to save\". Also tried uninstalling and reinstalling the app but no change.",
+      "thumbs_up": 19,
+      "date": "2022-09-30T09:40:58"
+    },
+    {
+      "rating": 5,
+      "text": "I wanted to give 4.5 as sometimes it feels difficult to navigate compared to the website.",
+      "thumbs_up": 2,
+      "date": "2025-12-10T22:13:13"
+    },
+    {
+      "rating": 1,
+      "text": "Frustrating experience, most of the time you can't even post a comment, send button is grayed out.",
+      "thumbs_up": 2,
+      "date": "2025-11-17T05:58:13"
+    },
+    {
+      "rating": 3,
+      "text": "before the last update it was a great app, now whether some things do not appear in the app, only in the browser, or it has been strongly hidden or placed in the app",
+      "thumbs_up": 1,
+      "date": "2025-11-18T15:36:35"
+    },
+    {
+      "rating": 1,
+      "text": "Absolutely worthless app. Just try to log time on a task. UI is unusable and it doesn't even say if it was saved or not. Moreover you can't even see the log via app. It is unbelievable that in 2025 Jira cannot be fully used on mobile devices.",
+      "thumbs_up": 1,
+      "date": "2025-10-31T05:50:30"
+    },
+    {
+      "rating": 4,
+      "text": "Jira on a computer is better, but this is nice to allow to do some basic ticket management from a phone.",
+      "thumbs_up": 9,
+      "date": "2025-10-15T06:39:01"
+    },
+    {
+      "rating": 1,
+      "text": "why the most fundamental field is now missing from ticket view? the description field is not visible anymore? why? it is unacceptable!",
+      "thumbs_up": 1,
+      "date": "2025-11-19T07:43:32"
+    },
+    {
+      "rating": 5,
+      "text": "I love it, feature-rich with an excellent UX. much faster to adopt than ClickUp",
+      "thumbs_up": 4,
+      "date": "2025-11-12T19:36:39"
+    },
+    {
+      "rating": 3,
+      "text": "why do alerts not have links to the actual tickets? makes zero sense",
+      "thumbs_up": 0,
+      "date": "2026-03-12T22:01:31"
+    },
+    {
+      "rating": 1,
+      "text": "Worst app I have ever used. It's confusing, constantly needing to be verified when started, Not user friendly in the slightest. I have nothing good to say about the app or any of the other apps that use it. Constantly sending notifications to your phone day and night. And don't ever forget your password or even worse change your phone, then you get to see the worst of this app and all the associated garbage apps. Don't recommend it, didn't like it and for me it was a worthless pain in my 6 months I worked for the company that used it. Hate them both",
+      "thumbs_up": 6,
+      "date": "2021-10-11T22:37:25"
+    },
+    {
+      "rating": 3,
+      "text": "There seems to be an issue in the Jira mobile app. When I open a Jira ticket and scroll down, the activity log sometimes records that I modified a field, even though I did not make any changes. This issue occurs occasionally. pls find and fix this bug in next update",
+      "thumbs_up": 0,
+      "date": "2026-03-10T23:41:09"
+    },
+    {
+      "rating": 4,
+      "text": "We love using Jira. You even get a lot for the free version. The paid version is pretty costly, but it's hard to put a price on this type of software support for an effective team. I rated four stars because there are some lingering bugs and inconsistencies in the app.",
+      "thumbs_up": 6,
+      "date": "2022-10-18T09:57:55"
+    },
+    {
+      "rating": 1,
+      "text": "Using it since two years. Latest version is having lot of issues. Giving the 'No internet connection' error when I try to load the full item. Getting ' Some thing went wrong' error messgae when I try to search for profile name while adding comment. It's making very difficult to use.",
+      "thumbs_up": 3,
+      "date": "2019-04-03T11:29:54"
+    },
+    {
+      "rating": 1,
+      "text": "App is so buggy at the moment. I cannot respond to issues, it puts my cursor all over the screen and wipes out responses. As we are responding to customers if an incorrect message was accidentally sent this is highly unprofessional especially with the fees that my company is paying. We rely on being able to respond.",
+      "thumbs_up": 4,
+      "date": "2022-12-20T22:56:15"
+    },
+    {
+      "rating": 3,
+      "text": "Offers a good enough interface when it works, but unfortunately it hangs a lot, when I click on a notification it won't load up the given issue many times randomly. Also the title of the issue is not necessarily correct in the notification area, I'm working with a Norwegian company who creates Jira issues for me with English titles and descriptions based on their original Norwegian issues, unfortunately the app always shows the original Norwegian titles, which is kind of annoying.",
+      "thumbs_up": 42,
+      "date": "2023-03-22T03:46:22"
+    },
+    {
+      "rating": 1,
+      "text": "As others have reported! Whenever attempting to edit a body of text, in any field, i am forced into a format change that may include bolding of all text entries or i the app will create several blank lines. The web application is my daily interaction with Jira, This interaction makes me want to work even harder to never have to use jira again. poor exp for someone intending to use this application on the go.",
+      "thumbs_up": 6,
+      "date": "2023-01-13T18:17:19"
+    },
+    {
+      "rating": 5,
+      "text": "Fantastic app. Almost all the options available that I get on web. But I am not getting extended search option. It's an custom search option that our organisation added it for better searching. I am not getting it on the app. Am I missing something or custom additions are not available on the app?? Please update.",
+      "thumbs_up": 2,
+      "date": "2024-03-03T05:24:11"
+    },
+    {
+      "rating": 1,
+      "text": "Like everything Atlassian touches, this app is designed to make your life more difficult and frustrating. Tap a link to a ticket that someone placed in a description, and you're catapulted into the editor, not to the ticket. So, copy the ticket number and paste it into the global search - no results. Jira never tells you that you can't access something - it just makes it invisible as if you made a user error. Everything about Jira is frustrating, and this app is just an extension of it.",
+      "thumbs_up": 61,
+      "date": "2021-04-21T18:34:05"
+    },
+    {
+      "rating": 2,
+      "text": "Jira is good but it's only half finished. Needs more options to manage push notifications. Eg I don't want to see the flood of all status changes, just certain ones that I'd like to customise. I can @ the user who reported the ticket but not other request participants, I can do this on PC. If I'm editing a ticket and my phone screen locks, when I unlock I'm back looking at the filter and my unsaved edits are lost. Adding time spent is fiddly, some quick buttons would be good",
+      "thumbs_up": 28,
+      "date": "2023-08-12T18:34:03"
+    },
+    {
+      "rating": 2,
+      "text": "Nice for viewing tasks and stuff like that, but notifications are so bad. If app is open in background, and you click on new notification, it won't navigate to task that is linked with clicked notification, but it will open where you were before. Also whole notification system is bad. I received a notification, and I clicked on it, and now it does not exist in list of notifications",
+      "thumbs_up": 27,
+      "date": "2020-07-24T08:50:26"
+    },
+    {
+      "rating": 4,
+      "text": "I love it, but at times it can be a massive pain in my derriere.You're following a link and it just doesn't open the app but redirects you to the log in screen and then to the hmmm,we're having trouble logging you in screen,which is massively annoying when you're not on your computer and need to do some extra work ASAP.I suppose that's their way of telling me I should work less and party more.And then the app has the temerity to suggest I should download this very same app! But lovely otherwise",
+      "thumbs_up": 35,
+      "date": "2020-09-18T12:48:57"
+    },
+    {
+      "rating": 1,
+      "text": "Not useful for team leaders. This app doesn't support JQL. It also doesn't allow me to add other watchers beside myself. I can't even view a ticket's edit history. I can't see individual time logs (seeing estimated vs. remaining is not enough). Not being able to do these things in the mobile app forces me to use the web app in desktop mode on my phone. But opening ticket links on the web opens the mobile app, which I want to avoid in the first place. So I end up uninstalling the mobile app.",
+      "thumbs_up": 18,
+      "date": "2019-07-02T22:03:51"
+    },
+    {
+      "rating": 1,
+      "text": "Terrible app. I can't believe businesses pay for Jira. The app is constantly crashing and you can't do simple things like sort your search results in the app. Open a search and try to determine what order the results are in...you can't! I have tried and failed to emulate my desktop JIRA experience in the app, even the most basic features are bugged or incomplete like search.",
+      "thumbs_up": 4,
+      "date": "2022-03-23T17:52:31"
+    },
+    {
+      "rating": 5,
+      "text": "There are good apps out there and then there are have changers. JIRA is one of those. I have used other Kanban solutions, some heavy, some light. JIRA sits beautifully in the middle. Easy to use on desktop with the app backing it up when on the go. Hook up Confluence to get KM in the picture as well.",
+      "thumbs_up": 78,
+      "date": "2024-05-06T06:29:44"
+    },
+    {
+      "rating": 2,
+      "text": "has most of the browser version's features... MOST. the fact that it doesn't have all makes it inferior though. what's worse it I couldn't use the browser version without uninstalling the app! they make you choose one or the other. well until you create an actual robust app that rivals the full browser version, I've made my choice.",
+      "thumbs_up": 2,
+      "date": "2025-04-30T17:30:47"
+    },
+    {
+      "rating": 1,
+      "text": "I give 1 star because I'm frustrated. My issue was i didn't get notification after the update. Cleared cache/storage and reinstall still didn't work. So, I sent emails to jira app support but just one replied from them. The support asked me to log the issue in the app > feedback because the team will work through troubleshooting. After log the issue, got another email said \"thanks for your feedback\" and mentioned in the email \"a member of our team will be in touch\". That was 5 days ago.",
+      "thumbs_up": 12,
+      "date": "2022-08-30T07:30:25"
+    },
+    {
+      "rating": 2,
+      "text": "I use Jira 5 or 6 hours a day, but using my phone to comment has become some kind of sadistic torture game. How long til a fix is applied. It seems to be an issue on Android as when I use my iPhone it works fine (I use the word fine relatively) Also would like to be able to search by task number on occasions but that seems impossible from the phone",
+      "thumbs_up": 4,
+      "date": "2023-02-16T15:55:58"
+    },
+    {
+      "rating": 2,
+      "text": "I have to redo most action 2-3 times before they're saved properly. For example to change a task to another list it will come back to its original list, sometimes a couple times before it saves in its new location. I am very surprised and dissapointed by how bad synchronization is for a commercial app like this.",
+      "thumbs_up": 29,
+      "date": "2022-03-27T21:53:51"
+    },
+    {
+      "rating": 1,
+      "text": "My employer uses Jira for support communications. A mistake. The app only shows alerts (that I have to respond to within a minute or so) if I'm logged in and on the screen. Unlike other apps you get no sound or other notification unless you are logged in and looking at the alert panel. Utterly useless. If other apps can display notifications and play sounds in the background why not Jira?",
+      "thumbs_up": 7,
+      "date": "2025-06-02T10:30:32"
+    },
+    {
+      "rating": 2,
+      "text": "This is generally a good app, but lacks the most simple feature which requires me to use a laptop instead. If they simply added the same copy issue URL button that appears next to the ticket number on the web version, I would actually be able to use this app. But because I'm constantly referencing tickets and sending them across slack, the lack of the of ability to copy The URL for the ticket to the clipboard makes this app frustratingly useless in about 90% of my needs.",
+      "thumbs_up": 29,
+      "date": "2022-03-10T15:15:16"
+    },
+    {
+      "rating": 1,
+      "text": "Gives notifications which is great on the go but then receive \"can't show the issue\" error every time I actually need to view an issue. So overall it's pretty useless. I also have the github app installed but trying to link to any branch or GitHub repo I get the error \"can't find browser\". Even if it only opened in chrome that would be better than the zero functionality it currently has.",
+      "thumbs_up": 49,
+      "date": "2024-01-02T18:09:07"
+    },
+    {
+      "rating": 1,
+      "text": "Suddenly unusable - ticket comment bugs x 2. Occurs on both Samsung/Android phone app and my desktop PC. During typing of comment, the entire reply suddenly disappears OR a new paragraph of 10 blank lines is inserted and cannot be deleted forcing start over. Was working well/faultless for past year until a few days ago. Cannot find how to report bug or find resolution.",
+      "thumbs_up": 6,
+      "date": "2022-12-29T20:15:40"
+    },
+    {
+      "rating": 1,
+      "text": "Fails at even the basics. Even when just commenting on an issue, it lets me write about a sentence then randomly does a \"select all\" and hides the keyboard. Clicking anywhere in the comment to complete it now results in that behaviour repeating. And that's just one of many bugs in a UI that's a mess to start with. Did they perform any QA at all on this app?",
+      "thumbs_up": 50,
+      "date": "2023-12-22T07:40:45"
+    },
+    {
+      "rating": 2,
+      "text": "Apple version works fine, but Android is unreliable. Some Jira dashboards and tickets won't load - seeing a \"something went wrong\" message which does go away if reloading the page for some tickets, but not all. Getting \"failed to save\" messages when committing comments, but after resending, there were duplicate comments on my ticket. Shame, but this makes the app unusable for me.",
+      "thumbs_up": 7,
+      "date": "2024-06-10T05:15:36"
+    },
+    {
+      "rating": 3,
+      "text": "Fast and Light, but Needs More Features. This is a great Jira app for most common issue processes. However, I find some crucial features missing, mainly in the JSM area. There are also items such as Move and Automation that are not within the mobile app. If you're a power user in Jira or Jira administrator, you will find this app lacking.",
+      "thumbs_up": 0,
+      "date": "2025-09-17T16:45:37"
+    },
+    {
+      "rating": 3,
+      "text": "It's a good app , makes work easier as one is able to respond to cases by the tip of a phone. There's possibly an issue with one of the projects AARO Service Center, when you try to load it always says no connection error then you are not able to access the page, before it worked perfectly.",
+      "thumbs_up": 5,
+      "date": "2024-10-16T04:51:15"
+    },
+    {
+      "rating": 1,
+      "text": "Can't even log in! Something about my email address is usable from Chrome in Windows 10 but not the Android 11 app! I suspect it is a bug relating to character sets, but I guess Atlassian doesn't use their own system to develop their own software! If I didn't have to have it at work, I'd never use it, and I can't use my account on my phone in any case.",
+      "thumbs_up": 24,
+      "date": "2021-05-04T14:41:26"
+    },
+    {
+      "rating": 2,
+      "text": "With new version another annoying thing comes up: clicking to notification, redirects you to notification list but not to the ticket itself (as previous versions)... In desktop everything loads too fast. But in mobile app you need to wait for loading everything (photo, video, status, assignee, etc). Maybe have some solutions (delete cache, reinstall, etc) or it's a default behavior? Currently, it's too annoying, almost you can't use it.",
+      "thumbs_up": 7,
+      "date": "2024-10-13T11:17:46"
+    },
+    {
+      "rating": 4,
+      "text": "Great for project management, I'm even using it in my personal life now! The app has less functionality than the desktop version, as expected. I wish we could change the colours of the kanban board columns & issues to make them easier to see & differentiate. More customization & gamification would be good too.",
+      "thumbs_up": 22,
+      "date": "2023-03-25T14:01:02"
+    },
+    {
+      "rating": 5,
+      "text": "[Edit] They added notification schedule! Thank you! ---- I like but at the same time at night I want to disconnect from work, impossible to snooze notifications like Slack. The same way I snooze notifications with messaging apps, from 7pm to 8am no notifications Else never stop thinking about work stuff. Life matters :)",
+      "thumbs_up": 8,
+      "date": "2022-04-01T09:23:10"
+    },
+    {
+      "rating": 4,
+      "text": "Overall decent experience. However i'm having trouble using the tagging / mention function when replying to team members in the comments sections of user stories etc. While there is \"@\" / mention button, when pressed, and then typing in a user name, nothing pops up, even completing the name manually, it doesn't show that its tag to the user. Basically the tagging / mention function is not working on the mobile experience, when in the desktop it works as intended. is there a fix?",
+      "thumbs_up": 5,
+      "date": "2024-11-20T08:59:13"
+    },
+    {
+      "rating": 4,
+      "text": "Works well, but it appears that forms are missing. I was able to see them previously attached to issues, but they are no longer present in my app. Edit: the devs responded but I found a way to fix the problem. I went and cleared the app cache and when I reopened I could see the forms again.",
+      "thumbs_up": 18,
+      "date": "2025-02-05T09:04:03"
+    },
+    {
+      "rating": 1,
+      "text": "Love this site on desktop. The app is kinda trash because its just Trello reskinned. It needs a calendar view or a timeline view so you can see your DEADLINES CLEARLY on a calendar, but the app doesnt offer that. If they do, Its very hard to find or enable. Update: i tried signing in on my ipad and this app does not play nice with the device. So much so that it thought i registered for a 30 day premium version. Which i did not. Thats not ok guys.",
+      "thumbs_up": 15,
+      "date": "2024-08-11T14:53:54"
+    },
+    {
+      "rating": 3,
+      "text": "Update: The Jira app slows to a crawl when viewing long ticket comment threads with lots of code coloring. By contrast the web browser on the phone renders the Jira desktop website very smoothly. Original review: E-mail links and URLs work in \"open with\". It lets me search by known ticket numbers. And I can change status, requesters, etc on tickets, as well as comment. Edit watchers and links. I can also watch tickets. Nice! About the only thing I can't do now is set resolution status.",
+      "thumbs_up": 13,
+      "date": "2024-01-23T01:36:28"
+    },
+    {
+      "rating": 2,
+      "text": "I can't get Atlassian to work properly no matter what or when. 15 years of trying on and off. It's always something that is broken in some new way. I really tried too, seemingly created account and after three password resets I gave up. Login fails at either first auth or second auth - random which. Webpages sometimes don't load. Link to support gives irrelevant FAQ half the time. App crashes. If I don't disable tracking, NOTHING of Atlassian loads. Gee, wonder why... I've had it with them.",
+      "thumbs_up": 1,
+      "date": "2025-07-20T02:25:18"
+    },
+    {
+      "rating": 2,
+      "text": "App works great until you add a comment on a ticket. The text disappears after a few lines. Tried to scroll, but nothing appeared but the cursor in the vertical center of the input. I also see duplicate messages for comments I just added successfully. 3 stars removed for core functionalities not working",
+      "thumbs_up": 5,
+      "date": "2023-01-17T06:47:52"
+    },
+    {
+      "rating": 3,
+      "text": "Not in line with web version, feela like it was developed by a different company. Custom statuses not appearing as defined in dashboard filters, some \"Actions\" from web version appearing as \"Transitions\" in mobile app, Issue layout impossible to configure to make sense in app... In general, very inconsistent",
+      "thumbs_up": 2,
+      "date": "2025-02-27T16:11:40"
+    },
+    {
+      "rating": 2,
+      "text": "Ok, but seems to have some bugs. I can't open projects or boards. If I try to open a project it says I don't have permission, even though I can open that same project on web while logged in to the same account. If I try to open a board nothing happens. I click on it from the home screen / search and it just ignores my click. There are a few others that I can't remember right now, but those two alone remove a lot of the usefulness of the app for me. I can open tickets, so I have at least that.",
+      "thumbs_up": 5,
+      "date": "2024-09-16T03:40:52"
+    },
+    {
+      "rating": 4,
+      "text": "When using the app and transitioning a Service Desk ticket to resolution \"Done\". There's no option to change the privacy of the Transition comment box. Also, unable to send this feedback via the app. It says \"There was an error sending your feedback. Please try again\".",
+      "thumbs_up": 9,
+      "date": "2024-07-27T16:44:17"
+    },
+    {
+      "rating": 2,
+      "text": "I want to believe, but obviously not sufficiently QA'd. The amount of issues when trying to leave comments, (content duplication, massive whitespace insertion, etc.) is not helpful. In response to the reply: I've never used and don't use grammerly - that is not the issue and given the data i provided, its a bit of a brush off to assume so. Reluctantly trying again in the hope the QA has improved over the prior year(s).",
+      "thumbs_up": 21,
+      "date": "2023-11-20T23:23:52"
+    },
+    {
+      "rating": 5,
+      "text": "app works well for being able to see everything you would on the website and is laid out well. it gives most of what is needed for being mobile and on the go and if there's something lacking it's usually easier and better to do that task from the website on a laptop. sufficient for a mobile experience",
+      "thumbs_up": 47,
+      "date": "2024-07-26T09:52:36"
+    },
+    {
+      "rating": 2,
+      "text": "This application is not real time. There is an assignment or other notification does not appear immediately. I opened the application and reloaded it many times and it didn't show up even though the web version was running fine. I will update this rating to higher when there is a fix about this in the next version.",
+      "thumbs_up": 26,
+      "date": "2021-09-02T11:31:31"
+    },
+    {
+      "rating": 1,
+      "text": "Love JIRA but the mobile app will infuriate you. There is a major bug where the info you type in a comment or description will be lost if you switch between apps or even just by rotating the phone from portrait to landscape. I have lost everything I typed a couple times now so finally uninstalling and I'm moving on to something else.",
+      "thumbs_up": 37,
+      "date": "2021-06-02T22:43:26"
+    },
+    {
+      "rating": 1,
+      "text": "For some reason the user experience on this app is awful. It has about 10% of desktop version's functionality. I can't crate a task, can't customize visible fields, can't filter by anything other than Assignee, and worst of all it has trouble synchronizing tasks. I honestly don't know why exactly it feels so much worse and limited than desktop.",
+      "thumbs_up": 4,
+      "date": "2024-08-08T22:53:16"
+    },
+    {
+      "rating": 3,
+      "text": "Does anyone read this comments? This app is mostly ok. My biggest gripe is that the mobile app does not send a notification when someone edits a comment. If I'm watching a task, I want to know when someone edits a comment for the same reason I want a notification when someone adds a comment. Also if I'm not watching a task and someone mentions me in their edit of a comment, it's especially problematic because I don't receive a notification for the mention even.",
+      "thumbs_up": 7,
+      "date": "2023-01-14T18:03:41"
+    },
+    {
+      "rating": 1,
+      "text": "Barely anything works. Almost everything I select has an error saying it can't load. Pretty useless app. I'm pretty surprised they would put out a product this poor. Tried it out for awhile and gave it a good chance, but I'm uninstalling now. Don't recommend this as it is now.",
+      "thumbs_up": 2,
+      "date": "2022-12-15T22:25:46"
+    },
+    {
+      "rating": 1,
+      "text": "Probably the most buggy app I use, but there's no other option so still gotta use it. It's so buggy that even the \"shake to give feedback\" thing errors out. Constantly get \"Jira encountered an error. If this keeps happening, shake to send feedback \" no matter what I'm doing within the app. Yeah, I shake it. But then I get the same error toast on the feedback page - wow - like a Nolan movie. It's beautiful!",
+      "thumbs_up": 31,
+      "date": "2022-11-01T03:50:32"
+    },
+    {
+      "rating": 2,
+      "text": "The app was very nice and I could get my work done, but after switching opsgenie into Jira I can no longer see my alerts on my phone, the opsgenie app is not working and the Jira app doesn't show the opsgenie alerts anywhere. The primary reason for using opsgenie was so I can see any alerts on the go.",
+      "thumbs_up": 0,
+      "date": "2024-07-24T04:08:20"
+    },
+    {
+      "rating": 3,
+      "text": "Useful app on the go, but there are a few things that are really annoying. When a Service desk has a bunch of fields and you click on 'view more fields' on any ticket, it doesnt just show the filled out fields, but all the fields and if you have like 150, you must scroll through all to find the information you need.",
+      "thumbs_up": 7,
+      "date": "2019-02-06T05:53:24"
+    },
+    {
+      "rating": 4,
+      "text": "There seems to have been a big jump forwards in what you can do in app compared to the also time I was trying this app (confession: it's been a while). Vastly improved though and I was pleasantly surprised to be able to do the task I wanted to do without needing to jump over to the web app.",
+      "thumbs_up": 30,
+      "date": "2024-09-21T06:13:24"
+    },
+    {
+      "rating": 3,
+      "text": "App freezes in alerts section",
+      "thumbs_up": 0,
+      "date": "2026-02-19T00:35:47"
+    },
+    {
+      "rating": 2,
+      "text": "Minimal features. I don't even seem to be able to create epics, only story and tasks. I do most of my planning while out and about as brain works better for these things but not being able to add epics and hard to view epics etc mean more tidying I have to remember when back on a laptop.",
+      "thumbs_up": 3,
+      "date": "2024-07-30T17:03:20"
+    },
+    {
+      "rating": 4,
+      "text": "Loving the app, especially because I'm not always at my desk when support tickets come in. I would love an \"Are you sure?\" pop-up before I can clear all notifications, because I've done that a few times by accident when I actually wanted to mark all as read. :)",
+      "thumbs_up": 12,
+      "date": "2021-04-30T03:19:13"
+    },
+    {
+      "rating": 3,
+      "text": "Not real sure how I got to be in this little group of people but I've been communicating with them for several months now think I've made some long lasting connections. The app though does have it's problems like most do. But overall it's easy to navigate and is user friendly.",
+      "thumbs_up": 5,
+      "date": "2023-10-30T00:54:58"
+    },
+    {
+      "rating": 3,
+      "text": "The app enables me to do a lot of things on the go. However, the issue I am most disturbed with is the total number of issues (show atop each column) does not get updated when you filter according to sprints. In the iPhone app, it does.",
+      "thumbs_up": 3,
+      "date": "2022-12-13T03:06:53"
+    },
+    {
+      "rating": 1,
+      "text": "Horrible ui compared to on web which admittedly is only a 3/5 as well in terms of user experience",
+      "thumbs_up": 2,
+      "date": "2025-11-08T21:30:26"
+    },
+    {
+      "rating": 4,
+      "text": "I don't remember which fields were missing When I first rated this app, but I think all basic stuff I use is now available. Nice! Are you able to implement Xray plugin features so I can run test executions on mobile version? l am testing mobile apps, so it is important for me :) I am not always near PC.",
+      "thumbs_up": 0,
+      "date": "2019-06-10T02:19:31"
+    },
+    {
+      "rating": 1,
+      "text": "I just want to create new sprint and start the sprint, this app can't even perform this process. The mobile web even worse, all the pop-up window being cut off from view and not usable, despite I change to desktop view. Better off using web from a computer.",
+      "thumbs_up": 3,
+      "date": "2020-06-03T07:53:52"
+    },
+    {
+      "rating": 1,
+      "text": "My 2 cents to welcomed updates and improvements The app needs the ability to search by just a number regardless of what project I'm in. For example p1-1003 and p2-1003. When I open my app and enter in 1003 or p11003 or p2-1003 it finds nothing. No deeplinking for saved queries.i should be about to save a query or filter on the web and share it in any manner. Complete inability to view checklist associated within a ticket in the app.",
+      "thumbs_up": 18,
+      "date": "2020-06-02T08:50:31"
+    },
+    {
+      "rating": 3,
+      "text": "Please allow usage of GrapheneOS which is one of the most is one of the most secure operating systems for Android.",
+      "thumbs_up": 0,
+      "date": "2025-12-31T10:19:25"
+    },
+    {
+      "rating": 1,
+      "text": "Horrible experience. Atlassian hasn't got this app right yet. This is unusable. My company folks create very detailed JIRAs. Whenever I open them, the app struggles to show me the description. It keeps hanging. I'm able to see smaller descriptions. UX is not great either. I keep missing the 'Read more' button. I cannot pin my team's scrum board either.",
+      "thumbs_up": 5,
+      "date": "2020-01-10T10:48:13"
+    },
+    {
+      "rating": 3,
+      "text": "Whatever is available generally works well, but there is a large number of features missing from the web version (e.g. moving tickets) so I end up struggling to open tickets in a browser (as the app typically hijacks ticket links or asks each time you open something).",
+      "thumbs_up": 3,
+      "date": "2022-10-24T13:02:24"
+    },
+    {
+      "rating": 2,
+      "text": "Bloated, slow, and janky. It keeps maxing my alert volume randomly, even re-checking the option by itself. Notifications take me to the wrong screens, if they make it through in a reasonable amount of time (5 mins or less). This is almost Microsoft level bad.",
+      "thumbs_up": 7,
+      "date": "2025-07-30T15:18:22"
+    },
+    {
+      "rating": 2,
+      "text": "The only thing I want is to see the comments on my issues when I get a Push Notification. I tap there, it opens the app, takes 1 minute to load, and then it doesn't display the comments even though I got a PN saying that I got a comment!",
+      "thumbs_up": 0,
+      "date": "2022-06-10T09:02:35"
+    },
+    {
+      "rating": 5,
+      "text": "I love it! It gives you so many options without the complications. Very easy to use and understand, didn't have to refer to reference documents most of the time. It smoothly connects you to sister applications like confluence which is brilliant!",
+      "thumbs_up": 12,
+      "date": "2024-02-21T22:29:31"
+    },
+    {
+      "rating": 2,
+      "text": "Pretty much pointless using this app, can't edit jira issues, can't comment on issues without bugs and additional lines being added and formatting issues. Tried twice and have just given up at this point. Viewing issues works okay. Don't expect to actually send information through this app though",
+      "thumbs_up": 4,
+      "date": "2023-01-03T18:34:35"
+    },
+    {
+      "rating": 4,
+      "text": "Works well, but can't add a task to an epic at creation time which causes a lot of needless clicks. Doesn't always assign to parent issue at first selection. Generally good, but significantly less functional than the PC version on the web.",
+      "thumbs_up": 2,
+      "date": "2023-01-01T22:45:25"
+    },
+    {
+      "rating": 2,
+      "text": "Lots of shortcomings. I wanted to to allow me to quickly add stories to the backlog. Make comments, etc. I am the president of the company, we will have a product manager and developers. Jira on the web works fine for what we need. (Little complicated,) We are doing Scrum Template with Corporate Team. - We have 4 extra required custom fields. Only 3 show up. And they don't flag as required. - Can't move a story to a different project. - Very few of the fields show up - yuch!",
+      "thumbs_up": 1,
+      "date": "2023-01-11T16:41:08"
+    },
+    {
+      "rating": 2,
+      "text": "the notifications/other things commented, moved into a new part of the workflow don't seem to show up as cleanly in the UI as the notifications outside the app appear. I also just find it a little unusable if it can't show the correct notifications/past changes on tickets",
+      "thumbs_up": 8,
+      "date": "2022-05-05T10:39:50"
+    },
+    {
+      "rating": 1,
+      "text": "The \"update is available\" covers up critical parts of the UI and it isn't dismissable. When I am working on a critical issue, or don't have a connection where I can update the app it makes it nearly impossible to use the app.",
+      "thumbs_up": 3,
+      "date": "2025-01-07T08:31:56"
+    },
+    {
+      "rating": 1,
+      "text": "Facing problems with login. Why are you depending on in app browser for login? I have not se a default browser for privacy concerns. It repeatedly asks to login, and if logged in successfully, it asks me to download Android app! Wasn't expecting such a thing from a company who's in this business since early 2000s.",
+      "thumbs_up": 2,
+      "date": "2020-09-25T02:36:44"
+    },
+    {
+      "rating": 1,
+      "text": "The latest version is reporting my unrooted Samsung Galaxy S22 Ultra with the latest security updates as a \"compromised device\", without explanation. No other app, not my banking apps, none of the other apps inside or outside \"Work mode\" (Knox) have this complaint. This is unacceptable and renders the Jira app useless. I guess I'll just use the website instead (secures *me* against unnecessary intrusion by Atlassian!).",
+      "thumbs_up": 2,
+      "date": "2022-11-03T21:42:04"
+    },
+    {
+      "rating": 3,
+      "text": "The app isn't awful, but in my experience it's been incredibly slow to use and has had some strange errors (eg. \"bad request\" when changing the icon for anything other than scrum boards). Could definitely be worse, but could also absolutely be better",
+      "thumbs_up": 5,
+      "date": "2022-02-19T08:29:20"
+    },
+    {
+      "rating": 1,
+      "text": "Too many bugs. One of the most ugly is an authentication issue. Once logged in with a chosen site I'm not able to add any other site, even though I saw them within the first entry process and I know that they are available for me now.",
+      "thumbs_up": 4,
+      "date": "2020-09-07T05:49:43"
+    },
+    {
+      "rating": 1,
+      "text": "This is the most useless app you can ever imagine. If all the atlassian mobile web apps are already bad, the native app is even worst. Now, take into consideration that what you know from jira will not happen happen on this app. Oh, and if you go \"back\" to check what your last options were, be prepared to be logged out.",
+      "thumbs_up": 0,
+      "date": "2021-11-08T02:19:15"
+    },
+    {
+      "rating": 1,
+      "text": "First of all, every f&#@ing time I click on a Jira issue link, the $u#&ing page nags me to install the &#c=ing app. After being nagged for ages I give up and install the *#&king app,dns what do you know? When I open Jira issues the page doesn't f@&#ing nag me anymore, but it *doesn't* actually open the issue in the #u*&ing app. It does show an \"Open in app\" link at the top. But the link doesn't &#c&ing work! 🤔🙄😖🤬",
+      "thumbs_up": 5,
+      "date": "2021-12-08T09:47:08"
+    },
+    {
+      "rating": 3,
+      "text": "Great app but desparately needs an offline mode. When connectivity is poor the app takes forever to load, by the time it loads I already forgot the task I wanted to create a ticket for. App should work offline and sync when network is available.",
+      "thumbs_up": 4,
+      "date": "2025-03-15T21:01:47"
+    },
+    {
+      "rating": 1,
+      "text": "For whatever reason, you can't see comments on Jira tickets reliably unless you've directly sent a comment from within the app. That means looking at tickets someone else sent your way or that you set up on a computer is utterly useless.",
+      "thumbs_up": 1,
+      "date": "2024-10-24T14:52:58"
+    },
+    {
+      "rating": 2,
+      "text": "Edit: The app doesn't save the status when you put it in background (normal usage when you are checking stuff in order to update a ticket) and resets to default starting view. It's highly annoying because you have to reopen a ticket view or even worse if you lose the draft because it's not saved.",
+      "thumbs_up": 114,
+      "date": "2024-10-22T08:40:45"
+    },
+    {
+      "rating": 3,
+      "text": "This app is super buggy in Android. Very frustrating to create issues. The cursor jumps all over the place. The more I use it, the more I feel like it is not used at all by Jira employees, otherwise the flow would be smoother, and frustrating bugs would be solved.",
+      "thumbs_up": 3,
+      "date": "2021-03-17T23:14:53"
+    },
+    {
+      "rating": 2,
+      "text": "Have you tested editing an issue description that contains new line characters on the Android app? It is not working for me. As soon as a list is created or a new line char is added, the cursor goes all over the place, and sometimes, many new lines are added scrolling existing content out of view. Device: Samsung A75 Keyboard: Default Samsung Keyboard Language: English (UK)",
+      "thumbs_up": 7,
+      "date": "2022-08-11T04:03:33"
+    },
+    {
+      "rating": 3,
+      "text": "Please add system notifications, it's such a basic feature I'm surprised it's not implemented already. We should be getting notifications on issue creation, comment(s) added, etc. Currently we have to open the app to check if there are any notifications. Edit: I have sent an email to support",
+      "thumbs_up": 22,
+      "date": "2021-04-30T16:14:26"
+    },
+    {
+      "rating": 1,
+      "text": "update: 2019-03-19 just tried to edit a tickets description using this app. after making edits and clicking save the ticket doesnt update. pathetic. cant login using lastpass. terrible mobile web page that doesnt work at all... cant even find the login button because theyre too busy forcing sales pages down my throat. they are one of the worse tech companies for designing useful tools that are mobile friendly. its like they dont want you to use it on anything other than a desktop or laptop.",
+      "thumbs_up": 27,
+      "date": "2019-03-19T19:31:55"
+    },
+    {
+      "rating": 3,
+      "text": "Tried again and again the latest update is a bit better. I do not like the sprint overview, it's hard to see the status of a story when there are multiple subtasks scattered across multiple statuses. Try to find some task between 92 other, impossible... Keeping it on 3 stars.",
+      "thumbs_up": 15,
+      "date": "2019-11-29T03:24:10"
+    },
+    {
+      "rating": 4,
+      "text": "Generally ok, but tagging the customer using @ doesn't work, only internal help desk accounts can be chosen. Also, every time you go in and out of the app, the customer/internal comment field resets to customer, so I occasionally send internal comments to customers by mistake.",
+      "thumbs_up": 2,
+      "date": "2020-03-23T20:49:30"
+    },
+    {
+      "rating": 2,
+      "text": "History and comments section of every task/issue is always empty in the mobile app although in the PCs Browser these have both if course. I already tried clearing data, reinstalling the app, it doesn't help. Must be a bug in a latest version. Device Google Pixel 7 Pro, latest Android OS.",
+      "thumbs_up": 4,
+      "date": "2024-10-23T14:38:27"
+    },
+    {
+      "rating": 2,
+      "text": "Pretty bad. The app itself worked (it didnt crash or anything) but in reality it didn't help me at all l. The missing dashboard that is linked eith your projects from the dekstop site is totally missing which nakes searching and tracking your tasks confusing and complicated. When I tried searching for tickets in my department it showed me tickets from a year ago instead of showing me the recent ones that are relevant.",
+      "thumbs_up": 1,
+      "date": "2022-05-20T03:02:53"
+    },
+    {
+      "rating": 3,
+      "text": "Genuinely impossible to navigate and find what I need.",
+      "thumbs_up": 1,
+      "date": "2026-02-10T12:36:32"
+    },
+    {
+      "rating": 1,
+      "text": "Initially I did 3 stars and said that the app is fine for viewing specific issues on the run but I would really like to have my dashboards available. However I've also just realised (I re-installed the app today after about a year) that none of the web links on an issue appear on the app. Classic Atlassian of removing more functionality than you've added",
+      "thumbs_up": 15,
+      "date": "2020-08-05T10:40:12"
+    },
+    {
+      "rating": 3,
+      "text": "If I can actually view a ticket, it works great. Unfortunately, I'm unable to view 95% of my tickets and sometimes tickets I was able to view yesterday I'm unable to view today. It very frustrating to have this app installed knowing it will only work a quarter of the time I'm using it, which is why I won't be using it until that issue has been fixed.",
+      "thumbs_up": 18,
+      "date": "2022-07-01T12:20:17"
+    },
+    {
+      "rating": 1,
+      "text": "This is a normal attlasian app. You can't say no to it. I don't want notifications to be turned on or block them on a system level. Meanwhile the bloody damn thing asks me every time for it and I have to say no every time it starts.",
+      "thumbs_up": 4,
+      "date": "2024-12-13T22:02:07"
+    },
+    {
+      "rating": 4,
+      "text": "Pretty reliable. I wish i could get rid of the no connection bottom banner. It shows way too often and i can't trigger the app to check the connection. I have to fully quit the app and start over. Ugh. I'm just trying to work here.",
+      "thumbs_up": 16,
+      "date": "2021-05-13T12:50:57"
+    },
+    {
+      "rating": 1,
+      "text": "I can understand not working without Internet but hidding an already loaded issue if you lose connection is ridiculous. I know you can't show updates but completely hiding the issue forcing me to reload it is beyond words. it means the app is completely useless on unreliable spots.",
+      "thumbs_up": 4,
+      "date": "2025-07-24T12:10:03"
+    },
+    {
+      "rating": 1,
+      "text": "This app is completely broken in fundamental ways that make me think that nobody at Atlassian has actually tried to use it in a production environment. I could write an entire essay on it but here are a few choice examples: Let's say you get a Jira notification via email or Teams that informs you that someone commented on an issue. You click on the issue link to see what's going on. Jira app loads up the issue but it doesn't show the comment or change that you were notified about. Instead, it happily displays the issue in whatever state it cashed last and you have to manually pull down on the screen to force a refresh. Why are you wasting my time? Comments in the Jira app are sorted from oldest to newest. You can change the sort order in Jira Cloud but the default is newest to oldest. This means that every time you switch between the two environments, you have to reorient your brain to the chronology of the conversation. If you aren't going to let me resort comments in the app, at least match the default sort order of the cloud. Notifications. Lots to say here but here is one busted aspect. Let's say I have 200+ unread notifications that I want to clear out. You'd think a button called \"Clear All\" would get the job done, no? No! Instead, it will clear only the ~20 or so notifications currently visible on the screen and the app will happily load and display the next 20. So, to clear all of them you have to press the button 10 times and wait for the list to refresh between every press. Again, why are you wasting my time? The text box for inputting a comment breaks every time you try to use it. Usually happens after you've typed a sentence or two. The entire thing goes blank and the text is neither visible nor selectable. It's still there though and if you post the comment the text you've already entered will appear on the issue. I guess we are limited to monosyllabic responses - we've got to be quick before the app decides it's heard enough and cuts us off. I can keep going but there's no point. The basic features I touch every day are broken. I sigh every time I'm away from my desk and have to pull up something in the app.",
+      "thumbs_up": 128,
+      "date": "2022-04-14T11:14:34"
+    },
+    {
+      "rating": 1,
+      "text": "Useless app! I can't set issue filter setting. When I open issue tab, I wanna see list of issues that filtered by specific condition (ex: based on project, status, asignee), and I always have to filter it manually, can't set this filter saved, so this is so painfull when I open tab issue I always do it!",
+      "thumbs_up": 4,
+      "date": "2022-02-15T05:17:22"
+    },
+    {
+      "rating": 3,
+      "text": "App is mostly pleasant to use, but there is really annoying bug, where you can't add new tasks to sprint after adding one task. I have to kill the app and then it allows me to add one task again.",
+      "thumbs_up": 1,
+      "date": "2024-10-18T18:51:50"
+    },
+    {
+      "rating": 1,
+      "text": "If you are going to FORCE the app...make it feature parity with the website. Otherwise, it's an option that I should be able to switch to browser full screen and do what I need without it constantly opening the app. IF I WANTED THE APP THATS WHAT I WOULD HAVE OPENED",
+      "thumbs_up": 3,
+      "date": "2022-12-21T14:23:43"
+    },
+    {
+      "rating": 3,
+      "text": "I have tried to change my site name but I am unable to. I made the mistake during signing up by using my middle name instead of my first name. There is no provision in the account settings as the General tab is not enabled. If there is provision to make the Atlassian team change my site name for me that would be great.",
+      "thumbs_up": 0,
+      "date": "2021-11-11T06:46:07"
+    },
+    {
+      "rating": 4,
+      "text": "Needs a search feature. If it exists, it's way too hard to find. Update: Jira support reached out, and helped me find the search feature. It's under the projects and issues pages, but if you are set to view a filtered page there, it won't show the search bar. You just have to hit the back button in the upper left to get out of the filter. Jira is aware this isn't the best way to show the search bar in the UI, and are looking into ways to make it work better.",
+      "thumbs_up": 74,
+      "date": "2023-02-28T22:36:44"
+    },
+    {
+      "rating": 1,
+      "text": "The app is so buggy and clunky it's almost impossible to use. When typing comments, typos randomly appear and content is sometimes instantly erased for no reason. Tagging people is buggy, and comments in general are just absolutely infuriating.",
+      "thumbs_up": 5,
+      "date": "2025-01-16T20:02:02"
+    },
+    {
+      "rating": 1,
+      "text": "Lots of outages, they advertise to existing customers INSIDE their software. The search function is completely useless. We have to search our email notifications instead. All of this is if you're using a browser, it's even worse if you try to use the garbage app on mobile.",
+      "thumbs_up": 4,
+      "date": "2025-06-11T09:40:28"
+    },
+    {
+      "rating": 2,
+      "text": "buggy ... examples: the comment field(s) for creating PRs are buggy and difficult to edit. fields in issues are not as functional as on the website; ex: the active sprint for the assigned project doesn't appear in the list, let alone being sorted to the top of the list of options. thinking of uninstalling and just using mobile web.",
+      "thumbs_up": 0,
+      "date": "2025-02-14T11:46:40"
+    },
+    {
+      "rating": 1,
+      "text": "I really love jira, but the absence of Arabic language support is a shame for such global app",
+      "thumbs_up": 0,
+      "date": "2025-12-16T10:58:07"
+    },
+    {
+      "rating": 3,
+      "text": "good application just wish that you could change the notification to a custom ringtone/sound",
+      "thumbs_up": 1,
+      "date": "2025-11-04T20:24:42"
+    },
+    {
+      "rating": 3,
+      "text": "It's very minimal in its capabilities but it does the job well enough.",
+      "thumbs_up": 0,
+      "date": "2025-10-21T12:58:34"
+    },
+    {
+      "rating": 2,
+      "text": "Timesheets are not available, work time is not part of the app. Sad that such important features are not available mobile. Edit: Still, I cannot see my daily work time as the calendar view is missing. On top, if I wanted to log time for multiple issues, I need to perform a huge amount of clicks.",
+      "thumbs_up": 8,
+      "date": "2020-02-05T02:48:34"
+    },
+    {
+      "rating": 5,
+      "text": "Jira is the backbone of our agile workflow. The Kanban boards provide excellent visibility, while the automation rules have eliminated hours of manual updates. Combined with its seamless third-party integrations, it creates a highly efficient, end-to-end ecosystem for our development team.",
+      "thumbs_up": 0,
+      "date": "2025-12-20T13:23:37"
+    },
+    {
+      "rating": 3,
+      "text": "I keep having to explicitly close the app because if I don't and I open a link in a notification email using the app it hides the comment input box with a \"no connection\" message (which is patently untrue since the Jira issue loads fine). Stupid.",
+      "thumbs_up": 9,
+      "date": "2021-05-05T13:56:29"
+    },
+    {
+      "rating": 4,
+      "text": "Update- fixed quickly, so improved rating. Issue- It did not save status changes after upgrade to v98.1.1. un/reinstall no luck. We use JIRA heavily in our global company for dev and issue tracking. Inability to use the app makes it difficult to get our work done. For now, I'll try the Salesforce app and the integration we have developed between JIRA and SF. Half our company uses SF.",
+      "thumbs_up": 5,
+      "date": "2022-08-17T23:38:27"
+    },
+    {
+      "rating": 2,
+      "text": "It's hard to review this fairly - it seems a good app but I can't perform the basic task I need to start my project which is create a story or epic in the Backlog. On the Backlog screen, I tap on the +Create button which presents an editable Summary field only. I type in the Summary field and tap \"Done\" on the keypad. Now a dialog appears that allows me to create the item (it didn't previously) but it goes into \"Issues\", not the Backlog. I've emailed the review responder Eric but no reply yet.",
+      "thumbs_up": 8,
+      "date": "2023-03-06T04:26:47"
+    },
+    {
+      "rating": 2,
+      "text": "I want to like this app, but find its interface klunky. And I get extremely frustrated when I try to enter details of time spent on a task, then try to scroll up to review what I've written only to find that moving your thumb from top to bottom like a normal scroll motion actually closes the time entry window, eradicating everything I've written.",
+      "thumbs_up": 3,
+      "date": "2018-10-18T02:35:05"
+    },
+    {
+      "rating": 2,
+      "text": "can't really do much on mobile. plugins don't work here. o mobile view in browser they are also catastrophic to work with",
+      "thumbs_up": 0,
+      "date": "2025-12-18T15:58:42"
+    },
+    {
+      "rating": 1,
+      "text": "Takes way too long to loud my queue. I can't assign tickets as it keeps asking for a reporter, and when I put one in and press assign, it still says you haven't assigned a reporter. Weird bug that needs to be addressed. Works fine on the web version.",
+      "thumbs_up": 12,
+      "date": "2022-07-28T12:49:32"
+    },
+    {
+      "rating": 3,
+      "text": "No access to the timeline and I can't see the project pages from the Jira app. or be redirected, only by downloading the confluence app. Also, not so many instruments to work with the graphs and creating the projects. Everything else seems okay and works for me.",
+      "thumbs_up": 10,
+      "date": "2023-10-06T02:25:17"
+    },
+    {
+      "rating": 1,
+      "text": "Inconsistent app, filters not always work, sometimes the links cannot open the app, little to no response from company when reported from app. Submit a call then submit a second call and things are in different order on screen. Submit feedback in app for a bug just errors out. So disappointed in the lack of response from them Mobile device transitions do not match desktop transitions The whole bit of the mobile screens not showing a consistent order is downright frustrating to PAY for that annoy",
+      "thumbs_up": 9,
+      "date": "2022-09-27T18:08:21"
+    },
+    {
+      "rating": 5,
+      "text": "Cannot log into my account. I can log in via browser but not the app. Disappointing. EDIT: new rating 5 stars! Customer service reached out and helped me resolve this issue. The issue was that I was using Jira Cloud, and should have been using Jira Data Centre & Server. Thank you, Irene",
+      "thumbs_up": 3,
+      "date": "2022-02-02T22:07:10"
+    },
+    {
+      "rating": 5,
+      "text": "In last couple of weeks the app has broken sharing files as attachments. \"send file...\" to JIRa functionality on android doesnt work rn. When you open for example .pdf, you could share it with JIRa app and JIRa opens new create issue window with the file added as attachment. That doesnt work anymore, the attachment doesnt get uploaded. Please resolve this bug, its breaking our company processes :(",
+      "thumbs_up": 66,
+      "date": "2024-11-21T09:08:33"
+    },
+    {
+      "rating": 1,
+      "text": "Horrible customer experience in terms of charging, they have multiple side limits for stuff that they never tell you about when you start using features. For instance, they have a limit of automation rule RUNS, so you might get started organising work with certain automations and one day (without notice) you have to pay to keep doing your work. If you are a startup or small business with limited budget, I'd urge you to try a different platform.",
+      "thumbs_up": 0,
+      "date": "2024-09-13T04:28:12"
+    },
+    {
+      "rating": 2,
+      "text": "Lots of small issues that add up. Loads way too long before you can leave a comment. Interface doesn't allow to attach video to your comments, something is broken. Doesn't recommended you to assign previously involved person to a ticket.",
+      "thumbs_up": 15,
+      "date": "2021-07-20T12:04:51"
+    },
+    {
+      "rating": 3,
+      "text": "Iam using the latest version of the app - 49.0.414. The latest update seems to have introduced a critical bug. When I try to open a jira issue from \"Viewed recently\" list, the screen goes black. After some time, error message says \" Jira is not responding\". This has to be fixed. Other than that, the app is pretty decent.",
+      "thumbs_up": 30,
+      "date": "2020-05-24T00:08:30"
+    },
+    {
+      "rating": 1,
+      "text": "This app is terrible, I'm sorry. The entire UI is all over the place and confusing, and rarely something works. The text limit won't cover the amount of complaints. I guess it does open every time you tap it... and it remembers my login.",
+      "thumbs_up": 7,
+      "date": "2023-09-14T23:52:04"
+    },
+    {
+      "rating": 2,
+      "text": "This is an excellent app, however simple task like start date and end date and not available. This makes managing time, and time management it difficult one. If all of these options are on the desktop version, then there is no need for this app.",
+      "thumbs_up": 2,
+      "date": "2022-04-23T09:32:31"
+    },
+    {
+      "rating": 1,
+      "text": "While I can see no change in the app for a long time now, there has been a disappointing update recently. Where is the Worklog option? Why was it removed? Bring it back.. I can't go and login to my machine just to update the timesheet",
+      "thumbs_up": 4,
+      "date": "2024-05-17T04:16:43"
+    },
+    {
+      "rating": 1,
+      "text": "I can't login to Jira. Last time I open it, it's suddenly log me out. When I tried to login, it's said \"Hmm... There's a trouble when trying to login\". I was able to login before that, now I can't. Reinstalling the application not help.",
+      "thumbs_up": 1,
+      "date": "2022-05-18T01:55:36"
+    },
+    {
+      "rating": 1,
+      "text": "I'm frustrated with the partner portal - my verification never seems to complete, and I keep getting this annoying message like \"wait a few moments then try again\" I try 3 time with 2 new account but I saw same message for new account also.",
+      "thumbs_up": 1,
+      "date": "2023-09-23T04:46:48"
+    },
+    {
+      "rating": 3,
+      "text": "Overall pretty great. Lost 2 stars because you removed a pretty basic function, namely being able to share a link to an issue! If I'm viewing an issue, I often want to copy the link to it and share it with someone else",
+      "thumbs_up": 3,
+      "date": "2024-08-22T17:08:55"
+    },
+    {
+      "rating": 1,
+      "text": "Surprisingly bad for the price paid... Impossible to add comment to a work log. Impossible to quickly locate issue by a number. you have to find the project, then tap filter, then tap search. Too many actions required. :(",
+      "thumbs_up": 10,
+      "date": "2019-02-01T11:43:25"
+    },
+    {
+      "rating": 4,
+      "text": "Why is the default comment type \"Add internal note\" instead of \"reply to customer\" when you hit \"reply\" on a user's message??? I'm so tired of replying, realizing I just left an internal note, then deleting and re-replying to make sure they see it 😩. Also, switching between projects is really clunky and makes it a real pain when you support two projects (development project and help desk, in my case). I just want to check the support queue without having to switch projects 10 times a day 😩",
+      "thumbs_up": 5,
+      "date": "2024-08-12T17:02:55"
+    },
+    {
+      "rating": 3,
+      "text": "cant view subtasks, few bugs like errors popups. keep working on it, waiting for a 5 star app. edit: after going over several review, based on your replies, you have a low quality app. if you have to ask a comment what is exactly the issue, meaning that you lack KPIs and logs. just think how many people had issue and not posted a comment or bug about it? As a quality/software management system i do expect for a high quality product, even if it \"just\" and app. today i mange all my email from my phone, so i would like with managing my software teams.",
+      "thumbs_up": 2,
+      "date": "2019-12-21T15:51:53"
+    },
+    {
+      "rating": 3,
+      "text": "The app is usable but has a bug while trying to open linked GitHub PRs/branches it just shows a notification \"Unfortunately, we cannot find a browser\" but the system has default browser set to Google Chrome. Moreover reporting a bug in the app itself is broken so I had to report it here...",
+      "thumbs_up": 14,
+      "date": "2022-08-30T06:57:43"
+    },
+    {
+      "rating": 1,
+      "text": "The notification section is supposed to show only the notifications, but instead it shows all the changes happening in the project. Earlier it used to be like that.  Edit:  In my phone actually I'm receiving the pop-up notifications properly only for the issues I had created or the issues I'm watching. If there is only one notification, and if I click that, then the Jira app is launched and it shows the issue properly. But if there are multiple notifications then the Jira app opens and no way for me to identify what were the notifications are... The notification section in the app is just a feed of all changes happening and not just the notifications that I received.",
+      "thumbs_up": 14,
+      "date": "2019-06-27T08:07:17"
+    },
+    {
+      "rating": 1,
+      "text": "Trash, even after login you can't use it, there are too many steps",
+      "thumbs_up": 0,
+      "date": "2025-10-28T02:15:08"
+    },
+    {
+      "rating": 1,
+      "text": "doesn't work like desktop big pain trying to search tickets to link to, link on total issues in dashboard is not clickable unlike on desktop pretty much looks like a read only app. I often need to go on desktop version to fulfill tasks.",
+      "thumbs_up": 0,
+      "date": "2023-02-22T04:56:44"
+    },
+    {
+      "rating": 3,
+      "text": "Useful in some ways. But abhorrent when I try to link to another ticket or otherwise search. It refines results with every new character (fine) but with EACH AND EVERY CHARACTER TYPED, IT PUTS THE CURSOR BACK TO THE START. Infuriating. If you're someone who likes typing words or ticket numbers backwards, then this app is for you.",
+      "thumbs_up": 11,
+      "date": "2021-09-09T09:14:41"
+    },
+    {
+      "rating": 3,
+      "text": "It's good app but I would like to be able to see the burn down chart instead of the velocity chart on my current sprints. Navigation can be improved as well. Overall good job",
+      "thumbs_up": 6,
+      "date": "2020-03-12T10:12:19"
+    },
+    {
+      "rating": 1,
+      "text": "Can't say much about the APP,it's like a waste of time and resources, because it's has no definite navigational tools. Who are the administrator one needs to get clearance from after downloading.",
+      "thumbs_up": 0,
+      "date": "2022-09-26T17:14:15"
+    },
+    {
+      "rating": 4,
+      "text": "Pretty good for keeping up with things on the go, but two kind of annoying things are: (1) When I create an issue (especially a child issue) it takes much longer than on the website and (2) Issue titles get cut-off rather than wrapping their text. Otherwise, great app",
+      "thumbs_up": 28,
+      "date": "2025-03-23T18:10:08"
+    },
+    {
+      "rating": 1,
+      "text": "The latest update (Nov 2022) added a bug when trying to add comments onto Stories/Tasks. Quick responses are no longer something that can be done in app, which is the primary reason I utilize the application.",
+      "thumbs_up": 0,
+      "date": "2022-11-11T08:35:23"
+    },
+    {
+      "rating": 4,
+      "text": "Sufficient capabilities to quickly update comments or status of tickets quickly from mobile without having to go to the browser on laptop. While there maybe more capabilities, I have used only these and they solved my purpose.",
+      "thumbs_up": 0,
+      "date": "2023-06-02T03:17:29"
+    },
+    {
+      "rating": 1,
+      "text": "The Jira app sucks. applications and JIRA stories do not appear and I constantly get service errors while trying to use it. I can't even submit a defect on this through the app because it doesn't work at all!",
+      "thumbs_up": 5,
+      "date": "2025-09-10T23:15:49"
+    },
+    {
+      "rating": 4,
+      "text": "Bit of a learning curve, sometimes obtuse for wanting to have simple functions and the UI design on mobile questionable, but overall it's still incredibly useful. If you're gonna use Jira though, I'd recommend PC instead.",
+      "thumbs_up": 24,
+      "date": "2024-05-03T11:59:16"
+    },
+    {
+      "rating": 2,
+      "text": "I prefer app rather than the web version in case of other apps but in case of Jira its opposite. I'm using since 6 months & UI is really looks very old but we'll adjust with that as we're adapted to that & the app really has many bugs even reported to the dev via gmail but not even a acknowledgement message so just forget about fixing those reported bugs.",
+      "thumbs_up": 15,
+      "date": "2022-08-24T10:05:50"
+    },
+    {
+      "rating": 2,
+      "text": "The app is not optimized for a great mobile experience. I am currently looking at my Open Issues queue and I am seeing an entire list of closed tickets with strikethrough marks. It's easier to use your phones browser with the site in desktop mode.",
+      "thumbs_up": 4,
+      "date": "2022-09-28T10:38:59"
+    },
+    {
+      "rating": 1,
+      "text": "Can't add a filter, and filtering is anemic anyway for issues, unless you want swim through all of the issues. No dashboard to look at combined requests and issues of multiple priority levels.",
+      "thumbs_up": 11,
+      "date": "2021-02-15T11:16:43"
+    },
+    {
+      "rating": 2,
+      "text": "So much more difficult ui compared to the browser version. When someone does something to a ticket it is very hard to see what that something was. No easy access to list of owned tickets and categories are different than browser e.g. progress vs development. Confusing mess.",
+      "thumbs_up": 8,
+      "date": "2024-01-30T08:38:48"
+    }
+  ],
+  "app_store_reviews": []
+}

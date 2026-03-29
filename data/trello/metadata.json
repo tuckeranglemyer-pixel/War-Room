@@ -1,0 +1,39 @@
+{
+  "name": "Trello",
+  "category": "kanban",
+  "subcategories": [
+    "project_management",
+    "task_management",
+    "visual"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $5-$18 per user/mo",
+  "primary_use_case": "Visual kanban-style project management",
+  "target_audience": [
+    "small_teams",
+    "individuals",
+    "non_technical"
+  ],
+  "key_features": [
+    "boards",
+    "cards",
+    "lists",
+    "power_ups",
+    "automation",
+    "templates",
+    "views"
+  ],
+  "founded": 2011,
+  "estimated_users": "50M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "monday",
+    "notion"
+  ]
+}

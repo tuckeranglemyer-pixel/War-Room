@@ -1,0 +1,40 @@
+{
+  "name": "Taskade",
+  "category": "project_management",
+  "subcategories": [
+    "ai_agents",
+    "collaboration",
+    "mind_maps"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $8-$16 per user/mo",
+  "primary_use_case": "AI-powered workspace with agents, tasks, and mind maps",
+  "target_audience": [
+    "small_teams",
+    "individuals",
+    "remote_teams"
+  ],
+  "key_features": [
+    "tasks",
+    "AI_agents",
+    "mind_maps",
+    "video_chat",
+    "templates",
+    "automation",
+    "calendar"
+  ],
+  "founded": 2017,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android",
+    "browser_extension"
+  ],
+  "competitors": [
+    "notion",
+    "clickup",
+    "todoist"
+  ]
+}

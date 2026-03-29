@@ -1,0 +1,40 @@
+{
+  "name": "Monday.com",
+  "category": "project_management",
+  "subcategories": [
+    "work_os",
+    "crm",
+    "dev",
+    "marketing"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $9-$19 per seat/mo",
+  "primary_use_case": "Work operating system with customizable workflows",
+  "target_audience": [
+    "mid_market",
+    "enterprise",
+    "cross_functional"
+  ],
+  "key_features": [
+    "boards",
+    "dashboards",
+    "automations",
+    "integrations",
+    "docs",
+    "forms",
+    "time_tracking"
+  ],
+  "founded": 2012,
+  "estimated_users": "225K+ orgs",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "clickup",
+    "smartsheet"
+  ]
+}

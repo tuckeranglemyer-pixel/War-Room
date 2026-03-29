@@ -1,0 +1,42 @@
+{
+  "name": "Jira",
+  "category": "issue_tracking",
+  "subcategories": [
+    "agile",
+    "scrum",
+    "kanban",
+    "bug_tracking",
+    "devops"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $8-$16 per user/mo",
+  "primary_use_case": "Agile project management and issue tracking for software teams",
+  "target_audience": [
+    "enterprise",
+    "developers",
+    "engineering_teams"
+  ],
+  "key_features": [
+    "issues",
+    "sprints",
+    "boards",
+    "roadmaps",
+    "backlogs",
+    "JQL",
+    "workflows",
+    "automation"
+  ],
+  "founded": 2002,
+  "estimated_users": "10M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "linear",
+    "shortcut",
+    "azure_devops"
+  ]
+}

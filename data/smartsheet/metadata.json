@@ -1,0 +1,40 @@
+{
+  "name": "Smartsheet",
+  "category": "project_management",
+  "subcategories": [
+    "enterprise_pm",
+    "spreadsheet",
+    "resource_management"
+  ],
+  "pricing_model": "subscription",
+  "pricing_range": "$9-$32 per user/mo",
+  "primary_use_case": "Enterprise work execution platform with spreadsheet-like interface",
+  "target_audience": [
+    "enterprise",
+    "IT",
+    "operations",
+    "PMO"
+  ],
+  "key_features": [
+    "sheets",
+    "dashboards",
+    "reports",
+    "automation",
+    "resource_management",
+    "governance",
+    "proofing"
+  ],
+  "founded": 2005,
+  "estimated_users": "10M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "wrike",
+    "airtable",
+    "monday"
+  ]
+}

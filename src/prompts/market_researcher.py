@@ -39,11 +39,26 @@ Required fields — follow the schema EXACTLY, including enum values:
     ]
   },
   "killer_quotes": [
+    // EXACTLY 8 quotes. Pick the 8 most impactful, relevant, specific user quotes from the evidence.
+    // Mix positive AND negative — at least 3 must be complaints about competitors.
+    // These will be displayed prominently on the one-pager. They must be REAL quotes from the review data — do NOT paraphrase or fabricate.
+    // Each quote must be under 30 words. If the original is longer, extract the most relevant segment.
     {
-      "quote": "string — a real or representative user quote from the evidence",
+      "quote": "The exact quote from the review data. Under 30 words.",
       "source": "reddit | hackernews | google_play",
-      "app": "string — which app this quote is about",
-      "relevance": "string — why this quote matters for the product being reviewed"
+      "app": "which competitor this quote is about",
+      "sentiment": "positive | negative | mixed",
+      "relevance": "One sentence — why this quote matters for the founder's product."
+    }
+  ],
+  "user_pain_points": [
+    // EXACTLY 5 quotes that are specifically NEGATIVE reviews — complaints about competitor UX, pricing, onboarding, or missing features.
+    // These highlight gaps the founder can exploit. Must be REAL quotes from the evidence.
+    {
+      "quote": "The exact negative review quote. Under 30 words.",
+      "source": "reddit | hackernews | google_play",
+      "app": "which competitor",
+      "pain_point": "One sentence — what specific exploitable problem this reveals for the founder"
     }
   ],
   "pricing_positioning": {
@@ -98,4 +113,10 @@ Assess the competitive landscape and market opportunity for this product.
 - Is the differentiator ("{differentiator}") validated by what the evidence shows the market wants?
 - What is the realistic path to displacement — which user segment is most winnable first?
 
-Respond with a single valid JSON object matching the schema in your system prompt."""
+Respond with a single valid JSON object matching the schema in your system prompt.
+
+CRITICAL RULES
+==============
+- Every quote in killer_quotes and user_pain_points MUST be extracted from the actual review text in the evidence package. Do not fabricate, paraphrase, or embellish.
+- killer_quotes MUST contain exactly 8 entries with at least 3 negative sentiment quotes mixed in.
+- user_pain_points MUST contain exactly 5 entries and ALL must be negative — these are competitor weaknesses."""

@@ -1,0 +1,41 @@
+{
+  "name": "Airtable",
+  "category": "database_spreadsheet",
+  "subcategories": [
+    "project_management",
+    "crm",
+    "content_calendar",
+    "no_code"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $20-$45 per seat/mo",
+  "primary_use_case": "Flexible database-spreadsheet hybrid for organizing anything",
+  "target_audience": [
+    "operations",
+    "marketing",
+    "product_teams",
+    "non_technical"
+  ],
+  "key_features": [
+    "bases",
+    "views",
+    "automations",
+    "interfaces",
+    "extensions",
+    "sync",
+    "forms"
+  ],
+  "founded": 2012,
+  "estimated_users": "500K+ teams",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "notion",
+    "smartsheet",
+    "coda"
+  ]
+}

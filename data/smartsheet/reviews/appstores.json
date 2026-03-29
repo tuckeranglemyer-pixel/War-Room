@@ -1,0 +1,1206 @@
+{
+  "app": "smartsheet",
+  "play_store_reviews": [
+    {
+      "rating": 3,
+      "text": "Works well enough. Dark mode would be a fantastic addition since OLED devices drain battery faster with light screens. The app lacks many features that are available in the web version, which does not work well on either Android or Apple tablets. Adding filters, for instance, requires the web. Using checkboxes takes forever as well, even over fiber connections, since the app syncs every time a cell is updated (unlike the web app). An option to only sync manually or less often would be nice.",
+      "thumbs_up": 16,
+      "date": "2022-12-27T11:54:10"
+    },
+    {
+      "rating": 3,
+      "text": "Smartsheet is an amazing product and a solid platform. The app is good, but I'm very surprised that the app developer didn't even realize that you can't set reminders using the app. I use Smartsheet reminders frequently and unfortunately I have to go to a computer to set reminders. That's a let down because to me the idea would be that I could do what I need using the app.",
+      "thumbs_up": 220,
+      "date": "2022-07-31T23:46:42"
+    },
+    {
+      "rating": 3,
+      "text": "works great when it works. There are times, and it seems to be getting more frequent, when I am trying to login and it takes some time and then it spits out an \"authentication error\" and I can't login to input time sensitive info for my company... 5 stars if there is a fix for this issue. The issue also includes the website and Logging in there. Server issues most likely.",
+      "thumbs_up": 30,
+      "date": "2019-07-31T11:47:41"
+    },
+    {
+      "rating": 5,
+      "text": "I can't tell you how much SmartSheet has changed my life when it comes to running a non-profit animal rescue. I'm able to manage volunteers, keep up on appointments for the dogs in our care, automatically import our Google form submissions for potential familes and I could go on and on. The app has improved tremendously since it first launched. It is much easier to navigate complex sheets and having access to everything on the go has been a lifesaver!",
+      "thumbs_up": 295,
+      "date": "2019-01-22T23:59:05"
+    },
+    {
+      "rating": 5,
+      "text": "A few items of praise: 1) Mobile is very beautiful. 2) Charts display very well. 3) Data entry and computations transfer perfectly regardless of platform. Checkboxes, dropdowns, dates, and text entry are seamless. Autocalculations to adjust charts happen with a simple click or two. One very minor critique, or word of caution: Editing equations is locked on mobile. Therefore overwriting cells with equation backbones is impossible, even if the goal is to enter raw numbers.",
+      "thumbs_up": 300,
+      "date": "2023-06-23T08:52:49"
+    },
+    {
+      "rating": 1,
+      "text": "They have a million plus downloads because everyone has to uninstall and reinstall the app because it constantly freezes. I'm forced to reinstall this app weekly because it freezes and won't load sheets. This is an ongoing issue with my coworkers across all platforms. I have written Smartsheets numerous times but they still have not resolved there ongoing issues.",
+      "thumbs_up": 44,
+      "date": "2024-09-02T17:02:56"
+    },
+    {
+      "rating": 1,
+      "text": "I created advanced applications in SS a couple of years ago. It has great functionality plus glaring weaknesses but at least it had good support. I recently resubscribed but am unable to access my old sheets etc and Support simply ignores me. Plus, they recently changed the billing method so that every user pays which makes it very expensive. Plus, they require a minimum of 3 seats on the Business plan which means that it now costs $1000 p/a when I am the only user. Don't buy it. In short,",
+      "thumbs_up": 0,
+      "date": "2026-03-03T05:08:32"
+    },
+    {
+      "rating": 2,
+      "text": "There REALLY needs to be an option somewhere to set the save of changes to a sheet to happen less frequently instead of after every single change in this mobile app. Like save only when sheet closes or only every 5, 10, 15 minutes or something. It's painful waiting for the save after every click. Feel free to reach out to me if you want info on how I'm using it and why this matters for my use case.",
+      "thumbs_up": 2,
+      "date": "2026-02-05T13:38:34"
+    },
+    {
+      "rating": 3,
+      "text": "I'm a little frustrated that this app is no longer compatible with my device, I have used the app for quite a few years and was very pleased with it's performance. I'm not really looking forward in having to replace my tablet ?? ☹🤷‍♂️",
+      "thumbs_up": 0,
+      "date": "2026-03-16T20:41:22"
+    },
+    {
+      "rating": 1,
+      "text": "Keeps getting stuck in a login cycle. I type in my login credentials then it goes back to the login page. Stop making updates everytime you change something you break something.",
+      "thumbs_up": 6,
+      "date": "2026-02-12T18:14:27"
+    },
+    {
+      "rating": 5,
+      "text": "great resource! we use it daily to coordinate between 60 and 75. It is fabulous to have the ability to modify our process on demand.",
+      "thumbs_up": 3,
+      "date": "2026-02-11T22:03:48"
+    },
+    {
+      "rating": 4,
+      "text": "I'm unable to see the full spreadsheet when on my mobile phone. switching between PC mode doesn't work.",
+      "thumbs_up": 0,
+      "date": "2026-02-27T15:56:35"
+    },
+    {
+      "rating": 5,
+      "text": "One of the most user friendly apps out there, great for teams and small businesses. Love it",
+      "thumbs_up": 2,
+      "date": "2026-02-18T07:53:08"
+    },
+    {
+      "rating": 5,
+      "text": "smartsheet is best for personal and small business. It is very good app and i really recommand it.",
+      "thumbs_up": 0,
+      "date": "2026-02-16T14:51:40"
+    },
+    {
+      "rating": 2,
+      "text": "can't set reminders through the app. That's one of the most important features.",
+      "thumbs_up": 0,
+      "date": "2026-03-01T08:16:13"
+    },
+    {
+      "rating": 1,
+      "text": "this is the worst app you ever going to get, you can't even cancel the subscription without jumping through hoops, I sent an email to cancel they emailed me back to cancel thru the app where their instruction are all wrong.",
+      "thumbs_up": 10,
+      "date": "2025-10-27T14:45:07"
+    },
+    {
+      "rating": 2,
+      "text": "One of the best spreadsheet apps available. It is intuitive and so far haven't encountered any bug having used it for over a year. May 2024 Update: The app version has been pretty buggy for me since March this year and has completely stopped working. Whatever sheets I try to open just keeps loading endlessly. Have to rely on the web based version. Awaiting for a fix.",
+      "thumbs_up": 42,
+      "date": "2024-05-05T09:52:13"
+    },
+    {
+      "rating": 1,
+      "text": "The app does not show any workspaces on my account, I am using my microsoft login details. the app is completely worthless and ads frustration rather than ease of mind for accessing data on the go. WORST APP FOR MY ANDROID.",
+      "thumbs_up": 4,
+      "date": "2025-12-22T03:01:24"
+    },
+    {
+      "rating": 1,
+      "text": "app was buggy at times, now it's gone the route and made it impossible to use with our work tablets due to updating. would rather give 0 stars but 1 is the lowest",
+      "thumbs_up": 0,
+      "date": "2026-02-01T16:36:30"
+    },
+    {
+      "rating": 2,
+      "text": "The app doesn't provide the same functionality as the webpage. I am not able to manage my account through the app. They just make it difficult to manage your account to make more money.",
+      "thumbs_up": 6,
+      "date": "2025-12-02T14:54:42"
+    },
+    {
+      "rating": 2,
+      "text": "Very poor. Will log on to the app,but it will fail trying to access worksheets even after a complete reboot of the phone, and after 3-5 hrs, it will report a period inactivity before eventually logging me out This occurs also when I attempt to use the Log off function. As mentioned in another review, I uninstalled and reinstalled the program to get finally get access. It has also had at least 3 product updates since I started reporting the issue. No contact or support from Smartsheets.",
+      "thumbs_up": 31,
+      "date": "2024-08-10T20:28:43"
+    },
+    {
+      "rating": 5,
+      "text": "Hi some of my cells appear empty on mobile. They are not. What causes this?",
+      "thumbs_up": 12,
+      "date": "2026-02-16T15:34:36"
+    },
+    {
+      "rating": 1,
+      "text": "Unable to login without complete uninstall/reinstall. Kept going back to login screen after entering username/password and opening page in external browser.",
+      "thumbs_up": 6,
+      "date": "2025-10-27T18:07:56"
+    },
+    {
+      "rating": 5,
+      "text": "easy to use and to report observations",
+      "thumbs_up": 0,
+      "date": "2026-03-10T01:41:31"
+    },
+    {
+      "rating": 5,
+      "text": "Smooth and easy to use app abilities to submit photos communicate with the team and schedule properly is made easily",
+      "thumbs_up": 8,
+      "date": "2025-11-24T10:44:24"
+    },
+    {
+      "rating": 4,
+      "text": "The best Spreadsheet app i have ever use, easy to use, no lag or slow for lower device. Very recomended to download and use this other than any Spreadsheet app (Edit: still the same review but.. I don't know it's 30 day trial after creating account.. I thought it was free forever.. Now i can only view my spreadsheet work and can't edit it unless i upgrade plan limit *sob sob* can't complain, i'm free user, i don't spend money on any app ;-; ty for trial, it was the best spreadsheet app ever use)",
+      "thumbs_up": 58,
+      "date": "2021-01-25T14:55:07"
+    },
+    {
+      "rating": 3,
+      "text": "Nice app...but to me as freelance THE big issue is that the cool features i need come with business plan which price is a bit on the high end compare to other tools on the market...but I could live with that because I like using the tool but what is totally off is that if you want business license features you need to subscribe at least three licenses even if you only need one (roughly 100$ per month!!!)",
+      "thumbs_up": 33,
+      "date": "2020-02-02T00:57:00"
+    },
+    {
+      "rating": 2,
+      "text": "The phone version displays data horribly and can't edit almost anything, I can barely use it. As for Smartsheet itself, it is decent for keeping data in sheets and for forms but the real-time collaboration is non-existent, there is no real-time autosave, it lacks in formulas, filtering, structure of the sheet, graphs, integrations with other apps, proper sheet permissions, it is slow and automating tasks (like data population) is hard or impossible at times, many workarounds needed to be done.",
+      "thumbs_up": 4,
+      "date": "2024-12-18T06:52:49"
+    },
+    {
+      "rating": 1,
+      "text": "I wish this app worked for me. I was hoping to use it as a resource while on the move however when I try to open a sheet it's perpetually loading rendering it completely useless. I've tried closing the app completely, signing out and signing back in, and I'm on the most updated version. I tried opening a sheet and left my phone while I worked on my computer for a while and it still was loading after several minutes. Unfortunately it's useless to me.",
+      "thumbs_up": 24,
+      "date": "2024-05-15T00:12:06"
+    },
+    {
+      "rating": 5,
+      "text": "we got involved in the early stages of development and marketing. I remember looking at the critical comments regarding the trial period. although I was disappointed when some features were removed, I was able to maintain the same price point with essential features remaining. Overall a great product that evidently has saved the US government billions of dollars. Money that could have just as easily been printed at no cost, but saved nonetheless.",
+      "thumbs_up": 102,
+      "date": "2022-12-23T08:33:22"
+    },
+    {
+      "rating": 1,
+      "text": "They don't tell that they are going to bill you for usage in advance for 12 months at $13 per user per month on top of the $160 initial subscription. They want to hit me up $236 based on having 2 inactive users. Usage was meant to be pay as you go. The app is pretty basic as far as project management goes. I've removed all active user. I will probably cancel due to the cost. They still billed me 12 months in advance. Now I have to pursue them for money back. I will cancel my subscription.",
+      "thumbs_up": 7,
+      "date": "2025-08-18T22:16:59"
+    },
+    {
+      "rating": 2,
+      "text": "It used to work relatively well. A bit annoying when the sheet is long and you have to scroll to the end with a round corners screen. The reason I downgraded to 2 stars is because several times now when I really need to access my sheets by phone, the app can't open any of my sheets with no reason. Even after a \"force to stop\" and relaunching, which renders the app useless.",
+      "thumbs_up": 16,
+      "date": "2024-07-30T15:46:03"
+    },
+    {
+      "rating": 4,
+      "text": "Fantastic collaboration tool, planner, and data gathering platform and I love it, but SmartSheet are starting to rein in various features from free collaborators meaning that long time users now have less functionality unless they pay, bearing in mind that the sheet is already paid for by someone! Another thing that would be good is a free version for non-commercial use. Most on-line 'tools' have a free version for small or personal users but SmartSheet doesn't and that's a great shame.",
+      "thumbs_up": 14,
+      "date": "2019-11-12T15:35:10"
+    },
+    {
+      "rating": 4,
+      "text": "4.8 Stars!!!! It would get 5 stars if it was a little more like Excel from a formula standpoint. However, Smartsheet is extremely powrful fir collected data and being able to make custom forms and for making easy to distribute to people via the phones. Uf you need to collect data in any way and want to be able to gather that data woth your smartphone then this is the app for you.",
+      "thumbs_up": 19,
+      "date": "2019-06-24T13:36:53"
+    },
+    {
+      "rating": 1,
+      "text": "The app worked fine yesterday and now when I try to access it it just pops up a message saying \"For your security, smart sheet does not run on emulated environments\" and refuses to run. Nothing on the tablet has changed whatsoever and I tried factory resetting it and reinstalling the app but got the same results.",
+      "thumbs_up": 1,
+      "date": "2025-08-20T06:20:44"
+    },
+    {
+      "rating": 2,
+      "text": "This app is great when it works but I have to give it only a two star because after a few days of use, it just won't open and is stuck on the loading screen. This will be the second time I've had to delete the app and reinstall it. I have an update for this app pertaining to the same issue. Well, I don't have to delete and reinstall. I just have to wait a week then it's good and loads. But it only last for a week, one week loads with no problem then one week doesn't load.",
+      "thumbs_up": 48,
+      "date": "2024-04-20T03:11:12"
+    },
+    {
+      "rating": 5,
+      "text": "Very useful tool due to it's flexibility in being easily formulated to your specific operations. I use it to collect equipment information that we maintain mechanically and to collaborate work/maintenance across all of our Field Technicians (various crews/crafts), there's so much more available than what I use it for. Dashboards,reporting etc. and it's all in one easy to read/sort excel type view.",
+      "thumbs_up": 67,
+      "date": "2019-08-12T18:45:05"
+    },
+    {
+      "rating": 5,
+      "text": "This is a great tool for any professional. However, I am still in awe over how much I am still learning. I use SmartSheet in a Human Resource setting and other members of my team are getting super excited about the increased accuracy and operation best product is bringing to our daily projects. Would reccomand for anyone that has multiple items that needs tracked.",
+      "thumbs_up": 21,
+      "date": "2019-07-31T15:00:00"
+    },
+    {
+      "rating": 1,
+      "text": "Worst app ever. Auto save after every amendment makes the app slow and clunky unless you are sitting under a 5g tower. Also unable to open any sheets from time to time which can only be resolved by uninstalling and reinstalling the app. Happens every 2 weeks on multiple different devices. I only just this app as I am required to use it for work.",
+      "thumbs_up": 6,
+      "date": "2024-07-24T21:14:01"
+    },
+    {
+      "rating": 5,
+      "text": "I've been using Smartsheet for about 6 years now, got certified and continue learning more about it everyday. Great management tool and their support always exceeds my expectations. I would definitely recommend Smartsheet for anyone managing a company or a group of people and eat to keep track of their progress, live and anywhere in the world where you have data on your phone, tablet or computer. HQ",
+      "thumbs_up": 30,
+      "date": "2019-11-24T08:54:26"
+    },
+    {
+      "rating": 5,
+      "text": "I have been using Smartsheet for a little under a year now and love it. The team that helped our company build what we wanted in a scheduling software with many more features than we imagined. I recommend Smartsheet to a number of our clients as well. Meep up the good work.",
+      "thumbs_up": 17,
+      "date": "2019-07-01T18:50:54"
+    },
+    {
+      "rating": 1,
+      "text": "Can't take pictures with the app I have to literally use my camera then upload them they might upload they might not. If I don't use the app for 5 or 10 minutes and I try to go back to it, it rests Sometimes I tap a space and it just says saving it makes me wait five to six seconds. No 5 to 6 seconds isn't a long time when it happens repeatedly it adds up. Please fix these things for the sake of all things productive.",
+      "thumbs_up": 28,
+      "date": "2022-07-25T12:33:27"
+    },
+    {
+      "rating": 1,
+      "text": "Not allowed to delete my account via app, but of course I was able to create an account very easily within the app. You can't test anything without registering first. The system to input data is outdated and not very intuitive. User unfriendly.",
+      "thumbs_up": 24,
+      "date": "2019-11-03T15:06:42"
+    },
+    {
+      "rating": 1,
+      "text": "How come my phone version does not support smartsheet for the new update? What are the phone requirements?",
+      "thumbs_up": 0,
+      "date": "2026-01-21T09:19:49"
+    },
+    {
+      "rating": 1,
+      "text": "It's one of the worst ERP you can use They don't have live customer support, and only way is to contact them by email or phone. The only thing that works is their reminder to pay an invoice, which you requested to close I have been using smartsheet for the past 3 years, and thier customer support is the worst you can see",
+      "thumbs_up": 4,
+      "date": "2024-04-24T16:36:23"
+    },
+    {
+      "rating": 2,
+      "text": "App keeps crashing in Android. App does not sign in, I will then have to reinstall the app, it works for a week or so, the same issue keeps coming back. I lodged a service request, just received a generic reply, pretty much saying I have to reinstall the app every time this happens.",
+      "thumbs_up": 7,
+      "date": "2024-05-07T03:54:34"
+    },
+    {
+      "rating": 1,
+      "text": "By installing it and signing in with google account you agree to your 30 days free trial. There is no information in Play Store that this is a paid app. I'd love to cancel start of this tial as I won't have time in next 30 days to give it a due attention. But this is too late, I am affraid.",
+      "thumbs_up": 51,
+      "date": "2022-03-14T09:18:38"
+    },
+    {
+      "rating": 1,
+      "text": "Horrible user interface. Keyboard bindings suck. Most tablets now-a-days have keyboards and I had to use the mouse every time I wanted to click into a cell and then a \"popup\" menu had to be clicked to edit the cell--no thanks. Spreadsheets are about entering large quantitites of data--using the mouse is slow and tedious.",
+      "thumbs_up": 4,
+      "date": "2024-12-24T13:41:03"
+    },
+    {
+      "rating": 5,
+      "text": "Can't believe I haven't even tried smartsheet before. 2 years trying so many business process. Spend a heck lot of money for ERP. Research on smartsheet for 3 months. Set up takes 2 weeks, and the trial on my teams is so smooth that they keep asking for new implementation. I think smartsheet should emphasize that most user can use free version. I spend a minimum 3 licence, I actually only need 2. But the user is about 20.",
+      "thumbs_up": 41,
+      "date": "2020-11-09T06:35:57"
+    },
+    {
+      "rating": 5,
+      "text": "Best collaborative project and task manager out there. I've integrated it into the last four companies where I've worked by just using it there myself. Then others adopt it and it spreads. That is probably because it's a very familiar interface. The feature set is also just what one needs to be efficient and coordinated. Truly a great app.",
+      "thumbs_up": 61,
+      "date": "2019-02-13T08:44:56"
+    },
+    {
+      "rating": 5,
+      "text": "I love the incredible wealth of formulas supported by Smartsheet, the ability to link sheets cell to cell, the dashboards, the different views (grid, Gantt, cards, etc), the proofing features, the reports, and the automations. I use them all and they save me and my team a lot of time!",
+      "thumbs_up": 35,
+      "date": "2024-02-16T13:59:51"
+    },
+    {
+      "rating": 5,
+      "text": "Simple enough to get teams on board with it and affordable too. Other reviews suggest spending 35x the cost of this on a desktop only solution. If that doesn't make your eyes water then pay for P6. For cost sensitive scenarios this is a well priced and capable app that integrates with the web version well. One dismayed is that any, and I mean any, action results in the app whirring away doing good knows what. So everything is tap, wait, tap. It didn't matter what device. I don't think it caches things locally. The UI is dated, no swiping or intuitive interaction. Type, select next box, wait, type, select next box... It's as if Mailbox never happened. Summer hits really haven't been thought through, sub tasks are powerful but creating one is a chore and is not easy to win it how to do it, or see them. If it was easier to get things in and mark as done this would be amazing. I've been using paid for smartsheet for 8 years now so I can obviousky forgive the limitations for now.",
+      "thumbs_up": 17,
+      "date": "2018-11-28T13:21:02"
+    },
+    {
+      "rating": 4,
+      "text": "Excellent stuff. This is exactly what I needed. Thanks.",
+      "thumbs_up": 0,
+      "date": "2026-02-26T07:19:30"
+    },
+    {
+      "rating": 5,
+      "text": "Smartsheet is a powerful user friendly project and portfolio management solution and tool. It offers a wide variety of templates and add-ons to suit many scenarios. It enables automated workflows, easy to set up update requests, granular permission groups, connectors with other platforms, and many other features. It's a great choice for planning, executing, and monitoring projects!",
+      "thumbs_up": 56,
+      "date": "2023-11-03T12:43:41"
+    },
+    {
+      "rating": 5,
+      "text": "Have used Smartsheet for about a decade now on big projects (construction and manufacturing) and it's great. Cannot recommend highly enough.",
+      "thumbs_up": 3,
+      "date": "2025-10-17T02:23:11"
+    },
+    {
+      "rating": 1,
+      "text": "I Used this app and have been a customer for years. My business changed direction and I have spent 3 months trying to cancel my account with no help from anyone from smartsheets. I follow the procedures they request and am notified I'm cancelled and a month later I get charged again. I now have to change my credit card info and contact visa to dispute the fraudulent charges which is a major headache. Their customer service is piss poor and they have 0 empathy for this. Do Not Use!!!",
+      "thumbs_up": 63,
+      "date": "2023-12-15T18:12:21"
+    },
+    {
+      "rating": 1,
+      "text": "I have to use this for work maybe 5 minutes total a week. That's nowhere near enough to justify having an app. Why the hell do I need a separate app for this now? Why did you make it so difficult to open on mobile web? AND THEN I STILL NEED TO OPEN THE SHEETS VIA MOBILE WEB because the app doesn't even want to load it.",
+      "thumbs_up": 12,
+      "date": "2024-08-09T23:34:56"
+    },
+    {
+      "rating": 1,
+      "text": "Your web version suggested I try the phone app. So I try to do that. It turns out that my work org has locked down app sign in to only admins which I'm not. Your web version >should have known that< and not suggested the phone app as it's not an option for me with my work set up. This is the kind of thing that effectively tells users you don't care about the user experience. Please address.",
+      "thumbs_up": 13,
+      "date": "2024-09-28T15:09:58"
+    },
+    {
+      "rating": 3,
+      "text": "At the moment I can't give it anymore than 3 stars. The functions are great when you can get logged on. At the moment I'm mobile it's hangs for a long time and doesn't let you onto any of your pages. You need to sort the mobile android app.",
+      "thumbs_up": 3,
+      "date": "2024-04-24T11:20:43"
+    },
+    {
+      "rating": 1,
+      "text": "Will not open! For several weeks now, I have had to uninstall and reinstall several times a week because the app will not open. Usually, this app does its job. However, when I am in the field working, I need my tools to work as well. I will update my review when the issue is resolved.",
+      "thumbs_up": 2,
+      "date": "2024-05-14T12:04:58"
+    },
+    {
+      "rating": 2,
+      "text": "Great App to use, the unfortunate part is they do not refund or pro-rate any of your premium amount if you cancel, in other words, your'e stuck. It seems like it would be a simple and honest thing to do, but they dont.",
+      "thumbs_up": 2,
+      "date": "2024-03-30T08:36:26"
+    },
+    {
+      "rating": 3,
+      "text": "While I try to copy multiple cells from an excel and paste them in the smartshert, they get pasted in a single cell which is highlighted. Copy pasting multiple cells work fine on the desktop app and even on the edge browser but it does not work well in the mobile app of Smartsheet. I am using samsung note 20 ultra, one ui 5.1, Smart sheet android app and microsoft excel android office 365 to access excel file. It impacts me a lot and I am unable to work on my tab and phone.",
+      "thumbs_up": 70,
+      "date": "2023-10-25T17:44:33"
+    },
+    {
+      "rating": 3,
+      "text": "This app and everything is okay but there premium is very high now no one can afford most of the companies replacing this because of the issue in subscription model there are so many similar tools coming in the market with better price structure even companies are building there own as per its working this is good but expanding in companies is very difficult most of the developers fear of loosing there job",
+      "thumbs_up": 0,
+      "date": "2026-02-04T02:45:14"
+    },
+    {
+      "rating": 1,
+      "text": "The only function i need is to be able to submit photos and occasionally notes with the photos. I do about 60 - 100 locations, using the form i have to put in my name, email, and state each time. These will never change and it is extremely tedious. I should be able to prefill these fields one time, NOT auto fill each time.",
+      "thumbs_up": 51,
+      "date": "2020-03-15T14:11:22"
+    },
+    {
+      "rating": 1,
+      "text": "Rating company ..They started auto deduct, no way to change payment method and they aren't returning a week of every day me leaving messages for support and fiance. Feels like they are going or gone out of business and the only way to stop auto payment is cancel the PayPal account or credit card. The sheet I use is awesome, they use to answer their phones and emails...not any longer. If you are still in business don't say contact support for help...instead answer your calls, voicemails, emails",
+      "thumbs_up": 16,
+      "date": "2021-01-08T17:15:02"
+    },
+    {
+      "rating": 1,
+      "text": "Havent used it in a year, an update in the mean time seems to have broken the pinch zoom - app is now unusable. Panning around causes zooming in, cannot zoom out, must reload the sheet constantly. Our team must now all use laptops since the app is so buggy.... :-(",
+      "thumbs_up": 9,
+      "date": "2024-05-16T03:17:25"
+    },
+    {
+      "rating": 1,
+      "text": "12/2/24 pulled off another star because offline forms get deleted every time you log out. 1/9/23 pulled off another star because it deletes \"offline forms\" when the app automatically logs out after predetermined time period. 5/21/21 pulled off another star because of constant \"rate me\" popup 10/5/18. 5 stars. I love the app but I'm going to remove a star every time the app interrupts my work asking me to rate it. Love this app and the web site.",
+      "thumbs_up": 6,
+      "date": "2024-12-02T09:26:13"
+    },
+    {
+      "rating": 5,
+      "text": "Cant cancel if no access to email I no longer use as it was work email, however i am paying for the subscription for myself. Please cancel my subscription. I cannot reply to the email listed on my account! great app to stay focused on multiple projects",
+      "thumbs_up": 19,
+      "date": "2022-11-19T10:12:14"
+    },
+    {
+      "rating": 2,
+      "text": "The mobile app needs some work. You are unable to access datamesh. There is no easy way to zoom into a cell with a photo and text. Workflows are also unable to be adjusted This is not built for any sort of power user.",
+      "thumbs_up": 3,
+      "date": "2024-12-27T12:17:09"
+    },
+    {
+      "rating": 2,
+      "text": "I am finding that the overall experience of Smartsheets is limited by Google devices. Simply attempting to purchase a membership is clunky, at best, as google constantly sends you to the app where you are unable to make your purchase.",
+      "thumbs_up": 7,
+      "date": "2022-10-08T15:05:28"
+    },
+    {
+      "rating": 3,
+      "text": "The app mostly works, but for favorites, it says to \"long press an item\", which then gives the option to hide a sheet, not make it a favorite. Also, I regularly lose access to my sheets and have to go and find them again.",
+      "thumbs_up": 40,
+      "date": "2021-05-20T09:54:04"
+    },
+    {
+      "rating": 4,
+      "text": "It's got a long way to go in terms of formatting and additional options. Our company has been using it for a few months now and during that time, we have tested a few others along side. There are pros and cons with this program and will be up to your needs if it works out for you or not. As a heads up, if you are lost or need help with the service, I highly recommend reading the forum on their site to better assist you with issues",
+      "thumbs_up": 37,
+      "date": "2021-04-10T10:21:46"
+    },
+    {
+      "rating": 1,
+      "text": "I have used this app for years. So I don't know if they get financial issues due to COVID but they 'v withdrawn 800 Euros extra. I sent mail for their financial department no answers. They go on taking 100 Euros per month extra. So you can use it but think that might happen and the solution to stop is to break the contract.",
+      "thumbs_up": 7,
+      "date": "2022-09-13T13:11:17"
+    },
+    {
+      "rating": 5,
+      "text": "Use it for work for OT sign up shifts, i like that we can see the list in real time as people are signing up. Beats having to sign up on paper and waiting till your at work to do so. Convenient, and Easy to use.!",
+      "thumbs_up": 9,
+      "date": "2020-01-21T17:15:49"
+    },
+    {
+      "rating": 3,
+      "text": "Smartsheet is very intuitive and easy to learn, but it has a long way to go when it comes to graphics and charts. I can't employ any of my Lean Six Sigma tools and graphics like I can using Excel.",
+      "thumbs_up": 10,
+      "date": "2019-11-27T01:26:11"
+    },
+    {
+      "rating": 1,
+      "text": "Do not waste your time. I signed up for a \"free\" account and I'm now getting calls daily asking if I want to switch to a paid account. I have told avryone that calls I'm not interested and take me off the call list. Still get calls though.",
+      "thumbs_up": 4,
+      "date": "2023-02-03T10:59:59"
+    },
+    {
+      "rating": 3,
+      "text": "This thing works , for as long as it's not offline. It's been difficult to access files and web forms on it recently. Biggest disappointment is you can't do in-application calculations like on Microsoft Excel.",
+      "thumbs_up": 28,
+      "date": "2020-01-18T07:00:08"
+    },
+    {
+      "rating": 5,
+      "text": "I use Smartsheet for basic scheduling for my remodeling business. if you know Excel then you know Smartsheet. The advantage of Smartsheet is the ability to add logic and change views from a typical spreadsheet to a Gantt chart and the app is seamless with the desktop version. I love always having my job schedule with me!",
+      "thumbs_up": 50,
+      "date": "2021-01-18T23:24:14"
+    },
+    {
+      "rating": 4,
+      "text": "The integration with the desktop is convenient and easy. Quick access to all my different sheets. I had some functionality and delay in updates to the desktop early on, but it seems to be improved at this time.",
+      "thumbs_up": 36,
+      "date": "2021-04-02T10:01:11"
+    },
+    {
+      "rating": 4,
+      "text": "I only have ONE issue with smartsheet and that is the plan pricing and limited customization per customer needs. Aside from that, it's easy to use, simple and great for sharing projects within the office.",
+      "thumbs_up": 32,
+      "date": "2020-03-16T10:48:01"
+    },
+    {
+      "rating": 1,
+      "text": "The fact that someone has taken an excel sheet and made it overly complicated and call it *Team Work* - lets call it what it is - micromanaging. Have managed to work without such an unfriendly platform for more than 40 years in administration, I am sure I can last a few more years",
+      "thumbs_up": 0,
+      "date": "2025-11-18T16:00:30"
+    },
+    {
+      "rating": 5,
+      "text": "This app works awesome running a construction company. Really helps streamline paperwork, scheduling, and communicating within my company (I only use it in house). Being able to access all documents on the fly (mobile app) is a must. Highly recommended!",
+      "thumbs_up": 22,
+      "date": "2022-06-02T00:21:14"
+    },
+    {
+      "rating": 4,
+      "text": "Awesome product. Application on phone isn't as user friendly as on a tablet or computer, but that is to be expected with the amount of features it has. Great for on the go additions and updates like photos, comments, or checklists.",
+      "thumbs_up": 19,
+      "date": "2020-02-27T11:45:43"
+    },
+    {
+      "rating": 5,
+      "text": "I have used smartsheet for a number of years as a job board in my printing business. We enter each clients job and who is responsible for the work. The whole team can see everyone's work load, set reminders, etc.",
+      "thumbs_up": 10,
+      "date": "2020-02-09T06:36:09"
+    },
+    {
+      "rating": 5,
+      "text": "An amazing tool for project management! If you use it even for a day, it's very unlikely that you will switch to any other tool in its category. In my opinion it's next to none. It's like a gun in which if you load your projects, you are bound to shoot your milestones with surgical precision!",
+      "thumbs_up": 19,
+      "date": "2019-09-10T02:52:11"
+    },
+    {
+      "rating": 5,
+      "text": "Smartsheet has been part of our daily use for the past 4 years. Could not work without it. Great for sharing access to information, jobs, shipment, issuing of new job numbers. The list is endless.",
+      "thumbs_up": 35,
+      "date": "2024-06-12T18:42:27"
+    },
+    {
+      "rating": 5,
+      "text": "This is a really useful app. We use Smartsheet in the office to plan and track hundreds of actions daily. Having a centrally accessible, always updated, single version of facts and statuses offers an efficient way to coordinates ourselves in our very dynamic environment. This app gives us a controlled access to this information, from our mobile phones. How convenient ! What more could we ask ?",
+      "thumbs_up": 9,
+      "date": "2019-08-01T06:33:54"
+    },
+    {
+      "rating": 2,
+      "text": "Asked me to review it when I just want to use the software",
+      "thumbs_up": 0,
+      "date": "2026-03-13T18:41:35"
+    },
+    {
+      "rating": 5,
+      "text": "Been a pleasure to learn and use the desktop version so far. Looks looks like they got a ways to go with the mobile app which is a shame because it has a lot of promise an amazing possibilities of what it can do 4 the construction trades",
+      "thumbs_up": 1,
+      "date": "2019-04-06T07:50:42"
+    },
+    {
+      "rating": 1,
+      "text": "I subscribed and only used this service for a college assignment. I attempted to cancel on numerous occasions immediately after using and was only sent repeated emails. I called and called, I emailed and emailed that I wished to cancel my service. I could not remove payment source and therefore was charged as I tried to get this account canceled. I was billed 3 times. Today, I was charged again and refused a refund. Finally, Roxy helped me cancel. Never again, smartsheet. No good business.",
+      "thumbs_up": 26,
+      "date": "2022-08-22T16:43:31"
+    },
+    {
+      "rating": 1,
+      "text": "Absolutely useless for data editing. attempts to save after every touch locking the UI. if your sheet has any real data in it can take up to 30 seconds between actions. Not usable in any environment that has some complexity.",
+      "thumbs_up": 1,
+      "date": "2025-03-31T21:19:13"
+    },
+    {
+      "rating": 1,
+      "text": "This app is not working for days and days now. What would happen if I have a presentation to make? It's great when it's working but it's not working now. Has not improved, other Project Management Softwares seem to work flawless Including Phone app. I have invested so much on smartsheet but I feel let down.",
+      "thumbs_up": 16,
+      "date": "2024-06-01T14:32:30"
+    },
+    {
+      "rating": 5,
+      "text": "As a casual user, my husband and I use it to track home improvement projects and budgeting for that. Helps to keep the information centralized rather than on a spreadsheet, a document, or email. we love it, and when we sell the house, we can share all this information easily with the new buyer.",
+      "thumbs_up": 30,
+      "date": "2023-03-19T12:45:36"
+    },
+    {
+      "rating": 2,
+      "text": "I am struggling to subscribe to Smartsheet. It shows PayPal as a payment option, but I dont see any option to add my PayPal I'd and pay. Mails to support team are also not responded to. The bank payment worked for one month and then subsequently during renewal the payment method is not recognized. Please help me ASAP if this messages are monitored as the customer care dont respond.",
+      "thumbs_up": 38,
+      "date": "2019-12-04T03:51:46"
+    },
+    {
+      "rating": 5,
+      "text": "Working in one of the most challenging and evolving environment, Smartsheet has been a great tool to stay on top of all details and progress of our project. The app enabled version and the ability to creat functional reports and have 100s of contributors on the same sheet kept our large team on top of all developments and allowed us to mitigate issues before they became problems and identify bottlenecks in a glimpse. I don't know we functioned before it",
+      "thumbs_up": 26,
+      "date": "2019-09-13T07:15:40"
+    },
+    {
+      "rating": 1,
+      "text": "I have had to uninstall and reinstall the app many times because sheets just randomly decide they don't want to load anymore. The app just says \"this is taking longer than expected\" uninstalling the app allows sheets to open again",
+      "thumbs_up": 13,
+      "date": "2024-07-14T04:00:32"
+    },
+    {
+      "rating": 1,
+      "text": "The only reason I use this app is for work. I promise that if I do not need it for work, I will never download it again. I delete and download this app time and time again. I have to delete this app and download it again just to get it working. This is extremely frustrating. I hate this app because it's performance it's horrible.",
+      "thumbs_up": 2,
+      "date": "2024-08-04T22:26:03"
+    },
+    {
+      "rating": 5,
+      "text": "Brilliant! It's the Aston Martin of Project Management. Gantt charts; card view; list view. Available on Android, iPhone/iPad and in a browser. Superb value. I use it to run a theatre company and at work for my projects. It offers collaborative features, you can attach documents to it. The list goes on and on ...",
+      "thumbs_up": 48,
+      "date": "2020-06-09T06:53:19"
+    },
+    {
+      "rating": 5,
+      "text": "Amazing platform. \"Keep It Simple Stupid\" in digital form. Build systems one small step at a time and then leverage them to get maximum value through reports etc. Incredibly powerful!!",
+      "thumbs_up": 19,
+      "date": "2022-05-02T22:28:10"
+    },
+    {
+      "rating": 5,
+      "text": "It's really smart. I have successfully run two projects through Smartsheet in healthcare. one of those were JCI accreditation (planning, Monitoring and compliance). The other one is running 15 Diagnostic centers centrally.",
+      "thumbs_up": 13,
+      "date": "2025-09-28T06:58:48"
+    },
+    {
+      "rating": 5,
+      "text": "update: smartsheet has put a lot of effort into improving and adding features. ss is essential, not a hyperbole, to the functioning of our team. it's my favorite online service, outside of maybe Amazon and Google.",
+      "thumbs_up": 3,
+      "date": "2019-04-03T22:38:11"
+    },
+    {
+      "rating": 5,
+      "text": "For the small business division I work for, it has already greatly enhanced the scheduling they have from what it used to be. Almost all of the in house scheduling programs are being replaced by Smartsheet. The app is flexible and able to do a lot with what it has.",
+      "thumbs_up": 25,
+      "date": "2019-07-19T09:48:14"
+    },
+    {
+      "rating": 1,
+      "text": "Crashes, forms I use on a daily basis just dissappear. Tried getting assistance and it ended up going in circles. Have to play the traffic light and Bicycle game almost every time I submit. Not a fan.",
+      "thumbs_up": 6,
+      "date": "2022-09-28T17:54:23"
+    },
+    {
+      "rating": 5,
+      "text": "it helps me seek extra work at other venues.",
+      "thumbs_up": 0,
+      "date": "2026-02-20T04:59:22"
+    },
+    {
+      "rating": 1,
+      "text": "Recent update ruined this app. It used to save whenever I would blackout of the app and it has always been slow at submitting forms, but now if I leave for just a second I will lose all of my information or the form will not submit....",
+      "thumbs_up": 36,
+      "date": "2020-12-23T20:45:52"
+    },
+    {
+      "rating": 1,
+      "text": "Since their last update I've had nothing but problems. 90% of days it just has a continuous loading bar. I tried letting it load for 40 minutes yesterday and it still wouldn't load up one sheet!",
+      "thumbs_up": 9,
+      "date": "2024-07-20T13:39:50"
+    },
+    {
+      "rating": 3,
+      "text": "This application is way better than anyone else, but can you add some \"add row below and add row above\" feature ? Not all smartsheet users use add row to add on the last part of their sheet. What if we skip something and we need to add a row below or above one ? Does this make any sense ? Gonna rate you perfect if you can do this on your next update. More power to the developers behind this. Thank you .",
+      "thumbs_up": 54,
+      "date": "2020-04-19T22:02:27"
+    },
+    {
+      "rating": 3,
+      "text": "Good tool/App for project mgt and process alert automation. Areas need improvement: - Sheet permission structure need to simplify and changes should not impact the content already created. - Some basic features in Graphs and charts are missing. Need to improve at least to the MS Excel level. Else users will download the data to an Excel and do the graphs instead on Smartsheet. - slowness on nevigating across interconnected dashboards. Cheers, Tharaka H.",
+      "thumbs_up": 51,
+      "date": "2021-09-06T02:00:23"
+    },
+    {
+      "rating": 1,
+      "text": "The App doesn't let me add another sheet. It's just keeps loading the screen, scrolling a line across, with no option to select a category or template. I have a subscription and logged in too.",
+      "thumbs_up": 6,
+      "date": "2024-04-14T21:55:45"
+    },
+    {
+      "rating": 2,
+      "text": "Im tried to use this app for projects manajement. This app use spreadsheets as base for organize tasks and infos thru your proyects. -2 stars because you must pay a plan for a decent functionality and privacy concerns because this app shares with 3th parties 4 data (for marketing and advertising). Its a unfair combination...",
+      "thumbs_up": 20,
+      "date": "2023-07-29T14:20:20"
+    },
+    {
+      "rating": 4,
+      "text": "Would be great if resources could de be added natively without using their other service which costs additional money, like GanttPro or Liquid Planner does. Also we really needs to be able to add multiple proofs at once. I have to deliver 50 images to internal qa, then to client for review and doing it one by one is a huge pain. Buy overall this does the job, although it needs a lot of setup and preparation before a project starts, hence it's not the best choice for quick and random projects.",
+      "thumbs_up": 19,
+      "date": "2022-07-02T06:26:33"
+    },
+    {
+      "rating": 2,
+      "text": "Looks quite attractive, I've almost started using it but then I saw no information about further billing after 30-day trial period. That fact confused me and I decided to delete the application.",
+      "thumbs_up": 11,
+      "date": "2020-05-16T23:14:32"
+    },
+    {
+      "rating": 4,
+      "text": "As of the latest update for Android, calendar view no longer displays any preview text. This makes finding the scheduled work that pertains to me much more difficult, as I have to open each tab in order to check the contents.",
+      "thumbs_up": 43,
+      "date": "2021-03-02T16:44:41"
+    },
+    {
+      "rating": 3,
+      "text": "Drop down menus don't work well in forms, the list doesn't show up until you tap on the where the list should be. The relevant option is selected and then the next time you select the drop down menu the list appears. The add attachment section on a form should include options for phone camera and camcorder (like it does when you open it in Chrome). Add attachment section on sheets should include camcorder.",
+      "thumbs_up": 34,
+      "date": "2021-10-06T02:02:48"
+    },
+    {
+      "rating": 5,
+      "text": "I have been using various Project Management tools for over 20years and discovered Smart Sheet in 2014. Since then I have been unable to find anything that is comparable to it. Smart sheet is simple enough for the novice to begin using with very little assistance whilst for a professional it has so many great features and functions its able to power even the most complex of projects. Being fully collaborative and in real time, it allows teams to act on current information. AMAZING!!!",
+      "thumbs_up": 42,
+      "date": "2019-03-15T04:55:02"
+    },
+    {
+      "rating": 5,
+      "text": "very good program for tracking many different things",
+      "thumbs_up": 3,
+      "date": "2025-12-15T14:47:46"
+    },
+    {
+      "rating": 1,
+      "text": "Unusable. Everything we click on gives a This is taking longer than expected, error. Can't open anything or create new sheets. Help desk forums are full of closed questions with no answers. Can't create tabs. Can't login/logout on mobile.",
+      "thumbs_up": 9,
+      "date": "2024-04-08T11:27:39"
+    },
+    {
+      "rating": 4,
+      "text": "Great resource! Documents, images and other information uploaded seamlessly and available for review instantly. Does hang occasionally but not too much. Would recommend for business",
+      "thumbs_up": 5,
+      "date": "2022-06-14T15:17:48"
+    },
+    {
+      "rating": 3,
+      "text": "Disliking the app version. Lack of dark mode. Loved the desktop version. Missing some template saving and ease of use. Creates duplicates of sheets automatically without any input.",
+      "thumbs_up": 30,
+      "date": "2022-02-14T16:45:55"
+    },
+    {
+      "rating": 5,
+      "text": "This app makes my work in the health and safety department so easy.All things are clear and take away alot of paper work.Its the new version of Digital SHE app.I love this app. On the move and on the go ,smart sheet is the way to go.",
+      "thumbs_up": 4,
+      "date": "2023-10-04T19:10:52"
+    },
+    {
+      "rating": 5,
+      "text": "Been using smartsheet for a few years now. Professionally and for my personal life. Brilliant tool. You'll never slip up on any task. Enables you to manage projects to the finest detail to hit them deadlines! Seriously guys. Tell your boss to give it a try!",
+      "thumbs_up": 10,
+      "date": "2019-12-10T04:49:13"
+    },
+    {
+      "rating": 2,
+      "text": "Have to uninstall the app every week for it to work. Won't load any of the ledgers just tells me this is taking longer than usual. I've tried to clear cache and force stop the app.",
+      "thumbs_up": 4,
+      "date": "2024-04-13T10:19:11"
+    },
+    {
+      "rating": 5,
+      "text": "I've been a user for many months now. As a project manager I need a program that can adjust with my problems. Is it perfect? No. But my employer has many programs and spreadsheets that do not work for project managment, I use Smartsheets to bridge the gap and give me a localized program to update my team.",
+      "thumbs_up": 37,
+      "date": "2020-10-01T17:39:27"
+    },
+    {
+      "rating": 5,
+      "text": "This app has helped streamline our workflow and allows our team to stay connected. Smarsheet has tons of integrations with other programs we use now and also more to come. I started with 6 users and now have close to 30 connected in and outside of the office.....",
+      "thumbs_up": 5,
+      "date": "2018-09-18T05:09:38"
+    },
+    {
+      "rating": 5,
+      "text": "Smartsheet just works!!!",
+      "thumbs_up": 0,
+      "date": "2026-03-17T15:32:33"
+    },
+    {
+      "rating": 5,
+      "text": "super support data system",
+      "thumbs_up": 0,
+      "date": "2026-03-11T07:31:59"
+    },
+    {
+      "rating": 1,
+      "text": "Incredibly slow and will fail to load 9 out 10 times. Have been running into trouble very frequently recently and if I didn't have to use it for work, I would not ever.",
+      "thumbs_up": 8,
+      "date": "2024-04-25T23:15:22"
+    },
+    {
+      "rating": 4,
+      "text": "worked with SS for a year or so. learning more every day. after 30 years of SQL interaction, getting deeper every day now. our company just bit into Advanced Gold. will have more to say in 6 months.",
+      "thumbs_up": 26,
+      "date": "2023-09-07T08:17:49"
+    },
+    {
+      "rating": 1,
+      "text": "Worthless, I guess this app is only meant for push notifications. I cannot sort or filter data on the go and scrolling on large data set is a nightmare in the app.",
+      "thumbs_up": 11,
+      "date": "2021-05-28T00:46:55"
+    },
+    {
+      "rating": 1,
+      "text": "Logs me off for inactivity if I'm not using app for a day. Then every time have to type in email and password. The app could at least save the email address.",
+      "thumbs_up": 31,
+      "date": "2021-10-21T11:08:11"
+    },
+    {
+      "rating": 5,
+      "text": "Please make it available on Google chromecast with Google TV. It would be really cool to have a Dashboard on a big screen like on TV while studying.",
+      "thumbs_up": 0,
+      "date": "2024-06-03T08:31:46"
+    },
+    {
+      "rating": 5,
+      "text": "Exceptional tool with regular progress on roadmap advancements. Great focus on customers and trying to up their skills and add value. Able to use to build quick and varied solutions: ERM, PMO for biz and tech, and operations. strong investment in automation with their control center and API integration into Power Automate.",
+      "thumbs_up": 23,
+      "date": "2020-12-12T10:08:19"
+    },
+    {
+      "rating": 4,
+      "text": "I wish the app had certain capabilities as the desktop site. For instance creating new filters and sorting rows. Otherwise pretty good.",
+      "thumbs_up": 0,
+      "date": "2018-09-26T11:15:17"
+    },
+    {
+      "rating": 3,
+      "text": "Smartsheet is grea but I have to continually reinstall the app as it keeps giving a error \"this is taking longer than expected\" and as soon as I reinstall it works again for a few days",
+      "thumbs_up": 6,
+      "date": "2024-04-23T10:55:51"
+    },
+    {
+      "rating": 5,
+      "text": "The only real data sharing app that enables and breeds positivity. The constant updates to the service are also excellent. Highly recommend to anyone starting a business or looking to streamline a dept. Of their business.",
+      "thumbs_up": 32,
+      "date": "2020-05-10T13:18:13"
+    },
+    {
+      "rating": 1,
+      "text": "This mobile app is horrible and constantly zooms it which makes it unusable. On both my devices. I might as well just get to and turn on my pc!!!",
+      "thumbs_up": 5,
+      "date": "2020-10-09T07:27:44"
+    },
+    {
+      "rating": 5,
+      "text": "I started using Smartsheet because of it's powerful ability to manage critical path schedules on mobile. Now my companies manage all facets of our operations and documents using Smartsheet. They are very responsive and constantly improving what is already a reliable, simple to use solution. The Gmail integration is fantastic.",
+      "thumbs_up": 8,
+      "date": "2019-05-23T21:37:21"
+    },
+    {
+      "rating": 5,
+      "text": "It does way more than you think and has a quick learning curve. Saves time, increases productivity in a short amount of time, and invites collaboration beyond organizations.",
+      "thumbs_up": 9,
+      "date": "2019-05-21T19:56:30"
+    },
+    {
+      "rating": 1,
+      "text": "Tried to reset password because I forgot it, and I was provided a link to Smartsheet where I can only change the password if I remember the old one. Pointless to provide an option to reset password.",
+      "thumbs_up": 26,
+      "date": "2021-01-15T10:50:38"
+    },
+    {
+      "rating": 5,
+      "text": "Great way to achieve transparency in processes. SmartSheet's powerful notification function allows you to set alarms / notifications on and let the course roll! Excellent, efficient and effective!",
+      "thumbs_up": 27,
+      "date": "2021-02-22T23:21:25"
+    },
+    {
+      "rating": 5,
+      "text": "Great App! One of the greatest changes the Smartsheet team did was allow drafts which saved us the hassle of retyping forms. Now I can always come back to where I left off.",
+      "thumbs_up": 10,
+      "date": "2025-04-24T07:48:01"
+    },
+    {
+      "rating": 1,
+      "text": "unable to edit the excel ,suddenly permission changed to read only one day. only option to edit is login to browser from laptop and edit. from App not possible. horrible exlerince",
+      "thumbs_up": 11,
+      "date": "2019-03-27T10:53:56"
+    },
+    {
+      "rating": 1,
+      "text": "Stuck in loading forever and there is nothing can fix it. I already try clearing chace and data but nothing can fix except re installing it. I been doing it for 3 times and still no fix yet.",
+      "thumbs_up": 4,
+      "date": "2024-05-29T03:11:20"
+    },
+    {
+      "rating": 1,
+      "text": "this app has vegan to act very poorly. continually it loads my folders but will not load a file. it will not even allow me to log out and then back in. I have to delete the app and then log in kind of getting tired of it",
+      "thumbs_up": 2,
+      "date": "2024-05-30T11:40:49"
+    },
+    {
+      "rating": 3,
+      "text": "On mobile the app does not work well in low signal/service area's. Accessing the Internet is slow but accessible when accessing this app it does not load.",
+      "thumbs_up": 3,
+      "date": "2024-08-19T19:32:38"
+    },
+    {
+      "rating": 1,
+      "text": "I would rate it 0 if I could, although the functionality is great, it's impossible to cancel a subscription, I did it on the 13th Feb and they have just taken payment from my bank.",
+      "thumbs_up": 16,
+      "date": "2024-03-03T09:07:45"
+    },
+    {
+      "rating": 1,
+      "text": "Too glitchy. If I don't go in there every freakin day it doesn't work. It will just sit there \"loading\" forever.... I have to signed all the way out and back in before it MIGHT correct itself...",
+      "thumbs_up": 3,
+      "date": "2024-06-13T01:30:52"
+    },
+    {
+      "rating": 1,
+      "text": "The app worked well until the \"update\" on Aug 12,2024. Now it won't let Samsung phone users into the app . Smartsheet people are still working on a fix .. (Sept 6, 2024)",
+      "thumbs_up": 6,
+      "date": "2024-09-06T17:25:23"
+    },
+    {
+      "rating": 5,
+      "text": "The only thing i wish it had was conditional logic on forms! Otherwise, have never worked in a more user friendly and affordable tool. Love it!",
+      "thumbs_up": 8,
+      "date": "2022-07-05T17:25:01"
+    },
+    {
+      "rating": 1,
+      "text": "Slow performance, takes forever to save after every single action and there's no way to turn off auto-save. The app is unusable.",
+      "thumbs_up": 25,
+      "date": "2020-10-05T18:57:38"
+    },
+    {
+      "rating": 4,
+      "text": "good, but need more options for accounts. it is ideal for what we want, but 10 sheets isnt enough, and the next size up account is way out of the ballpark.",
+      "thumbs_up": 5,
+      "date": "2019-01-11T23:52:00"
+    },
+    {
+      "rating": 4,
+      "text": "its a great project management software. There are some things I wish were easier to do like in Excel , but overall its good.",
+      "thumbs_up": 5,
+      "date": "2019-03-19T06:48:46"
+    },
+    {
+      "rating": 4,
+      "text": "Works great but you need to make it to where people can view a dynamic view in the mobile app. This would really help our company's productivity and make your product that much better.",
+      "thumbs_up": 15,
+      "date": "2020-03-14T17:14:31"
+    },
+    {
+      "rating": 2,
+      "text": "Works ok. I use it for barcode inventory management. But it stopped reading barcodes so I think we are going to have to use something else.",
+      "thumbs_up": 6,
+      "date": "2022-08-02T16:57:03"
+    },
+    {
+      "rating": 1,
+      "text": "I really do not like apps that make it difficult to find pricing. I have downloaded app but I refuse to use it until I see a full list pricing.",
+      "thumbs_up": 43,
+      "date": "2021-01-15T12:47:43"
+    },
+    {
+      "rating": 1,
+      "text": "Most unpleasant experience I have with this App. Despite of several reminders my subscription has not been canceled and they are charging me on monthly basis. Looks like a scam app to me",
+      "thumbs_up": 16,
+      "date": "2022-02-23T12:09:01"
+    },
+    {
+      "rating": 5,
+      "text": "Works great for everything advertised, plus we use it for all kinds of things it wasn't specifically designed to do but it has really been a gamechanger for us.",
+      "thumbs_up": 10,
+      "date": "2023-04-19T15:13:37"
+    },
+    {
+      "rating": 4,
+      "text": "My other fellow technicians didn't see themselves using another work App. I think it was working great! But since we're not using it, it's time to go!",
+      "thumbs_up": 10,
+      "date": "2020-06-04T13:25:44"
+    },
+    {
+      "rating": 4,
+      "text": "Needs a calendar view that a user can see how many 214's have been submitted per day. I suggest a similar setup to Google Calendar's monthly view that adds different colored dots per each event ie 1 blue dot for AM and 1 dark dot for PM submissions.",
+      "thumbs_up": 31,
+      "date": "2021-04-19T20:29:08"
+    },
+    {
+      "rating": 4,
+      "text": "So much easier to use then on the computer. Sometimes when I'd log onto the computer the information I entered on the phone wasn't saving so I'd have to redo. That was annoying.",
+      "thumbs_up": 27,
+      "date": "2021-11-07T16:26:15"
+    },
+    {
+      "rating": 4,
+      "text": "Great handy app! Excellent for group work. Maybe more visible information in regards to pricing as it doesn't inform me of expiry date if used though app alone.",
+      "thumbs_up": 6,
+      "date": "2020-02-04T12:23:50"
+    },
+    {
+      "rating": 2,
+      "text": "App is very useful but it is constantly loading and almost unusable 30% of the time because you can't access your sheets.",
+      "thumbs_up": 5,
+      "date": "2024-04-12T12:20:07"
+    },
+    {
+      "rating": 1,
+      "text": "You get nowhere real fast. This app wants it to be up and running thru work and school, I don't have that I'm retired. I don't want 30-day free trial to get my Covid vaccines, and this app is impossible to use. 5👎👎👎👎👎",
+      "thumbs_up": 14,
+      "date": "2021-05-13T12:40:21"
+    },
+    {
+      "rating": 5,
+      "text": "I absolutely LOVE Smartsheets! I recommend it to EVERYONE! It's great for my all my day to day tracking,financing,onboarding.. the list is seriously endless.",
+      "thumbs_up": 5,
+      "date": "2019-03-15T19:41:54"
+    },
+    {
+      "rating": 1,
+      "text": "Was good, eventually wouldn't let me use the template that I previously used and would not let me change nor select new ones without a desktop. Went from good to a waste of time.",
+      "thumbs_up": 2,
+      "date": "2024-04-17T16:16:12"
+    },
+    {
+      "rating": 2,
+      "text": "Nothing special. You can easily use Google sheet+ Gantt chart add-on (both are free) to achieve the same thing as this app.",
+      "thumbs_up": 6,
+      "date": "2021-03-23T22:03:19"
+    },
+    {
+      "rating": 5,
+      "text": "Perfect solution for team management, task assignment, tracking and more.... Try it to see all benefits that smartsheet can bring to your company",
+      "thumbs_up": 6,
+      "date": "2020-07-05T04:03:25"
+    },
+    {
+      "rating": 4,
+      "text": "Good! Not discovered yet how to put graphs on dashboard, still work and then maybe improve the rating...",
+      "thumbs_up": 10,
+      "date": "2021-06-19T05:26:19"
+    },
+    {
+      "rating": 5,
+      "text": "Smart sheets has all the project management essentials I need at my finger tips and easy to use. Great job!",
+      "thumbs_up": 4,
+      "date": "2019-03-13T23:13:20"
+    },
+    {
+      "rating": 1,
+      "text": "I subscribed and paid a year plan. I been downgrade to free account because I didn't login for 3 months. I paid in once 160 Usd for 12month. This is called cheating.",
+      "thumbs_up": 15,
+      "date": "2020-08-16T22:39:27"
+    },
+    {
+      "rating": 4,
+      "text": "All is good for me but cannot add comment and attach files with that Like PC experience even on tab. We need to upload files separately. Can you all fix this?",
+      "thumbs_up": 5,
+      "date": "2022-06-14T06:39:53"
+    },
+    {
+      "rating": 1,
+      "text": "I was never able to pull up this app because it kept telling me that my priveleges had possibly been removed. No other help was offered or any contact info given. Poor app.",
+      "thumbs_up": 7,
+      "date": "2018-12-21T06:14:38"
+    },
+    {
+      "rating": 5,
+      "text": "I think it is a great App. However, it can always get better. It is easy to make list and important file from anywhere using this app",
+      "thumbs_up": 4,
+      "date": "2018-09-19T19:40:37"
+    },
+    {
+      "rating": 1,
+      "text": "This 1/5 is solely due to the horrible changes made yesterday to the web version. The more I look at the pages the more I hate the visual changes. ADD A REVERT BUTTON",
+      "thumbs_up": 13,
+      "date": "2021-04-16T10:39:20"
+    },
+    {
+      "rating": 5,
+      "text": "We have 40 employees and Smartsheet is one of the primary tools we use to run our entire organization. Couldn't recommend it more.",
+      "thumbs_up": 4,
+      "date": "2019-05-29T12:00:07"
+    },
+    {
+      "rating": 1,
+      "text": "Absolutely worthless since the update for Android users! Can not access the things I need for work because it says I have no network! Unacceptable!!",
+      "thumbs_up": 5,
+      "date": "2021-03-11T06:57:52"
+    },
+    {
+      "rating": 5,
+      "text": "Great online collaboration platform. I use it daily. Our office implemented Smartsheet to manage our construction projects, the transparency of on-hand information is great!",
+      "thumbs_up": 19,
+      "date": "2020-01-28T14:02:54"
+    },
+    {
+      "rating": 5,
+      "text": "When using smartsheet.... it actually lives up to it's name!!! I am new to the system... and it goes above and beyond to make sure accuracy is just that. Thanks Bunches Smartsheet for making my sheets very smart. Much Fudge Love ❤️",
+      "thumbs_up": 7,
+      "date": "2024-07-22T15:23:01"
+    },
+    {
+      "rating": 1,
+      "text": "Need to fix issue that every time i get automatically logged out i lose all my recent forms, cannot save them, so annoying, please fix",
+      "thumbs_up": 14,
+      "date": "2022-01-21T13:10:55"
+    },
+    {
+      "rating": 5,
+      "text": "Best group to do list available. Easy, intuitive and technically strong (wonderful web to app integration)!!!!",
+      "thumbs_up": 7,
+      "date": "2020-04-17T15:03:39"
+    },
+    {
+      "rating": 2,
+      "text": "When you don't use it often and wish to cancel your subscription, money just keeps coming out of your account. Easy to set up but very difficult to stop",
+      "thumbs_up": 6,
+      "date": "2019-12-19T17:08:13"
+    },
+    {
+      "rating": 1,
+      "text": "Not as easy to use as pretty much every free sheets program, and hard to cancel.",
+      "thumbs_up": 6,
+      "date": "2024-11-05T16:41:27"
+    },
+    {
+      "rating": 5,
+      "text": "Makes it easier and more transparent on what my organization is doing. I can keep track of who my supervisors, team leads, & co-workers are for our assignments.",
+      "thumbs_up": 4,
+      "date": "2022-04-29T23:02:15"
+    },
+    {
+      "rating": 1,
+      "text": "So as I understand there is NO free functions at all(( It needs at least 1-2 basic free functions like editing and owning sheets to permanently work with.....",
+      "thumbs_up": 9,
+      "date": "2018-12-14T16:41:18"
+    },
+    {
+      "rating": 5,
+      "text": "Excellent app for program management tracking and team communications. I am frequently using it in my program status meetings to review the status of our suppliers against the development schedule. Using this app allows me to quickly provide answers to many question that come up in our Executive meetings.",
+      "thumbs_up": 13,
+      "date": "2019-01-22T15:38:42"
+    },
+    {
+      "rating": 1,
+      "text": "Keeps freezing on android, saying it is taking longer than usual to load. Only way past it is to delete app and reinstall. Once a week it happens. Very frustrating",
+      "thumbs_up": 2,
+      "date": "2024-06-09T18:50:18"
+    },
+    {
+      "rating": 5,
+      "text": "I work in project mode all the time and I am using Smartsheet for 2 years with my teams. I have stopped using all other tools. Mixing the Concept of a Spreadsheet with collaborative functions, project nanagement and document management was a great idea. This is very close to perfect.",
+      "thumbs_up": 38,
+      "date": "2020-07-18T12:57:06"
+    },
+    {
+      "rating": 2,
+      "text": "I do not know what causing the app to keep loading at times and not opening the worksheet.i have to uninstall and reinstall only then it works and got to do that everytime facing the issues.",
+      "thumbs_up": 1,
+      "date": "2024-08-10T21:06:36"
+    },
+    {
+      "rating": 1,
+      "text": "Do not pay for this app if you ever want to leave!! They make it impossible to cancel your payment. They have been fraudulently taking my monthly payment for months/ years now! AVOID!",
+      "thumbs_up": 5,
+      "date": "2024-06-25T12:00:29"
+    },
+    {
+      "rating": 3,
+      "text": "Good app for inventory transfers and other forms. Has some glitches sometime with account and back end of it with different users, but other than that it's super.",
+      "thumbs_up": 3,
+      "date": "2025-01-21T08:35:08"
+    },
+    {
+      "rating": 3,
+      "text": "The app is great for in the field, but doesn't allow you to do admin tasks like add licensed/unlicensed users, manage account settings, etc. Really inconvenient I have to do all the admin tasks on a laptop/desktop",
+      "thumbs_up": 2,
+      "date": "2022-09-14T23:32:34"
+    },
+    {
+      "rating": 5,
+      "text": "Use smartsheet for factory surveys of industrial pumps. Can put all my data including pictures and pump manuals all on one sheet. Customers I have shared it with love it. Used to use Google drive, but this is so much better, easier and faster. BRILLIANT.",
+      "thumbs_up": 14,
+      "date": "2018-10-05T12:15:56"
+    },
+    {
+      "rating": 5,
+      "text": "Great app. Nice synergy with the web based experience. Really amazing how much functionity is in the app. Mobile versions are often limited due to form factor, but not the case here.",
+      "thumbs_up": 16,
+      "date": "2019-04-30T11:18:18"
+    },
+    {
+      "rating": 5,
+      "text": "Smartsheet is the new way of getting things done collaboratively and efficiently! Ability to send updates requests set milestone and due dates, recurring reminders etc. Definitely recommend 👌👍",
+      "thumbs_up": 0,
+      "date": "2024-07-01T18:23:39"
+    },
+    {
+      "rating": 2,
+      "text": "Great product weird pricing model For some reason they cap you at ten sheets and them charge you $1000 to upgrade. I dont mind paying more to upgrade but they need a middle tier!!",
+      "thumbs_up": 32,
+      "date": "2020-06-15T17:45:32"
+    },
+    {
+      "rating": 3,
+      "text": "Gorgeous app. With useful features. Unfortunately, neither the store, nor a couple places in the application warn you of the high monthly pricing. Not very transparent.",
+      "thumbs_up": 31,
+      "date": "2020-08-19T08:24:15"
+    },
+    {
+      "rating": 4,
+      "text": "solid program that helps with my work. sometimes a little touchy, meaning it's a little sensitive when I click something or when I'm scrolling but minor issue compared to the overall return.",
+      "thumbs_up": 30,
+      "date": "2023-02-17T08:44:39"
+    },
+    {
+      "rating": 1,
+      "text": "Have to use this for work. It sucks. It intermittently loses my saved forms. It has issues loading our dashboards and can take a very long time to load sheets.",
+      "thumbs_up": 7,
+      "date": "2024-04-15T03:06:14"
+    },
+    {
+      "rating": 5,
+      "text": "This has replaced Microsoft project for my business. And better learning curve when inviting clients to view sheets and interact. A few years later... still using it... and loving it",
+      "thumbs_up": 4,
+      "date": "2020-03-19T16:24:56"
+    },
+    {
+      "rating": 1,
+      "text": "Sorry your app ask for my mail and didn't send the verifying mail even searching in spam. I cant test the app. There are other apps that work without mail. Success in the next versions.",
+      "thumbs_up": 7,
+      "date": "2020-07-07T22:09:55"
+    }
+  ],
+  "app_store_reviews": []
+}

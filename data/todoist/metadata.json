@@ -1,0 +1,40 @@
+{
+  "name": "Todoist",
+  "category": "task_management",
+  "subcategories": [
+    "personal_productivity",
+    "to_do_lists",
+    "habits"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $4-$6 per user/mo",
+  "primary_use_case": "Personal and team task management with natural language input",
+  "target_audience": [
+    "individuals",
+    "freelancers",
+    "small_teams"
+  ],
+  "key_features": [
+    "tasks",
+    "projects",
+    "labels",
+    "filters",
+    "recurring_tasks",
+    "natural_language",
+    "karma"
+  ],
+  "founded": 2007,
+  "estimated_users": "40M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android",
+    "browser_extension"
+  ],
+  "competitors": [
+    "ticktick",
+    "microsoft_todo",
+    "things3"
+  ]
+}

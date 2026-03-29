@@ -1,0 +1,39 @@
+{
+  "name": "Basecamp",
+  "category": "project_management",
+  "subcategories": [
+    "team_communication",
+    "to_do_lists",
+    "simple_pm"
+  ],
+  "pricing_model": "flat_rate",
+  "pricing_range": "$15/user/mo or $349/mo flat",
+  "primary_use_case": "Simple project management and team communication",
+  "target_audience": [
+    "small_business",
+    "agencies",
+    "remote_teams"
+  ],
+  "key_features": [
+    "message_boards",
+    "to_dos",
+    "schedules",
+    "docs",
+    "campfire_chat",
+    "hill_charts",
+    "card_table"
+  ],
+  "founded": 2004,
+  "estimated_users": "3M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "monday",
+    "teamwork"
+  ]
+}

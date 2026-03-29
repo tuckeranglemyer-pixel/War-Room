@@ -1,0 +1,41 @@
+{
+  "name": "TickTick",
+  "category": "task_management",
+  "subcategories": [
+    "personal_productivity",
+    "habits",
+    "pomodoro"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $36/year premium",
+  "primary_use_case": "Personal task manager with habit tracking and pomodoro timer",
+  "target_audience": [
+    "individuals",
+    "students",
+    "freelancers"
+  ],
+  "key_features": [
+    "tasks",
+    "habits",
+    "pomodoro",
+    "calendar",
+    "kanban",
+    "eisenhower_matrix",
+    "natural_language"
+  ],
+  "founded": 2013,
+  "estimated_users": "10M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android",
+    "browser_extension",
+    "smartwatch"
+  ],
+  "competitors": [
+    "todoist",
+    "microsoft_todo",
+    "things3"
+  ]
+}

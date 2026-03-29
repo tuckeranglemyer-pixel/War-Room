@@ -1,0 +1,825 @@
+{
+  "app": "shortcut",
+  "source": "hackernews",
+  "total_items": 81,
+  "items": [
+    {
+      "id": "47285739",
+      "type": "comment",
+      "text": "&gt; And one thing that really stands out is that there are really not that many shortcuts.Completely agree, but the one exception that really stands out to me is canning. Napoleon offered a large cash prize for a cheap and effective method of preserving food for use as army rations. The method used (canning) doesn&#x27;t require any special equipment (glass jars or tin cans are nice, but not necessary). It would have theoretically been possible to discover this thousands of years earlier. What would have happened if Hannibal or Pyrrhus or Cyrus offered the reward instead?",
+      "author": "Starman_Jones",
+      "points": null,
+      "created_at": "2026-03-07T08:36:40Z",
+      "story_title": "Show HN: The Roman Industrial Revolution that could have been (Vol 2)",
+      "hn_url": "https://news.ycombinator.com/item?id=47285739"
+    },
+    {
+      "id": "47087077",
+      "type": "comment",
+      "text": "If you have the power to do so, get rid of JIRA immediately. There are like 10 competitors that are all dramatically better.I would personally recommend https:&#x2F;&#x2F;www.shortcut.com which is very well designed, and also made some really sensible improvements over the time that we used it.",
+      "author": "nicoburns",
+      "points": null,
+      "created_at": "2026-02-20T12:15:51Z",
+      "story_title": "Infrastructure decisions I endorse or regret after 4 years at a startup (2024)",
+      "hn_url": "https://news.ycombinator.com/item?id=47087077"
+    },
+    {
+      "id": "47007915",
+      "type": "comment",
+      "text": "MacOS definitely has its issues but this just makes it sound like you have different expectations of how an OS should work. Different isn’t always bad. Hiding applications is a pretty key concept in MacOS. Shortcuts are pretty straightforward? Cmd+H to hide, Cmd+Q to quit. Spaces aren’t hidden- there’s lots of ways to access them, but it seems you haven’t bothered to learn them. In your example pressing ctrl+right would have switched the first full screen space. You could also have right clicked the Chrome icon in the dock for a list of windows.BTW the dock doesn’t have to be hidden, and idk if it was a typo but alt+tab isn’t a default shortcut. Command is the key used for system shortcuts, so maybe you should have tried that? Like yeah it’s different but that doesn’t make it bad. If you been using it for 10 years without figuring that out…—-I’m with you on the 1st party apps though, and the stupid corners on Tahoe.",
+      "author": "bfbf",
+      "points": null,
+      "created_at": "2026-02-13T21:14:20Z",
+      "story_title": "Resizing windows on macOS Tahoe – the saga continues",
+      "hn_url": "https://news.ycombinator.com/item?id=47007915"
+    },
+    {
+      "id": "43387980",
+      "type": "comment",
+      "text": "Looks nice but why wouldn&#x27;t one use Shortcut [0] instead? It&#x27;s got a completely free tier.[0] https:&#x2F;&#x2F;www.shortcut.com&#x2F;",
+      "author": "petargyurov",
+      "points": null,
+      "created_at": "2025-03-17T12:48:53Z",
+      "story_title": "Show HN: EnkiTask: Lightweight Project Management for Freelancers",
+      "hn_url": "https://news.ycombinator.com/item?id=43387980"
+    },
+    {
+      "id": "4234348",
+      "type": "comment",
+      "text": "Rails developers seem to be having this revelation a lot recently.  I don't think it's a particularly new idea, and I don't see why Rails vs Node vs Java has anything to do with it.  MVC is ok for a backend that's \"just an API\" (although there are probably better ways to structure things, such as CQRS).  The language is irrelevant apart from the reasons it's always been relevant (speed of development, ease of deployment, testability, etc.).I think the point at the end is worth expanding on, though: as long as your API is an API and not a thin connector to a specific backend technology, you can in theory swap out parts or the whole thing.  Some time ago my company decided to build a new \"web application\", and there was some debate over how to structure the communication between (at the time) Flash and the backend.  Some argued in favor of a proprietary protocol that makes it very easy for Flash to talk to Java and share data structures.  Had we gone with that approach, we would have: 1. not had an easy path to having an \"external API\" by leveraging the identical internal API already built, 2. been stuck with Flash or at least had a much harder time converting to HTML when it became obviously the right thing to do, and 3. been stuck with Java on the backend and no clean service interface between the backend and fronted models.It's always necessary to take some shortcuts in development, and I believe it's very important to choose the right shortcuts.  Compromising on interfaces and encapsulation is almost always a terrible idea; better to spend the time hiding an ugly implementation behind a clean interface so that you at least have the option to fix it later.",
+      "author": "masto",
+      "points": null,
+      "created_at": "2012-07-12T13:23:16Z",
+      "story_title": "Thoughts on Rails, Node, and the web apps of today",
+      "hn_url": "https://news.ycombinator.com/item?id=4234348"
+    },
+    {
+      "id": "41603194",
+      "type": "comment",
+      "text": "Devin from Shortcut here, happy to walk anyone through our API importer capabilities and provide a couple months of our Business plan for evaluation. Details on the importer capabilities: https:&#x2F;&#x2F;www.shortcut.com&#x2F;blog&#x2F;importing-from-pivotal-tracker...",
+      "author": "DLRiker",
+      "points": null,
+      "created_at": "2024-09-20T15:54:25Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41603194"
+    },
+    {
+      "id": "41594881",
+      "type": "comment",
+      "text": "We found https:&#x2F;&#x2F;www.shortcut.com less opinionated than Linear and a closer 1 for 1 to Pivotal. They&#x27;re all getting a little bloated, wish one would dial it back vs keep adding (which feels like the inevitable future for Linear).",
+      "author": "fiveten03",
+      "points": null,
+      "created_at": "2024-09-19T18:32:49Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41594881"
+    },
+    {
+      "id": "41594823",
+      "type": "comment",
+      "text": "Shortcut is a good alternative to Pivotal (https:&#x2F;&#x2F;www.shortcut.com&#x2F;)",
+      "author": "edida",
+      "points": null,
+      "created_at": "2024-09-19T18:27:54Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41594823"
+    },
+    {
+      "id": "41593817",
+      "type": "comment",
+      "text": "Checkout Shortcut.com! They have an import tool from Pivotal Tracker.https:&#x2F;&#x2F;help.shortcut.com&#x2F;hc&#x2F;en-us&#x2F;articles&#x2F;205965835-Import...",
+      "author": "dan1111",
+      "points": null,
+      "created_at": "2024-09-19T16:50:40Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41593817"
+    },
+    {
+      "id": "41593812",
+      "type": "comment",
+      "text": "Shortcut.com has it&#x27;s an importer tool from Pivotal. Give it a go!\nhttps:&#x2F;&#x2F;help.shortcut.com&#x2F;hc&#x2F;en-us&#x2F;articles&#x2F;205965835-Import...",
+      "author": "dan1111",
+      "points": null,
+      "created_at": "2024-09-19T16:50:15Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41593812"
+    },
+    {
+      "id": "41592610",
+      "type": "comment",
+      "text": "I help build Shortcut (https:&#x2F;&#x2F;www.shortcut.com&#x2F;) and I think it fits the bill of light—but not spartan—on customization and day-to-day management.To set up a new Shortcut workspace:1. Sign up\n2. Invite teammates, group them into teams if desired\n3. Activate the GitHub&#x2F;Gitlab&#x2F;Bitbucket integration, so as engineers work via VCS their work in Shortcut progresses automatically\n4. Set your workspace&#x27;s timezone\n5. Turn on&#x2F;off Iterations (sprints) based on your process. Unfinished stories can be set to automatically roll from one iteration to the next.\n6. Turn on&#x2F;off point estimation based on your processThen start writing Stories (tickets&#x2F;issues) to track work.Going further: Stories can be grouped into Epics. Epics can be grouped into Objectives (with associated Key Results if that&#x27;s your thing). You can put Epics on a Roadmap to &quot;share out&quot; what your team is planning to work on. All optional, based on how you work and the size of your org.",
+      "author": "semperos",
+      "points": null,
+      "created_at": "2024-09-19T14:59:06Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41592610"
+    },
+    {
+      "id": "41592512",
+      "type": "comment",
+      "text": "Shortcut (https:&#x2F;&#x2F;www.shortcut.com&#x2F;) is a solid alternative to Pivotal Tracker. I work as an Engineering Manager there and helped build an importer for Pivotal Tracker data into Shortcut (https:&#x2F;&#x2F;github.com&#x2F;useshortcut&#x2F;api-cookbook&#x2F;tree&#x2F;main&#x2F;pivota...).Shortcut as a product is team-oriented with solid GitHub&#x2F;Gitlab&#x2F;Bitbucket and Slack integrations.",
+      "author": "semperos",
+      "points": null,
+      "created_at": "2024-09-19T14:49:55Z",
+      "story_title": "Pivotal Tracker will shut down",
+      "hn_url": "https://news.ycombinator.com/item?id=41592512"
+    },
+    {
+      "id": "41477856",
+      "type": "comment",
+      "text": "In no particular order, running arch with gnome and trying to reproduce the author&#x27;s complaints:- List view and view options buttons, while combined, have a visually distinct hover state, highlighting each half of the button on hover, and making it very obvious (at least to me, as a 35 year old power user) that they are different.  (you can see this in his screenshots).  Perhaps the author has visual issues and contrast is an issue?  If so - agreed, perhaps my largest complaint with gnome is that contrast is low by default in the light view.- Author complains that the recent and starred sections in the left nav have tooltips that are duplicative.  No argument... except... he conveniently leaves out that for the vast majority of the default items (Downloads, Documents, Home, Music, Videos, etc) it shows the exact system path of that shortcut.Compared to the shenannigans that MSFT is playing with things like onedrive - it&#x27;s delightful that the system paths are displayed there.  I am never confused by where a shortcut actually lives.  The only duplicative items are items that don&#x27;t have a path (they are internal groupings in files, like recent)- I simply cannot reproduce not being able to get the path bar in edit state by clicking.  I&#x27;m on a different distro - so maybe this is a debian thing?  Single click or tap on the path display always opens the text editor for me.  No shortcuts required.- Shortcuts lists the keyboard shortcut for shortcuts for me in the dropdown menu.  I have honestly never cared to check for it before, so maybe this is a valid complaint about an older version still in debian?- He&#x27;s completely right: Search in the files shortcuts menu sucks.  It misses a lot of keywords that it shouldn&#x27;t.- For the scrollbar... come on man, at least try the thing that is easy.  Yes - the scrollbar visually enlarges when you mouse over it, and yes - this leaves your mouse visually pointing at some new padding.  That padding works for scrolling just fine (seriously - just complete the action you were intending, it works...)  So he is very incorrect with this &quot;meaning that my mouse pointer is now pointing at... nothing. Thanks, Gnomebama.&quot;  It&#x27;s pointing at the scrollbar and it works just fine.Better yet - don&#x27;t ever click and drag the scrollbar to scroll.  It&#x27;s... not the done thing with the new kids these days.  Use your fingers (gestures) or use the mousewheel.  The scrollbar is a visual marker for progress and for quick jumps.  I am also on team &quot;Show me the scrollbars all the time!&quot; but I understand the goal of returning real estate on limited viewports.---I have a TON of complaints about gnome, but these just feel... forced.  Made worse by the fact the author admits he&#x27;s run a bunch of customization in the console to fix his &quot;solid color desktop&quot; stuff first (I&#x27;m suspicious of whether he broke his own path bar... I use it all the time, and I don&#x27;t ever remember it not just being a click away to edit, even 5+ years back).This is the kind of thing I appreciate that the Gnome team mostly ignores.",
+      "author": "horsawlarway",
+      "points": null,
+      "created_at": "2024-09-08T02:47:56Z",
+      "story_title": "Gnome Files: A detailed UI examination",
+      "hn_url": "https://news.ycombinator.com/item?id=41477856"
+    },
+    {
+      "id": "39608679",
+      "type": "comment",
+      "text": "Happy shortcut.com user here, used pivotal for years previously. I use it for my small engineering team.",
+      "author": "2bitlobster",
+      "points": null,
+      "created_at": "2024-03-05T20:16:50Z",
+      "story_title": "Tell HN: Pivotal Tracker removes non-enterprise price tiers",
+      "hn_url": "https://news.ycombinator.com/item?id=39608679"
+    },
+    {
+      "id": "39508033",
+      "type": "comment",
+      "text": "I just gave you a few examples of fairly modern Lisps to prove my point that it&#x27;s not dying. I can list some more, Fennel team just last week shipped an update. Jank is being developed rapidly. Clojure-Dart that allows you to build Flutter apps is also relatively recent addition to the family. Besides Clojurescript and Clojure CLR, there&#x27;s Babashka to write bash-scripts and NBB to write nodejs scripts in Clojure. There&#x27;s Clojerl and LFE to write Lisp for ErlangVM. There&#x27;s Hy - Lisp dialect embedded in Python. There&#x27;s Lux that targets JVM, JS, Python, Lua and Ruby. There&#x27;s Joker written in Go. There&#x27;s Calcit built with Rust. These are all quite vibrant and frequently updated projects, if I start listing projects that have not seen comits in their main branches for a few months, the list would be long.You&#x27;re mistaking Lisp for languages like COBOL, Fortran, ObjectiveC, and Pascal. These languages can be considered as dying. I&#x27;m hesitant to add PHP to this list because there&#x27;s still a ton of PHP code out there, and it is still being developed, but it seems that people are finally, slowly moving away from it.&gt; is better than forcing them to learn a new, unfamiliar language.But have you actually tried it? Have you ever tried comparing JSON and EDN, JSX&#x2F;HTML with Hiccup; Javascript coding experience with Clojurescript? I have. I have seen the both worlds. Besides popularity, there&#x27;s not much that Javascript (in my opinion) can offer to improve simplicity and joy of writing software compared to Clojurescript.&gt; No one at my university or the people I have worked with have used ClojureCompared to other programming languages, Clojure is niche, yet actively used in the industry. Big companies like Apple, Walmart, and Cisco have large Clojure codebases. There are also smaller startups like Pitch.com and Shortcut.com that use Clojure. Interesting projects like XTDB, Roam Research, and Loqseq are built with Clojure. Even NASA uses Clojure.It&#x27;s easy to be blindsided when you&#x27;re constantly focused on popular things like JavaScript and Python. But if you actually take the time to look around, you may be surprised to see some interesting things. I promise you, Lisp is far from dying. On the contrary, it just keeps popping back. Maybe one day try learning it, you may find quite a few unexpected gems and finally understand the reasons why it refuses to die.",
+      "author": "iLemming",
+      "points": null,
+      "created_at": "2024-02-26T05:51:20Z",
+      "story_title": "Is Emacs dying?",
+      "hn_url": "https://news.ycombinator.com/item?id=39508033"
+    },
+    {
+      "id": "39014864",
+      "type": "comment",
+      "text": "Very cool!I also want to use Command (Super or Hyper?), which really improves keyboard shortcuts. Command + left&#x2F;right = jump to beginning or end of line, Option + left&#x2F;right = jump to beginning&#x2F;end of word. I know you can do the same with Control + Shift, but some apps don&#x27;t support it. Plus Cmd+c&#x2F;x&#x2F;v for copy&#x2F;cut&#x2F;paste works fine in terminals, I don&#x27;t have to remember to &quot;code switch&quot; my shortcut &quot;language&quot;. Cmd+Backspace deletes the whole line, etc etc.",
+      "author": "bloopernova",
+      "points": null,
+      "created_at": "2024-01-16T16:03:23Z",
+      "story_title": "Modeless Vim",
+      "hn_url": "https://news.ycombinator.com/item?id=39014864"
+    },
+    {
+      "id": "38430466",
+      "type": "comment",
+      "text": "You turned them off at some point. To turn them back on: On a new tab, click the cog in the top right. Tick &quot;Sponsored shortcuts&quot;.Compared to the Google panopticon... I can live with it.",
+      "author": "flir",
+      "points": null,
+      "created_at": "2023-11-27T10:04:30Z",
+      "story_title": "Choose the browser that best suits your privacy needs",
+      "hn_url": "https://news.ycombinator.com/item?id=38430466"
+    },
+    {
+      "id": "37857584",
+      "type": "comment",
+      "text": "If you have influence on what tools you use at your place of work, then consider trying https:&#x2F;&#x2F;www.shortcut.com&#x2F;. It&#x27;s UX is IMO fantastic (and it&#x27;s UI is fast) while being a lot more full-featured than something like Trello.(not associated with the company - just a happy customer who feels like they ought to be more widely known than they seem to be)",
+      "author": "nicoburns",
+      "points": null,
+      "created_at": "2023-10-12T14:23:02Z",
+      "story_title": "Atlassian Acquires Loom",
+      "hn_url": "https://news.ycombinator.com/item?id=37857584"
+    },
+    {
+      "id": "37764450",
+      "type": "comment",
+      "text": "Clubhouse (now Shortcut - https:&#x2F;&#x2F;www.shortcut.com&#x2F;) seemed nice when I was using it at one company.But I guess the mystery to me is, without all the &quot;extra&quot; - how complex is this topic space, really? It feels like it&#x27;s just a shim over something like Github issues so you can render the board, rather then anything else.",
+      "author": "XorNot",
+      "points": null,
+      "created_at": "2023-10-04T13:01:32Z",
+      "story_title": "Show HN: Atlassian Design for Bootstrap v5",
+      "hn_url": "https://news.ycombinator.com/item?id=37764450"
+    },
+    {
+      "id": "36739806",
+      "type": "comment",
+      "text": "Does anyone remember Clubhouse? Clubhouse the social audio app at clubhouse.com ?The sudden popularity of clubhouse.com overshadowed \nclubhouse.io forcing the latter to rename to shortcut.com.https:&#x2F;&#x2F;www.shortcut.com&#x2F;blog&#x2F;clubhouses-name-is-now-shortcu...",
+      "author": "ayewo",
+      "points": null,
+      "created_at": "2023-07-15T18:52:11Z",
+      "story_title": "Threads, a Slack alternative unrelated to Instagram, has seen downloads surge",
+      "hn_url": "https://news.ycombinator.com/item?id=36739806"
+    },
+    {
+      "id": "36138893",
+      "type": "comment",
+      "text": "Having spent 7 years now building https:&#x2F;&#x2F;www.shortcut.com&#x2F; it&#x27;s very clear to me that at a certain point in the life-cycle of many organizations a bunch of people get hired who can only &quot;think in Jira&quot; and the vast majority of feature requests are attempts to get us to add whatever feature(s) they love using.Conversations about why it&#x27;s bad for developers or product managers or attempts to show them how to get the same value in another way often fall on deaf ears (or don&#x27;t happen at all) because it&#x27;s the only way that they know how to work.One of the key indicators that this is happening is when people start saying things like &quot;this can&#x27;t do Agile because it doesn&#x27;t have PET_FEATURE&quot;Jira isn&#x27;t just software, it&#x27;s a way of working that&#x27;s become the de facto standard, and it&#x27;s hard to get out of that box for a lot of people.",
+      "author": "kschrader",
+      "points": null,
+      "created_at": "2023-05-31T14:34:38Z",
+      "story_title": "Plane: Open-Source Alternative to Jira",
+      "hn_url": "https://news.ycombinator.com/item?id=36138893"
+    },
+    {
+      "id": "35735729",
+      "type": "comment",
+      "text": "I still resent them for forcing the project management app called Clubhouse to get a rebrand [0]. Well, maybe not forced them, but a result of the dynamics during the zero interest rate era.[0] https:&#x2F;&#x2F;www.shortcut.com&#x2F;blog&#x2F;clubhouses-name-is-now-shortcu...",
+      "author": "sdf4j",
+      "points": null,
+      "created_at": "2023-04-27T23:16:51Z",
+      "story_title": "Founders’ Email to Clubhouse Employees",
+      "hn_url": "https://news.ycombinator.com/item?id=35735729"
+    },
+    {
+      "id": "33884905",
+      "type": "comment",
+      "text": "I have used https:&#x2F;&#x2F;shortcut.com and it’s been a great pleasure. Not free though",
+      "author": "highmastdon",
+      "points": null,
+      "created_at": "2022-12-06T18:37:36Z",
+      "story_title": "Taiga: A free and open-source project management tool",
+      "hn_url": "https://news.ycombinator.com/item?id=33884905"
+    },
+    {
+      "id": "33748139",
+      "type": "comment",
+      "text": "&gt; Why is there no straight forward way to browse the actual file path in Finder, when a shortcut allows to copy it?In Finder, selecting View &gt; Show Path Bar will place a persistent path bar on each window. Additionally command clicking the proxy icon that appears when hovering over finder titlebars will open a path menu (and also works in any application with a proxy icon in its titlebar).To go to a path, select Go &gt; Go to Folder… or tap Command-Shift-G. This can be rebound to a more convenient shortcut in System (Preferences|Settings) &gt; Keyboard &gt; Keyboard Shortcuts.Command-Option-C will copy the path of the currently selected item to the clipboard.",
+      "author": "kitsunesoba",
+      "points": null,
+      "created_at": "2022-11-25T23:33:42Z",
+      "story_title": "KDE runs on the Apple M2 with full GPU acceleration",
+      "hn_url": "https://news.ycombinator.com/item?id=33748139"
+    },
+    {
+      "id": "33595268",
+      "type": "comment",
+      "text": "One of the big problems here is that there&#x27;s no agreed upon mental model for how people think about the pieces fitting together (and I don&#x27;t think that we could come up with one that would work for everyone).Even if people do have the same model then the terms are often different, depending on how you learned to do things. (Example: What is the &quot;correct&quot; number of levels of tasks -&gt; subtasks and what should each layer be called, i.e &quot;Epics -&gt; Stories -&gt; Tasks&quot;)We&#x27;ve been building out Shortcut (https:&#x2F;&#x2F;shortcut.com&#x2F;) for several years now it&#x27;s not uncommon for new leadership (new VP of Eng or VP of Product) to show up in a large organization (100+ people in eng and product) and decide that whatever problems the org is having can be solved by moving to Jira and forcing everyone into a new mental model around how they&#x27;re building things.(Side note: We&#x27;re tracking the rate of success of people who make this decision and how long they last in the org, and it&#x27;s [perhaps unsurprisingly] not great.)",
+      "author": "kschrader",
+      "points": null,
+      "created_at": "2022-11-14T15:22:23Z",
+      "story_title": "Show HN: I built my own PM tool after trying Trello, Asana, ClickUp, etc.",
+      "hn_url": "https://news.ycombinator.com/item?id=33595268"
+    },
+    {
+      "id": "33422881",
+      "type": "comment",
+      "text": "Shortcut | Senior Product Manager | Remote (US time zones) | Full Time | https:&#x2F;&#x2F;shortcut.comShortcut builds project management tools for modern software teams.We’re looking for a Senior Product Manager who is excited to work on building tools for how product and engineering idea&#x2F;plan&#x2F;build&#x2F;ship software.Bonus points if you have used Jira before and are excited at the prospect of taking some of their market share!More information at https:&#x2F;&#x2F;boards.greenhouse.io&#x2F;shortcut&#x2F;jobs&#x2F;6454623002.",
+      "author": "jergason",
+      "points": null,
+      "created_at": "2022-11-01T15:51:26Z",
+      "story_title": "Ask HN: Who is hiring? (November 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=33422881"
+    },
+    {
+      "id": "33199476",
+      "type": "comment",
+      "text": "It doesn&#x27;t take much to beat JIRA ;).But seriously, Linear is one of the best project management tools I&#x27;ve used. They do an SPA pretty well, which is rare, and its powerful yet pretty simple to use. I do find it a bit hard to wrangle saved views and find things via search sometimes, but overall its one of the &#x27;least bad&#x27; tools in this category.The only other app that I would say is comparable is Shortcut (https:&#x2F;&#x2F;shortcut.com), which I&#x27;ve used in anger at previous jobs. It&#x27;s a bit simpler than Linear, a bit easier to get up to speed with, but less powerful.But both are very good. And god help you if you have to use JIRA.",
+      "author": "rsanheim",
+      "points": null,
+      "created_at": "2022-10-14T03:57:17Z",
+      "story_title": "Linear.app",
+      "hn_url": "https://news.ycombinator.com/item?id=33199476"
+    },
+    {
+      "id": "33139749",
+      "type": "comment",
+      "text": "Checkout ShortCut. Been using it for years now. https:&#x2F;&#x2F;shortcut.com&#x2F;",
+      "author": "tnolet",
+      "points": null,
+      "created_at": "2022-10-09T10:39:04Z",
+      "story_title": "Happy 20th birthday Jira You suck so bad",
+      "hn_url": "https://news.ycombinator.com/item?id=33139749"
+    },
+    {
+      "id": "33014505",
+      "type": "comment",
+      "text": "Many applicable references can be found on the web. Example of a more complete table:https:&#x2F;&#x2F;www.key-shortcut.com&#x2F;en&#x2F;writing-systems&#x2F;%E3%81%B2%E3...As can be seen in this chart, the code points for Hiragana and Katakana are x60 apart (also pointed out by @innocenat).It&#x27;s not clear why characters like ん, ン, and ヶ are excluded from the article. They are used extensively in everyday Japanese.",
+      "author": "dwg",
+      "points": null,
+      "created_at": "2022-09-28T23:27:12Z",
+      "story_title": "Katakana, Hiragana, and Unicode",
+      "hn_url": "https://news.ycombinator.com/item?id=33014505"
+    },
+    {
+      "id": "31823265",
+      "type": "comment",
+      "text": "A few years ago I worked for a company that used https:&#x2F;&#x2F;shortcut.com&#x2F; (at that point, it was named clubhouse I think). I loved it. I think that tool can do everything Jira does in a much better and saner way. It looks a lot more organised, more flexible, more polished, more performant and it doesn&#x27;t look like it will force you into full SCRUM if you don&#x27;t want to. You even get to use the same syntax (markdown!) everywhere. Last time I had to use Jira I needed to keep in mind the syntax for writing links in the issue description was different than the syntax for writing links in comments. Tell me that&#x27;s not some top level suckery.Jira sucks big time, and there are better tools now. The reason no one &quot;toppled the Jira crown&quot; is just inertia, specially management inertia who are the ones deciding what tool to use. For the same reason we&#x27;re still mostly using petrol for cars, not because there aren&#x27;t better options, it is because it is not easy to change.",
+      "author": "likortera",
+      "points": null,
+      "created_at": "2022-06-21T12:50:48Z",
+      "story_title": "I fucking hate Jira",
+      "hn_url": "https://news.ycombinator.com/item?id=31823265"
+    },
+    {
+      "id": "31818894",
+      "type": "comment",
+      "text": "https:&#x2F;&#x2F;shortcut.com&#x2F; is your savior. Try it.",
+      "author": "ian_lotinsky",
+      "points": null,
+      "created_at": "2022-06-21T01:56:09Z",
+      "story_title": "I fucking hate Jira",
+      "hn_url": "https://news.ycombinator.com/item?id=31818894"
+    },
+    {
+      "id": "31814296",
+      "type": "comment",
+      "text": "I like shortcut and use it whenever I have a say in the matter.https:&#x2F;&#x2F;shortcut.com&#x2F;",
+      "author": "bsuvc",
+      "points": null,
+      "created_at": "2022-06-20T19:06:34Z",
+      "story_title": "I fucking hate Jira",
+      "hn_url": "https://news.ycombinator.com/item?id=31814296"
+    },
+    {
+      "id": "31020669",
+      "type": "comment",
+      "text": "We switched from JIRA to Shortcut https:&#x2F;&#x2F;shortcut.com&#x2F; (formerly Clubhouse), and I&#x27;d highly recommend them. It&#x27;s much better than JIRA ever was, both from a UX perspective and an implementation&#x2F;performance perspective.",
+      "author": "nicoburns",
+      "points": null,
+      "created_at": "2022-04-13T21:43:14Z",
+      "story_title": "Inside the longest Atlassian outage",
+      "hn_url": "https://news.ycombinator.com/item?id=31020669"
+    },
+    {
+      "id": "30974159",
+      "type": "comment",
+      "text": "https:&#x2F;&#x2F;prismic.shortcut.com&#x2F;pricingTheir pricing and feature breakdown across plans is a joke. Milestones, reporting and roadmap are all top tier features? They&#x27;re base features on a product like this.",
+      "author": "Mandatum",
+      "points": null,
+      "created_at": "2022-04-10T03:07:21Z",
+      "story_title": "Atlassian products have been down for 4 days",
+      "hn_url": "https://news.ycombinator.com/item?id=30974159"
+    },
+    {
+      "id": "30944718",
+      "type": "comment",
+      "text": "You mention that no one has figured out how to make GUIs as composable as command lines. I would argue Apple is actually getting there with Shortcuts. Combining that with the Share Sheet&#x2F;Share Menu and you get some pretty nice composability.",
+      "author": "rufusroflpunch",
+      "points": null,
+      "created_at": "2022-04-07T14:15:58Z",
+      "story_title": "Using Windows after 15 years on Linux",
+      "hn_url": "https://news.ycombinator.com/item?id=30944718"
+    },
+    {
+      "id": "30823458",
+      "type": "comment",
+      "text": "It became Shortcut: https:&#x2F;&#x2F;shortcut.com&#x2F;",
+      "author": "sergiotapia",
+      "points": null,
+      "created_at": "2022-03-27T19:52:52Z",
+      "story_title": "Ask HN: What happened to Clubhouse?",
+      "hn_url": "https://news.ycombinator.com/item?id=30823458"
+    },
+    {
+      "id": "30823108",
+      "type": "comment",
+      "text": "Clubhouse renamed to shortcut, but is otherwise still cruising.  clubhouse.io now redirects to shortcut.com.  Otherwise still runnin&#x27; fine.",
+      "author": "freedomben",
+      "points": null,
+      "created_at": "2022-03-27T19:13:07Z",
+      "story_title": "Ask HN: What happened to Clubhouse?",
+      "hn_url": "https://news.ycombinator.com/item?id=30823108"
+    },
+    {
+      "id": "30395428",
+      "type": "comment",
+      "text": "I am the first one to dislike all these product management tools, but if I had to pick one then I&#x27;d use https:&#x2F;&#x2F;shortcut.com (previously known as Clubhouse before the shitty Clubhouse came along).I used it at a startup for two years and was so much better than anything else I used before.",
+      "author": "dustinmoris",
+      "points": null,
+      "created_at": "2022-02-19T08:36:48Z",
+      "story_title": "Startup tooling: our product management, sales, and marketing stack",
+      "hn_url": "https://news.ycombinator.com/item?id=30395428"
+    },
+    {
+      "id": "30349085",
+      "type": "comment",
+      "text": "Shortcut was formerly called Clubhouse for anyone who used it before September 2021 [1].Somewhat ironically, they renamed the company to de-conflict with the other Clubhouse (the audio chatrooms app) although at this point said app has all but faded into obscurity less than 6 months later.With respect to the Shortcut product itself, my experience with it ~1.5 years ago was positive and I would try it again.We switched off to Jira + Confluence for feature parity that Clubhouse lacked, at least at the time.  But it looks like they are very rapidly iterating on the product and adding new features (threaded comments look awesome).  I look forward to giving it another shot and watching as it evolves.It looks like they also now have a Confluence competitor [2], currently in private beta.[1]: https:&#x2F;&#x2F;shortcut.com&#x2F;blog&#x2F;clubhouse-changing-our-name-to-sho...[2]: https:&#x2F;&#x2F;shortcut.com&#x2F;write-beta",
+      "author": "tedmiston",
+      "points": null,
+      "created_at": "2022-02-15T16:54:58Z",
+      "story_title": "Ask HN: Software you hate but can't replace?",
+      "hn_url": "https://news.ycombinator.com/item?id=30349085"
+    },
+    {
+      "id": "30224531",
+      "type": "comment",
+      "text": "I know Jira is difficult to get rid of once it is entrenched, but I’ve found Shortcut to be a great alternative.https:&#x2F;&#x2F;shortcut.com",
+      "author": "bsuvc",
+      "points": null,
+      "created_at": "2022-02-05T19:00:08Z",
+      "story_title": "Ask HN: Software you hate but can't replace?",
+      "hn_url": "https://news.ycombinator.com/item?id=30224531"
+    },
+    {
+      "id": "30019602",
+      "type": "comment",
+      "text": "I liked the analytics and the task management, but IMHO it does too much and the interface feels a bit clunky.- multiple clicks to close a task.- non-sensible defaults for creating tasks, like why not default the start and due date?- can&#x27;t filter by dayThe way I think about personal tasks is they should be small and done in 1-4 hours and in the day they are assigned. I would never create a multi-day task. If a task is so big that it takes longer than 4 hours to do, I break it up into smaller tasks that are 4 hours long. If a task is more like a &#x27;project&#x27;, then I will use scope out the project in a tool like shortcut.com.I also don&#x27;t care to see tasks that I am supposed to due to tomorrow by default. My daily goal is to clear today&#x27;s list.I also really like automatically repeating tasks (e.g. &quot;every quarter pay estimate taxes&quot; or &quot;water plants every 10 days&quot;) that appear on the day they are due. If I don&#x27;t complete them, they stay in my list until they are completed and then re-appear in the next cycle.",
+      "author": "itake",
+      "points": null,
+      "created_at": "2022-01-21T05:39:14Z",
+      "story_title": "Show HN: Aamu.app – all-in-one productivity tool",
+      "hn_url": "https://news.ycombinator.com/item?id=30019602"
+    },
+    {
+      "id": "29126981",
+      "type": "comment",
+      "text": "Fn+Backspace operates as forward delete and can be combined with shift, command, and option for text editing.I’m pretty sure Option + Clicking on a dock icon will minimize it.If you are confused with how the keyboard shortcuts work, here’s a quick guide.The command key is the main operator for system wide shortcuts and major application shortcuts.Command + shift is for secondary app shortcutsCommand + option is for rarely used app shortcutsOption is for hidden options in applications and across the system. Try opening the application menu in the top bar and holding down option to see how many new shortcuts are available up there. Try option clicking or dragging things in the system to see how they react.The control key is never used in applications and is rarely used in the system. It’s main function is in terminal applications.Hope this helped!",
+      "author": "SxC97",
+      "points": null,
+      "created_at": "2021-11-06T02:27:08Z",
+      "story_title": "From macOS to Arch Linux",
+      "hn_url": "https://news.ycombinator.com/item?id=29126981"
+    },
+    {
+      "id": "28001750",
+      "type": "comment",
+      "text": "Everyone knows that Clubhouse (The social audio app) got bigger than Clubhouse (the project management tool) much faster even though the latter was there before them.They also lost out on getting the clubhouse.com domain and instead they bought shortcut.com",
+      "author": "rvz",
+      "points": null,
+      "created_at": "2021-07-29T21:31:50Z",
+      "story_title": "Clubhouse (the project management tool) is changing their name to Shortcut",
+      "hn_url": "https://news.ycombinator.com/item?id=28001750"
+    },
+    {
+      "id": "233953",
+      "type": "comment",
+      "text": "Btw., I just checked how to do your transformation in Eclipse, using regular expressions. ctrl+f pops up the finder window. Check \"regular expressions\". Then in \"find\" enter \".* (\\w+ \\w+ \\d)\" and in \"Replace With\" enter \"&#60;li&#62;$1&#60;/li&#62;\". Press \"replace all\".This gives you the &#60;li&#62;...&#60;/li&#62; bits - add &#60;ul&#62; and &#60;/ul&#62; by hand as you have to do in Vim.The impressive thing is that the finder popup also includes context sensitive help for regular expressions. So If you type \\, it gives you a list with all the options (\\w for word character, \\d for digit, and so on).I am fairly good with regular expressions, not so much with keyboard shortcuts. Combined with the context sensitive help, the regular expressions are even more powerful.I think Emacs also has regular expression search and replace, but without the context sensitive help.",
+      "author": "Tichy",
+      "points": null,
+      "created_at": "2008-07-02T09:26:58Z",
+      "story_title": "100 Vim commands every programmer should know",
+      "hn_url": "https://news.ycombinator.com/item?id=233953"
+    },
+    {
+      "id": "1833215",
+      "type": "comment",
+      "text": "\"I've found it much more effective to just turn the brightness down at night\"Same, but I just use Compiz Negative for that.  Here's HN side-by-side, with Negative activated on the right, deactivated on the left:http://imgur.com/HMAgn.pngYou can toggle it instantly with whatever key combination you want to use, and can also Negative your entire desktop with different shortcut.Compiz Grid + Compiz Negative are what keep me from moving to Xmonad or Awesome, &#60;3 them.",
+      "author": "SkyMarshal",
+      "points": null,
+      "created_at": "2010-10-26T05:56:58Z",
+      "story_title": "Change your color temperature to fix your sleep patterns",
+      "hn_url": "https://news.ycombinator.com/item?id=1833215"
+    },
+    {
+      "id": "18049453",
+      "type": "comment",
+      "text": "Extension or not, that&#x27;s a really useful shortcut. Coming from SQL Server, the best option I know of requires a CTE or subquery:    WITH CTE_messages AS\n    (\n        SELECT\n             *\n            ,row_nbr = ROW_NUMBER() OVER(PARTITION BY conversation_id\n                                         ORDER BY timestamp DESC)\n        FROM\n            conversations\n    )\n    SELECT\n        *\n    FROM\n        CTE_messages\n    WHERE    row_nbr = 1\n    ORDER BY\n        conversation_id\n\nThis does give a performant plan in SQL Server with an index on (conversation_id, timestamp), for what it&#x27;s worth. I imagine the same is true for this syntax in PostgreSQL. But SELECT DISTINCT sometimes does strange things to execution plans in general, and I wouldn&#x27;t be surprised if that extends to SELECT DISTINCT ON.",
+      "author": "tfehring",
+      "points": null,
+      "created_at": "2018-09-23T04:47:17Z",
+      "story_title": "Postgres 11 – A First Look",
+      "hn_url": "https://news.ycombinator.com/item?id=18049453"
+    },
+    {
+      "id": "14534129",
+      "type": "comment",
+      "text": "Woah shameless plug, my game is &quot;Windows93 SP2&quot; compatible it seems - right click on desktop - Create shortcut.\nCommand: iframe https:&#x2F;&#x2F;data.mo.ee&#x2F;index2.html?inapp=steam&amp;node-webkit=1 --width=1280 --height=720Title: RPG MO(Don&#x27;t leave a space before iframe in the command)",
+      "author": "marxdeveloper",
+      "points": null,
+      "created_at": "2017-06-11T22:24:11Z",
+      "story_title": "Windows93 SP2",
+      "hn_url": "https://news.ycombinator.com/item?id=14534129"
+    },
+    {
+      "id": "13799132",
+      "type": "comment",
+      "text": "&gt; Option+Up? Nope that selects the next folder up. Control+Up? No, that made all of my windows do something weird that I don&#x27;t know what that is. Ah, it&#x27;s Command+Up.In macOS, generally:⌘ Command = App-specific shortcuts. The primary modifier key.⌃ Control = Global shortcuts. App-specific shortcuts will not generally have Control as the sole modifier.⌥ Option&#x2F;Alt = Something to with the keyboard, selection, or secondary modifier for a shortcut. Option+Up&#x2F;Down is Page Up&#x2F;Down.⇧ Shift = Something to with the keyboard, selection, or secondary modifier for a shortcut.Common shortcuts are way more consistent than in Windows, and you can search for them from the Help menu of any app, and even modify&#x2F;create shortcuts for any app from System Preferences -&gt; Keyboard.----&gt; As far as I can tell, there&#x27;s no non-keyboard way to do it.Right-click on the folder icon in the title bar, use Columns view, or show the Path Bar from the View menu.&gt; Likewise, &quot;All My Files&quot; sorts based on... what?Files in your home folder&#x27;s hierarchy, that are indexed by Spotlight.&gt; And when I search for something when I&#x27;m in a directory, I expect the search to be restricted to that directory by default. Instead it defaults to My Mac, which makes no sense.Keyword: defaults. You can change it.&gt; Is there also no way to get the current path as text? On Windows I can type &quot;C:\\Users\\My Documents&quot; by hand in Explorer. I don&#x27;t see an option to do that in Finder.&quot;Go to Folder&quot;, it&#x27;s under the Go menu.To copy an item&#x27;s path name, hold down Option&#x2F;Alt to modify the &quot;Copy&quot; menu item.----Most of your complaints are basically &quot;it doesn&#x27;t do everything the way Windows does it so it&#x27;s bad&quot; or &quot;I&#x27;m furious because I didn&#x27;t bother to tweak the defaults.&quot;",
+      "author": "Razengan",
+      "points": null,
+      "created_at": "2017-03-05T22:18:49Z",
+      "story_title": "Why I left Mac for Windows: Apple has given up",
+      "hn_url": "https://news.ycombinator.com/item?id=13799132"
+    },
+    {
+      "id": "11631974",
+      "type": "comment",
+      "text": "I intend to add some keyboard shortcuts. Comment your needs here: https:&#x2F;&#x2F;github.com&#x2F;sindresorhus&#x2F;refined-twitter&#x2F;issues&#x2F;5",
+      "author": "mofle",
+      "points": null,
+      "created_at": "2016-05-04T21:24:00Z",
+      "story_title": "Refined Twitter",
+      "hn_url": "https://news.ycombinator.com/item?id=11631974"
+    },
+    {
+      "id": "43175920",
+      "type": "comment",
+      "text": "&gt; For the 1st point, I generate a script with hashed check points so next run is automated unless something changes in the UI to invoke AI. I make this possible by proxy wrapping playwright library so I can take over every method. Users use playwright like they always have but with one extra method called act.How would you determine that something changed in UI by just looking at a screenshot? Would you additionally compare HTML&#x2F;DOM or approximate the two screenshots?&gt; Omini parser lets you split section of the UI to hash and watch for changes that are relevant.I wasn&#x27;t aware, thanks for sharing!&gt; For 2, can you give some examples?Specifically, if you take the Shortest tool (https:&#x2F;&#x2F;shortest.com), a test runner powered by Computer Use API, write a test &quot;Validate the task can be pinned&quot; for https:&#x2F;&#x2F;todomvc.com&#x2F;examples&#x2F;vue&#x2F;dist&#x2F;, and run it — it passes. It should have failed because there is no way to &quot;pin&quot; tasks in the app, yet it pretends that completing the task is the same as pinning.",
+      "author": "p0deje",
+      "points": null,
+      "created_at": "2025-02-25T19:03:09Z",
+      "story_title": "Ask HN: What are you working on? (February 2025)",
+      "hn_url": "https://news.ycombinator.com/item?id=43175920"
+    },
+    {
+      "id": "28523438",
+      "type": "story",
+      "title": "Clubhouse's (the planning tool) name is now Shortcut",
+      "text": "",
+      "author": "lucis",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2021-09-14T12:06:57Z",
+      "hn_url": "https://news.ycombinator.com/item?id=28523438"
+    },
+    {
+      "id": "41158078",
+      "type": "story",
+      "title": "Show HN: TradingView Magical Keyboard Shortcuts – Chrome Extension",
+      "text": "",
+      "author": "JohnnyTheTorch",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2024-08-05T03:57:48Z",
+      "hn_url": "https://news.ycombinator.com/item?id=41158078"
+    },
+    {
+      "id": "23879013",
+      "type": "story",
+      "title": "Show HN: Tell me how my browser extension to help browse websites sux",
+      "text": "I am pretty tired of working with web apps that are a disaster to tab through (I&#x27;m looking at you AWS &amp; Github), so I rage-coded a chrome browser extension to help me piece up the page and get back to kicking asp (jokes though, hate asp). I think it kind of sux, but that&#x27;s only my opinion (and maybe since i&#x27;m the only user...).<p>Care to share why you think it sux?<p>Landing Page:\nhttps:&#x2F;&#x2F;shortqut.com&#x2F;extension<p>The landing page also sux, please tell me why!<p>Chrome Store Link:\nhttps:&#x2F;&#x2F;chrome.google.com&#x2F;webstore&#x2F;detail&#x2F;shortqut&#x2F;pbdnmkolnjmoeooffliebhmogchfmkgf",
+      "author": "manytimesfail",
+      "points": 1,
+      "num_comments": 5,
+      "created_at": "2020-07-18T04:43:54Z",
+      "hn_url": "https://news.ycombinator.com/item?id=23879013"
+    },
+    {
+      "id": "29925008",
+      "type": "story",
+      "title": "Shortcuit Pre-Alpha 4.0",
+      "text": "",
+      "author": "jimbauwens",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2022-01-13T18:56:38Z",
+      "hn_url": "https://news.ycombinator.com/item?id=29925008"
+    },
+    {
+      "id": "4174973",
+      "type": "story",
+      "title": "Short Calendar: A visual framework for emailing short calendars",
+      "text": "",
+      "author": "nathancahill",
+      "points": 11,
+      "num_comments": 6,
+      "created_at": "2012-06-29T02:34:51Z",
+      "hn_url": "https://news.ycombinator.com/item?id=4174973"
+    },
+    {
+      "id": "26083330",
+      "type": "comment",
+      "text": "Best explanation of NFTs and virtual goods I heard was from pmarca and bhorowitz on Clubhouse yesterday:- The Honus Wagner baseball card is $0.50 of physical goods (cardboard&#x2F;ink) and $3M of virtual goods- A Basquiat painting is $100 of physical goods (paint and canvas) and $1M of virtual goods- A rare Nike sneaker is $5 of physical goods (plastic&#x2F;rubber) and $500 of virtual goodsNFTs are going to take this phenomenon to Internet scale.We made the conceptual leap from physical gold to digital gold with Bitcoin. We will do the same for all other objects with cultural value with NFTs.",
+      "author": "denisnazarov",
+      "points": null,
+      "created_at": "2021-02-09T22:32:55Z",
+      "story_title": "A Beginner's Guide to NFTs",
+      "hn_url": "https://news.ycombinator.com/item?id=26083330"
+    },
+    {
+      "id": "20936328",
+      "type": "comment",
+      "text": "We had a similar issue with building milestones. IMHO milestones in clubhouse are a way for a PM to interrogate the completeness of high level initiatives which are made up of epics. What was missing was the ability to organize a group of stories than span multiple epics into an iteration that the engineering team could push toward delivery. The iteration is a unit that the dev manager and team can use to track the completeness of their commitments. Recently clubhouse introduced iterations, to assist dev managers in tracking their deliverables.I have never been happier with a tool and am excited to explore their new offering.",
+      "author": "mortonpe",
+      "points": null,
+      "created_at": "2019-09-11T03:26:28Z",
+      "story_title": "Clubhouse announces new collaboration tool, free project management platform",
+      "hn_url": "https://news.ycombinator.com/item?id=20936328"
+    },
+    {
+      "id": "11118711",
+      "type": "comment",
+      "text": "We&#x27;ve been using Clubhouse for about two weeks, having transitioned from Asana, which we found lacking in many respects. (Before then, we used Trello, which we also found to be not fit our workflow very well.)So far, Clubhouse has been working really well. They are emulating the Slack aesthetic pretty hard, and that&#x27;s not a bad thing. It&#x27;s pretty responsive and well designed. I find the story card view friendlier than Trello&#x27;s.Clubhouse is really a clone of PivotTracker, and I don&#x27;t mean that as a criticism. They even use the same terminology (points, stories, epics, workflow) and categories (bug, chore, feature). However, there&#x27;s less of a focus on iterations, and the UI is decidely smoother from my perspective.There are some features I&#x27;d like. For example, I would like their Slack integration to PM me personally about changes; Clubhouse can currently post updates to a Slack channel, but monitoring all the story activity is just not an option when you&#x27;re on a team working on many different things.There are also some rough edges in the UI. You can save your story view as a workspace, but if you alter anything (e.g. hide an epic), you have to save it under a new name, then remove the old workspace. I expect stuff like this to improve over time.",
+      "author": "atombender",
+      "points": null,
+      "created_at": "2016-02-17T16:02:13Z",
+      "story_title": "Show HN: Clubhouse – project management built for software teams",
+      "hn_url": "https://news.ycombinator.com/item?id=11118711"
+    },
+    {
+      "id": "20936173",
+      "type": "comment",
+      "text": "One of the things I love about Clubhouse, which I believe is unique among PM tools, is that their Github integration makes it feel like I am just using Github Issues when checking in code. Other PM tools have Github integrations too, but I haven&#x27;t found one that is as seamless.",
+      "author": "rpedela",
+      "points": null,
+      "created_at": "2019-09-11T02:57:32Z",
+      "story_title": "Clubhouse announces new collaboration tool, free project management platform",
+      "hn_url": "https://news.ycombinator.com/item?id=20936173"
+    },
+    {
+      "id": "27971165",
+      "type": "comment",
+      "text": "I&#x27;m going to give a fun alternative example.I used to run some popular publishing websites around entertainment: gaming, movies, tech...etc.I talked to our first users entirely through our message boards, which had PM systems built in. The regulars were there almost every day and I got to know them fairly well. We&#x27;d talk daily and I used the message board to show off new designs I was working on. Eventually they started their own fan podcast (this was 2008 or so mind you) and I&#x27;d show up as a guest to support their love of the websites. They&#x27;d be surprised I&#x27;d show up. Me? I was surprised they went to so much trouble to support my site.Eventually we just hired a bunch of these early users at interns. One we hired permanently, and others we helped get jobs within the gaming industry. I don&#x27;t see them that often in person anymore (I&#x27;ve since moved) but I&#x27;m happy to see them with their own thriving careers and consider a couple of them friends.I sometimes wonder if the move away from message boards and towards larger communities like Reddit and Twitter would have allowed for this kind of clubhouse atmosphere. It&#x27;s one of the bits of the old Internet I occasionally miss.",
+      "author": "snide",
+      "points": null,
+      "created_at": "2021-07-27T11:31:00Z",
+      "story_title": "Ask HN: How did you establish and maintain relationships with your first users?",
+      "hn_url": "https://news.ycombinator.com/item?id=27971165"
+    },
+    {
+      "id": "27029512",
+      "type": "comment",
+      "text": "&quot;The only downside is having to do event planning: clean your house (or pick a venue: park, hackerspace, church, cafe, gym, clubhouse if your apartment complex has one), email&#x2F;text invitations, plan food, etc. This is a skill, though, and you get better with practice.&quot;Not only is it a skill, but it&#x27;s very difficult to make that sort of effort when you are depressed, which many lonely people are.",
+      "author": "pmoriarty",
+      "points": null,
+      "created_at": "2021-05-03T19:20:22Z",
+      "story_title": "The loneliness of the modern office team member",
+      "hn_url": "https://news.ycombinator.com/item?id=27029512"
+    },
+    {
+      "id": "26544879",
+      "type": "comment",
+      "text": "Comparing Kitemaker to Clubhouse write may may get a bit further. I found Kitemaker after I realized the tight relationship between epics and documentation, and was stunned at how difficult it was to find a PM tool focused on fusing them. Clubhouse write seemed to be headed that direction, but was in beta forever and details were sparse. I began researching on my own to see if it would be worth building myself, stumbled upon Kitemaker (impressive) and ultimately used Notion instead (which is so-so for the purpose).A bit tangential, but I was surprised at how similar Kitemakers offering _sounded_ to Linear (https:&#x2F;&#x2F;linear.app&#x2F;).",
+      "author": "cloverich",
+      "points": null,
+      "created_at": "2021-03-22T18:37:40Z",
+      "story_title": "Launch HN: Kitemaker (YC W21) – Fast alternative to Jira, built for remote teams",
+      "hn_url": "https://news.ycombinator.com/item?id=26544879"
+    },
+    {
+      "id": "26286593",
+      "type": "comment",
+      "text": "I see the point, but if I upload my contract list the non compliance is mine (I didn&#x27;t ask permission to each one of my contacts) or of Clubhouse (they asked me to do it)?",
+      "author": "pmontra",
+      "points": null,
+      "created_at": "2021-02-27T17:51:12Z",
+      "story_title": "Fake_contacts: Android app to create fake phone contacts, to do data-poisoning",
+      "hn_url": "https://news.ycombinator.com/item?id=26286593"
+    },
+    {
+      "id": "26149515",
+      "type": "comment",
+      "text": "I don&#x27;t think Facebook was ever a &quot;perfect trap for the VC&#x2F;PM class&quot;. Quora was, though - from the outside, Clubhouse really reminds me of the early days of Quora, with a nucleus of densely connected Silicon Valley elite drawing in a crowd of early adopters.Quora ended up being like if Yahoo Answers and LinkedIn had a baby. I expect Clubhouse to go in a similar direction.",
+      "author": "twic",
+      "points": null,
+      "created_at": "2021-02-16T00:20:37Z",
+      "story_title": "Clubhouse’s Inevitability",
+      "hn_url": "https://news.ycombinator.com/item?id=26149515"
+    },
+    {
+      "id": "26145054",
+      "type": "comment",
+      "text": "Yes, Clubhouse feels like the perfect trap for the VC&#x2F;PM class. It is a product that is extremely appealing to the them, but for which probability of widespread adoption seems low. And, of course, that group of people is one of the loudest on social media, so anyone within a few degrees of separation from them will &quot;hear&quot; them singing Clubhouse&#x27;s praises.",
+      "author": "xibalba",
+      "points": null,
+      "created_at": "2021-02-15T17:46:57Z",
+      "story_title": "Clubhouse’s Inevitability",
+      "hn_url": "https://news.ycombinator.com/item?id=26145054"
+    },
+    {
+      "id": "26070021",
+      "type": "comment",
+      "text": "&gt; A reporter lied and attempted to slam a public figureThat... seems kinda spun.  The source material isn&#x27;t so damning.  Taylor Lorenz was on the call, and tweeted:&quot;@pmarca just openly using the r-slur on Clubhouse tonight and not one other person in the room called him on it or saying anything&quot;Then later when she was corrected that it wasn&#x27;t Andreessen but someone else, replied:&quot;Thanks for clarifying that it was Felicia saying that word, rather than Marc as many in the room heard it.  I hope you can understand how some people in the room felt hearing it&quot;I mean, as I (someone who reads and values Lorenz&#x27;s work) read it, she was offended (more, it seems, at the casual use of &quot;retarded&quot; going unchallenged than at the specific speaker), and tweeted about it, but made a mistake in attribution which she recognized (while pointing out that her original offense was that the word wasn&#x27;t challenged).And Greenwald wrote like 1000 words to go after her.  And his essay, not her tweet, is at the top of HN right now.So... who&#x27;s cancelling who here?",
+      "author": "newacct583",
+      "points": null,
+      "created_at": "2021-02-08T20:58:39Z",
+      "story_title": "NYT reporter falsely accuses tech investor of using a slur",
+      "hn_url": "https://news.ycombinator.com/item?id=26070021"
+    },
+    {
+      "id": "25829274",
+      "type": "comment",
+      "text": "When I started on Clubhouse I was hooked the first night. I had never talked to so many black people in my entire life  (I’m an Asian Indian American for context). I felt like I got exposed to more black American culture in 6 hours on Clubhouse than in my entire life. I also felt extremely drained. It was a lot of consumption.I fell off for a little while as I realized my feed getting pretty echo chamber like. Then I started seeing extremely interesting conversations pop up such as the main PM on Google’s Alpha Fold answering questions live about the technology. Most recently the mayors of SF, Austin, Miami, and Seattle were on talking about the massive swell movement of tech between these ecosystems. They were taking questions from a live audience.There is something magical going on here. My two cents.",
+      "author": "vhiremath4",
+      "points": null,
+      "created_at": "2021-01-19T02:24:45Z",
+      "story_title": "Clubhouse for X – The emerging trend of audio-only applications",
+      "hn_url": "https://news.ycombinator.com/item?id=25829274"
+    },
+    {
+      "id": "25618398",
+      "type": "comment",
+      "text": "I read HN every day, I never post, I signed up for an account just to post this. I&#x27;m a senior PM at a large e-comm company, I was EXTREMELY frustrated with the horrible performance of Jira Cloud, I submitted support tickets to no avail. It&#x27;s obviously an over-architected broken system.I moved my team to clubhouse, even-though it created an element of fragmentation considering all other teams are using JIRA. I&#x27;m so happy though with clubhouse, I can actually get my work done without mindlessly waiting for every interaction.Icing on the cake: I was considering moving the company over to Jira on a self hosted AWS instance, I&#x27;ve read that it can be a little faster. but.. they&#x27;re discontinuing the self hosted option. Nail in the coffin for me.Good bloody riddance.",
+      "author": "nate_770",
+      "points": null,
+      "created_at": "2021-01-03T01:14:11Z",
+      "story_title": "Atlassian Cloud ToS section 3.3(I) prohibits discussing performance issues",
+      "hn_url": "https://news.ycombinator.com/item?id=25618398"
+    },
+    {
+      "id": "24712223",
+      "type": "comment",
+      "text": "So true - that would be amazing to see if Jira&#x2F;Clubhouse started to improve their products due to the new competition.And totally feel ya there re: Github. We personally use Linear for tasks other than just product dev but totally understand the draw for wanting to combine version control with tasks.It&#x27;s amazing how helpful keyboard shortcuts and just raw performance is when you&#x27;re using a tool as frequently as one does with PM.",
+      "author": "bmaho",
+      "points": null,
+      "created_at": "2020-10-07T20:14:57Z",
+      "story_title": "Ditch Jira. Use Linear",
+      "hn_url": "https://news.ycombinator.com/item?id=24712223"
+    },
+    {
+      "id": "24146681",
+      "type": "comment",
+      "text": "The JIRA hate is well deserved. I don’t think I can get past how slow it is compared to other offerings in the market (eg clubhouse). It’s UI is horrible and unintuitive. Search is difficult. Using it to track work is manual, it adds too much overhead.I ask that you try clubhouse or another tool that has more modern UIs. You feel that JIRA next gen is great only compared to JIRA classic. Next gen is still years behind in UX.",
+      "author": "pm90",
+      "points": null,
+      "created_at": "2020-08-13T18:38:44Z",
+      "story_title": "Jira Is a Microcosm of What’s Broken in Software Development",
+      "hn_url": "https://news.ycombinator.com/item?id=24146681"
+    },
+    {
+      "id": "23807763",
+      "type": "comment",
+      "text": "Clubhouse.ioJira recently overhauled their UI to make it more similar to Clubhouse, but it still isn&#x27;t as good. Jira is still slow and buggy. Clubhouse also has seamless integration with Github which makes it feel like I am using GitHub issues when tagging PRs, etc. There is also a BitBucket integration, but haven&#x27;t used it. To me Clubhouse does something that no other similar tool does: make PMs and engineers happy.",
+      "author": "rpedela",
+      "points": null,
+      "created_at": "2020-07-12T01:15:05Z",
+      "story_title": "Ask HN: What's the worst piece of software you use everyday?",
+      "hn_url": "https://news.ycombinator.com/item?id=23807763"
+    },
+    {
+      "id": "22962832",
+      "type": "comment",
+      "text": "Answer really depends on the size &amp; culture of the organization.Clubhouse.io, Asana &amp; PivotalTracker are nice, but a little opinionated (can be a good or bad thing depending on who you are :) ).I think where Jira really rubs people the wrong way is it&#x27;s speed, particularly after someone customized it with a byzantine workflow or with dozens of views&#x2F;reports and no primary source of truth for the team to use. Imagine a PM looking at one report and the dev&#x27;s thinking another is &quot;the one.&quot; A fresh Jira (Cloud verion on corp-name.atlassian.net) with out of the box Kanban board should work for most.There are some industry vertical plays out there that focus on Agency or Freelancing work.",
+      "author": "masonhensley",
+      "points": null,
+      "created_at": "2020-04-23T23:28:19Z",
+      "story_title": "Amazon AppFlow",
+      "hn_url": "https://news.ycombinator.com/item?id=22962832"
+    },
+    {
+      "id": "20938154",
+      "type": "comment",
+      "text": "Our product managers user clubhouse constantly and love it.Club house has done a great job of organising information into stories, epics, milestones, projects.All task manager products have some variation on these components but I&#x27;ve found clubhouses organisation of them to be the best.It allows you to very quickly view the data differently depending on the context: stand up, sprint planning, PM trying to figure what&#x27;s going on and what should be next.My gut is that it turns out the way developers want to organise there work is actually a really sensible way of doing it, and so it scales up the management stack well.",
+      "author": "healsjnr1",
+      "points": null,
+      "created_at": "2019-09-11T09:52:22Z",
+      "story_title": "Clubhouse announces new collaboration tool, free project management platform",
+      "hn_url": "https://news.ycombinator.com/item?id=20938154"
+    },
+    {
+      "id": "20937122",
+      "type": "comment",
+      "text": "I have chosen Clubhouse as our main project management platform around 8 months ago and never regretted since then. It was adapted almost flawlessly to out internal processes and procedures.Can&#x27;t recommend it enough if you&#x27;re considering PM system",
+      "author": "jesterson",
+      "points": null,
+      "created_at": "2019-09-11T06:23:34Z",
+      "story_title": "Clubhouse announces new collaboration tool, free project management platform",
+      "hn_url": "https://news.ycombinator.com/item?id=20937122"
+    },
+    {
+      "id": "20936033",
+      "type": "comment",
+      "text": "I used it at my last company before the JIRA brigade took over, and I&quot;m pushing it at my current gig. My typical JIRA cycle goes like: I use a simple PM tool. PM&#x27;s insist on JIRA, because &quot;features&quot;. PM&#x27;s can&#x27;t figure out how to do simple things (because JIRA). PM gives me admin rights. I quit. That was my last three companies. Anyways -- Clubhouse is more limited, focused, opinionated. The UI is snappy behaves exactly like I expected as I learned it. It feels a little cluttered at times, but unlike JIRA everything seems to work in the ways I expect. It has some interesting constraints (stories belong to epics belong to milestones, so you can&#x27;t put a story directly in a milestone) but overall I like it much more than JIRA.My tl;dr for Clubhouse is that (imho) most software shops would be better off using it, or something nearly identical to it, instead of opting for JIRA to turn that one knob they just can&#x27;t live without. JIRA works well if you need complex workflow management and can hire people to administrate that _as their full time job_.",
+      "author": "cloverich",
+      "points": null,
+      "created_at": "2019-09-11T02:31:51Z",
+      "story_title": "Clubhouse announces new collaboration tool, free project management platform",
+      "hn_url": "https://news.ycombinator.com/item?id=20936033"
+    },
+    {
+      "id": "20512957",
+      "type": "comment",
+      "text": "&gt; Until now, the Temple Culture was thought to have centered on the worship of a mother goddess, but Malone thinks it was more of a clubhouse culture, focused on ritual and feasting but where food—rather than a deity—was revered.&quot;\n&gt;\n&gt; (The word&#x27;Temple&#x27; has for too long been a placeholder for &#x27;we don&#x27;t know.&#x27;)This reminded me of The Motel of the Mysteries[1] where modern-day objects and franchises are similarly turned into temples and objects of worship or religious tools.[1] https:&#x2F;&#x2F;tvtropes.org&#x2F;pmwiki&#x2F;pmwiki.php&#x2F;Literature&#x2F;MotelOfThe...",
+      "author": "sdrothrock",
+      "points": null,
+      "created_at": "2019-07-24T07:13:01Z",
+      "story_title": "A Thriving Civilization in Malta Collapsed 4k Years Ago",
+      "hn_url": "https://news.ycombinator.com/item?id=20512957"
+    },
+    {
+      "id": "15794661",
+      "type": "comment",
+      "text": "TL;DR is WeWork just an open office but for (way too many imho) many companies&#x2F;people in one space?Are Wework spaces similar across the world? I have to work in a central London one sometimes and I find it horrendous; it is almost literally good for nothing; way too noisy and loose for meetings (even in the closed spaces; they are glass and not soundproof) or actual concentrated work (with noise cancelling headphones it is bearable). At lunch, because most of the space is open and attaches to the central area, it smells like as mix of whatever people are eating which can be interesting (kebab onion with garlic sauce mixed with pizza mixed with fish mixed a spicy curry smell) and lingers for a long time. Nice looking wooden floors so when people wear heals you can hear them literally everywhere when they walk around (programmers who are supposed to be focused with noise cancelling headphones all look up every single time; noise, all glass, heals (probably female) so they look). Beer opens at 4 pm so drinking commences at that time too. Too many people allowed in there so if you didn&#x27;t strictly book rooms they are all full and meetings cannot ever go over time.It is more a clubhouse than an office. I could not really work there for long stretches so I wonder if all these places are the same as a formula or this one is just unique that way.",
+      "author": "tluyben2",
+      "points": null,
+      "created_at": "2017-11-28T05:25:43Z",
+      "story_title": "WeWork is going to acquire Meetup",
+      "hn_url": "https://news.ycombinator.com/item?id=15794661"
+    },
+    {
+      "id": "13878432",
+      "type": "comment",
+      "text": "&gt; I&#x27;ve used Gitlab CI before and I do like it, but TravisCI allowed for some granular control that Gitlab CI does not have (or that I am doing wrong) - for example, ability to run specific tests in case of pull&#x2F;merge requests (TrasisCI has an environment variable for it).Ah interesting! You can&#x27;t do this now with GitLab, but we&#x27;re working on supporting merge requests as special cases [0].&gt; As for other projects - the most important one for me was clubhouse.io (Gitlab Issues is great but just not as good as clubhouse.io)Clubhouse sure looks nice! GitLab Issues is getting better every release and in 9.0 (March 22nd), we have some big changes for Issue Boards.I&#x27;ve asked our PM on Issues (Victor) to check out Clubhouse and hopefully we can convince them to integrate with us in some way.[0]: https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab-ce&#x2F;issues&#x2F;23902",
+      "author": "jobvandervoort",
+      "points": null,
+      "created_at": "2017-03-15T18:18:54Z",
+      "story_title": "GitLab acquires Gitter, will open-source the code",
+      "hn_url": "https://news.ycombinator.com/item?id=13878432"
+    },
+    {
+      "id": "27505867",
+      "type": "story",
+      "title": "CVPR panels on the future of data and ML infra (R.Socher, HF, W&B, Google, MSFT)",
+      "text": "Hi HN! :)<p>CVPR is starting this week! To kick things off, we&#x27;d love to invite you to two CVPR panels on the future of datasets and next-gen ML infrastructure. Comment below if you want ask a question on the topics mentioned and we will do our best to include it in the discussion!<p>1. CVPR pre-game: the Future of Datasets\nWhen: this Friday, June 18th at 12 pm EDT &#x2F; 9 am PST. Clubhouse link (https:&#x2F;&#x2F;www.joinclubhouse.com&#x2F;event&#x2F;PAD2Nnen). Guests include:<p>- Olga Russakovsky, ImageNet Challenge co-author, Princeton,\n- Richard Socher, ImageNet co-creator, CEO You.com,\n- Jeff Boudier, HuggingFace Chief of Product, \n- Joseph Gonzalez, UC Berkley RiseLab,\n- Jianing Wei, Google AI,\n- Siddhartha Sen, Microsoft Research.<p>Topic: Currently, when companies train their ML models, they focus on optimizing their models rather than the actual data. But data sits at the core of a good model. How can we be more data-centric in ML?<p>2. CVPR Panel: Next-Gen ML Infrastructure For Computer Vision\nWhen: Monday, June 21st at 3 pm EDT &#x2F; 12 pm PST. Clubhouse link (https:&#x2F;&#x2F;www.clubhouse.com&#x2F;event&#x2F;mWV902w6).<p>Guests include:<p>- Tobi Knaup, CEO &amp; Co-Founder at D2iQ,\n- Lukas Biewald, CEO at Weights &amp; Biases, \n- Waleed Kadous, Head of Engineering at Anyscale,\n- Glenn Jocher YOLOv5 creator, CEO at Ultralytics,\n- Tianqi Chen, CTO at OctoML,\n- Dillon Erb, CEO at Paperspace,\n- Josh Tobin, ex-Open AI, CEO at Gantry,\n- Davit Buniatyan, CEO at Activeloop.<p>Clubhouse is now available both on Android and Apple. If you&#x27;d like your question to be asked, please comment below and we&#x27;ll pick the most voted questions&#x2F;try to cover as many of them as possible. More on the panels: https:&#x2F;&#x2F;www.cvpr.activeloop.ai&#x2F;.<p>If you need a Clubhouse invite you can join our community here at https:&#x2F;&#x2F;slack.activeloop.ai&#x2F; and let us know in #community channel. Cheers!",
+      "author": "morpheusme",
+      "points": 55,
+      "num_comments": 4,
+      "created_at": "2021-06-14T17:58:37Z",
+      "hn_url": "https://news.ycombinator.com/item?id=27505867"
+    },
+    {
+      "id": "26574722",
+      "type": "story",
+      "title": "Join Us Tomorrow Night on Clubhouse",
+      "text": "Wanted to invite the HN community to a Clubhouse event tomorrow (Thurs) @ 5-6:30 pm PT.<p>We host a virtual meet-up&#x2F;podcast called Tha Yard. We simulate the experience of being incarcerated, hanging out on the yard with our guests.<p>Tomorrow, we have the amazing Shaka Senghor (3.8M Clubhouse followers). Convicted of murder, he did 21 years max security, including 8 in solitary. Upon release, wrote a NYT best-seller (&quot;Writing my Wrongs&quot;), buddies w&#x2F;Oprah, Pres Obama, Ben &amp; Felicia Horowitz. Very powerful story to share.",
+      "author": "RBBronson123",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2021-03-24T23:59:58Z",
+      "hn_url": "https://news.ycombinator.com/item?id=26574722"
+    },
+    {
+      "id": "24048675",
+      "type": "story",
+      "title": "Ask HN: How to Avoid Writing in Jira?",
+      "text": "Hi HN,<p>I am an engineer turned PM.<p>My engineering leads will not switch to other softwares (LinearApp &#x2F; Clubhouse).<p>I do not mind watching the progress in JIRA, but writing user stories in JIRA is a serious problem.<p>Here’s why: \nAll of my thinking happens in documents.\nPutting ideas in JIRA can take hours, and it transports me to a non-creative world with grunt, data entry work. I do it. But it is expensive in terms of time, and attention sunk.<p>Is there a way to convert document paragraphs &#x2F; sentences in documents to user stories in JIRA?<p>I may write a script to do this and put it up on Github, but I am wondering if a solution already exists. It must, it&#x27;s a pretty common problem with most PMs in my network.",
+      "author": "utkarsh_apoorva",
+      "points": 3,
+      "num_comments": 8,
+      "created_at": "2020-08-04T10:58:50Z",
+      "hn_url": "https://news.ycombinator.com/item?id=24048675"
+    }
+  ]
+}

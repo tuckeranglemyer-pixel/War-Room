@@ -1,0 +1,40 @@
+{
+  "name": "Hive",
+  "category": "project_management",
+  "subcategories": [
+    "task_management",
+    "collaboration",
+    "ai"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $5-$12 per user/mo",
+  "primary_use_case": "AI-powered project management with flexible views",
+  "target_audience": [
+    "mid_market",
+    "marketing_teams",
+    "cross_functional"
+  ],
+  "key_features": [
+    "tasks",
+    "gantt",
+    "kanban",
+    "calendar",
+    "email_integration",
+    "AI",
+    "time_tracking",
+    "forms"
+  ],
+  "founded": 2015,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "monday",
+    "clickup"
+  ]
+}

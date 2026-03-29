@@ -1,0 +1,1206 @@
+{
+  "app": "taskade",
+  "play_store_reviews": [
+    {
+      "rating": 4,
+      "text": "The AI is phenomenally helpful. I cannot stress how much it helps to just generate a plan instead of using all of your energy and motivation on it. Unfortunately, if you need to make edits to that plan or create your own, it's not user-friendly at all. It could use a lot of work, making it simpler to modify the AI generated plan, because right now, there are a million buttons and you can't easily click/select areas to insert text (also it's gonna come in a crazy format when you type it)",
+      "thumbs_up": 45,
+      "date": "2024-10-15T21:05:46"
+    },
+    {
+      "rating": 4,
+      "text": "Admittedly, I do not know all the ins and outs of all this app can do, I am sure there is much more it can do that I have yet to take the time to learn, BUT, for my purposes it is great! As the director of a growing group non-profit, the list of things to do, people to call, appointments, etc is endless. Having a place to track all that, schedule out my week is necessary. I fought using an app for a long time, but having it on my phone and being able to add something after hours is priceless!",
+      "thumbs_up": 13,
+      "date": "2024-05-01T10:25:01"
+    },
+    {
+      "rating": 3,
+      "text": "Decent enough app but when it says you can soon go pro, what it doesn't say is that they will take away features that were free with no warning. Got up this morning and almost all the background options now have a big lock on them and who knows what else they've turned off. They aren't offering us extra features, they're just taking away the ones we had. Kind of tacky to do that to your current users. AND it's a subscription fee, not a single payment. Not worth it.",
+      "thumbs_up": 19,
+      "date": "2019-03-17T08:58:58"
+    },
+    {
+      "rating": 4,
+      "text": "App is very useful but needs some work. It is very feature rich and I love that it usually syncs perfectly with the desktop app. A few annoying bugs have occurred. I added a folder on my phone and it took several hour of troubleshooting to get it to appear on PC (I eventually created links to the projects and sent them to myself. The projects disappeared again the next day). The keyboard often disappears, and sometimes the text cursor refuses to appear. The AI is pretty cool.",
+      "thumbs_up": 19,
+      "date": "2023-08-09T07:39:34"
+    },
+    {
+      "rating": 3,
+      "text": "Edit: I had to come back and change my rating. I hate getting email spam and no matter how I changed my notification settings I still kept getting emailed. Ultimately it made me decide to keep looking. There is also no way to change any of your settings from the emails you'd keep receiving... original review follows: After trying multiple apps, this one was the best for what I wanted. simple check list of tasks I can write, no extra bells and whistles, and can share a synced list with the wife!",
+      "thumbs_up": 9,
+      "date": "2019-08-26T15:25:52"
+    },
+    {
+      "rating": 3,
+      "text": "Good, but... I wish I could access all the features with the app. I can't see the daily schedule I typed up on my computer through this app, I can't highlight with anything other than the pink color, and overall it's sometimes difficult to work with. Compared to the chrome extension I've used, the app feels very watered-down and underwhelming. It feels like it's just missing too many features and defeats the purpose of using the app--not to mention, it can't be used offline.",
+      "thumbs_up": 11,
+      "date": "2019-08-20T09:17:14"
+    },
+    {
+      "rating": 1,
+      "text": "Beware of the deceptive description. The devs state \"Best of all, it's completely free!\" IT IS NOT FREE! It look like a great product but the so called \"free version\" is so limited (5 AI requests per MONTH!) that it is impossible to assess the value. I understand app dev and maintenance costs money. The problem isn't charging for the app, the problem is the deceptive description that lures people in and wastes their time. What other unexpected limitations might I find after paying? No trust.",
+      "thumbs_up": 39,
+      "date": "2024-06-22T03:31:13"
+    },
+    {
+      "rating": 5,
+      "text": "I love taskade, I stumbled onto the chrome extension by accident and fell in love! the app works just as well as the web version on my PC, I love the templates and everything you can do with taskade, I've noticed some limitations inside the app but they are minor and not anything I do a lot, such as moving a task between workspaces I think is one thing, and other minor inconveniences but for the most part I can do everything here that I could do on the computer and it works beautifully!",
+      "thumbs_up": 8,
+      "date": "2021-04-12T22:12:38"
+    },
+    {
+      "rating": 5,
+      "text": "I'm a single mother, full time student, work full time, and volunteer with the Red Cross. Taskade is free, I can track everything I need to do and the steps to do them. I start by putting thoughts and reminders in it - then expand those into steps as the time comes or when the steps become apparent. I also keep my recipes in it. It's my fave of all the apps I've tried. I wish the interface was a little more flexible, but that's ok.",
+      "thumbs_up": 14,
+      "date": "2023-08-20T15:19:08"
+    },
+    {
+      "rating": 5,
+      "text": "I have a challenging time with all things technology. Somehow, I can wander through taskade fairly effortlessly. When I get stuck, I just ask the AI where I go from there, it provides options, I pick one I like, and I'm right back on track working through tasks, organizing my thoughts into usable ideas, and completing projects!",
+      "thumbs_up": 30,
+      "date": "2024-07-20T07:37:53"
+    },
+    {
+      "rating": 5,
+      "text": "I've been utilizing Taskade for a few months now, I've found it to be quite useful! The process of collaborating with others has been straightforward, and I've been able to organize my schedule effectively with multiple projects simultaneously and 10+ ppl. The AI capabilities are great. There is a slight learning curve associated with it. However, you could really utilize it to expedite various tasks, including automations, thereby saving time. Converted from Trello and Notion.",
+      "thumbs_up": 15,
+      "date": "2024-03-18T02:41:12"
+    },
+    {
+      "rating": 5,
+      "text": "Taskade is the perfect blend of freedom, structure and functionality, plus AI on steroids. I've used Azure DevOps, Asana, Jira and ClickUp at various points and projects in my life, and would recommend Taskade to anyone who truly has an Agile, self-organizing team and wants to go fast. Micro-managers beware, it's not the tool for you, you'll get lost in the sauce!",
+      "thumbs_up": 2,
+      "date": "2024-05-03T12:47:03"
+    },
+    {
+      "rating": 1,
+      "text": "This has been reworked into uselessness, it was a clean UI and you could do what you needed to easily... now it's the opposite, AI Ads everywhere, your lists are hidden and now the simple ability to share a basic list with 1 other person is paywalled for the AI slop! If you accidentally leave a list (done with 1 wrong fat finger) you can no longer be invited back to it nor rejoin it!",
+      "thumbs_up": 5,
+      "date": "2025-12-14T11:58:36"
+    },
+    {
+      "rating": 1,
+      "text": "Doesn't allow me to login. The app is continuously giving an error for auto sign in with my Google account. The developers need to fix their app using the AI first.",
+      "thumbs_up": 0,
+      "date": "2026-03-16T07:47:24"
+    },
+    {
+      "rating": 1,
+      "text": "If I could give less than 1*, I would. If you're online, it's a useful app, apart from the CONSTANT push to use their AI. I don't want AI. I want checklists! But if you go offline, you have ZERO access to your notes. Terrible. Charge me if you must, but give us offline access!",
+      "thumbs_up": 0,
+      "date": "2026-01-11T01:49:01"
+    },
+    {
+      "rating": 1,
+      "text": "I used to really like this app but then they added a bunch of ai that just makes it a jumbled mess but the worst is we paid for a year which doesn't expire until March with unlimited seats but with no warning they limited the seats. so they are denying us what we paid for. I guess they don't know that breach of contract is a thing. steer clear of this dishonest company",
+      "thumbs_up": 7,
+      "date": "2025-12-18T03:09:06"
+    },
+    {
+      "rating": 1,
+      "text": "I'm totally disappointed about this ai slope we experience! I would use Taskade to manage my tasks and todos. This tool was great for that. It was! sorry..",
+      "thumbs_up": 2,
+      "date": "2026-01-21T02:31:51"
+    },
+    {
+      "rating": 1,
+      "text": "Stupid. You have to buy credits to be able to do anything, and it doesn't give you starter credits to check out the app first, how is anyone to know if they want to spend their money on this app if we can't even test it out first??",
+      "thumbs_up": 3,
+      "date": "2026-02-03T04:24:37"
+    },
+    {
+      "rating": 2,
+      "text": "not a good mobile app. Just a bad, clunky, frustrating experience for the user, there's a huge convenience Gap between what is promised and the actual experience using the product.",
+      "thumbs_up": 2,
+      "date": "2026-01-25T20:12:01"
+    },
+    {
+      "rating": 1,
+      "text": "the latest update makes this app practically unusable. it's almost impossible to find your own prior content under the incredibly insistent heaps of AI TOOLS USE AI FOR EVERYTHING HEY LOOK CLICK HERE FOR AI!!!!!! like. i literally could not care less about AI, that's not what i used to use the app for, i used it for to do lists and tracking pattern development. i guess i'll be looking for a new app since Taskade has decided it no longer cares about the user experience.",
+      "thumbs_up": 14,
+      "date": "2025-11-19T16:10:29"
+    },
+    {
+      "rating": 1,
+      "text": "Remove \"Your Ideas, Alive\" Please, please, please let us remove this from our home screen or make it optional. I have to hit THREE things just to get to my to do list now, which is honestly ridiculous. My first time I thought about canceling my subscription. I get Ai is the future and all that jazz but some people can still do things on their own without the help of Ai, for which is why this feature should be optional.",
+      "thumbs_up": 14,
+      "date": "2025-11-15T08:09:44"
+    },
+    {
+      "rating": 1,
+      "text": "Whoa, what happened to this app? The home page is now like a website landing page rather than a space for my stuff. My workspace is a tiny single line surrounded by spammy AI marketing. The app is laggy and buggy now. The screen transitions are stuttery and feel like an iFrame rather than a native app; even the Android back arrow straight-up doesn't work. It really feels like a rushed pivot to AI via a slow browser PWA crammed in place. Taskade was once quality software. 1 star for AI slop.",
+      "thumbs_up": 5,
+      "date": "2025-12-21T08:06:12"
+    },
+    {
+      "rating": 1,
+      "text": "This app used to be really helpful. Sure, it was somewhat laggy for some time now, but at least it was still functional. Now it's completely unusable and bloated with their stupid AI stuff. Since the latest update I can't even find my already created Todo-lists, which is basically everything I'd expect from a Todo-App. They're so invested into AI that they can't even see how they're ruining a perfectly fine product with it. Back to self-host an alternative I guess..",
+      "thumbs_up": 9,
+      "date": "2025-11-18T11:58:01"
+    },
+    {
+      "rating": 3,
+      "text": "So far, I'm really impressed with this app (it could seriously put my Todoist subscription at risk). BUT, and this is a significant issue for me, the sync between my phone and tablet is sketchy. I keep needing to log out and log back in to get updates on either device to sync. Once that's sorted, this could be unstoppable.",
+      "thumbs_up": 4,
+      "date": "2024-03-02T13:46:09"
+    },
+    {
+      "rating": 4,
+      "text": "I like the app overall, but it would be nice, if the app version was as customizable as the desktop version. It would benefit those of us who use their phones/tablets for planning. Please add the options to change and see the backgrounds and the possibility to change the project view. Also the option to browse the many available templates would be great. Thanks!",
+      "thumbs_up": 5,
+      "date": "2021-11-17T16:53:42"
+    },
+    {
+      "rating": 4,
+      "text": "I am so glad I found this software! I love the desktop client, but the phone version does lack things. I'm not sure if it's just me, but for me copied text doesn't get pasted if it is more than one paragraph. It'll be a bit disappointing if there's no valid explaination for this, though. Although phone experience is limited, overall I love the platform. Thanks! Edit: checked some things and figured out one problem!",
+      "thumbs_up": 0,
+      "date": "2022-02-25T14:05:44"
+    },
+    {
+      "rating": 5,
+      "text": "I really love Taskade (the concept, the service, the UX and UI on both desktop and mobile, etc). ❤️ However, the mobile app was a bit buggy lately: when you copy something with full line breaks, the text after the lime break disappears in the app, but these disappearing lines are visible on desktop later. 🤷‍♀️ It's not that hard to keep this in mind while using the app, but hopefully this and minor sync bugs have been realized and removed / will be removed soon. 🤞",
+      "thumbs_up": 5,
+      "date": "2022-03-14T03:19:31"
+    },
+    {
+      "rating": 4,
+      "text": "Taskade has a very pleasing interface on desktop and it's easy to use. The only thing I don't like about their mobile version is the '#' tags lose their functionality. For example, in the desktop version you can tag headings like #high priority and when you click on #high it'll filter out everything except those with #high, this is very convenient when you want to focus on certain \"#tags\" on desktop. However, the mobile version completely loses this functionality.",
+      "thumbs_up": 13,
+      "date": "2019-12-19T11:39:53"
+    },
+    {
+      "rating": 3,
+      "text": "Great simple app that I thought did everything I needed.  I love the syncing between the app and my computer browser.  That was until I discovered that you MUST have an Internet connection to see your lists.  For me that is not always possible (eg. when in large warehouses or on airplanes) so for now I will be uninstalling and going back to Colornote.   If I have this wrong or if there is a workaround I would be happy to re-rate the app as 5 stars.",
+      "thumbs_up": 9,
+      "date": "2019-02-28T19:41:26"
+    },
+    {
+      "rating": 3,
+      "text": "I was looking for an app that would integrate the ease of making notes like Google keep and option to add due dates like Microsoft to do. It does an okay job as it is not accessible offline, which means I can't make a quick note if out and don't have wifi or cellular connection. The app hides the toolbar on my tablet. It will only show for a split second when minimising the on-screen keyboard or if I connect an external keyboard which is annoying. I have deleted and re-installed but same.",
+      "thumbs_up": 15,
+      "date": "2023-02-25T19:35:38"
+    },
+    {
+      "rating": 4,
+      "text": "I have been using this app for almost a year now on both my desktop and phone. I can edit my planning anywhere and my team sees it immediately, which makes is so convenient. It has changed my team's life, we don't have any note books and papers anymore and I will never work any of other way. The only thing I would really love to add to this app is a spelling checker or to at least integrate grammarly into the app. That would be amazing. Oh and an UNDO button! That would be great!",
+      "thumbs_up": 9,
+      "date": "2021-01-06T02:20:39"
+    },
+    {
+      "rating": 5,
+      "text": "Ok, todoist is good, but this app is much better IMO. I don't really know how to put it in words, but it is just more flexible and easier to perceive. The only two things that are missing for me: an easier / more intuitive way to set reminders (due date/time doesn't explicitly state that it'll set off a reminder, and sometimes i want a reminder prior to due time), and a wearOS app (more like just a simple checklist).",
+      "thumbs_up": 3,
+      "date": "2021-12-02T14:18:55"
+    },
+    {
+      "rating": 1,
+      "text": "Useless since the new update. Used to be one tap from my home screen, now it's 6 or 7 agonizing taps just to get to my list. Emails support a month ago, no resolution. Absolute rubbish!",
+      "thumbs_up": 1,
+      "date": "2026-01-08T10:58:45"
+    },
+    {
+      "rating": 5,
+      "text": "I thought I would have to go to Notion to plan my day, month and even year but this has an easier learning curve. Taskade is easier to set up for individual or group work. As a student, I take notes, indent the notes and list down endless tasks. Sync is smooth and almost instant on mobile and PC regardless of text amount. Unlike Notion, images you put in Taskade can actually be ZOOMED IN and not downloaded instantly. Hope to get in-built PDF viewer and better formatting controls for pc app!",
+      "thumbs_up": 22,
+      "date": "2021-06-09T02:20:05"
+    },
+    {
+      "rating": 4,
+      "text": "Taskade is a great app! I love trying and using productivity apps but Taskade is only one of the few apps that is very effective. It has a calendar, lists, notes etc. I love how the app is flawless whenever i work on phone or pc. I just wish it would send a notification on my phone and pc not just the notifications on the app itself. I would like to acknowledge how minimalist it is as well, and its aesthetics. I used to write everything down but Taskade made me work on such things digitally.",
+      "thumbs_up": 61,
+      "date": "2021-01-17T09:23:09"
+    },
+    {
+      "rating": 5,
+      "text": "Hello, it's a little late but here's my review! Taskade is a good app when it comes to organizing my meetings in online classes and also in taking notes! It would be good if there is also a mini game since you can let your friends or colleagues join your work space just to relieve your stress as you take down notes. Have a great day!",
+      "thumbs_up": 11,
+      "date": "2021-08-26T00:17:08"
+    },
+    {
+      "rating": 1,
+      "text": "Edit: 5 stars to 1 star! it used to be easy and useful and actual mobile app in some ways. Now it is just a web app which loads inside the mobile app wrapper. Also the new homepage makes it so hard to find your own projects. Please make it optional.",
+      "thumbs_up": 10,
+      "date": "2025-11-22T02:51:57"
+    },
+    {
+      "rating": 1,
+      "text": "I had a good time with Taskade until they redesigned it into an AI slop app. the welcome screen is a giant AI prompt box and all of my previous lists are tucked away or inaccessible. Quite a shame. after 2 years of enjoying it, I'm uninstalling.",
+      "thumbs_up": 4,
+      "date": "2025-12-10T03:46:07"
+    },
+    {
+      "rating": 2,
+      "text": "The app is terrible on mobile phone! The features don't work at all: can't modify, can't change type (bullet, task, paragraph), lags, freezes, doesn't save properly, when I want to edit a text a blank page appears, even though the editing options appear I can't see my text (I'm not sure how to explain this last issue). I prefer the pc/desktop and online version. Big downside is that you MUST HAVE INTERNET CONNECTION to open and use taskade on the phone. Can't you \"pre-save\" like Notion does?",
+      "thumbs_up": 11,
+      "date": "2022-10-19T14:04:30"
+    },
+    {
+      "rating": 1,
+      "text": "They say I have used my monthly limits yet I have 0/3 workspace, I haven't even prompt a single thing .",
+      "thumbs_up": 0,
+      "date": "2026-02-23T01:38:23"
+    },
+    {
+      "rating": 1,
+      "text": "A small floating box/\"widget\" rectangle on my screen, moveable by dragging it around - nothing happens when I tap on it, and it shows nothing except the word 'Taskade', so it seems pointless and is just in the way. Ominously, it persisted after I uninstalled the app.",
+      "thumbs_up": 0,
+      "date": "2026-03-01T19:30:05"
+    },
+    {
+      "rating": 1,
+      "text": "I'm very frustrated with this app. The feature is difficult to use and not suitable for beginners. Also, I also had trouble connecting my payment method to the Google Store. I forgot to unsubscribe on another page, and now I've been charged $30 USfor another cycle. It took me half an hour to figure out how to unsubscribe.  I highly do not recommend this! Don't even try !",
+      "thumbs_up": 2,
+      "date": "2025-04-14T11:37:26"
+    },
+    {
+      "rating": 1,
+      "text": "Great app, but still very buggy on android. Clunky interface, can't even paste text lately. Trash app after the last update. Lots of AI nonsense and interface. Time to change again to an app with focus on notes and task lists. Very disappointing because I really enjoyed the old version.",
+      "thumbs_up": 8,
+      "date": "2025-11-15T18:10:36"
+    },
+    {
+      "rating": 1,
+      "text": "Nov 2025 update is awful. Can't find anything, too many chat ai boxes that aren't helpful, all the easy access features are gone.",
+      "thumbs_up": 8,
+      "date": "2025-11-16T10:21:59"
+    },
+    {
+      "rating": 3,
+      "text": "Best productivity app out there! Giving 3 stars because some tasks from my workspace doesn't appear in the \"my tasks\" bar even though the due date and time are set correctly. This made me miss out on certain tasks a few times! Also the extension on chrome isn't working at all. It worked the first few times but now I'm not able to directly add links to my list. Please fox this bug :)",
+      "thumbs_up": 18,
+      "date": "2022-06-05T08:21:52"
+    },
+    {
+      "rating": 4,
+      "text": "It's really good, doesn't lag (being an app and not a website) and it's quite simple to get into. Minus one star because you can't really customize the layout of the app. Also, some options aren't explained very well. I would also love to see an \"info about\" button where you can add some extra info to each task or even just the entire tab.",
+      "thumbs_up": 12,
+      "date": "2021-02-07T20:23:31"
+    },
+    {
+      "rating": 5,
+      "text": "At the moment, I use Taskade like a Journal. This is also the place where I keep track of events that are upcoming, random lists, even also writing/tracking my routines here. There was also a time where I suggested for the tasks to be rearranged and in a few weeks, it did! I don't have any problems with this app as of now. Well, I might have suggestions but I'll just email them. I also suggested if they could make this app and the website/desktop version, offline and they said they're currently working on it. So, all in all, I give this app 5 stars!",
+      "thumbs_up": 138,
+      "date": "2020-07-08T02:28:29"
+    },
+    {
+      "rating": 5,
+      "text": "The app is great and easy to use. I am really impressed how responsive Taskade's support is. Usually when one sends an email to a help center, it ends up in a black hole with no reply, but when I contacted Taskade's support, I got a reply within 24h. They had been sending me emails with upadates until the issue was solved.",
+      "thumbs_up": 4,
+      "date": "2022-09-15T15:34:21"
+    },
+    {
+      "rating": 5,
+      "text": "I've only been using this app for a few days and I use it very similar to how I had Google calendar, Google keep, Trello, discord, etc. Now within only one app I can do it all at once. It has definitely helped my organizational skills get better when it came to projects as well with the templates within the app. Overall a great app well designed desktop and mobile, and I look forward to using it more in the future.",
+      "thumbs_up": 2,
+      "date": "2021-04-21T21:19:06"
+    },
+    {
+      "rating": 4,
+      "text": "Pros: Mac,Win,Linux, Android, Ios clients! These also include a snap client for Linux and browser extensions. Man I wish more projects would be this efficient. Organization is on par or succeeds in almost every area. Customization to your needs is a must for organized people. We all want it to look our own way. Yes Taskade does that! Cons: Not the fastest sync I've ever seen. ex. PC to Phone could be quicker. The widget on android needs more options. I would like to see a clickable checklist of my currently Star'd tasks. The widget basically shows a list of the star'd tasks. Clicking these then opens up the main program at that task. It's do able but slows down the process of being productive. I would recommend this app to anyone who needs to be organized. I really want to give it 5 stars but the sync slowness and lack of useable widgets lowers the score. Devs keep up the good work and lets see some good widgets come out soon!",
+      "thumbs_up": 9,
+      "date": "2021-01-13T20:38:01"
+    },
+    {
+      "rating": 1,
+      "text": "I guess I will be adding \"download Taskade data + delete account, find new to-do app\" to my to-do list. What a wild albeit unsurprising pivot. The very definition of ensh**ification. That having been said, thank you for the many years of cute colour-coded awesomeness that went beautifully with my AuDHD and stood out from virtually every other application before or since. Sad to see you go out sad. 🤖🚽",
+      "thumbs_up": 4,
+      "date": "2025-12-09T21:40:22"
+    },
+    {
+      "rating": 5,
+      "text": "Please grandfather us day 1 users in before you raise subscription prices!!!! Best A.I. app on the play store that no one's ever heard of....not for very much longer, no doubt. This is a top-tier, highly functional application to enhance productivity and allow the user instantaneous access to tools that can be applied across all categories of interest, whether professional or personal. Keep up the good work, and thanks again for putting out a solid product!!!",
+      "thumbs_up": 0,
+      "date": "2025-03-07T04:14:40"
+    },
+    {
+      "rating": 1,
+      "text": "From bad to worse. I chose Taskade as a simple to-do list. Now, it's morphing into a completely unusable AI waste of phone space. I can't even access my to-do lists from the home screen. Almost at the point of having to move over to a new app. Really, really disappointing.",
+      "thumbs_up": 42,
+      "date": "2025-11-18T21:53:34"
+    },
+    {
+      "rating": 5,
+      "text": "Loving it, keeps me organised. Personally I use it to sort out tasks into different gategories and you get to add bullet or numbered notes under a task. You even get to cross out done tasks. It has alot of features to play around and curate it to your liking regardless of niche. I just got alot of stuff done and I'm just really happy i guess 😂. Not to mention you have a free assistant...AI.",
+      "thumbs_up": 5,
+      "date": "2024-01-28T12:29:40"
+    },
+    {
+      "rating": 3,
+      "text": "Hi! I really adore this app! But I have been facing a problem since the very first time I started using it. I mainly use my laptop. I don’t have Taskade downloaded; I only utilise it on Chrome. For some odd reason, whenever I try to set up my banner or background it says that ‘something is wrong’. I’ve refreshed it a lot of times, restarted my laptop and all of that. Still, it says the same thing? And my WiFi is completely okay. I do hope you guys are able to fix this problem soon!",
+      "thumbs_up": 6,
+      "date": "2021-11-28T09:51:56"
+    },
+    {
+      "rating": 5,
+      "text": "amazing app , just started and it looks great.",
+      "thumbs_up": 0,
+      "date": "2026-03-14T23:28:11"
+    },
+    {
+      "rating": 1,
+      "text": "the new style of the app is completely a mess. a clean useful to-do list and project management turned into one screen a box and ai without creativity without any usage, that is also very laggy and heavy.",
+      "thumbs_up": 4,
+      "date": "2025-12-07T02:00:46"
+    },
+    {
+      "rating": 5,
+      "text": "I found Taskade Ai and I am happy. You can launch Ai Agents that do all the research for you. Generate content and automate workflows and brainstorm ideas, create apps and so much more.",
+      "thumbs_up": 1,
+      "date": "2025-12-15T05:29:40"
+    },
+    {
+      "rating": 4,
+      "text": "I spent all my time searching for like perfect apps for like tasks and notes e.t.c I first found it on my pc ...I think on chrome webstore? Anyways, This is a very nice apps to take notes, tasks and many other things. But, I do have something to say on the pc this app works perfectly but on mobile this is very glitchy like not opening sometimes or even not writing down what you are typing... that's all otherwise I highly recommend this app!",
+      "thumbs_up": 2,
+      "date": "2023-03-15T23:52:27"
+    },
+    {
+      "rating": 5,
+      "text": "I really like this app! I just have one request: Once tasks populate the Today section of the My Tasks list, I would like to be able to manually reorder them (through drag and drop) to the order in which I would like to perform them. This way, if my list becomes long, I don't miss something while I'm out and about running errands from different workspaces.",
+      "thumbs_up": 17,
+      "date": "2021-07-19T23:37:59"
+    },
+    {
+      "rating": 3,
+      "text": "This is an advanced task management app, not suitable for keeping simple notes. Copy pasting for example is needlessly convoluted, where the in-app text formatting overwrites the standard functions of my keyboard app. Sometimes the segments in my note will automatically fold itself or stuff will go missing. Very very steep learning curve and not very user friendly. Only for the most advanced users.",
+      "thumbs_up": 7,
+      "date": "2025-03-25T09:48:14"
+    },
+    {
+      "rating": 5,
+      "text": "The best. Provides the most professional features for free. Plus everything is cloud synchronized, that means all your plans, schedules, can be viewed on multiple devices, and moreover on the web version, you can view your lists as mind map, organization chart, and much more. Even the taskade mobile is getting good updates frequently. And they have lots of free useful templates for us to use. Taskade never disappointed me. THANKS A LOT.",
+      "thumbs_up": 57,
+      "date": "2022-01-27T12:16:29"
+    },
+    {
+      "rating": 5,
+      "text": "For a person with ADHD, this app is my everything. Being notified of new things added helps remind me to check it, and I'm not writing stuff down on paper or a notepad app where I'll undoubtedly knock it out of sight, lose it or forget to check it. I wouldn't change a single thing about it. I still forget sometimes but I've never been this consistently productive.",
+      "thumbs_up": 23,
+      "date": "2021-06-22T17:00:08"
+    },
+    {
+      "rating": 5,
+      "text": "As someone who has needed some way to organize my day to day (from health to fitness to business ideas to organizing work flow to organizing my day to day to week to month etc.) this has been an incredible application. It syncs with my Google calendar allowing me to set dates and not worry that they'll be in my phone worst case. The ai is a nice addition but you can't save convos which means the ai chat window won't remember context once you move to another window.",
+      "thumbs_up": 0,
+      "date": "2023-06-20T09:04:36"
+    },
+    {
+      "rating": 5,
+      "text": "I was looking for a cross platform app that my wife and I could use to share lists (shopping, to do lists, movies to see, etc) and this app fits the bill perfectly. it's very simple, yet is exactly what we need to keep track of busy lives and things that need to be done.",
+      "thumbs_up": 32,
+      "date": "2019-07-23T23:04:48"
+    },
+    {
+      "rating": 4,
+      "text": "I really love the application. Though I only used it like within this day but as a student and also a new to this app, it really helps me a lot when it comes to organizing in a productive way, the downside of it, I cannot customize the background of the app, it can be editable when you use your desktop but in my android phone, I cannot customize it at all, it only have this default blank and plain wallpaper. I hope in the future updates, this will be added to their list.",
+      "thumbs_up": 6,
+      "date": "2021-02-10T09:35:07"
+    },
+    {
+      "rating": 2,
+      "text": "I loved this app. Kept me on top of stuff and let me make easy to-do lists daily. But, suddenly it kept telling me I was signed out but at the same time saying I was already signed in. I restarted my phone, reinstalled the app. I log in to my account and once again it won't let me do anything because I'm not signed in.",
+      "thumbs_up": 0,
+      "date": "2022-11-27T19:41:13"
+    },
+    {
+      "rating": 5,
+      "text": "Wonderful app! Definitely a game changer. It's just so helpful! I think it's pretty much the best AI app I've tried yet. The free version is enough to get you started. Worth paying the subscription because you get everything chat GPT has plus way more at less than half the price.",
+      "thumbs_up": 1,
+      "date": "2024-03-27T20:03:26"
+    },
+    {
+      "rating": 5,
+      "text": "Edit: I love Taskade. It's the best free app I've found to help me organize my thoughts and record . It's free ALL of the time. You are limited by max AI usage per month on free, but the upgrade pricing is quite fair. The templates are magical. It's certainly on my resource list of future perfect apps for my clients. :)",
+      "thumbs_up": 2,
+      "date": "2023-07-11T22:20:57"
+    },
+    {
+      "rating": 5,
+      "text": "I think this is one of the best app ever . Firstly , it's all free and it offer more than the more known options like todoist . Secondly, I have been desperately searching for a app that let's you show your progression in a project in visual way . Simply put , I'm looking for a tracking bar . I found 2 types of apps either they have a bad design or it doesn't have the feature (my best option was notion but notion is way too complicated for me ) . Lastly , it has AI in it . What do you want more?",
+      "thumbs_up": 3,
+      "date": "2023-08-11T20:04:47"
+    },
+    {
+      "rating": 5,
+      "text": "Definitely one of the best project trackers out there. And the best AI integration I've experienced so far (way better than Google's and many others). There are small improvements that could be made specially with regards to a unified experience between the app and web version. How ever I give them a pass because there are practically no platforms out there that truly do that well.",
+      "thumbs_up": 5,
+      "date": "2024-07-18T08:38:58"
+    },
+    {
+      "rating": 5,
+      "text": "It is highly versatile but without clear guidance to how it all works together. Intimidating at first but if you are someone who has to do multiple jobs at your organization take the time to figure it out because its literally made my whole nonprofit more effective. I love it! New updates are filling in the gaps and it's becoming a very impressive tool.",
+      "thumbs_up": 7,
+      "date": "2024-01-31T22:04:12"
+    },
+    {
+      "rating": 4,
+      "text": "Auto sync is just bad. Needs refreshing the page on webapp and doesn't even sync in windows app. Also it definitely needs a pitch black theme customization all of the other apps have all these basic but important things Syncing issue is actually about how late it is syncing. Eventually it does the job but it takes a bit and sometimes you need to close the app and restart it so that it would be synced across devices",
+      "thumbs_up": 5,
+      "date": "2021-05-15T12:07:15"
+    },
+    {
+      "rating": 5,
+      "text": "I love it! One issue for me is, that sometimes on desktop I couldn't use shortcuts, because I changed language on keyboard. That's a small problem, but not critical. This app so useful for managing tasks and see project road, plan projects, assign tasks, give them due date and more and more. Sometimes it's looks like Notion in some parts, but this app not a notion. It's Taskade :)",
+      "thumbs_up": 0,
+      "date": "2023-06-19T21:26:28"
+    },
+    {
+      "rating": 3,
+      "text": "It has so much potential but small things are so annoying. I can't change the color of highlight from the app. When I click highlight, the whole sentence is being highlighted which deletes the specific word highlight and there's no undo button. I could spare the highlight option if I could use edits such as bold or underline. I know the desktop version has all these options, pls implement them in the app version as well.",
+      "thumbs_up": 18,
+      "date": "2020-07-05T02:04:04"
+    },
+    {
+      "rating": 1,
+      "text": "I love this app but I guess the most recent update broke it. App will not load. Already tried uninstalling and reinstalling. 🥲 So 1 star ATM because it's broken. Update 9/2/22: I updated the app. It still won't load! Please fix this! Update 9/18/22: I cleared the app cache and was able to get the app to open again, but not for long. Now, when I open projects, I get an alert that I'm offline (I'm not.) And occasionally, the message that a project doesn't exist anymore. 🥴",
+      "thumbs_up": 29,
+      "date": "2022-09-19T00:29:12"
+    },
+    {
+      "rating": 3,
+      "text": "I wish I could use this app only for organisation, notes, planning, because it is the cutest app and it goes perfectly with how I would like a note taking app to look like. But there are some things that don't work smoothly or just...don't work at all and they are deal breakers for me. And this gets me upset with the app and I just go back to google keep, which...doesn't look as good and doesn't have everything I would wish from an app like this either, but definitely works smoother.",
+      "thumbs_up": 2,
+      "date": "2020-01-12T01:32:50"
+    },
+    {
+      "rating": 5,
+      "text": "I've been using Taskade for several months and I love it. The ability to create templates for recurring task lists (such as weekly chores) and the ability to sort lists into separate workspaces (Personal, work, household, etc) to control who it is shared with is amazing. I'm not a super organized person but this is exactly what I need to manage my personal chaos. Easy & effective.",
+      "thumbs_up": 14,
+      "date": "2020-05-12T18:18:32"
+    },
+    {
+      "rating": 2,
+      "text": "I like the app, but its not optimized for phones, the webpage works appropriately on a PC but not on the cellphone, and the page has certain functions that the phone hasn't, for example the function of putting recordatory at certain time, you can only do that on PC but not on cellphone and it should be added.",
+      "thumbs_up": 1,
+      "date": "2023-08-24T12:44:11"
+    },
+    {
+      "rating": 1,
+      "text": "App doesn't work at all. I sign in (from the app, which opens a browser in-app), it acknowledges I'm signed in, it says \"continue to mobile app\" with no other options for anything but then nothing happens when I click on that. It just loads, completes loading, and still tells me to click on it to sign in.",
+      "thumbs_up": 5,
+      "date": "2023-09-01T05:04:00"
+    },
+    {
+      "rating": 1,
+      "text": "I'd love this app, except that it's so busy trying to live update ALL THE TIME that there's horrific lag. I have a list of names, and just pressing enter to go down and add a name, it freezes, goes down, goes back up for some reason, adds the text to the previous line, I backspace, it back spaces the original text I was trying to add to not the errors. Unusable! Just for one name! Can't imagine what would happen if I tried to alter a paragraph. (Oh wait I can, because I have, and it's a mess.)",
+      "thumbs_up": 8,
+      "date": "2024-03-04T15:46:35"
+    },
+    {
+      "rating": 4,
+      "text": "I love the App functionality very much.. I was looking to have an app that does cross sync between Windows OS and Android OS. But only concern is that it is not opening offline. Also it needs WIFI connectivity in Mobile.. Otherwise it is not opening in Mobile Data connection.. And it would be good if they provide Widget option in Desktop version.. Other than that the App is awesome.. But currently I uninstalled it and using my favourite app TickTick..",
+      "thumbs_up": 15,
+      "date": "2018-12-15T11:23:02"
+    },
+    {
+      "rating": 5,
+      "text": "Best simple app for managing Tasks - without a doubt! I've been in the hunt for a simple app to manage Goals and assign tasks and subtasks for those Goals. None of the many apps I've tried had the flexibility and ease of use as Taskade. It only took me a few minutes to figure out how to do everything I needed: the UI is very intuitive - and almost ALL I wanted could be achieved. I'm impressed! I cannot recommend this app enough: it has everything you'll ever need!",
+      "thumbs_up": 3,
+      "date": "2022-12-31T09:01:10"
+    },
+    {
+      "rating": 3,
+      "text": "A bit buggy... I love the premise of the app, and I love that you can share task lists with others to work on together... but, the app has proven to be buggy when typing and moving between lines. More recently, I've been having the issue of task lists becoming non-responsive, so that no matter where I click the app doesn't respond. The only fix, to exit and restart the app - it happens so regularly though that this isn't a long term solution. I love the app, but hope you can rectify the bugs :/",
+      "thumbs_up": 5,
+      "date": "2023-07-23T07:42:40"
+    },
+    {
+      "rating": 5,
+      "text": "This app changed my school life. Its perfect for anyone in school or college right now, I found my paper journal often had me running out of room and if something was on an older page then id completely forget about it but with Taskade it stays until you finish it. The mobile app is a big clunky in places but the desktop extension is perfect!!",
+      "thumbs_up": 2,
+      "date": "2022-11-14T03:11:36"
+    },
+    {
+      "rating": 3,
+      "text": "Ok. Colorful layout. Like that alot. Folder-driven a great plus. Seems more purposed for Teams now than before. Biggest change is a brand quite expensive Pro version upgrade option that is often promoted. Wayyyyyy too expensive if you are one-two person. If a mid-size company is paying the bill, probably worth it. I would promote the paid app if my 2-person company had it to use.",
+      "thumbs_up": 4,
+      "date": "2019-03-23T09:25:44"
+    },
+    {
+      "rating": 1,
+      "text": "Great. But there is extreme delaay in tapping EVERYTHING. It takes seconds for nany tap or navigation to turn up. The app is slow. My phone is working well with other apps. This one just specifically has a slow interface. Kindly please fix. Also, optimize it that we can already edit the folders by just tapping the name. No need to click tthe 3 dots and click ''edit' just let us have the quick option to change the title of the folder by just tapping on the title itself.",
+      "thumbs_up": 59,
+      "date": "2023-07-22T14:12:23"
+    },
+    {
+      "rating": 3,
+      "text": "Great on PC, works on android mobile (S10e), but somehow won't work well on my Samsung S6 Lite even when running as the only app open. Severe delays when clicking a button, sometimes unresponsive. And you can't delete a bullet after creating it (pressing delete gets you nowhere). This tablet runs all other apps well, not sure why taskade is the only one with difficulty. Please look into it and fix? Will surely update review if this can be sorted.",
+      "thumbs_up": 12,
+      "date": "2021-01-26T12:59:32"
+    },
+    {
+      "rating": 4,
+      "text": "Fantastic App! Really great for keeping my clients, tasks , and team on the same page. I would give this app 5 stars but it's lacking in a few qualities that could help make it more user friendly. Better alerts and notifications. would also be nice to be able to upload more than one attachment at a time. Overall this is a great app for small teams or i individuals lookimg to make organization and transparency a real priority.",
+      "thumbs_up": 8,
+      "date": "2019-03-05T02:27:23"
+    },
+    {
+      "rating": 4,
+      "text": "It's a great app I use it with my friends and all of us are having a great experience the interface is really cute and there's alot of options and it's definitely useful, I once miss clicked the \"show completed\" button and I had to scroll forever to find my current tasks and to hide the completed thasks so if you can fix that button to be at the top of the page it would be great.",
+      "thumbs_up": 2,
+      "date": "2022-01-21T04:27:43"
+    },
+    {
+      "rating": 4,
+      "text": "Significantly improved, though it still has a long way to go to meet my needs completely for novel writing. I use \"Save The Cat\" methodology. In it, I use templates for Characters, scenes, acts and 'beats'. Unfortunately, templates are only available at the folder/project level. I'd also like to see multi paragraph task fields. I don't need to write the novel in Taskade, but I do need to write multiparagraph descriptions from time to time.",
+      "thumbs_up": 15,
+      "date": "2021-12-10T10:41:15"
+    },
+    {
+      "rating": 4,
+      "text": "I really liked the landscape pictures in the print settings as \"headers\"but you changed it in new update to full page as background it would be nice if you add more custome options in print settings so one can customize these things according to Personal taste and preference especially it would be really nice if one can choose which picture to put in the document .",
+      "thumbs_up": 1,
+      "date": "2021-12-19T04:18:10"
+    },
+    {
+      "rating": 3,
+      "text": "Great app Though the only issue is when I set tasks to daily repeat, I am unable to strike them out for that particular day and it even shows me upcoming tasks for the rest of the week. Overall great for organising, has templates for all sorts of people looks good and has a ton of features for free!!",
+      "thumbs_up": 0,
+      "date": "2022-07-29T14:27:15"
+    },
+    {
+      "rating": 3,
+      "text": "I love this app and I want to make it my go to ToDoList app, but when I installed it on my pc via Microsoft store and moved the app to d drive via Settings-Apps-Move for space conversation, the program started throwing an error and stopped working after that. I have been using the web app from this point on. I Hope this gets fixed soon. I want this app to become the best, which is why I am being critical about it. Waiting to make it my daily todo list app 😄",
+      "thumbs_up": 1,
+      "date": "2022-08-04T10:16:53"
+    },
+    {
+      "rating": 3,
+      "text": "Hy there....the app is good. I'm currently in the process of switching from todoist to taskade but I'm encountering a serious problem. That is, whenever I click on the Quick Add Widget, I'm taken to the Taskade app but the keyboard doesn't open up. So I'm unable to use this crucial function to capture my thoughts on time. Can you please check and make it working in the next update? My phone is realme 3, running Android v.10. I use a launcher called Niagra Launcher. Thanks in anticipation",
+      "thumbs_up": 2,
+      "date": "2022-09-18T23:09:53"
+    },
+    {
+      "rating": 5,
+      "text": "Seems quite intuitive at first glance, the easy tags are nice. Is it possible to make the date of a task recurring? When selecting the day in the calendar maybe a possibility for it to repeat the next month, and perhaps multiple times? Something of a recurring reminder, that can be set for multiple different dates? Edit: Also when selecting the emojis, I end up scrolling through all of them, due to no search option 😅. Perhaps replace it with a keyboard pop-up, or add a search bar. Great app",
+      "thumbs_up": 8,
+      "date": "2021-03-17T05:46:39"
+    },
+    {
+      "rating": 5,
+      "text": "I usually don't write reviews, but this app seriously deserves one. All of my fellow peers and students, Taskade is literally the best app for helping you stay organized and in track of your assignments, assessments, personal lists, goals, etc. The act of checking off the list when you're done is so rewarding and motivating, and the fact that you can share your lists with others is such a helpful concept, especially in group projects. Everytime you open a new tab, taskade shows up and it is so freaking helpful in reminding you of what you have to do. Plus, can we please talk about how aesthetically pleasing this app is? My GOD. Anyways, I 100% recommend this app to everyone, even if you're not in school. I have tried so many apps to help keep you organized and this by far has been the best one.",
+      "thumbs_up": 11,
+      "date": "2018-10-21T08:25:42"
+    },
+    {
+      "rating": 4,
+      "text": "This app is jack of all trades but master of none, with jack like a soldier in chess board. It has soo many features in it, took 3 days to know them, don't know if I even tried them all. But this app has complicated the stuff trying to simplify it (no clarity).They have used many symbols that I don't know, tried to long press on them, no description came.Only after pressing it did I know ,what that will do. Other example is calender, its difficult to use. Hope the soldier turns up to be a queen.",
+      "thumbs_up": 1,
+      "date": "2023-07-19T06:39:11"
+    },
+    {
+      "rating": 1,
+      "text": "I loved you app so much, but at least year or even more editing lists on Androidis compete mess. Sometimes keyboard input does nothing, sometimes some pieces of text are randomly restored after i erase them. It behaves completely randomly and it became completely unusable. Still hoping you will fix these issues, because there is no better organizer app than this when it comes to ui and features.",
+      "thumbs_up": 5,
+      "date": "2023-07-13T16:21:10"
+    },
+    {
+      "rating": 5,
+      "text": "I would like to focus on and acknowledge their exceptional customer service. I had a very specific issue and they got back to me within hours. They wrote a special patch, which corrected the issue, just to fix the problem I was having. And then they further contacted me for my feedback to ensure the issue was indeed corrected. Their customer service was efficient and professional. I couldn't be more pleased with the level of service I received. Thank you again!",
+      "thumbs_up": 1,
+      "date": "2021-10-14T01:16:36"
+    },
+    {
+      "rating": 5,
+      "text": "The best task management tool yet. I have tried many tools which were ok, but when I started used Taskade they were swiped off the table. It is the only tool that allows me to visually think through my work, to structure projects, and to see where my tasks fit. This become important when managing many tasks and projects. The tasks view allow me to focus on the work at hand, helping me not to get lost in the detail. They deserve more than 5 stars.",
+      "thumbs_up": 5,
+      "date": "2022-07-15T00:29:16"
+    },
+    {
+      "rating": 4,
+      "text": "Okay... I have attempted to get a productivity system up and running for the last 18 months. I struggled with Notion and Trello, they left me so confused, absolutely hated them to be honest. Thank you Taskade for making such an amazing note-taking and organisation app, that is intuitive and simple to learn. I am genuinely thrilled to have such a simple app. (I have tried at least 10 apps; todoists, evernote, keep, tick tick etc. Just struggling with tasks on the calendar.",
+      "thumbs_up": 4,
+      "date": "2022-10-25T04:37:55"
+    },
+    {
+      "rating": 2,
+      "text": "It's too buggy. I liked the platform and it's features, but when I started using it, omg it neither works properly, sometimes take a long time to just save. And in the mean while if I change something, it gets unchanged. I was planning to upgrade but now I'm done with this tool. Literally, I'm pissed off!",
+      "thumbs_up": 18,
+      "date": "2023-03-05T03:07:00"
+    },
+    {
+      "rating": 5,
+      "text": "I have tried other browser productivity tools but Taskade stands above the rest. It is easy to use and ever present when I need to jot down a to -do. The app is great as well. It integrates across all the devices I use on a daily basis to keep my stress low and my task list up to date.",
+      "thumbs_up": 4,
+      "date": "2019-05-16T18:12:59"
+    },
+    {
+      "rating": 5,
+      "text": "Lemme get this straight...This is a LIFE SAVER!! I had been searching for a minimalist planner/journal kinda app from such a long time. Almost every app disappointed me until I came across taskade. I can't even describe how much this app has helped me get my life in order. Planning, Journalling, Research.. You name it and Taskade can help. Recommend it 100% to everyone.",
+      "thumbs_up": 6,
+      "date": "2022-02-02T19:14:33"
+    },
+    {
+      "rating": 5,
+      "text": "I've been using this for a while on my PC, and it's so easy to use! I love the way that you can arrange it into a List, Board, Action and Mindmap. Trust me this deserves more downloads! I've been studying here with some of my friends and the char feature and call feature is making it more worth it. To the app developers keep up the good work😉",
+      "thumbs_up": 110,
+      "date": "2021-09-01T18:43:47"
+    },
+    {
+      "rating": 5,
+      "text": "I have tried several productivity apps; each has its advantages and disadvantages, but Taskade seems to overcome many of the disadvantages from other apps, particularly integration. Before Trello was for me the best app, but the add-ons where really required for my work and unfortuntely they are costly. With Taskade I am able to do all in the same app and for free!",
+      "thumbs_up": 8,
+      "date": "2022-03-13T16:42:20"
+    },
+    {
+      "rating": 5,
+      "text": "In 2020 I decided to ditch paper diaries and go digital, what a relief! I now have more space on my desk, I can easily add, delete and locate data its synced across my phone and pc! Taskade for me is my personal favourite vs the rest because its simple, quick, colourful & made for visual users. I enjoy how change your view from boards, list, mindmap to charts very flexible for various projects. Overall taskade has got me organised with my business and my personal life using workspaces 10/10",
+      "thumbs_up": 13,
+      "date": "2022-03-11T07:14:04"
+    },
+    {
+      "rating": 5,
+      "text": "Taskade has help enormously with the organization of my business & personal data. I love the ability to create a workflow, task list, read or wish lists on the fly and able to change view anytine with just one click. Adding #tags, links throughout your documents to reference later websites, sections in Taskade or a folder where your docs are stored. Use this feature all the time while reviewing youtube & other tutorials & articles. Able to select layout templates to get started. AWESOME Thx!",
+      "thumbs_up": 3,
+      "date": "2022-04-28T07:29:16"
+    },
+    {
+      "rating": 5,
+      "text": "This app is everything I want for a digital journal + todo list. I do bullet journaling, but an analog journal doesn't work for me for a variety of reasons so I'm shamelessly digital. I've tested out other apps, but they are either lacking features or too opiniated for my taste. This app has a perfect blend of features and flexibility all while staying clean and minimalistic.",
+      "thumbs_up": 6,
+      "date": "2022-04-16T11:18:50"
+    },
+    {
+      "rating": 5,
+      "text": "Really enjoying this app so far! It is most effective when used across the different ecosystems - android, desktop, iOS, chrome. The Google calendar sync is also really useful! The app is not too complicated and I hope to be able to add locations to tasks as well! List view is the only available view in the app version, which is a pity since I like using the mindmap view on desktop.",
+      "thumbs_up": 8,
+      "date": "2021-07-23T00:12:27"
+    },
+    {
+      "rating": 5,
+      "text": "We use taskade on a daily basis in our company to manage and plan our projects and keep track of the progression during all stages - wether in office or home office. We also collaborate with our clients in taskade and use it for everything from (video)chat to file exchange. It works on every platform. It is easy to use, beautiful an powerful. The dev team is on its toes in terms of improvements and updates. And you can count on good and fast support, from my experiences.",
+      "thumbs_up": 1,
+      "date": "2021-11-27T04:57:59"
+    },
+    {
+      "rating": 5,
+      "text": "This is a great app I am really loving it. I have used this app for a while and I have no complaints at all. It have no ads, bullet journals, todos, weeekly planners, personal task tracker, teamwork list, project board, prioritization board, strategy checklist, mind map, development tree organizational charts etc.... really love it",
+      "thumbs_up": 6,
+      "date": "2021-12-26T00:54:37"
+    },
+    {
+      "rating": 4,
+      "text": "Really good, a bit buggy. Text editing bar needs work. I wish the text editing bar was customizable and that certain features were nested into a parent button. Timer/Date/Assign To/@/#(and maybe Comments) need to be grouped into a single button with a pop-up menu. Same for Colors/Bold etc. Same for Indent/Reorder button/Copy/Paste/Move To/Delete. App doesn't handle poor connections and duplicates text/doesn't save text unless the connection is very good. This is painful and needs a fix.",
+      "thumbs_up": 4,
+      "date": "2022-02-24T02:47:17"
+    },
+    {
+      "rating": 5,
+      "text": "Excellent app. Ideal for those who want everything ordered and enjoy striking through whichever tasks they have completed. Brilliant for engineering students. You might find it difficult to start with in the beginning but gradually with time you'll find out how much powerful the app is and how easy it becomes to use.",
+      "thumbs_up": 7,
+      "date": "2022-08-02T23:35:57"
+    },
+    {
+      "rating": 5,
+      "text": "Love the app! It's so customisable! I keep helps me organise all my tasks, events and goals! I have tried a lot of other apps but by far this works the best for me! My only suggestion would be that it should be more user friendly for ipad use, it doesn't have a blank drawing page setup that I could find!",
+      "thumbs_up": 6,
+      "date": "2021-03-13T08:20:35"
+    },
+    {
+      "rating": 5,
+      "text": "Excellent concept, something I was looking for in a while now. This is pretty much a one tool to rule them all. Some UX shall be improved, and UI can get a new coat of paint. ClickUp excels in its UI, and I almost switched over to it for that one reason, it got to be pleasant to use as well. But Taskade's feature set is just unbeatable! Please improve the UI/UX.",
+      "thumbs_up": 34,
+      "date": "2022-06-20T12:53:36"
+    },
+    {
+      "rating": 2,
+      "text": "Unfortunately, sometimes it works EXTREMELY bad. Projects cannot be editted and it shows that I'm offline, despite I'm online at that moment. But still, even if I'd offline, I still want access to my projects and lists! Will be glad if you'll notice and fix that. It deserves five stars, but only if case it can be used always without such sad interruptions.",
+      "thumbs_up": 3,
+      "date": "2023-05-18T17:55:28"
+    },
+    {
+      "rating": 5,
+      "text": "1. For repeat tasks, I wish I could choose repeat tasks due today to display only on that day. Because when I click complete, the repeat mechanism kicks in and replace that completed task right away. It is very confusing to see. 2. For view only user, they can comment on web version, but couldn't comment on app version. Other than than it works ok. Gotta need some time getting used to it.",
+      "thumbs_up": 5,
+      "date": "2021-01-23T04:08:29"
+    },
+    {
+      "rating": 5,
+      "text": "This is a great app, in my opinion. I don't use it for what it's intended for, but I find its uses numerous and valuable. I'm particularly fond of the AI Agents, and when one of mine got stuck, they kept me up on their progress fixing it. I appreciate that, and the constant stream of new features is a real boon if you're experimenting. Overall, I think Taskade is worth five stars because it's innovative, orderly and great to play around with, and Support is supportive.",
+      "thumbs_up": 20,
+      "date": "2024-10-26T17:59:22"
+    },
+    {
+      "rating": 5,
+      "text": "Great app to get all your work done, the software in my pc is a little bit slow to start, but because the program is simple to use and the many features it has, I still give it 5 stars! It's the best app to do your tasks by far. You can chat, and share your work with others and very easy to use. It's beautiful and you can change the interface if you want to. Kudos to the developers and thank you!",
+      "thumbs_up": 5,
+      "date": "2020-01-24T19:08:28"
+    },
+    {
+      "rating": 3,
+      "text": "Missing touchy full colour card feeling for projects & tags to improve the colour leaded intuitivity yet for a personalised, more 'alive' feeling! Performance/tiny loading times is probably holding up to much in the long term - seen how Anytype does it? Encrypted personal content with ZERO loading times, cross platform collab.! THAT'S the future I think, so maybe have an inspiring look :) I'll jump back on with my design teams on Unlimited as soon as visually led design evolved ✌️ keep it up!",
+      "thumbs_up": 0,
+      "date": "2022-02-22T06:20:45"
+    },
+    {
+      "rating": 2,
+      "text": "I LOVE the browser experience of this application, but unfortunately the mobile typing experience is quite bad and makes it extremely difficult to use. When I type, it is not quick enough to pick up and therefore I can constantly misclick other bullet points and sometimes even tick something off. This needs to be fixed!",
+      "thumbs_up": 16,
+      "date": "2020-09-14T06:32:10"
+    },
+    {
+      "rating": 4,
+      "text": "This app really helps me to organise my day to day life as a student. It really helps me to keep on task and know what I need to do. However, when I use taskade as a chrome extension it annoys me that I can't say no to having a chat box on each to-do list as I'm just using this app and extension for my own organisation. Would you be able to change this? Thank you for this app!",
+      "thumbs_up": 5,
+      "date": "2018-10-26T06:23:51"
+    },
+    {
+      "rating": 4,
+      "text": "Shared note app with unmodular content handling - getting messy quickly. There is still a lot of potential, surprise us! EDIT: I'm back! Seems like you've been working hard and have a more fair pricing system now. Besides what I like so far, I would really appreciate tags to be in a clean & touchy filled little boxes style (like the Fields in Trello for example), right now they don't live up to the simplicity level of the rest. Keep it up! 💪 2 > 4 > 5 Stars? ;)",
+      "thumbs_up": 3,
+      "date": "2022-02-22T04:31:17"
+    },
+    {
+      "rating": 5,
+      "text": "Very beautiful experience. Really easy to use. 5-stars because of the love and dedication. Some feedback to improve: Please fix the mind map view. Everytime you add something, it adds 3 more slots inside. It is really annoying to keep deleting them. Make it only be one or none. That is how we Veteran MindMap users work. Also, would love to see the mind map view on my Android too. Loved the integration and different views. Keep up the good work!",
+      "thumbs_up": 13,
+      "date": "2020-04-29T22:15:19"
+    },
+    {
+      "rating": 3,
+      "text": "Love the Chrome extension, but on my phone, adding a checklist item or moving my cursor between checklist items makes my keyboard flip closed and open again (irritating) and makes me lose my spot on the page (very irritating). I can't see myself using the mobile app to make many checklists until this works more smoothly. :/",
+      "thumbs_up": 0,
+      "date": "2018-11-28T23:30:53"
+    },
+    {
+      "rating": 5,
+      "text": "Literally the best developers that will listen to all your concerns. We use this to track inventory in our comic shop and it works great. What little we had issues with, I spoke to the ceo and he took every bit of my concerns and ran with them. 5 stars all the way.",
+      "thumbs_up": 32,
+      "date": "2019-09-14T18:53:11"
+    },
+    {
+      "rating": 5,
+      "text": "Taskade literally saved my life! Being dyslexic, I could not organise my routines and was wasting my time. Taskade has both visual and checklist interfaces and can easily organise your days and work schedule. It's also very easy to edit... Awesome app !!! Must try!",
+      "thumbs_up": 1,
+      "date": "2022-10-19T04:27:04"
+    },
+    {
+      "rating": 4,
+      "text": "Has a very customizable focused workflow for task management, shares with team members really easily, is accessable across all the platforms I use! Only thing I haven't quite figured out is how to attach detailed descriptions to a specific task, which would be really usefully for delegating tasks. Overall a great software!",
+      "thumbs_up": 4,
+      "date": "2020-01-29T16:03:43"
+    },
+    {
+      "rating": 5,
+      "text": "Very versatile and does everything you would imagine it would. The only problem I have encountered is setting reminders for checklist items, which doesn't work, so I have had to use bulletpoints to get the reminders to work. Not a big issue but just a niggle",
+      "thumbs_up": 7,
+      "date": "2023-01-12T19:10:52"
+    },
+    {
+      "rating": 5,
+      "text": "I have been using Taskade for over a couple of years now since the product first launched and I have never regretted making the move since. I previously used To.Do.Ist and Any.Do as well as Wunderlist but Taskade was so much more appealing, simplistic and beautiful and kept all my tasks clean, and it's free! It does a great job of creating a multitasking platform as me and my friends share a workspace to develop our checklists and the call feature is brilliant. Thank you and keep improving!🙂",
+      "thumbs_up": 31,
+      "date": "2019-12-18T05:40:56"
+    },
+    {
+      "rating": 4,
+      "text": "Good app overall but having an issue where when I press enter to go to a new line it will create an empty line above and below the current line. Also sometimes when I press enter it will go to the new line as expected but will also close my keyboard which is annoying. All of this done on Samsung Galaxy Tab .",
+      "thumbs_up": 1,
+      "date": "2023-10-10T07:50:41"
+    },
+    {
+      "rating": 4,
+      "text": "Simple to use than most of the notes/task/list tools. Love the template feature. Would love to have more detailed templates like the product hunt launch template. Suggestion: UX can become more clean/aesthetically pleasing a bit more. Personal preference is Bear.",
+      "thumbs_up": 2,
+      "date": "2020-01-25T09:11:00"
+    },
+    {
+      "rating": 5,
+      "text": "July 2021 EDIT: I'm switching to Notion. I've used Taskade daily for a full year, mainly as a tool for to-do lists and short notes. Only once have I used the collaboration features. I appreciate the direction that the Taskade team is taking the app; but the main reason I'm switching to notion is due to their offline features. After losing an entire document on Taskade due to sync issues on the metro, Notion seemed to be a better alternative, both for offline, and my note-taking purposes. I wish the Taskade team all the best!",
+      "thumbs_up": 321,
+      "date": "2021-07-23T23:48:24"
+    },
+    {
+      "rating": 1,
+      "text": "Half Baked - if it worked it looks like it would be an improvement on todoist, which I currently pay for. However, I type stuff in, it disappears, I try to set a time and just hit the \"set\" button and nothing happens. Stuff goes away. I literally cannot make it work the way it seems as is intended. If they do some work and iron out the bugs they might really have something",
+      "thumbs_up": 6,
+      "date": "2021-02-25T01:14:38"
+    },
+    {
+      "rating": 4,
+      "text": "Love this app. Was trialing out various apps to take notes and agendas. Most were not only visually meh but were not supporting what I was looking for. This app ticked many boxes and exceeded what I need Love the interface and user friendly. Compatible for several devices and op systems. Almost felt equivalent to a physical notebook. The reason for giving a 4* was due to the inability with a filing or downloading feat as this was something I was specifically looking to store old agendas.",
+      "thumbs_up": 9,
+      "date": "2020-03-07T09:43:14"
+    },
+    {
+      "rating": 4,
+      "text": "It has a bit of a learning curve, but once you've figured it out it just has so many things to offer. I've been looking for a to do app that allows note-taking in between. It's not a perfect app and lacks some sophistication at times. Things like: there's no 'home' view, no reminders and no priorities. Love the task view toggle for all projects and the freedom, yet enough structure to make it work for you. The toolbar is partially obscured by keyboard on my phone, making it hard to use at times",
+      "thumbs_up": 7,
+      "date": "2022-02-03T17:09:04"
+    },
+    {
+      "rating": 3,
+      "text": "I use this on PC, however am unable to use this on Android because of how the widget takes screen space. Can you please remove the extra line for \"no date\", \"past due\", or place them inline with the title \"My tasks\", so that the widget gives more real estate to actual items.",
+      "thumbs_up": 1,
+      "date": "2022-09-10T09:56:25"
+    },
+    {
+      "rating": 5,
+      "text": "This app has been the absolute best for my to do lists, organizing and managing projects. Powerfully simple and versatile, with various types of integrations. It has browser, phone app and OS integrations, all synced and free for users like me!! Super easy to edit my plans. This is for sure a life changer for me!!!",
+      "thumbs_up": 9,
+      "date": "2023-06-26T20:42:12"
+    },
+    {
+      "rating": 5,
+      "text": "THIS! is exactly what I needed. Very fast to learn as you go and the ability to share my lists, the flexibility to have other things that aren't checklists... Why is no one talking about this app? The compatibility!!!! Desktop + Android + IOs? Highly recommend. Am currently using it to plan my wedding, out-of-state move, and college requirement. It is perfect for big projects, brainstorming, note-taking, and organizing, and there are different ways to view your project to visualize it better. 5*",
+      "thumbs_up": 3,
+      "date": "2022-08-26T08:45:33"
+    },
+    {
+      "rating": 5,
+      "text": "5 stars isn't enough now. This app is phenomenal and it's almost at the point where there's nothing it can't do! Now it's smart with AI capabilities you could get heaps of work done fast, or like me, spend all day asking bizarre questions to see the answers you get. So fun! And productive. I am amazed how far we've come! Early adopter here and feeling so happy about the progress by the developers.",
+      "thumbs_up": 0,
+      "date": "2024-01-25T21:57:23"
+    },
+    {
+      "rating": 2,
+      "text": "two stars for a great concept. the app is horribly unintuitive and only contains instructions for desktop use. some of the features don't appear usable or at least easily usable on the app. the number one requested feature is tables and they stated that they weren't working on it because they're busy making \"frequently requested\" features. this is probably a decent app as long as you're using a computer.",
+      "thumbs_up": 13,
+      "date": "2023-08-03T23:16:03"
+    },
+    {
+      "rating": 5,
+      "text": "Personally, this is the best task management app that offer multi-platform sync and various features that requires payment from other apps. The AI-integration is also worth paying the subscription for (still too expensive for me at the moment).",
+      "thumbs_up": 1,
+      "date": "2024-06-22T03:13:38"
+    },
+    {
+      "rating": 5,
+      "text": "I have literally tried every app for organizing school assignments, work projects, household tasks, etc. This is the only one you should need. It works on your phone and your computer, has flexibility when it comes to notifications and formats...just get it.",
+      "thumbs_up": 3,
+      "date": "2020-01-31T09:35:52"
+    },
+    {
+      "rating": 5,
+      "text": "Just started using this app and its amazing. It greatly improves productivity now that you've written something down and now feel as if you have to do it. Not to mention the entire app is aesthetic in the ways you can organize your thoughts or your to do list or whatever you're using the app for. It also has an online website for those days that you'll be on your computer. 100% recommend for people trying to better their lives or simply need a To-Do list.",
+      "thumbs_up": 5,
+      "date": "2019-10-27T10:46:18"
+    },
+    {
+      "rating": 3,
+      "text": "While it has many functions, I still don't see the point of it. It's like a mixture of notes, AI and a bit tasks. The interface feels slow. I don't like the gpt models but you can only choose them (context window unclear). I like the sub task function but it spits out too many of them. Overall, it's unclear what information the ai models have and use. For a to do app, it has too many layers. The ai models don't really connect with the idea of projects.",
+      "thumbs_up": 0,
+      "date": "2025-01-22T11:42:02"
+    },
+    {
+      "rating": 5,
+      "text": "I'm a person who has looked at a lot of tools commonly used for group planning while looking for something for my individual needs, and I was so lucky to come across Taskade while continuing that search, but at a time I was actually part of a group that could use a tool like this. Truthfully I read through the features with usual boredom, waiting for them to show me what I would ACTUALLY get WITHOUT paying, because that's not in our means- O.O Y'ALL! Y'ALL! I CAN'T SUPPORT THEM BUT YOU SHOULD!",
+      "thumbs_up": 6,
+      "date": "2021-10-31T05:53:28"
+    },
+    {
+      "rating": 5,
+      "text": "I thought this app was great before the AI features. Now I love it!!! It has made a huge change to the way I work freeing up hours once spent managing resources, setting schedules & project tasks. Now I can spend that time creating rather than doing unfulfilling, back end organisation & admin tasks. I'm sure I've touched the tip of the iceberg when it comes to how I could this app to further improve my workflows and overall productivity. Give it a go. It's free and syncs to all devices.",
+      "thumbs_up": 5,
+      "date": "2024-06-28T13:29:23"
+    },
+    {
+      "rating": 3,
+      "text": "8/22/23: If it can also sync Google calendar event to Taskade calendar, it would be a huge star 8/18/23: Downgrading to 1 star for non-existent customer service. Previous: Found this app and only been using it for about a day. Like it a lot and hope it is here to stay!",
+      "thumbs_up": 3,
+      "date": "2023-08-22T18:05:57"
+    },
+    {
+      "rating": 5,
+      "text": "Amazing! I have been searching for an app that had the flexibility of a database without the complexity of Notion. (One Notion user said a Notion user is better served if they have experience with a relational database) I didn't so I moved on. A friend of mine wanted me to review Taskade & give them my thoughts. I told her that Taskade is the app I had been searching for. Flexibility, ease of use, scalability, & communication all rolled into one.",
+      "thumbs_up": 12,
+      "date": "2021-07-25T23:39:59"
+    },
+    {
+      "rating": 4,
+      "text": "Due dates, comment, or notification might be nice to show up on the widget of taskade in mobile phones. That way it will be more convenient to use taskade. It's quite pointless , because the tittle of the project is the only thing i can see on the widget bar.",
+      "thumbs_up": 3,
+      "date": "2020-04-16T17:33:14"
+    },
+    {
+      "rating": 4,
+      "text": "It's a fine app, but the little annoying things add up. For example: deadlines don't actually remind you anything, text is pretty small and some controls (specifically reordering tasks) are really hard to use. Once those things improve I would be quite excited to use the app.",
+      "thumbs_up": 1,
+      "date": "2023-06-22T09:55:02"
+    },
+    {
+      "rating": 2,
+      "text": "The app concept is great but, it seems that the app for my Samsung galaxy s7 tab doesn't have all of its tools. I wanted to edit the calendar tab but, was not able to since there was no add on/edit for it. I don't understand the activity tab either and the only thing that seems editable is the weekly tasks. The task space is also inevitable unless you create a weekly task temple which is in your new workspaces. It seems that the video, voice and online chat is unavailable at this time.",
+      "thumbs_up": 9,
+      "date": "2021-08-28T16:14:22"
+    },
+    {
+      "rating": 3,
+      "text": "I love the desktop client, although even there I miss some things (like option to add starting time first instead of ending only), but on mobile it's a bit problematic, the biggest issue being that I can't move to another view in a project (I think the option is anchored badly)",
+      "thumbs_up": 1,
+      "date": "2022-05-16T11:20:52"
+    },
+    {
+      "rating": 3,
+      "text": "Very strong premise but missing a few features that would make it great. Plan to use as bullet journal. Would really like the ability to add variables (such as dates/times) to the templates. Additionally, ability to have all tasks assigned to a person by default (or ability to disable assignment for cleaner look). Ability to make custom templates for personal boards. Bug: when attempting to edit the automatically signed name (based on email address of account), currently just brings up camera.",
+      "thumbs_up": 12,
+      "date": "2019-11-15T18:29:02"
+    },
+    {
+      "rating": 3,
+      "text": "I started using this app because its exactly what I was looking for to help manage daily task and team managment for my business However it does give issues like when you are inviting a team member to it they don't receive the invite after multiple attends Also it would be nice if the daily task appear daily without having to create one again and invite team all over again....",
+      "thumbs_up": 10,
+      "date": "2020-03-06T10:26:26"
+    },
+    {
+      "rating": 2,
+      "text": "Not working. Downloaded the app yesterday and assigned some tasks to myself. All worked fine. Today I added more tasks, assigned myself, but this time those tasks would not show up under \"my tasks\". Played around with adding and removing assignments. I could not get section to reflect those changes no matter what I did.",
+      "thumbs_up": 9,
+      "date": "2021-10-12T21:23:25"
+    },
+    {
+      "rating": 3,
+      "text": "They are using AI to hide problems with mobile lists. My widget link to my list now goes to ads of AI. The AI Only makes apps, don't ask it where your list went. Lists over a few dozen items glitch when making changes in mobile, so watch Every Letter you are changing.",
+      "thumbs_up": 1,
+      "date": "2025-12-06T13:56:50"
+    },
+    {
+      "rating": 1,
+      "text": "I spent 2 days creating a mind map with Taskade only for it to crash on the 2nd day - after I completed the work. The project will not open at all on any browser - chrome, edge, Firefox. It crashes then keeps asking me to refresh the tab which does nothing. I have reached out to support, still no reply after 24 hours.",
+      "thumbs_up": 5,
+      "date": "2024-05-25T00:10:41"
+    },
+    {
+      "rating": 5,
+      "text": "The android app is good. It will be great if the Linux appimage file is sorted to install in the correct location and created the appropriate menu shortcuts. Or a flatpak version will also be a welcome addition. Right now having to use the chrome extension only.",
+      "thumbs_up": 0,
+      "date": "2022-11-25T01:29:50"
+    },
+    {
+      "rating": 4,
+      "text": "I mostly like this app because it's simple and you can easily collaborate with others. But UI could use some work. I get enjoyed that every time I'm making a list the cursor goes somewhere behind the keyboard and I have to adjust the view constantly.",
+      "thumbs_up": 6,
+      "date": "2020-04-11T06:20:44"
+    },
+    {
+      "rating": 2,
+      "text": "This joins the list of once nifty nice apps that became utterly useless after recent updates, breaking the entire usability flow. Also, another reason why not to allow apps to auto update. It is barely functional for me. I'll be uninstalling this now.",
+      "thumbs_up": 0,
+      "date": "2026-01-31T02:09:04"
+    },
+    {
+      "rating": 5,
+      "text": "Best app for organising projects individually and in group. Also the sync free is one of the best features that any other ones had free. I recommend it for everyone because it has lots of templates and I'm pretty sure everyone will find one they like.",
+      "thumbs_up": 1,
+      "date": "2022-07-05T17:12:37"
+    },
+    {
+      "rating": 5,
+      "text": "I've been RELENTLESSLY searching for THE BEST app for organizing, planning, note taking, and task lists. What I didn't realize was that the apps right for all of these was actually just one app! It even has different views like mind maps and kanban boards. Lately, I've been using the Zettlekasten method to organize my knowledge base and lo and behold - there's even an article for that too! I've tried Notion, Workflowy, Evernote, Onenote, every single app I could find and this is it!",
+      "thumbs_up": 3,
+      "date": "2020-08-19T10:07:58"
+    },
+    {
+      "rating": 4,
+      "text": "I really love taskade, my team also enjoys using taskade. There are some features that seem s to be of most importance. 1) integration are very limited 2) it would be great to have tabs like how teams have 3) I have emailed a few times in regard to how to create and edit and excel file",
+      "thumbs_up": 2,
+      "date": "2020-04-09T17:01:27"
+    },
+    {
+      "rating": 5,
+      "text": "Right now they're getting 5 stars from me. They have quite a bit of work to do to clean up the app but the feature set is solid. It will be nice to see where these guys are in a year. They could well give Notion, Trello and Slack a run for the money.",
+      "thumbs_up": 0,
+      "date": "2022-12-05T12:53:41"
+    },
+    {
+      "rating": 5,
+      "text": "I have been following taskade for a couple of years, I decided to install it and test it, I think it is fun to use, effective and all the block and views available make it a great productivity tool, not just as a task app, but for documentation, story telling, an having fun with it.",
+      "thumbs_up": 1,
+      "date": "2021-12-27T18:01:06"
+    },
+    {
+      "rating": 5,
+      "text": "I was instantly blown away when browsing the insanely detailed and specific template lists! As a graphic designer with ADHD who's both looking for full-time work and running a separate business, this is perfect for the intricateness of steps that need to be taken to get things done! I haven't even tried the desktop version yet!",
+      "thumbs_up": 13,
+      "date": "2023-07-04T08:20:00"
+    },
+    {
+      "rating": 5,
+      "text": "There are many productivity apps out there but they always seem to try to force a specific way of working on you and are not flexible enough to adapt and evolve as you do over time. The team at Taskade has understood that work is fluid and goes through many phases and requires you to view it with different mindsets - from a ideation mindset, to a planning mindset, to a get things done mindset, etc - and have created Taskade, so it perfectly evolves with you.",
+      "thumbs_up": 28,
+      "date": "2019-10-03T03:17:41"
+    },
+    {
+      "rating": 5,
+      "text": "I've tried a number or different task managers. Each of them had their different issues for me. Taskade finally was able to get me organized. It's extremely customizable with templates you can find or make your own. I don't think I've ever been so productive.",
+      "thumbs_up": 0,
+      "date": "2022-05-01T10:26:13"
+    },
+    {
+      "rating": 5,
+      "text": "Fantastic tool - has all the functionality I can imagine needing. Pricing terms are very reasonable with a very usable free version. The only reason is not perfect is there is no api yet, but that is coming at some stage.",
+      "thumbs_up": 2,
+      "date": "2022-02-16T02:09:49"
+    },
+    {
+      "rating": 5,
+      "text": "Great set of functionality for keeping track of tasks dn borders on competing with something like Notion, though there isn't a direct corollary for databases yet. Very easy to add tags, export data when needed, and upload related files for projects. I've also found it easy to add more users Looking forward to the future of Taskade and I hope they keep the features of a Knowledge Management system in mind to expand the use case",
+      "thumbs_up": 4,
+      "date": "2022-09-03T11:57:31"
+    },
+    {
+      "rating": 4,
+      "text": "Taskade's UI and the project based classification system might feel over complicated. But once you get used to it, the UI becomes easy to use. Keeping UI aside, everything else is spot on. Taskade, by default, supports lists, sub lists, sub tasks, and almost everything that one might need. It is an excellent productivity tool.",
+      "thumbs_up": 2,
+      "date": "2023-03-27T21:08:12"
+    },
+    {
+      "rating": 5,
+      "text": "It has helped me to keep my content tasks focused and allowing be to always refer back to what I am supposed to push out daily on my platforms. Even when I miss some due to limited resources for creating the content, taskade still help me direct my mind to achieving it with what I have at present. I feel proud of myself each time I thick the task I've achieved.",
+      "thumbs_up": 0,
+      "date": "2024-09-24T15:07:46"
+    },
+    {
+      "rating": 1,
+      "text": "Good service, terrible app. The updating spinner runs for 20s or so and then when it stops, it deletes everything I've just added. A note app needs two features above all others: 1. It needs to not delete data 2. It needs to work quickly so that I can open it and save a sudden thought while working on something else. Waiting for a slow update spinner is unacceptable. All other features are \"nice to have\". The Taskade app fails on these two basic features, so it's a complete failure.",
+      "thumbs_up": 20,
+      "date": "2023-02-18T18:56:12"
+    },
+    {
+      "rating": 1,
+      "text": "This is described as a simple app but it's insanely complicated. All I want to do is quickly set recurring tasks- every Monday I do \"X,\" every Tuesday \"Y\" and then create a quick list for the day but there's no quick way to do any of this nor is there an in-app tutorial to explain the app functions. I shouldn't have to set a start time, end time, due date for EVERY task if I don't need to. It takes too much time. If you are autistic or have ADHD, just stay away. This app is infuriating.",
+      "thumbs_up": 21,
+      "date": "2020-06-04T04:36:24"
+    },
+    {
+      "rating": 5,
+      "text": "Great app. Highly recommend for any students as a student myself. It allows u to set due dates, highlighting/underlining of tasks for categorisation, and many other organising features that can definitely help you to keep on track with homework and projects.",
+      "thumbs_up": 2,
+      "date": "2024-10-12T05:58:30"
+    },
+    {
+      "rating": 5,
+      "text": "This has instantly become an essential tool. I am using it to map ideas and organize project plans. I am also using it for note-taking, whereas I have previously used onenote, which is also a great tool. I love how I can tabulate the ideas and contain, fold, and visualize the information in seemingly endless ways. This will become mainstream quickly. I can easily forgive the few bugs that require me to restart the application, and I'm sure they will be fixed soon.",
+      "thumbs_up": 34,
+      "date": "2023-03-16T12:38:39"
+    },
+    {
+      "rating": 1,
+      "text": "I want to like this app but it's hard to enjoy when it bugs out my projects and hides them from me when I need them. The UI can be very confusing if anything goes wrong. I honestly have no idea where archived information goes since there isn't a clear archive section. Wouldn't recommend.",
+      "thumbs_up": 1,
+      "date": "2025-02-17T15:44:24"
+    },
+    {
+      "rating": 5,
+      "text": "This is a super useful and easy to use app. It quickly became my go to app for organising my work and personal life. I have become more organized and productive by using this app. Kudos to the team for coming up with such a thoughtful and easy to use app. 10 stars from my side.",
+      "thumbs_up": 2,
+      "date": "2023-03-18T01:13:20"
+    },
+    {
+      "rating": 4,
+      "text": "EDITED: now the reminder function is in place and not only that, but you can choose to have it via email or in the UI. - great work. my only great now is if/when this will go paid. I megahertz have to look for another solution then. 5 stars thank you All in all a very useful app. I have used many to-do and organisational applications and this one seems to be working for me the best. still, I think some reminder function would be in order; and the other I would really love to see, is a widget or some function to bring up my agenda or the daily list of to-do's on my home screen as soon as I open my phone. Will we see developments in that area, you think?",
+      "thumbs_up": 6,
+      "date": "2018-11-15T06:10:46"
+    },
+    {
+      "rating": 5,
+      "text": "This is the best task and project management app. Taskade > Notion. I have used both and Notion's AI does not compare to Taskade's. They also come up with new ways to make workflows my collaborative and efficient weekly. They have incorporated AI into everything. The new AI Agents. Workflow generators. Block generators. AI Chatbot. It is like Notion, Asana, and Slack had a baby that was also a genius. I cannot work without it. Both the browser app and the phone app. Best project management app.",
+      "thumbs_up": 1,
+      "date": "2023-06-02T10:36:23"
+    },
+    {
+      "rating": 5,
+      "text": "Taskade is awesome! I love the desktop version. I've been able to streamline project management for a small team, and create an organizational system that works well for my freelance work as well. The mobile app is still a work in progress but more features are underway and I honestly use the desktop app more anyway.",
+      "thumbs_up": 19,
+      "date": "2021-10-04T16:33:20"
+    },
+    {
+      "rating": 5,
+      "text": "Hey there! Looking for a task manager that's as smart as you are? Check out Taskade. It's got AI-powered features to help you stay on top of things, a super easy interface, and it works great with your team. I love how I can customize it to fit my workflow and how I can access my tasks from anywhere. There's a free version to try, but the paid one unlocks even more cool stuff. Give it a shot and see if it's the perfect fit for you!",
+      "thumbs_up": 0,
+      "date": "2024-08-31T11:02:15"
+    },
+    {
+      "rating": 5,
+      "text": "Be sure that perfect app for scheduling! It's free and so useful! You can schedule your week or your day, you can add notes or goals... There is so much option that I like it! And also it's so cute app! If you have problems about time management/ scheduling just try to use this app! Good Luck🍀",
+      "thumbs_up": 14,
+      "date": "2021-01-11T02:11:15"
+    },
+    {
+      "rating": 4,
+      "text": "It's great to have a free app that means a household can share tasks and tick them off that also allows repetitive tasks to be created. Only downside is that the task list isn't the first page you come to and setting up could be more intuitive.",
+      "thumbs_up": 1,
+      "date": "2023-01-21T02:46:47"
+    },
+    {
+      "rating": 5,
+      "text": "I searched for four hours to find the perfect software. I wanted a collaborative, online to-do list I could share privately with individual clients, with a quick sign up process and a simple, intuitive interface so that my clients aren’t overwhelmed. It’s cross-platform, updates in real time, allows comments, emojis, allows me to group lists, create sublists, templates and upload documents to share. And it's pretty! Outstanding customer service, friendly and quick to respond. Thank you Taskade!",
+      "thumbs_up": 26,
+      "date": "2019-11-20T09:40:28"
+    },
+    {
+      "rating": 5,
+      "text": "Love your app. Works so well. Updates add something here and there. I have been using taskade for about one and a half years and it is my go to app for keeping track of errands and things to do. And the fact I can share it with my wife and we see instant changes makes it even better.",
+      "thumbs_up": 2,
+      "date": "2020-05-12T19:17:12"
+    },
+    {
+      "rating": 5,
+      "text": "Great! I'm using the free version for lists of ideas and home inventories. Jammed w features that are smartly implemented so you can do almost everything in 1 or 2 clicks. Sync between android and web version works fast and without incident.",
+      "thumbs_up": 2,
+      "date": "2023-10-01T15:34:20"
+    },
+    {
+      "rating": 5,
+      "text": "Just Wow! Amazing App for teamwork. I can create and assign tasks to any member and the user interface is wonderful and easy to use. Just amazing productivity app. I have invited some of my friends too it's just awesome. Taskade will be a tough competitor to many other productivity apps. Thanking to the entire team of taskade🙏❤",
+      "thumbs_up": 4,
+      "date": "2021-05-17T12:41:04"
+    },
+    {
+      "rating": 5,
+      "text": "This is my favorite planner/to-do list app ever. I have the whole family on there to delegate tasks as needed. It's so customizable, which is wonderful. I've found myself buying planners sometimes that aren't the most efficient for my lifestyle and therefore less effective.",
+      "thumbs_up": 1,
+      "date": "2022-08-17T13:27:50"
+    },
+    {
+      "rating": 5,
+      "text": "This app is handy for organizing household projects & schedules. My spouse is a project manager, I am trained as one so we both were interested in being able to document needs, edit the same live pages with our own profiles, & have efficient task communication. We have tried several other apps and this one fulfills our needs to coordinate our efforts around the house the best. I'm sure it is great for office projects too, I just haven't used it that way yet. It is easy to pick up & use.",
+      "thumbs_up": 1,
+      "date": "2022-05-03T17:41:28"
+    },
+    {
+      "rating": 5,
+      "text": "Is one of the best apps out there, I havent been using it much. I do find it difficult to learn though other than Notion wherein it was quite easy to learn without help at all. Has great potential when used properly, even helped me alot even though I am just using it for the basics. Thank you",
+      "thumbs_up": 0,
+      "date": "2022-04-14T00:46:30"
+    },
+    {
+      "rating": 3,
+      "text": "Would like full features.",
+      "thumbs_up": 0,
+      "date": "2026-01-30T18:37:53"
+    },
+    {
+      "rating": 5,
+      "text": "Nothing else like Taskade as of yet. Notion is comparable, but somewhat different playing fields. However, I love this app due to all the features, and your very own AI Agent Creation! Can't wait to upgrade my subscription to Pro for all the features I haven't tried yet, like AI agent teams, and AI Agent automated tasks! Anyone reading this, you won't regret Taskade!(once you learn it, the learning curve is difficult for the digitally inexperienced)",
+      "thumbs_up": 15,
+      "date": "2024-10-05T15:30:39"
+    },
+    {
+      "rating": 1,
+      "text": "Free plan and subscription/paid option should come by the next update.",
+      "thumbs_up": 0,
+      "date": "2026-02-11T03:16:44"
+    },
+    {
+      "rating": 1,
+      "text": "Seemed like it could be useful. Was super hard to navigate, and collaborate. User experience needs work. I appreciate it being able to be used on desktop as well though. Almost a good app. Maybe one day after some adjustments it might be more usable.",
+      "thumbs_up": 1,
+      "date": "2023-01-05T05:25:50"
+    },
+    {
+      "rating": 4,
+      "text": "One of the better list apps ive used. Works on lots of platforms with pretty smart syncing, nested lists. Missing some things I'd like; such as dark theme, auto list sorting, manual list sorting on mobile, and more useful widgets.",
+      "thumbs_up": 1,
+      "date": "2019-01-31T16:45:50"
+    },
+    {
+      "rating": 5,
+      "text": "Love it. I've made Taskade my daily driver for productivity at this point and have decided to go for the yearly subscription for the AI capabilities. It's a great productivity tool, especially with the functionality of the new AI agent tools. Can't wait for Gantt Charts and I'd love it Taskade would allow me in the beta. My username is Ettilapse :)",
+      "thumbs_up": 1,
+      "date": "2024-03-15T00:49:11"
+    }
+  ],
+  "app_store_reviews": []
+}

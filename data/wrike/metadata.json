@@ -1,0 +1,39 @@
+{
+  "name": "Wrike",
+  "category": "project_management",
+  "subcategories": [
+    "enterprise_pm",
+    "resource_management",
+    "proofing"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $10-$25 per user/mo",
+  "primary_use_case": "Enterprise work management with advanced resource planning",
+  "target_audience": [
+    "enterprise",
+    "professional_services",
+    "marketing_teams"
+  ],
+  "key_features": [
+    "tasks",
+    "gantt",
+    "dashboards",
+    "proofing",
+    "resource_management",
+    "time_tracking",
+    "automation"
+  ],
+  "founded": 2006,
+  "estimated_users": "20K+ orgs",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "asana",
+    "monday",
+    "smartsheet"
+  ]
+}

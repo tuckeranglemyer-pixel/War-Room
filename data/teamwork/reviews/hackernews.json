@@ -1,0 +1,501 @@
+{
+  "app": "teamwork",
+  "source": "hackernews",
+  "total_items": 48,
+  "items": [
+    {
+      "id": "7751989",
+      "type": "comment",
+      "text": "Best completely depends on your use case.My advice is to try a few and run your typical project scenarios through them and decide which is the best fit for you and your team.Top 3 recommendations:1) Asana http:&#x2F;&#x2F;www.asana.com\n2) TeamworkPM  http:&#x2F;&#x2F;teamwork.com\n3) Trello https:&#x2F;&#x2F;trello.com&#x2F;",
+      "author": "barryhand",
+      "points": null,
+      "created_at": "2014-05-15T20:21:08Z",
+      "story_title": "Best Project Management Tool",
+      "hn_url": "https://news.ycombinator.com/item?id=7751989"
+    },
+    {
+      "id": "7458810",
+      "type": "comment",
+      "text": "A perfect time for those affected to test drive BaseCamp&#x27;s competitor https:&#x2F;&#x2F;www.teamwork.com&#x2F;",
+      "author": "rootuid",
+      "points": null,
+      "created_at": "2014-03-24T15:40:10Z",
+      "story_title": "Basecamp was under network attack",
+      "hn_url": "https://news.ycombinator.com/item?id=7458810"
+    },
+    {
+      "id": "7184241",
+      "type": "comment",
+      "text": "TeamWork.com their biggest competitor, did this last week.",
+      "author": "rootuid",
+      "points": null,
+      "created_at": "2014-02-05T15:31:26Z",
+      "story_title": "37signals becomes Basecamp",
+      "hn_url": "https://news.ycombinator.com/item?id=7184241"
+    },
+    {
+      "id": "41368718",
+      "type": "comment",
+      "text": "I remember when Teamwork&#x27;s founder bought a round of drinks for everyone at a local tech meetup to celebrate acquiring the domain (teamwork.com).I think they paid something like half a million quid for it? It was an absolutely eye watering amount to me at the time (and I think them, in fairness), but past a certain size having your .com was and probably still is big for trust.Which is to say, congratulations! You must be delighted.",
+      "author": "duggan",
+      "points": null,
+      "created_at": "2024-08-27T15:34:49Z",
+      "story_title": "Notes on Buttondown.com",
+      "hn_url": "https://news.ycombinator.com/item?id=41368718"
+    },
+    {
+      "id": "27744526",
+      "type": "comment",
+      "text": "This is not generic, it is not adequate for all disciplines.Painting establishes a relation between the painter and static entities (subject, colors...).  They interact in many ways, however the painter is the main &#x27;motor&#x27; and &#x27;will&#x27;.Basketball is different because a player interacts with his teammates and opponents, he isn&#x27;t the sole will at play.  However I can see how experience may lead a coach to reckon that some individual ways (types of actions or reactions) are statistically better than other ones, either because their intrinsic rate of success is higher or because they benefit from teamwork, leading him to drill them in order to have them select the best ones and apply them properly.  It may create a &quot;team of robots&quot; (sort of!) which may be crushed by an opponent team playing in a deliberately unusual (albeit not absurd) way, established to counter the particular automatic actions and reactions of the &quot;robot team&quot;.Individual sports are different because there is no teamwork.  Combat sports are particularly interesting because you need to scrim (spar) not simply to verify the effects of drills but in order to learn what no drill can effectively teach you: a certain mental state, coping with stress, simultaneously integrating many dynamic blurry variables (related to time &amp; space)...Drill, barely spar and only use it to check what you gained from drills, then hop on a ring against a person who spared properly... and good luck to you (you will need it)!",
+      "author": "natmaka",
+      "points": null,
+      "created_at": "2021-07-06T05:30:39Z",
+      "story_title": "How to get better at painting without painting anything (2015)",
+      "hn_url": "https://news.ycombinator.com/item?id=27744526"
+    },
+    {
+      "id": "26645457",
+      "type": "comment",
+      "text": "One of my favourite companies is teamwork.com, a great tool set in the same space, makes the fact that they were bootstrapped from the start and are profitable all the more impressive. https:&#x2F;&#x2F;www.irishtimes.com&#x2F;business&#x2F;technology&#x2F;teamwork-pays...",
+      "author": "mywacaday",
+      "points": null,
+      "created_at": "2021-03-31T10:15:38Z",
+      "story_title": "What I learnt after burning $10M as an entrepreneur",
+      "hn_url": "https://news.ycombinator.com/item?id=26645457"
+    },
+    {
+      "id": "24777227",
+      "type": "comment",
+      "text": "Remote Go DeveloperWe are looking for a backend engineer to help craft the future of Teamwork Desk. We are a self-funded and privately owned Irish company with employees all over the world.Check out our role here:https:&#x2F;&#x2F;careers.teamwork.com&#x2F;jobs&#x2F;backenddesk",
+      "author": "TJLeahy",
+      "points": null,
+      "created_at": "2020-10-14T14:59:03Z",
+      "story_title": "Ask HN: Who is hiring? (October 2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=24777227"
+    },
+    {
+      "id": "20979976",
+      "type": "comment",
+      "text": "Not only does the domain matter the TLD you choose can have a huge impact.These guys paid €500,000 ($550,000) to buy teamwork.com, they were running under teamworkpm.net.\nApparently the change paid for itself in 3 months.\nhttps:&#x2F;&#x2F;www.irishtimes.com&#x2F;business&#x2F;technology&#x2F;teamwork-pays...",
+      "author": "mywacaday",
+      "points": null,
+      "created_at": "2019-09-15T23:03:14Z",
+      "story_title": "Ask HN: Are available domain names still important when naming a company?",
+      "hn_url": "https://news.ycombinator.com/item?id=20979976"
+    },
+    {
+      "id": "19990630",
+      "type": "comment",
+      "text": "&gt; Brave&#x27;s motivation is to push people to use their browser in order to further their extortion based business model.Thats Google. Google store information on you -- Brave don&#x27;t really have data centres of peoples search history and profile info. My big problem with Brave is -- it just simply isn&#x27;t a good browser yet. It doesn&#x27;t work properly with lots of sites I use e.g. teamwork.com",
+      "author": "s_dev",
+      "points": null,
+      "created_at": "2019-05-23T11:19:58Z",
+      "story_title": "Google faces first investigation by its European lead authority over GDPR",
+      "hn_url": "https://news.ycombinator.com/item?id=19990630"
+    },
+    {
+      "id": "19191432",
+      "type": "comment",
+      "text": "Why would you title this Teamwork.com when that&#x27;s not the URL you&#x27;re linking to?Edit: I&#x27;ve removed my &#x27;flag&#x27; but would suggest using the article&#x27;s actual title: &quot;Teamwork - A multicultural mix of talent&quot;",
+      "author": "ChrisGranger",
+      "points": null,
+      "created_at": "2019-02-18T15:43:36Z",
+      "story_title": "Teamwork.com",
+      "hn_url": "https://news.ycombinator.com/item?id=19191432"
+    },
+    {
+      "id": "17399057",
+      "type": "comment",
+      "text": "I love Clubhouse.io. Best description I think can be a nicer looking Trello on steroids. It has a focus on software development management, but nothing stopping you from using it for any project management. Pricing is also reasonable.Using Asana as well for a different project.—For non software dev, stopped using&#x2F;didn’t go back to a type of app I’ve always had a soft spot for because of pricing. App being Basecamp and apps heavily influenced by it like Teamwork.com. It’s just myself, my partner, and a freelancer right now. So Basecamp only price of $100&#x2F;mo and Teamwork having 5 user minimum at $9&#x2F;mo (so $45&#x2F;mo), ends up not being worth it. I’d love to find an app like these for a more fair price.",
+      "author": "skinnymuch",
+      "points": null,
+      "created_at": "2018-06-26T09:25:44Z",
+      "story_title": "Ask HN: Which project management and team communication software do you use?",
+      "hn_url": "https://news.ycombinator.com/item?id=17399057"
+    },
+    {
+      "id": "15603865",
+      "type": "comment",
+      "text": "Cork, Belfast, Barcelona ONSITE - Senior Golang Developer #Go #Golanghttps:&#x2F;&#x2F;www.teamwork.com&#x2F;jobs&#x2F;seniorbackenddevTeamwork.com is an Irish, privately owned, developer-led web-based company based in Cork, Ireland. Teamwork.com creates task management and team collaboration software to support high-performance teams. The three products relate to project-management, customer support, and real-time internal communications.",
+      "author": "Teamwork123",
+      "points": null,
+      "created_at": "2017-11-01T18:06:09Z",
+      "story_title": "Ask HN: Who is hiring? (November 2017)",
+      "hn_url": "https://news.ycombinator.com/item?id=15603865"
+    },
+    {
+      "id": "14938087",
+      "type": "comment",
+      "text": "Full disclosure - I work for Teamwork.com, but I use the Teamwork Projects[1] free plan for a few of my side projects and haven&#x27;t found an easier alternative, you can adjust the &quot;lightweightness&quot; per project and just turn off stuff you don&#x27;t use, then again I am more familiar with it than other tools so of course it will be more straightforward to me.[1] https:&#x2F;&#x2F;www.teamwork.com&#x2F;project-management-software",
+      "author": "ripexz",
+      "points": null,
+      "created_at": "2017-08-05T21:45:20Z",
+      "story_title": "Ask HN: Can anyone recommend a lightweight project management tool?",
+      "hn_url": "https://news.ycombinator.com/item?id=14938087"
+    },
+    {
+      "id": "14775759",
+      "type": "comment",
+      "text": "Teamwork.com, entirely self funded by two guys who had a web agency and scratched their own itch in PM software, now doing over 100m in annual revenue. They dropped nearly $1m to change domain which they say paid for itself in three months. Now offering free deskspace and mentoring for other startup SAAS",
+      "author": "mywacaday",
+      "points": null,
+      "created_at": "2017-07-15T09:04:05Z",
+      "story_title": "Invisible unicorns: Big companies that started with little or no money",
+      "hn_url": "https://news.ycombinator.com/item?id=14775759"
+    },
+    {
+      "id": "14116426",
+      "type": "comment",
+      "text": "Especially given the importance of teamwork. Competitive people tend towards tedious one-upmanship. It&#x27;s something you want to screen out in the hiring process.",
+      "author": "paulsutter",
+      "points": null,
+      "created_at": "2017-04-14T19:08:29Z",
+      "story_title": "A Competitive Programmer's Handbook",
+      "hn_url": "https://news.ycombinator.com/item?id=14116426"
+    },
+    {
+      "id": "11477022",
+      "type": "comment",
+      "text": "Hey there, I think the url you submitted is wrong. You&#x27;re missing a w in www. Here&#x27;s a correct link:https:&#x2F;&#x2F;www.teamwork.com&#x2F;blog&#x2F;peter-coppinger-developerceo-r...Haven&#x27;t read it yet, but I&#x27;m about to :)",
+      "author": "ryduh",
+      "points": null,
+      "created_at": "2016-04-12T03:23:53Z",
+      "story_title": "\"should be required reading for every SaaS founder & funder“ - The Developer CEO",
+      "hn_url": "https://news.ycombinator.com/item?id=11477022"
+    },
+    {
+      "id": "11477011",
+      "type": "comment",
+      "text": "Corrected link: https:&#x2F;&#x2F;www.teamwork.com&#x2F;blog&#x2F;peter-coppinger-developerceo-r...",
+      "author": "andymoe",
+      "points": null,
+      "created_at": "2016-04-12T03:21:43Z",
+      "story_title": "\"should be required reading for every SaaS founder & funder“ - The Developer CEO",
+      "hn_url": "https://news.ycombinator.com/item?id=11477011"
+    },
+    {
+      "id": "10999021",
+      "type": "comment",
+      "text": "I think https:&#x2F;&#x2F;www.teamwork.com&#x2F; covers most of your check boxes if not all. It is a fairly powerful project management tool, similar to Basecamp but with quite a few more features. I haven&#x27;t used the time tracking features included, but they do exist.Our company uses a combination of Teamwork (for general project management and task management) and Harvest for time tracking and invoicing.",
+      "author": "j2bax",
+      "points": null,
+      "created_at": "2016-01-29T22:25:45Z",
+      "story_title": "Ask HN: App that supports task boards, time tracking and a daily/weekly planner?",
+      "hn_url": "https://news.ycombinator.com/item?id=10999021"
+    },
+    {
+      "id": "10512960",
+      "type": "comment",
+      "text": "Our company which sounds similar to the makeup of you company has been using Teamwork.com for project management along with getharvest.com for time tracking and invoicing for a few years now. Both of the tools are great at what they do. We also use Hipchat for instant communication, project specific group chats etc. although lately the service hasn&#x27;t been stellar. I think we are going to give Slack a shot instead.",
+      "author": "j2bax",
+      "points": null,
+      "created_at": "2015-11-05T12:44:07Z",
+      "story_title": "Ask HN: Project management app for a digital agency?",
+      "hn_url": "https://news.ycombinator.com/item?id=10512960"
+    },
+    {
+      "id": "37356335",
+      "type": "comment",
+      "text": "Teamworks | $150K-$180K | Remote (US) | Full-time | Senior Frontend | https:&#x2F;&#x2F;teamworks.comTeamworks is the operating system for college and professional sports.- We are looking to hire an experienced front-end engineer- Someone who is proficient in React and TypeScript- Python + Postgres experience is a plus- ReactNative experience is a plusEmail me at bbarbin@teamworks.com if interested.",
+      "author": "bradteamworks",
+      "points": null,
+      "created_at": "2023-09-01T21:24:53Z",
+      "story_title": "Ask HN: Who is hiring? (September 2023)",
+      "hn_url": "https://news.ycombinator.com/item?id=37356335"
+    },
+    {
+      "id": "34988175",
+      "type": "comment",
+      "text": "code: https:&#x2F;&#x2F;github.com&#x2F;barbinbradresume: https:&#x2F;&#x2F;bradbarb.in&#x2F;resume.pdfemail: bradbarbin@proton.methings: 10 years full stack web + manufacturingcurrently: principal engineer at teamworks.com",
+      "author": "barbinbrad",
+      "points": null,
+      "created_at": "2023-03-01T20:53:00Z",
+      "story_title": "Ask HN: Who wants to be hired? (March 2023)",
+      "hn_url": "https://news.ycombinator.com/item?id=34988175"
+    },
+    {
+      "id": "33427248",
+      "type": "comment",
+      "text": "Notemeal | Full-stack, front-end and&#x2F;or backend | Remote | Boston, Durham, BirminghamNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 15,000 athletes across the NFL, EPL, NBA, NHL, NCAA and USSOCOM.Responsibilities include:• Participate in discovery calls with athletes and dietitians – including Super Bowl, College Football, and NBA champions – to discover enhancements to user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow to 100,000 mobile users over the next year, while supporting APIs consumed by internal and external clients.• Engineer the future of how the US Military feeds their soldiers to optimize their performance and readiness.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, support for supplementation and hydration tracking, etc.Contact: kevin@notemeal.io ~or~ careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-11-01T20:46:16Z",
+      "story_title": "Ask HN: Who is hiring? (November 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=33427248"
+    },
+    {
+      "id": "33069694",
+      "type": "comment",
+      "text": "Notemeal | Full-stack, front-end and&#x2F;or backend | Remote | Boston, Durham, BirminghamNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 15,000 athletes across the NFL, EPL, NBA, NHL, NCAA and USSOCOM.Responsibilities include:• Participate in discovery calls with athletes and dietitians – including Super Bowl, College Football, and NBA champions – to discover enhancements to user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow to 100,000 mobile users over the next year, while supporting APIs consumed by internal and external clients.• Engineer the future of how the US Military feeds their soldiers to optimize their performance and readiness.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, support for supplementation and hydration tracking, etc.Contact: kevin@notemeal.io ~or~ careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-10-03T16:24:23Z",
+      "story_title": "Ask HN: Who is hiring? (October 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=33069694"
+    },
+    {
+      "id": "31949239",
+      "type": "comment",
+      "text": "Notemeal | Full-stack Dev (2), Designer (1) and PM (1) | Remote | Boston, Durham, BirminghamNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 10,000 athletes across the NFL, EPL, NBA, NHL, NCAA and USSOCOM.Responsibilities include:• Improve our &quot;meal suggestion&quot; algorithm so that it provides generalized support for in-house menus, restaurants and whatever is next.• Integrate feedback from elite athletes and industry staff – including Super Bowl, College Football, and NBA champions – to improve user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow beyond 10,000 users, while supporting APIs consumed by internal and external clients.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, support for supplementation and hydration tracking, etc.A-list job description: https:&#x2F;&#x2F;angel.co&#x2F;l&#x2F;2tG7qgContact: sean@notemeal.io ~or~ careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-07-01T16:52:37Z",
+      "story_title": "Ask HN: Who is hiring? (July 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=31949239"
+    },
+    {
+      "id": "31587422",
+      "type": "comment",
+      "text": "Notemeal | (1) Senior Software Engineer (2) Product Designer | Remote | Boston, Durham, Birmingham\nNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 10,000 athletes across the NFL, EPL, NBA, NHL, NCAA and USSOCOM.Responsibilities include:• Improve our &quot;meal suggestion&quot; algorithm so that it provides generalized support for in-house menus, restaurants and whatever is next.• Integrate feedback from elite athletes and industry staff – including Super Bowl, College Football, and NBA champions – to improve user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow beyond 10,000 users, while supporting APIs consumed by internal and external clients.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, support for supplementation and hydration tracking, etc.A-list job description: https:&#x2F;&#x2F;angel.co&#x2F;l&#x2F;2tG7qgContact: sean@notemeal.io ~or~ careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-06-01T20:15:27Z",
+      "story_title": "Ask HN: Who is hiring? (June 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=31587422"
+    },
+    {
+      "id": "31236483",
+      "type": "comment",
+      "text": "Teamworks | Multiple Senior and Principal engineering positions + an Engineering Manager position | REMOTE | Boston, Durham NC, Birmingham ALAbout us: We are the operating system of elite athletics. We provide the software that supports your favorite sports teams, whether you&#x27;re a fan of collegiate American sports, NFL, NHL, the NBA, New Zealand and Australian Rugby, or EPL football (and more!). We provide everything from messaging, calendar, forms, and compliance to nutrition management (via Notemeal) and branding (via INFLCR).Responsibilities: depends on the position, but generally we&#x27;re looking for people who want to flex between product and engineering.All our open positions with links to apply: https:&#x2F;&#x2F;www.teamworks.com&#x2F;companyIf you want to read a little bit more about engineering at Teamworks, try these blog posts:- What Software Engineers and Olympians have in Common: https:&#x2F;&#x2F;tw-engineering.webflow.io&#x2F;post&#x2F;what-software-enginee...- You&#x27;re Probably Doing Epics Wrong: https:&#x2F;&#x2F;tw-engineering.webflow.io&#x2F;post&#x2F;youre-probably-doing-...- Technical Debt at Teamworks: https:&#x2F;&#x2F;tw-engineering.webflow.io&#x2F;post&#x2F;technical-debt-at-tea...",
+      "author": "jeffheard",
+      "points": null,
+      "created_at": "2022-05-02T15:34:27Z",
+      "story_title": "Ask HN: Who is hiring? (May 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=31236483"
+    },
+    {
+      "id": "31236256",
+      "type": "comment",
+      "text": "Notemeal | (1) Senior Software Engineer (2) Product Designer | Remote | Boston, Durham, BirminghamNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 10,000 athletes across the NFL, EPL, NBA, NHL, NCAA and USSOCOM. Responsibilities include:• Integrate feedback from elite athletes and industry staff – including Super Bowl, College Football, and NBA champions – to improve user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow beyond 10,000 users, while supporting APIs consumed by internal and external clients.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, support for supplementation and hydration tracking, etc.• Improve our menu suggestion algorithm so that it provides generalized support for in-house menus, restaurants and whatever is next.A-list job description: https:&#x2F;&#x2F;angel.co&#x2F;company&#x2F;notemeal&#x2F;jobs&#x2F;974421-senior-softwar...Contact: sean@notemeal.io ~or~ careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-05-02T15:19:49Z",
+      "story_title": "Ask HN: Who is hiring? (May 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=31236256"
+    },
+    {
+      "id": "30879624",
+      "type": "comment",
+      "text": "Notemeal | (1) Full-stack Engineer (2) Product Designer | Remote | Boston, Durham, BirminghamNotemeal (https:&#x2F;&#x2F;teamworks.com&#x2F;notemeal) is connecting sports dietitians and performance kitchens to create a new athlete fueling experience.Notemeal was founded by two former NFL front-office executives, and we work with over 10,000 athletes across the NFL, NBA, NHL and NCAA (with Int&#x27;l trials starting!). Responsibilities include:• Integrate feedback from elite athletes and industry staff – including Super Bowl, College Football, and NBA champions – to improve user experience across web and mobile apps.• Help scale Notemeal’s backend as we grow beyond 10,000 users, while supporting APIs consumed by internal and external clients.• Explore and engineer features connecting Teamworks and Notemeal, including using class and practice schedules to build smarter meal plans, streamlining catering during long road trips, etc.• Improve our menu suggestion algorithm so that it provides generalized support for in-house menus, restaurants and whatever is next.A-list job description: https:&#x2F;&#x2F;angel.co&#x2F;company&#x2F;notemeal&#x2F;jobs&#x2F;974421-senior-softwar...Contact: kevin@notemeal.io or careers@notemeal.io",
+      "author": "sharrington",
+      "points": null,
+      "created_at": "2022-04-01T16:01:59Z",
+      "story_title": "Ask HN: Who is hiring? (April 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=30879624"
+    },
+    {
+      "id": "30165723",
+      "type": "comment",
+      "text": "The world&#x27;s biggest sports teams operate on Teamworks software, and we&#x27;re hiring about a dozen engineers this quarter.  If you love sports as much as you love coding, Teamworks is a pretty great place to be.  All jobs are remote-first, but we have offices in Durham (NC), Birmingham (AL), and Boston (MA) if you like an on-site vibe.  Our platform is built primarily in Python and React.Here&#x27;s 3 jobs we&#x27;re ready to onboard tomorrow:API &amp; Platform Engineer - https:&#x2F;&#x2F;teamworks.bamboohr.com&#x2F;jobs&#x2F;view.php?id=68&amp;source=aW...Senior Full Stack Tooling &amp; Support Engineer - https:&#x2F;&#x2F;teamworks.bamboohr.com&#x2F;jobs&#x2F;view.php?id=72&amp;source=aW...Senior Full Stack Engineer (Messaging Products) - https:&#x2F;&#x2F;teamworks.bamboohr.com&#x2F;jobs&#x2F;view.php?id=65&amp;source=aW...Email engineeringrecruiting@teamworks.com with any questions.",
+      "author": "jcoffos",
+      "points": null,
+      "created_at": "2022-02-01T17:13:24Z",
+      "story_title": "Ask HN: Who is hiring? (February 2022)",
+      "hn_url": "https://news.ycombinator.com/item?id=30165723"
+    },
+    {
+      "id": "24652293",
+      "type": "comment",
+      "text": "Teamworks: https:&#x2F;&#x2F;www.teamworks.com | Senior Software Developer | Full Time | REMOTE (USA) or Onsite (NC, but we&#x27;re all-remote for now because of COVID-19)We are passionate about empowering student-athletes through the power of technology. Over the past ten years, we have scaled the largest technology network in collegiate athletics and have more experience putting technology in the hands of student-athletes than anyone else in the market. With over 130,000 athletes and 50,000 administrators collaborating through Teamworks, we are a trusted and valued partner across elite athletics pro and collegiate.",
+      "author": "jeffersonheard",
+      "points": null,
+      "created_at": "2020-10-01T15:49:45Z",
+      "story_title": "Ask HN: Who is hiring? (October 2020)",
+      "hn_url": "https://news.ycombinator.com/item?id=24652293"
+    },
+    {
+      "id": "16740412",
+      "type": "comment",
+      "text": "Teamworks | Durham, North Carolina | Software Engineers - Mid to Senior, Front End, Back-End (Python Flask, Postgres) \n UX Designer, and others | OnsiteSee positions and apply here: https:&#x2F;&#x2F;www.teamworks.com&#x2F;company&#x2F;#careersTeamworks is the software your favorite collegiate and professional sports teams use to collaborate and to help them coordinate everything from athletic practice to team travel events. We provide solutions to over 1400 NCAA Division I teams, dozens of professional teams, and professional athletic associations.&quot;With Teamworks, you have a product which is solely designed for team management. Teamworks puts all their focus on operating your team on a day-to-day basis, which as a DFO is the most valuable tool I could have.&quot;-- Mike Parrish, Assistant A.D., Football, University of ArizonaWe offer:* High-energy start-up culture* Direct impact on the workflows of major athletic and \ncommercial organizations* Challenging and exciting work environment in a newly renovated downtown office location* Work with dynamic technology and a diverse set of clients* A robust benefits package, including healthcare &amp; dental coverage, 401(k) plus match, free gym memberships, unlimited vacation policy and free parking in downtown Durham.We just raised our series B: https:&#x2F;&#x2F;www.bloomberg.com&#x2F;news&#x2F;articles&#x2F;2018-03-09&#x2F;general-c...I&#x27;m the Principal Software Developer, Python. If you have a question about our engineering culture, ask me directly, jheard [at] teamworks.com. I&#x27;m happy to chat. If you first saw Teamworks here, make sure to mention that in your cover letter. Thanks!",
+      "author": "jeffersonheard",
+      "points": null,
+      "created_at": "2018-04-02T23:26:38Z",
+      "story_title": "Ask HN: Who is hiring? (April 2018)",
+      "hn_url": "https://news.ycombinator.com/item?id=16740412"
+    },
+    {
+      "id": "21766602",
+      "type": "comment",
+      "text": "Some of the companies on this list are European (e.g. https:&#x2F;&#x2F;teamweek.com&#x2F; or https:&#x2F;&#x2F;www.bluelabs.eu&#x2F;). I wish there were more European companies opening up to working with remote developers.",
+      "author": "Asterixer",
+      "points": null,
+      "created_at": "2019-12-11T20:43:05Z",
+      "story_title": "Biggest list of fully remote, 100% distributed companies",
+      "hn_url": "https://news.ycombinator.com/item?id=21766602"
+    },
+    {
+      "id": "20653633",
+      "type": "comment",
+      "text": "Frontend Developer (Remote) | Anywhere (0700 - 1400H UTC) | https:&#x2F;&#x2F;teamweek.com&#x2F;jobs&#x2F;frontend-developer---We are looking for a Developer to join our Frontend team and help us build and maintain our client applications.The ideal candidate should:- Be familiar with all stages of web application development (design, implementation, testing).- Have experience with ES6, Webpack, Git, and SASS.\nKnowledge of React, React Native and Chrome Extension Development is a plus.- Be comfortable working in a remote team, with strong written communication and a willingness to actively collaborate with other remote team members.- Have a good amount of years of experience in the space.The starting annual salary is 48.000 EUR.\nAs long as you can overlap for a few hours between 0700 - 1400h UTC, you can work from anywhere in the world with a good internet connection.We plant a tree for every good candidate!Teamweek is a visual project planner and team calendar that helps you schedule your team&#x27;s time and get more done.We are a fully remote company with headquarters in Tallinn, Estonia. Bootstrapped and started as a side-product for internal use for the time tracking tool Toggl, we’ve been a profitable independent company since 2017.",
+      "author": "kelonye",
+      "points": null,
+      "created_at": "2019-08-09T12:22:52Z",
+      "story_title": "Ask HN: Who is hiring? (August 2019)",
+      "hn_url": "https://news.ycombinator.com/item?id=20653633"
+    },
+    {
+      "id": "18813760",
+      "type": "comment",
+      "text": "Teamweek | Frontend Developer | Remote | 48K EUR | https:&#x2F;&#x2F;teamweek.com&#x2F;jobs&#x2F;frontend-developer | We plant a tree for every good candidate!* We are looking for a Developer to join our Frontend team and help us build and maintain our client applications.* The ideal candidate should be experienced with ES6, Webpack, Git, and SASS. Knowledge of React, React Native and Chrome Extension Development is a plus.* The starting annual salary is 48.000 EUR.* As long as you can overlap for a few hours between 0700 - 1400h UTC, you can work from anywhere in the world with a good internet connection.* Stack: Ampersand, SASS, React Native",
+      "author": "kelonye",
+      "points": null,
+      "created_at": "2019-01-03T08:57:59Z",
+      "story_title": "Ask HN: Who is hiring? (January 2019)",
+      "hn_url": "https://news.ycombinator.com/item?id=18813760"
+    },
+    {
+      "id": "9112541",
+      "type": "story",
+      "title": "Meet Teamwork.com: 2M users, no VC funding and  no salespeople",
+      "text": "",
+      "author": "robinwauters",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2015-02-26T14:10:56Z",
+      "hn_url": "https://news.ycombinator.com/item?id=9112541"
+    },
+    {
+      "id": "19191025",
+      "type": "story",
+      "title": "Teamwork.com",
+      "text": "",
+      "author": "Branedy",
+      "points": 1,
+      "num_comments": 2,
+      "created_at": "2019-02-18T14:58:22Z",
+      "hn_url": "https://news.ycombinator.com/item?id=19191025"
+    },
+    {
+      "id": "23299174",
+      "type": "story",
+      "title": "Bootstrapping Teamwork.com to $30M ARR",
+      "text": "",
+      "author": "mywacaday",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2020-05-25T08:27:21Z",
+      "hn_url": "https://news.ycombinator.com/item?id=23299174"
+    },
+    {
+      "id": "11318175",
+      "type": "story",
+      "title": "Some Rookie Mistakes in Go",
+      "text": "",
+      "author": "0x4542",
+      "points": 184,
+      "num_comments": 84,
+      "created_at": "2016-03-19T11:52:03Z",
+      "hn_url": "https://news.ycombinator.com/item?id=11318175"
+    },
+    {
+      "id": "11476979",
+      "type": "story",
+      "title": "\"should be required reading for every SaaS founder & funder“ - The Developer CEO",
+      "text": "",
+      "author": "irltopper",
+      "points": 11,
+      "num_comments": 6,
+      "created_at": "2016-04-12T03:14:07Z",
+      "hn_url": "https://news.ycombinator.com/item?id=11476979"
+    },
+    {
+      "id": "8554365",
+      "type": "story",
+      "title": "Our Future Stack, or Why We Love Knockout, Coffeescript, Redis and Go",
+      "text": "",
+      "author": "kristianp",
+      "points": 6,
+      "num_comments": 0,
+      "created_at": "2014-11-03T23:56:11Z",
+      "hn_url": "https://news.ycombinator.com/item?id=8554365"
+    },
+    {
+      "id": "8211944",
+      "type": "story",
+      "title": "The Go Experiment",
+      "text": "",
+      "author": "handelaar",
+      "points": 5,
+      "num_comments": 0,
+      "created_at": "2014-08-22T13:20:17Z",
+      "hn_url": "https://news.ycombinator.com/item?id=8211944"
+    },
+    {
+      "id": "24490524",
+      "type": "story",
+      "title": "Brutal Honesty: The Developer CEO and Our Journey",
+      "text": "",
+      "author": "MMahendra001",
+      "points": 3,
+      "num_comments": 2,
+      "created_at": "2020-09-16T08:01:40Z",
+      "hn_url": "https://news.ycombinator.com/item?id=24490524"
+    },
+    {
+      "id": "14762223",
+      "type": "story",
+      "title": "Teamwork Projects vs. Basecamp",
+      "text": "",
+      "author": "wslh",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2017-07-13T15:42:13Z",
+      "hn_url": "https://news.ycombinator.com/item?id=14762223"
+    },
+    {
+      "id": "12584587",
+      "type": "story",
+      "title": "You Don’t Need Project Management Software–You Need a Strategy",
+      "text": "",
+      "author": "smalter",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2016-09-26T18:57:30Z",
+      "hn_url": "https://news.ycombinator.com/item?id=12584587"
+    },
+    {
+      "id": "11310394",
+      "type": "story",
+      "title": "Learning aSome rookie Go mistakes we made, and what we learned from them",
+      "text": "",
+      "author": "0xmohit",
+      "points": 2,
+      "num_comments": 0,
+      "created_at": "2016-03-18T07:26:28Z",
+      "hn_url": "https://news.ycombinator.com/item?id=11310394"
+    },
+    {
+      "id": "9618030",
+      "type": "story",
+      "title": "Love to work with Teamwork? Now it's integrated with TimeCamp",
+      "text": "",
+      "author": "jangodlewski",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2015-05-28T13:40:32Z",
+      "hn_url": "https://news.ycombinator.com/item?id=9618030"
+    },
+    {
+      "id": "15879761",
+      "type": "story",
+      "title": "12 Biggest Mistakes Web Design Agencies Make and How to Fix Them",
+      "text": "",
+      "author": "vinnyglennon",
+      "points": 1,
+      "num_comments": 0,
+      "created_at": "2017-12-08T16:21:24Z",
+      "hn_url": "https://news.ycombinator.com/item?id=15879761"
+    },
+    {
+      "id": "22513667",
+      "type": "story",
+      "title": "Show HN: Teamworki – Gauge team morale in your workplace",
+      "text": "",
+      "author": "diegovonsohsten",
+      "points": 3,
+      "num_comments": 0,
+      "created_at": "2020-03-07T20:01:19Z",
+      "hn_url": "https://news.ycombinator.com/item?id=22513667"
+    }
+  ]
+}

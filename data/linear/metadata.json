@@ -1,0 +1,40 @@
+{
+  "name": "Linear",
+  "category": "issue_tracking",
+  "subcategories": [
+    "project_management",
+    "bug_tracking",
+    "sprint_planning",
+    "developer_tools"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $8 per user/mo",
+  "primary_use_case": "Streamlined issue tracking for software teams",
+  "target_audience": [
+    "developers",
+    "engineering_teams",
+    "startups"
+  ],
+  "key_features": [
+    "issues",
+    "cycles",
+    "projects",
+    "roadmaps",
+    "triage",
+    "git_integration",
+    "keyboard_shortcuts"
+  ],
+  "founded": 2019,
+  "estimated_users": "10K+ teams",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "jira",
+    "shortcut",
+    "github_issues"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "Teamwork",
+  "category": "project_management",
+  "subcategories": [
+    "client_work",
+    "agencies",
+    "time_tracking"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $6-$18 per user/mo",
+  "primary_use_case": "Project management built for client work and agencies",
+  "target_audience": [
+    "agencies",
+    "professional_services",
+    "consultants"
+  ],
+  "key_features": [
+    "tasks",
+    "milestones",
+    "time_tracking",
+    "budgets",
+    "portfolios",
+    "resource_scheduling",
+    "invoicing"
+  ],
+  "founded": 2007,
+  "estimated_users": "45K+ teams",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "basecamp",
+    "asana",
+    "wrike"
+  ]
+}

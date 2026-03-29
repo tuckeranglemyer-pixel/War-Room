@@ -1,0 +1,42 @@
+{
+  "name": "Notion",
+  "category": "all_in_one_workspace",
+  "subcategories": [
+    "docs",
+    "wiki",
+    "project_management",
+    "database",
+    "notes"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free / $10-$15 per user/mo",
+  "primary_use_case": "All-in-one workspace for notes, docs, wikis, and project tracking",
+  "target_audience": [
+    "startups",
+    "small_teams",
+    "individuals",
+    "product_teams"
+  ],
+  "key_features": [
+    "blocks",
+    "databases",
+    "templates",
+    "wiki",
+    "AI",
+    "integrations",
+    "projects"
+  ],
+  "founded": 2016,
+  "estimated_users": "30M+",
+  "platforms": [
+    "web",
+    "desktop",
+    "ios",
+    "android"
+  ],
+  "competitors": [
+    "coda",
+    "airtable",
+    "clickup"
+  ]
+}

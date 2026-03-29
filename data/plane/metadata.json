@@ -1,0 +1,36 @@
+{
+  "name": "Plane",
+  "category": "issue_tracking",
+  "subcategories": [
+    "project_management",
+    "open_source",
+    "developer_tools"
+  ],
+  "pricing_model": "freemium",
+  "pricing_range": "Free (open source) / $7 per user/mo cloud",
+  "primary_use_case": "Open-source project tracking alternative to Jira",
+  "target_audience": [
+    "developers",
+    "startups",
+    "open_source_teams"
+  ],
+  "key_features": [
+    "issues",
+    "cycles",
+    "modules",
+    "views",
+    "pages",
+    "analytics",
+    "self_hosted"
+  ],
+  "founded": 2022,
+  "estimated_users": "Unknown",
+  "platforms": [
+    "web"
+  ],
+  "competitors": [
+    "linear",
+    "jira",
+    "shortcut"
+  ]
+}
