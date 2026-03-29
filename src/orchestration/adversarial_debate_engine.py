@@ -358,13 +358,18 @@ ONLY cite evidence from the knowledge base provided below — do not invent user
     )
 
     # --- Step 4: Assemble Crew ---
-    crew = Crew(
-        agents=[first_timer, daily_driver, buyer],
-        tasks=[round1, round2, round3, round4],
-        process=Process.sequential,
-        verbose=True,
-        task_callback=task_callback,
-    )
+    try:
+        crew = Crew(
+            agents=[first_timer, daily_driver, buyer],
+            tasks=[round1, round2, round3, round4],
+            process=Process.sequential,
+            verbose=True,
+            task_callback=task_callback,
+        )
+    except Exception as exc:
+        raise RuntimeError(
+            "Failed to assemble War Room crew — check agent/task definitions and model connectivity."
+        ) from exc
 
     return crew
 
