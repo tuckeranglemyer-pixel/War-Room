@@ -7,17 +7,7 @@ interface LandingProps {
   onSelectProduct: (product: string) => void
 }
 
-/**
- * Landing page component with the product search input and suggestion chips.
- *
- * Renders the War Room brand mark, a full-width text input with an animated
- * conic-gradient border on focus, an inline "Analyze" button, and a row of
- * quick-select product suggestions. On submission, plays a 200 ms exit animation
- * before calling ``onSelectProduct`` to advance the view.
- *
- * @param onSelectProduct - Callback receiving the trimmed product name string
- *   when the user submits via Enter, button click, or suggestion chip.
- */
+/** Landing page — product name input with animated background. Entry point for War Room analysis. */
 export default function Landing({ onSelectProduct }: LandingProps) {
   const [input, setInput] = useState('')
   const [focused, setFocused] = useState(false)
