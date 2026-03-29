@@ -17,6 +17,7 @@ from __future__ import annotations
 import asyncio
 import copy
 import json
+import logging
 import shutil
 import time
 import uuid
@@ -55,6 +56,8 @@ from src.orchestration.response_synthesizer import parse_verdict
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
+
+_log = logging.getLogger(__name__)
 
 ROUND_ROLES = ["first_timer", "daily_driver", "first_timer", "buyer"]
 
@@ -363,8 +366,8 @@ async def websocket_debate(websocket: WebSocket, session_id: str) -> None:
             await websocket.send_text(
                 json.dumps({"type": "error", "message": f"Stream error: {exc}"})
             )
-        except Exception:
-            pass
+        except Exception as e:
+            _log.error(f"Error: {e}")
     finally:
         await websocket.close()
         SESSIONS.pop(session_id, None)
