@@ -4,27 +4,188 @@
     "themes": [
       {
         "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with multiple navigation links that may overwhelm new users.",
-        "competitor_observation": "The competitor also has a sidebar filled with various interactive elements that can confuse first-time users.",
-        "supporting_reviews": []
+        "user_observation": "The user's product features a left sidebar with 8 navigation items that lack visual grouping, making it hard to distinguish between primary and secondary options.",
+        "competitor_observation": "The competitor's sidebar is densely packed with options, which may overwhelm new users despite offering comprehensive navigation.",
+        "supporting_reviews": [
+          {
+            "text": "[Reddit Comment on: Have you been frustrated with Trello's UI Recently? Well I made a Chrome Extension that CONVENIENTLY displays your Trello board on the sidebar with all its base features! (Details in comments)]\n\n**Details**\n\n* Board Display - https://iiremember.com/wp-content/uploads/2025/06/preview_4.png\n* Full Page View - https://dashboard.iiremember.com/fullpageview.png\n* View Ticket Display - https://dashboard.iiremember.com/sidebar_view_ticket.png\n\nI have no real user base yet so let me know what features you want me to implement (after testing it ofc) and I gladly will lol",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[HN Story] (re: Trello celebrates One Million Users)\n\nTrello celebrates One Million Users",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Ask HN: Why is everything changing too fast?)\n\nI too am old, but I also do the same thing. We know that once something that was  simple and great at its job starts being ruined, it&#x27;s over. It will become more and more bloated and as it starts shedding users it will happen with increasing speed.So, time to find a Trello alternative that is still just a board with columns.",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 2/5]\n\nI use trello for personal use but I have a complaint, It looks so overwhelming when I open any card and i see all the open options. Trello look can be more minimalistic if in every card all the labels, members, start date and end date in quick actions and that too must be hidden all the time and only visible when in use. So pls do this and I will give it 5 stars...",
+            "source": "google_play",
+            "sentiment": "negative",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Ask HN: How do you handle the information mass HN provides you with?)\n\nBy definition, I read stuff and only links that I think will be useful make it into Trello\nAlso, because the links are categorized well, it removes the need to keep going back and reviewing further etc - I only access the info as and when I need it.The key is in organization &amp; labeling \nIt&#x27;s not just a random pasting of links into the board\nI use different lists to categorize broad categories of content &amp; cards as &quot;sub categories&quot; which makes it easier to go back to as and when i need it.It helps that I always have Trello open in a browser so its quick and easy to paste stuff into the board wherever it belongs and move on with my life.",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "onboarding checklist effectiveness",
-        "user_observation": "The user's product employs a checklist for onboarding that helps guide new users through initial tasks.",
-        "competitor_observation": "The competitor uses a similar checklist format in their onboarding guide to facilitate step-by-step learning.",
-        "supporting_reviews": []
+        "theme_name": "kanban board layout",
+        "user_observation": "The user's product utilizes a kanban board layout with clearly defined columns for task management.",
+        "competitor_observation": "The competitor also employs a classic kanban board style that encourages a left-to-right workflow with distinct task lists.",
+        "supporting_reviews": [
+          {
+            "text": "[Reddit Comment on: Trello mobile users: What frustrates you most about using Kanban boards?]\n\nMaybe it already exists somewhere but I couldn\u2019t find it the other day. A search bar would be helpful.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Google Play Review - 5/5]\n\nTrello really helps me stay organized and manage my tasks easily. The layout is simple and visually clear which kinda mek it aesthetic. I like dragging tasks around to track progress. It\u2019s a very useful app for productivity and planning for me.",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Reddit Post] Trello mobile users: What frustrates you most about using Kanban boards?\n\nHi everyone! \ud83d\udc4b\n\nI\u2019m currently researching ways to improve the **Trello mobile app**, specifically the **Kanban board workflow**. I\u2019d love to hear from you about your experiences:\n\n* What\u2019s the most frustrating part of using Trello\u2019s Kanban boards on mobile?\n* Are there any specific features or actions that feel clunky or unintuitive?\n* How do you typically use Trello on your phone (e.g., tracking tasks, managing teams)?\n* Have you ever switched to a competitor because of Trello\u2019s mobile limitations? If so, why?\n\nAny feedback, big or small, is super helpful. Thanks in advance for sharing your thoughts! \ud83d\ude4f",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Comment on: Have you been frustrated with Trello's UI Recently? Well I made a Chrome Extension that CONVENIENTLY displays your Trello board on the sidebar with all its base features! (Details in comments)]\n\n**Details**\n\n* Board Display - https://iiremember.com/wp-content/uploads/2025/06/preview_4.png\n* Full Page View - https://dashboard.iiremember.com/fullpageview.png\n* View Ticket Display - https://dashboard.iiremember.com/sidebar_view_ticket.png\n\nI have no real user base yet so let me know what features you want me to implement (after testing it ofc) and I gladly will lol",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 5/5]\n\nTrello is \ud83d\udcdd\u2705! \ud83d\ude04 Super organized, boards on point, and gets the job done! \ud83d\udc4d",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          }
+        ]
+      },
+      {
+        "theme_name": "add task functionality",
+        "user_observation": "The user's product includes a prominent 'Add Task' button positioned at the top-right for easy task creation.",
+        "competitor_observation": "The competitor features an interactive '+ Add a card' button at the bottom of each list, facilitating task addition.",
+        "supporting_reviews": [
+          {
+            "text": "[Google Play Review - 5/5]\n\nTrello is simple yet powerful for task management. Boards and cards make organization very clear. Great for both personal and team use. Boosts productivity effortlessly.",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Google Play Review - 3/5]\n\nThe app is solid and a decent experience overall, but if you want full functionality skip this app and log in through your browser. For example, you can't mirror cards in the app (a big part of my workflow), but it's possible in the mobile browser version. If that's not wholly important to you and you're looking for a Trello experience that has accessible buttons, give the app a try.",
+            "source": "google_play",
+            "sentiment": "mixed",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 1/5]\n\nI use it in my Tablet and I don't recommend using the app here. I've seen how useful it is when I see my friends working with Trello in their COMPUTER, I wonder why is easier in the computer? In my case, I hate the idea of not having the \"DELETE\" button in the menu when you click in the settings attached to every card, list or board. Developers and owners of Trello, If you want to make our activites easier and help us with your app, please IMPROVE your app to add a simple button that we all need",
+            "source": "google_play",
+            "sentiment": "negative",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 1/5]\n\nTrello is a good app for productivity if not the best compared to similar apps, but: 1. There is no card button like in the PC version. 2. There is no option to choose which board I would like to show on my widget. 3. There is no due date of checklists (many people need it because in many cases, different deadline is the point of making checklists). Thank you if Trello wants to consider my recommendations.",
+            "source": "google_play",
+            "sentiment": "negative",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Post] I built a small Blender add-on to integrate Trello (task browsing, review checks, file upload)\n\nIn this plugin you can manage Trello tasks without leaving Blender: browse and filter task cards, switch statuses, import attached assets into your scene, automate model checking, and send work for review with files attached.  \nYou can get more details on Gumroad, if you are interested: [https://polyforge3d.gumroad.com/l/blendertaskmanager](https://polyforge3d.gumroad.com/l/blendertaskmanager)\n\nAnd I would appreciate if you have any suggestion on task/project management that you think would be useful to have in this add-on.",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
         "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product emphasizes key onboarding elements through bold fonts and icons to enhance visual hierarchy.",
-        "competitor_observation": "The competitor also utilizes a large, bold heading and icons to create a clear visual hierarchy in their onboarding experience.",
-        "supporting_reviews": []
+        "user_observation": "The user's product has a clean layout but struggles with visual hierarchy in the sidebar, making navigation less intuitive.",
+        "competitor_observation": "The competitor maintains a strong visual hierarchy, allowing users to focus on task management while subtly integrating navigation elements.",
+        "supporting_reviews": [
+          {
+            "text": "[Google Play Review - 3/5]\n\nI love Trello app. Really. But I have a suggestion. Maybe you should improve the app UI because it looks too... old (?). Like, having more shapes & themes ?? I don't know how to describe it but I hope you understand.",
+            "source": "google_play",
+            "sentiment": "mixed",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[HN Comment] (re: Visual Task Management for Individuals and Teams)\n\nOK so I don't think I would say, replace Trello right now, but this is really neat service, well done.I especially like how things are visual and how you can zoom in and out and see this as potentially very useful feature. I will continue to review it and use it.Also, describing it as Trello killer, I think made us expect way too much of it. So this might not worked the way it was intended.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Story] (re: Stacks v1.5 \u2013 The best Trello alternative)\n\nStacks v1.5 \u2013 The best Trello alternative",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Comment on: Have you been frustrated with Trello's UI Recently? Well I made a Chrome Extension that CONVENIENTLY displays your Trello board on the sidebar with all its base features! (Details in comments)]\n\n**Details**\n\n* Board Display - https://iiremember.com/wp-content/uploads/2025/06/preview_4.png\n* Full Page View - https://dashboard.iiremember.com/fullpageview.png\n* View Ticket Display - https://dashboard.iiremember.com/sidebar_view_ticket.png\n\nI have no real user base yet so let me know what features you want me to implement (after testing it ofc) and I gladly will lol",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Show HN: The ultimate productivity tool)\n\nIt looks powerful but the landing page is overwhelming and hard to read.I can&#x27;t understand what The Daily Project does from the top texts. The screenshot says it&#x27;s sort of Trello alternative (btw I would recommend picking more trendy pastel colors, now the design looks a bit dated).The introductions texts are too vague and promotional [1]: &quot;It&#x27;s more flexible and has the missing features, but keeps the simplicity that we all love.&quot; \u2013 how does it solve my problems? [2]Then I finally scrolled to the feature grid (most of the visitors will not bother) and it&#x27;s still not clear how the app works and helps me (&quot;Focus on what&#x27;s important&quot;, &quot;Built for simplicity&quot;).The video tour comes too late, a visitor has already left.[1]: https:&#x2F;&#x2F;www.nngroup.com&#x2F;articles&#x2F;blah-blah-text-keep-cut-or-...[2]: https:&#x2F;&#x2F;www.nngroup.com&#x2F;articles&#x2F;user-centric-language&#x2F;",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "technical terminology confusion",
-        "user_observation": "The user's product includes technical terms in the onboarding checklist that may confuse non-technical users.",
-        "competitor_observation": "The competitor's onboarding checklist similarly uses technical jargon that could be daunting for new users unfamiliar with the terms.",
-        "supporting_reviews": []
+        "theme_name": "onboarding support",
+        "user_observation": "The user's product lacks onboarding tooltips, which could assist new users in understanding the interface.",
+        "competitor_observation": "The competitor's interface could benefit from tooltips for first-time users, especially for its numerous interactive options.",
+        "supporting_reviews": [
+          {
+            "text": "[HN Comment] (re: Trello handed over my personal account to my previous company)\n\nI created a Trello alternative, check it out at https:&#x2F;&#x2F;www.kanrails.comWould love to get feedback!",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Google Play Review - 5/5]\n\nTrello is an outstanding productivity tool that keeps my tasks and projects perfectly organized. The board and card system makes it easy to plan, track progress, and collaborate with others. It\u2019s clean, intuitive, and works smoothly across devices. I love how simple it is to move things around and update details on the go. Whether for personal goals or team projects, it\u2019s reliable and incredibly helpful. 5 stars! \u2b50\ud83d\udccb",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Easy way to build product tours with Bootstrap)\n\nyeah, for sure.  though, you can't lie that it's a great way to manage tasks. i love the trello UI and i'm sure more people are going to use the trello UX when building task management apps..  thetaboard looks super new.. comments on the card itself? i prefer to keep the cards height minimal, so i'm not a fan of that design choice.otherwise, it seems neat, but i def trust trello more with my data. thetaboard terms and conditions could actually have some content :\\edit: clarification.",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 5/5]\n\nTrello makes managing tasks and projects easy with boards, lists, and cards. It\u2019s simple to use and helps keep everything organized. Great for personal and team use.",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Google Play Review - 5/5]\n\nMy experience with Trello has been very productive. The board and card system makes organizing tasks simple and clear. It helps me manage my work efficiently. Very user-friendly.",
+            "source": "google_play",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          }
+        ]
       }
     ]
   },
@@ -32,22 +193,115 @@
     "frame_number": 1,
     "themes": [
       {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a structured sidebar with categorized sections to enhance clarity and ease of navigation for users.",
-        "competitor_observation": "The competitor's sidebar contains numerous interactive elements, which may overwhelm new users trying to find their next step.",
-        "supporting_reviews": []
+        "theme_name": "navigation complexity",
+        "user_observation": "The user's product features a dropdown for client selection, which may confuse new users due to its placement.",
+        "competitor_observation": "The competitor's product has a top navigation bar with multiple view options that could overwhelm new users.",
+        "supporting_reviews": [
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 1.0
+          },
+          {
+            "text": "[HN Story] (re: ClickUp acquires Codegen, forces users into ClickUp to keep using it)\n\nClickUp acquires Codegen, forces users into ClickUp to keep using it",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[HN Comment] (re: Don\u2019t use \u201cclick here\u201d as link text (2001))\n\nAm I the only one who is amused by seeing UIs fuss about using \u201ctap\u201d vs \u201cclick\u201d? Is there anyone who has ever gotten confused and started looking for a mouse to plug into their phone because something said \u201cclick the X button\u201d instead of \u201ctap\u201d it?",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Story] (re: Logging into multiple ClickUp accounts and switching between them quickly)\n\nLogging into multiple ClickUp accounts and switching between them quickly",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Post] We just dropped a full ClickUp 4.0 review\n\nFull Disclosure: I work at ZenPilot &amp; ClickUp Weekly is not sponsored by or affiliated with ClickUp.\n\nWe just published an honest review of ClickUp 4.0 covering what's worth your attention, what still needs work, and how to actually get your team through the transition without it turning into months of confusion.\n\nLink to the video: [https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M](https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M)\n\nOr read the blog post if you prefer: [https://www.zenpilot.com/blog/clickup-4-review](https://www.zenpilot.com/blog/clickup-4-review)\n\nIf you find it useful, Gray also runs [ClickUp Weekly](https://youtu.be/ffpFf-XF3qE?si=d6WXQVeKuszIGec-), a show that comes out every week covering what's new in ClickUp and lessons learned from working with teams in the platform. Worth subscribing to if you want to stay on top of things as 4.0 continues to evolve.\n\nAnd if you have specific ClickUp questions you'd like answered on the show, send them to show@zenpilot.com. We're happy to add them to the docket and cover them in an upcoming episode.\n\nHas anyone else gone through the migration yet? Would love to hear how it's been going for different teams.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "onboarding checklist effectiveness",
-        "user_observation": "The user's product utilizes a goal-oriented checklist that guides users through essential setup tasks, ensuring a smooth onboarding experience.",
-        "competitor_observation": "The competitor also employs a checklist format that helps users navigate their initial setup, but it may assume familiarity with technical terms.",
-        "supporting_reviews": []
+        "theme_name": "data visualization clarity",
+        "user_observation": "The user's product presents a clean bar chart for task completion data but lacks data labels and axis titles.",
+        "competitor_observation": "The competitor's product organizes tasks in a clear table format with distinct sections for status, enhancing data visibility.",
+        "supporting_reviews": [
+          {
+            "text": "ClickUp is a project management tool. All-in-one productivity platform replacing multiple tools. Key features: tasks, docs, whiteboards, dashboards, goals, AI, time_tracking, sprints. Pricing: Free / $7-$12 per user/mo. Target: startups, small_teams, agencies, developers. Competitors: asana, monday, notion.",
+            "source": "metadata",
+            "sentiment": "neutral",
+            "relevance_score": 1.0
+          },
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Reddit Comment on: We just dropped a full ClickUp 4.0 review]\n\nI like the breakdown! My only add is. I think you can adjust views of task due dates Today &gt; Overdue &gt; Future.\n\nMine are default view Overdue &gt; Today &gt; Future\n\nPlus board view allows to you view tasks in this order. \n\n",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Tell HN: Somebody please make a faster task management system)\n\nAnother interesting dynamic -- it may hard to tell if some tool is fast enough during early evaluations. I believe clickup was fast when we first tried it, but now that we have lots of tasks in it, it&#x27;s slowed down. This could just be my poor memory though.",
+            "source": "hackernews",
+            "sentiment": "negative",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Comment on: ClickUp alternatives that are less buggy]\n\nYeah, ClickUp gets a lot of heat for performance and bugginess. Their development cadence is very aggressive compared to other similar tools so they have a lot of features but personally I think it takes away from core performance and scalability. \n\nmonday and asana are probably the next two most similar tools - of the two, my experience is that monday seems to put a lot more into their performance and scalability. Fewer features I think, but more focus on performance.",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "interactive element discoverability",
-        "user_observation": "The user's product includes interactive cues and commands that guide users on the platform\u2019s capabilities, enhancing discoverability.",
-        "competitor_observation": "The competitor's use of toggle blocks and sub-page links may lead to overlooked features, reducing user engagement with the interface.",
-        "supporting_reviews": []
+        "theme_name": "export functionality discoverability",
+        "user_observation": "The user's product buries the export option in a secondary dropdown, making it hard for new users to find.",
+        "competitor_observation": "The competitor's product provides multiple interactive elements but may still leave users searching for specific functionalities.",
+        "supporting_reviews": [
+          {
+            "text": "ClickUp is a project management tool. All-in-one productivity platform replacing multiple tools. Key features: tasks, docs, whiteboards, dashboards, goals, AI, time_tracking, sprints. Pricing: Free / $7-$12 per user/mo. Target: startups, small_teams, agencies, developers. Competitors: asana, monday, notion.",
+            "source": "metadata",
+            "sentiment": "neutral",
+            "relevance_score": 1.0
+          },
+          {
+            "text": "[HN Story] (re: We Switched from GitHub Issues to Jira to ClickUp)\n\nWe Switched from GitHub Issues to Jira to ClickUp",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[HN Comment] (re: Atlassian is 20 years old and unprofitable)\n\nThere are lots of alternatives out there looking for marksetshare. I&#x27;ve not personally used ClickUp but it looks fantastic just from their screenshots: https:&#x2F;&#x2F;clickup.com&#x2F;featureshttps:&#x2F;&#x2F;clickup.com&#x2F;blog&#x2F;jira-alternatives&#x2F;",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Story] (re: Show HN: Amazon Review Scraper)\n\nOne-click Amazon review scraper - export reviews to CSV, JSON, or Excel for easy product research and analysis.",
+            "source": "hackernews",
+            "sentiment": "positive",
+            "relevance_score": 0.7
+          }
+        ]
       }
     ]
   },
@@ -55,681 +309,152 @@
     "frame_number": 2,
     "themes": [
       {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a left sidebar that organizes navigation points clearly, focusing on essential sections for easy access.",
-        "competitor_observation": "The competitor also employs a left sidebar with categorized navigation options, enhancing user orientation within the workspace.",
-        "supporting_reviews": []
+        "theme_name": "grid layout clarity",
+        "user_observation": "The integrations settings page uses a grid layout with generous whitespace, making it easy to scan and understand at a glance.",
+        "competitor_observation": "The pricing page features a clear grid structure that organizes subscription tiers, enhancing visual hierarchy and guiding users effectively.",
+        "supporting_reviews": [
+          {
+            "text": "[Reddit Post] We just dropped a full ClickUp 4.0 review\n\nFull Disclosure: I work at ZenPilot &amp; ClickUp Weekly is not sponsored by or affiliated with ClickUp.\n\nWe just published an honest review of ClickUp 4.0 covering what's worth your attention, what still needs work, and how to actually get your team through the transition without it turning into months of confusion.\n\nLink to the video: [https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M](https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M)\n\nOr read the blog post if you prefer: [https://www.zenpilot.com/blog/clickup-4-review](https://www.zenpilot.com/blog/clickup-4-review)\n\nIf you find it useful, Gray also runs [ClickUp Weekly](https://youtu.be/ffpFf-XF3qE?si=d6WXQVeKuszIGec-), a show that comes out every week covering what's new in ClickUp and lessons learned from working with teams in the platform. Worth subscribing to if you want to stay on top of things as 4.0 continues to evolve.\n\nAnd if you have specific ClickUp questions you'd like answered on the show, send them to show@zenpilot.com. We're happy to add them to the docket and cover them in an upcoming episode.\n\nHas anyone else gone through the migration yet? Would love to hear how it's been going for different teams.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 1.0
+          },
+          {
+            "text": "ClickUp is a project management tool. All-in-one productivity platform replacing multiple tools. Key features: tasks, docs, whiteboards, dashboards, goals, AI, time_tracking, sprints. Pricing: Free / $7-$12 per user/mo. Target: startups, small_teams, agencies, developers. Competitors: asana, monday, notion.",
+            "source": "metadata",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Contra Wirecutter on the IKEA air purifier)\n\nThe issue is why they completely ignore costs and legacy substitution: vendor relations and content.The true answer is often &quot;The old version was just as good or better, don&#x27;t upgrade.&quot;But nobody gets a continual churn of review clicks and affiliate purchase cuts off of that.Ignoring it with &quot;price is hard&quot; is disingenuous on the part of review sites. Notably, this was initially one of Wirecutter&#x27;s key draws: presenting winners in a price-segmented manner.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Comment on: Need Help deciding between ClickUp and Motion implementing 119 step Property Onboarding for our Short-Term Rental Property]\n\nBoard view will become unwieldy if you create statuses according to your colored lines as \u201csummary\u201d tasks. Totally doable. \n\nMay consider utilizing multiple lists and automated transfers between lists also to keep things organized and still functional. Be sure you check how it lays out in the app before committing to a structure if you intend to use the app down the road.",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product establishes a clear visual hierarchy with a prominent blank content area and highlighted navigation items.",
-        "competitor_observation": "The competitor maintains a well-organized visual hierarchy, using bold titles and distinct colors to guide user attention effectively.",
-        "supporting_reviews": []
+        "theme_name": "interactive elements visibility",
+        "user_observation": "The product includes toggle switches and 'Configure' links that are clearly visible, allowing users to manage integrations easily.",
+        "competitor_observation": "The competitor's pricing page has prominent call-to-action buttons and a billing toggle that are easily accessible for user interaction.",
+        "supporting_reviews": [
+          {
+            "text": "[Reddit Post] We just dropped a full ClickUp 4.0 review\n\nFull Disclosure: I work at ZenPilot &amp; ClickUp Weekly is not sponsored by or affiliated with ClickUp.\n\nWe just published an honest review of ClickUp 4.0 covering what's worth your attention, what still needs work, and how to actually get your team through the transition without it turning into months of confusion.\n\nLink to the video: [https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M](https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M)\n\nOr read the blog post if you prefer: [https://www.zenpilot.com/blog/clickup-4-review](https://www.zenpilot.com/blog/clickup-4-review)\n\nIf you find it useful, Gray also runs [ClickUp Weekly](https://youtu.be/ffpFf-XF3qE?si=d6WXQVeKuszIGec-), a show that comes out every week covering what's new in ClickUp and lessons learned from working with teams in the platform. Worth subscribing to if you want to stay on top of things as 4.0 continues to evolve.\n\nAnd if you have specific ClickUp questions you'd like answered on the show, send them to show@zenpilot.com. We're happy to add them to the docket and cover them in an upcoming episode.\n\nHas anyone else gone through the migration yet? Would love to hear how it's been going for different teams.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "ClickUp is a project management tool. All-in-one productivity platform replacing multiple tools. Key features: tasks, docs, whiteboards, dashboards, goals, AI, time_tracking, sprints. Pricing: Free / $7-$12 per user/mo. Target: startups, small_teams, agencies, developers. Competitors: asana, monday, notion.",
+            "source": "metadata",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Story] (re: Things I Learned Bootstrapping ClickUp to $20M ARR)\n\nThings I Learned Bootstrapping ClickUp to $20M ARR",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Story] (re: Logging into multiple ClickUp accounts and switching between them quickly)\n\nLogging into multiple ClickUp accounts and switching between them quickly",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes interactive elements like buttons for sharing and inviting, designed for straightforward user engagement.",
-        "competitor_observation": "The competitor provides interactive elements such as expandable sidebar items and action buttons that facilitate user interaction with the content.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding complexity",
-        "user_observation": "The user's product may overwhelm first-time users with its sharing options and contact import suggestions, potentially complicating onboarding.",
-        "competitor_observation": "The competitor's interface presents a range of features that could confuse new users due to its complexity and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 3,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with a dense array of navigation options that can overwhelm new users.",
-        "competitor_observation": "The competitor also has a sidebar with multiple categories and sub-pages, which may confuse first-time users due to its complexity.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive content creation",
-        "user_observation": "The user's product provides an interactive central canvas for content creation but may leave users unsure of how to start.",
-        "competitor_observation": "The competitor's main content area is interactive with clear options for creating new entries, but still presents a cognitive load for new users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clean design with a hierarchical layout, but the minimalism may confuse users unfamiliar with the interface.",
-        "competitor_observation": "The competitor utilizes a well-organized visual hierarchy that directs attention to the main task area but may still overwhelm with options.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 4,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with various sections that guide users through different functionalities, albeit with potential cognitive overload for first-time users.",
-        "competitor_observation": "The competitor's sidebar is organized with clear categories and indentation, but still poses a challenge for new users due to the number of options available.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a minimalist design that emphasizes visual hierarchy through spacing and typography, although it may hinder discoverability for new users.",
-        "competitor_observation": "The competitor uses bold titles and distinct coloring for interactive elements to create a clear visual hierarchy, which helps direct user attention effectively.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element discoverability",
-        "user_observation": "The user's product includes interactive elements like the 'Invite' dialog that are designed for intuitive accessibility, but may not be immediately obvious to new users.",
-        "competitor_observation": "The competitor's interface has interactive elements like the '+ New' button and filtering options that are visually distinct, yet could still overwhelm first-time users.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 5,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with multiple options that may overwhelm new users unfamiliar with the layout.",
-        "competitor_observation": "The competitor's sidebar also includes a variety of navigation options, which can create cognitive load for first-time users due to its complexity.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element clarity",
-        "user_observation": "The user's product includes interactive buttons like 'Invite' and 'Ask AI' that are clearly labeled but could benefit from additional context for new users.",
-        "competitor_observation": "The competitor's interface has distinct interactive elements like the '+ New' button and filtering options, which are visually differentiated but may still confuse new users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy effectiveness",
-        "user_observation": "The user's product utilizes a clean design with a clear visual hierarchy that emphasizes the workspace area, aiding user focus.",
-        "competitor_observation": "The competitor's layout also features a well-organized visual hierarchy, directing user attention to the main content area effectively.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 6,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a cluttered sidebar that may overwhelm new users with extensive navigation options.",
-        "competitor_observation": "The competitor's sidebar also presents a range of navigation options, which could lead to cognitive overload for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "content creation focus",
-        "user_observation": "The user's product maintains a clear separation between navigation and content creation to aid user task focus.",
-        "competitor_observation": "The competitor's layout effectively directs user attention toward the main task area with a prominent title and organized visual hierarchy.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "upgrade prompt visibility",
-        "user_observation": "The user's product includes a prominent upgrade prompt that draws attention but may disrupt user workflow.",
-        "competitor_observation": "The competitor's interface features interactive elements that are clearly visible but could also distract from the main content.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 7,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "Notion's left sidebar includes various interactive items for easy navigation, but can be overwhelming for new users.",
-        "competitor_observation": "The competitor's sidebar also features categorized navigation options, which may confuse first-time users due to its complexity.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "Notion employs a clear visual hierarchy that focuses user attention on the main content area for document creation.",
-        "competitor_observation": "The competitor similarly uses a well-organized visual hierarchy to direct users' focus towards the main task area.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "feature overload for new users",
-        "user_observation": "Notion offers a wide range of features that can overwhelm new users, requiring time to familiarize with the tools.",
-        "competitor_observation": "The competitor also presents a multitude of features that may lead to cognitive overload for first-time users.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 8,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with numerous options that may overwhelm new users.",
-        "competitor_observation": "The competitor's sidebar also contains multiple navigation options, which can be daunting for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clean and minimalist design that helps users focus on the main content.",
-        "competitor_observation": "The competitor's layout has a well-organized visual hierarchy that directs user attention to the main task area effectively.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding cognitive load",
-        "user_observation": "The user's product presents a moderate cognitive load for new users due to its array of features and options.",
-        "competitor_observation": "The competitor also poses a cognitive load challenge for new users because of its extensive features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 9,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The sidebar in Notion provides a comprehensive set of navigation options, which can be overwhelming for new users.",
-        "competitor_observation": "The competitor's sidebar also features a range of navigation options, categorized but still potentially confusing for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The page title in Notion is prominently displayed, ensuring users can quickly identify the main focus of their work.",
-        "competitor_observation": "The competitor similarly uses a bold and larger font for titles, helping users to easily locate the primary content area.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element overload",
-        "user_observation": "Notion features multiple interactive elements at the bottom of the page, which may overwhelm new users unfamiliar with the app's capabilities.",
-        "competitor_observation": "The competitor also includes various interactive options, such as filtering and sorting tools, that could add to the cognitive load for first-time users.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 10,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a collapsible sidebar that organizes navigation elements into specific workflows, enhancing focus on the main content area.",
-        "competitor_observation": "The competitor's sidebar contains categorized navigation options with clear hierarchy, but may overwhelm users with its depth and complexity.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product utilizes a minimalist design that prioritizes the central content area, making it easy for users to focus on their tasks.",
-        "competitor_observation": "The competitor also emphasizes visual hierarchy with a bold title and distinct separation between the sidebar and main content area, directing user attention effectively.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive elements accessibility",
-        "user_observation": "The user's product includes a utility bar with quick access buttons for common tasks, enhancing user efficiency.",
-        "competitor_observation": "The competitor's interface features interactive elements like a '+ New' button and filtering options, but may present cognitive overload for new users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "collaboration features visibility",
-        "user_observation": "The user's product prominently displays a 'Share' button, facilitating easy collaboration among team members.",
-        "competitor_observation": "The competitor also includes a 'Share' option in the top right menu, but its placement among other settings may reduce visibility for users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding experience challenges",
-        "user_observation": "The user's product may confuse new users with its flexible features, requiring a learning curve to navigate effectively.",
-        "competitor_observation": "The competitor similarly presents a range of features that can overwhelm first-time users, leading to potential onboarding difficulties.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 11,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with numerous categories that may overwhelm new users.",
-        "competitor_observation": "The competitor's sidebar also includes a variety of navigational links, which can confuse first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding clarity",
-        "user_observation": "The user's product lacks a clear onboarding process, which could leave new users confused about how to start.",
-        "competitor_observation": "The competitor provides a 'Getting Started' guide that aims to familiarize users with core functionalities.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element discoverability",
-        "user_observation": "The user's product includes interactive commands that may not be immediately clear to users without context.",
-        "competitor_observation": "The competitor's checklist format includes interactive elements that may be overlooked by users unfamiliar with the interface.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy effectiveness",
-        "user_observation": "The user's product uses a clean design that emphasizes the main content but may lack sufficient guidance for new users.",
-        "competitor_observation": "The competitor employs a bold heading and explanatory text to create a clear focal point for onboarding.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 12,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a dense sidebar with multiple categories that may overwhelm new users.",
-        "competitor_observation": "The competitor's sidebar is also categorized but uses indentation to help users navigate nested pages more intuitively.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product emphasizes the main content area with a bold title, but the sparse design may lead to underutilization.",
-        "competitor_observation": "The competitor effectively uses bold titles and a well-organized layout to guide user focus towards the main task area.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element engagement",
-        "user_observation": "The user's product includes an inviting input field for user interaction, but lacks additional prompts to encourage engagement.",
-        "competitor_observation": "The competitor provides clear interactive elements like a '+ New' button and sorting options that enhance user engagement.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product may create cognitive overload for new users due to its dense sidebar and ambiguous labels.",
-        "competitor_observation": "The competitor's interface also risks overwhelming first-time users with its range of features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 13,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with multiple sections that may overwhelm first-time users due to its density.",
-        "competitor_observation": "The competitor's sidebar also contains numerous navigation options, which could confuse new users with its extensive hierarchy.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clean layout with a bold page title and prominent AI query input to guide user focus.",
-        "competitor_observation": "The competitor's design uses a clear visual hierarchy with a bold title and distinct interactive elements to direct user attention effectively.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes interactive elements like a prominent AI query input and sharing options in the top-right corner for easy access.",
-        "competitor_observation": "The competitor features interactive elements such as a '+ New' button and filtering options that are easily accessible and visually distinct.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding experience challenges",
-        "user_observation": "The user's product lacks onboarding cues, which may hinder first-time users from understanding how to navigate the interface.",
-        "competitor_observation": "The competitor also presents potential onboarding challenges, as new users might feel overwhelmed by the range of features available.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 14,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a structured sidebar with multiple sections for easy access to different functionalities.",
-        "competitor_observation": "The competitor's sidebar also categorizes navigation options, using indentation to clarify page hierarchy.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clear visual hierarchy with a bold document title and muted colors for less critical sections.",
-        "competitor_observation": "The competitor similarly uses bold fonts for titles and a greyed-out sidebar to enhance focus on main content.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes interactive elements like a search bar and clickable sidebar items for quick navigation.",
-        "competitor_observation": "The competitor's interface features clickable folders and a prominent '+ New' button for easy content creation.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product may overwhelm new users with numerous sections and features, potentially increasing cognitive load.",
-        "competitor_observation": "The competitor's interface also risks overwhelming first-time users due to its extensive range of features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 15,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation clarity",
-        "user_observation": "The user's product features a left-side navigation pane that categorizes options to streamline user access to different sections.",
-        "competitor_observation": "The competitor's sidebar uses indentation and a slightly greyed-out background to distinguish navigation options, enhancing clarity.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy emphasis",
-        "user_observation": "The user's product employs a prominent header and centered input field to draw attention to the primary task of interacting with AI.",
-        "competitor_observation": "The competitor's design features a bold title and distinct colors for interactive elements, ensuring the main task area is visually prioritized.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes a clearly labeled AI input box as a primary interactive element, inviting user engagement.",
-        "competitor_observation": "The competitor provides various interactive elements like a '+ New' button and filter options that are easily identifiable and accessible.",
-        "supporting_reviews": []
+        "theme_name": "feature highlight differentiation",
+        "user_observation": "Connected integrations are visually differentiated with a green border, helping users quickly identify active services.",
+        "competitor_observation": "Each subscription tier on the pricing page is color-coded and features distinct headers, making it easy to differentiate between plans.",
+        "supporting_reviews": [
+          {
+            "text": "[Reddit Post] We just dropped a full ClickUp 4.0 review\n\nFull Disclosure: I work at ZenPilot &amp; ClickUp Weekly is not sponsored by or affiliated with ClickUp.\n\nWe just published an honest review of ClickUp 4.0 covering what's worth your attention, what still needs work, and how to actually get your team through the transition without it turning into months of confusion.\n\nLink to the video: [https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M](https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M)\n\nOr read the blog post if you prefer: [https://www.zenpilot.com/blog/clickup-4-review](https://www.zenpilot.com/blog/clickup-4-review)\n\nIf you find it useful, Gray also runs [ClickUp Weekly](https://youtu.be/ffpFf-XF3qE?si=d6WXQVeKuszIGec-), a show that comes out every week covering what's new in ClickUp and lessons learned from working with teams in the platform. Worth subscribing to if you want to stay on top of things as 4.0 continues to evolve.\n\nAnd if you have specific ClickUp questions you'd like answered on the show, send them to show@zenpilot.com. We're happy to add them to the docket and cover them in an upcoming episode.\n\nHas anyone else gone through the migration yet? Would love to hear how it's been going for different teams.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 1.0
+          },
+          {
+            "text": "[HN Comment] (re: Contra Wirecutter on the IKEA air purifier)\n\nThe issue is why they completely ignore costs and legacy substitution: vendor relations and content.The true answer is often &quot;The old version was just as good or better, don&#x27;t upgrade.&quot;But nobody gets a continual churn of review clicks and affiliate purchase cuts off of that.Ignoring it with &quot;price is hard&quot; is disingenuous on the part of review sites. Notably, this was initially one of Wirecutter&#x27;s key draws: presenting winners in a price-segmented manner.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: The underground economy of Glassdoor reviews)\n\nI&#x27;ve considered making a browser extension where you can click a review to ignore it and have the average ratings recalculate automatically.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[Reddit Comment on: Need Help deciding between ClickUp and Motion implementing 119 step Property Onboarding for our Short-Term Rental Property]\n\nBoard view will become unwieldy if you create statuses according to your colored lines as \u201csummary\u201d tasks. Totally doable. \n\nMay consider utilizing multiple lists and automated transfers between lists also to keep things organized and still functional. Be sure you check how it lays out in the app before committing to a structure if you intend to use the app down the road.",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "to get 7 additional days for each month you buy (only for the first purchase, so I recommend you go big from the start and buy the yearly, it's a better value and you get 84 additional days for free). You can also buy the cheapest tier for a year initially to get the extra 3 months, and if you need a higher tier, you can upgrade along the way, it is possible. **IMPORTANT**: When you're on the subscription plans page, scroll down to the bottom and you'll see a field (not the \"Coupon Code\" field just below the plans, but to the very bottom of the page) where you can enter my code (not to be confused with the \"Your referral code is:\" part above it) and click **Submit**. Then you can proceed with buying your chosen plan. **ALSO**, if you pay with crypto, you can use coupon code **SIGMA30** in the \"Coupon Code\" field for a further 30% discount (only for the first purchase if you select the One-Time option).*\n   * *To help you choose between Real-Debrid and TorBox:*\n      * ***Real-Debrid** is one of the most widely used service, and has probably the largest cache (files already available on their servers and ready to watch) of shows and movies. However, they only allow one connection at a time, meaning that you can't watch on two or more devices simultaneously (you can log in to your Stremio account on as many devices you want, that's unrelated).",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          }
+        ]
       },
       {
         "theme_name": "cognitive load management",
-        "user_observation": "The user's product adopts a minimalist design to reduce cognitive load, avoiding overwhelming users with excessive information.",
-        "competitor_observation": "The competitor's interface, while organized, can overwhelm new users with its multitude of features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 16,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a collapsible sidebar that organizes navigation elements hierarchically for ease of access.",
-        "competitor_observation": "The competitor's sidebar also categorizes navigation options with clear indentation, aiding in quick recognition.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a minimalist design with a prominent heading and centered search bar to direct user attention.",
-        "competitor_observation": "The competitor's layout uses bold titles and distinct coloring to create a clear visual hierarchy that focuses on main tasks.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element usability",
-        "user_observation": "The user's product includes interactive features like a prominent search bar and options for sharing and settings to enhance collaboration.",
-        "competitor_observation": "The competitor offers interactive elements such as expandable sidebar items and a clear '+ New' button for user engagement.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product may overwhelm first-time users with its structure and AI feature without adequate guidance.",
-        "competitor_observation": "The competitor's interface can also overwhelm new users due to its multitude of features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 17,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with numerous options that may overwhelm new users.",
-        "competitor_observation": "ClickUp's sidebar also contains multiple navigation options, but its design aims to maintain user focus with a dark background and clear icons.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive AI input",
-        "user_observation": "The user's product includes a prominently placed AI input box for user queries, though it lacks contextual guidance.",
-        "competitor_observation": "ClickUp features an interactive text box for user responses in its AI section, designed to engage users with step-by-step prompts.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a minimalistic layout that emphasizes the main content but may leave users unsure of where to start.",
-        "competitor_observation": "ClickUp's layout uses bold headlines and structured text to guide users through the onboarding process effectively.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 18,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with numerous clickable items, which may overwhelm new users.",
-        "competitor_observation": "The competitor's sidebar includes expandable folders and pages, which can also create cognitive load for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clear visual hierarchy with a bold section title to guide user focus.",
-        "competitor_observation": "The competitor uses a well-organized visual hierarchy, with a prominent title and distinct coloring for interactive elements.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element usability",
-        "user_observation": "The user's product includes an AI query input that may require further clarification for effective use.",
-        "competitor_observation": "The competitor offers various interactive elements like a '+ New' button and sorting options that enhance usability.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "onboarding experience challenges",
-        "user_observation": "The user's product may leave new users unclear about next steps due to sparse feedback.",
-        "competitor_observation": "The competitor's interface could overwhelm first-time users with its multitude of functions and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 19,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a collapsible sidebar that organizes navigational links for easy access to key functionalities.",
-        "competitor_observation": "The competitor's sidebar also categorizes navigation options but includes a range of nested pages that may overwhelm users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a strong visual hierarchy with bold headers that guide users' attention effectively.",
-        "competitor_observation": "The competitor uses a well-organized visual hierarchy with a prominent title and distinct interactive elements that draw focus.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product features clearly indicated interactive elements, such as clickable sections and a text input box for user interaction.",
-        "competitor_observation": "The competitor includes interactive elements like expandable folders and a clear 'New' button, but may still overwhelm new users.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 20,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a compact sidebar that lists key areas for easy navigation, though it may confuse new users due to the reliance on icons without labels.",
-        "competitor_observation": "The competitor's sidebar includes both icons and text labels, aiding quick recognition while maintaining a clear hierarchy for navigation.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product employs a clear visual hierarchy with a bold title and minimalist design, guiding users from primary to secondary actions effectively.",
-        "competitor_observation": "The competitor also utilizes a well-organized visual hierarchy, with a prominent title and distinct coloring for interactive elements to direct user focus.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes interactive elements like a floating input box and sidebar buttons, enhancing user engagement but potentially overwhelming new users.",
-        "competitor_observation": "The competitor features interactive elements such as expandable folders and a clear '+ New' button, which facilitate user interaction but may still present a learning curve for novices.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 21,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation clarity",
-        "user_observation": "The user's product features a clear and minimalistic sidebar that effectively categorizes navigation options for easy access.",
-        "competitor_observation": "The competitor's sidebar also provides a well-organized structure, with clear hierarchy and recognizable icons for quick navigation.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy effectiveness",
-        "user_observation": "The user's product employs a strong visual hierarchy, using bold typography to highlight key content areas and guide user attention.",
-        "competitor_observation": "The competitor similarly utilizes bold fonts and size variations to establish a clear focus on the main task area and important actions.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element accessibility",
-        "user_observation": "The user's product includes interactive elements like toggles and input fields that are easily accessible for user engagement.",
-        "competitor_observation": "The competitor features interactive components such as expandable folders and action buttons that enhance user interaction with the content.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product aims to minimize cognitive load with a simple interface, though it may rely too heavily on iconography for some users.",
-        "competitor_observation": "The competitor's interface, while intuitive, can overwhelm new users due to its extensive features and nested navigation.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 22,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a sidebar with numerous categories that may overwhelm first-time users.",
-        "competitor_observation": "Notion's sidebar also contains a variety of navigation options, which can create cognitive overload for new users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy emphasis",
-        "user_observation": "The user's product uses bold typography in the main content area to draw attention to key information.",
-        "competitor_observation": "Notion employs a clear visual hierarchy with a prominent title and distinct coloring for interactive elements to guide user focus.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element clarity",
-        "user_observation": "The user's product includes clear click targets in the sidebar, but some interactive elements may not be immediately obvious.",
-        "competitor_observation": "Notion provides distinct interactive elements like a clearly labeled '+ New' button, enhancing user understanding of actions.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product may confuse new users due to the lack of immediate content or guidance on the main page.",
-        "competitor_observation": "Notion's interface can overwhelm first-time users with its extensive range of features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 23,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The sidebar in the user's product provides a comprehensive list of categories and apps, which may overwhelm new users due to its density.",
-        "competitor_observation": "The competitor's sidebar also features numerous interactive elements, potentially confusing new users with its abundance of options.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element clarity",
-        "user_observation": "The user's product includes interactive feedback icons that may lack clarity for new users without labels or tooltips.",
-        "competitor_observation": "The competitor's interactive elements, such as checklist items, may assume familiarity with technical terms, leading to confusion for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "minimalist design effectiveness",
-        "user_observation": "The user's product maintains a minimalist design that emphasizes readability and user engagement, fostering a calm user experience.",
-        "competitor_observation": "The competitor also employs a clean, minimalist design that aims to reduce overwhelm and promote a sense of calm for users.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 24,
-    "themes": [
-      {
-        "theme_name": "sidebar navigation density",
-        "user_observation": "The user's product features a left navigation panel that categorizes sections for easy access, though it may overwhelm new users.",
-        "competitor_observation": "The competitor also employs a sidebar with categorized navigation options, which can lead to cognitive overload for first-time users.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element clarity",
-        "user_observation": "The user's product includes action buttons and links that provide quick access to features, but some prompts may be unclear for new users.",
-        "competitor_observation": "The competitor's interface has distinct interactive elements like a 'New' button and filtering options, yet still poses a challenge for new users to understand their functions.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "cognitive load for new users",
-        "user_observation": "The user's product presents a clean interface but can overwhelm new users with its numerous options and AI prompts.",
-        "competitor_observation": "The competitor's design is intuitive but still risks overwhelming new users with its extensive features and nested pages.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 25,
-    "themes": [
-      {
-        "theme_name": "client reporting automation",
-        "user_observation": "The user's product offers built-in client reporting that auto-generates from task completion data, eliminating manual report building.",
-        "competitor_observation": "Trello does not provide automated client reporting, requiring users to manually compile reports from task data.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "user onboarding experience",
-        "user_observation": "The user's product aims to streamline onboarding for non-technical marketing managers with intuitive guidance.",
-        "competitor_observation": "Trello offers a straightforward onboarding process but may overwhelm new users with its extensive feature set.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy clarity",
-        "user_observation": "The user's product focuses on a clear visual hierarchy to help users quickly identify key tasks and reports.",
-        "competitor_observation": "Trello utilizes a card-based layout that can sometimes obscure task priorities due to its visual density.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 26,
-    "themes": [
-      {
-        "theme_name": "onboarding simplicity",
-        "user_observation": "The user's product features a minimalistic onboarding screen that emphasizes clarity and ease of account connection.",
-        "competitor_observation": "The competitor's onboarding guide uses a clean layout with a bold heading and checklist format to facilitate user understanding.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element visibility",
-        "user_observation": "The user's product highlights the 'Connect to Google' button prominently, making it clear and actionable for users.",
-        "competitor_observation": "The competitor includes multiple interactive elements in the sidebar, which may overwhelm users but also provides various options.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "visual hierarchy effectiveness",
-        "user_observation": "The user's product employs a strong visual hierarchy to guide users' attention towards the main action of connecting their account.",
-        "competitor_observation": "The competitor's layout utilizes a large, bold heading and organized checklist items to create an effective visual hierarchy.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "friction points in onboarding",
-        "user_observation": "The user's product may create friction by assuming trust in linking accounts without prior exploration of app benefits.",
-        "competitor_observation": "The competitor's onboarding checklist can overwhelm new users with technical terminology, creating potential confusion.",
-        "supporting_reviews": []
-      }
-    ]
-  },
-  {
-    "frame_number": 27,
-    "themes": [
-      {
-        "theme_name": "modal design clarity",
-        "user_observation": "The user's product utilizes a modal overlay that isolates the Google Sign-In process, minimizing distractions for users.",
-        "competitor_observation": "The competitor employs a clean, minimalist design that focuses user attention on the automation rule without overwhelming them with unnecessary information.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "interactive element prominence",
-        "user_observation": "The user's product features a prominent 'Continue' button as the main call-to-action, guiding users to proceed with Google Sign-In.",
-        "competitor_observation": "The competitor highlights interactive elements within the automation sentence, using underlined words to indicate modifiable options for user engagement.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "user navigation options",
-        "user_observation": "The user's product includes a close icon for users to exit the modal, providing a clear navigation option without commitment.",
-        "competitor_observation": "The competitor offers a 'Back' button for easy navigation, allowing users to return to previous steps without losing context.",
-        "supporting_reviews": []
-      },
-      {
-        "theme_name": "information overload risk",
-        "user_observation": "The user's product includes explanatory text that may overwhelm users who prefer quick interactions without extensive reading.",
-        "competitor_observation": "The competitor's reliance on minimal text and underlined words for interaction may confuse users unfamiliar with inline configuration.",
-        "supporting_reviews": []
+        "user_observation": "The cognitive load is low due to the simple layout and minimal options, making it approachable for non-technical users.",
+        "competitor_observation": "While the pricing page presents multiple tiers, the structured layout aims to manage cognitive load by organizing information clearly.",
+        "supporting_reviews": [
+          {
+            "text": "ClickUp is a project management tool. All-in-one productivity platform replacing multiple tools. Key features: tasks, docs, whiteboards, dashboards, goals, AI, time_tracking, sprints. Pricing: Free / $7-$12 per user/mo. Target: startups, small_teams, agencies, developers. Competitors: asana, monday, notion.",
+            "source": "metadata",
+            "sentiment": "neutral",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Reddit Post] We just dropped a full ClickUp 4.0 review\n\nFull Disclosure: I work at ZenPilot &amp; ClickUp Weekly is not sponsored by or affiliated with ClickUp.\n\nWe just published an honest review of ClickUp 4.0 covering what's worth your attention, what still needs work, and how to actually get your team through the transition without it turning into months of confusion.\n\nLink to the video: [https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M](https://youtu.be/8JwC4EcVTiI?si=2F-J5NPHux-Uzy5M)\n\nOr read the blog post if you prefer: [https://www.zenpilot.com/blog/clickup-4-review](https://www.zenpilot.com/blog/clickup-4-review)\n\nIf you find it useful, Gray also runs [ClickUp Weekly](https://youtu.be/ffpFf-XF3qE?si=d6WXQVeKuszIGec-), a show that comes out every week covering what's new in ClickUp and lessons learned from working with teams in the platform. Worth subscribing to if you want to stay on top of things as 4.0 continues to evolve.\n\nAnd if you have specific ClickUp questions you'd like answered on the show, send them to show@zenpilot.com. We're happy to add them to the docket and cover them in an upcoming episode.\n\nHas anyone else gone through the migration yet? Would love to hear how it's been going for different teams.",
+            "source": "reddit",
+            "sentiment": "positive",
+            "relevance_score": 0.85
+          },
+          {
+            "text": "[Reddit Comment on: [OC] It takes 64 Clicks to craft a basic loadout, I designed a 1-click solution.]\n\nI just need that when you right click on an item, it shows the selling price AND the recycling materials you get from it at the same time. It's super annoying having to:\n\n\nRight click -&gt; Recycle -&gt; (check recycle materials and decide to sell it) Escape -&gt; right click again -&gt; Sell\u00a0",
+            "source": "reddit",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: GitHub Projects \u2013 Customizable, flexible tool for planning and tracking work)\n\nBig ClickUp user and I feel you comment about it. It has become a massive UX mess. They really need to clean it up per &quot;use case&quot; or have toggles for users to disable UX features.Too much is too much, and it&#x27;s getting close to being too much on ClickUp.",
+            "source": "hackernews",
+            "sentiment": "neutral",
+            "relevance_score": 0.7
+          },
+          {
+            "text": "[HN Comment] (re: Tell HN: Somebody please make a faster task management system)\n\nAnother interesting dynamic -- it may hard to tell if some tool is fast enough during early evaluations. I believe clickup was fast when we first tried it, but now that we have lots of tasks in it, it&#x27;s slowed down. This could just be my poor memory though.",
+            "source": "hackernews",
+            "sentiment": "negative",
+            "relevance_score": 0.7
+          }
+        ]
       }
     ]
   }
