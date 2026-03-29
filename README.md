@@ -88,16 +88,34 @@ User Input (product name)
 - Ollama installed and running
 - ChromaDB data (included in `chroma_db/`)
 
-### Backend
+### Setup
 
 ```bash
 cd War-Room
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
 
-# Start the API server
+### Cloud Mode (recommended for demos)
+
+```bash
+# Set your API key
+export ANTHROPIC_API_KEY=sk-...  # or OPENAI_API_KEY
+
+# Start server in cloud mode
 uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+```
+
+### DGX Spark Mode (on-prem, data sovereign)
+
+```bash
+# Run pre-flight check
+python -m src.orchestration.hardware_preflight
+
+# Start with adaptive thermal management
+uvicorn src.api.server:app --host 0.0.0.0 --port 8000
+# AdaptiveRunner auto-selects tier based on GPU telemetry
 ```
 
 ### Frontend
@@ -292,6 +310,29 @@ When DGX Spark GPU temperatures exceed the thermal ceiling during sustained deba
 | Consumer hardware | **Local dev** | `LOCAL_MODEL` + `DAILY_DRIVER_BUYER_MODEL` (small models) |
 
 All three modes produce a valid 4-round debate with full evidence grounding — only the model diversity varies.
+
+---
+
+## Dual Inference Strategy
+
+The War Room supports two inference paths, selectable per deployment:
+
+**Cloud API Mode (Live Demos & Traction)**
+For real-time live analysis during demos and public use, the pipeline routes through cloud LLM APIs (Anthropic/OpenAI). This enables:
+- Sub-60-second full 4-round debates on any product
+- Reliable live demos without thermal constraints
+- Real analysis output (JSON verdicts, evidence citations) for traction measurement
+- Tested end-to-end on competitor products during the hackathon
+
+**DGX Spark Mode (On-Prem & Data Sovereignty)**
+For enterprises requiring zero data leakage, the pipeline runs entirely on local open-weight models via Ollama/vLLM on DGX Spark's 128GB unified memory. This mode includes:
+- Hardware-adaptive execution engine (AdaptiveRunner) with 3-tier thermal management
+- Real-time GPU telemetry via nvidia-smi with automatic tier degradation
+- Thermal gating: automatic cooldown pauses when GPU exceeds 70°C
+- Model lifecycle management: unload/reload between rounds to prevent cumulative heat buildup
+- Pre-flight GO/NO-GO check before each analysis
+
+The DGX Spark adaptive runner is production-grade infrastructure that solves a real deployment problem — sustained LLM inference on unified-memory hardware with thermal constraints. Cloud mode doesn't need it; enterprise on-prem mode does. Both paths produce identical verdict JSON output.
 
 ---
 

@@ -1,5 +1,14 @@
 # Traction — The War Room
 
+## Live Competitor Analysis (Demo Day)
+Running real War Room analyses on competitor products during the hackathon:
+- Products analyzed live: [updating as we go]
+- Full JSON verdicts generated: [updating]
+- Average analysis time (cloud mode): ~45-60 seconds per product
+- Evidence citations per verdict: [updating]
+
+Each analysis generates a complete deliverable in sessions/ — real output, not demos.
+
 ## Live Deployment (March 29, 2026)
 - **Frontend:** https://frontend-untracked.vercel.app/
 - **API Docs:** https://paplike-hillary-beauteously.ngrok-free.dev/docs
