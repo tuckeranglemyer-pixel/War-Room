@@ -17,13 +17,7 @@ from typing import Any, Callable, Optional
 import psutil
 from crewai import Agent, Crew, LLM, Process, Task
 
-from config import (
-    CHROMA_DB_PATH,
-    COLLECTION_NAME,
-    LOCAL_BASE_URL,
-    MAX_SCOUTS,
-    RAG_RESULTS_PER_QUERY,
-)
+from config import LOCAL_BASE_URL
 from meta_prompt import generate_personas
 from tools import fetch_context_for_product, search_pm_knowledge
 
@@ -37,11 +31,31 @@ logging.basicConfig(
 )
 log = logging.getLogger("safe_crew")
 
-THERMAL_CEILING_C = 85
-THERMAL_RESUME_C = 75
-COOLDOWN_BETWEEN_ROUNDS_S = 10
-SAFE_SWARM_WORKERS = 5
-SAFE_SWARM_SCOUTS = 15
+# Tunable via env — lower ceiling = pause sooner (helps if shutdown happens *during* a round).
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name)
+    if raw is None or raw.strip() == "":
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_bool(name: str) -> bool:
+    return os.environ.get(name, "").strip().lower() in ("1", "true", "yes")
+
+
+THERMAL_CEILING_C = _env_int("SAFE_THERMAL_CEILING", 75)
+THERMAL_RESUME_C = _env_int("SAFE_THERMAL_RESUME", 65)
+COOLDOWN_BETWEEN_ROUNDS_S = _env_int("SAFE_COOLDOWN_S", 30)
+PRE_ROUND_PAUSE_S = _env_int("SAFE_PRE_ROUND_PAUSE_S", 15)
+SAFE_SWARM_WORKERS = _env_int("SAFE_SWARM_WORKERS", 3)
+SAFE_SWARM_SCOUTS = _env_int("SAFE_SWARM_SCOUTS", 10)
+SAFE_MAX_ITER = _env_int("SAFE_MAX_ITER", 4)
+# Cap injected evidence size — huge prompts + 70B = longest, hottest forwards passes.
+SAFE_EVIDENCE_MAX_CHARS = _env_int("SAFE_EVIDENCE_MAX_CHARS", 12_000)
+SKIP_SWARM = _env_bool("SAFE_SKIP_SWARM")
 
 # DGX model names — adjust to match your Ollama tags
 ROUND_MODELS: dict[str, str] = {
@@ -49,6 +63,15 @@ ROUND_MODELS: dict[str, str] = {
     "daily_driver": os.environ.get("DAILY_DRIVER_MODEL", "llama3.3:70b"),
     "buyer": os.environ.get("BUYER_MODEL", "mistral-small:24b"),
 }
+
+# Optional env (thermal still only checked *between* phases — see module docstring):
+#   SAFE_THERMAL_CEILING / SAFE_THERMAL_RESUME — pause sooner (default 75/65)
+#   SAFE_COOLDOWN_S — seconds after each round (default 30)
+#   SAFE_PRE_ROUND_PAUSE_S — extra idle before loading model (default 15)
+#   SAFE_MAX_ITER — agent tool loop cap (default 4, was 10)
+#   SAFE_EVIDENCE_MAX_CHARS — truncate injected RAG block (default 12000)
+#   SAFE_SKIP_SWARM=1 — skip parallel Chroma scout queries entirely
+#   SAFE_SWARM_SCOUTS / SAFE_SWARM_WORKERS — default 10 scouts, 3 workers
 
 
 # ---------------------------------------------------------------------------
@@ -176,15 +199,19 @@ def ollama_stop_model(model_tag: str) -> None:
 
 
 def ollama_stop_all() -> None:
-    """Stop every model Ollama currently has loaded."""
+    """Stop every model Ollama currently has loaded in VRAM (uses ``ollama ps``, not ``list``)."""
     try:
-        out = subprocess.check_output(["ollama", "list"], text=True, timeout=10)
-        for line in out.strip().split("\n")[1:]:
-            tag = line.split()[0]
-            if tag:
-                ollama_stop_model(tag)
+        out = subprocess.check_output(["ollama", "ps"], text=True, timeout=10)
+        lines = [ln for ln in out.strip().split("\n")[1:] if ln.strip()]
+        if not lines:
+            log.info("ollama ps: no models loaded")
+            return
+        for line in lines:
+            parts = line.split()
+            if parts:
+                ollama_stop_model(parts[0])
     except Exception as exc:
-        log.warning("Could not enumerate running models: %s", exc)
+        log.warning("Could not stop running Ollama models: %s", exc)
 
 
 # ---------------------------------------------------------------------------
@@ -201,6 +228,18 @@ def safe_deploy_swarm(product_name: str) -> dict[str, Any]:
         max_scouts=SAFE_SWARM_SCOUTS,
         max_workers=SAFE_SWARM_WORKERS,
     )
+
+
+def maybe_truncate_evidence(text: str) -> str:
+    """Limit injected evidence size to reduce KV cache and sustained GPU load."""
+    if len(text) <= SAFE_EVIDENCE_MAX_CHARS:
+        return text
+    log.warning(
+        "Truncating real_evidence from %d to %d chars (SAFE_EVIDENCE_MAX_CHARS)",
+        len(text),
+        SAFE_EVIDENCE_MAX_CHARS,
+    )
+    return text[:SAFE_EVIDENCE_MAX_CHARS] + "\n\n[… evidence truncated for SAFE mode …]\n"
 
 
 # ---------------------------------------------------------------------------
@@ -223,6 +262,9 @@ def run_round(
 
     ollama_stop_all()
     time.sleep(3)
+    if PRE_ROUND_PAUSE_S > 0:
+        log.info("Pre-round pause: %ds (SAFE_PRE_ROUND_PAUSE_S)", PRE_ROUND_PAUSE_S)
+        time.sleep(PRE_ROUND_PAUSE_S)
     ollama_load_model(model_tag)
     log_system_state(f"MODEL-LOADED-{round_label}")
 
@@ -243,7 +285,7 @@ def run_round(
     log_system_state(f"POST-{round_label}")
 
     ollama_stop_model(model_tag)
-    log.info("Cooling pause: %ds between rounds", COOLDOWN_BETWEEN_ROUNDS_S)
+    log.info("Cooling pause: %ds between rounds (SAFE_COOLDOWN_S)", COOLDOWN_BETWEEN_ROUNDS_S)
     time.sleep(COOLDOWN_BETWEEN_ROUNDS_S)
     log_system_state(f"COOLED-{round_label}")
 
@@ -266,6 +308,19 @@ def build_and_run_safe(
     log.info("=" * 60)
     log.info("SAFE WAR ROOM — Starting thermal-safe debate")
     log.info("Product: %s", product_description)
+    log.info(
+        "Safe mode: ceiling=%s°C resume=%s°C cooldown=%ss pre_round=%ss max_iter=%s "
+        "evidence_max=%s skip_swarm=%s swarm=%s/%s",
+        THERMAL_CEILING_C,
+        THERMAL_RESUME_C,
+        COOLDOWN_BETWEEN_ROUNDS_S,
+        PRE_ROUND_PAUSE_S,
+        SAFE_MAX_ITER,
+        SAFE_EVIDENCE_MAX_CHARS,
+        SKIP_SWARM,
+        SAFE_SWARM_SCOUTS,
+        SAFE_SWARM_WORKERS,
+    )
     log_system_state("STARTUP")
 
     # --- Step 0: Unload everything before we begin ---
@@ -325,21 +380,26 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough.
     ollama_stop_model(ft_model)
     time.sleep(5)
 
-    # --- Step 2: Deploy safe swarm ---
-    log.info("Step 2: Deploying safe reconnaissance swarm")
-    log_system_state("PRE-SWARM")
-
-    try:
-        swarm_result = safe_deploy_swarm(product_description)
-        swarm_briefing = swarm_result["briefing"]
-        swarm_stats = swarm_result["stats"]
-    except Exception as exc:
-        log.error("Swarm failed: %s — continuing without briefing", exc)
-        swarm_briefing = "[Swarm reconnaissance unavailable]"
+    # --- Step 2: Deploy safe swarm (optional — Chroma embeddings still spike GPU) ---
+    if SKIP_SWARM:
+        log.info("Step 2: SAFE_SKIP_SWARM=1 — skipping reconnaissance swarm")
+        swarm_briefing = "[Swarm skipped — SAFE_SKIP_SWARM]"
         swarm_stats = {"scouts_deployed": 0, "total_time": 0}
+    else:
+        log.info("Step 2: Deploying safe reconnaissance swarm")
+        log_system_state("PRE-SWARM")
 
-    log_system_state("POST-SWARM")
-    time.sleep(5)
+        try:
+            swarm_result = safe_deploy_swarm(product_description)
+            swarm_briefing = swarm_result["briefing"]
+            swarm_stats = swarm_result["stats"]
+        except Exception as exc:
+            log.error("Swarm failed: %s — continuing without briefing", exc)
+            swarm_briefing = "[Swarm reconnaissance unavailable]"
+            swarm_stats = {"scouts_deployed": 0, "total_time": 0}
+
+        log_system_state("POST-SWARM")
+        time.sleep(5)
 
     # --- Step 3: Pre-fetch evidence ---
     log.info("Step 3: Fetching evidence from ChromaDB")
@@ -347,6 +407,7 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough.
         real_evidence = fetch_context_for_product(product_description)
         evidence_count = real_evidence.count("[") - real_evidence.count("[Query error")
         log.info("Loaded %d evidence chunks", evidence_count)
+        real_evidence = maybe_truncate_evidence(real_evidence)
     except Exception as exc:
         log.error("Evidence fetch failed: %s", exc)
         real_evidence = "[Evidence unavailable]"
@@ -372,7 +433,7 @@ CRITICAL: The above is PRIMARY evidence from the founder's live walkthrough.
         + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool to gather real user evidence BEFORE making any argument.",
         llm=r1_llm,
         tools=agent_tools,
-        max_iter=10,
+        max_iter=SAFE_MAX_ITER,
         verbose=True,
     )
 
@@ -416,7 +477,7 @@ Do not write a balanced review. You are a real user with limited patience.""",
         + "\n\nCRITICAL TOOL RULE: You MUST use the search_pm_knowledge tool.",
         llm=r2_llm,
         tools=agent_tools,
-        max_iter=10,
+        max_iter=SAFE_MAX_ITER,
         verbose=True,
     )
 
@@ -455,7 +516,7 @@ YOUR ASSIGNMENT:
         + "\n\nSTUBBORNNESS RULE: Do not concede without specific cited evidence.",
         llm=r3_llm,
         tools=agent_tools,
-        max_iter=10,
+        max_iter=SAFE_MAX_ITER,
         verbose=True,
     )
 
@@ -496,7 +557,7 @@ YOUR ASSIGNMENT:
         + "\n\nEVIDENCE PREFERENCE: You trust pricing comparisons and business user reviews.",
         llm=r4_llm,
         tools=agent_tools,
-        max_iter=10,
+        max_iter=SAFE_MAX_ITER,
         verbose=True,
     )
 
