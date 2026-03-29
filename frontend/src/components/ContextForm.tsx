@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'http://localhost:8000'
+const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined) ?? 'https://paplike-hillary-beauteously.ngrok-free.dev'
 
 interface ContextFormProps {
   productName: string
